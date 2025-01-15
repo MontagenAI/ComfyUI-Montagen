@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/polyfill/poly.js"],"names":["Foo","poly","Class"],"mappings":";;;;;;;AAAA,MAAMA,GAAN,CAAU;;AAEK,SAASC,IAAT,CAAcC,KAAd,EAAqB;AAClC,SAAOA,KAAK,IAAIF,GAAhB;AACD","sourcesContent":["class Foo {}\n\nexport default function poly(Class) {\n  return Class || Foo;\n}\n"],"file":"poly.js"}

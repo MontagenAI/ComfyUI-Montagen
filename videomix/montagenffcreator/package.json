@@ -1,0 +1,12 @@
+{
+  "name": "montagen-runner",
+  "main": "run.js",
+  "dependencies": {
+    "fluent-ffmpeg": "file:./packages/fluent-ffmpeg.tgz",
+    "get-pixels": "file:./packages/get-pixels.tgz",
+    "proper-lockfile": "^4.1.2"
+  },
+  "workspaces": [
+    "MontagenFFCreator"
+  ]
+}
