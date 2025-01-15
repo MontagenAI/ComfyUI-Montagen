@@ -463,7 +463,7 @@ const _sfc_main$2 = {
     let fileList = ref$3([]);
     let fileManagerList = ref$3([]);
     const getLocaleOutPut = async () => {
-      let response = await app$1.api.fetchApi("/imagenbox/outputs");
+      let response = await app$1.api.fetchApi("/Montagen/outputs");
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
