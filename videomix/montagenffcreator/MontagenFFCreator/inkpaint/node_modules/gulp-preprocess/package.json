@@ -1,0 +1,52 @@
+{
+  "name": "gulp-preprocess",
+  "description": "Gulp plugin to preprocess HTML, JavaScript, and other files based on custom context or environment configuration",
+  "version": "2.0.0",
+  "homepage": "http://github.com/jas/gulp-preprocess",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jas/gulp-preprocess.git"
+  },
+  "author": "Jason Sandmeyer",
+  "main": "./index.js",
+  "dependencies": {
+    "lodash": "3.10.x",
+    "map-stream": "0.1.x",
+    "preprocess": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp-util": "3.0.x",
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": ">= 0.9.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "bugs": {
+    "url": "https://github.com/jas/gulp-preprocess/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulp-plugin",
+    "preprocessor",
+    "html",
+    "javascript",
+    "coffeescript",
+    "debug",
+    "environment",
+    "ENV",
+    "conditional",
+    "include",
+    "exclude",
+    "ifdef",
+    "ifndef",
+    "echo"
+  ],
+  "license": "MIT"
+}
