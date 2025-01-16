@@ -5,6 +5,9 @@ import folder_paths
 from .VideoMetadataCache import VideoMetadataCache
 import os
 import subprocess
+import uuid
+import json
+import asyncio
 
 
 class MontagenApi:
@@ -29,20 +32,25 @@ class MontagenApi:
         @server.routes.post("/Montagen/outputs")
         async def combineVideos(request):
             data = await request.json()
-            if "files" not in data:
-                return web.json_response({"error": "No files specified"}, status=400)
+            if "files" in data and "output" in data:
+                frame_rate = data.get("frameRate", 30)
+                resolution = data.get("resolution", "1920x1080")
+                video_bitrate = data.get("videoBitrate", "1M")
+                self.combineVideos(
+                    data["output"],
+                    data["files"],
+                    frame_rate=frame_rate,
+                    resolution=resolution,
+                    video_bitrate=video_bitrate,
+                )
+                return web.json_response({"success": True}, status=200)
+            if "type" not in data or data["type"] != "canvas":
+                return web.json_response(
+                    {"error": "No project json specified"}, status=400
+                )
             if "output" not in data:
                 return web.json_response({"error": "No output specified"}, status=400)
-            frame_rate = data.get("frameRate", 30)
-            resolution = data.get("resolution", "1920x1080")
-            video_bitrate = data.get("videoBitrate", "1M")
-            self.combineVideos(
-                data["output"],
-                data["files"],
-                frame_rate=frame_rate,
-                resolution=resolution,
-                video_bitrate=video_bitrate,
-            )
+            await self.combineMix(data["output"], data)
             return web.json_response({"success": True}, status=200)
 
     def combineVideos(
@@ -102,6 +110,39 @@ class MontagenApi:
         ]
         # Run the ffmpeg command
         subprocess.run(cmd, check=True, stdout=None, stderr=None)
+
+    async def combineMix(
+        self,
+        output_path: str,
+        projectJson: dict,
+    ):
+        output_path = os.path.join(folder_paths.get_output_directory(), output_path)
+        tempJson = os.path.join(
+            folder_paths.get_temp_directory(), f"{uuid.uuid4()}.json"
+        )
+        try:
+            with open(tempJson, "w") as f:
+                json.dump(projectJson, f)
+            nodeBasePath = os.path.normpath(
+                os.path.join(os.path.dirname(__file__), "../", "videomix")
+            )
+            nodePath = os.path.join(nodeBasePath, "node.exe")
+            cmd = [
+                nodePath,
+                "./montagenffcreator/run.js",
+                "-i",
+                tempJson,
+                "-o",
+                output_path,
+            ]
+            process = await asyncio.create_subprocess_exec(
+                *cmd, stdout=None, stderr=None, cwd=nodeBasePath
+            )
+            await process.wait()
+            # Run the ffmpeg command
+            # subprocess.run(cmd, check=True, stdout=None, stderr=None, cwd=nodeBasePath)
+        finally:
+            os.remove(tempJson)
 
 
 MontagenApi(PromptServer.instance)
