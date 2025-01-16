@@ -138,7 +138,10 @@ class MontagenApi:
             process = await asyncio.create_subprocess_exec(
                 *cmd, stdout=None, stderr=None, cwd=nodeBasePath
             )
-            await process.wait()
+            returnCode = await process.wait()
+            if returnCode:
+                raise Exception("Error running mixengine")
+
             # Run the ffmpeg command
             # subprocess.run(cmd, check=True, stdout=None, stderr=None, cwd=nodeBasePath)
         finally:
