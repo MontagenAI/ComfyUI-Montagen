@@ -22,3 +22,4 @@ venv/
 web_custom_versions/
 .DS_Store
 ComfyUI-Mask-Page-Frontend/
+videomix/montagenffcreator/cache

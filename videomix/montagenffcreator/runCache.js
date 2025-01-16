@@ -60,6 +60,14 @@ const CacheUtil = {
     await this.saveMetadata();
   },
 
+  getFileExtension(filePath) {
+    const parts = filePath.split(".");
+    if (parts.length > 1) {
+      return parts.pop().replace(/[<>:"/\\|?*\x00-\x1F.]/g, "");
+    }
+    return "";
+  },
+
   async cachedResource(src, progress) {
     if (!src.startsWith("http")) return src;
     if (this.baseUrl && this.localPath) {
@@ -71,8 +79,8 @@ const CacheUtil = {
     cacheDir = this.cacheDir;
     await fs.ensureDir(cacheDir);
     const key = md5(`${cacheDir}_${src}`);
-    const ext = url.parse(src).pathname.split(".").slice(-1)[0];
-    const cacheFile = path.join(cacheDir, `${key}.${ext}`);
+    const ext = this.getFileExtension(url.parse(src).pathname);
+    const cacheFile = path.join(cacheDir, `${key}${ext ? "." + ext : ""}`);
 
     return new Promise((resolve, reject) => {
       lockfile
