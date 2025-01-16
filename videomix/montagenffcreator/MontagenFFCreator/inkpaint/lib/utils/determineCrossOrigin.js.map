@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/utils/determineCrossOrigin.js"],"names":["determineCrossOrigin","url"],"mappings":";;;;;;;AAAe,SAASA,oBAAT,CAA8BC,GAA9B,EAAmC;AAChD,SAAO,WAAP;AACD","sourcesContent":["export default function determineCrossOrigin(url) {\n  return \"anonymous\";\n}\n"],"file":"determineCrossOrigin.js"}

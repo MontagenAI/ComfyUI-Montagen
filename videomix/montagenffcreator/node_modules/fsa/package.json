@@ -1,0 +1,24 @@
+{
+  "name": "fsa",
+  "author": {
+    "name": "Golubev Fedor",
+    "email": "gregof@yandex.ru",
+    "url": "http://github.com/gregof"
+  },
+  "description": "File system auditor. Shows changes after previous audit session.",
+  "version": "0.5.1",
+  "dependencies": {},
+  "devDependencies": {
+    "abc": "0.5.x",
+    "tc": "0.5.x"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gregof/fsa.git"
+  },
+  "main": "./index.js"
+}

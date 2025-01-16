@@ -1,0 +1,26 @@
+{
+  "name": "flac",
+  "author": {
+    "name": "Fedor Golubev",
+    "email": "gregof@yandex.ru",
+    "url": "http://github.com/gregof"
+  },
+  "description": "Find, Load and make the Cache",
+  "version": "0.3.0",
+  "dependencies": {
+    "abc": "0.5.x",
+    "fsa": "0.5.x"    
+  },
+  "devDependencies": {
+    "tc": "0.5.x"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gregof/flac.git"
+  },
+  "main": "./lib/index.js"
+}
