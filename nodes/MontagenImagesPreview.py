@@ -54,8 +54,8 @@ class MontagenImagesPreview:
                     {
                         "addr": fileName + " [temp]",
                         "fps": preview_fps,
-                        "height": width,
-                        "width": height,
+                        "width": width,
+                        "height": height,
                         "imageLen": imageLen,
                     }
                 ]
