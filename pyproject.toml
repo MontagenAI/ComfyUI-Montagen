@@ -10,6 +10,6 @@ Repository = "https://github.com/MontagenAI/ComfyUI-Montagen"
 
 
 [tool.comfy]
-PublisherId = "MontagenAI"
+PublisherId = "montagenai"
 DisplayName = "ComfyUI-Montagen"
 Icon = ""
