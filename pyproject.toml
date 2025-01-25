@@ -7,7 +7,7 @@ dependencies = ["moviepy"]
 
 [project.urls]
 Repository = "https://github.com/MontagenAI/ComfyUI-Montagen"
-#  Used by Comfy Registry https://comfyregistry.org
+
 
 [tool.comfy]
 PublisherId = "MontagenAI"
