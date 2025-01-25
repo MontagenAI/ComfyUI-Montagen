@@ -14,7 +14,7 @@ permissions:
 jobs:
   publish-node:
     name: Publish Custom Node to registry
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'MontagenAI' }}
     steps:
       - name: Check out code
