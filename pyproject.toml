@@ -1,7 +1,7 @@
 [project]
-name = "montagen"
-description = "ComfyUI-Montagen is an extension designed to enhance the video editing ability of ComfyUI with custom nodes and Montagen. It offers basic video editing features and integrates media clips with the ComfyUI workflow. Furthermore, this extension unlocks the full potential of AI-based video generation and task automation."
-version = "1.0.0"
+name = "comfyui-montagen"
+description = "ComfyUI-Montagen is an extension designed to enhance the video editing ability of ComfyUI with custom nodes and Montagen. It offers basic video editing features and associates media clips with the ComfyUI workflow. Furthermore, this extension unlocks the full potential of AI-based video generation and task automation."
+version = "0.0.1"
 license = {file = "LICENSE"}
 dependencies = ["moviepy"]
 
@@ -10,6 +10,6 @@ Repository = "https://github.com/MontagenAI/ComfyUI-Montagen"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "MontagenAI"
 DisplayName = "ComfyUI-Montagen"
 Icon = ""
