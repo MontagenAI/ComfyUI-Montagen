@@ -1140,9 +1140,6 @@ function isRef(r) {
 function ref(value) {
   return createRef(value, false);
 }
-function shallowRef(value) {
-  return createRef(value, true);
-}
 function createRef(rawValue, shallow) {
   if (isRef(rawValue)) {
     return rawValue;
@@ -1555,12 +1552,6 @@ function setCurrentRenderingInstance(instance) {
   currentScopeId = instance && instance.type.__scopeId || null;
   return prev;
 }
-function pushScopeId(id) {
-  currentScopeId = id;
-}
-function popScopeId() {
-  currentScopeId = null;
-}
 function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
   if (!ctx) return fn;
   if (fn._n) {
@@ -1639,7 +1630,7 @@ function invokeDirectiveHook(vnode, prevVNode, instance, name) {
   }
 }
 const leaveCbKey = Symbol("_leaveCb");
-const enterCbKey$1 = Symbol("_enterCb");
+const enterCbKey = Symbol("_enterCb");
 function useTransitionState() {
   const state = {
     isMounted: false,
@@ -1843,7 +1834,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
         }
       }
       let called = false;
-      const done = el[enterCbKey$1] = (cancelled) => {
+      const done = el[enterCbKey] = (cancelled) => {
         if (called) return;
         called = true;
         if (cancelled) {
@@ -1854,7 +1845,7 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
         if (hooks.delayedLeave) {
           hooks.delayedLeave();
         }
-        el[enterCbKey$1] = void 0;
+        el[enterCbKey] = void 0;
       };
       if (hook) {
         callAsyncHook(hook, [el, done]);
@@ -1864,8 +1855,8 @@ function resolveTransitionHooks(vnode, props, state, instance, postClone) {
     },
     leave(el, remove2) {
       const key2 = String(vnode.key);
-      if (el[enterCbKey$1]) {
-        el[enterCbKey$1](
+      if (el[enterCbKey]) {
+        el[enterCbKey](
           true
           /* cancelled */
         );
@@ -2297,16 +2288,6 @@ const PublicInstanceProxyHandlers = {
     return Reflect.defineProperty(target, key, descriptor);
   }
 };
-function useSlots() {
-  return getContext().slots;
-}
-function useAttrs() {
-  return getContext().attrs;
-}
-function getContext() {
-  const i = getCurrentInstance();
-  return i.setupContext || (i.setupContext = createSetupContext(i));
-}
 function normalizePropsOrEmits(props) {
   return isArray(props) ? props.reduce(
     (normalized, p2) => (normalized[p2] = null, normalized),
@@ -4861,9 +4842,6 @@ const useSSRContext = () => {
     return ctx;
   }
 };
-function watchEffect(effect2, options) {
-  return doWatch(effect2, null, options);
-}
 const INITIAL_WATCHER_VALUE = {};
 function watch(source, cb, options) {
   return doWatch(source, cb, options);
@@ -6024,7 +6002,6 @@ function h(type, propsOrChildren, children) {
   }
 }
 const version = "3.4.36";
-const warn = NOOP;
 /**
 * @vue/runtime-dom v3.4.36
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -6119,7 +6096,7 @@ const DOMTransitionPropsValidators = {
   leaveActiveClass: String,
   leaveToClass: String
 };
-const TransitionPropsValidators = Transition.props = /* @__PURE__ */ extend(
+Transition.props = /* @__PURE__ */ extend(
   {},
   BaseTransitionPropsValidators,
   DOMTransitionPropsValidators
@@ -6659,163 +6636,6 @@ function shouldSetAsProp(el, key, value, isSVG) {
   }
   return key in el;
 }
-const positionMap = /* @__PURE__ */ new WeakMap();
-const newPositionMap = /* @__PURE__ */ new WeakMap();
-const moveCbKey = Symbol("_moveCb");
-const enterCbKey = Symbol("_enterCb");
-const TransitionGroupImpl = {
-  name: "TransitionGroup",
-  props: /* @__PURE__ */ extend({}, TransitionPropsValidators, {
-    tag: String,
-    moveClass: String
-  }),
-  setup(props, { slots }) {
-    const instance = getCurrentInstance();
-    const state = useTransitionState();
-    let prevChildren;
-    let children;
-    onUpdated(() => {
-      if (!prevChildren.length) {
-        return;
-      }
-      const moveClass = props.moveClass || `${props.name || "v"}-move`;
-      if (!hasCSSTransform(
-        prevChildren[0].el,
-        instance.vnode.el,
-        moveClass
-      )) {
-        return;
-      }
-      prevChildren.forEach(callPendingCbs);
-      prevChildren.forEach(recordPosition);
-      const movedChildren = prevChildren.filter(applyTranslation);
-      forceReflow();
-      movedChildren.forEach((c) => {
-        const el = c.el;
-        const style = el.style;
-        addTransitionClass(el, moveClass);
-        style.transform = style.webkitTransform = style.transitionDuration = "";
-        const cb = el[moveCbKey] = (e) => {
-          if (e && e.target !== el) {
-            return;
-          }
-          if (!e || /transform$/.test(e.propertyName)) {
-            el.removeEventListener("transitionend", cb);
-            el[moveCbKey] = null;
-            removeTransitionClass(el, moveClass);
-          }
-        };
-        el.addEventListener("transitionend", cb);
-      });
-    });
-    return () => {
-      const rawProps = toRaw(props);
-      const cssTransitionProps = resolveTransitionProps(rawProps);
-      let tag = rawProps.tag || Fragment;
-      prevChildren = [];
-      if (children) {
-        for (let i = 0; i < children.length; i++) {
-          const child = children[i];
-          if (child.el && child.el instanceof Element) {
-            prevChildren.push(child);
-            setTransitionHooks(
-              child,
-              resolveTransitionHooks(
-                child,
-                cssTransitionProps,
-                state,
-                instance
-              )
-            );
-            positionMap.set(
-              child,
-              child.el.getBoundingClientRect()
-            );
-          }
-        }
-      }
-      children = slots.default ? getTransitionRawChildren(slots.default()) : [];
-      for (let i = 0; i < children.length; i++) {
-        const child = children[i];
-        if (child.key != null) {
-          setTransitionHooks(
-            child,
-            resolveTransitionHooks(child, cssTransitionProps, state, instance)
-          );
-        }
-      }
-      return createVNode(tag, null, children);
-    };
-  }
-};
-const removeMode = (props) => delete props.mode;
-/* @__PURE__ */ removeMode(TransitionGroupImpl.props);
-const TransitionGroup = TransitionGroupImpl;
-function callPendingCbs(c) {
-  const el = c.el;
-  if (el[moveCbKey]) {
-    el[moveCbKey]();
-  }
-  if (el[enterCbKey]) {
-    el[enterCbKey]();
-  }
-}
-function recordPosition(c) {
-  newPositionMap.set(c, c.el.getBoundingClientRect());
-}
-function applyTranslation(c) {
-  const oldPos = positionMap.get(c);
-  const newPos = newPositionMap.get(c);
-  const dx = oldPos.left - newPos.left;
-  const dy = oldPos.top - newPos.top;
-  if (dx || dy) {
-    const s = c.el.style;
-    s.transform = s.webkitTransform = `translate(${dx}px,${dy}px)`;
-    s.transitionDuration = "0s";
-    return c;
-  }
-}
-function hasCSSTransform(el, root, moveClass) {
-  const clone = el.cloneNode();
-  const _vtc = el[vtcKey];
-  if (_vtc) {
-    _vtc.forEach((cls) => {
-      cls.split(/\s+/).forEach((c) => c && clone.classList.remove(c));
-    });
-  }
-  moveClass.split(/\s+/).forEach((c) => c && clone.classList.add(c));
-  clone.style.display = "none";
-  const container = root.nodeType === 1 ? root : root.parentNode;
-  container.appendChild(clone);
-  const { hasTransform } = getTransitionInfo(clone);
-  container.removeChild(clone);
-  return hasTransform;
-}
-const systemModifiers = ["ctrl", "shift", "alt", "meta"];
-const modifierGuards = {
-  stop: (e) => e.stopPropagation(),
-  prevent: (e) => e.preventDefault(),
-  self: (e) => e.target !== e.currentTarget,
-  ctrl: (e) => !e.ctrlKey,
-  shift: (e) => !e.shiftKey,
-  alt: (e) => !e.altKey,
-  meta: (e) => !e.metaKey,
-  left: (e) => "button" in e && e.button !== 0,
-  middle: (e) => "button" in e && e.button !== 1,
-  right: (e) => "button" in e && e.button !== 2,
-  exact: (e, modifiers) => systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
-};
-const withModifiers = (fn, modifiers) => {
-  const cache = fn._withMods || (fn._withMods = {});
-  const cacheKey = modifiers.join(".");
-  return cache[cacheKey] || (cache[cacheKey] = (event, ...args) => {
-    for (let i = 0; i < modifiers.length; i++) {
-      const guard = modifierGuards[modifiers[i]];
-      if (guard && guard(event, modifiers)) return;
-    }
-    return fn(event, ...args);
-  });
-};
 const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
 let renderer;
 function ensureRenderer() {
@@ -6857,45 +6677,27 @@ function normalizeContainer(container) {
   return container;
 }
 export {
-  useSlots as $,
   createCommentVNode as A,
   resolveComponent as B,
   resolveDirective as C,
   createVNode as D,
   withCtx as E,
-  resolveDynamicComponent as F,
-  withDirectives as G,
+  withDirectives as F,
+  Transition as G,
   normalizeProps as H,
-  guardReactiveProps as I,
-  Transition as J,
-  normalizeClass as K,
-  normalizeStyle as L,
-  Fragment as M,
-  renderList as N,
-  createTextVNode as O,
-  toDisplayString as P,
+  normalizeClass as I,
+  normalizeStyle as J,
+  resolveDynamicComponent as K,
+  guardReactiveProps as L,
+  createTextVNode as M,
+  toDisplayString as N,
+  Fragment as O,
+  renderList as P,
   unref as Q,
-  isString as R,
-  isObject as S,
+  onBeforeUnmount as R,
+  createApp as S,
   Teleport as T,
-  hasOwn as U,
-  warn as V,
-  NOOP as W,
-  onUnmounted as X,
-  shallowRef as Y,
-  isFunction as Z,
-  useAttrs as _,
   createBaseVNode as a,
-  withModifiers as a0,
-  isArray as a1,
-  provide as a2,
-  onBeforeUnmount as a3,
-  onUpdated as a4,
-  TransitionGroup as a5,
-  watchEffect as a6,
-  pushScopeId as a7,
-  popScopeId as a8,
-  createApp as a9,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
