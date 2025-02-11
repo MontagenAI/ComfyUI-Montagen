@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-montagen"
+description = "It offers basic video editing features and associates media clips with the ComfyUI workflow."
+version = "0.0.1"
+license = { file = "LICENSE" }
+dependencies = ["moviepy"]
+
+[project.urls]
+Repository = "https://github.com/MontagenAI/ComfyUI-Montagen"
+
+[tool.comfy]
+PublisherId = "MontagenAI"
+DisplayName = "ComfyUI-Montagen"
+Icon = ""

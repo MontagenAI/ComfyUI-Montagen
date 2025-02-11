@@ -1,0 +1,474 @@
+from server import PromptServer
+from aiohttp import web
+import folder_paths
+import os
+import uuid
+import json
+import asyncio
+from datetime import datetime
+import sqlite3
+import threading
+import shutil
+import mimetypes
+
+
+class MontagenProjManager:
+    MONTAGENPROJ = "MontagenProj"
+    DBFILENAME = "projects.db"
+    DEFAULTPROJNAME = "default"
+    FILEADDR = "/Montagen/Proj/{id}/{workflowId}/file/{filename}"
+
+    def __init__(self, server: PromptServer):
+        MontagenProjManager.instance = self
+        self.dbcache = {}
+        self.projcache = {}
+
+        @server.routes.get("/Montagen/Proj/List")
+        async def getProjects(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            projs = await asyncio.to_thread(self.getProjects, user_id)
+            return web.json_response({"code": 0, "data": projs})
+
+        @server.routes.get("/Montagen/Proj/{id}")
+        async def getProject(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = await asyncio.to_thread(self.getProject, user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            return web.json_response({"code": 0, "data": proj})
+
+        @server.routes.post("/Montagen/Proj/New")
+        async def addProject(request):
+            req_data = await request.json()
+            name = req_data.get("name")
+            description = req_data.get("description")
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = await asyncio.to_thread(
+                self.addProject, user_id, name, description
+            )
+            return web.json_response({"code": 0, "data": project_id})
+
+        @server.routes.post("/Montagen/Proj/{id}/Name")
+        async def updateProjectName(request):
+            req_data = await request.post()
+            name = req_data["name"]
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = await asyncio.to_thread(
+                self.updateProjectField, user_id, project_id, "name", name
+            )
+            proj.onNameModify(modify_time, name)
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Description")
+        async def updateProjectDescription(request):
+            req_data = await request.post()
+            description = req_data["description"]
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = await asyncio.to_thread(
+                self.updateProjectField, user_id, project_id, "description", description
+            )
+            proj.onDescriptionModify(modify_time, description)
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Timeline")
+        async def updateProjectTimeline(request):
+            req_data = await request.json()
+            if "timeline" not in req_data:
+                return web.Response(status=400)
+            timeline = req_data["timeline"]
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = await asyncio.to_thread(
+                self.updateProjectField, user_id, project_id
+            )
+            proj.onTimelineModify(modify_time, timeline)
+            return web.json_response({"code": 0})
+
+        @server.routes.delete("/Montagen/Proj/{id}")
+        async def deleteProject(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            self._deleteProject(user_id, project_id)
+            return web.json_response({"code": 0})
+
+        @server.routes.get(MontagenProjManager.FILEADDR)
+        async def fileServer(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            filename = request.match_info.get("filename", None)
+            if not project_id or not workflow_id or not filename:
+                return web.Response(status=404)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            file = proj.getOutputFile(workflow_id, filename)
+            content_type = (
+                mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            )
+            file_extension = os.path.splitext(filename)[1].lower()
+            if file_extension in {".html", ".htm", ".js", ".css"}:
+                content_type = "application/octet-stream"  # Forces downlo
+            return web.FileResponse(
+                file,
+                headers={
+                    "Content-Disposition": f'filename="{filename}"',
+                    "Content-Type": content_type,
+                },
+            )
+
+    def getUserProjectsRoot(self, userId: str):
+        user_directory = folder_paths.get_user_directory()
+        if not user_directory:
+            raise Exception("user_directory is empty")
+        if not userId:
+            raise Exception("userId is empty")
+        user_projs_root = os.path.abspath(
+            os.path.join(user_directory, userId, self.MONTAGENPROJ)
+        )
+        return user_projs_root
+
+    def getUserProjectBase(self, userId: str, projectId: str):
+        user_projs_root = self.getUserProjectsRoot(userId)
+        if not projectId:
+            raise Exception("userId is empty")
+        user_proj_base = os.path.abspath(os.path.join(user_projs_root, projectId))
+        return user_proj_base
+
+    def createSqliteDbForUserIfNeeded(self, userId: str):
+        if userId in self.dbcache:
+            return
+        user_projs_root = self.getUserProjectsRoot(userId)
+        if not os.path.exists(user_projs_root):
+            os.makedirs(user_projs_root)
+        db_path = os.path.join(user_projs_root, self.DBFILENAME)
+        try:
+            conn = sqlite3.connect(db_path)
+
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS projects (
+                    projectId TEXT PRIMARY KEY,
+                    createTime TEXT,
+                    modifyTime TEXT,
+                    description TEXT,
+                    name TEXT,
+                    userId TEXT
+                );
+            """
+            )
+            cursor.execute(
+                """
+                CREATE INDEX IF NOT EXISTS idx_createTime ON projects (createTime);
+                """
+            )
+
+            conn.commit()
+            conn.close()
+            self.dbcache[userId] = True
+        except Exception as e:
+            if conn:
+                conn.rollback()
+        finally:
+            if conn:
+                conn.close()
+
+    def getProjects(self, userId: str):
+        self.createSqliteDbForUserIfNeeded(userId)
+        user_projs_root = self.getUserProjectsRoot(userId)
+        db_path = os.path.join(user_projs_root, self.DBFILENAME)
+        conn = None
+        try:
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM projects ORDER BY createTime DESC")
+            projects = cursor.fetchall()
+            return [dict(project) for project in projects]
+        finally:
+            if conn:
+                conn.close()
+
+    def projectExists(self, userId: str, projectId: str) -> bool:
+        if not projectId:
+            raise Exception("projectId is empty")
+        user_projs_root = self.getUserProjectsRoot(userId)
+        db_path = os.path.join(user_projs_root, self.DBFILENAME)
+        conn = None
+        try:
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                SELECT 1 FROM projects WHERE projectId = ?
+                """,
+                (projectId,),
+            )
+            return cursor.fetchone() is not None
+        finally:
+            if conn:
+                conn.close()
+
+    def getProject(self, userId: str, projectId: str):
+        proj = self._getProject(userId, projectId)
+        if not proj:
+            return None
+        return proj.result()
+
+    def _getProject(self, userId: str, projectId: str, check=True):
+        key = f"{userId}_{projectId}"
+        if key in self.projcache and self.projcache[key]:
+            return self.projcache[key]
+        if check and not self.projectExists(userId, projectId):
+            return None
+        project = MontagenProj(userId, projectId)
+        self.projcache[key] = project
+        return project
+
+    def _deleteProject(self, userId: str, projectId: str):
+        if not projectId:
+            raise Exception("projectId is empty")
+        conn = None
+        user_projs_root = self.getUserProjectsRoot(userId)
+        db_path = os.path.join(user_projs_root, self.DBFILENAME)
+        try:
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                DELETE FROM projects WHERE projectId = ?
+            """,
+                (projectId,),
+            )
+            conn.commit()
+        finally:
+            if conn:
+                conn.close()
+            try:
+                key = f"{userId}_{projectId}"
+                project = self._getProject(userId, projectId, False)
+                if project:
+                    project.onDelete()
+            finally:
+                self.projcache.pop(key, None)
+
+    def addProject(self, userId: str, name: str, description: str):
+        if not name:
+            raise Exception("name is empty")
+        if not description:
+            description = name
+        self.createSqliteDbForUserIfNeeded(userId)
+        user_projs_root = self.getUserProjectsRoot(userId)
+        db_path = os.path.join(user_projs_root, self.DBFILENAME)
+        conn = None
+        try:
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+
+            project_id = str(uuid.uuid4())
+            create_time = datetime.now()
+
+            cursor.execute(
+                """
+                INSERT INTO projects (projectId, createTime, modifyTime, description, name, userId)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (project_id, create_time, create_time, description, name, userId),
+            )
+
+            conn.commit()
+
+            project = MontagenProj(userId, project_id)
+            project.onCreated(name, description, create_time)
+            return project_id
+        finally:
+            if conn:
+                conn.close()
+
+    def updateProjectField(
+        self, userId: str, projectId: str, field: str = None, value: str = None
+    ):
+        if not projectId:
+            raise Exception("projectId is empty")
+        if field and not value:
+            raise Exception("value is empty")
+        user_projs_root = self.getUserProjectsRoot(userId)
+        db_path = os.path.join(user_projs_root, self.DBFILENAME)
+        conn = None
+        try:
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+
+            modify_time = datetime.now()
+            if field:
+                cursor.execute(
+                    f"""
+                    UPDATE projects
+                    SET {field} = ?, modifyTime = ?
+                    WHERE projectId = ?
+                """,
+                    (value, modify_time, projectId),
+                )
+            else:
+                cursor.execute(
+                    f"""
+                    UPDATE projects
+                    SET modifyTime = ?
+                    WHERE projectId = ?
+                """,
+                    (modify_time, projectId),
+                )
+
+            conn.commit()
+            return modify_time
+        finally:
+            if conn:
+                conn.close()
+
+    def getAddr(self, userId: str, projectId: str, workflowId: str, filename: str):
+        if not projectId:
+            raise Exception("projectId is empty")
+        if not workflowId:
+            raise Exception("workflowId is empty")
+        if not filename:
+            raise Exception("filename is empty")
+        return self.FILEADDR.format(
+            id=projectId, workflowId=workflowId, filename=filename
+        )
+
+
+class MontagenProj:
+    INFOFILE = "info.json"
+    OUTPUTDIR = "output"
+    VERSIONINFO = {"version": "1.0.0", "type": "MontagenProj"}
+
+    def __init__(self, userId: str, projectId: str):
+        self.basePath = MontagenProjManager.instance.getUserProjectBase(
+            userId, projectId
+        )
+        if not os.path.exists(self.basePath):
+            os.makedirs(self.basePath)
+        current_time = datetime.now().isoformat()
+        info_file_path = os.path.join(self.basePath, self.INFOFILE)
+        self.projectId = projectId
+        self.userId = userId
+        self.timeline = {}
+        self.name = MontagenProjManager.DEFAULTPROJNAME
+        self.description = MontagenProjManager.DEFAULTPROJNAME
+        self.createTime = datetime.fromisoformat(current_time)
+        self.modifyTime = self.createTime
+        self.lock = threading.Lock()
+        if os.path.exists(info_file_path):
+            with open(info_file_path, "r") as f:
+                info_data = json.load(f)
+            if not info_data.get("version", {}).get("type", "") == "MontagenProj":
+                raise Exception("Invalid project type")
+            base_info = info_data.get("baseInfo", {})
+            self.createTime = datetime.fromisoformat(
+                base_info.get("createTime", current_time)
+            )
+            self.modifyTime = datetime.fromisoformat(
+                base_info.get("modifyTime", current_time)
+            )
+            self.description = base_info.get(
+                "description", MontagenProjManager.DEFAULTPROJNAME
+            )
+            self.name = base_info.get("name", MontagenProjManager.DEFAULTPROJNAME)
+            self.projectId = base_info.get("projectId", projectId)
+            self.userId = base_info.get("userId", userId)
+            if self.projectId != projectId or self.userId != userId:
+                raise Exception("ProjectId or UserId not match")
+            self.timeline = info_data.get("timeline", {})
+
+    def onCreated(self, name: str, description: str, createTime: datetime):
+        if not name:
+            raise Exception("name is empty")
+        if not createTime:
+            createTime = datetime.now()
+        if not description:
+            description = name
+        self.name = name
+        self.description = description
+        self.createTime = createTime
+        self.modifyTime = createTime
+        self._saveToPath(self.result())
+
+    def onTimelineModify(self, modityTime: datetime = None, timeline: dict = None):
+        if not timeline:
+            raise Exception("timeline is empty")
+        if not modityTime:
+            modityTime = datetime.now()
+        self.modifyTime = modityTime
+        self.timeline = timeline
+        self._saveToPath(self.result())
+
+    def onNameModify(self, modityTime: datetime, name: str):
+        if not name:
+            raise Exception("name is empty")
+        if not modityTime:
+            modityTime = datetime.now()
+        self.modifyTime = modityTime
+        self.name = name
+        self._saveToPath(self.result())
+
+    def onDescriptionModify(self, modityTime: datetime, description: str):
+        if not description:
+            raise Exception("description is empty")
+        if not modityTime:
+            modityTime = datetime.now()
+        self.modifyTime = modityTime
+        self.description = description
+        self._saveToPath(self.result())
+
+    def onDelete(self):
+        with self.lock:
+            shutil.rmtree(self.basePath)
+
+    def _saveToPath(self, value):
+        with self.lock:
+            info_file_path = os.path.join(self.basePath, self.INFOFILE)
+            with open(info_file_path, "w") as f:
+                json.dump(value, f)
+
+    def result(self):
+        base_info = {
+            "createTime": self.createTime.isoformat(),
+            "modifyTime": self.modifyTime.isoformat(),
+            "description": self.description,
+            "name": self.name,
+            "projectId": self.projectId,
+            "userId": self.userId,
+        }
+        info_data = {
+            "baseInfo": base_info,
+            "version": self.VERSIONINFO,
+            "timeline": self.timeline,
+        }
+        return info_data
+
+    def getOutputPath(self, workflowId: str):
+        if not workflowId:
+            raise Exception("workflowId is empty")
+        workflowPath = os.path.join(self.basePath, self.OUTPUTDIR, workflowId)
+        if not os.path.exists(workflowPath):
+            os.makedirs(workflowPath)
+        return workflowPath
+
+    def getOutputFile(self, workflowId: str, filename: str):
+        return os.path.join(self.getOutputPath(workflowId), filename)
+
+
+MontagenProjManager(PromptServer.instance)
