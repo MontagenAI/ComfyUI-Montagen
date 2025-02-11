@@ -1,8 +1,10 @@
 import folder_paths
 import os
-import uuid
-from moviepy import ImageSequenceClip
 import numpy as np
+from . import videosave
+from ..server.MontagenProjManager import MontagenProjManager
+from datetime import datetime
+import shutil
 
 
 class MontagenImagesPreview:
@@ -20,7 +22,8 @@ class MontagenImagesPreview:
                         "default": 25,
                     },
                 ),
-            }
+            },
+            "hidden": {"extra_pnginfo": "EXTRA_PNGINFO"},
         }
 
     RETURN_TYPES = ("IMAGE",)
@@ -31,32 +34,63 @@ class MontagenImagesPreview:
     CATEGORY = "Montagen"
     DESCRIPTION = "Montagen Images Preview"
 
-    def save_images(self, images, preview_fps=25):
-        fileName = str(uuid.uuid4()) + ".mp4"
-        fullName = os.path.join(self.output_dir, fileName)
+    def save_images(self, images, preview_fps=25, extra_pnginfo=None):
         imageLen = len(images)
-        # 将图像列表转换为ImageSequenceClip对象
-        clip = ImageSequenceClip(
-            [
-                np.clip(255 * image.cpu().numpy(), 0, 255).astype(np.uint8)
-                for image in images
-            ],
-            fps=preview_fps,
-        )
-        width, height = clip.size
-        # 写入视频文件
-        clip.write_videofile(fullName, codec="libx264", bitrate="8000k", audio=False)
+        userId = "default"
+        projectId = "default"
+        workflowId = "default"
+        if "workflow" in extra_pnginfo:
+            userId = (
+                extra_pnginfo["workflow"]
+                .get("extra", {})
+                .get(MontagenProjManager.MONTAGENPROJ, {})
+                .get("userId", "default")
+            )
+            projectId = (
+                extra_pnginfo["workflow"]
+                .get("extra", {})
+                .get(MontagenProjManager.MONTAGENPROJ, {})
+                .get("projectId", "default")
+            )
+            workflowId = (
+                extra_pnginfo["workflow"]
+                .get("extra", {})
+                .get(MontagenProjManager.MONTAGENPROJ, {})
+                .get("workflowId", "default")
+            )
+        proj = MontagenProjManager.instance._getProject(userId, projectId)
+        workflowPath = proj.getOutputPath(workflowId)
+        fileName = f"{workflowId}.mp4"
+        fileFullName = os.path.join(workflowPath, fileName)
+        tmpFileName = f"{workflowId}_t.mp4"
+        tmpFullName = os.path.join(workflowPath, tmpFileName)
+        current_time = datetime.now().strftime("%Y%m%d%H%M%S")
+        bakFileName = f"{workflowId}_{current_time}.mp4"
+        bakFullName = os.path.join(workflowPath, bakFileName)
+        frames = []
+        for image in images:
+            frame = np.clip(255 * image.cpu().numpy(), 0, 255).astype(np.uint8)
+            frames.append(frame)
 
-        # 返回结果
+        videosave.save_video(tmpFullName, frames, fps=preview_fps)
+        if os.path.exists(tmpFullName):
+            if os.path.exists(fileFullName):
+                shutil.move(fileFullName, bakFullName)
+            shutil.move(tmpFullName, fileFullName)
         return {
             "ui": {
                 "videos": [
                     {
-                        "addr": fileName + " [temp]",
+                        "addr": MontagenProjManager.instance.getAddr(
+                            userId, projectId, workflowId, fileName
+                        ),
                         "fps": preview_fps,
-                        "width": width,
-                        "height": height,
+                        "width": frames[0].shape[1],
+                        "height": frames[0].shape[0],
                         "imageLen": imageLen,
+                        "userId": userId,
+                        "projectId": projectId,
+                        "workflowId": workflowId,
                     }
                 ]
             },
