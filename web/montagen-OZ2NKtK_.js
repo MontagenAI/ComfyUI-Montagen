@@ -66074,7 +66074,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       blankGraph.extra.MontagenProj.workflowId = workflowId;
       await app$1.loadGraphData(blankGraph);
       setTimeout(() => {
-        app$1.addNodeOnGraph(window.montaiData, { pos: app$1.getCanvasCenter() });
+        app$1.addNodeOnGraph(window.montaiData, { pos: [window.innerWidth / 2, window.innerHeight / 2] });
       }, 10);
     },
     openWorkFlowByGrahData(graphData) {
@@ -66168,7 +66168,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
             workflowId: data.target.name
           });
         } else {
-          this.openWorkFlowByGrahData(data.target.workflowData);
+          this.openWorkFlowByGrahData(data.target.workflowData.value);
         }
         const menuStore = useMenuStore();
         menuStore.changeShow(false);
