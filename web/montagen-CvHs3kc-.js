@@ -3,7 +3,7 @@
   try {
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode("[data-v-466e15aa] .left-tool-button {\r\n  /* Your styles here */\r\n  height: 40px;\r\n  width: 40px;\r\n  border-radius: 0 !important;\r\n  margin-bottom: 10px;\n&.left-tool-button-select[data-v-466e15aa] {\r\n    border-left: 2px solid #09AAFE;\r\n    box-sizing: border-box;\n}\n}\r\n\n.workflow[data-v-25f79a31] {\r\n  /* Add your component styles here */\n}\n.workflow-header[data-v-25f79a31] {\r\n  border-bottom: 1px solid var(--p-button-text-primary-color);\n}\n.list-item[data-v-25f79a31] {\r\n  padding: 12px 4px;\n}\n.list-item.active[data-v-25f79a31] {\r\n  background-color: var(--p-button-text-primary-color);\r\n  color: var(--p-button-text-color);\n}\r\n[data-v-8294902c] .split-container {\n  border: none;\n  border-radius: 0;\n  width: 100%;\n  height: 100%;\n}\n[data-v-8294902c] .split-container .split-gutter {\n  background: #181818;\n}\n[data-v-8294902c] .split-container.left-hidden .split-panel-left {\n  display: none;\n}\n[data-v-8294902c] .split-container.left-hidden > .split-gutter {\n  display: none;\n}\n.imagen-header[data-v-0dd8d624] {\r\n  font-size: 0.8em;\n}\n.imagen-header h1[data-v-0dd8d624] {\r\n  font-size: 1.2em;\r\n  color: #333;\n}\r\n\n.new-imagen-box[data-v-9dc71f70] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 600;\r\n  bottom: 0;\r\n  left: 0;\r\n  background: #262626;\r\n  color: #fff;\r\n  grid-template-columns: 40px 1fr;\r\n  grid-template-rows: 40px 1fr;\n}\n.new-imagen-box .image-box-top[data-v-9dc71f70] {\r\n  grid-row: 1;\r\n  grid-column: 1/span 2;\r\n  background-color: #181818;\r\n  order: 1;\r\n  display: flex;\r\n  border-bottom: 1px solid #2b2b2b;\n}\n.new-imagen-box .image-box-left[data-v-9dc71f70] {\r\n  grid-row: 2;\r\n  grid-column: 1;\r\n  background-color: #181818;\r\n  order: 2;\r\n  display: flex;\r\n  border-right: 1px solid #2b2b2b;\n}\n.new-imagen-box .image-box-container[data-v-9dc71f70] {\r\n  grid-row: 2;\r\n  grid-column: 2;\r\n  background-color: goldenrod;\r\n  width: 100%;\r\n  height: 100%;\r\n  order: 3;\r\n  display: flex;\r\n  overflow: hidden;\n}\r\n.hideBox {\n  opacity: 0;\n  pointer-events: none;\n}"));
+      elementStyle.appendChild(document.createTextNode("[data-v-466e15aa] .left-tool-button {\r\n  /* Your styles here */\r\n  height: 40px;\r\n  width: 40px;\r\n  border-radius: 0 !important;\r\n  margin-bottom: 10px;\n&.left-tool-button-select[data-v-466e15aa] {\r\n    border-left: 2px solid #09AAFE;\r\n    box-sizing: border-box;\n}\n}\r\n\n.workflow[data-v-46fb1a43] {\r\n  /* Add your component styles here */\n}\n.workflow-header[data-v-46fb1a43] {\r\n  border-bottom: 1px solid var(--p-button-text-primary-color);\n}\n.list-item[data-v-46fb1a43] {\r\n  padding: 12px 4px;\n}\n.list-item.active[data-v-46fb1a43] {\r\n  background-color: var(--p-button-text-primary-color);\r\n  color: var(--p-button-text-color);\n}\r\n[data-v-8294902c] .split-container {\n  border: none;\n  border-radius: 0;\n  width: 100%;\n  height: 100%;\n}\n[data-v-8294902c] .split-container .split-gutter {\n  background: #181818;\n}\n[data-v-8294902c] .split-container.left-hidden .split-panel-left {\n  display: none;\n}\n[data-v-8294902c] .split-container.left-hidden > .split-gutter {\n  display: none;\n}\n.imagen-header[data-v-0dd8d624] {\r\n  font-size: 0.8em;\n}\n.imagen-header h1[data-v-0dd8d624] {\r\n  font-size: 1.2em;\r\n  color: #333;\n}\r\n\n.new-imagen-box[data-v-9dc71f70] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 600;\r\n  bottom: 0;\r\n  left: 0;\r\n  background: #262626;\r\n  color: #fff;\r\n  grid-template-columns: 40px 1fr;\r\n  grid-template-rows: 40px 1fr;\n}\n.new-imagen-box .image-box-top[data-v-9dc71f70] {\r\n  grid-row: 1;\r\n  grid-column: 1/span 2;\r\n  background-color: #181818;\r\n  order: 1;\r\n  display: flex;\r\n  border-bottom: 1px solid #2b2b2b;\n}\n.new-imagen-box .image-box-left[data-v-9dc71f70] {\r\n  grid-row: 2;\r\n  grid-column: 1;\r\n  background-color: #181818;\r\n  order: 2;\r\n  display: flex;\r\n  border-right: 1px solid #2b2b2b;\n}\n.new-imagen-box .image-box-container[data-v-9dc71f70] {\r\n  grid-row: 2;\r\n  grid-column: 2;\r\n  background-color: goldenrod;\r\n  width: 100%;\r\n  height: 100%;\r\n  order: 3;\r\n  display: flex;\r\n  overflow: hidden;\n}\r\n.hideBox {\n  opacity: 0;\n  pointer-events: none;\n}"));
       document.head.appendChild(elementStyle);
     }
   } catch (e) {
@@ -12,7 +12,7 @@
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { d as defineComponent, o as openBlock, c as createElementBlock, a as createBaseVNode, O as Fragment, P as renderList$1, S as unref, F as withDirectives, z as createBlock, r as ref$3, l as inject, x as computed, N as toDisplayString, D as createVNode, J as normalizeClass, E as withCtx, w as watch, f as reactive, e as onMounted, U as onBeforeUnmount, M as createTextVNode$1, V as provide, W as createApp } from "./assets/vue-DHt6SJde.js";
-import { d as defineStore, s as storeToRefs, a as script, T as Tooltip, u as useToast, b as useConfirm, n as nanoid, c as script$1, e as script$2, f as script$3, g as script$4, h as script$5, i as script$6, j as script$7, k as script$8, C as ConfirmationService, l as ToastService, D as DialogService, m as createPinia } from "./assets/vendor-I0pHVlcW.js";
+import { d as defineStore, s as storeToRefs, a as script, T as Tooltip, n as nanoid, u as useToast, b as useConfirm, c as script$1, e as script$2, f as script$3, g as script$4, h as script$5, i as script$6, j as script$7, k as script$8, C as ConfirmationService, l as ToastService, D as DialogService, m as createPinia } from "./assets/vendor-I0pHVlcW.js";
 import "./assets/lodash-BBlPwZSq.js";
 import { q as definePreset, r as index$3, P as PrimeVue } from "./assets/primevue-C-UpY7hw.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-CMD4Qy2G.js";
@@ -66134,7 +66134,8 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
           "letterSpacing": "10%",
           "text": "create by montagen",
           "projectId": projectId,
-          "workflowData": {}
+          "workflowData": {},
+          name: nanoid(9)
         });
       } else {
         options.value = timeLine;
@@ -66229,7 +66230,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       const json = await response.json();
       console.log(json);
       toast.add({ severity: "success", summary: "添加成功", life: 3e3 });
-      visible.value = true;
+      visible.value = false;
+      refreshList();
     };
     const addworkflow = async () => {
       visible.value = true;
@@ -66458,7 +66460,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-25f79a31"]]);
+const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-46fb1a43"]]);
 const _hoisted_1$2 = { class: "w-full" };
 const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "boxContainer",
