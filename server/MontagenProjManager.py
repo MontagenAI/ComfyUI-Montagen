@@ -10,6 +10,8 @@ import sqlite3
 import threading
 import shutil
 import mimetypes
+import time
+import random
 
 
 class MontagenProjManager:
@@ -235,7 +237,8 @@ class MontagenProjManager:
         if check and not self.projectExists(userId, projectId):
             return None
         project = MontagenProj(userId, projectId)
-        self.projcache[key] = project
+        if check:
+            self.projcache[key] = project
         return project
 
     def _deleteProject(self, userId: str, projectId: str):
@@ -365,7 +368,77 @@ class MontagenProj:
         info_file_path = os.path.join(self.basePath, self.INFOFILE)
         self.projectId = projectId
         self.userId = userId
-        self.timeline = {}
+        default_workflow_id = self.to_base36_random()
+        self.timeline = {
+            "type": "canvas",
+            "width": 1280,
+            "height": 720,
+            "name": "montagen",
+            "refId": self.to_base36_random(),
+            "children": [
+                {
+                    "clipId": f"1_{default_workflow_id}",
+                    "workflowId": default_workflow_id,
+                    "type": "text",
+                    "fontSize": "50rpx",
+                    "color": "#FFF",
+                    "x": "50vw",
+                    "y": "50vh",
+                    "duration": 10,
+                    "text": "Empty Clip",
+                    "refId": self.to_base36_random(),
+                    "height": "100rpx",
+                    "width": "300rpx",
+                    "zIndex": 1,
+                    "children": [],
+                }
+            ],
+            "workflows": [
+                {
+                    "id": default_workflow_id,
+                    "workflow": {
+                        "last_node_id": 1,
+                        "last_link_id": 0,
+                        "nodes": [
+                            {
+                                "id": 1,
+                                "type": "MontagenImagesPreview",
+                                "pos": [203.49522399902344, -15.222152709960938],
+                                "size": [210, 106],
+                                "flags": {},
+                                "order": 0,
+                                "mode": 0,
+                                "inputs": [
+                                    {"name": "images", "type": "IMAGE", "link": None}
+                                ],
+                                "outputs": [
+                                    {"name": "IMAGE", "type": "IMAGE", "links": None}
+                                ],
+                                "properties": {
+                                    "Node name for S&R": "MontagenImagesPreview"
+                                },
+                                "widgets_values": [25, "", "image"],
+                            }
+                        ],
+                        "links": [],
+                        "groups": [],
+                        "config": {},
+                        "extra": {
+                            "ds": {
+                                "scale": 0.9641152524334489,
+                                "offset": [417.4540788243107, 235.112875552326],
+                            },
+                            MontagenProjManager.MONTAGENPROJ: {
+                                "userId": self.userId,
+                                "projectId": self.projectId,
+                                "workflowId": default_workflow_id,
+                            },
+                        },
+                        "version": 0.4,
+                    },
+                }
+            ],
+        }
         self.name = MontagenProjManager.DEFAULTPROJNAME
         self.description = MontagenProjManager.DEFAULTPROJNAME
         self.createTime = datetime.fromisoformat(current_time)
@@ -391,7 +464,21 @@ class MontagenProj:
             self.userId = base_info.get("userId", userId)
             if self.projectId != projectId or self.userId != userId:
                 raise Exception("ProjectId or UserId not match")
-            self.timeline = info_data.get("timeline", {})
+            self.timeline = info_data.get("timeline", self.timeline)
+
+    def to_base36_random(self) -> str:
+        timestamp = int(time.time() * 1000000)
+        random_number = random.randint(0, 9999)
+        combined_value = timestamp * 10000 + random_number
+        alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
+        base36 = []
+
+        while combined_value != 0:
+            combined_value, i = divmod(combined_value, 36)
+            base36.append(alphabet[i])
+
+        result = "".join(reversed(base36))
+        return result.zfill(9)
 
     def onCreated(self, name: str, description: str, createTime: datetime):
         if not name:
@@ -442,6 +529,71 @@ class MontagenProj:
             info_file_path = os.path.join(self.basePath, self.INFOFILE)
             with open(info_file_path, "w") as f:
                 json.dump(value, f)
+
+    def modifyClip(self, workflowValue, workflowId, clip_id, addr):
+        if "workflows" not in self.timeline:
+            self.timeline["workflows"] = []
+        workflows: list = self.timeline["workflows"]
+        matching_workflow = None
+        for workflow in workflows:
+            if workflow.get("id") == workflowId:
+                matching_workflow = workflow
+                break
+        if matching_workflow:
+            workflows.remove(matching_workflow)
+        workflowValue.update(
+            {
+                "extra": {
+                    **workflowValue.get("extra", {}),
+                    MontagenProjManager.MONTAGENPROJ: {
+                        "userId": self.userId,
+                        "projectId": self.projectId,
+                        "workflowId": workflowId,
+                    },
+                }
+            }
+        )
+        workflows.append(
+            {
+                "workflow": {
+                    **workflowValue,
+                },
+                "id": workflowId,
+            }
+        )
+        value = self.getClipById(
+            clip_id, self.timeline, self.timeline.get("children", [])
+        )
+        if not value:
+            self.timeline["children"].append(
+                {
+                    "clipId": clip_id,
+                    "src": addr,
+                    "workflowId": workflowId,
+                    "children": [],
+                    "type": "video",
+                    "loop": True,
+                    "audio": False,
+                    "x": "50vw",
+                    "y": "50vh",
+                    "active": True,
+                }
+            )
+        else:
+            _, child = value
+            child.update({"src": addr, "workflowId": workflowId})
+        self._saveToPath(self.result())
+        return self.timeline
+
+    def getClipById(self, clip_id, parent: dict, children: list[dict]):
+        for child in children:
+            if child.get("clipId") == clip_id:
+                return (parent, child)
+        for child in children:
+            value = self.getClipById(clip_id, child, child.get("children", []))
+            if not value:
+                return value
+        return None
 
     def result(self):
         base_info = {
