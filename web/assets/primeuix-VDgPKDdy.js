@@ -65,6 +65,15 @@ function getWindowScrollTop() {
   let doc = document.documentElement;
   return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
 }
+function addStyle(element, style) {
+  if (element) {
+    if (typeof style === "string") {
+      element.style.cssText = style;
+    } else {
+      Object.entries(style || {}).forEach(([key, value]) => element.style[key] = value);
+    }
+  }
+}
 function getOuterWidth(element, margin) {
   if (element instanceof HTMLElement) {
     let width = element.offsetWidth;
@@ -78,6 +87,25 @@ function getOuterWidth(element, margin) {
 }
 function isElement(element) {
   return typeof HTMLElement === "object" ? element instanceof HTMLElement : element && typeof element === "object" && element !== null && element.nodeType === 1 && typeof element.nodeName === "string";
+}
+var calculatedScrollbarWidth = void 0;
+function calculateScrollbarWidth(element) {
+  {
+    if (calculatedScrollbarWidth != null) return calculatedScrollbarWidth;
+    let scrollDiv = document.createElement("div");
+    addStyle(scrollDiv, {
+      width: "100px",
+      height: "100px",
+      overflow: "scroll",
+      position: "absolute",
+      top: "-9999px"
+    });
+    document.body.appendChild(scrollDiv);
+    let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    calculatedScrollbarWidth = scrollbarWidth;
+    return scrollbarWidth;
+  }
 }
 function setAttributes(element, attributes = {}) {
   if (isElement(element)) {
@@ -190,6 +218,28 @@ function getHeight(element) {
   }
   return 0;
 }
+function getHiddenElementOuterHeight(element) {
+  if (element) {
+    element.style.visibility = "hidden";
+    element.style.display = "block";
+    let elementHeight = element.offsetHeight;
+    element.style.display = "none";
+    element.style.visibility = "visible";
+    return elementHeight;
+  }
+  return 0;
+}
+function getHiddenElementOuterWidth(element) {
+  if (element) {
+    element.style.visibility = "hidden";
+    element.style.display = "block";
+    let elementWidth = element.offsetWidth;
+    element.style.display = "none";
+    element.style.visibility = "visible";
+    return elementWidth;
+  }
+  return 0;
+}
 function getParentNode(element) {
   if (element) {
     let parent = element.parentNode;
@@ -293,6 +343,32 @@ function isFocusableElement(element, selector = "") {
 function isTouchDevice() {
   return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 }
+function nestedPosition(element, level) {
+  var _a;
+  if (element) {
+    const parentItem = element.parentElement;
+    const elementOffset = getOffset(parentItem);
+    const viewport = getViewport();
+    const sublistWidth = element.offsetParent ? element.offsetWidth : getHiddenElementOuterWidth(element);
+    const itemOuterWidth = getOuterWidth((_a = parentItem == null ? void 0 : parentItem.children) == null ? void 0 : _a[0]);
+    let left = "";
+    if (elementOffset.left + itemOuterWidth + sublistWidth > viewport.width - calculateScrollbarWidth()) {
+      if (elementOffset.left < sublistWidth) {
+        if (level % 2 === 1) {
+          left = elementOffset.left ? "-" + elementOffset.left + "px" : "100%";
+        } else if (level % 2 === 0) {
+          left = viewport.width - sublistWidth - calculateScrollbarWidth() + "px";
+        }
+      } else {
+        left = "-100%";
+      }
+    } else {
+      left = "100%";
+    }
+    element.style.top = "0px";
+    element.style.left = left;
+  }
+}
 function setAttribute(element, attribute = "", value) {
   if (isElement(element) && value !== null && value !== void 0) {
     element.setAttribute(attribute, value);
@@ -323,6 +399,17 @@ function isFunction(value) {
 function isNotEmpty(value) {
   return !isEmpty(value);
 }
+function findLastIndex(arr, callback) {
+  let index = -1;
+  if (isNotEmpty(arr)) {
+    try {
+      index = arr.findLastIndex(callback);
+    } catch (e) {
+      index = arr.lastIndexOf([...arr].reverse().find(callback));
+    }
+  }
+  return index;
+}
 function isObject(value, empty = true) {
   return value instanceof Object && value.constructor === Object && (empty || Object.keys(value).length !== 0);
 }
@@ -345,6 +432,9 @@ function isArray(value, empty = true) {
 }
 function isNumber(value) {
   return isNotEmpty(value) && !isNaN(value);
+}
+function isPrintableCharacter(char = "") {
+  return isNotEmpty(char) && char.length === 1 && !!char.match(/\S| /);
 }
 function matchRegex(str, regex) {
   if (regex) {
@@ -975,9 +1065,15 @@ export {
   blockBodyScroll as N,
   isAttributeEquals as O,
   unblockBodyScroll as P,
-  getWidth as Q,
-  getHeight as R,
+  getHeight as Q,
+  getWidth as R,
   getOffset as S,
+  addStyle as T,
+  isPrintableCharacter as U,
+  getHiddenElementOuterWidth as V,
+  getHiddenElementOuterHeight as W,
+  findLastIndex as X,
+  nestedPosition as Y,
   ZIndex as Z,
   setAttribute as a,
   isClient as b,

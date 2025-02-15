@@ -1140,9 +1140,6 @@ function isRef(r) {
 function ref(value) {
   return createRef(value, false);
 }
-function shallowRef(value) {
-  return createRef(value, true);
-}
 function createRef(rawValue, shallow) {
   if (isRef(rawValue)) {
     return rawValue;
@@ -1554,12 +1551,6 @@ function setCurrentRenderingInstance(instance) {
   currentRenderingInstance = instance;
   currentScopeId = instance && instance.type.__scopeId || null;
   return prev;
-}
-function pushScopeId(id) {
-  currentScopeId = id;
-}
-function popScopeId() {
-  currentScopeId = null;
 }
 function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
   if (!ctx) return fn;
@@ -2130,6 +2121,23 @@ function renderList(source, renderItem, cache, index) {
   }
   return ret;
 }
+function createSlots(slots, dynamicSlots) {
+  for (let i = 0; i < dynamicSlots.length; i++) {
+    const slot = dynamicSlots[i];
+    if (isArray(slot)) {
+      for (let j = 0; j < slot.length; j++) {
+        slots[slot[j].name] = slot[j].fn;
+      }
+    } else if (slot) {
+      slots[slot.name] = slot.key ? (...args) => {
+        const res = slot.fn(...args);
+        if (res) res.key = slot.key;
+        return res;
+      } : slot.fn;
+    }
+  }
+  return slots;
+}
 function renderSlot(slots, name, props = {}, fallback, noSlotted) {
   if (currentRenderingInstance.isCE || currentRenderingInstance.parent && isAsyncWrapper(currentRenderingInstance.parent) && currentRenderingInstance.parent.isCE) {
     if (name !== "default") props.name = name;
@@ -2297,16 +2305,6 @@ const PublicInstanceProxyHandlers = {
     return Reflect.defineProperty(target, key, descriptor);
   }
 };
-function useSlots() {
-  return getContext().slots;
-}
-function useAttrs() {
-  return getContext().attrs;
-}
-function getContext() {
-  const i = getCurrentInstance();
-  return i.setupContext || (i.setupContext = createSetupContext(i));
-}
 function normalizePropsOrEmits(props) {
   return isArray(props) ? props.reduce(
     (normalized, p2) => (normalized[p2] = null, normalized),
@@ -4861,9 +4859,6 @@ const useSSRContext = () => {
     return ctx;
   }
 };
-function watchEffect(effect2, options) {
-  return doWatch(effect2, null, options);
-}
 const INITIAL_WATCHER_VALUE = {};
 function watch(source, cb, options) {
   return doWatch(source, cb, options);
@@ -6024,7 +6019,6 @@ function h(type, propsOrChildren, children) {
   }
 }
 const version = "3.4.36";
-const warn = NOOP;
 /**
 * @vue/runtime-dom v3.4.36
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -6791,31 +6785,6 @@ function hasCSSTransform(el, root, moveClass) {
   container.removeChild(clone);
   return hasTransform;
 }
-const systemModifiers = ["ctrl", "shift", "alt", "meta"];
-const modifierGuards = {
-  stop: (e) => e.stopPropagation(),
-  prevent: (e) => e.preventDefault(),
-  self: (e) => e.target !== e.currentTarget,
-  ctrl: (e) => !e.ctrlKey,
-  shift: (e) => !e.shiftKey,
-  alt: (e) => !e.altKey,
-  meta: (e) => !e.metaKey,
-  left: (e) => "button" in e && e.button !== 0,
-  middle: (e) => "button" in e && e.button !== 1,
-  right: (e) => "button" in e && e.button !== 2,
-  exact: (e, modifiers) => systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
-};
-const withModifiers = (fn, modifiers) => {
-  const cache = fn._withMods || (fn._withMods = {});
-  const cacheKey = modifiers.join(".");
-  return cache[cacheKey] || (cache[cacheKey] = (event, ...args) => {
-    for (let i = 0; i < modifiers.length; i++) {
-      const guard = modifierGuards[modifiers[i]];
-      if (guard && guard(event, modifiers)) return;
-    }
-    return fn(event, ...args);
-  });
-};
 const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
 let renderer;
 function ensureRenderer() {
@@ -6857,45 +6826,30 @@ function normalizeContainer(container) {
   return container;
 }
 export {
-  useSlots as $,
   createCommentVNode as A,
   resolveComponent as B,
   resolveDirective as C,
   createVNode as D,
   withCtx as E,
-  resolveDynamicComponent as F,
-  withDirectives as G,
-  normalizeProps as H,
-  guardReactiveProps as I,
-  Transition as J,
-  normalizeClass as K,
-  normalizeStyle as L,
-  Fragment as M,
-  renderList as N,
-  createTextVNode as O,
-  toDisplayString as P,
-  unref as Q,
-  isString as R,
-  isObject as S,
+  withDirectives as F,
+  normalizeProps as G,
+  guardReactiveProps as H,
+  Transition as I,
+  normalizeClass as J,
+  normalizeStyle as K,
+  resolveDynamicComponent as L,
+  createTextVNode as M,
+  toDisplayString as N,
+  Fragment as O,
+  renderList as P,
+  TransitionGroup as Q,
+  createSlots as R,
+  unref as S,
   Teleport as T,
-  hasOwn as U,
-  warn as V,
-  NOOP as W,
-  onUnmounted as X,
-  shallowRef as Y,
-  isFunction as Z,
-  useAttrs as _,
+  onBeforeUnmount as U,
+  provide as V,
+  createApp as W,
   createBaseVNode as a,
-  withModifiers as a0,
-  isArray as a1,
-  provide as a2,
-  onBeforeUnmount as a3,
-  onUpdated as a4,
-  TransitionGroup as a5,
-  watchEffect as a6,
-  pushScopeId as a7,
-  popScopeId as a8,
-  createApp as a9,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
