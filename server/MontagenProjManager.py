@@ -352,6 +352,10 @@ class MontagenProjManager:
             id=projectId, workflowId=workflowId, filename=filename
         )
 
+    def modifyClip(self, proj, workflowValue, workflowId, clip_id, addr):
+        modify_time = self.updateProjectField(proj.userId, proj.projectId)
+        return proj.modifyClip(modify_time, workflowValue, workflowId, clip_id, addr)
+
 
 class MontagenProj:
     INFOFILE = "info.json"
@@ -530,7 +534,8 @@ class MontagenProj:
             with open(info_file_path, "w") as f:
                 json.dump(value, f)
 
-    def modifyClip(self, workflowValue, workflowId, clip_id, addr):
+    def modifyClip(self, modityTime, workflowValue, workflowId, clip_id, addr):
+        self.modifyTime = modityTime
         if "workflows" not in self.timeline:
             self.timeline["workflows"] = []
         workflows: list = self.timeline["workflows"]

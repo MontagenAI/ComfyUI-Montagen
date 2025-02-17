@@ -11,8 +11,6 @@ class MontagenImagesPreview:
     def __init__(self):
         self.output_dir = folder_paths.get_temp_directory()
 
-    workflowCache = {}
-
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -29,6 +27,7 @@ class MontagenImagesPreview:
                 "projectId": ("STRING", {"tooltip": "The project id."}),
             },
             "hidden": {
+                "prompt": "PROMPT",
                 "extra_pnginfo": "EXTRA_PNGINFO",
                 "unique_id": "UNIQUE_ID",
             },
@@ -52,10 +51,13 @@ class MontagenImagesPreview:
         preview_fps=25,
         unique_id=None,
         projectId=None,
+        prompt: dict = None,
         extra_pnginfo=None,
     ):
         if not unique_id:
             raise ValueError("node_id is required.")
+        if not prompt:
+            raise ValueError("prompt is required.")
         imageLen = len(images)
         userId = "default"
         projectId_context = None
@@ -95,19 +97,23 @@ class MontagenImagesPreview:
         if not projectId:
             projectId = "default"
             has_project_id = False
-        proj = MontagenProjManager.instance._getProject(userId, projectId, True)
-
         if has_workflow and new_context and has_project_id:
+            current_proj_id = None
+            for node in prompt.values():
+                class_type = node.get("class_type")
+                if class_type == "MontagenImagesPreview":
+                    node_proj_id = node.get("inputs", {}).get("projectId")
+                    if node_proj_id:
+                        if not current_proj_id:
+                            current_proj_id = node_proj_id
+                        if current_proj_id != node_proj_id:
+                            raise ValueError(
+                                f"All projectId you provide must be the same."
+                            )
+        proj = MontagenProjManager.instance._getProject(userId, projectId, True)
+        if has_workflow and has_project_id:
             if not proj:
                 raise ValueError(f"The project your provide {projectId} is not found.")
-            if workflowId in self.workflowCache:
-                cached_project_id = self.workflowCache[workflowId]
-                if cached_project_id != projectId:
-                    raise ValueError(
-                        f"Project ID mismatch,Current Project ID is {cached_project_id}"
-                    )
-            else:
-                self.workflowCache[workflowId] = projectId
         if not proj:
             proj = MontagenProjManager.instance._getProject(userId, projectId, False)
             has_project_id = False
@@ -154,8 +160,8 @@ class MontagenImagesPreview:
         addr = MontagenProjManager.instance.getAddr(
             userId, projectId, workflowId, fileName
         )
-        timeline = proj.modifyClip(
-            extra_pnginfo.get("workflow", {}), workflowId, clip_id, addr
+        timeline = MontagenProjManager.instance.modifyClip(
+            proj, extra_pnginfo.get("workflow", {}), workflowId, clip_id, addr
         )
         return {
             "ui": {
