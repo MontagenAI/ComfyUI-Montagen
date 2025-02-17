@@ -8,10 +8,13 @@ import subprocess
 import uuid
 import json
 import asyncio
+from .MontagenProjManager import MontagenProjManager
 
 
 class MontagenApi:
     def __init__(self, server: PromptServer):
+        taskCache = {}
+
         @server.routes.get("/Montagen/outputs")
         def getOuputs(request):
             trees = get_mp4_files_tree()
@@ -31,6 +34,7 @@ class MontagenApi:
 
         @server.routes.post("/Montagen/outputs")
         async def combineVideos(request):
+            user_id = server.user_manager.get_request_user_id(request)
             data = await request.json()
             if "files" in data and "output" in data:
                 frame_rate = data.get("frameRate", 30)
@@ -44,14 +48,43 @@ class MontagenApi:
                     video_bitrate=video_bitrate,
                 )
                 return web.json_response({"success": True}, status=200)
-            if "type" not in data or data["type"] != "canvas":
-                return web.json_response(
-                    {"error": "No project json specified"}, status=400
-                )
+            output = data["output"]
             if "output" not in data:
                 return web.json_response({"error": "No output specified"}, status=400)
-            await self.combineMix(data["output"], data)
-            return web.json_response({"success": True}, status=200)
+            if "type" not in data or data["type"] != "canvas":
+                if "projectId" in data:
+                    project_id = data["projectId"]
+                    proj = MontagenProjManager.instance._getProject(user_id, project_id)
+                    if not proj:
+                        return web.json_response(
+                            {"error": "project not found"}, status=400
+                        )
+                    data = proj.timeline
+                else:
+                    return web.json_response(
+                        {"error": "No project json specified"}, status=400
+                    )
+            task = asyncio.create_task(self.combineMix(output, data))
+            taskId = uuid.uuid4().hex()
+            taskCache[taskId] = task
+            return web.json_response({"success": True, "taskId": taskId}, status=200)
+
+        @server.routes.get("/Montagen/outputs/{id}")
+        async def combineStatus(request):
+            task_id = request.match_info.get("id", None)
+            task = taskCache.get(task_id, None)
+            if not task:
+                return web.json_response({"error": "task not found"}, status=400)
+            try:
+                task.result()
+            except asyncio.exceptions.InvalidStateError:
+                return web.json_response({"status": "pending"}, status=200)
+            except BaseException as e:
+                return web.json_response(
+                    {"status": "exception", "msg": str(e)}, status=200
+                )
+            else:
+                return web.json_response({"status": "done"}, status=200)
 
     def combineVideos(
         self,
