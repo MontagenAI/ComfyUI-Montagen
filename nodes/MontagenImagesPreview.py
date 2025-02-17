@@ -6,6 +6,8 @@ from ..server.MontagenProjManager import MontagenProjManager
 from datetime import datetime
 import shutil
 from comfy.utils import ProgressBar
+import time
+import random
 
 
 class MontagenImagesPreview:
@@ -59,6 +61,20 @@ class MontagenImagesPreview:
             parts = projectId.split(MontagenImagesPreview.PROJECTSPLIT)
             projectId = parts[-1]
         return projectId
+
+    def to_base36_random(self) -> str:
+        timestamp = int(time.time() * 1000000)
+        random_number = random.randint(0, 9999)
+        combined_value = timestamp * 10000 + random_number
+        alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
+        base36 = []
+
+        while combined_value != 0:
+            combined_value, i = divmod(combined_value, 36)
+            base36.append(alphabet[i])
+
+        result = "".join(reversed(base36))
+        return result.zfill(9)
 
     def save_images(
         self,
@@ -135,14 +151,12 @@ class MontagenImagesPreview:
             proj = MontagenProjManager.instance._getProject(userId, projectId, False)
             has_project_id = False
 
-        workflowPath = proj.getOutputPath(workflowId)
-        fileName = f"{clip_id}.mp4"
-        fileFullName = os.path.join(workflowPath, fileName)
-        tmpFileName = f"{clip_id}_t.mp4"
-        tmpFullName = os.path.join(workflowPath, tmpFileName)
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
-        bakFileName = f"{clip_id}_{current_time}.mp4"
-        bakFullName = os.path.join(workflowPath, bakFileName)
+        workflowPath = proj.getOutputPath(workflowId)
+        fileName = f"{current_time}_{self.to_base36_random()}.mp4"
+        fileFullName = os.path.join(workflowPath, fileName)
+        tmpFileName = f"{current_time}_{self.to_base36_random()}_t.mp4"
+        tmpFullName = os.path.join(workflowPath, tmpFileName)
         frames = []
         currentProgress = 0
         loadImageProgressItem = 100 / imageLen
@@ -154,8 +168,6 @@ class MontagenImagesPreview:
         videosave.save_video(tmpFullName, frames, preview_fps, pbar)
         pbar.update_absolute(100)
         if os.path.exists(tmpFullName):
-            if os.path.exists(fileFullName):
-                shutil.move(fileFullName, bakFullName)
             shutil.move(tmpFullName, fileFullName)
         if not has_project_id or not has_workflow:
             return {
