@@ -5,6 +5,7 @@ from . import videosave
 from ..server.MontagenProjManager import MontagenProjManager
 from datetime import datetime
 import shutil
+from comfy.utils import ProgressBar
 
 
 class MontagenImagesPreview:
@@ -58,6 +59,7 @@ class MontagenImagesPreview:
             raise ValueError("node_id is required.")
         if not prompt:
             raise ValueError("prompt is required.")
+        pbar = ProgressBar(100)
         imageLen = len(images)
         userId = "default"
         projectId_context = None
@@ -127,11 +129,15 @@ class MontagenImagesPreview:
         bakFileName = f"{clip_id}_{current_time}.mp4"
         bakFullName = os.path.join(workflowPath, bakFileName)
         frames = []
+        currentProgress = 0
+        loadImageProgressItem = 100 / imageLen
         for image in images:
             frame = np.clip(255 * image.cpu().numpy(), 0, 255).astype(np.uint8)
             frames.append(frame)
-
-        videosave.save_video(tmpFullName, frames, fps=preview_fps)
+            currentProgress = currentProgress + loadImageProgressItem
+            pbar.update_absolute(currentProgress * 0.5)
+        videosave.save_video(tmpFullName, frames, preview_fps, pbar)
+        pbar.update_absolute(100)
         if os.path.exists(tmpFullName):
             if os.path.exists(fileFullName):
                 shutil.move(fileFullName, bakFullName)

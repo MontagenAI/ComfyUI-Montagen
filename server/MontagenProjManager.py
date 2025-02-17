@@ -597,8 +597,25 @@ class MontagenProj:
                 }
             )
         else:
-            _, child = value
-            child.update({"src": addr, "workflowId": workflowId})
+            parent, child = value
+            if child["type"] == "video":
+                child.update({"src": addr, "workflowId": workflowId})
+            else:
+                parent["children"].remove(child)
+                parent["children"].append(
+                    {
+                        "clipId": clip_id,
+                        "src": addr,
+                        "workflowId": workflowId,
+                        "children": [],
+                        "type": "video",
+                        "loop": True,
+                        "audio": False,
+                        "x": "50vw",
+                        "y": "50vh",
+                        "active": True,
+                    }
+                )
         self._saveToPath(self.result())
         return self.timeline
 
