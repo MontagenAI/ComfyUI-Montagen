@@ -51,6 +51,17 @@ class MontagenProjManager:
             )
             return web.json_response({"code": 0, "data": project_id})
 
+        @server.routes.post("/Montagen/Proj/{id}/New")
+        async def addProjectClip(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            data = proj.addClip(modify_time)
+            return web.json_response({"code": 0, "data": data})
+
         @server.routes.post("/Montagen/Proj/{id}/Name")
         async def updateProjectName(request):
             req_data = await request.post()
@@ -600,6 +611,70 @@ class MontagenProj:
             if not value:
                 return value
         return None
+
+    def addClip(self, modifyTime):
+        self.modifyTime = modifyTime
+        default_workflow_id = self.to_base36_random()
+        worflow = {
+            "id": default_workflow_id,
+            "workflow": {
+                "last_node_id": 1,
+                "last_link_id": 0,
+                "nodes": [
+                    {
+                        "id": 1,
+                        "type": "MontagenImagesPreview",
+                        "pos": [203.49522399902344, -15.222152709960938],
+                        "size": [210, 106],
+                        "flags": {},
+                        "order": 0,
+                        "mode": 0,
+                        "inputs": [{"name": "images", "type": "IMAGE", "link": None}],
+                        "outputs": [{"name": "IMAGE", "type": "IMAGE", "links": None}],
+                        "properties": {"Node name for S&R": "MontagenImagesPreview"},
+                        "widgets_values": [25, "", "image"],
+                    }
+                ],
+                "links": [],
+                "groups": [],
+                "config": {},
+                "extra": {
+                    "ds": {
+                        "scale": 0.9641152524334489,
+                        "offset": [417.4540788243107, 235.112875552326],
+                    },
+                    MontagenProjManager.MONTAGENPROJ: {
+                        "userId": self.userId,
+                        "projectId": self.projectId,
+                        "workflowId": default_workflow_id,
+                    },
+                },
+                "version": 0.4,
+            },
+        }
+        if "workflows" not in self.timeline:
+            self.timeline["workflows"] = []
+        workflows: list = self.timeline["workflows"]
+        workflows.append(worflow)
+        clip = {
+            "clipId": f"1_{default_workflow_id}",
+            "workflowId": default_workflow_id,
+            "type": "text",
+            "fontSize": "50rpx",
+            "color": "#FFF",
+            "x": "50vw",
+            "y": "50vh",
+            "duration": 10,
+            "text": "Empty Clip",
+            "refId": self.to_base36_random(),
+            "height": "100rpx",
+            "width": "300rpx",
+            "zIndex": 1,
+            "children": [],
+        }
+        self.timeline["children"].append(clip)
+        self._saveToPath(self.result())
+        return self.timeline
 
     def result(self):
         base_info = {
