@@ -535,6 +535,7 @@ class MontagenProj:
                 json.dump(value, f)
 
     def modifyClip(self, modityTime, workflowValue, workflowId, clip_id, addr):
+        addr = "/" + addr
         self.modifyTime = modityTime
         if "workflows" not in self.timeline:
             self.timeline["workflows"] = []
