@@ -9,11 +9,19 @@ from comfy.utils import ProgressBar
 
 
 class MontagenImagesPreview:
+
+    PROJECTSPLIT = "__"
+
     def __init__(self):
         self.output_dir = folder_paths.get_temp_directory()
 
     @classmethod
     def INPUT_TYPES(s):
+        projs = [
+            f'{proj.get("name")}{MontagenImagesPreview.PROJECTSPLIT}{proj.get("projectId")}'
+            for proj in MontagenProjManager.instance.getProjects("default")
+        ]
+        projs.insert(0, "")
         return {
             "required": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
@@ -25,7 +33,7 @@ class MontagenImagesPreview:
                 ),
             },
             "optional": {
-                "projectId": ("STRING", {"tooltip": "The project id."}),
+                "projectId": (sorted(projs), {"tooltip": "The project id."}),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -45,6 +53,12 @@ class MontagenImagesPreview:
     @classmethod
     def IS_CHANGED(s, **keywords):
         return datetime.now().isoformat()
+
+    def process_project_id(self, projectId):
+        if MontagenImagesPreview.PROJECTSPLIT in projectId:
+            parts = projectId.split(MontagenImagesPreview.PROJECTSPLIT)
+            projectId = parts[-1]
+        return projectId
 
     def save_images(
         self,
@@ -99,6 +113,7 @@ class MontagenImagesPreview:
         if not projectId:
             projectId = "default"
             has_project_id = False
+        projectId = self.process_project_id(projectId)
         if has_workflow and new_context and has_project_id:
             current_proj_id = None
             for node in prompt.values():
