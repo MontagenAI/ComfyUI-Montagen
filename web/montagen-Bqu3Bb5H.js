@@ -160,7 +160,20 @@ const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "dat
 const blankGraph = {
   last_node_id: 0,
   last_link_id: 0,
-  nodes: [],
+  nodes: [
+    {
+      id: 0,
+      type: "MontagenImagesPreview",
+      pos: [window.innerWidth / 2, window.innerHeight / 2],
+      size: [210, 82],
+      flags: {},
+      order: 0,
+      mode: 0,
+      outputs: [],
+      properties: {},
+      widgets_values: [25, "image"]
+    }
+  ],
   links: [],
   groups: [],
   config: {},
@@ -66073,9 +66086,6 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       blankGraph.extra.MontagenProj.projectId = projectId;
       blankGraph.extra.MontagenProj.workflowId = workflowId;
       await app$1.loadGraphData(blankGraph);
-      setTimeout(() => {
-        app$1.addNodeOnGraph(window.montaiData, { pos: [window.innerWidth / 2, window.innerHeight / 2] });
-      }, 10);
     },
     openWorkFlowByGrahData(graphData) {
       app$1.loadGraphData(graphData);
@@ -66160,15 +66170,15 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       this.playerInstance = index.create(options);
       window.myPlayer = this.playerInstance;
       this.playerInstance.on("editWorkFlow", (data) => {
-        var _a2, _b2, _c2;
-        console.log("data 当前编辑的workflow", data, JSON.stringify((_a2 = data.target) == null ? void 0 : _a2.workflowData));
+        var _a2, _b2, _c2, _d2;
+        console.log("data 当前编辑的workflow", (_a2 = data.target) == null ? void 0 : _a2.workflowData, data.target.workflowData.value);
         if (!((_b2 = data.target) == null ? void 0 : _b2.workflowData) || JSON.stringify((_c2 = data.target) == null ? void 0 : _c2.workflowData) === "{}") {
           this.createWorkFlow({
             projectId: data.target.projectId,
             workflowId: data.target.name
           });
         } else {
-          this.openWorkFlowByGrahData(data.target.workflowData.value);
+          this.openWorkFlowByGrahData(JSON.parse(JSON.stringify((_d2 = data.target) == null ? void 0 : _d2.workflowData)));
         }
         const menuStore = useMenuStore();
         menuStore.changeShow(false);
@@ -66860,7 +66870,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 if (!id) return;
                 let output = (_a2 = data.detail.output) == null ? void 0 : _a2.videos[0];
                 console.log("mongen-tan-output", output);
-                updateProjectTimeLine(output);
               });
               tempNodeType = nodeType;
               console.log("nodeType 获取node 数据", nodeType, nodeData, nodeType.prototype);
@@ -66870,6 +66879,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 console.log("onExecuted 函数执行成功后返回的数据", message);
                 if (message == null ? void 0 : message.videos) {
                   sessionStorage.setItem("Montagen-output", JSON.stringify(message.videos[0]));
+                  updateProjectTimeLine(message.videos[0]);
                 }
               });
             }
