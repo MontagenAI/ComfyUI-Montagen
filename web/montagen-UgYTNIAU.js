@@ -3,7 +3,137 @@
   try {
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode("[data-v-466e15aa] .left-tool-button {\r\n  /* Your styles here */\r\n  height: 40px;\r\n  width: 40px;\r\n  border-radius: 0 !important;\r\n  margin-bottom: 10px;\n&.left-tool-button-select[data-v-466e15aa] {\r\n    border-left: 2px solid #09AAFE;\r\n    box-sizing: border-box;\n}\n}\r\n\n.workflow[data-v-cbe03f32] {\r\n  /* Add your component styles here */\n}\n.workflow-header[data-v-cbe03f32] {\r\n  border-bottom: 1px solid var(--p-button-text-primary-color);\n}\n.list-item[data-v-cbe03f32] {\r\n  padding: 12px 4px;\n}\n.list-item.active[data-v-cbe03f32] {\r\n  background-color: var(--p-button-text-primary-color);\r\n  color: var(--p-button-text-color);\n}\r\n[data-v-8294902c] .split-container {\n  border: none;\n  border-radius: 0;\n  width: 100%;\n  height: 100%;\n}\n[data-v-8294902c] .split-container .split-gutter {\n  background: #181818;\n}\n[data-v-8294902c] .split-container.left-hidden .split-panel-left {\n  display: none;\n}\n[data-v-8294902c] .split-container.left-hidden > .split-gutter {\n  display: none;\n}\n.imagen-header[data-v-0dd8d624] {\r\n  font-size: 0.8em;\n}\n.imagen-header h1[data-v-0dd8d624] {\r\n  font-size: 1.2em;\r\n  color: #333;\n}\r\n\n.new-imagen-box[data-v-9dc71f70] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100vh;\r\n  z-index: 600;\r\n  bottom: 0;\r\n  left: 0;\r\n  background: #262626;\r\n  color: #fff;\r\n  grid-template-columns: 40px 1fr;\r\n  grid-template-rows: 40px 1fr;\n}\n.new-imagen-box .image-box-top[data-v-9dc71f70] {\r\n  grid-row: 1;\r\n  grid-column: 1/span 2;\r\n  background-color: #181818;\r\n  order: 1;\r\n  display: flex;\r\n  border-bottom: 1px solid #2b2b2b;\n}\n.new-imagen-box .image-box-left[data-v-9dc71f70] {\r\n  grid-row: 2;\r\n  grid-column: 1;\r\n  background-color: #181818;\r\n  order: 2;\r\n  display: flex;\r\n  border-right: 1px solid #2b2b2b;\n}\n.new-imagen-box .image-box-container[data-v-9dc71f70] {\r\n  grid-row: 2;\r\n  grid-column: 2;\r\n  background-color: goldenrod;\r\n  width: 100%;\r\n  height: 100%;\r\n  order: 3;\r\n  display: flex;\r\n  overflow: hidden;\n}\r\n.hideBox {\n  opacity: 0;\n  pointer-events: none;\n}\n#comfyui-maskpage:has(> .hideBox) {\n  z-index: -1 !important;\n}"));
+      elementStyle.appendChild(document.createTextNode(`[data-v-466e15aa] .left-tool-button {\r
+  /* Your styles here */\r
+  height: 40px;\r
+  width: 40px;\r
+  border-radius: 0 !important;\r
+  margin-bottom: 10px;
+&.left-tool-button-select[data-v-466e15aa] {\r
+    border-left: 2px solid #09AAFE;\r
+    box-sizing: border-box;
+}
+}\r
+
+.workflow[data-v-cbe03f32] {\r
+  /* Add your component styles here */
+}
+.workflow-header[data-v-cbe03f32] {\r
+  border-bottom: 1px solid var(--p-button-text-primary-color);
+}
+.list-item[data-v-cbe03f32] {\r
+  padding: 12px 4px;
+}
+.list-item.active[data-v-cbe03f32] {\r
+  background-color: var(--p-button-text-primary-color);\r
+  color: var(--p-button-text-color);
+}\r
+[data-v-8294902c] .split-container {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+}
+[data-v-8294902c] .split-container .split-gutter {
+  background: #181818;
+}
+[data-v-8294902c] .split-container.left-hidden .split-panel-left {
+  display: none;
+}
+[data-v-8294902c] .split-container.left-hidden > .split-gutter {
+  display: none;
+}
+.imagen-header[data-v-0dd8d624] {\r
+  font-size: 0.8em;
+}
+.imagen-header h1[data-v-0dd8d624] {\r
+  font-size: 1.2em;\r
+  color: #333;
+}\r
+
+.new-imagen-box[data-v-9dc71f70] {\r
+  position: fixed;\r
+  width: 100%;\r
+  height: 100vh;\r
+  z-index: 600;\r
+  bottom: 0;\r
+  left: 0;\r
+  background: #262626;\r
+  color: #fff;\r
+  grid-template-columns: 40px 1fr;\r
+  grid-template-rows: 40px 1fr;
+}
+.new-imagen-box .image-box-top[data-v-9dc71f70] {\r
+  grid-row: 1;\r
+  grid-column: 1/span 2;\r
+  background-color: #181818;\r
+  order: 1;\r
+  display: flex;\r
+  border-bottom: 1px solid #2b2b2b;
+}
+.new-imagen-box .image-box-left[data-v-9dc71f70] {\r
+  grid-row: 2;\r
+  grid-column: 1;\r
+  background-color: #181818;\r
+  order: 2;\r
+  display: flex;\r
+  border-right: 1px solid #2b2b2b;
+}
+.new-imagen-box .image-box-container[data-v-9dc71f70] {\r
+  grid-row: 2;\r
+  grid-column: 2;\r
+  background-color: goldenrod;\r
+  width: 100%;\r
+  height: 100%;\r
+  order: 3;\r
+  display: flex;\r
+  overflow: hidden;
+}\r
+.hideBox {
+  opacity: 0;
+  pointer-events: none;
+}
+#comfyui-maskpage:has(> .hideBox) {
+  z-index: -1 !important;
+}/* @font-face {\r
+  font-family: 'fontello';\r
+  src: url('http://36.134.79.170:7777/images/fontello.ttf') format('truetype');\r
+} */\r
+\r
+.fontello {\r
+  font-family: "fontello";\r
+  font-style: normal;\r
+  font-weight: normal;\r
+  speak: never;\r
+\r
+  display: inline-block;\r
+  text-decoration: inherit;\r
+  width: 1em;\r
+  /* margin-right: .2em; */\r
+  text-align: center;\r
+  /* opacity: .8; */\r
+\r
+  /* For safety - reset parent styles, that can break glyph codes*/\r
+  font-variant: normal;\r
+  text-transform: none;\r
+\r
+  /* fix buttons height, for twitter bootstrap */\r
+  line-height: 1em;\r
+\r
+  /* Animation center compensation - margins should be symmetric */\r
+  /* remove if not needed */\r
+  /* margin-left: .2em; */\r
+\r
+  /* You can be more comfortable with increased icons size */\r
+  /* font-size: 120%; */\r
+\r
+  /* Font smoothing. That was taken from TWBS */\r
+  -webkit-font-smoothing: antialiased;\r
+  -moz-osx-font-smoothing: grayscale;\r
+\r
+  /* Uncomment for 3D effect */\r
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\r
+}`));
       document.head.appendChild(elementStyle);
     }
   } catch (e) {
@@ -11,12 +141,12 @@
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { d as defineComponent, o as openBlock, c as createElementBlock, a as createBaseVNode, O as Fragment, P as renderList$1, S as unref, F as withDirectives, z as createBlock, r as ref$3, l as inject, x as computed, N as toDisplayString, D as createVNode, J as normalizeClass, E as withCtx, w as watch, f as reactive, e as onMounted, U as onBeforeUnmount, M as createTextVNode$1, V as provide, W as createApp } from "./assets/vue-DHt6SJde.js";
-import { d as defineStore, s as storeToRefs, a as script, T as Tooltip, u as useToast, b as useConfirm, n as nanoid, c as script$1, e as script$2, f as script$3, g as script$4, h as script$5, i as script$6, j as script$7, k as script$8, C as ConfirmationService, l as ToastService, D as DialogService, m as createPinia } from "./assets/vendor-I0pHVlcW.js";
+import { d as defineComponent, o as openBlock, c as createElementBlock, a as createBaseVNode, J as Fragment, K as renderList$1, Q as unref, D as withDirectives, E as createBlock, r as ref$3, l as inject, x as computed, A as toDisplayString, M as createVNode, G as normalizeClass, F as withCtx, w as watch, f as reactive, e as onMounted, R as onBeforeUnmount, z as createTextVNode$1, S as provide, U as createApp } from "./assets/vue-D_efeY-4.js";
+import { d as defineStore, s as storeToRefs, a as script, T as Tooltip, u as useToast, b as useConfirm, n as nanoid, c as script$1, e as script$2, f as script$3, g as script$4, h as script$5, i as script$6, j as script$7, C as ConfirmationService, k as ToastService, D as DialogService, l as createPinia } from "./assets/vendor-gnMPjc8r.js";
 import "./assets/lodash-BBlPwZSq.js";
-import { q as definePreset, r as index$3, P as PrimeVue } from "./assets/primevue-C-UpY7hw.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-CMD4Qy2G.js";
-import "./assets/primeuix-VDgPKDdy.js";
+import { l as definePreset, m as index$3, P as PrimeVue } from "./assets/primevue-DbNtaxDr.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-DK_Lih3N.js";
+import "./assets/primeuix-eadDSU93.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
     selectFiles: [{
@@ -115,7 +245,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
     }
   }
 });
-const _hoisted_1$4 = { class: "toolbar" };
+const _hoisted_1$5 = { class: "toolbar" };
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "leftToolbar",
   setup(__props) {
@@ -127,7 +257,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+      return openBlock(), createElementBlock("div", _hoisted_1$5, [
         createBaseVNode("nav", null, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(menues), (item) => {
             return withDirectives((openBlock(), createBlock(unref(script), {
@@ -15246,7 +15376,7 @@ function updateStyle(a2, e) {
       s = m[o], setProp(u, o, s ?? "");
   }
 }
-var style = {
+var style$1 = {
   create: updateStyle,
   update: updateStyle
 }, whitespaceRE = /\s+/;
@@ -15403,7 +15533,7 @@ var transition$1 = inBrowser ? {
   remove: function(a2, e) {
     a2.data.show !== true ? leave(a2, e) : e();
   }
-} : {}, platformModules = [attrs, klass, events$1, domProps, style, transition$1], modules = platformModules.concat(baseModules), patch = createPatchFunction({ nodeOps, modules });
+} : {}, platformModules = [attrs, klass, events$1, domProps, style$1, transition$1], modules = platformModules.concat(baseModules), patch = createPatchFunction({ nodeOps, modules });
 isIE9 && document.addEventListener("selectionchange", function() {
   var a2 = document.activeElement;
   a2 && a2.vmodel && trigger(a2, "input");
@@ -43003,62 +43133,63 @@ var material, hasRequiredMaterial;
 function requireMaterial() {
   if (hasRequiredMaterial) return material;
   hasRequiredMaterial = 1;
-  const a2 = requireMin(), e = requirePathBrowserify(), t = requireDate();
+  const { isBrowser: a2 } = requireLib$5(), e = requireMin(), t = requirePathBrowserify(), r = requireDate();
   requireUtils(), requireLib$2();
-  const { nodeRequire: r } = requireUtils(), s = r("../utils/fs"), o = -1;
-  class u {
-    constructor(f) {
-      this.creator = null, this.info = {}, this.path = "", this.forceTrim = false, this.start = o, this.end = o, this.length = NaN, this.fps = 30, this.duration = NaN, this.setSpeed(Number(f.speed) || 1), this.parseConf(f);
+  const { nodeRequire: s } = requireUtils(), o = s("../utils/fs"), u = -1;
+  class h {
+    constructor(p) {
+      this.creator = null, this.info = {}, this.path = "", this.forceTrim = false, this.start = u, this.end = u, this.length = NaN, this.fps = 30, this.duration = NaN, this.setSpeed(Number(p.speed) || 1), this.parseConf(p);
     }
-    static playing(f) {
-      return f.currentTime > 0 && !f.paused && !f.ended && f.readyState > 2;
+    static playing(p) {
+      return p.currentTime > 0 && !p.paused && !p.ended && p.readyState > 2;
     }
-    setSpeed(f) {
-      this.speed = Math.round(f * 100) / 100;
+    setSpeed(p) {
+      this.speed = Math.round(p * 100) / 100;
     }
-    seekTime(f, p = {}) {
-      const d = f * this.speed + this.getStartOffset(), m = this.forceTrim ? this.getStartOffset() : 0.01, g = this.forceTrim ? this.getEndOffset() : this.length;
-      return (d < m || d > g) && (p.overflow = true), Math.min(g, Math.max(m, d));
+    seekTime(p, d = {}) {
+      const m = p * this.speed + this.getStartOffset(), g = this.forceTrim ? this.getStartOffset() : 0.01, y = this.forceTrim ? this.getEndOffset() : this.length;
+      return (m < g || m > y) && (d.overflow = true), Math.min(y, Math.max(g, m));
     }
-    parseConf(f) {
-      this.conf = f, this.type = f.type, this.path = f.cachedSrc || f.src || f.path || f.image || f.url, this.parseTimeConf(f);
+    parseConf(p) {
+      var d;
+      this.conf = p, this.type = p.type, this.path = p.cachedSrc || p.src || p.path || p.image || p.url, a2 && (d = this.path) != null && d.startsWith("//") && (this.path = window.location.origin + this.path.substring(1)), this.parseTimeConf(p);
     }
-    parseTimeConf(f) {
-      this.start = this.parseTimeNumber(f.ss), this.end = this.parseTimeNumber(f.to);
+    parseTimeConf(p) {
+      this.start = this.parseTimeNumber(p.ss), this.end = this.parseTimeNumber(p.to);
     }
-    parseTimeNumber(f) {
-      return typeof f == "string" && f.includes(":") ? t.hmsToSeconds(f) : (f = Number(f), isNaN(f) ? o : f);
+    parseTimeNumber(p) {
+      return typeof p == "string" && p.includes(":") ? r.hmsToSeconds(p) : (p = Number(p), isNaN(p) ? u : p);
     }
     getStartOffset() {
-      return this.start == o ? 0 : this.start;
+      return this.start == u ? 0 : this.start;
     }
-    getEndOffset(f = false) {
-      const p = [], d = this.getStartOffset() + this.duration * this.speed;
-      return f && !isNaN(d) && p.push(d), isNaN(this.length) || p.push(this.length), this.end !== o && p.push(this.end), p.length > 0 ? a2(p) : NaN;
+    getEndOffset(p = false) {
+      const d = [], m = this.getStartOffset() + this.duration * this.speed;
+      return p && !isNaN(m) && d.push(m), isNaN(this.length) || d.push(this.length), this.end !== u && d.push(this.end), d.length > 0 ? e(d) : NaN;
     }
     getStartHms() {
-      return t.secondsToHms(this.getStartOffset());
+      return r.secondsToHms(this.getStartOffset());
     }
     getEndHms() {
-      return t.secondsToHms(this.getEndOffset(true));
+      return r.secondsToHms(this.getEndOffset(true));
     }
-    getSliceOpts(f = true) {
-      let p = [];
-      return this.getStartOffset() > 0 && (p = p.concat(["-ss", this.getStartHms()])), this.getEndOffset(true) < this.length && f && (p = p.concat(["-to", this.getEndHms()])), p;
+    getSliceOpts(p = true) {
+      let d = [];
+      return this.getStartOffset() > 0 && (d = d.concat(["-ss", this.getStartHms()])), this.getEndOffset(true) < this.length && p && (d = d.concat(["-to", this.getEndHms()])), d;
     }
-    getOutputPath(f, p) {
-      return s.ensureDir(f), e.join(f, p);
+    getOutputPath(p, d) {
+      return o.ensureDir(p), t.join(p, d);
     }
     /**
      * Obtain duration based on movie information
      * @return {number} movie information duration
      * @public
      */
-    getDuration(f = false) {
-      return Math.max(0, this.getSourceDuration(f) / this.speed);
+    getDuration(p = false) {
+      return Math.max(0, this.getSourceDuration(p) / this.speed);
     }
-    getSourceDuration(f) {
-      return this.getEndOffset(f) - this.getStartOffset();
+    getSourceDuration(p) {
+      return this.getEndOffset(p) - this.getStartOffset();
     }
     toString() {
       return `${this.type}:${this.path}-length:${this.length}`;
@@ -43067,7 +43198,7 @@ function requireMaterial() {
       this.creator = null, this.info = null, this.path = "", this.length = 0;
     }
   }
-  return material = u, material;
+  return material = h, material;
 }
 var xhr, hasRequiredXhr;
 function requireXhr() {
@@ -62429,7 +62560,7 @@ const VERSION = "1.0.0", { Factory } = FFCreator, { secToHms } = TimeUtil, { col
           this.opts[f] === void 0 ? p : this.opts[f]
         ), f.includes("Color") && (e.setProperty(`--${f}`, color(this.opts[f], 100)), e.setProperty(`--${f}90`, color(this.opts[f], 90)), e.setProperty(`--${f}30`, color(this.opts[f], 30)));
       let { value: t, json: r } = this.opts;
-      t = t || r, Factory.cacheNode = this.opts.cache === "all" ? forceCacheNode : this.opts.cache !== true ? cacheNode : null, Factory.debug = this.opts.debug;
+      t = t || r, Factory.cacheNode = this.opts.cache === "all" ? forceCacheNode : this.opts.cache === false ? null : cacheNode, Factory.debug = this.opts.debug;
       const s = this.$refs.canvas, o = {}, { node: u, cache: h } = Factory.from(t, { canvas: s }, (f) => {
         o[f.key] = f, this.updateProgress(o);
       });
@@ -67512,7 +67643,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         console.log("playerInstance", this.playerContainerHeight);
         this.createPlayer(options);
       } else {
-        console.log("openWorkFlow", "重载打开工作流");
+        console.log("openWorkFlow", "重载打开工作流", options);
         this.reloadPlayer(options);
       }
     },
@@ -67568,8 +67699,8 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
-const _hoisted_1$3 = { class: "workflow w-full h-full" };
-const _hoisted_2$1 = { class: "flex justify-between items-center workflow-header p-2" };
+const _hoisted_1$4 = { class: "workflow w-full h-full" };
+const _hoisted_2$2 = { class: "flex justify-between items-center workflow-header p-2" };
 const _hoisted_3$1 = { class: "list-none p-2" };
 const _hoisted_4$1 = ["onContextmenu", "onClick"];
 const _hoisted_5 = { class: "p-2 flex" };
@@ -67730,8 +67861,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       const _component_Dialog = script$4;
       const _component_Toast = script$5;
       return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", _hoisted_1$3, [
-          createBaseVNode("div", _hoisted_2$1, [
+        createBaseVNode("div", _hoisted_1$4, [
+          createBaseVNode("div", _hoisted_2$2, [
             createBaseVNode("div", null, toDisplayString(title.value), 1),
             createBaseVNode("div", null, [
               createVNode(_component_Button, {
@@ -67829,7 +67960,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   }
 });
 const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-cbe03f32"]]);
-const _hoisted_1$2 = { class: "w-full" };
+const _hoisted_1$3 = { class: "w-full" };
 const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "boxContainer",
   setup(__props) {
@@ -67954,7 +68085,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
               size: splitterSizes.value[0]
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_1$2, [
+                createBaseVNode("div", _hoisted_1$3, [
                   createVNode(workFlow)
                 ])
               ]),
@@ -68056,7 +68187,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   }
 });
 const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-8294902c"]]);
-const _hoisted_1$1 = { class: "imagen-header flex" };
+const _hoisted_1$2 = { class: "imagen-header flex" };
 const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "imagenHeader",
   setup(__props) {
@@ -68072,7 +68203,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       }, 10);
     };
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$1, [
+      return openBlock(), createElementBlock("div", _hoisted_1$2, [
         createBaseVNode("h1", {
           class: "mx-2 cursor-pointer",
           onClick: goBack
@@ -68086,8 +68217,8 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   }
 });
 const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-0dd8d624"]]);
-const _hoisted_1 = { class: "new-imagen-box grid" };
-const _hoisted_2 = { class: "image-box-top" };
+const _hoisted_1$1 = { class: "new-imagen-box grid" };
+const _hoisted_2$1 = { class: "image-box-top" };
 const _hoisted_3 = { class: "image-box-left" };
 const _hoisted_4 = { class: "image-box-container" };
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
@@ -68103,8 +68234,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       getList();
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1, [
-        createBaseVNode("div", _hoisted_2, [
+      return openBlock(), createElementBlock("div", _hoisted_1$1, [
+        createBaseVNode("div", _hoisted_2$1, [
           createVNode(imagenHeader)
         ]),
         createBaseVNode("div", _hoisted_3, [
@@ -68118,6 +68249,10 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   }
 });
 const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-9dc71f70"]]);
+const _hoisted_1 = /* @__PURE__ */ createBaseVNode("i", { class: "fontello icon-montagen-xs" }, "", -1);
+const _hoisted_2 = [
+  _hoisted_1
+];
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
@@ -68150,20 +68285,27 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     }
     const addUploadWidget = function(nodeType, nodeData, type2, icon) {
       chainCallback(nodeType.prototype, "onNodeCreated", function(...arg) {
+        console.log("onNodeCreated蒙太奇节点创建");
+        checkWorkflow();
         this.addWidget("button", "preview", "image", () => {
           menuStore.changeShow(true);
         });
       });
     };
     let tempNodeType = null;
-    const handleWorkflowChange = (node2) => {
-      console.log("Workflow Updated:_onNodeCreated", node2);
-    };
     const updateProjectTimeLine = async (data) => {
       console.log("updateProjectTimeLine", data);
       if (data.projectId == workSpaceStore.activeProjectId) {
         workSpaceStore.openWorkFlow({ projectId: workSpaceStore.activeProjectId, timeLine: data.timeline });
       }
+    };
+    const checkWorkflow = () => {
+      var _a2, _b2;
+      let data = app$1.graph.serialize();
+      if ((_b2 = (_a2 = data.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId) return;
+      app$1.graph.extra.MontagenProj = {
+        workflowId: nanoid(13)
+      };
     };
     const init2 = () => {
       if (switchRef.value) {
@@ -68176,10 +68318,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               let parentElement = ui.bodyLeft.querySelector(".side-tool-bar-end");
               console.log("parentElement", parentElement, ui.bodyLeft);
               parentElement.insertBefore(switchRef.value, parentElement.firstChild);
-            }, 100);
+            }, 500);
           },
           async beforeRegisterNodeDef(nodeType, nodeData, app2) {
-            chainCallback(nodeType.prototype, "onNodeCreated", handleWorkflowChange);
+            chainCallback(nodeType.prototype, "onNodeCreated", function(node2) {
+              console.log("Workflow Updated:_onNodeCreated", node2, app2.graph);
+            });
             if ((nodeData == null ? void 0 : nodeData.name) == "MontagenImagesPreview") {
               tempNodeType = nodeType;
               console.log("nodeType 获取node 数据", nodeType, nodeData, nodeType.prototype);
@@ -68214,18 +68358,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ref: switchRef,
           class: "cursor-pointer text-center",
           onClick: switchChange
-        }, [
-          createVNode(unref(script$8), {
-            src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAixJREFUaEPtmkuSgjAQhrtB76E30ZvoWsfHbmqwyqFKpmbnY3CtcxK9iRxEyFSkgoQRITFAsHRnEZL++k8/CCDU/Ic1tx+eC2A4W3YIMXYI0NJRGQLgGQTtn6/RntnHKTC0NgcA0tHReGYThdg64/ZNgIG1Punq/bhTXWccOZ5TIA7Q8IP26nvqsRsH1mqHgL3wPx5dZ9RNKjV5X7bOprljKiLBflxuNj4cZ5yi+zHouovp8Z7yQ2tN2HUpgLyLvn1segTJji6WlDtuIL9dbzuEH/8gAJ2sShUeVoACVKmCEoAqVVAGUJUKwgA0gxDDj7IQlyGIOb/WCzwC+nYyg2BgtgIk8ygtI9gAwb9MQ8exoL/kt7R1iXEQykI6F7NcafQJAPBuYSkf8Nri5FIgWYnLN5hfUTiIXwCKJStcAfosQW3OaspkuQoF4Bs4sm/6xI53srJGK2/m0gzhm7ywC0WEX3cx/lRhPJ2jUAWSAMxolSCVAPAgQf+R+KgU4AoiHx9aALCnNJn40AZANj60A4hvq60z6WdlK40BwGv6QTerbmgMQPa1VCCsEflTq14KINiiVVoPAAnDWXBXCiC6XW5lpEoA6t0LPbBdSlcg/jxAT64bvt/PyutZhSt5vdAtdOnXZ8tO4wyeasNLCWJRb8qML1wBGaNE7nkBiHiriLHCChRhhKo5U48W6/Ca9XL2lPaW8nI4xZ39q/KZmnlutSTP9amBGj+VO0vtFfgDiSO5TwE1Yj4AAAAASUVORK5CYII=",
-            width: "20"
-          })
-        ])), [
+        }, _hoisted_2)), [
           [_directive_tooltip, "open MontagenEditor"]
         ])
       ], 64);
     };
   }
 });
+const fontUrl = "/assets/fontello-DmraOOk-.ttf";
+console.log(fontUrl, "fontUrlfontUrlfontUrl");
 const ComfyUIPreset = definePreset(index$3, {
   semantic: {
     primary: index$3["primitive"].blue
@@ -68238,6 +68379,14 @@ maskpage.style.cssText = `
   z-index: 1100;
 `;
 document.body.append(maskpage);
+const style = document.createElement("style");
+style.textContent = `
+  @font-face {
+    font-family: 'fontello';
+    src: url('/extensions/ComfyUI-Montagen${fontUrl}') format('truetype');
+  }
+`;
+document.head.appendChild(style);
 const app = createApp(_sfc_main);
 for (const [key2, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key2, component);

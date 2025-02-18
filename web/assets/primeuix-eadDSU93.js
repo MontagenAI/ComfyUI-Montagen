@@ -325,9 +325,6 @@ function getWidth(element) {
   }
   return 0;
 }
-function isAttributeEquals(element, name, value) {
-  return isElement(element) ? getAttribute(element, name) === value : false;
-}
 function isClient() {
   return !!(typeof window !== "undefined" && window.document && window.document.createElement);
 }
@@ -1058,22 +1055,21 @@ export {
   addClass as G,
   getViewport as H,
   hasClass as I,
-  focus as J,
-  getFirstFocusableElement as K,
-  getLastFocusableElement as L,
-  isFocusableElement as M,
-  blockBodyScroll as N,
-  isAttributeEquals as O,
-  unblockBodyScroll as P,
-  getHeight as Q,
-  getWidth as R,
-  getOffset as S,
-  addStyle as T,
-  isPrintableCharacter as U,
-  getHiddenElementOuterWidth as V,
-  getHiddenElementOuterHeight as W,
-  findLastIndex as X,
-  nestedPosition as Y,
+  getHeight as J,
+  getWidth as K,
+  getOffset as L,
+  focus as M,
+  getFirstFocusableElement as N,
+  getLastFocusableElement as O,
+  isFocusableElement as P,
+  blockBodyScroll as Q,
+  unblockBodyScroll as R,
+  addStyle as S,
+  isPrintableCharacter as T,
+  getHiddenElementOuterWidth as U,
+  getHiddenElementOuterHeight as V,
+  findLastIndex as W,
+  nestedPosition as X,
   ZIndex as Z,
   setAttribute as a,
   isClient as b,
