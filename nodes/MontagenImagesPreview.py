@@ -21,7 +21,9 @@ class MontagenImagesPreview:
     def INPUT_TYPES(s):
         projs = [
             f'{proj.get("name")}{MontagenImagesPreview.PROJECTSPLIT}{proj.get("projectId")}'
-            for proj in MontagenProjManager.instance.getProjects("default")
+            for proj in MontagenProjManager.instance.getProjects(
+                MontagenProjManager.DEFAULTUSERID
+            )
         ]
         projs.insert(0, "")
         return {
@@ -91,7 +93,7 @@ class MontagenImagesPreview:
             raise ValueError("prompt is required.")
         pbar = ProgressBar(100)
         imageLen = len(images)
-        userId = "default"
+        userId = MontagenProjManager.DEFAULTUSERID
         projectId_context = None
         workflowId = None
         if "workflow" in extra_pnginfo:
@@ -99,7 +101,7 @@ class MontagenImagesPreview:
                 extra_pnginfo["workflow"]
                 .get("extra", {})
                 .get(MontagenProjManager.MONTAGENPROJ, {})
-                .get("userId", "default")
+                .get("userId", MontagenProjManager.DEFAULTUSERID)
             )
             projectId_context = (
                 extra_pnginfo["workflow"]
@@ -123,11 +125,11 @@ class MontagenImagesPreview:
         if projectId_context:
             projectId = projectId_context
         if not workflowId:
-            workflowId = "default"
+            workflowId = self.to_base36_random()
         clip_id = f"{unique_id}_{workflowId}"
         has_project_id = True
         if not projectId:
-            projectId = "default"
+            projectId = self.to_base36_random()
             has_project_id = False
         projectId = self.process_project_id(projectId)
         if has_workflow and new_context and has_project_id:

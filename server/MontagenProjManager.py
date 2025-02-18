@@ -18,6 +18,7 @@ class MontagenProjManager:
     MONTAGENPROJ = "MontagenProj"
     DBFILENAME = "projects.db"
     DEFAULTPROJNAME = "default"
+    DEFAULTUSERID = "default"
     FILEADDR = "/Montagen/Proj/{id}/{workflowId}/file/{filename}"
 
     def __init__(self, server: PromptServer):

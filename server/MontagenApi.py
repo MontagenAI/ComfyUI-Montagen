@@ -64,7 +64,8 @@ class MontagenApi:
                     return web.json_response(
                         {"error": "No project json specified"}, status=400
                     )
-            task = asyncio.create_task(self.combineMix(output, data))
+            user_id = server.user_manager.get_request_user_id(request)
+            task = asyncio.create_task(self.combineMix(output, data, user_id))
             taskId = uuid.uuid4().hex()
             taskCache[taskId] = task
             return web.json_response({"success": True, "taskId": taskId}, status=200)
@@ -144,11 +145,7 @@ class MontagenApi:
         # Run the ffmpeg command
         subprocess.run(cmd, check=True, stdout=None, stderr=None)
 
-    async def combineMix(
-        self,
-        output_path: str,
-        projectJson: dict,
-    ):
+    async def combineMix(self, output_path: str, projectJson: dict, user_id: str):
         output_path = os.path.join(folder_paths.get_output_directory(), output_path)
         tempJson = os.path.join(
             folder_paths.get_temp_directory(), f"{uuid.uuid4()}.json"
@@ -167,6 +164,8 @@ class MontagenApi:
                 tempJson,
                 "-o",
                 output_path,
+                "-p",
+                MontagenProjManager.instance.getUserProjectsRoot(user_id),
             ]
             process = await asyncio.create_subprocess_exec(
                 *cmd, stdout=None, stderr=None, cwd=nodeBasePath
