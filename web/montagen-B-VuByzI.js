@@ -68630,13 +68630,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 }
               }
             });
-            mutationObserver.value.observe(ui.bodyLeft, {
-              // childList: true, // 监听子节点的变化
-              attributes: true,
-              // 监听属性的变化
-              subtree: true
-              // 监听整个子树的变化
-            });
+            setTimeout(() => {
+              mutationObserver.value.observe(ui.bodyLeft, {
+                // childList: true, // 监听子节点的变化
+                attributes: true,
+                // 监听属性的变化
+                subtree: true
+                // 监听整个子树的变化
+              });
+            }, 500);
           },
           async beforeRegisterNodeDef(nodeType, nodeData, app2) {
             chainCallback(nodeType.prototype, "onNodeCreated", function(node2) {
