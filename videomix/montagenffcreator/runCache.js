@@ -7,11 +7,20 @@ const lockfile = require("proper-lockfile");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
+function extractParamsFromUrl(url) {
+  const parts = url.split("/");
+  const id = parts[3];
+  const workflowId = parts[4];
+  const filename = parts[6];
+  return { id, workflowId, filename };
+}
+
 const CacheUtil = {
   cacheDir: null,
   baseUrl: null,
   localPath: null,
   metadataPath: null,
+  projectbase: null,
   metadata: {},
   retries: {
     retries: 1800, // 等待半个小时
@@ -20,11 +29,12 @@ const CacheUtil = {
     maxTimeout: 1000, // 最大重试间隔，单位为毫秒
   },
 
-  async init(cacheDir, baseUrl, localPath) {
+  async init(cacheDir, baseUrl, localPath, projectbase) {
     this.cacheDir = cacheDir;
     this.baseUrl = baseUrl;
     this.localPath = localPath;
     this.metadataPath = path.join(cacheDir, "metadata.json");
+    this.projectbase = projectbase;
     await this.loadMetadata();
   },
 
@@ -69,6 +79,19 @@ const CacheUtil = {
   },
 
   async cachedResource(src, progress) {
+    if (!src) return src;
+    if (src.startsWith("//") && this.projectbase) {
+      src = src.substring(1);
+      const { id, workflowId, filename } = extractParamsFromUrl(src);
+      const dstPath = path.join(
+        this.projectbase,
+        id,
+        "output",
+        workflowId,
+        filename
+      );
+      return dstPath;
+    }
     if (!src.startsWith("http")) return src;
     if (this.baseUrl && this.localPath) {
       if (src.startsWith(this.baseUrl)) {

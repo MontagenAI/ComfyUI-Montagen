@@ -35,15 +35,15 @@ export default class CanvasRenderer extends SystemRenderer {
     this._activeBlendMode = null;
     this.renderingToScreen = false;
 
-    const { width, height, quality, anti } = this.options;
+    const { width, height, quality, antialias } = this.options;
     this.resize(width, height);
 
     if (quality) {
       this.context.quality = quality;
     }
 
-    if (anti) {
-      this.context.antialias = anti;
+    if (antialias) {
+      this.context.antialias = antialias;
     }
   }
 

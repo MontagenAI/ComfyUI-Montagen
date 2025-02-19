@@ -384,28 +384,28 @@ class FFCreator extends FFCon {
     await Utils.sleep(delay);
     if (this.destroyed) return;
     this.addRenderEvent();
-    this.initSpine();
+    // this.initSpine();
     this.initzIndex();
     await this.renderer.start(burn);
   }
 
-  initSpine() {
-    let spine = this.children.filter(x => x?.type === 'spine');
-    if (spine.length > 1) throw new Error('Num of Spine must only one!');
-    if (spine.length === 0) {
-      const tracks = this.children.filter(x => x?.type === 'track');
-      if (tracks.length > 0) throw new Error('Track should not exists when Spine absence!');
-      spine = new FFSpine();
-      spine.parent = this;
-      const _children = [spine];
-      this.children.map(child => {
-        // 没有开始时间的video都移到spine里
-        if (child.type === 'video' && !child.conf.start) spine.addChild(child);
-        else _children.push(child);
-      });
-      this.children = _children;
-    }
-  }
+  // initSpine() {
+  //   let spine = this.children.filter(x => x?.type === 'spine');
+  //   if (spine.length > 1) throw new Error('Num of Spine must only one!');
+  //   if (spine.length === 0) {
+  //     const tracks = this.children.filter(x => x?.type === 'track');
+  //     if (tracks.length > 0) throw new Error('Track should not exists when Spine absence!');
+  //     spine = new FFSpine();
+  //     spine.parent = this;
+  //     const _children = [spine];
+  //     this.children.map(child => {
+  //       // 没有开始时间的video都移到spine里
+  //       if (child.type === 'video' && !child.conf.start) spine.addChild(child);
+  //       else _children.push(child);
+  //     });
+  //     this.children = _children;
+  //   }
+  // }
 
   initzIndex() {
     let zIndex = 0;
@@ -577,9 +577,10 @@ class FFCreator extends FFCon {
 
   annotate() {
     if (this.burning) return;
-    const spine = this.children.filter(x => x.type === 'spine')[0];
-    spine.annotate(); // 必须重新annotate，确保正确
-    let maxEndTime = spine.duration;
+    // const spine = this.children.filter(x => x.type === 'spine')[0];
+    // spine.annotate(); // 必须重新annotate，确保正确
+    // let maxEndTime = spine.duration;
+    let maxEndTime = 0;
     // todo: 如果spine里有一个无限循环的，怎么搞？
     this.allNodes // 计算所有video元素(loop以外)的最后结束时间
       // .filter(x => (!x.isVirtual && (!x.loop || x.conf.duration || x.conf.end)))

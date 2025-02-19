@@ -22,7 +22,7 @@ class FFBase extends FFEventer {
     this.retry = 3;
     this.genId();
 
-    if (this.conf.parent && typeof(this.conf.parent.addChild) === 'function') {
+    if (this.conf.parent && typeof this.conf.parent.addChild === 'function') {
       this.conf.parent.addChild(this);
       delete this.conf['parent'];
     }
@@ -47,7 +47,7 @@ class FFBase extends FFEventer {
   }
 
   set groupId(groupId) {
-    return this.conf.groupId = groupId;
+    return (this.conf.groupId = groupId);
   }
 
   get type() {
@@ -55,7 +55,7 @@ class FFBase extends FFEventer {
   }
 
   set type(type) {
-    return this.conf.type = type;
+    return (this.conf.type = type);
   }
 
   get name() {
@@ -63,7 +63,7 @@ class FFBase extends FFEventer {
   }
 
   set name(name) {
-    return this.conf.name = name;
+    return (this.conf.name = name);
   }
 
   get parents() {
@@ -72,26 +72,26 @@ class FFBase extends FFEventer {
   }
 
   getParam(key) {
-    if (!key || typeof(key) !== 'string') return undefined;
+    if (!key || typeof key !== 'string') return undefined;
     if (!key.includes('.')) return this[key];
     let obj = this;
     for (const k of key.split('.')) {
-      if (typeof(obj) !== 'object') return undefined;
+      if (typeof obj !== 'object') return undefined;
       obj = obj[k];
     }
     return obj;
   }
 
   setParam(key, value) {
-    if (!key || typeof(key) !== 'string') throw new Error(`Invalid key: ${key}`);
-    let obj = this.conf;
+    if (!key || typeof key !== 'string') throw new Error(`Invalid key: ${key}`);
+    let obj = this;
     // if (typeof(value) != 'object') value = this.vu(value, this.getParam(key));
-    if (!key.includes('.')) return obj[key] = value;
+    if (!key.includes('.')) return (obj[key] = value);
     let ks = key.split('.');
     for (let i = 0; i < ks.length; i++) {
       const k = ks[i];
-      if (i === ks.length - 1) return obj[k] = value;
-      if (typeof(obj[k]) !== 'object') obj[k] = isNaN(ks[i+1]) ? {} : [];
+      if (i === ks.length - 1) return (obj[k] = value);
+      if (typeof obj[k] !== 'object') obj[k] = isNaN(ks[i + 1]) ? {} : [];
       obj = obj[k];
     }
   }
@@ -100,9 +100,7 @@ class FFBase extends FFEventer {
     return val;
   }
 
-  refresh() {
-    ;
-  }
+  refresh() {}
 
   /**
    * Generate self-increasing unique id
@@ -175,6 +173,7 @@ class FFBase extends FFEventer {
    */
   destroy() {
     super.destroy();
+    this.removeFrameCallback();
     this.conf = null;
     this.parent = null;
     this._creator = null;

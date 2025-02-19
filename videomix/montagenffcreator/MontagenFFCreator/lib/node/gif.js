@@ -12,13 +12,12 @@
  * @class
  */
 
-const { isBrowser } = require("browser-or-node");
+const { isBrowser } = require('browser-or-node');
 const FFImage = require('./image');
 const GifMaterial = require('../material/gif');
 const Utils = require('../utils/utils');
 
 class FFGifImage extends FFImage {
-
   constructor(conf = { list: [] }) {
     super({ type: 'gif', ...conf });
     this.currentTime = 0;
@@ -32,7 +31,7 @@ class FFGifImage extends FFImage {
       startTime: _default.startTime,
       endTime: this.loop ? _default.endTime : undefined,
       duration: this.loop ? undefined : this.material.getDuration(),
-    }
+    };
   }
 
   get speed() {
@@ -46,7 +45,7 @@ class FFGifImage extends FFImage {
 
   createMaterial(conf) {
     const speed = this.confAttr.speed;
-    return new GifMaterial({speed, ...conf});
+    return new GifMaterial({ speed, ...conf });
   }
 
   /**
@@ -57,6 +56,7 @@ class FFGifImage extends FFImage {
    */
   setLoop(loop) {
     this.loop = !!loop;
+    this.conf.loop = this.loop;
     if (this.material) this.material.loop = this.loop;
   }
 
@@ -65,8 +65,8 @@ class FFGifImage extends FFImage {
     if (this.material) this.material.speed = this.confAttr.speed;
   }
 
-  materialTime(absTime, mabs=false) {
-    return this._materialTime(absTime, mabs)
+  materialTime(absTime, mabs = false) {
+    return this._materialTime(absTime, mabs);
   }
 
   async getFrameByTime(matTime) {

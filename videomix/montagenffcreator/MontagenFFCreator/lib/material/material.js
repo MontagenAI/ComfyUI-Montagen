@@ -9,6 +9,7 @@
  * @class
  */
 
+const { isBrowser } = require('browser-or-node');
 const min = require('lodash/min');
 const path = require('path');
 const DateUtil = require('../utils/date');
@@ -43,7 +44,7 @@ class Material {
     this.speed = Math.round(speed * 100) / 100;
   }
 
-  seekTime(time, opt={}) {
+  seekTime(time, opt = {}) {
     const mt = time * this.speed + this.getStartOffset();
     const min = this.forceTrim ? this.getStartOffset() : 0.01; // 0会导致黑屏
     const max = this.forceTrim ? this.getEndOffset() : this.length;
@@ -55,6 +56,11 @@ class Material {
     this.conf = conf;
     this.type = conf.type;
     this.path = conf.cachedSrc || conf.src || conf.path || conf.image || conf.url;
+    if (isBrowser) {
+      if (this.path?.startsWith('//')) {
+        this.path = window.location.origin + this.path.substring(1);
+      }
+    }
     this.parseTimeConf(conf);
   }
 
@@ -65,7 +71,7 @@ class Material {
 
   parseTimeNumber(time) {
     if (typeof time === 'string' && time.includes(':')) return DateUtil.hmsToSeconds(time);
-    time = Number(time)
+    time = Number(time);
     return isNaN(time) ? DEFAULT_TIME : time;
   }
 
@@ -73,9 +79,9 @@ class Material {
     return this.start == DEFAULT_TIME ? 0 : this.start;
   }
 
-  getEndOffset(withConainer=false) {
+  getEndOffset(withConainer = false) {
     const ends = [];
-    const end = this.getStartOffset() + (this.duration * this.speed);
+    const end = this.getStartOffset() + this.duration * this.speed;
     if (withConainer && !isNaN(end)) ends.push(end);
     if (!isNaN(this.length)) ends.push(this.length);
     if (this.end !== DEFAULT_TIME) ends.push(this.end);
@@ -90,7 +96,7 @@ class Material {
     return DateUtil.secondsToHms(this.getEndOffset(true));
   }
 
-  getSliceOpts(withTo=true) {
+  getSliceOpts(withTo = true) {
     let opts = [];
     if (this.getStartOffset() > 0) opts = opts.concat(['-ss', this.getStartHms()]);
     if (this.getEndOffset(true) < this.length && withTo) {
@@ -109,12 +115,13 @@ class Material {
    * @return {number} movie information duration
    * @public
    */
-  getDuration(withContainer=false) { // return dest duration time
+  getDuration(withContainer = false) {
+    // return dest duration time
     return Math.max(0, this.getSourceDuration(withContainer) / this.speed);
   }
 
   getSourceDuration(withContainer) {
-    return this.getEndOffset(withContainer) - this.getStartOffset()
+    return this.getEndOffset(withContainer) - this.getStartOffset();
   }
 
   toString() {

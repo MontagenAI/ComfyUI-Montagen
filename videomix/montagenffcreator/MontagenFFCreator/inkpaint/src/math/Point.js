@@ -23,6 +23,6 @@ export default class Point {
 
   dot(p) {
     this.x = this.x * p.x;
-    this.x = this.y * p.y;
+    this.y = this.y * p.y;
   }
 }

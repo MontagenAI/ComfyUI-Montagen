@@ -51,7 +51,7 @@ class CanvasRenderer extends _SystemRenderer.default {
       width,
       height,
       quality,
-      anti
+      antialias
     } = this.options;
     this.resize(width, height);
 
@@ -59,8 +59,8 @@ class CanvasRenderer extends _SystemRenderer.default {
       this.context.quality = quality;
     }
 
-    if (anti) {
-      this.context.antialias = anti;
+    if (antialias) {
+      this.context.antialias = antialias;
     }
   }
 

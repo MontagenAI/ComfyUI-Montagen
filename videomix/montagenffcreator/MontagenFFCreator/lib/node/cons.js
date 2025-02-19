@@ -15,10 +15,16 @@ const FFClip = require('../core/clip');
 const FFAudio = require('../audio/audio');
 const CanvasUtil = require('../utils/canvas');
 const Utils = require('../utils/utils');
-const { Sprite, Texture, Container, WebGLRenderer, CanvasRenderer, createCanvas } = require('../../inkpaint/lib/index');
+const {
+  Sprite,
+  Texture,
+  Container,
+  WebGLRenderer,
+  CanvasRenderer,
+  createCanvas,
+} = require('../../inkpaint/lib/index');
 
 class FFCon extends FFClip {
-
   get audio() {
     return !this.conf.mute;
   }
@@ -46,14 +52,13 @@ class FFCon extends FFClip {
   }
 
   updateDisplay() {
-    this.display.sortDirty = true;
+    this.display && (this.display.sortDirty = true);
   }
 
   addDisplayChild(childDisplay) {
     // may lock by cover
     if (childDisplay.locked) return;
-    if (childDisplay.parent === this.display
-       && this.display.children.includes(childDisplay)) {
+    if (childDisplay.parent === this.display && this.display.children.includes(childDisplay)) {
       return;
     }
 
@@ -77,14 +82,15 @@ class FFCon extends FFClip {
   }
 
   async getDisplay(time, opt) {
-    const canvas = await this.getPreview(time, {...opt, format: "canvas" });
+    const canvas = await this.getPreview(time, { ...opt, format: 'canvas' });
     if (!canvas) throw new Error('null');
     const display = new Sprite(Texture.fromCanvas(canvas));
     return display;
   }
 
-  async getPreview(time, { width, height, format='jpeg'}={}) {
+  async getPreview(time, { width, height, format = 'jpeg' } = {}) {
     const [w, h] = [this.rootConf('width'), this.rootConf('height')];
+    if (!w || !h) return null;
     const display = new Container();
     display.sortableChildren = true;
     if (this.bgColor) {
@@ -99,7 +105,7 @@ class FFCon extends FFClip {
     }
 
     const covers = [];
-    const draw = async (node, parentDisplay, maskObjet=null) => {
+    const draw = async (node, parentDisplay, maskObjet = null) => {
       let _display = parentDisplay;
       let _maskObj = null;
       if (node && node.onTime(time, false, 'show')) {
@@ -135,14 +141,15 @@ class FFCon extends FFClip {
           await draw(n, _display, _maskObj);
         }
       }
-    }
+    };
 
     try {
       for (const n of this.children) {
         await draw(n, display);
       }
 
-      covers.sort((a, b) => a.zIndex - b.zIndex)
+      covers
+        .sort((a, b) => a.zIndex - b.zIndex)
         .map(cover => {
           // 在循环里addChild会改变children数组，所以拆开赋值
           for (const x of [...display.children]) {
@@ -150,7 +157,6 @@ class FFCon extends FFClip {
             if (x.parent !== cover) cover.addChild(x);
           }
         });
-
     } catch (e) {
       // console.log(e);
       return null;
@@ -173,7 +179,6 @@ class FFCon extends FFClip {
     this.pvRenderer = null;
     super.destroy();
   }
-  
 }
 
 module.exports = FFCon;

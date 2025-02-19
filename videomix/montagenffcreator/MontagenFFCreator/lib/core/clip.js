@@ -1,8 +1,7 @@
-
 const FFBase = require('./base');
 const { DisplayObject, createCanvas } = require('../../inkpaint/lib/index');
 const { dmap } = require('../utils/utils');
-const { isBrowser } = require("browser-or-node");
+const { isBrowser } = require('browser-or-node');
 
 class FFClip extends FFBase {
   constructor(conf = {}) {
@@ -31,10 +30,10 @@ class FFClip extends FFBase {
     return this.creator();
   }
 
-  toJson(asTemplate=false) {
-    const conf = {...this.conf};
+  toJson(asTemplate = false) {
+    const conf = { ...this.conf };
     for (const key of Object.keys(conf)) {
-      if (key.startsWith('cached') && conf[key].startsWith('blob:')) delete conf[key];
+      if (key.startsWith('cached') && conf[key]?.startsWith('blob:')) delete conf[key];
     }
     delete conf.srcFile;
     delete conf.canvasHeight;
@@ -46,15 +45,15 @@ class FFClip extends FFBase {
     if (this.children && Array.isArray(this.children)) {
       conf.children = this.children.map(c => c.toJson(asTemplate));
     }
-    const removeInnerHTML = (x) => {
+    const removeInnerHTML = x => {
       if (!x) return;
       for (const [k, v] of Object.entries(x)) {
         if (k === 'innerHTML') delete x[k];
-        else if (v && typeof(v) === 'object') {
+        else if (v && typeof v === 'object') {
           removeInnerHTML(v);
         }
       }
-    }
+    };
     removeInnerHTML(conf);
     return conf;
   }
@@ -63,7 +62,7 @@ class FFClip extends FFBase {
     this.display = new DisplayObject();
   }
 
-  addChild(child, insertBefore=null) {
+  addChild(child, insertBefore = null) {
     if (Array.isArray(child)) {
       child.map(x => this.addChild(x, insertBefore));
       return this;
@@ -71,13 +70,21 @@ class FFClip extends FFBase {
     if (this.hasChild(child)) {
       if (insertBefore && this.hasChild(insertBefore)) {
         this.children = this.children.filter(x => x.id !== child.id); // remove
-        this.children.splice(this.children.findIndex(x => x.id == insertBefore.id), 0, child);
+        this.children.splice(
+          this.children.findIndex(x => x.id == insertBefore.id),
+          0,
+          child,
+        );
       }
       return this;
     }
     child.parent = this;
     if (insertBefore && this.hasChild(insertBefore)) {
-      this.children.splice(this.children.findIndex(x => x.id == insertBefore.id), 0, child);
+      this.children.splice(
+        this.children.findIndex(x => x.id == insertBefore.id),
+        0,
+        child,
+      );
     } else {
       this.children.push(child);
     }
@@ -100,22 +107,27 @@ class FFClip extends FFBase {
     return this;
   }
 
-  _materialTime(absTime, mabs=false) {
+  _materialTime(absTime, mabs = false) {
     // absTime 是绝对时间，time是当前素材的相对时间, mabs是是否算上素材的ss
-    const matDuration = this.material.getDuration();
+    const matDuration = this.material?.getDuration() || 0;
+    if (absTime > this.absEndTime) {
+      absTime = this.absEndTime;
+    }
     let time = absTime - this.absStartTime;
-
+    if (time < 0 || matDuration == 0) {
+      return { time: 0, loops: 0 };
+    }
     let loops = 0;
     while (this.loop && time >= matDuration) {
       time = Math.max(0.0, time - matDuration);
       loops++;
     }
-    if (mabs) time = this.material.seekTime(time);
+    if (mabs) time = this.material?.seekTime(time) || 0;
     return { time, loops };
   }
 
   addDisplayChild(display) {
-    this.parent.addDisplayChild(display);
+    this.parent?.addDisplayChild(display);
   }
 
   removeDisplayChild(display) {
@@ -125,11 +137,13 @@ class FFClip extends FFBase {
   }
 
   setMask(mask) {
+    if (!this.display) return;
     if (this.display.mask === mask) return;
     this.display.mask = mask;
   }
 
   removeMask() {
+    if (!this.display) return;
     this.display.mask = null;
   }
 
@@ -148,7 +162,7 @@ class FFClip extends FFBase {
   }
 
   touch() {
-    this.onTime(this.creator().currentTime / 1000);
+    this.onTime((this.creator()?.currentTime || 0) / 1000);
   }
 
   addTimelineCallback() {
@@ -177,11 +191,11 @@ class FFClip extends FFBase {
     this.visible = true;
     if (!this.display) return;
     this.display.zIndex = this.zIndex;
-    this.parent.addDisplayChild(this.display);
+    this.parent?.addDisplayChild(this.display);
     if (this.conf.asMask) {
       this.display.binaryMask = !!this.conf.binaryMask;
       this.display.reverseMask = !!this.conf.reverseMask;
-      this.parent.setMask(this.display);
+      this.parent?.setMask(this.display);
     }
   }
 
@@ -192,37 +206,40 @@ class FFClip extends FFBase {
     if (this.conf.asMask) this.parent.removeMask();
   }
 
-  getAudioFrame(timeInMs, bufferSize=1024) {
-    if (!this.audioBuffer || !this.onTime(timeInMs * 0.001, false)) return null
+  getAudioFrame(timeInMs, bufferSize = 1024) {
+    if (!this.audioBuffer || !this.onTime(timeInMs * 0.001, false)) return null;
+    if (!this.creator()) return null;
     const channels = [];
-    const volume = this.volume;
+    const volume = this.volume || 1.0;
     let sampleRate = this.creator().getConf('audioSampleRate');
     if (!isBrowser) sampleRate = sampleRate / this.audioBuffer.numberOfChannels; // 后端的audioContext会平均分配到chanel中
     for (let channel = 0; channel < this.audioBuffer.numberOfChannels; channel++) {
       const audioData = this.audioBuffer.getChannelData(channel);
       const array = new Float32Array(bufferSize);
-      const start = Math.round(timeInMs / 1000 * sampleRate);
+      const start = Math.round((timeInMs / 1000) * sampleRate);
       for (let i = 0; i < array.length; i++) {
         const x = audioData[start + i] || 0;
-        array[i] = (volume !== undefined) ? x * volume : x;
+        array[i] = volume !== undefined ? x * volume : x;
       }
       channels.push(array);
     }
-   return channels
+    return channels;
   }
 
   annotate() {
-    let [ start, end ] = [ this.absStartTime, this.absEndTime ];
-    let [ showStart, showEnd ] = [ start, end ];
+    let [start, end] = [this.absStartTime, this.absEndTime];
+    let [showStart, showEnd] = [start, end];
     const dp = this.displayParent;
+    if (!dp) return;
     if (this.prevSibling?.type === 'trans') {
       if (this.prevSibling.nextSibling === this) {
         // 后面一个node是有可能没对齐的前一个的(不在spine里的情况)
         const dt = start - this.prevSibling.absEndTime;
-        const halfTrans = (this.prevSibling.duration * 0.5) - dt;
+        const halfTrans = this.prevSibling.duration * 0.5 - dt;
         showStart += halfTrans;
         start -= halfTrans;
-      } else { // 可能是trans已经移走了，而脏指针还留着
+      } else {
+        // 可能是trans已经移走了，而脏指针还留着
         this.prevSibling = null;
       }
     } else if (dp.absDrawStartTime < dp.absShowStartTime && start <= dp.absStartTime) {
@@ -235,7 +252,8 @@ class FFClip extends FFBase {
         const halfTrans = this.nextSibling.duration * 0.5;
         showEnd -= halfTrans;
         end += halfTrans;
-      } else { // 可能是trans已经移走了，而脏指针还留着
+      } else {
+        // 可能是trans已经移走了，而脏指针还留着
         this.nextSibling = null;
       }
     } else if (dp.absDrawEndTime > dp.absShowEndTime && end >= dp.absEndTime) {
@@ -249,14 +267,14 @@ class FFClip extends FFBase {
     this.absDrawEndTime = end;
     // console.log('clip.annotate', this.id, {showStart, showEnd, start, end});
     this.addTimelineCallback();
-    this.onTime = (absTime, opDisplay=true, returnVal='draw') => {
+    this.onTime = (absTime, opDisplay = true, returnVal = 'draw') => {
       // draw: 开始渲染，但不要添加display(转场过程有transition负责);
       // show: 添加display，正式开始绘制
-      const show = (absTime >= showStart && absTime < showEnd && this.active);
-      const draw = (absTime >= start && absTime < end && this.active);
+      const show = absTime >= showStart && absTime < showEnd && this.active;
+      const draw = absTime >= start && absTime < end && this.active;
       if (opDisplay) show ? this.show() : this.hide();
       return returnVal === 'draw' ? draw : show;
-    }
+    };
   }
 
   get basezIndex() {
@@ -276,27 +294,35 @@ class FFClip extends FFBase {
   }
 
   get absStartTime() {
-    return this.rt(Math.max(0, this.parent?.absStartTime + this.startTime));
+    return this.rt(Math.max(0, (this.parent?.absStartTime || 0) + this.startTime));
   }
 
   get absEndTime() {
-    return this.rt(this.parent?.absStartTime + this.endTime);
+    let value = this.rt((this.parent?.absStartTime || 0) + this.endTime);
+    if (value < this.absStartTime) {
+      return this.absStartTime + 3;
+    }
+    return value;
   }
 
   get realAbsEndTime() {
-    return this.rt(this.parent?.absStartTime + this.realEndTime);
+    let value = this.rt((this.parent?.absStartTime || 0) + this.realEndTime);
+    if (value < this.absStartTime) {
+      return this.absStartTime + 3;
+    }
+    return value;
   }
 
   get default() {
     return {
       startTime: (this.parent?.type === 'spine' ? this.prevSibling?.endTime : 0) || 0,
       endTime: '100%',
-    }
+    };
   }
 
   get startTime() {
     const start = this.time(this.conf.start);
-    return this.rt(!isNaN(start) ? start : this.time(this.default.startTime));
+    return this.rt(!isNaN(start) ? start : this.time(this.default.startTime) || 0);
   }
 
   get duration() {
@@ -307,12 +333,18 @@ class FFClip extends FFBase {
     const endTime = this.realEndTime;
     if (this.parent?.type !== 'scene') return this.rt(endTime);
     // scene的子元素，会被截到跟它一样长
-    return this.rt(Math.min(this.parent.duration, endTime));
+    let value = this.rt(Math.min(this.parent?.duration || 0, endTime));
+    if (value < this.startTime) {
+      return this.startTime + 3;
+    }
+    return value;
   }
 
   get realEndTime() {
     const end = this.time(this.conf.end);
-    if (!isNaN(end)) return end;
+    if (!isNaN(end)) {
+      if (end > this.startTime) return end;
+    }
     let duration = this.time(this.conf.duration);
     duration = !isNaN(duration) ? duration : this.time(this.default.duration);
     if (!isNaN(duration)) return this.startTime + duration;
@@ -322,8 +354,10 @@ class FFClip extends FFBase {
   }
 
   get flexibleDuration() {
-    return (this.conf.duration && this.conf.duration.toString().includes('%'))
-     || (this.conf.end && this.conf.end.toString().includes('%'));
+    return (
+      (this.conf.duration && this.conf.duration.toString().includes('%')) ||
+      (this.conf.end && this.conf.end.toString().includes('%'))
+    );
   }
 
   get fps() {
@@ -338,16 +372,16 @@ class FFClip extends FFBase {
 
   time(time) {
     const parentDuration = this.parent ? this.parent.duration : NaN;
-    if (typeof(time) === 'string' && time.endsWith('%') && !isNaN(time.replace('%', ''))) {
+    if (typeof time === 'string' && time.endsWith('%') && !isNaN(time.replace('%', ''))) {
       return parentDuration * Number(time.replace('%', '')) * 0.01;
     }
-    if (typeof(time) === 'string') {
+    if (typeof time === 'string') {
       time = time.replaceAll(' ', '');
       if (time.includes('%+') && time.split('%+').length === 2) {
-        const [ head, tail ] = time.split('%+');
+        const [head, tail] = time.split('%+');
         return Number(head) * 0.01 * parentDuration + Number(tail);
       } else if (time.includes('%-') && time.split('%-').length === 2) {
-        const [ head, tail ] = time.split('%-');
+        const [head, tail] = time.split('%-');
         return Number(head) * 0.01 * parentDuration - Number(tail);
       }
     }
@@ -357,7 +391,7 @@ class FFClip extends FFBase {
   px(data) {
     const num = Number(data);
     if (!isNaN(num)) return num;
-    if (typeof(data) === 'object') return dmap(data, x => this.px(x));
+    if (typeof data === 'object') return dmap(data, x => this.px(x));
     const [inum, unit] = this.deunit(data);
     return inum;
   }
@@ -383,7 +417,7 @@ class FFClip extends FFBase {
       ['rpx', this.canvasWidth, 360],
       ['px', 360, 360],
       ['vw', this.canvasWidth, 100],
-      ['vh', this.canvasHeight, 100]
+      ['vh', this.canvasHeight, 100],
     ];
   }
 
@@ -394,7 +428,7 @@ class FFClip extends FFBase {
   enunit(px, unit) {
     const ut = this.units().filter(ut => ut[0] === unit)[0];
     if (!ut) return px;
-    let val = (px * ( ut[2] / ut[1])).toFixed(3);
+    let val = (px * (ut[2] / ut[1])).toFixed(3);
     if (Math.abs(val - Math.round(val)) < 0.001) val = Math.round(val);
     return `${val}${unit}`;
   }
@@ -404,13 +438,13 @@ class FFClip extends FFBase {
    * 返回数组 [num_px, unit]
    */
   deunit(data) {
-    if (typeof(data) === 'number' || !data) return [data, null];
+    if (typeof data === 'number' || !data) return [data, null];
     const lower_data = data.toString().toLowerCase().trim();
     const unit = (input, unit, original, target) => {
       if (!input.endsWith(unit)) return null;
       const inum = Number(input.substring(0, input.length - unit.length));
       return isNaN(inum) ? null : inum * (original / target);
-    }
+    };
 
     for (const ut of this.units()) {
       const inum = unit(lower_data, ut[0], ut[1], ut[2]);
@@ -419,7 +453,7 @@ class FFClip extends FFBase {
     return [data, null];
   }
 
-  subImage(src, frame, { width, height, format='jpeg', fit='cover' }={}) {
+  subImage(src, frame, { width, height, format = 'jpeg', fit = 'cover' } = {}) {
     if (!width && !height) {
       width = frame.w;
       height = frame.h;
@@ -430,11 +464,20 @@ class FFClip extends FFBase {
     }
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext('2d');
-    const f = (fit === 'cover' ? 'max' : 'min');
+    const f = fit === 'cover' ? 'max' : 'min';
     const scale = Math[f](width / frame.w, height / frame.h);
     const [vw, vh] = [frame.w * scale, frame.h * scale];
-    ctx.drawImage(src, frame.x, frame.y, frame.w, frame.h,
-      (width - vw) / 2, (height - vh) / 2, vw, vh);
+    ctx.drawImage(
+      src,
+      frame.x,
+      frame.y,
+      frame.w,
+      frame.h,
+      (width - vw) / 2,
+      (height - vh) / 2,
+      vw,
+      vh,
+    );
     return format === 'canvas' ? canvas : canvas.toDataURL(`image/${format}`);
   }
 
@@ -449,11 +492,13 @@ class FFClip extends FFBase {
   destroy() {
     if (this.destroyed) return;
     this.destroyed = true;
+    this.disable();
     this.removeTimelineCallback();
     this.children.map(child => child.destroy());
     this.children = null;
     if (this.display) this.display.destroy(true);
     this.display = null;
+    this.remove();
     this.parent = null;
     this.prevSibling = null;
     this.nextSibling = null;

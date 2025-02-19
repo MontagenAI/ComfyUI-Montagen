@@ -9,7 +9,7 @@ class FFTrack extends FFClip {
     return true;
   }
 
-  addChild(child, insertBefore=null) {
+  addChild(child, insertBefore = null) {
     super.addChild(child, insertBefore);
     this.refreshSibling();
   }
@@ -33,33 +33,32 @@ class FFTrack extends FFClip {
     }
   }
 
-  createDisplay() { }
+  createDisplay() {}
 
   annotate() {
     const lastChild = this.children[this.children.length - 1];
     this.lastChildEndTime = lastChild ? lastChild.endTime : 0;
   }
 
-  get absStartTime() {
-    return 0;
-  }
+  // get absStartTime() {
+  //   return 0;
+  // }
 
-  get absEndTime() {
-    return this.endTime;
-  }
+  // get absEndTime() {
+  //   return this.absStartTime + this.endTime;
+  // }
 
-  get startTime() {
-    return 0;
-  }
+  // get startTime() {
+  //   return 0;
+  // }
 
-  get duration() {
-    return this.endTime - this.startTime;
-  }
+  // get duration() {
+  //   return this.endTime - this.startTime;
+  // }
 
-  get endTime() {
+  get realEndTime() {
     return this.lastChildEndTime;
   }
-
 }
 
 module.exports = FFTrack;

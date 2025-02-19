@@ -86,6 +86,7 @@ class Renderer extends FFBase {
     const ticker = 40;
     let aa = 0;
     const render = async () => {
+      this.renderFrameNumber = undefined;
       if (!creator) return; // may destroy
       let adjust = this.mainDelay();
       let currentTime = this.parent.currentTime;
@@ -107,7 +108,7 @@ class Renderer extends FFBase {
         // console.log('time', Math.max(ticker + adjust, 1), Math.max(1, ticker - adjust) * playRate);
         // todo: wait or not ???
         await this.timeline.nextFrame(Math.max(1, ticker - adjust) * playRate);
-        window.requestAnimationFrame(render);
+        this.renderFrameNumber = window.requestAnimationFrame(render);
         // setTimeout(render, Math.max(ticker + adjust, 1));
       } else { // pause
         this.playing = false;
@@ -421,6 +422,10 @@ class Renderer extends FFBase {
   }
 
   destroy() {
+    if(this.renderFrameNumber && window)
+    {
+      window.cancelAnimationFrame(this.renderFrameNumber);
+    }
     this.stream && this.stream.destroy();
     this.timeline && this.timeline.destroy();
     this.synthesis && this.synthesis.destroy();
