@@ -68618,6 +68618,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             console.log("onUIReady", ui);
             window.myUI = ui;
             mutationObserver.value = new MutationObserver((mutationsList) => {
+              console.log("mutationsList_dom发生了变化", mutationsList);
               for (let mutation of mutationsList) {
                 if (mutation.type === "attributes") {
                   let width = getComputedStyle(mutation.target).getPropertyValue("--sidebar-width");
