@@ -3,55 +3,86 @@
   try {
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode(`[data-v-466e15aa] .left-tool-button {\r
+      elementStyle.appendChild(document.createTextNode(`@charset "UTF-8";:root{--el-color-white:#ffffff;--el-color-black:#000000;--el-color-primary-rgb:64,158,255;--el-color-success-rgb:103,194,58;--el-color-warning-rgb:230,162,60;--el-color-danger-rgb:245,108,108;--el-color-error-rgb:245,108,108;--el-color-info-rgb:144,147,153;--el-font-size-extra-large:20px;--el-font-size-large:18px;--el-font-size-medium:16px;--el-font-size-base:14px;--el-font-size-small:13px;--el-font-size-extra-small:12px;--el-font-family:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;--el-font-weight-primary:500;--el-font-line-height-primary:24px;--el-index-normal:1;--el-index-top:1000;--el-index-popper:2000;--el-border-radius-base:4px;--el-border-radius-small:2px;--el-border-radius-round:20px;--el-border-radius-circle:100%;--el-transition-duration:0.3s;--el-transition-duration-fast:0.2s;--el-transition-function-ease-in-out-bezier:cubic-bezier(0.645,0.045,0.355,1);--el-transition-function-fast-bezier:cubic-bezier(0.23,1,0.32,1);--el-transition-all:all var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);--el-transition-fade:opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-md-fade:transform var(--el-transition-duration) var(--el-transition-function-fast-bezier),opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-fade-linear:opacity var(--el-transition-duration-fast) linear;--el-transition-border:border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-box-shadow:box-shadow var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-color:color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-component-size-large:40px;--el-component-size:32px;--el-component-size-small:24px;color-scheme:light;--el-color-primary:#409eff;--el-color-primary-light-3:rgb(121.3,187.1,255);--el-color-primary-light-5:rgb(159.5,206.5,255);--el-color-primary-light-7:rgb(197.7,225.9,255);--el-color-primary-light-8:rgb(216.8,235.6,255);--el-color-primary-light-9:rgb(235.9,245.3,255);--el-color-primary-dark-2:rgb(51.2,126.4,204);--el-color-success:#67c23a;--el-color-success-light-3:rgb(148.6,212.3,117.1);--el-color-success-light-5:rgb(179,224.5,156.5);--el-color-success-light-7:rgb(209.4,236.7,195.9);--el-color-success-light-8:rgb(224.6,242.8,215.6);--el-color-success-light-9:rgb(239.8,248.9,235.3);--el-color-success-dark-2:rgb(82.4,155.2,46.4);--el-color-warning:#e6a23c;--el-color-warning-light-3:rgb(237.5,189.9,118.5);--el-color-warning-light-5:rgb(242.5,208.5,157.5);--el-color-warning-light-7:rgb(247.5,227.1,196.5);--el-color-warning-light-8:rgb(250,236.4,216);--el-color-warning-light-9:rgb(252.5,245.7,235.5);--el-color-warning-dark-2:rgb(184,129.6,48);--el-color-danger:#f56c6c;--el-color-danger-light-3:rgb(248,152.1,152.1);--el-color-danger-light-5:rgb(250,181.5,181.5);--el-color-danger-light-7:rgb(252,210.9,210.9);--el-color-danger-light-8:rgb(253,225.6,225.6);--el-color-danger-light-9:rgb(254,240.3,240.3);--el-color-danger-dark-2:rgb(196,86.4,86.4);--el-color-error:#f56c6c;--el-color-error-light-3:rgb(248,152.1,152.1);--el-color-error-light-5:rgb(250,181.5,181.5);--el-color-error-light-7:rgb(252,210.9,210.9);--el-color-error-light-8:rgb(253,225.6,225.6);--el-color-error-light-9:rgb(254,240.3,240.3);--el-color-error-dark-2:rgb(196,86.4,86.4);--el-color-info:#909399;--el-color-info-light-3:rgb(177.3,179.4,183.6);--el-color-info-light-5:rgb(199.5,201,204);--el-color-info-light-7:rgb(221.7,222.6,224.4);--el-color-info-light-8:rgb(232.8,233.4,234.6);--el-color-info-light-9:rgb(243.9,244.2,244.8);--el-color-info-dark-2:rgb(115.2,117.6,122.4);--el-bg-color:#ffffff;--el-bg-color-page:#f2f3f5;--el-bg-color-overlay:#ffffff;--el-text-color-primary:#303133;--el-text-color-regular:#606266;--el-text-color-secondary:#909399;--el-text-color-placeholder:#a8abb2;--el-text-color-disabled:#c0c4cc;--el-border-color:#dcdfe6;--el-border-color-light:#e4e7ed;--el-border-color-lighter:#ebeef5;--el-border-color-extra-light:#f2f6fc;--el-border-color-dark:#d4d7de;--el-border-color-darker:#cdd0d6;--el-fill-color:#f0f2f5;--el-fill-color-light:#f5f7fa;--el-fill-color-lighter:#fafafa;--el-fill-color-extra-light:#fafcff;--el-fill-color-dark:#ebedf0;--el-fill-color-darker:#e6e8eb;--el-fill-color-blank:#ffffff;--el-box-shadow:0px 12px 32px 4px rgba(0,0,0,0.04),0px 8px 20px rgba(0,0,0,0.08);--el-box-shadow-light:0px 0px 12px rgba(0,0,0,0.12);--el-box-shadow-lighter:0px 0px 6px rgba(0,0,0,0.12);--el-box-shadow-dark:0px 16px 48px 16px rgba(0,0,0,0.08),0px 12px 32px rgba(0,0,0,0.12),0px 8px 16px -8px rgba(0,0,0,0.16);--el-disabled-bg-color:var(--el-fill-color-light);--el-disabled-text-color:var(--el-text-color-placeholder);--el-disabled-border-color:var(--el-border-color-light);--el-overlay-color:rgba(0,0,0,0.8);--el-overlay-color-light:rgba(0,0,0,0.7);--el-overlay-color-lighter:rgba(0,0,0,0.5);--el-mask-color:rgba(255,255,255,0.9);--el-mask-color-extra-light:rgba(255,255,255,0.3);--el-border-width:1px;--el-border-style:solid;--el-border-color-hover:var(--el-text-color-disabled);--el-border:var(--el-border-width) var(--el-border-style) var(--el-border-color);--el-svg-monochrome-grey:var(--el-border-color)}.fade-in-linear-enter-active,.fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.fade-in-linear-enter-from,.fade-in-linear-leave-to{opacity:0}.el-fade-in-linear-enter-active,.el-fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.el-fade-in-linear-enter-from,.el-fade-in-linear-leave-to{opacity:0}.el-fade-in-enter-active,.el-fade-in-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-fade-in-enter-from,.el-fade-in-leave-active{opacity:0}.el-zoom-in-center-enter-active,.el-zoom-in-center-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-zoom-in-center-enter-from,.el-zoom-in-center-leave-active{opacity:0;transform:scaleX(0)}.el-zoom-in-top-enter-active,.el-zoom-in-top-leave-active{opacity:1;transform:scaleY(1);transform-origin:center top;transition:var(--el-transition-md-fade)}.el-zoom-in-top-enter-active[data-popper-placement^=top],.el-zoom-in-top-leave-active[data-popper-placement^=top]{transform-origin:center bottom}.el-zoom-in-top-enter-from,.el-zoom-in-top-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-bottom-enter-active,.el-zoom-in-bottom-leave-active{opacity:1;transform:scaleY(1);transform-origin:center bottom;transition:var(--el-transition-md-fade)}.el-zoom-in-bottom-enter-from,.el-zoom-in-bottom-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-left-enter-active,.el-zoom-in-left-leave-active{opacity:1;transform:scale(1);transform-origin:top left;transition:var(--el-transition-md-fade)}.el-zoom-in-left-enter-from,.el-zoom-in-left-leave-active{opacity:0;transform:scale(.45)}.collapse-transition{transition:var(--el-transition-duration) height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.el-collapse-transition-enter-active,.el-collapse-transition-leave-active{transition:var(--el-transition-duration) max-height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.horizontal-collapse-transition{transition:var(--el-transition-duration) width ease-in-out,var(--el-transition-duration) padding-left ease-in-out,var(--el-transition-duration) padding-right ease-in-out}.el-list-enter-active,.el-list-leave-active{transition:all 1s}.el-list-enter-from,.el-list-leave-to{opacity:0;transform:translateY(-30px)}.el-list-leave-active{position:absolute!important}.el-opacity-transition{transition:opacity var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-icon-loading{animation:rotating 2s linear infinite}.el-icon--right{margin-left:5px}.el-icon--left{margin-right:5px}@keyframes rotating{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.el-icon{--color:inherit;align-items:center;display:inline-flex;height:1em;justify-content:center;line-height:1em;position:relative;width:1em;fill:currentColor;color:var(--color);font-size:inherit}.el-icon.is-loading{animation:rotating 2s linear infinite}.el-icon svg{height:1em;width:1em}.el-form{--el-form-label-font-size:var(--el-font-size-base);--el-form-inline-content-width:220px}.el-form--inline .el-form-item{display:inline-flex;margin-right:32px;vertical-align:middle}.el-form--inline.el-form--label-top{display:flex;flex-wrap:wrap}.el-form--inline.el-form--label-top .el-form-item{display:block}.el-form-item{display:flex;--font-size:14px;margin-bottom:18px}.el-form-item .el-form-item{margin-bottom:0}.el-form-item .el-input__validateIcon{display:none}.el-form-item--large{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:22px}.el-form-item--large .el-form-item__label{height:40px;line-height:40px}.el-form-item--large .el-form-item__content{line-height:40px}.el-form-item--large .el-form-item__error{padding-top:4px}.el-form-item--default{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--default .el-form-item__label{height:32px;line-height:32px}.el-form-item--default .el-form-item__content{line-height:32px}.el-form-item--default .el-form-item__error{padding-top:2px}.el-form-item--small{--font-size:12px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--small .el-form-item__label{height:24px;line-height:24px}.el-form-item--small .el-form-item__content{line-height:24px}.el-form-item--small .el-form-item__error{padding-top:2px}.el-form-item--label-left .el-form-item__label{justify-content:flex-start}.el-form-item--label-top{display:block}.el-form-item--label-top .el-form-item__label{display:inline-block;height:auto;line-height:22px;margin-bottom:8px;text-align:left;vertical-align:middle}.el-form-item__label-wrap{display:flex}.el-form-item__label{align-items:flex-start;box-sizing:border-box;color:var(--el-text-color-regular);display:inline-flex;flex:0 0 auto;font-size:var(--el-form-label-font-size);height:32px;justify-content:flex-end;line-height:32px;padding:0 12px 0 0}.el-form-item__content{align-items:center;display:flex;flex:1;flex-wrap:wrap;font-size:var(--font-size);line-height:32px;min-width:0;position:relative}.el-form-item__content .el-input-group{vertical-align:top}.el-form-item__error{color:var(--el-color-danger);font-size:12px;left:0;line-height:1;padding-top:2px;position:absolute;top:100%}.el-form-item__error--inline{display:inline-block;left:auto;margin-left:10px;position:relative;top:auto}.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label-wrap>.el-form-item__label:before,.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label:before{color:var(--el-color-danger);content:"*";margin-right:4px}.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label-wrap>.el-form-item__label:after,.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label:after{color:var(--el-color-danger);content:"*";margin-left:4px}.el-form-item.is-error .el-input-tag__wrapper,.el-form-item.is-error .el-input-tag__wrapper.is-focus,.el-form-item.is-error .el-input-tag__wrapper:focus,.el-form-item.is-error .el-input-tag__wrapper:hover,.el-form-item.is-error .el-input__wrapper,.el-form-item.is-error .el-input__wrapper.is-focus,.el-form-item.is-error .el-input__wrapper:focus,.el-form-item.is-error .el-input__wrapper:hover,.el-form-item.is-error .el-select__wrapper,.el-form-item.is-error .el-select__wrapper.is-focus,.el-form-item.is-error .el-select__wrapper:focus,.el-form-item.is-error .el-select__wrapper:hover,.el-form-item.is-error .el-textarea__inner,.el-form-item.is-error .el-textarea__inner.is-focus,.el-form-item.is-error .el-textarea__inner:focus,.el-form-item.is-error .el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-form-item.is-error .el-input-group__append .el-input__wrapper,.el-form-item.is-error .el-input-group__prepend .el-input__wrapper{box-shadow:inset 0 0 0 1px transparent}.el-form-item.is-error .el-input-group__append .el-input__validateIcon,.el-form-item.is-error .el-input-group__prepend .el-input__validateIcon{display:none}.el-form-item.is-error .el-input__validateIcon{color:var(--el-color-danger)}.el-form-item--feedback .el-input__validateIcon{display:inline-flex}.el-textarea{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;display:inline-block;font-size:var(--el-font-size-base);position:relative;vertical-align:bottom;width:100%}.el-textarea__inner{-webkit-appearance:none;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));display:block;font-family:inherit;font-size:inherit;line-height:1.5;padding:5px 11px;position:relative;resize:vertical;transition:var(--el-transition-box-shadow);width:100%}.el-textarea__inner::-moz-placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-textarea__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-textarea__inner:focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset;outline:none}.el-textarea .el-input__count{background:var(--el-fill-color-blank);bottom:5px;color:var(--el-color-info);font-size:12px;line-height:14px;position:absolute;right:10px}.el-textarea.is-disabled .el-textarea__inner{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;color:var(--el-disabled-text-color);cursor:not-allowed}.el-textarea.is-disabled .el-textarea__inner::-moz-placeholder{color:var(--el-text-color-placeholder)}.el-textarea.is-disabled .el-textarea__inner::placeholder{color:var(--el-text-color-placeholder)}.el-textarea.is-exceed .el-textarea__inner{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-textarea.is-exceed .el-input__count{color:var(--el-color-danger)}.el-input{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;--el-input-height:var(--el-component-size);box-sizing:border-box;display:inline-flex;font-size:var(--el-font-size-base);line-height:var(--el-input-height);position:relative;vertical-align:middle;width:var(--el-input-width)}.el-input::-webkit-scrollbar{width:6px;z-index:11}.el-input::-webkit-scrollbar:horizontal{height:6px}.el-input::-webkit-scrollbar-thumb{background:var(--el-text-color-disabled);border-radius:5px;width:6px}.el-input::-webkit-scrollbar-corner,.el-input::-webkit-scrollbar-track{background:var(--el-fill-color-blank)}.el-input::-webkit-scrollbar-track-piece{background:var(--el-fill-color-blank);width:6px}.el-input .el-input__clear,.el-input .el-input__password{color:var(--el-input-icon-color);cursor:pointer;font-size:14px}.el-input .el-input__clear:hover,.el-input .el-input__password:hover{color:var(--el-input-clear-hover-color)}.el-input .el-input__count{align-items:center;color:var(--el-color-info);display:inline-flex;font-size:12px;height:100%}.el-input .el-input__count .el-input__count-inner{background:var(--el-fill-color-blank);display:inline-block;line-height:normal;padding-left:8px}.el-input__wrapper{align-items:center;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;cursor:text;display:inline-flex;flex-grow:1;justify-content:center;padding:1px 11px;transform:translateZ(0);transition:var(--el-transition-box-shadow)}.el-input__wrapper:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-input__wrapper.is-focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset}.el-input__inner{--el-input-inner-height:calc(var(--el-input-height, 32px) - 2px);-webkit-appearance:none;background:none;border:none;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));flex-grow:1;font-size:inherit;height:var(--el-input-inner-height);line-height:var(--el-input-inner-height);outline:none;padding:0;width:100%}.el-input__inner:focus{outline:none}.el-input__inner::-moz-placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-input__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-input__inner[type=password]::-ms-reveal{display:none}.el-input__inner[type=number]{line-height:1}.el-input__prefix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__prefix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__prefix-inner>:last-child{margin-right:8px}.el-input__prefix-inner>:first-child,.el-input__prefix-inner>:first-child.el-input__icon{margin-left:0}.el-input__suffix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__suffix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__suffix-inner>:first-child{margin-left:8px}.el-input .el-input__icon{align-items:center;display:flex;height:inherit;justify-content:center;line-height:inherit;margin-left:8px;transition:all var(--el-transition-duration)}.el-input__validateIcon{pointer-events:none}.el-input.is-active .el-input__wrapper{box-shadow:0 0 0 1px var(--el-input-focus-color, ) inset}.el-input.is-disabled{cursor:not-allowed}.el-input.is-disabled .el-input__wrapper{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;cursor:not-allowed}.el-input.is-disabled .el-input__inner{color:var(--el-disabled-text-color);-webkit-text-fill-color:var(--el-disabled-text-color);cursor:not-allowed}.el-input.is-disabled .el-input__inner::-moz-placeholder{color:var(--el-text-color-placeholder)}.el-input.is-disabled .el-input__inner::placeholder{color:var(--el-text-color-placeholder)}.el-input.is-disabled .el-input__icon{cursor:not-allowed}.el-input.is-exceed .el-input__wrapper{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-input.is-exceed .el-input__suffix .el-input__count{color:var(--el-color-danger)}.el-input--large{--el-input-height:var(--el-component-size-large);font-size:14px}.el-input--large .el-input__wrapper{padding:1px 15px}.el-input--large .el-input__inner{--el-input-inner-height:calc(var(--el-input-height, 40px) - 2px)}.el-input--small{--el-input-height:var(--el-component-size-small);font-size:12px}.el-input--small .el-input__wrapper{padding:1px 7px}.el-input--small .el-input__inner{--el-input-inner-height:calc(var(--el-input-height, 24px) - 2px)}.el-input-group{align-items:stretch;display:inline-flex;width:100%}.el-input-group__append,.el-input-group__prepend{align-items:center;background-color:var(--el-fill-color-light);border-radius:var(--el-input-border-radius);color:var(--el-color-info);display:inline-flex;justify-content:center;min-height:100%;padding:0 20px;position:relative;white-space:nowrap}.el-input-group__append:focus,.el-input-group__prepend:focus{outline:none}.el-input-group__append .el-button,.el-input-group__append .el-select,.el-input-group__prepend .el-button,.el-input-group__prepend .el-select{display:inline-block;margin:0 -20px}.el-input-group__append button.el-button,.el-input-group__append button.el-button:hover,.el-input-group__append div.el-select .el-select__wrapper,.el-input-group__append div.el-select:hover .el-select__wrapper,.el-input-group__prepend button.el-button,.el-input-group__prepend button.el-button:hover,.el-input-group__prepend div.el-select .el-select__wrapper,.el-input-group__prepend div.el-select:hover .el-select__wrapper{background-color:transparent;border-color:transparent;color:inherit}.el-input-group__append .el-button,.el-input-group__append .el-input,.el-input-group__prepend .el-button,.el-input-group__prepend .el-input{font-size:inherit}.el-input-group__prepend{border-bottom-right-radius:0;border-right:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group__append{border-left:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-group--prepend>.el-input__wrapper,.el-input-group__append{border-bottom-left-radius:0;border-top-left-radius:0}.el-input-group--prepend .el-input-group__prepend .el-select .el-select__wrapper{border-bottom-right-radius:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group--append>.el-input__wrapper{border-bottom-right-radius:0;border-top-right-radius:0}.el-input-group--append .el-input-group__append .el-select .el-select__wrapper{border-bottom-left-radius:0;border-top-left-radius:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-hidden{display:none!important}
+[data-v-07cb0181] .left-tool-button {\r
   /* Your styles here */\r
-  height: 40px;\r
-  width: 40px;\r
+  width: var(--sidebar-width);\r
+  height: var(--sidebar-width);\r
   border-radius: 0 !important;\r
-  margin-bottom: 10px;
-&.left-tool-button-select[data-v-466e15aa] {\r
-    border-left: 2px solid #09AAFE;\r
-    box-sizing: border-box;
+  margin-bottom: 10px;\r
+  box-sizing: border-box;
+&.left-tool-button-select[data-v-07cb0181] {\r
+    border-left: 4px solid var(--p-button-text-primary-color);
 }
 }\r
-
-.workflow[data-v-cbe03f32] {\r
-  /* Add your component styles here */
-}
-.workflow-header[data-v-cbe03f32] {\r
-  border-bottom: 1px solid var(--p-button-text-primary-color);
-}
-.list-item[data-v-cbe03f32] {\r
-  padding: 12px 4px;
-}
-.list-item.active[data-v-cbe03f32] {\r
-  background-color: var(--p-button-text-primary-color);\r
-  color: var(--p-button-text-color);
-}\r
-[data-v-8294902c] .split-container {
+[data-v-e529e31c] .cus-input .el-input__wrapper {
+  background-color: #3b3b3b;
+  color: #e0e0e0;
+  box-shadow: none;
+}[data-v-56a75a58] .split-container {
   border: none;
   border-radius: 0;
   width: 100%;
   height: 100%;
 }
-[data-v-8294902c] .split-container .split-gutter {
+[data-v-56a75a58] .split-container .split-gutter {
   background: #181818;
 }
-[data-v-8294902c] .split-container.left-hidden .split-panel-left {
+[data-v-56a75a58] .split-container.left-hidden .split-panel-left {
   display: none;
 }
-[data-v-8294902c] .split-container.left-hidden > .split-gutter {
+[data-v-56a75a58] .split-container.left-hidden > .split-gutter {
   display: none;
+}.status-indicator[data-v-6bf4b881] {
+  position: absolute;
+  font-weight: 700;
+  font-size: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.imagen-header[data-v-0dd8d624] {\r
+.workflow-tab .close-button[data-v-6bf4b881] {
+  visibility: hidden;
+}
+.workflow-tab .close-button.p-button-text.p-button-secondary[data-v-6bf4b881]:not(:disabled):hover {
+  background: transparent;
+}
+.workflow-tab:hover .close-button[data-v-6bf4b881] {
+  visibility: visible;
+}
+.workflow-tab:hover .status-indicator[data-v-6bf4b881] {
+  display: none;
+}.my-inline[data-v-ae1b9382] {
+  height: 100%;
+}
+[data-v-ae1b9382] .p-togglebutton {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  flex-shrink: 0;
+  position: relative;
+  border: 0;
+}
+[data-v-ae1b9382] .p-togglebutton.p-togglebutton-checked {
+  border-bottom: 2px solid var(--p-button-text-primary-color) !important;
+  color: var(--p-button-text-primary-color);
+  background: transparent;
+}
+[data-v-ae1b9382] .p-togglebutton.p-togglebutton-checked::before {
+  background: transparent;
+}
+.imagen-header[data-v-308f6357] {\r
   font-size: 0.8em;
 }
-.imagen-header h1[data-v-0dd8d624] {\r
+.imagen-header h1[data-v-308f6357] {\r
   font-size: 1.2em;\r
   color: #333;
+}
+.flex-grow[data-v-308f6357] {\r
+  flex: 1;
 }\r
 
-.new-imagen-box[data-v-9dc71f70] {\r
+.new-imagen-box[data-v-05d66023] {\r
   position: fixed;\r
   width: 100%;\r
   height: 100vh;\r
@@ -60,10 +91,10 @@
   left: 0;\r
   background: #262626;\r
   color: #fff;\r
-  grid-template-columns: 40px 1fr;\r
+  grid-template-columns: auto 1fr;\r
   grid-template-rows: 40px 1fr;
 }
-.new-imagen-box .image-box-top[data-v-9dc71f70] {\r
+.new-imagen-box .image-box-top[data-v-05d66023] {\r
   grid-row: 1;\r
   grid-column: 1/span 2;\r
   background-color: #181818;\r
@@ -71,23 +102,36 @@
   display: flex;\r
   border-bottom: 1px solid #2b2b2b;
 }
-.new-imagen-box .image-box-left[data-v-9dc71f70] {\r
+.new-imagen-box .image-box-left[data-v-05d66023] {\r
   grid-row: 2;\r
   grid-column: 1;\r
   background-color: #181818;\r
   order: 2;\r
   display: flex;\r
-  border-right: 1px solid #2b2b2b;
+  border-right: 1px solid #2b2b2b;\r
+  width: var(--sidebar-width);\r
+  /* box-sizing: border-box; */
 }
-.new-imagen-box .image-box-container[data-v-9dc71f70] {\r
+.new-imagen-box .image-box-container[data-v-05d66023] {\r
   grid-row: 2;\r
   grid-column: 2;\r
   background-color: goldenrod;\r
-  width: 100%;\r
+  /* width: 100%; */\r
   height: 100%;\r
   order: 3;\r
   display: flex;\r
   overflow: hidden;
+}\r
+
+.workflow-header[data-v-ed0c3ea4] {\r
+  border-bottom: 1px solid var(--p-button-text-primary-color);
+}
+.list-item[data-v-ed0c3ea4] {\r
+  padding: 12px 4px;
+}
+.list-item.active[data-v-ed0c3ea4] {\r
+  background-color: var(--p-button-text-primary-color);\r
+  color: var(--p-button-text-color);
 }\r
 .hideBox {
   opacity: 0;
@@ -133,6 +177,20 @@
 \r
   /* Uncomment for 3D effect */\r
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\r
+}\r
+\r
+.icon-montagen-xs:before {\r
+  content: '\\e800';\r
+}\r
+\r
+\r
+.icon-montagen-s:before {\r
+  content: '\\e801';\r
+}\r
+\r
+\r
+.icon-montagen:before {\r
+  content: '\\e802';\r
 }`));
       document.head.appendChild(elementStyle);
     }
@@ -141,12 +199,13 @@
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { d as defineComponent, o as openBlock, c as createElementBlock, a as createBaseVNode, J as Fragment, K as renderList$1, Q as unref, D as withDirectives, E as createBlock, r as ref$3, l as inject, x as computed, A as toDisplayString, M as createVNode, G as normalizeClass, F as withCtx, w as watch, f as reactive, e as onMounted, R as onBeforeUnmount, z as createTextVNode$1, S as provide, U as createApp } from "./assets/vue-D_efeY-4.js";
-import { d as defineStore, s as storeToRefs, a as script, T as Tooltip, u as useToast, b as useConfirm, n as nanoid, c as script$1, e as script$2, f as script$3, g as script$4, h as script$5, i as script$6, j as script$7, C as ConfirmationService, k as ToastService, D as DialogService, l as createPinia } from "./assets/vendor-gnMPjc8r.js";
-import "./assets/lodash-BBlPwZSq.js";
-import { l as definePreset, m as index$3, P as PrimeVue } from "./assets/primevue-DbNtaxDr.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-DK_Lih3N.js";
-import "./assets/primeuix-eadDSU93.js";
+import { d as defineComponent, o as openBlock, c as createElementBlock, a as createBaseVNode, J as Fragment, K as renderList$1, L as unref, D as withDirectives, E as createBlock, x as computed, f as reactive, r as ref$3, e as onMounted, W as createVNode, F as withCtx, z as createTextVNode$1, w as watch, $ as onBeforeUnmount, X as withModifiers, A as toDisplayString, m as mergeProps$1, a6 as pushScopeId, a7 as popScopeId, _ as provide, a3 as Teleport, G as normalizeClass, a8 as createApp } from "./assets/vue-CxRul2Bu.js";
+import { d as defineStore, s as storeToRefs, a as script, T as Tooltip, E as ElInput, b as ElFormItem, c as ElForm, e as script$1, f as script$2, g as script$3, h as script$4, i as script$5, u as useDialog, j as script$6, k as script$7, n as nanoid, l as script$8, m as useToast, D as DialogService, o as createPinia, C as ConfirmationService, p as ToastService } from "./assets/vendor-DJIDRtSJ.js";
+import "./assets/lodash-BQcLy69B.js";
+import { P as PrimeVue, h as definePreset, i as index$3 } from "./assets/primevue-ZQi-HXfF.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-DNt-Okv4.js";
+import "./assets/primeuix-C3PP9pnA.js";
+import "./assets/vueuse-BW3e5Vr9.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
     selectFiles: [{
@@ -202,7 +261,7 @@ const useMenuStore = defineStore("menuStore", {
     }
   }
 });
-let app$1 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? void 0 : _b.app) || null;
+let app$2 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? void 0 : _b.app) || null;
 ((_d = (_c = window.comfyAPI) == null ? void 0 : _c.api) == null ? void 0 : _d.api) || null;
 ((_f = (_e = window.comfyAPI) == null ? void 0 : _e.ui) == null ? void 0 : _f.$el) || null;
 ((_h = (_g = window.comfyAPI) == null ? void 0 : _g.dialog) == null ? void 0 : _h.ComfyDialog) || null;
@@ -212,12 +271,12 @@ let app$1 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? v
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
-      {
-        name: "home",
-        tips: "anything is possible",
-        selected: true,
-        icon: "pi pi-home"
-      },
+      // {
+      //   name: 'home',
+      //   tips: 'anything is possible',
+      //   selected: true,
+      //   icon: 'pi pi-home'
+      // },
       {
         name: "mark",
         tips: "anything is bookmark",
@@ -245,8 +304,8 @@ const useLeftToolStore = defineStore("leftToolStore", {
     }
   }
 });
-const _hoisted_1$5 = { class: "toolbar" };
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const _hoisted_1$8 = { class: "toolbar" };
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "leftToolbar",
   setup(__props) {
     const leftToolStore = useLeftToolStore();
@@ -257,7 +316,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$5, [
+      return openBlock(), createElementBlock("div", _hoisted_1$8, [
         createBaseVNode("nav", null, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(menues), (item) => {
             return withDirectives((openBlock(), createBlock(unref(script), {
@@ -286,7 +345,7 @@ const _export_sfc = (sfc, props2) => {
   }
   return target2;
 };
-const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-466e15aa"]]);
+const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-07cb0181"]]);
 const blankGraph = {
   last_node_id: 0,
   last_link_id: 0,
@@ -67563,10 +67622,23 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     // 工作流ID与工作流信息的映射
     activeProjectId: "",
     // 当前激活的项目ID
-    timeLine: {}
+    timeLine: {},
     // 当前时间线
+    tabbsProject: [],
+    // 已经点击打开过的项目列表
+    activeProject: {}
+    // 当前选中的项目
   }),
   actions: {
+    addTabs(project) {
+      this.activeProject = project;
+      let temp = this.tabbsProject.find((item) => item.projectId == project.projectId);
+      if (temp) return;
+      this.tabbsProject.push(project);
+    },
+    setActiveProject(project) {
+      this.activeProject = project;
+    },
     initProjectMapWorkFlow(timeLine) {
       this.projecMapWorkFlow = timeLine;
     },
@@ -67575,7 +67647,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     },
     async getlists() {
       try {
-        let response = await app$1.api.fetchApi("/Montagen/Proj/List");
+        let response = await app$2.api.fetchApi("/Montagen/Proj/List");
         const json = await response.json();
         console.log(json);
         this.list = json.data;
@@ -67592,10 +67664,10 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       console.log("createWorkFlow");
       blankGraph.extra.MontagenProj.projectId = projectId;
       blankGraph.extra.MontagenProj.workflowId = workflowId;
-      await app$1.loadGraphData(blankGraph);
+      await app$2.loadGraphData(blankGraph);
     },
     openWorkFlowByGrahData(graphData) {
-      app$1.loadGraphData(graphData);
+      app$2.loadGraphData(graphData);
       let menuStore = useMenuStore();
       menuStore.changeShow(false);
     },
@@ -67673,7 +67745,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     },
     async saveTimeLine() {
       let data = this.playerInstance.creator.toJson();
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${this.activeProjectId}/Timeline`, {
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/${this.activeProject.projectId}/Timeline`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -67684,7 +67756,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       this.timeLine = json.data;
     },
     async createNewClip(data) {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${this.activeProjectId}/New`, {
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/${this.activeProject.projectId}/New`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -67699,269 +67771,137 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
-const _hoisted_1$4 = { class: "workflow w-full h-full" };
-const _hoisted_2$2 = { class: "flex justify-between items-center workflow-header p-2" };
-const _hoisted_3$1 = { class: "list-none p-2" };
-const _hoisted_4$1 = ["onContextmenu", "onClick"];
-const _hoisted_5 = { class: "p-2 flex" };
-const _hoisted_6 = { class: "ml-2" };
-const _hoisted_7 = { class: "flex flex-col justify-center" };
-const _hoisted_8 = { class: "mb-2" };
-const _hoisted_9 = { class: "mb-2" };
-const _hoisted_10 = { class: "flex justify-center" };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
-  __name: "workFlow",
-  setup(__props) {
-    const toast = useToast();
-    const confirm = useConfirm();
-    const workSpaceStore = useWorkSpaceStore();
-    useMenuStore();
-    const { list, activeProjectId } = storeToRefs(workSpaceStore);
-    const title = ref$3("Workflow");
-    const visible = ref$3(false);
-    const initialValues = ref$3({
-      name: "",
-      description: ""
+const _hoisted_1$7 = { class: "w-full my-2 px-4" };
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "outPutForm",
+  setup(__props, { expose: __expose }) {
+    const fileStore = useFileStore();
+    console.log(fileStore);
+    const { outPutFormat, selectClip } = storeToRefs(fileStore);
+    computed(() => {
+      return Object.keys(selectClip.value).length === 0;
     });
-    const onFormSubmit = () => {
-      console.log("表单提交数据", initialValues.value);
-      addList();
+    const formLabelAlign = reactive({
+      output: "",
+      resolution: "",
+      videoBitrate: "",
+      frameRate: ""
+    });
+    const rules = {
+      output: [
+        { required: true, message: "请输入输出名称", trigger: "blur" }
+      ],
+      resolution: [
+        { required: true, message: "请输入分辨率", trigger: "blur" }
+      ],
+      videoBitrate: [
+        { required: true, message: "请输入视频比特率", trigger: "blur" }
+      ],
+      frameRate: [
+        { required: true, message: "请输入帧速率", trigger: "blur" }
+      ]
     };
-    const addList = async () => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/New`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(initialValues.value)
-      });
-      const json = await response.json();
-      console.log(json);
-      toast.add({ severity: "success", summary: "添加成功", life: 3e3 });
-      visible.value = false;
-      refreshList();
-    };
-    const addworkflow = async () => {
-      visible.value = true;
-    };
-    const deleteWorkflow = async () => {
-      console.log("deleteWorkflow", selectedItem.value);
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${selectedItem.value.projectId}`, {
-        method: "DELETE"
-      });
-      const json = await response.json();
-      console.log(json);
-      toast.add({ severity: "success", summary: "删除成功", life: 3e3 });
-      refreshList();
-    };
-    const getList = inject("getList");
-    const refreshList = () => {
-      console.log("refreshList");
-      getList();
-    };
-    const getProjectDetail = async (item) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
-      const json = await response.json();
-      console.log(json);
-      let timeLine = json.data.timeline;
-      workSpaceStore.setActiveProjectId(item.projectId);
-      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
-    };
-    const menu = ref$3();
-    const menuItems = computed(() => {
-      const items = [
-        {
-          label: "重命名",
-          icon: "pi pi-copy",
-          command: (event2) => {
-            console.log("Copy", event2);
-          }
-        },
-        {
-          separator: true
-        },
-        {
-          label: "修改描述",
-          icon: "pi pi-file-edit",
-          command: (event2) => {
-            console.log("Rename", event2);
-          }
-        },
-        {
-          label: "删除",
-          icon: "pi pi-trash",
-          command: (event2) => {
-            confirm.require({
-              message: "Are you sure you want to proceed?",
-              header: "Confirmation",
-              icon: "pi pi-exclamation-triangle",
-              rejectProps: {
-                label: "Cancel",
-                severity: "secondary",
-                outlined: true
-              },
-              acceptProps: {
-                label: "删除"
-              },
-              accept: () => {
-                console.log("Accepted");
-                deleteWorkflow();
-              },
-              reject: () => {
-                console.log("Rejected");
-              }
-            });
-          }
-        }
-      ];
-      if (selectedItem.value.projectId == activeProjectId.value) {
-        items.push({
-          separator: true
-        });
-        items.push({
-          label: "新建Clip",
-          icon: "pi pi-share-alt",
-          command: (event2) => {
-            console.log("新建Clip", workSpaceStore.projecMapWorkFlow);
-            let temp = {
-              "type": "text",
-              "fontSize": "80rpx",
-              "color": "#FFF",
-              "x": "50vw",
-              "y": "50vh",
-              "lineHeight": "90%",
-              "letterSpacing": "10%",
-              "text": "edit by workFlow",
-              "projectId": activeProjectId.value,
-              "start": 0,
-              "end": 10,
-              "zIndex": 99,
-              active: false,
-              workflowData: {},
-              "name": nanoid(9)
-            };
-            workSpaceStore.projecMapWorkFlow.children[0].children.unshift(temp);
-            console.log("temp", workSpaceStore.projecMapWorkFlow);
-            workSpaceStore.openWorkFlow({ projectId: activeProjectId.value, timeLine: workSpaceStore.projecMapWorkFlow });
+    const ruleFormRef = ref$3();
+    const validateForm = async () => {
+      console.log("输出表单完整性验证");
+      if (!ruleFormRef.value) return;
+      return new Promise((resolve, reject) => {
+        var _a2;
+        (_a2 = ruleFormRef.value) == null ? void 0 : _a2.validate((valid, fields) => {
+          if (valid) {
+            updateForm();
+            resolve(true);
+          } else {
+            reject(false);
           }
         });
+      });
+    };
+    const updateForm = () => {
+      for (let key2 in formLabelAlign) {
+        console.log(key2, formLabelAlign[key2]);
+        fileStore.setOutFormat(key2, formLabelAlign[key2]);
       }
-      return items;
-    });
-    const selectedItem = ref$3({});
-    const handleContextMenu = (event2, item) => {
-      selectedItem.value = item;
-      menu.value.show(event2);
     };
+    onMounted(() => {
+    });
+    __expose({
+      validateForm
+    });
     return (_ctx, _cache) => {
-      const _component_Button = script;
-      const _component_ContextMenu = script$1;
-      const _component_ConfirmDialog = script$2;
-      const _component_InputText = script$3;
-      const _component_Dialog = script$4;
-      const _component_Toast = script$5;
-      return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", _hoisted_1$4, [
-          createBaseVNode("div", _hoisted_2$2, [
-            createBaseVNode("div", null, toDisplayString(title.value), 1),
-            createBaseVNode("div", null, [
-              createVNode(_component_Button, {
-                text: "",
-                icon: "pi pi-history",
-                "aria-label": "refresh",
-                onClick: refreshList
+      const _component_el_input = ElInput;
+      const _component_el_form_item = ElFormItem;
+      const _component_el_form = ElForm;
+      return openBlock(), createElementBlock("div", _hoisted_1$7, [
+        createBaseVNode("div", null, [
+          createVNode(_component_el_form, {
+            "label-position": "top",
+            ref_key: "ruleFormRef",
+            ref: ruleFormRef,
+            "label-width": "auto",
+            model: formLabelAlign,
+            rules
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_el_form_item, {
+                label: "输出名称(output)",
+                prop: "output"
+              }, {
+                default: withCtx(() => [
+                  createVNode(_component_el_input, {
+                    class: "cus-input",
+                    modelValue: formLabelAlign.output,
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => formLabelAlign.output = $event)
+                  }, {
+                    append: withCtx(() => [
+                      createTextVNode$1(".MP4")
+                    ]),
+                    _: 1
+                  }, 8, ["modelValue"])
+                ]),
+                _: 1
               }),
-              createVNode(_component_Button, {
-                text: "",
-                icon: "pi pi-plus",
-                "aria-label": "add",
-                onClick: addworkflow
+              createVNode(_component_el_form_item, { label: "分辨率(resolution)" }, {
+                default: withCtx(() => [
+                  createVNode(_component_el_input, {
+                    class: "cus-input",
+                    modelValue: formLabelAlign.resolution,
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => formLabelAlign.resolution = $event)
+                  }, null, 8, ["modelValue"])
+                ]),
+                _: 1
+              }),
+              createVNode(_component_el_form_item, { label: "视频比特率(videoBitrate)" }, {
+                default: withCtx(() => [
+                  createVNode(_component_el_input, {
+                    class: "cus-input",
+                    modelValue: formLabelAlign.videoBitrate,
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => formLabelAlign.videoBitrate = $event)
+                  }, null, 8, ["modelValue"])
+                ]),
+                _: 1
+              }),
+              createVNode(_component_el_form_item, { label: "帧速率(frameRate)" }, {
+                default: withCtx(() => [
+                  createVNode(_component_el_input, {
+                    class: "cus-input",
+                    modelValue: formLabelAlign.frameRate,
+                    "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => formLabelAlign.frameRate = $event)
+                  }, null, 8, ["modelValue"])
+                ]),
+                _: 1
               })
-            ])
-          ]),
-          createBaseVNode("div", null, [
-            createBaseVNode("ul", _hoisted_3$1, [
-              (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(list), (item) => {
-                return openBlock(), createElementBlock("li", {
-                  class: normalizeClass(["list-item", "cursor-pointer", item.projectId == unref(activeProjectId) ? "active" : ""]),
-                  key: item.projectId,
-                  onContextmenu: ($event) => handleContextMenu($event, item),
-                  onClick: ($event) => getProjectDetail(item)
-                }, toDisplayString(item.name), 43, _hoisted_4$1);
-              }), 128))
-            ])
-          ])
-        ]),
-        createVNode(_component_ContextMenu, {
-          ref_key: "menu",
-          ref: menu,
-          model: menuItems.value,
-          pt: {
-            root: { style: { zIndex: 2022 } },
-            overlay: {
-              "aria-hidden": false,
-              "aria-modal": true,
-              role: "menu"
-            }
-          }
-        }, {
-          item: withCtx(({ item }) => [
-            createBaseVNode("div", _hoisted_5, [
-              createBaseVNode("i", {
-                class: normalizeClass(item.icon)
-              }, null, 2),
-              createBaseVNode("span", _hoisted_6, toDisplayString(item.label), 1)
-            ])
-          ]),
-          _: 1
-        }, 8, ["model"]),
-        createVNode(_component_ConfirmDialog),
-        createVNode(_component_Dialog, {
-          visible: visible.value,
-          "onUpdate:visible": _cache[2] || (_cache[2] = ($event) => visible.value = $event),
-          modal: "",
-          header: "Edit Profile",
-          style: { width: "18rem" }
-        }, {
-          default: withCtx(() => [
-            createBaseVNode("div", _hoisted_7, [
-              createBaseVNode("div", _hoisted_8, [
-                createVNode(_component_InputText, {
-                  class: "w-full",
-                  modelValue: initialValues.value.name,
-                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => initialValues.value.name = $event),
-                  placeholder: "名称"
-                }, null, 8, ["modelValue"])
-              ]),
-              createBaseVNode("div", _hoisted_9, [
-                createVNode(_component_InputText, {
-                  class: "w-full",
-                  modelValue: initialValues.value.description,
-                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => initialValues.value.description = $event),
-                  placeholder: "描述"
-                }, null, 8, ["modelValue"])
-              ]),
-              createBaseVNode("div", _hoisted_10, [
-                createVNode(_component_Button, {
-                  class: "w-full",
-                  type: "submit",
-                  severity: "secondary",
-                  label: "提交",
-                  onClick: onFormSubmit
-                })
-              ])
-            ])
-          ]),
-          _: 1
-        }, 8, ["visible"]),
-        createVNode(_component_Toast)
-      ], 64);
+            ]),
+            _: 1
+          }, 8, ["model"])
+        ])
+      ]);
     };
   }
 });
-const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-cbe03f32"]]);
-const _hoisted_1$3 = { class: "w-full" };
-const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+const outPutForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-e529e31c"]]);
+const _hoisted_1$6 = { class: "w-full" };
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "boxContainer",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -68025,6 +67965,9 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
       hideControls: true,
       hideMiniBar: true
     });
+    const rollImg = (e) => {
+      console.log("鼠标滚轮开始滚动了", e);
+    };
     onMounted(() => {
       parentWidth.value = container.value.offsetWidth;
       updateSizes();
@@ -68067,7 +68010,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$6), {
+        createVNode(unref(script$1), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -68077,7 +68020,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$7), {
+            createVNode(unref(script$2), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -68085,17 +68028,17 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
               size: splitterSizes.value[0]
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_1$3, [
-                  createVNode(workFlow)
+                createBaseVNode("div", _hoisted_1$6, [
+                  createVNode(outPutForm)
                 ])
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$7), {
+            createVNode(unref(script$2), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$6), {
+                createVNode(unref(script$1), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -68108,57 +68051,29 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$7), {
+                    createVNode(unref(script$2), {
+                      class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70
                     }, {
                       default: withCtx(() => [
-                        createVNode(unref(script$6), { pt: {
-                          gutter: { class: "split-gutter" },
-                          root: {
-                            style: {
-                              width: "100%"
-                            }
-                          }
-                        } }, {
-                          default: withCtx(() => [
-                            createVNode(unref(script$7), {
-                              class: "flex items-center justify-center",
-                              size: 80,
-                              pt: { root: { style: { width: "100%" }, class: "my-custom-pannel8" } }
-                            }, {
-                              default: withCtx(() => [
-                                createBaseVNode("div", {
-                                  ref_key: "playerWrapper",
-                                  ref: playerWrapper,
-                                  class: "w-full h-full flex justify-center",
-                                  style: { "background-color": "#262626", "align-items": "center" }
-                                }, [
-                                  createBaseVNode("div", {
-                                    ref_key: "playerRef",
-                                    ref: playerRef,
-                                    class: "player"
-                                  }, null, 512)
-                                ], 512)
-                              ]),
-                              _: 1
-                            }),
-                            createVNode(unref(script$7), {
-                              class: "flex items-center justify-center",
-                              size: 20
-                            }, {
-                              default: withCtx(() => [
-                                createTextVNode$1(" Panel 4 ")
-                              ]),
-                              _: 1
-                            })
-                          ]),
-                          _: 1
-                        })
+                        createBaseVNode("div", {
+                          ref_key: "playerWrapper",
+                          ref: playerWrapper,
+                          class: "w-full h-full flex justify-center",
+                          style: { "background-color": "#262626", "align-items": "center" },
+                          onMousewheel: withModifiers(rollImg, ["prevent"])
+                        }, [
+                          createBaseVNode("div", {
+                            ref_key: "playerRef",
+                            ref: playerRef,
+                            class: "player"
+                          }, null, 512)
+                        ], 544)
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$7), {
+                    createVNode(unref(script$2), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -68186,42 +68101,149 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-8294902c"]]);
-const _hoisted_1$2 = { class: "imagen-header flex" };
-const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-56a75a58"]]);
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-6bf4b881"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$5 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
+const _hoisted_2$4 = { class: "relative" };
+const _hoisted_3$3 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("span", { class: "status-indicator" }, "•", -1));
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "projectTab",
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: "Default Title"
+    },
+    projectOption: {
+      type: Object
+    }
+  },
+  setup(__props) {
+    const onCloseWorkflow = (option) => {
+      console.log("onCloseWorkflow_点击关闭project", option);
+    };
+    return (_ctx, _cache) => {
+      const _component_Button = script;
+      return openBlock(), createElementBlock("div", mergeProps$1({
+        class: "flex p-2 gap-2 workflow-tab bg-transparent",
+        ref: "workflowTabRef"
+      }, _ctx.$attrs), [
+        createBaseVNode("span", _hoisted_1$5, toDisplayString(__props.projectOption.name), 1),
+        createBaseVNode("div", _hoisted_2$4, [
+          _hoisted_3$3,
+          createVNode(_component_Button, {
+            class: "close-button p-0 w-auto",
+            icon: "pi pi-times",
+            text: "",
+            severity: "secondary",
+            size: "small",
+            onClick: _cache[0] || (_cache[0] = withModifiers(($event) => onCloseWorkflow(__props.projectOption), ["stop"]))
+          })
+        ])
+      ], 16);
+    };
+  }
+});
+const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-6bf4b881"]]);
+const _hoisted_1$4 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "projectTabs",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const { tabbsProject, activeProject } = storeToRefs(workSpaceStore);
+    const onWorkflowChange = (e) => {
+      console.log("onWorkflowChange_当前点击tab 发生了变化", e);
+      if (e) {
+        workSpaceStore.setActiveProject(e);
+        getProjectDetail(e);
+      }
+    };
+    const getProjectDetail = async (item) => {
+      let response = await app.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
+      const json = await response.json();
+      let timeLine = json.data.timeline;
+      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
+    };
+    const handleWheel = (event2) => {
+      const scrollElement = event2.currentTarget;
+      const scrollAmount = event2.deltaX || event2.deltaY;
+      scrollElement.scroll({
+        left: scrollElement.scrollLeft + scrollAmount
+      });
+    };
+    const onCloseWorkflow = (option) => {
+      console.log("onCloseWorkflow_当前点击tab 发生了关闭事件", option);
+    };
+    return (_ctx, _cache) => {
+      const _component_SelectButton = script$4;
+      const _component_ScrollPanel = script$3;
+      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+        createVNode(_component_ScrollPanel, {
+          class: "overflow-hidden no-drag bg-transparent",
+          "pt:content": {
+            class: "p-0 w-full h-full",
+            onwheel: handleWheel
+          },
+          "pt:barX": "h-1"
+        }, {
+          default: withCtx(() => [
+            createVNode(_component_SelectButton, {
+              class: "workflow-tabs bg-transparent my-inline",
+              modelValue: unref(activeProject),
+              "onUpdate:modelValue": onWorkflowChange,
+              options: unref(tabbsProject),
+              optionLabel: "name",
+              dataKey: "projectId"
+            }, {
+              option: withCtx(({ option }) => [
+                createVNode(projectTab, {
+                  onMouseup: withModifiers(($event) => onCloseWorkflow(option), ["middle"]),
+                  "project-option": option
+                }, null, 8, ["onMouseup", "project-option"])
+              ]),
+              _: 1
+            }, 8, ["modelValue", "options"])
+          ]),
+          _: 1
+        }, 8, ["pt:content"])
+      ]);
+    };
+  }
+});
+const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-ae1b9382"]]);
+const _withScopeId = (n2) => (pushScopeId("data-v-308f6357"), n2 = n2(), popScopeId(), n2);
+const _hoisted_1$3 = { class: "imagen-header flex w-full" };
+const _hoisted_2$3 = { class: "flex-grow min-w-0 app-drag h-full" };
+const _hoisted_3$2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { style: { "width": "60px" } }, null, -1));
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "imagenHeader",
   setup(__props) {
     const menuStore = useMenuStore();
     const goBack = () => {
       menuStore.changeShow(false);
     };
-    const createmode = async () => {
-      menuStore.changeShow(false);
-      await app$1.loadGraphData(blankGraph);
-      setTimeout(() => {
-        app$1.addNodeOnGraph(window.montaiData, { pos: app$1.getCanvasCenter() });
-      }, 10);
-    };
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$2, [
+      const _component_Divider = script$5;
+      return openBlock(), createElementBlock("div", _hoisted_1$3, [
         createBaseVNode("h1", {
           class: "mx-2 cursor-pointer",
           onClick: goBack
         }, "返回"),
-        createBaseVNode("h1", {
-          class: "mx-2 cursor-pointer",
-          onClick: createmode
-        }, "新建node节点")
+        createVNode(_component_Divider, { layout: "vertical" }),
+        createBaseVNode("div", _hoisted_2$3, [
+          createVNode(projectTabs)
+        ]),
+        _hoisted_3$2
       ]);
     };
   }
 });
-const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-0dd8d624"]]);
-const _hoisted_1$1 = { class: "new-imagen-box grid" };
-const _hoisted_2$1 = { class: "image-box-top" };
-const _hoisted_3 = { class: "image-box-left" };
-const _hoisted_4 = { class: "image-box-container" };
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-308f6357"]]);
+const _hoisted_1$2 = { class: "new-imagen-box grid" };
+const _hoisted_2$2 = { class: "image-box-top" };
+const _hoisted_3$1 = { class: "image-box-left" };
+const _hoisted_4$1 = { class: "image-box-container" };
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "index",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -68234,22 +68256,264 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       getList();
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$1, [
-        createBaseVNode("div", _hoisted_2$1, [
+      return openBlock(), createElementBlock("div", _hoisted_1$2, [
+        createBaseVNode("div", _hoisted_2$2, [
           createVNode(imagenHeader)
         ]),
-        createBaseVNode("div", _hoisted_3, [
+        createBaseVNode("div", _hoisted_3$1, [
           createVNode(leftToolbar)
         ]),
-        createBaseVNode("div", _hoisted_4, [
+        createBaseVNode("div", _hoisted_4$1, [
           createVNode(boxContainer)
         ])
       ]);
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-9dc71f70"]]);
-const _hoisted_1 = /* @__PURE__ */ createBaseVNode("i", { class: "fontello icon-montagen-xs" }, "", -1);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-05d66023"]]);
+const _hoisted_1$1 = { class: "workflow w-full h-full" };
+const _hoisted_2$1 = { class: "flex justify-between items-center workflow-header p-2" };
+const _hoisted_3 = { class: "list-none p-2" };
+const _hoisted_4 = ["onContextmenu", "onClick"];
+const _hoisted_5 = { class: "p-2 flex" };
+const _hoisted_6 = { class: "ml-2" };
+const _hoisted_7 = { id: "custom-dialog" };
+const _hoisted_8 = { class: "flex flex-col justify-center" };
+const _hoisted_9 = { class: "mb-2" };
+const _hoisted_10 = { class: "mb-2" };
+const _hoisted_11 = { class: "flex justify-center" };
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "workFlow",
+  setup(__props) {
+    useDialog();
+    const menuStore = useMenuStore();
+    const workSpaceStore = useWorkSpaceStore();
+    const { list, activeProjectId, activeProject } = storeToRefs(workSpaceStore);
+    const title = ref$3("Workflow");
+    const visible = ref$3(false);
+    const initialValues = ref$3({
+      name: "",
+      description: ""
+    });
+    const onFormSubmit = () => {
+      console.log("表单提交数据", initialValues.value);
+      addList();
+    };
+    const addList = async () => {
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/New`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(initialValues.value)
+      });
+      const json = await response.json();
+      console.log(json);
+      visible.value = false;
+      refreshList();
+    };
+    const addworkflow = async () => {
+      visible.value = true;
+    };
+    const deleteWorkflow = async () => {
+      console.log("deleteWorkflow", selectedItem.value);
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/${selectedItem.value.projectId}`, {
+        method: "DELETE"
+      });
+      await response.json();
+      refreshList();
+    };
+    const refreshList = () => {
+      console.log("refreshList");
+      workSpaceStore.getlists();
+    };
+    const getProjectDetail = async (item) => {
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
+      const json = await response.json();
+      let timeLine = json.data.timeline;
+      workSpaceStore.addTabs(item);
+      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
+      menuStore.changeShow(true);
+    };
+    const menu = ref$3();
+    const menuItems = computed(() => {
+      const items = [
+        {
+          label: "重命名",
+          icon: "pi pi-copy",
+          command: (event2) => {
+            console.log("Copy", event2);
+          }
+        },
+        {
+          separator: true
+        },
+        {
+          label: "修改描述",
+          icon: "pi pi-file-edit",
+          command: (event2) => {
+            console.log("Rename", event2);
+          }
+        },
+        {
+          label: "删除",
+          icon: "pi pi-trash",
+          command: (event2) => {
+            deleteWorkflow();
+          }
+        }
+      ];
+      if (selectedItem.value.projectId == activeProjectId.value) {
+        items.push({
+          separator: true
+        });
+        items.push({
+          label: "新建Clip",
+          icon: "pi pi-share-alt",
+          command: (event2) => {
+            console.log("新建Clip", workSpaceStore.projecMapWorkFlow);
+            let temp = {
+              "type": "text",
+              "fontSize": "80rpx",
+              "color": "#FFF",
+              "x": "50vw",
+              "y": "50vh",
+              "lineHeight": "90%",
+              "letterSpacing": "10%",
+              "text": "edit by workFlow",
+              "projectId": activeProjectId.value,
+              "start": 0,
+              "end": 10,
+              "zIndex": 99,
+              active: false,
+              workflowData: {},
+              "name": nanoid(9)
+            };
+            workSpaceStore.projecMapWorkFlow.children[0].children.unshift(temp);
+            console.log("temp", workSpaceStore.projecMapWorkFlow);
+            workSpaceStore.openWorkFlow({ projectId: activeProjectId.value, timeLine: workSpaceStore.projecMapWorkFlow });
+          }
+        });
+      }
+      return items;
+    });
+    const selectedItem = ref$3({});
+    const handleContextMenu = (event2, item) => {
+      selectedItem.value = item;
+      menu.value.show(event2);
+    };
+    return (_ctx, _cache) => {
+      const _component_Button = script;
+      const _component_ContextMenu = script$6;
+      const _component_InputText = script$8;
+      const _component_Dialog = script$7;
+      const _directive_tooltip = Tooltip;
+      return openBlock(), createElementBlock(Fragment, null, [
+        createBaseVNode("div", _hoisted_1$1, [
+          createBaseVNode("div", _hoisted_2$1, [
+            createBaseVNode("div", null, toDisplayString(title.value), 1),
+            createBaseVNode("div", null, [
+              withDirectives(createVNode(_component_Button, {
+                text: "",
+                icon: "pi pi-history",
+                "aria-label": "refresh",
+                onClick: refreshList
+              }, null, 512), [
+                [_directive_tooltip, "refresh"]
+              ]),
+              withDirectives(createVNode(_component_Button, {
+                text: "",
+                icon: "pi pi-plus",
+                "aria-label": "add",
+                onClick: addworkflow
+              }, null, 512), [
+                [_directive_tooltip, "add"]
+              ])
+            ])
+          ]),
+          createBaseVNode("div", null, [
+            createBaseVNode("ul", _hoisted_3, [
+              (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(list), (item) => {
+                return openBlock(), createElementBlock("li", {
+                  class: normalizeClass(["list-item", "cursor-pointer", item.projectId == unref(activeProject).projectId ? "active" : ""]),
+                  key: item.projectId,
+                  onContextmenu: ($event) => handleContextMenu($event, item),
+                  onClick: ($event) => getProjectDetail(item)
+                }, toDisplayString(item.name), 43, _hoisted_4);
+              }), 128))
+            ])
+          ])
+        ]),
+        createVNode(_component_ContextMenu, {
+          ref_key: "menu",
+          ref: menu,
+          model: menuItems.value,
+          pt: {
+            root: { style: { zIndex: 2022 } },
+            overlay: {
+              "aria-hidden": false,
+              "aria-modal": true,
+              role: "menu"
+            }
+          }
+        }, {
+          item: withCtx(({ item }) => [
+            createBaseVNode("div", _hoisted_5, [
+              createBaseVNode("i", {
+                class: normalizeClass(item.icon)
+              }, null, 2),
+              createBaseVNode("span", _hoisted_6, toDisplayString(item.label), 1)
+            ])
+          ]),
+          _: 1
+        }, 8, ["model"]),
+        (openBlock(), createBlock(Teleport, { to: "body" }, [
+          createBaseVNode("div", _hoisted_7, [
+            createVNode(_component_Dialog, {
+              visible: visible.value,
+              "onUpdate:visible": _cache[2] || (_cache[2] = ($event) => visible.value = $event),
+              header: "添加项目",
+              style: { width: "18rem" }
+            }, {
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_8, [
+                  createBaseVNode("div", _hoisted_9, [
+                    createVNode(_component_InputText, {
+                      class: "w-full",
+                      modelValue: initialValues.value.name,
+                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => initialValues.value.name = $event),
+                      placeholder: "名称"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_10, [
+                    createVNode(_component_InputText, {
+                      class: "w-full",
+                      modelValue: initialValues.value.description,
+                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => initialValues.value.description = $event),
+                      placeholder: "描述"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_11, [
+                    createVNode(_component_Button, {
+                      class: "w-full",
+                      type: "submit",
+                      severity: "secondary",
+                      label: "提交",
+                      onClick: onFormSubmit
+                    })
+                  ])
+                ])
+              ]),
+              _: 1
+            }, 8, ["visible"])
+          ])
+        ]))
+      ], 64);
+    };
+  }
+});
+const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-ed0c3ea4"]]);
+const _hoisted_1 = /* @__PURE__ */ createBaseVNode("i", { class: "fontello icon-montagen-xs" }, null, -1);
 const _hoisted_2 = [
   _hoisted_1
 ];
@@ -68295,21 +68559,40 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     let tempNodeType = null;
     const updateProjectTimeLine = async (data) => {
       console.log("updateProjectTimeLine", data);
-      if (data.projectId == workSpaceStore.activeProjectId) {
-        workSpaceStore.openWorkFlow({ projectId: workSpaceStore.activeProjectId, timeLine: data.timeline });
+      if (data.projectId == workSpaceStore.activeProject.projectId) {
+        workSpaceStore.openWorkFlow({ projectId: data.projectId, timeLine: data.timeline });
       }
     };
     const checkWorkflow = () => {
       var _a2, _b2;
-      let data = app$1.graph.serialize();
+      let data = app$2.graph.serialize();
       if ((_b2 = (_a2 = data.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId) return;
-      app$1.graph.extra.MontagenProj = {
+      app$2.graph.extra.MontagenProj = {
         workflowId: nanoid(13)
       };
     };
     const init2 = () => {
+      app$2.extensionManager.registerSidebarTab({
+        id: "mentegen-toolbar",
+        icon: "fontello icon-montagen",
+        title: "mentegen",
+        tooltip: "open mentegen",
+        type: "custom",
+        render: (el) => {
+          const app2 = createApp(workFlow);
+          app2.use(PrimeVue, {
+            theme: {}
+          });
+          app2.use(DialogService);
+          console.log(window.sharePinia, "main.js 创建的pinia");
+          if (window.sharePinia) {
+            app2.use(window.sharePinia);
+          }
+          app2.mount(el);
+        }
+      });
       if (switchRef.value) {
-        app$1.registerExtension({
+        app$2.registerExtension({
           name: "EasymskPage",
           setup(ui) {
             console.log("onUIReady", ui);
@@ -68372,6 +68655,8 @@ const ComfyUIPreset = definePreset(index$3, {
     primary: index$3["primitive"].blue
   }
 });
+const sharePinia = createPinia();
+window.sharePinia = sharePinia;
 const maskpage = document.createElement("div");
 maskpage.id = "comfyui-maskpage";
 maskpage.style.cssText = `
@@ -68387,11 +68672,11 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
-const app = createApp(_sfc_main);
+const app$1 = createApp(_sfc_main);
 for (const [key2, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key2, component);
+  app$1.component(key2, component);
 }
-app.use(PrimeVue, {
+app$1.use(PrimeVue, {
   theme: {
     preset: ComfyUIPreset,
     options: {
@@ -68406,9 +68691,9 @@ app.use(PrimeVue, {
     }
   }
 });
-app.directive("tooltip", Tooltip);
-app.use(ConfirmationService);
-app.use(ToastService);
-app.use(DialogService);
-app.use(createPinia());
-app.mount("#" + maskpage.id);
+app$1.directive("tooltip", Tooltip);
+app$1.use(ConfirmationService);
+app$1.use(ToastService);
+app$1.use(DialogService);
+app$1.use(sharePinia);
+app$1.mount("#" + maskpage.id);

@@ -145,17 +145,6 @@ function normalizeClass(value) {
   }
   return res.trim();
 }
-function normalizeProps(props) {
-  if (!props) return null;
-  let { class: klass, style } = props;
-  if (klass && !isString(klass)) {
-    props.class = normalizeClass(klass);
-  }
-  if (style) {
-    props.style = normalizeStyle(style);
-  }
-  return props;
-}
 const specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`;
 const isSpecialBooleanAttr = /* @__PURE__ */ makeMap(specialBooleanAttrs);
 function includeBooleanAttr(value) {
@@ -1140,6 +1129,9 @@ function isRef(r) {
 function ref(value) {
   return createRef(value, false);
 }
+function shallowRef(value) {
+  return createRef(value, true);
+}
 function createRef(rawValue, shallow) {
   if (isRef(rawValue)) {
     return rawValue;
@@ -1551,6 +1543,12 @@ function setCurrentRenderingInstance(instance) {
   currentRenderingInstance = instance;
   currentScopeId = instance && instance.type.__scopeId || null;
   return prev;
+}
+function pushScopeId(id) {
+  currentScopeId = id;
+}
+function popScopeId() {
+  currentScopeId = null;
 }
 function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
   if (!ctx) return fn;
@@ -2305,6 +2303,16 @@ const PublicInstanceProxyHandlers = {
     return Reflect.defineProperty(target, key, descriptor);
   }
 };
+function useSlots() {
+  return getContext().slots;
+}
+function useAttrs() {
+  return getContext().attrs;
+}
+function getContext() {
+  const i = getCurrentInstance();
+  return i.setupContext || (i.setupContext = createSetupContext(i));
+}
 function normalizePropsOrEmits(props) {
   return isArray(props) ? props.reduce(
     (normalized, p2) => (normalized[p2] = null, normalized),
@@ -4859,6 +4867,9 @@ const useSSRContext = () => {
     return ctx;
   }
 };
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
+}
 const INITIAL_WATCHER_VALUE = {};
 function watch(source, cb, options) {
   return doWatch(source, cb, options);
@@ -6019,6 +6030,7 @@ function h(type, propsOrChildren, children) {
   }
 }
 const version = "3.4.36";
+const warn = NOOP;
 /**
 * @vue/runtime-dom v3.4.36
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -6785,6 +6797,31 @@ function hasCSSTransform(el, root, moveClass) {
   container.removeChild(clone);
   return hasTransform;
 }
+const systemModifiers = ["ctrl", "shift", "alt", "meta"];
+const modifierGuards = {
+  stop: (e) => e.stopPropagation(),
+  prevent: (e) => e.preventDefault(),
+  self: (e) => e.target !== e.currentTarget,
+  ctrl: (e) => !e.ctrlKey,
+  shift: (e) => !e.shiftKey,
+  alt: (e) => !e.altKey,
+  meta: (e) => !e.metaKey,
+  left: (e) => "button" in e && e.button !== 0,
+  middle: (e) => "button" in e && e.button !== 1,
+  right: (e) => "button" in e && e.button !== 2,
+  exact: (e, modifiers) => systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
+};
+const withModifiers = (fn, modifiers) => {
+  const cache = fn._withMods || (fn._withMods = {});
+  const cacheKey = modifiers.join(".");
+  return cache[cacheKey] || (cache[cacheKey] = (event, ...args) => {
+    for (let i = 0; i < modifiers.length; i++) {
+      const guard = modifierGuards[modifiers[i]];
+      if (guard && guard(event, modifiers)) return;
+    }
+    return fn(event, ...args);
+  });
+};
 const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
 let renderer;
 function ensureRenderer() {
@@ -6826,6 +6863,7 @@ function normalizeContainer(container) {
   return container;
 }
 export {
+  onBeforeUnmount as $,
   toDisplayString as A,
   resolveComponent as B,
   resolveDirective as C,
@@ -6837,17 +6875,32 @@ export {
   resolveDynamicComponent as I,
   Fragment as J,
   renderList as K,
-  normalizeProps as L,
-  createVNode as M,
-  TransitionGroup as N,
-  Transition as O,
-  createSlots as P,
-  unref as Q,
-  onBeforeUnmount as R,
-  provide as S,
-  Teleport as T,
-  createApp as U,
+  unref as L,
+  isString as M,
+  isObject as N,
+  hasOwn as O,
+  warn as P,
+  NOOP as Q,
+  onUnmounted as R,
+  shallowRef as S,
+  isFunction as T,
+  useAttrs as U,
+  useSlots as V,
+  createVNode as W,
+  withModifiers as X,
+  normalizeStyle as Y,
+  isArray as Z,
+  provide as _,
   createBaseVNode as a,
+  onUpdated as a0,
+  TransitionGroup as a1,
+  createSlots as a2,
+  Teleport as a3,
+  Transition as a4,
+  watchEffect as a5,
+  pushScopeId as a6,
+  popScopeId as a7,
+  createApp as a8,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
