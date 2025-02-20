@@ -16,7 +16,7 @@
 }
 [data-v-17d6912d] .left-tool-button.left-tool-button-select {
   border-left: 4px solid var(--p-button-text-primary-color);
-}[data-v-2ad34c49] .cus-input .el-input__wrapper {
+}[data-v-325a32eb] .cus-input .el-input__wrapper {
   background-color: #3b3b3b;
   color: #e0e0e0;
   box-shadow: none;
@@ -124,17 +124,17 @@
   overflow: hidden;
 }\r
 
-.workflow[data-v-2db16170] {\r
+.workflow[data-v-912c5576] {\r
   background: #fff;
 }
-.workflow-header[data-v-2db16170] {\r
+.workflow-header[data-v-912c5576] {\r
   border-bottom: 1px solid var(--p-button-text-primary-color);
 }
-.list-item[data-v-2db16170] {\r
+.list-item[data-v-912c5576] {\r
   padding: 0 0.5rem;\r
   background: var(--p-badge-secondary-background, #f1f5f9);
 }
-.list-item.active[data-v-2db16170] {\r
+.list-item.active[data-v-912c5576] {\r
   background-color: var(--p-button-text-primary-color);\r
   color: var(--p-button-text-color);
 }\r
@@ -67611,6 +67611,26 @@ const index = {
     return addControls(e), e;
   }
 };
+const workflowUtils = {
+  isWorkFlowOpend(data) {
+    var _a2;
+    let temArr = app$2.extensionManager.workflow.openWorkflows;
+    let flag = false;
+    for (let i2 = 0; i2 < temArr.length; i2++) {
+      let temp = (_a2 = temArr[i2].activeState.extra) == null ? void 0 : _a2.MontagenProj;
+      if (temp) {
+        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
+          flag = temArr[i2];
+          break;
+        }
+      }
+    }
+    if (flag) {
+      app$2.loadGraphData(JSON.parse(JSON.stringify(flag.activeState)), true, true, flag);
+    }
+    return flag;
+  }
+};
 const useWorkSpaceStore = defineStore("workSpaceStore", {
   state: (_) => ({
     list: [],
@@ -67716,10 +67736,6 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       };
       if (!this.playerInstance) {
         console.log("openWorkFlow", "新建工作流");
-        console.log("playerInstance", this.playerContainerInstance);
-        console.log("playerInstance", this.trackContainerInstance);
-        console.log("playerInstance", this.playerContainerWidth);
-        console.log("playerInstance", this.playerContainerHeight);
         this.createPlayer(options);
       } else {
         console.log("openWorkFlow", "重载打开工作流", options);
@@ -67739,6 +67755,12 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         let workflows = this.playerInstance.creator.toJson().workflows;
         let workflowData = (workflows.value || workflows).find((workflow) => workflow.id == workflowId);
         console.log("workflowData", JSON.parse(JSON.stringify(workflowData.workflow)));
+        let rawData = JSON.parse(JSON.stringify(workflowData.workflow));
+        if (workflowUtils.isWorkFlowOpend(rawData.extra.MontagenProj)) {
+          let menuStore = useMenuStore();
+          menuStore.changeShow(false);
+          return;
+        }
         this.openWorkFlowByGrahData(JSON.parse(JSON.stringify(workflowData.workflow)));
       });
       this.playerInstance.on("createClip", (data) => {
@@ -67746,7 +67768,6 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         this.createNewClip(data.target);
       });
       this.playerInstance.on("changed", (changed) => {
-        console.log("changed 当前编辑的workflow", changed, this.playerInstance.creator.toJson());
         this.saveTimeLine();
       });
     },
@@ -67791,6 +67812,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const formLabelAlign = reactive({
       output: ""
     });
+    const loadingFlag = ref$3(false);
     const rules = {
       output: [
         { required: true, message: "请输入输出名称", trigger: "blur" }
@@ -67823,6 +67845,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const onFormSubmit = () => {
       validateForm().then(async () => {
         console.log("验证通过");
+        loadingFlag.value = true;
         let params = {
           projectId: workSpaceStore.activeProject.projectId,
           output: `${formLabelAlign.output}.mp4`
@@ -67834,10 +67857,82 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
           },
           body: JSON.stringify(params)
         });
-        await response.json();
+        const json = await response.json();
+        console.log(json);
+        pollOnce(json.taskId);
       }).catch((err) => {
         console.log(err);
+        loadingFlag.value = false;
       });
+    };
+    const pollOnce = async (id) => {
+      try {
+        let response = await app$2.api.fetchApi(`/Montagen/outputs/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const json = await response.json();
+        if (json.status === "pending") {
+          startPolling(id);
+        } else if (json.status === "done") {
+          let url2 = `${window.location.origin}/view?filename=${formLabelAlign.output}`;
+          downloadFile(url2);
+          loadingFlag.value = false;
+        } else if (json.status === "exception") {
+          app$2.extensionManager.toast.add({
+            severity: "info",
+            summary: "提示",
+            detail: "文件导出失败",
+            life: 3e3
+          });
+          loadingFlag.value = false;
+        }
+      } catch (err) {
+        console.log(err);
+        loadingFlag.value = false;
+      }
+    };
+    const startPolling = (id, number = 3e3) => {
+      const interval = setInterval(async () => {
+        try {
+          let response = await app$2.api.fetchApi(`/Montagen/outputs/${id}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+          const json = await response.json();
+          if (json.status == "done") {
+            clearInterval(interval);
+            let url2 = `${window.location.origin}/view?filename=${formLabelAlign.output}.mp4`;
+            downloadFile(url2);
+            loadingFlag.value = false;
+          } else if (json.status == "exception") {
+            clearInterval(interval);
+            app$2.extensionManager.toast.add({
+              severity: "info",
+              summary: "提示",
+              detail: "文件导出失败",
+              life: 3e3
+            });
+            loadingFlag.value = false;
+          }
+        } catch (err) {
+          console.log(err);
+          loadingFlag.value = false;
+        }
+      }, number);
+    };
+    const downloadFile = (url2) => {
+      console.log(url2, "开始下载视频文件了");
+      const link = document.createElement("a");
+      link.href = url2;
+      link.download = url2.substring(url2.lastIndexOf("/") + 1);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     };
     onMounted(() => {
     });
@@ -67894,13 +67989,14 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   createVNode(_component_el_button, {
                     class: "w-full",
                     type: "primary",
+                    loading: loadingFlag.value,
                     onClick: onFormSubmit
                   }, {
                     default: withCtx(() => [
                       createTextVNode$1("导出")
                     ]),
                     _: 1
-                  })
+                  }, 8, ["loading"])
                 ]),
                 _: 1
               })
@@ -67912,7 +68008,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const outPutForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-2ad34c49"]]);
+const outPutForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-325a32eb"]]);
 const _hoisted_1$5 = { class: "w-full" };
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "boxContainer",
@@ -68345,9 +68441,10 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           outlined: true
         },
         acceptProps: {
-          label: "Save"
+          label: "Delete"
         },
         accept: () => {
+          deleteWorkflow();
         },
         reject: () => {
         },
@@ -68491,6 +68588,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                     onClick: withModifiers(($event) => deleteConfigure($event, item), ["stop"]),
                     id: "confirmButton",
                     "aria-expanded": isVisible.value,
+                    severity: "danger",
                     "aria-controls": isVisible.value ? "confirm" : null
                   }, null, 8, ["onClick", "aria-expanded", "aria-controls"])
                 ], 10, _hoisted_4);
@@ -68572,7 +68670,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-2db16170"]]);
+const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-912c5576"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
