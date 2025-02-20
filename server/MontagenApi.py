@@ -66,7 +66,7 @@ class MontagenApi:
                     )
             user_id = server.user_manager.get_request_user_id(request)
             task = asyncio.create_task(self.combineMix(output, data, user_id))
-            taskId = uuid.uuid4().hex()
+            taskId = uuid.uuid4().hex
             taskCache[taskId] = task
             return web.json_response({"success": True, "taskId": taskId}, status=200)
 
