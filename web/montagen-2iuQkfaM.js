@@ -67478,7 +67478,7 @@ class Editor extends ExtendedEventEmitter {
     });
   }
   async load(e) {
-    this.hideSelect(), this.disable(), this.applyPlayerEvents(false), this._history && this._history.destroy(), this._history = null, this.container = null, this.board && (this.board.view.remove(), this.board.destroy(), this.board = null), this.initHistory(), await this.playerWrapper.load(e), this.player = this.playerWrapper.player, this.initEvents();
+    e = { ...this.opts, ...e }, this.hideSelect(), this.disable(), this.applyPlayerEvents(false), this._history && this._history.destroy(), this._history = null, this.container = null, this.board && (this.board.view.remove(), this.board.destroy(), this.board = null), this.initHistory(), await this.playerWrapper.load(e), this.player = this.playerWrapper.player, this.initEvents();
   }
   resize(e, t) {
     this.player.creator.resize(e, t);
