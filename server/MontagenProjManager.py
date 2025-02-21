@@ -41,26 +41,38 @@ class MontagenProjManager:
                 return web.Response(status=404)
             return web.json_response({"code": 0, "data": proj})
 
+        @server.routes.get("/Montagen/Proj/{id}/clips")
+        async def getProjectClips(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = await asyncio.to_thread(self._getProject, user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            return web.json_response({"code": 0, "data": proj.getClips()})
+
         @server.routes.post("/Montagen/Proj/New")
         async def addProject(request):
             req_data = await request.json()
             name = req_data.get("name")
             description = req_data.get("description")
+            width = req_data.get("width", 1280)
+            height = req_data.get("height", 720)
             user_id = server.user_manager.get_request_user_id(request)
             project_id = await asyncio.to_thread(
-                self.addProject, user_id, name, description
+                self.addProject, user_id, name, description, width, height
             )
             return web.json_response({"code": 0, "data": project_id})
 
-        @server.routes.post("/Montagen/Proj/{id}/New")
+        @server.routes.post("/Montagen/Proj/{id}/New/{type}")
         async def addProjectClip(request):
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
+            type = request.match_info.get("type", "video")
             proj = self._getProject(user_id, project_id)
             if not proj:
                 return web.Response(status=404)
             modify_time = self.updateProjectField(proj.userId, proj.projectId)
-            data = proj.addClip(modify_time)
+            data = proj.addClip(modify_time, type)
             return web.json_response({"code": 0, "data": data})
 
         @server.routes.post("/Montagen/Proj/{id}/Name")
@@ -280,7 +292,9 @@ class MontagenProjManager:
             finally:
                 self.projcache.pop(key, None)
 
-    def addProject(self, userId: str, name: str, description: str):
+    def addProject(
+        self, userId: str, name: str, description: str, width=None, height=None
+    ):
         if not name:
             raise Exception("name is empty")
         if not description:
@@ -306,7 +320,7 @@ class MontagenProjManager:
 
             conn.commit()
 
-            project = MontagenProj(userId, project_id)
+            project = MontagenProj(userId, project_id, width, height)
             project.onCreated(name, description, create_time)
             return project_id
         finally:
@@ -364,9 +378,13 @@ class MontagenProjManager:
             id=projectId, workflowId=workflowId, filename=filename
         )
 
-    def modifyClip(self, proj, workflowValue, workflowId, clip_id, addr):
+    def modifyClip(
+        self, proj, workflowValue, workflowId, clip_id, addr, name, type, duration
+    ):
         modify_time = self.updateProjectField(proj.userId, proj.projectId)
-        return proj.modifyClip(modify_time, workflowValue, workflowId, clip_id, addr)
+        return proj.modifyClip(
+            modify_time, workflowValue, workflowId, clip_id, addr, name, type, duration
+        )
 
 
 class MontagenProj:
@@ -374,7 +392,7 @@ class MontagenProj:
     OUTPUTDIR = "output"
     VERSIONINFO = {"version": "1.0.0", "type": "MontagenProj"}
 
-    def __init__(self, userId: str, projectId: str):
+    def __init__(self, userId: str, projectId: str, width=None, height=None):
         self.basePath = MontagenProjManager.instance.getUserProjectBase(
             userId, projectId
         )
@@ -387,8 +405,8 @@ class MontagenProj:
         default_workflow_id = self.to_base36_random()
         self.timeline = {
             "type": "canvas",
-            "width": 1280,
-            "height": 720,
+            "width": 1280 if not width else width,
+            "height": 720 if not height else height,
             "name": "montagen",
             "refId": self.to_base36_random(),
             "children": [
@@ -546,7 +564,24 @@ class MontagenProj:
             with open(info_file_path, "w") as f:
                 json.dump(value, f)
 
-    def modifyClip(self, modityTime, workflowValue, workflowId, clip_id, addr):
+    def getClips(self):
+        return [*self._getNodes(self.timeline)]
+
+    def _getNodes(self, parent):
+        children = parent.get("children", [])
+        for child in children:
+            if child.get("clipId", None):
+                yield {
+                    "clipId": child.get("clipId"),
+                    "clipName": child.get("clipName", "untitled"),
+                    "src": child.get("src"),
+                    "type": child.get("type"),
+                }
+            yield from self._getNodes(child)
+
+    def modifyClip(
+        self, modityTime, workflowValue, workflowId, clip_id, addr, name, type, duration
+    ):
         addr = "/" + addr
         self.modifyTime = modityTime
         if "workflows" not in self.timeline:
@@ -583,29 +618,11 @@ class MontagenProj:
             clip_id, self.timeline, self.timeline.get("children", [])
         )
         if not value:
-            self.timeline["children"].append(
-                {
-                    "clipId": clip_id,
-                    "src": addr,
-                    "workflowId": workflowId,
-                    "children": [],
-                    "type": "video",
-                    "loop": True,
-                    "audio": False,
-                    "x": "50vw",
-                    "y": "50vh",
-                    "active": True,
-                }
-            )
-        else:
-            parent, child = value
-            if child["type"] == "video":
-                child.update({"src": addr, "workflowId": workflowId})
-            else:
-                parent["children"].remove(child)
-                parent["children"].append(
+            if type == "video":
+                self.timeline["children"].append(
                     {
                         "clipId": clip_id,
+                        "clipName": name,
                         "src": addr,
                         "workflowId": workflowId,
                         "children": [],
@@ -615,8 +632,96 @@ class MontagenProj:
                         "x": "50vw",
                         "y": "50vh",
                         "active": True,
+                        "duration": duration,
+                        "refId": self.to_base36_random(),
                     }
                 )
+            elif type == "audio":
+                self.timeline["children"].append(
+                    {
+                        "clipId": clip_id,
+                        "clipName": name,
+                        "src": addr,
+                        "workflowId": workflowId,
+                        "type": "audio",
+                        "audio": True,
+                        "duration": duration,
+                        "refId": self.to_base36_random(),
+                        "children": [],
+                    }
+                )
+            elif type == "image":
+                self.timeline["children"].append(
+                    {
+                        "clipId": clip_id,
+                        "clipName": name,
+                        "src": addr,
+                        "workflowId": workflowId,
+                        "children": [],
+                        "type": "image",
+                        "audio": False,
+                        "x": "50vw",
+                        "y": "50vh",
+                        "active": True,
+                        "duration": duration,
+                        "refId": self.to_base36_random(),
+                    }
+                )
+        else:
+            parent, child = value
+            if child["type"] != "text":
+                child.update({"src": addr, "workflowId": workflowId, "clipName": name})
+            else:
+                parent["children"].remove(child)
+                if type == "video":
+                    parent["children"].append(
+                        {
+                            "clipId": clip_id,
+                            "clipName": name,
+                            "src": addr,
+                            "workflowId": workflowId,
+                            "children": [],
+                            "type": "video",
+                            "loop": True,
+                            "audio": False,
+                            "x": "50vw",
+                            "y": "50vh",
+                            "active": True,
+                            "duration": duration,
+                            "refId": self.to_base36_random(),
+                        }
+                    )
+                elif type == "audio":
+                    parent["children"].append(
+                        {
+                            "clipId": clip_id,
+                            "clipName": name,
+                            "src": addr,
+                            "workflowId": workflowId,
+                            "type": "audio",
+                            "audio": True,
+                            "duration": duration,
+                            "refId": self.to_base36_random(),
+                            "children": [],
+                        }
+                    )
+                elif type == "image":
+                    parent["children"].append(
+                        {
+                            "clipId": clip_id,
+                            "clipName": name,
+                            "src": addr,
+                            "workflowId": workflowId,
+                            "children": [],
+                            "type": "image",
+                            "audio": False,
+                            "x": "50vw",
+                            "y": "50vh",
+                            "active": True,
+                            "duration": duration,
+                            "refId": self.to_base36_random(),
+                        }
+                    )
         self._saveToPath(self.result())
         return self.timeline
 
@@ -630,52 +735,137 @@ class MontagenProj:
                 return value
         return None
 
-    def addClip(self, modifyTime):
+    def addClip(self, modifyTime, type):
         self.modifyTime = modifyTime
         default_workflow_id = self.to_base36_random()
-        worflow = {
-            "id": default_workflow_id,
-            "workflow": {
-                "last_node_id": 1,
-                "last_link_id": 0,
-                "nodes": [
-                    {
-                        "id": 1,
-                        "type": "MontagenImagesPreview",
-                        "pos": [203.49522399902344, -15.222152709960938],
-                        "size": [210, 106],
-                        "flags": {},
-                        "order": 0,
-                        "mode": 0,
-                        "inputs": [{"name": "images", "type": "IMAGE", "link": None}],
-                        "outputs": [{"name": "IMAGE", "type": "IMAGE", "links": None}],
-                        "properties": {"Node name for S&R": "MontagenImagesPreview"},
-                        "widgets_values": [25, "", "image"],
-                    }
-                ],
-                "links": [],
-                "groups": [],
-                "config": {},
-                "extra": {
-                    "ds": {
-                        "scale": 0.9641152524334489,
-                        "offset": [417.4540788243107, 235.112875552326],
+        if type == "video":
+            worflow = {
+                "id": default_workflow_id,
+                "workflow": {
+                    "last_node_id": 1,
+                    "last_link_id": 0,
+                    "nodes": [
+                        {
+                            "id": 1,
+                            "type": "MontagenImagesPreview",
+                            "pos": [415, 196],
+                            "size": [210, 130],
+                            "flags": {},
+                            "order": 0,
+                            "mode": 0,
+                            "inputs": [
+                                {"name": "images", "type": "IMAGE", "link": None}
+                            ],
+                            "outputs": [
+                                {"name": "IMAGE", "type": "IMAGE", "links": None}
+                            ],
+                            "properties": {
+                                "Node name for S&R": "MontagenImagesPreview"
+                            },
+                            "widgets_values": ["", 25, "", "image"],
+                        }
+                    ],
+                    "links": [],
+                    "groups": [],
+                    "config": {},
+                    "extra": {
+                        "ds": {"scale": 1, "offset": [0, 0]},
+                        MontagenProjManager.MONTAGENPROJ: {
+                            "userId": self.userId,
+                            "projectId": self.projectId,
+                            "workflowId": default_workflow_id,
+                        },
                     },
-                    MontagenProjManager.MONTAGENPROJ: {
-                        "userId": self.userId,
-                        "projectId": self.projectId,
-                        "workflowId": default_workflow_id,
-                    },
+                    "version": 0.4,
                 },
-                "version": 0.4,
-            },
-        }
+            }
+        elif type == "audio":
+            worflow = {
+                "id": default_workflow_id,
+                "workflow": {
+                    "last_node_id": 1,
+                    "last_link_id": 0,
+                    "nodes": [
+                        {
+                            "id": 1,
+                            "type": "MontagenAudioPreview",
+                            "pos": [441, 244],
+                            "size": [315, 82],
+                            "flags": {},
+                            "order": 0,
+                            "mode": 0,
+                            "inputs": [
+                                {"name": "audio", "type": "AUDIO", "link": None}
+                            ],
+                            "outputs": [
+                                {"name": "AUDIO", "type": "AUDIO", "links": None}
+                            ],
+                            "properties": {"Node name for S&R": "MontagenAudioPreview"},
+                            "widgets_values": ["", ""],
+                        }
+                    ],
+                    "links": [],
+                    "groups": [],
+                    "config": {},
+                    "extra": {
+                        "ds": {"scale": 1, "offset": [0, 0]},
+                        MontagenProjManager.MONTAGENPROJ: {
+                            "userId": self.userId,
+                            "projectId": self.projectId,
+                            "workflowId": default_workflow_id,
+                        },
+                    },
+                    "version": 0.4,
+                },
+            }
+        elif type == "image":
+            worflow = {
+                "id": default_workflow_id,
+                "workflow": {
+                    "last_node_id": 1,
+                    "last_link_id": 0,
+                    "nodes": [
+                        {
+                            "id": 1,
+                            "type": "MontagenPicturePreview",
+                            "pos": [590, 235],
+                            "size": [315, 82],
+                            "flags": {},
+                            "order": 0,
+                            "mode": 0,
+                            "inputs": [
+                                {"name": "image", "type": "Image", "link": None}
+                            ],
+                            "outputs": [
+                                {"name": "IMAGE", "type": "IMAGE", "links": None}
+                            ],
+                            "properties": {
+                                "Node name for S&R": "MontagenPicturePreview"
+                            },
+                            "widgets_values": ["", ""],
+                        }
+                    ],
+                    "links": [],
+                    "groups": [],
+                    "config": {},
+                    "extra": {
+                        "ds": {"scale": 1, "offset": [0, 0]},
+                        MontagenProjManager.MONTAGENPROJ: {
+                            "userId": self.userId,
+                            "projectId": self.projectId,
+                            "workflowId": default_workflow_id,
+                        },
+                    },
+                    "version": 0.4,
+                },
+            }
         if "workflows" not in self.timeline:
             self.timeline["workflows"] = []
         workflows: list = self.timeline["workflows"]
         workflows.append(worflow)
         clip = {
             "clipId": f"1_{default_workflow_id}",
+            "clipName": "untitled",
             "workflowId": default_workflow_id,
             "type": "text",
             "fontSize": "50rpx",

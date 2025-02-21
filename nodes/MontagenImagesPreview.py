@@ -8,6 +8,9 @@ import shutil
 from comfy.utils import ProgressBar
 import time
 import random
+import io
+import torchaudio
+from PIL import Image
 
 
 class MontagenImagesPreview:
@@ -18,7 +21,7 @@ class MontagenImagesPreview:
         self.output_dir = folder_paths.get_temp_directory()
 
     @classmethod
-    def INPUT_TYPES(s):
+    def get_projs(s):
         projs = [
             f'{proj.get("name")}{MontagenImagesPreview.PROJECTSPLIT}{proj.get("projectId")}'
             for proj in MontagenProjManager.instance.getProjects(
@@ -26,9 +29,15 @@ class MontagenImagesPreview:
             )
         ]
         projs.insert(0, "")
+        return projs
+
+    @classmethod
+    def INPUT_TYPES(s):
+        projs = s.get_projs()
         return {
             "required": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
+                "name": ("STRING",),
                 "preview_fps": (
                     "INT",
                     {
@@ -78,10 +87,10 @@ class MontagenImagesPreview:
         result = "".join(reversed(base36))
         return result.zfill(9)
 
-    def save_images(
+    def get_info(
         self,
-        images,
-        preview_fps=25,
+        ext,
+        name,
         unique_id=None,
         projectId=None,
         prompt: dict = None,
@@ -91,8 +100,8 @@ class MontagenImagesPreview:
             raise ValueError("node_id is required.")
         if not prompt:
             raise ValueError("prompt is required.")
-        pbar = ProgressBar(100)
-        imageLen = len(images)
+        if not name:
+            raise ValueError("name is required.")
         userId = MontagenProjManager.DEFAULTUSERID
         projectId_context = None
         workflowId = None
@@ -136,7 +145,11 @@ class MontagenImagesPreview:
             current_proj_id = None
             for node in prompt.values():
                 class_type = node.get("class_type")
-                if class_type == "MontagenImagesPreview":
+                if class_type in [
+                    "MontagenImagesPreview",
+                    "MontagenAudioPreview",
+                    "MontagenPicturePreview",
+                ]:
                     node_proj_id = node.get("inputs", {}).get("projectId")
                     if node_proj_id:
                         if not current_proj_id:
@@ -155,10 +168,51 @@ class MontagenImagesPreview:
 
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         workflowPath = proj.getOutputPath(workflowId)
-        fileName = f"{current_time}_{self.to_base36_random()}.mp4"
+        fileName = f"{current_time}_{self.to_base36_random()}.{ext}"
         fileFullName = os.path.join(workflowPath, fileName)
-        tmpFileName = f"{current_time}_{self.to_base36_random()}_t.mp4"
+        tmpFileName = f"{current_time}_{self.to_base36_random()}_t.{ext}"
         tmpFullName = os.path.join(workflowPath, tmpFileName)
+
+        return (
+            userId,
+            projectId,
+            proj,
+            workflowId,
+            clip_id,
+            has_workflow,
+            has_project_id,
+            fileName,
+            fileFullName,
+            tmpFileName,
+            tmpFullName,
+        )
+
+    def save_images(
+        self,
+        images,
+        name,
+        preview_fps=25,
+        unique_id=None,
+        projectId=None,
+        prompt: dict = None,
+        extra_pnginfo=None,
+    ):
+        (
+            userId,
+            projectId,
+            proj,
+            workflowId,
+            clip_id,
+            has_workflow,
+            has_project_id,
+            fileName,
+            fileFullName,
+            tmpFileName,
+            tmpFullName,
+        ) = self.get_info("mp4", name, unique_id, projectId, prompt, extra_pnginfo)
+        pbar = ProgressBar(100)
+        imageLen = len(images)
+
         frames = []
         currentProgress = 0
         loadImageProgressItem = 100 / imageLen
@@ -171,14 +225,16 @@ class MontagenImagesPreview:
         pbar.update_absolute(100)
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
+
+        addr = MontagenProjManager.instance.getAddr(
+            userId, projectId, workflowId, fileName
+        )
         if not has_project_id or not has_workflow:
             return {
                 "ui": {
                     "videos": [
                         {
-                            "addr": MontagenProjManager.instance.getAddr(
-                                userId, projectId, workflowId, fileName
-                            ),
+                            "addr": addr,
                             "fps": preview_fps,
                             "width": frames[0].shape[1],
                             "height": frames[0].shape[0],
@@ -192,11 +248,16 @@ class MontagenImagesPreview:
                 },
                 "result": (images,),
             }
-        addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, fileName
-        )
+        duration = imageLen / preview_fps
         timeline = MontagenProjManager.instance.modifyClip(
-            proj, extra_pnginfo.get("workflow", {}), workflowId, clip_id, addr
+            proj,
+            extra_pnginfo.get("workflow", {}),
+            workflowId,
+            clip_id,
+            addr,
+            name,
+            "video",
+            duration,
         )
         return {
             "ui": {
@@ -216,4 +277,219 @@ class MontagenImagesPreview:
                 ]
             },
             "result": (images,),
+        }
+
+
+class MontagenAudioPreview(MontagenImagesPreview):
+
+    def __init__(self):
+        super().__init__()
+
+    @classmethod
+    def INPUT_TYPES(s):
+        projs = s.get_projs()
+        return {
+            "required": {
+                "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
+                "name": ("STRING",),
+            },
+            "optional": {
+                "projectId": (sorted(projs), {"tooltip": "The project id."}),
+            },
+            "hidden": {
+                "prompt": "PROMPT",
+                "extra_pnginfo": "EXTRA_PNGINFO",
+                "unique_id": "UNIQUE_ID",
+            },
+        }
+
+    RETURN_TYPES = ("AUDIO",)
+    FUNCTION = "save_audio"
+
+    OUTPUT_NODE = True
+
+    CATEGORY = "Montagen"
+    DESCRIPTION = "Montagen Audio Preview"
+
+    def save_audio(
+        self,
+        audio,
+        name,
+        unique_id=None,
+        projectId=None,
+        prompt: dict = None,
+        extra_pnginfo=None,
+    ):
+        (
+            userId,
+            projectId,
+            proj,
+            workflowId,
+            clip_id,
+            has_workflow,
+            has_project_id,
+            fileName,
+            fileFullName,
+            tmpFileName,
+            tmpFullName,
+        ) = self.get_info("flac", name, unique_id, projectId, prompt, extra_pnginfo)
+        buff = io.BytesIO()
+        wavform = audio["waveform"].cpu()[0]
+        torchaudio.save(buff, wavform, audio["sample_rate"], format="FLAC")
+        with open(tmpFullName, "wb") as f:
+            f.write(buff.getbuffer())
+        if os.path.exists(tmpFullName):
+            shutil.move(tmpFullName, fileFullName)
+        addr = MontagenProjManager.instance.getAddr(
+            userId, projectId, workflowId, fileName
+        )
+        if not has_project_id or not has_workflow:
+            return {
+                "ui": {
+                    "videos": [
+                        {
+                            "addr": addr,
+                            "userId": userId,
+                            "projectId": projectId,
+                            "workflowId": workflowId,
+                            "clipId": clip_id,
+                        }
+                    ]
+                },
+                "result": (audio,),
+            }
+
+        duration = wavform.size(1) / audio["sample_rate"]
+
+        timeline = MontagenProjManager.instance.modifyClip(
+            proj,
+            extra_pnginfo.get("workflow", {}),
+            workflowId,
+            clip_id,
+            addr,
+            name,
+            "audio",
+            duration,
+        )
+        return {
+            "ui": {
+                "videos": [
+                    {
+                        "addr": addr,
+                        "userId": userId,
+                        "projectId": projectId,
+                        "workflowId": workflowId,
+                        "clipId": clip_id,
+                        "timeline": timeline,
+                    }
+                ]
+            },
+            "result": (audio,),
+        }
+
+
+class MontagenPicturePreview(MontagenImagesPreview):
+
+    def __init__(self):
+        super().__init__()
+
+    @classmethod
+    def INPUT_TYPES(s):
+        projs = s.get_projs()
+        return {
+            "required": {
+                "image": ("IMAGE", {"tooltip": "The image to preview."}),
+                "name": ("STRING",),
+            },
+            "optional": {
+                "projectId": (sorted(projs), {"tooltip": "The project id."}),
+            },
+            "hidden": {
+                "prompt": "PROMPT",
+                "extra_pnginfo": "EXTRA_PNGINFO",
+                "unique_id": "UNIQUE_ID",
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "save_picture"
+
+    OUTPUT_NODE = True
+
+    CATEGORY = "Montagen"
+    DESCRIPTION = "Montagen Picture Preview"
+
+    def save_picture(
+        self,
+        image,
+        name,
+        unique_id=None,
+        projectId=None,
+        prompt: dict = None,
+        extra_pnginfo=None,
+    ):
+        (
+            userId,
+            projectId,
+            proj,
+            workflowId,
+            clip_id,
+            has_workflow,
+            has_project_id,
+            fileName,
+            fileFullName,
+            tmpFileName,
+            tmpFullName,
+        ) = self.get_info("png", name, unique_id, projectId, prompt, extra_pnginfo)
+
+        i = 255.0 * image[0].cpu().numpy()
+        img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
+        img.save(tmpFullName)
+        if os.path.exists(tmpFullName):
+            shutil.move(tmpFullName, fileFullName)
+        addr = MontagenProjManager.instance.getAddr(
+            userId, projectId, workflowId, fileName
+        )
+        if not has_project_id or not has_workflow:
+            return {
+                "ui": {
+                    "videos": [
+                        {
+                            "addr": addr,
+                            "userId": userId,
+                            "projectId": projectId,
+                            "workflowId": workflowId,
+                            "clipId": clip_id,
+                        }
+                    ]
+                },
+                "result": (image,),
+            }
+
+        duration = 10
+
+        timeline = MontagenProjManager.instance.modifyClip(
+            proj,
+            extra_pnginfo.get("workflow", {}),
+            workflowId,
+            clip_id,
+            addr,
+            name,
+            "image",
+            duration,
+        )
+        return {
+            "ui": {
+                "videos": [
+                    {
+                        "addr": addr,
+                        "userId": userId,
+                        "projectId": projectId,
+                        "workflowId": workflowId,
+                        "clipId": clip_id,
+                        "timeline": timeline,
+                    }
+                ]
+            },
+            "result": (image,),
         }
