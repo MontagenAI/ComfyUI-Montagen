@@ -565,7 +565,10 @@ class MontagenProj:
                 json.dump(value, f)
 
     def getClips(self):
-        return [*self._getNodes(self.timeline)]
+        return {
+            "clips": [*self._getNodes(self.timeline)],
+            "workflows": self.timeline.get("workflows", []),
+        }
 
     def _getNodes(self, parent):
         children = parent.get("children", [])
@@ -574,6 +577,7 @@ class MontagenProj:
                 yield {
                     "clipId": child.get("clipId"),
                     "clipName": child.get("clipName", "untitled"),
+                    "workflowId": child.get("workflowId"),
                     "src": child.get("src"),
                     "type": child.get("type"),
                 }
