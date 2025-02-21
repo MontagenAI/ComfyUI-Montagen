@@ -18,7 +18,7 @@ const isArray = require('lodash/isArray');
 const CanvasUtil = require('../utils/canvas');
 const Queue = require('../utils/queue');
 const { ProxyObj, Text } = require('../../inkpaint/lib/index');
-const { isBrowser } = require("browser-or-node");
+const { isBrowser } = require('browser-or-node');
 const { nodeRequire } = require('../utils/utils');
 const ImageMaterial = require('../material/image');
 const { STR2RGB, RGB2HSL } = require('../utils/color');
@@ -54,12 +54,12 @@ class FFText extends FFNode {
   }
 
   get confAttr() {
-    const conf = {...super.confAttr};
+    const conf = { ...super.confAttr };
     conf.fontSize = super.px(conf.fontSize);
     conf.padding = `${conf.padding || '0%'}`;
     conf.lineHeight = `${conf.lineHeight || '150%'}`;
     conf.letterSpacing = `${conf.letterSpacing || '0%'}`;
-    return conf
+    return conf;
   }
 
   get cursorIndex() {
@@ -198,7 +198,8 @@ class FFText extends FFNode {
   }
 
   get styleShadow() {
-    const angle = this.confAttr.shadow?.angle !== undefined ? Number(this.confAttr.shadow?.angle) : 45;
+    const angle =
+      this.confAttr.shadow?.angle !== undefined ? Number(this.confAttr.shadow?.angle) : 45;
     return {
       dropShadow: this.confAttr.shadow && this.confAttr.shadow?.color,
       dropShadowColor: this.confAttr.shadow?.color,
@@ -236,7 +237,7 @@ class FFText extends FFNode {
     this.display.updateText(false); // force update
   }
 
-  toJson(asTemplate=false) {
+  toJson(asTemplate = false) {
     const conf = super.toJson(asTemplate);
     if (asTemplate) {
       delete conf['height'];
@@ -247,18 +248,18 @@ class FFText extends FFNode {
     return conf;
   }
 
-  px(val, needRound= true) {
-    if (typeof(val) === 'string' && val.endsWith('%') && !isNaN(val.replace('%', ''))) {
+  px(val, needRound = true) {
+    if (typeof val === 'string' && val.endsWith('%') && !isNaN(val.replace('%', ''))) {
       const res = this.fontSize * Number(val.replace('%', '')) * 0.01;
-      return needRound? Math.round(res) : res;
+      return needRound ? Math.round(res) : res;
     }
     return super.px(val);
   }
 
   vu(val, unitReferValue) {
-    if (typeof(val) === 'string' && val.endsWith('%')) return val;
+    if (typeof val === 'string' && val.endsWith('%')) return val;
     const px = this.px(val);
-    if (typeof(unitReferValue) === 'string' && unitReferValue.endsWith('%') && !isNaN(px)) {
+    if (typeof unitReferValue === 'string' && unitReferValue.endsWith('%') && !isNaN(px)) {
       return `${Math.round(100 * (px / this.fontSize))}%`;
     } else {
       return super.vu(val, unitReferValue);
@@ -293,21 +294,23 @@ class FFText extends FFNode {
   async preProcessing() {
     if (this.confAttr.image && this.confAttr.image !== this.imageMat?.path) {
       if (this.imageMat) this.material.destroy();
-      this.imageMat = new ImageMaterial({src: this.confAttr.image});
+      this.imageMat = new ImageMaterial({ src: this.confAttr.image });
       await this.imageMat.init();
       this.image = this.imageMat.canvas;
     }
 
     if (!isBrowser) {
-      if (!this.useFontFamily || this.useFontFamily.startsWith('http') || !fs.existsSync(this.useFontFamily)) {
-        throw new Error(`Font not exists: ${this.useFontFamily}`);
-      }
-      try {
-        await this.setFont(this.useFontFamily);
-      } catch (e) {
-        if (!this.useFontFamily.startsWith('http') && fs.existsSync(this.useFontFamily)) {
-          fs.unlinkSync(this.useFontFamily);
-          throw new Error(`Set font fail: ${this.useFontFamily}`);
+      if (this.useFontFamily) {
+        if (this.useFontFamily.startsWith('http') || !fs.existsSync(this.useFontFamily)) {
+          throw new Error(`Font not exists: ${this.useFontFamily}`);
+        }
+        try {
+          await this.setFont(this.useFontFamily);
+        } catch (e) {
+          if (!this.useFontFamily.startsWith('http') && fs.existsSync(this.useFontFamily)) {
+            fs.unlinkSync(this.useFontFamily);
+            throw new Error(`Set font fail: ${this.useFontFamily}`);
+          }
         }
       }
       this.updateStyle();
@@ -325,8 +328,7 @@ class FFText extends FFNode {
     }
   }
 
-  setColor() {
-  }
+  setColor() {}
 
   /**
    * Set text font file path
@@ -335,13 +337,13 @@ class FFText extends FFNode {
    */
   async setFont(font) {
     // if (!isBrowser && font.startsWith('http')) return;
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       CanvasUtil.setFont(font, fontFamily => {
         // this.setStyle({ fontFamily });
         this.font = { font, fontFamily };
         resolve();
       });
-    })
+    });
   }
 
   /**
@@ -396,15 +398,40 @@ class FFText extends FFNode {
   }
 
   updateStyle() {
-    const { fontSize, color, image, backgroundColor, wrap, align, lineHeight, styleStroke, styleShadow, letterSpacing, selectionBgColor, padding } = this;
+    const {
+      fontSize,
+      color,
+      image,
+      backgroundColor,
+      wrap,
+      align,
+      lineHeight,
+      styleStroke,
+      styleShadow,
+      letterSpacing,
+      selectionBgColor,
+      padding,
+    } = this;
     const wordWrapWidth = this.confAttr.width;
     const fontFamily = this.font?.fontFamily;
     const style = {
       selectionBgColor,
-      fontFamily, fontSize, color, image, backgroundColor, align, lineHeight, letterSpacing, padding,
-      wordWrapWidth, wordWrap: (wrap && wordWrapWidth > 0), breakWords: true, lineJoin: 'round', // 否则描边会有尖刺
-      ...styleStroke, ...styleShadow
-    }
+      fontFamily,
+      fontSize,
+      color,
+      image,
+      backgroundColor,
+      align,
+      lineHeight,
+      letterSpacing,
+      padding,
+      wordWrapWidth,
+      wordWrap: wrap && wordWrapWidth > 0,
+      breakWords: true,
+      lineJoin: 'round', // 否则描边会有尖刺
+      ...styleStroke,
+      ...styleShadow,
+    };
 
     this.setStyle(style);
     // change as line breaks
@@ -417,7 +444,7 @@ class FFText extends FFNode {
     this.setAlign();
   }
 
-  setAlign(init=false) {
+  setAlign(init = false) {
     const { align, valign } = this;
     const ax = ALIGN_MAP[align] !== undefined ? ALIGN_MAP[align] : 0.5;
     const ay = VALIGN_MAP[valign] !== undefined ? VALIGN_MAP[valign] : 0.5;
@@ -445,7 +472,7 @@ class FFText extends FFNode {
     this.creator().render();
   }
 
-  selectMove({x: dx, y: dy}, withShift, withCtrl) {
+  selectMove({ x: dx, y: dy }, withShift, withCtrl) {
     // console.log('selectMove', {dx, dy, withShift, withCtrl});
     this.display.selectMove(dx, dy, withShift, withCtrl);
     this.creator().render();
