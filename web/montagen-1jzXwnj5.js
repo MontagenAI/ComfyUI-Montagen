@@ -68835,10 +68835,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             window.myUI = ui;
             mutationObserver.value = new MutationObserver((mutationsList) => {
               console.log("mutationsList_dom发生了变化", mutationsList);
-              let width = getComputedStyle(mutation.target).getPropertyValue("--sidebar-width");
+              let target2 = document.querySelector(".comfyui-body-left .side-tool-bar-container");
+              let width = getComputedStyle(target2).getPropertyValue("--sidebar-width");
               if (width) {
                 document.querySelector("#comfyui-maskpage").style.setProperty("--sidebar-width", width);
-                document.querySelector("#comfyui-maskpage").style.setProperty("--sidebar-icon-size", getComputedStyle(mutation.target).getPropertyValue("--sidebar-icon-size"));
+                document.querySelector("#comfyui-maskpage").style.setProperty("--sidebar-icon-size", getComputedStyle(target2).getPropertyValue("--sidebar-icon-size"));
               }
             });
             mutationObserver.value.observe(ui.bodyLeft, {
