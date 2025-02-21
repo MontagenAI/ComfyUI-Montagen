@@ -332,10 +332,10 @@ class MontagenAudioPreview(MontagenImagesPreview):
             fileFullName,
             tmpFileName,
             tmpFullName,
-        ) = self.get_info("flac", name, unique_id, projectId, prompt, extra_pnginfo)
+        ) = self.get_info("mp3", name, unique_id, projectId, prompt, extra_pnginfo)
         buff = io.BytesIO()
         wavform = audio["waveform"].cpu()[0]
-        torchaudio.save(buff, wavform, audio["sample_rate"], format="FLAC")
+        torchaudio.save(buff, wavform, audio["sample_rate"], format="MP3")
         with open(tmpFullName, "wb") as f:
             f.write(buff.getbuffer())
         if os.path.exists(tmpFullName):
