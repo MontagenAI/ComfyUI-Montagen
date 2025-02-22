@@ -1,12 +1,8 @@
-# ComfyUI-Montagen
+# ComfyUI-Montagen Changelog
 
-**Montagen**, a web video editor framework, starts with the basic key features of **timeline editing** and **video preview**.  
-**ComfyUI-Montagen** is an extension designed to enhance the video editing ability of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) with custom nodes and Montagen. It offers basic video editing features and **associates media clips with the ComfyUI workflow**. Furthermore, this extension unlocks the full potential of AI-based **video generation** and **task automation**.
+Objective: Build a ComfyUI-based video editing framework.
 
-
-![Montagen ScreenShot](assets/montagenscreenshot1.png)
-
-## [CHANGELOG](CHANGELOG.md) [0.1.0] - 2025-02-22
+## [0.1.0] - 2025-02-22
 
 ### Added
 
@@ -49,31 +45,14 @@
 - [UI] Media Panel & Metadata Panel: Placeholder panels removed for cleaner UI. Replaced by Navigation System.
 
 
-## Usage
+## [0.0.1] - 2025-01-25
 
-### Video Clip Adapter
+### Added
 
-![PreviewImages ScreenShot](assets/previewimagesscreenshot1.png)
+**Technical Validation: A ComfyUI Custom Node for Image Sequence Preview with a Timeline Component.**
 
-* Set media clip `name` and `preview_fps` to use image sequence as a Montagen video clip.
-* After ComfyUI workflow execution is complete, press `Preview` to open the Montagen UI.
-* Use input images as output, so node output is optional.
-
-## Installation
-
-### Install via ComfyUI-Manager
-
-* Search ComfyUI-Montagen in ComfyUI-Manager and click Install button.
-
-### Manual Install
-
-To install ComfyUI-Montagen in addition to an existing installation of ComfyUI, you can follow the following steps:
-
-1. goto `ComfyUI/custom_nodes` dir in terminal(cmd)
-2. `git clone https://github.com/MontagenAI/ComfyUI-Montagen.git`
-3. Restart ComfyUI.
-
-
-## Acknowledgments
-
-Base on the project of [FFCreator](https://github.com/tnfe/FFCreator). And inspired by the examples of [miravideo](https://github.com/miravideo).
+- [Node] `Preview Images`: Input images, output (optional) the input images. Set 'FPS', and click 'Preview' button to open the Montagen UI with image sequence.
+- [UI] Montagen UI Draft: A classic video editor layout (`Media Panel`, `Metadata Panel`, `Editor`, `Player`).
+- [UI] Media Panel & Metadata Panel: Useless placeholders for future development.
+- [Editor] Basic Timeline Controls: Hover over the clip to preview and precisely locate a frame. Or press the space key to start playback in `Player`.
+- [Player] Basic Video Player: Simple media playback functionality.
