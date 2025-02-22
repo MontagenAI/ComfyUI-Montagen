@@ -877,7 +877,7 @@ class MontagenProj:
             "x": "50vw",
             "y": "50vh",
             "duration": 10,
-            "text": "Empty Clip",
+            "text": f"Empty {type} Clip",
             "refId": self.to_base36_random(),
             "height": "100rpx",
             "width": "300rpx",
