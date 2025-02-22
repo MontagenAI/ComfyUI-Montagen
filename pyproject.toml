@@ -1,5 +1,5 @@
 [project]
-name = "montagen"
+name = "comfyui-montagen"
 description = "ComfyUI-Montagen is an extension designed to enhance the video editing ability of ComfyUI with custom nodes and Montagen. It offers basic video editing features and associates media clips with the ComfyUI workflow. Furthermore, this extension unlocks the full potential of AI-based video generation and task automation."
 version = "0.0.1"
 license = {file = "LICENSE"}
