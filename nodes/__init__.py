@@ -14,9 +14,9 @@ NODE_CLASS_MAPPINGS = {
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     # "MontagenDefaultLoadVideo": "MontagenDefaultLoadVideo",
-    "MontagenImagesPreview": "Preview Images",
-    "MontagenAudioPreview": "Preview Audio",
-    "MontagenPicturePreview": "Preview Picture",
+    "MontagenImagesPreview": "Video Clip Adapter",
+    "MontagenAudioPreview": "Audio Clip Adapter",
+    "MontagenPicturePreview": "Image Clip Adapter",
 }
 
 __all__ = [NODE_DISPLAY_NAME_MAPPINGS, NODE_CLASS_MAPPINGS]
