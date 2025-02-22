@@ -11834,15 +11834,16 @@ const MODIFIERS = ["Meta", "Control"], Bn = class Bn2 extends ComponentBase {
       const t = "keyboard";
       if (MODIFIERS.includes(e.key)) return this.enableMulti(true);
       const r = `${e.key}`.toLowerCase(), s = this.editor.responder === this.constructor.type;
-      if (this.locked(t)) return e.preventDefault();
-      if (e.mctrlKey && r === "c" && s) this.copy();
-      else if (e.mctrlKey && r === "v" && s) this.paste();
-      else {
-        if (e.key !== "Backspace" || !s)
-          return this.onKey(r, e);
-        this.delete(this.selected);
+      if (!this.locked(t)) {
+        if (e.mctrlKey && r === "c" && s) this.copy();
+        else if (e.mctrlKey && r === "v" && s) this.paste();
+        else {
+          if (e.key !== "Backspace" || !s)
+            return this.onKey(r, e);
+          this.delete(this.selected);
+        }
+        this.lock(100, null, t);
       }
-      this.lock(100, null, t), e.preventDefault();
     };
   }
   onKeyUp() {
@@ -66929,7 +66930,7 @@ class Editor extends ExtendedEventEmitter {
       if (!this.opts.enableKeyboard)
         return;
       const r = (s = this.controls) == null ? void 0 : s.select;
-      t.key === " " && r && (r.locked("togglePlay") || (r.lock(300, null, "togglePlay"), this.playerWrapper.playing ? this.playerWrapper.pause() : this.enabled && this.playerWrapper.play()), t.preventDefault());
+      t.key === " " && r && (r.locked("togglePlay") || (r.lock(300, null, "togglePlay"), this.playerWrapper.playing ? this.playerWrapper.pause() : this.enabled && this.playerWrapper.play()));
     }, document.body.addEventListener("keydown", this.keyboardPlay));
   }
   boardScale(e) {
@@ -68169,7 +68170,6 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
     const ruleFormRef = ref$3();
     const validateForm = async () => {
-      console.log("输出表单完整性验证");
       if (!ruleFormRef.value) return;
       return new Promise((resolve, reject) => {
         var _a2;
@@ -68184,7 +68184,6 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
     const onFormSubmit = () => {
       validateForm().then(async () => {
-        console.log("验证通过");
         loadingFlag.value = true;
         let params = {
           projectId: workSpaceStore.activeProject.projectId,
@@ -68347,7 +68346,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const outPutFormVue = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-a6bfb04d"]]);
+const outPutFormVue = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-070c4578"]]);
 const _withScopeId$3 = (n2) => (pushScopeId("data-v-5d82a96b"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$6 = { class: "workflow w-full h-full" };
 const _hoisted_2$4 = { class: "flex justify-between items-center workflow-header px-2" };
