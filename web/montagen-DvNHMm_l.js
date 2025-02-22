@@ -23,17 +23,17 @@
   color: #e0e0e0;
   box-shadow: none;
 }
-.workflow[data-v-86a33aac] {\r
+.workflow[data-v-c0812526] {\r
   background: #fff;
 }
-.workflow-header[data-v-86a33aac] {\r
+.workflow-header[data-v-c0812526] {\r
   border-bottom: 1px solid var(--p-button-text-primary-color);
 }
-.list-item[data-v-86a33aac] {\r
+.list-item[data-v-c0812526] {\r
   padding: 0 0.5rem;\r
   background: var(--p-badge-secondary-background, #f1f5f9);
 }
-.list-item.active[data-v-86a33aac] {\r
+.list-item.active[data-v-c0812526] {\r
   background-color: var(--p-button-text-primary-color);\r
   color: var(--p-button-text-color);
 }\r
@@ -70,21 +70,25 @@
 }
 .dark-theme .p-button-text[data-v-2f873353] {
   color: var(--p-button-text-secondary-color);
-}[data-v-2f005869] .split-container {
+}[data-v-71bf342b] .split-container {
   border: none;
   border-radius: 0;
   width: 100%;
   height: 100%;
 }
-[data-v-2f005869] .split-container .split-gutter {
+[data-v-71bf342b] .split-container .split-gutter {
   background: #181818;
 }
-[data-v-2f005869] .split-container.left-hidden .split-panel-left {
+[data-v-71bf342b] .split-container.left-hidden .split-panel-left {
   display: none;
 }
-[data-v-2f005869] .split-container.left-hidden > .split-gutter {
+[data-v-71bf342b] .split-container.left-hidden > .split-gutter {
   display: none;
-}.status-indicator[data-v-9601f81a] {
+}
+.player[data-v-71bf342b] {
+  width: 100%;
+  height: 100%;
+}.status-indicator[data-v-f5cd6071] {
   position: absolute;
   font-weight: 700;
   font-size: 1.5rem;
@@ -92,21 +96,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.workflow-tab .close-button[data-v-9601f81a] {
+.workflow-tab .close-button[data-v-f5cd6071] {
   visibility: hidden;
 }
-.workflow-tab .close-button.p-button-text.p-button-secondary[data-v-9601f81a]:not(:disabled):hover {
+.workflow-tab .close-button.p-button-text.p-button-secondary[data-v-f5cd6071]:not(:disabled):hover {
   background: transparent;
 }
-.workflow-tab:hover .close-button[data-v-9601f81a] {
+.workflow-tab:hover .close-button[data-v-f5cd6071] {
   visibility: visible;
 }
-.workflow-tab:hover .status-indicator[data-v-9601f81a] {
+.workflow-tab:hover .status-indicator[data-v-f5cd6071] {
   display: none;
-}.my-inline[data-v-a6c6aa4c] {
+}.my-inline[data-v-1f03ee91] {
   height: 100%;
 }
-[data-v-a6c6aa4c] .p-togglebutton {
+[data-v-1f03ee91] .p-togglebutton {
   padding: 0;
   background-color: transparent;
   border-radius: 0;
@@ -114,11 +118,11 @@
   position: relative;
   border: 0;
 }
-[data-v-a6c6aa4c] .p-togglebutton.p-togglebutton-checked {
+[data-v-1f03ee91] .p-togglebutton.p-togglebutton-checked {
   border-bottom: 2px solid var(--p-button-text-primary-color) !important;
   background: transparent;
 }
-[data-v-a6c6aa4c] .p-togglebutton.p-togglebutton-checked::before {
+[data-v-1f03ee91] .p-togglebutton.p-togglebutton-checked::before {
   background: transparent;
 }
 .imagen-header[data-v-67915f24] {\r
@@ -67665,7 +67669,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       this.tabbsProject.push(project);
     },
     deleteTabs(projectId) {
-      let idx = this.tabbsProject.findIndex((item) => item.projectId != projectId);
+      let idx = this.tabbsProject.findIndex((item) => item.projectId == projectId);
       this.tabbsProject.splice(idx, 1);
     },
     setActiveProject(project) {
@@ -68337,28 +68341,26 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   }
 });
 const outPutFormVue = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-97ea6256"]]);
-const _withScopeId$3 = (n2) => (pushScopeId("data-v-86a33aac"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$3 = (n2) => (pushScopeId("data-v-c0812526"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$6 = { class: "workflow w-full h-full" };
 const _hoisted_2$4 = { class: "flex justify-between items-center workflow-header p-2" };
 const _hoisted_3$4 = { class: "list-none p-2" };
 const _hoisted_4$2 = ["onClick"];
 const _hoisted_5 = { key: 0 };
 const _hoisted_6 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("svg", {
-  t: "1740195346123",
+  t: "1740213354335",
   class: "icon",
   viewBox: "0 0 1024 1024",
   version: "1.1",
   xmlns: "http://www.w3.org/2000/svg",
-  "p-id": "25529",
+  "p-id": "25787",
   width: "48",
   height: "48"
 }, [
   /* @__PURE__ */ createBaseVNode("path", {
-    d: "M0 0h307.2v307.2H0V0z m102.4 102.4v102.4h102.4V102.4H102.4z m614.4-102.4h307.2v307.2h-307.2V0z m102.4 102.4v102.4h102.4V102.4h-102.4z m-102.4 614.4h307.2v307.2h-307.2v-307.2z m102.4 102.4v102.4h102.4v-102.4h-102.4zM0 716.8h307.2v307.2H0v-307.2z m102.4 102.4v102.4h102.4v-102.4H102.4zM307.2 102.4h409.6v102.4H307.2V102.4z m0 716.8h409.6v102.4H307.2v-102.4zM819.2 307.2h102.4v409.6h-102.4V307.2zM102.4 307.2h102.4v409.6H102.4V307.2z m256 51.2h307.2v102.4H358.4V358.4z m102.4 102.4h102.4v204.8H460.8V460.8z",
-    "p-id": "25530",
-    "data-spm-anchor-id": "a313x.search_index.0.i25.57f83a81DMWBBe",
-    class: "selected",
-    fill: "#8a8a8a"
+    d: "M822.912657 63.762209 204.048791 63.762209c-56.901964 0-103.164614 46.252417-103.164614 103.144148l0 593.093946c0 56.870242 46.26265 103.144148 103.164614 103.144148l618.863866 0c56.913221 0 103.165638-46.273906 103.165638-103.144148L926.078295 166.906357C926.078295 110.014626 879.825878 63.762209 822.912657 63.762209zM874.496499 760.001327c0 28.434609-23.127743 51.581796-51.583842 51.581796L204.048791 811.583123c-28.457122 0-51.582819-23.147186-51.582819-51.581796L152.465972 166.906357c0-28.457122 23.12672-51.581796 51.582819-51.581796l618.863866 0c28.457122 0 51.583842 23.125697 51.583842 51.582819L874.496499 760.001327zM771.351328 244.259096 332.984349 244.259096c-14.270005 0-25.811876 11.56336-25.811876 25.792433 0 14.248516 11.541871 25.790386 25.811876 25.790386L771.351328 295.841915c14.249539 0 25.791409-11.541871 25.791409-25.791409C797.142737 255.822456 785.600867 244.259096 771.351328 244.259096zM771.351328 373.195677 332.984349 373.195677c-14.270005 0-25.811876 11.562337-25.811876 25.790386 0 14.249539 11.541871 25.791409 25.811876 25.791409L771.351328 424.777473c14.249539 0 25.791409-11.541871 25.791409-25.791409C797.142737 384.756991 785.600867 373.195677 771.351328 373.195677zM771.351328 502.130212 332.984349 502.130212c-14.270005 0-25.811876 11.56336-25.811876 25.792433 0 14.248516 11.541871 25.789363 25.811876 25.789363L771.351328 553.712007c14.249539 0 25.791409-11.540847 25.791409-25.789363C797.142737 513.693572 785.600867 502.130212 771.351328 502.130212zM771.351328 631.064746 332.984349 631.064746c-14.270005 0-25.811876 11.541871-25.811876 25.792433 0 14.249539 11.541871 25.791409 25.811876 25.791409L771.351328 682.648588c14.249539 0 25.791409-11.541871 25.791409-25.791409C797.142737 642.606617 785.600867 631.064746 771.351328 631.064746zM229.819734 295.841915l51.581796 0 0-51.582819-51.581796 0L229.819734 295.841915zM229.819734 424.777473l51.581796 0 0-51.581796-51.581796 0L229.819734 424.777473zM229.819734 553.712007l51.581796 0 0-51.581796-51.581796 0L229.819734 553.712007zM229.819734 682.648588l51.581796 0 0-51.583842-51.581796 0L229.819734 682.648588z",
+    fill: "#cdcdcd",
+    "p-id": "25788"
   })
 ], -1));
 const _hoisted_7 = [
@@ -68509,7 +68511,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-86a33aac"]]);
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-c0812526"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -68635,6 +68637,12 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       } else {
         splitterSizes.value = [0, 100];
       }
+      setTimeout(() => {
+        if (workSpaceStore.playerInstance) {
+          console.log("playerWrapper", workSpaceStore.playerInstance.playerWrapper);
+          workSpaceStore.playerInstance.playerWrapper.fit();
+        }
+      }, 1e3);
     };
     const playerWrapper = ref$3(null);
     const playerRef = ref$3(null);
@@ -68698,8 +68706,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
           height = playerWrapper.value.offsetHeight;
           width = playerWrapper.value.offsetHeight * scale;
         }
-        playerRef.value.style.width = width + "px";
-        playerRef.value.style.height = height + "px";
       }
       workSpaceStore.setPlayerContainerInstance(playerRef.value);
       workSpaceStore.setTrackContainerInstance(tracksRef.value);
@@ -68765,14 +68771,15 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                     createVNode(unref(script$5), {
                       class: "flex items-center justify-center",
                       size: 70,
-                      minSize: 70
+                      minSize: 70,
+                      pt: { root: { style: { overflow: "hidden" } } }
                     }, {
                       default: withCtx(() => [
                         createBaseVNode("div", {
                           ref_key: "playerWrapper",
                           ref: playerWrapper,
                           class: "w-full h-full flex justify-center",
-                          style: { "background-color": "#262626", "align-items": "center" },
+                          style: { "background-color": "#262626", "align-items": "center", "position": "relative" },
                           onMousewheel: withModifiers(rollImg, ["prevent"])
                         }, [
                           createBaseVNode("div", {
@@ -68813,8 +68820,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-2f005869"]]);
-const _withScopeId$1 = (n2) => (pushScopeId("data-v-9601f81a"), n2 = n2(), popScopeId(), n2);
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-71bf342b"]]);
+const _withScopeId$1 = (n2) => (pushScopeId("data-v-f5cd6071"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$3 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
 const _hoisted_2$2 = { class: "relative" };
 const _hoisted_3$2 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createBaseVNode("span", { class: "status-indicator" }, "•", -1));
@@ -68858,7 +68865,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-9601f81a"]]);
+const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f5cd6071"]]);
 const _hoisted_1$2 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
 const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "projectTabs",
@@ -68867,7 +68874,6 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     const workSpaceStore = useWorkSpaceStore();
     const { tabbsProject, activeProject } = storeToRefs(workSpaceStore);
     const onWorkflowChange = (e) => {
-      console.log("onWorkflowChange_当前点击tab 发生了变化", e);
       if (e) {
         workSpaceStore.setActiveProject(e);
         getProjectDetail(e);
@@ -68888,7 +68894,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
     const onCloseWorkflow = (option) => {
       confirm.require({
-        message: `Are you sure delete project ${option.option.name}?`,
+        message: `Are you sure closed tab ${option.option.name}?`,
         icon: "pi pi-exclamation-triangle",
         rejectProps: {
           label: "Cancel",
@@ -68896,10 +68902,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           outlined: true
         },
         acceptProps: {
-          label: "Delete"
+          label: "Close"
         },
         accept: () => {
           console.log("删除work flow");
+          workSpaceStore.deleteTabs(option.option.projectId);
         },
         reject: () => {
         },
@@ -68946,7 +68953,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-a6c6aa4c"]]);
+const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-1f03ee91"]]);
 const _withScopeId = (n2) => (pushScopeId("data-v-67915f24"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$1 = { class: "imagen-header flex w-full items-center" };
 const _hoisted_2$1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("h1", { class: "comfyui-logo mx-2" }, "Montagen", -1));
