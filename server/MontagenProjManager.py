@@ -419,7 +419,7 @@ class MontagenProj:
                     "x": "50vw",
                     "y": "50vh",
                     "duration": 10,
-                    "text": "Empty Clip",
+                    "text": "empty video clip",
                     "refId": self.to_base36_random(),
                     "height": "100rpx",
                     "width": "300rpx",
@@ -436,7 +436,7 @@ class MontagenProj:
                         "nodes": [
                             {
                                 "id": 1,
-                                "type": "MontagenImagesPreview",
+                                "type": "MontagenVideoClipAdapter",
                                 "pos": [203.49522399902344, -15.222152709960938],
                                 "size": [210, 106],
                                 "flags": {},
@@ -449,9 +449,9 @@ class MontagenProj:
                                     {"name": "IMAGE", "type": "IMAGE", "links": None}
                                 ],
                                 "properties": {
-                                    "Node name for S&R": "MontagenImagesPreview"
+                                    "Node name for S&R": "MontagenVideoClipAdapter"
                                 },
-                                "widgets_values": [25, "", "image"],
+                                "widgets_values": ["", 25, "", "image"],
                             }
                         ],
                         "links": [],
@@ -751,7 +751,7 @@ class MontagenProj:
                     "nodes": [
                         {
                             "id": 1,
-                            "type": "MontagenImagesPreview",
+                            "type": "MontagenVideoClipAdapter",
                             "pos": [415, 196],
                             "size": [210, 130],
                             "flags": {},
@@ -764,7 +764,7 @@ class MontagenProj:
                                 {"name": "IMAGE", "type": "IMAGE", "links": None}
                             ],
                             "properties": {
-                                "Node name for S&R": "MontagenImagesPreview"
+                                "Node name for S&R": "MontagenVideoClipAdapter"
                             },
                             "widgets_values": ["", 25, "", "image"],
                         }
@@ -792,7 +792,7 @@ class MontagenProj:
                     "nodes": [
                         {
                             "id": 1,
-                            "type": "MontagenAudioPreview",
+                            "type": "MontagenAudioClipAdapter",
                             "pos": [441, 244],
                             "size": [315, 82],
                             "flags": {},
@@ -804,7 +804,7 @@ class MontagenProj:
                             "outputs": [
                                 {"name": "AUDIO", "type": "AUDIO", "links": None}
                             ],
-                            "properties": {"Node name for S&R": "MontagenAudioPreview"},
+                            "properties": {"Node name for S&R": "MontagenAudioClipAdapter"},
                             "widgets_values": ["", ""],
                         }
                     ],
@@ -831,7 +831,7 @@ class MontagenProj:
                     "nodes": [
                         {
                             "id": 1,
-                            "type": "MontagenPicturePreview",
+                            "type": "MontagenImageClipAdapter",
                             "pos": [590, 235],
                             "size": [315, 82],
                             "flags": {},
@@ -844,7 +844,7 @@ class MontagenProj:
                                 {"name": "IMAGE", "type": "IMAGE", "links": None}
                             ],
                             "properties": {
-                                "Node name for S&R": "MontagenPicturePreview"
+                                "Node name for S&R": "MontagenImageClipAdapter"
                             },
                             "widgets_values": ["", ""],
                         }
