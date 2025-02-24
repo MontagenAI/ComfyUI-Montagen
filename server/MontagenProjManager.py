@@ -409,69 +409,8 @@ class MontagenProj:
             "height": 720 if not height else height,
             "name": "montagen",
             "refId": self.to_base36_random(),
-            "children": [
-                {
-                    "clipId": f"1_{default_workflow_id}",
-                    "workflowId": default_workflow_id,
-                    "type": "text",
-                    "fontSize": "50rpx",
-                    "color": "#FFF",
-                    "x": "50vw",
-                    "y": "50vh",
-                    "duration": 10,
-                    "text": "empty video clip",
-                    "refId": self.to_base36_random(),
-                    "height": "100rpx",
-                    "width": "300rpx",
-                    "zIndex": 1,
-                    "children": [],
-                }
-            ],
-            "workflows": [
-                {
-                    "id": default_workflow_id,
-                    "workflow": {
-                        "last_node_id": 1,
-                        "last_link_id": 0,
-                        "nodes": [
-                            {
-                                "id": 1,
-                                "type": "MontagenVideoClipAdapter",
-                                "pos": [203.49522399902344, -15.222152709960938],
-                                "size": [210, 106],
-                                "flags": {},
-                                "order": 0,
-                                "mode": 0,
-                                "inputs": [
-                                    {"name": "images", "type": "IMAGE", "link": None}
-                                ],
-                                "outputs": [
-                                    {"name": "IMAGE", "type": "IMAGE", "links": None}
-                                ],
-                                "properties": {
-                                    "Node name for S&R": "MontagenVideoClipAdapter"
-                                },
-                                "widgets_values": ["", 25, "", "image"],
-                            }
-                        ],
-                        "links": [],
-                        "groups": [],
-                        "config": {},
-                        "extra": {
-                            "ds": {
-                                "scale": 0.9641152524334489,
-                                "offset": [417.4540788243107, 235.112875552326],
-                            },
-                            MontagenProjManager.MONTAGENPROJ: {
-                                "userId": self.userId,
-                                "projectId": self.projectId,
-                                "workflowId": default_workflow_id,
-                            },
-                        },
-                        "version": 0.4,
-                    },
-                }
-            ],
+            "children": [],
+            "workflows": [],
         }
         self.name = MontagenProjManager.DEFAULTPROJNAME
         self.description = MontagenProjManager.DEFAULTPROJNAME
@@ -804,7 +743,9 @@ class MontagenProj:
                             "outputs": [
                                 {"name": "AUDIO", "type": "AUDIO", "links": None}
                             ],
-                            "properties": {"Node name for S&R": "MontagenAudioClipAdapter"},
+                            "properties": {
+                                "Node name for S&R": "MontagenAudioClipAdapter"
+                            },
                             "widgets_values": ["", ""],
                         }
                     ],
@@ -872,15 +813,13 @@ class MontagenProj:
             "clipName": "untitled",
             "workflowId": default_workflow_id,
             "type": "text",
-            "fontSize": "50rpx",
+            "fontSize": "10rpx",
             "color": "#FFF",
             "x": "50vw",
             "y": "50vh",
             "duration": 10,
-            "text": f"empty {type} clip",
+            "text": f"empty {type} clip\nright-click to edit",
             "refId": self.to_base36_random(),
-            "height": "100rpx",
-            "width": "300rpx",
             "zIndex": 1,
             "children": [],
         }
