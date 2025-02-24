@@ -13,7 +13,7 @@ import torchaudio
 from PIL import Image
 
 
-class MontagenImagesPreview:
+class VideoClipAdapter:
 
     PROJECTSPLIT = "__"
 
@@ -23,7 +23,7 @@ class MontagenImagesPreview:
     @classmethod
     def get_projs(s):
         projs = [
-            f'{proj.get("name")}{MontagenImagesPreview.PROJECTSPLIT}{proj.get("projectId")}'
+            f'{proj.get("name")}{VideoClipAdapter.PROJECTSPLIT}{proj.get("projectId")}'
             for proj in MontagenProjManager.instance.getProjects(
                 MontagenProjManager.DEFAULTUSERID
             )
@@ -68,8 +68,8 @@ class MontagenImagesPreview:
         return datetime.now().isoformat()
 
     def process_project_id(self, projectId):
-        if MontagenImagesPreview.PROJECTSPLIT in projectId:
-            parts = projectId.split(MontagenImagesPreview.PROJECTSPLIT)
+        if VideoClipAdapter.PROJECTSPLIT in projectId:
+            parts = projectId.split(VideoClipAdapter.PROJECTSPLIT)
             projectId = parts[-1]
         return projectId
 
@@ -146,9 +146,9 @@ class MontagenImagesPreview:
             for node in prompt.values():
                 class_type = node.get("class_type")
                 if class_type in [
-                    "MontagenImagesPreview",
-                    "MontagenAudioPreview",
-                    "MontagenPicturePreview",
+                    "MontagenVideoClipAdapter",
+                    "MontagenAudioClipAdapter",
+                    "MontagenImageClipAdapter",
                 ]:
                     node_proj_id = node.get("inputs", {}).get("projectId")
                     if node_proj_id:
@@ -280,7 +280,7 @@ class MontagenImagesPreview:
         }
 
 
-class MontagenAudioPreview(MontagenImagesPreview):
+class AudioClipAdapter(VideoClipAdapter):
 
     def __init__(self):
         super().__init__()
@@ -388,7 +388,7 @@ class MontagenAudioPreview(MontagenImagesPreview):
         }
 
 
-class MontagenPicturePreview(MontagenImagesPreview):
+class ImageClipAdapter(VideoClipAdapter):
 
     def __init__(self):
         super().__init__()
