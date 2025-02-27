@@ -51,17 +51,17 @@
   text-align: left;
 }\r
 
-.form-container[data-v-9e30bd95] {\r
+.form-container[data-v-3fba7b51] {\r
 \r
     padding: 0.5rem
 }
 @media (min-width: 1536px) {
-.form-container[data-v-9e30bd95] {\r
+.form-container[data-v-3fba7b51] {\r
 \r
         padding: 1rem
 }
 }
-[data-v-9e30bd95] .el-form-item {\r
+[data-v-3fba7b51] .el-form-item {\r
 \r
     margin-bottom: 0.25rem;\r
 \r
@@ -69,25 +69,25 @@
 \r
     padding-right: 0.25rem
 }\r
-[data-v-93288483] .left-tool-button {
+[data-v-760af242] .left-tool-button {
   /* Your styles here */
   width: var(--sidebar-width);
   height: var(--sidebar-width);
   border-radius: 0 !important;
   box-sizing: border-box;
 }
-[data-v-93288483] .left-tool-button .pi,[data-v-93288483] .left-tool-button .fontello {
+[data-v-760af242] .left-tool-button .pi,[data-v-760af242] .left-tool-button .fontello {
   font-size: var(--sidebar-icon-size, 1rem) !important;
 }
-[data-v-93288483] .left-tool-button.left-tool-button-select {
+[data-v-760af242] .left-tool-button.left-tool-button-select {
   border-left: 4px solid var(--p-button-text-primary-color);
 }
-.toolbar[data-v-93288483] {
+.toolbar[data-v-760af242] {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.side-bar-end[data-v-93288483] {
+.side-bar-end[data-v-760af242] {
   align-self: flex-end;
   margin-top: auto;
   width: 100%;
@@ -95,35 +95,35 @@
   flex-direction: column;
   align-items: center;
 }
-.side-bar-button[data-v-93288483] {
+.side-bar-button[data-v-760af242] {
   width: var(--sidebar-width);
   height: var(--sidebar-width);
 }
-.dark-theme .p-button-text[data-v-93288483] {
+.dark-theme .p-button-text[data-v-760af242] {
   color: var(--p-button-text-secondary-color);
-}[data-v-44ab940e] .split-container {
+}[data-v-8264b75f] .split-container {
   border: none;
   border-radius: 0;
   width: 100%;
   height: 100%;
 }
-[data-v-44ab940e] .split-container .split-gutter {
+[data-v-8264b75f] .split-container .split-gutter {
   background: #181818;
 }
-[data-v-44ab940e] .split-container.left-hidden .split-panel-left {
+[data-v-8264b75f] .split-container.left-hidden .split-panel-left {
   display: none;
 }
-[data-v-44ab940e] .split-container.left-hidden > .split-gutter {
+[data-v-8264b75f] .split-container.left-hidden > .split-gutter {
   display: none;
 }
-[data-v-44ab940e] .split-gutter-main:hover {
+[data-v-8264b75f] .split-gutter-main:hover {
   transition: background-color 0.2sease 300ms;
   background-color: var(--p-primary-color);
 }
-[data-v-44ab940e] .split-gutter-main.split-gutter-hidden {
+[data-v-8264b75f] .split-gutter-main.split-gutter-hidden {
   display: none;
 }
-.player[data-v-44ab940e] {
+.player[data-v-8264b75f] {
   width: 100%;
   height: 100%;
 }.status-indicator[data-v-f5cd6071] {
@@ -285,13 +285,13 @@
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { d as defineComponent, r as ref$3, x as computed, o as openBlock, c as createElementBlock, a as createBaseVNode, J as createVNode, F as withCtx, L as Fragment, a4 as renderList$1, M as unref, E as createBlock, T as Teleport, A as toDisplayString, D as withDirectives, G as normalizeClass, Y as withModifiers, a7 as pushScopeId, a8 as popScopeId, f as reactive, e as onMounted, z as createTextVNode$1, H as createCommentVNode, i as markRaw, w as watch, a1 as onBeforeUnmount, I as resolveDynamicComponent, m as mergeProps$1, $ as provide, S as onUnmounted, a9 as createApp } from "./assets/vue-EKny6sQx.js";
-import { d as defineStore, u as useDialog, a as useConfirm, s as storeToRefs, b as script, c as script$1, e as script$2, f as script$3, n as nanoid, g as script$4, E as ElInput, T as Tooltip, h as ElForm, i as ElFormItem, j as ElButton, k as script$5, l as script$6, m as script$7, o as script$8, p as script$9, D as DialogService, C as ConfirmationService, q as createPinia, r as ToastService } from "./assets/vendor-P00Qy4YS.js";
+import { d as defineComponent, r as ref$3, x as computed, o as openBlock, c as createElementBlock, a as createBaseVNode, J as createVNode, F as withCtx, L as Fragment, a4 as renderList$1, M as unref, E as createBlock, T as Teleport, A as toDisplayString, D as withDirectives, G as normalizeClass, Y as withModifiers, a7 as pushScopeId, a8 as popScopeId, f as reactive, e as onMounted, z as createTextVNode$1, H as createCommentVNode, w as watch, a9 as withKeys, i as markRaw, a1 as onBeforeUnmount, I as resolveDynamicComponent, m as mergeProps$1, $ as provide, S as onUnmounted, aa as createApp } from "./assets/vue-CPqOLJyp.js";
+import { d as defineStore, u as useDialog, a as useConfirm, s as storeToRefs, b as script, c as script$1, e as script$2, f as script$3, n as nanoid, g as script$4, E as ElInput, T as Tooltip, h as ElForm, i as ElFormItem, j as ElButton, k as script$5, l as script$6, m as script$7, o as script$8, p as script$9, D as DialogService, C as ConfirmationService, q as createPinia, r as ToastService } from "./assets/vendor-D-T7ao4n.js";
 import "./assets/lodash-BQcLy69B.js";
-import { P as PrimeVue, h as definePreset, i as index$3 } from "./assets/primevue-DpbdcaP0.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-CQZgI-iv.js";
+import { P as PrimeVue, h as definePreset, i as index$3 } from "./assets/primevue-Oz6PY5Eb.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-BhdREn5M.js";
 import "./assets/primeuix-Rz1zumYx.js";
-import "./assets/vueuse-DIjzQ5xJ.js";
+import "./assets/vueuse-D-833DQB.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
@@ -67846,7 +67846,7 @@ const _hoisted_1$9 = { class: "workflow w-full h-full" };
 const _hoisted_2$6 = { class: "comfy-vue-side-bar-header" };
 const _hoisted_3$6 = { class: "text-sm truncate" };
 const _hoisted_4$3 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$2 = {
+const _hoisted_5$1 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
@@ -68058,7 +68058,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             })
           ]),
           createBaseVNode("div", null, [
-            createBaseVNode("ul", _hoisted_5$2, [
+            createBaseVNode("ul", _hoisted_5$1, [
               (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(list), (item) => {
                 return openBlock(), createElementBlock("li", {
                   class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3", item.projectId == unref(activeProject).projectId ? "active" : ""]),
@@ -68399,7 +68399,7 @@ const _hoisted_1$7 = { class: "workflow w-full h-full" };
 const _hoisted_2$5 = { class: "comfy-vue-side-bar-header" };
 const _hoisted_3$5 = { class: "text-sm truncate" };
 const _hoisted_4$2 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$1 = {
+const _hoisted_5 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
@@ -68515,7 +68515,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
           })
         ]),
         createBaseVNode("div", null, [
-          createBaseVNode("ul", _hoisted_5$1, [
+          createBaseVNode("ul", _hoisted_5, [
             (openBlock(true), createElementBlock(Fragment, null, renderList$1(clips2.value, (item) => {
               return openBlock(), createElementBlock("li", {
                 onClick: ($event) => goWorkFlow(item),
@@ -68547,15 +68547,14 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   }
 });
 const clips = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-013efedc"]]);
-const _withScopeId$3 = (n2) => (pushScopeId("data-v-9e30bd95"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$3 = (n2) => (pushScopeId("data-v-3fba7b51"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$6 = { class: "w-full" };
 const _hoisted_2$4 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$4 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("span", { class: "text-sm truncate" }, "clip property", -1));
+const _hoisted_3$4 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("span", { class: "text-sm truncate" }, "transtion", -1));
 const _hoisted_4$1 = /* @__PURE__ */ _withScopeId$3(() => /* @__PURE__ */ createBaseVNode("div", {
   class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200",
   style: { "min-height": "28px" }
 }, null, -1));
-const _hoisted_5 = { class: "form-container" };
 const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "metaInfo",
   setup(__props) {
@@ -68567,21 +68566,64 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
       initData2();
     });
     let formData = reactive({
-      width: "",
-      height: "",
-      rotate: "",
+      width: 0,
+      height: 0,
+      rotate: 0,
       clipName: "",
-      type: ""
+      type: "",
+      x: 0,
+      y: 0
     });
+    const radiansToDegrees = (radians) => {
+      return radians * (180 / Math.PI) && Math.round(radians * (180 / Math.PI));
+    };
+    const degreesToRadians = (degrees) => {
+      return degrees * (Math.PI / 180);
+    };
+    const unitToPx = (unit) => {
+      unit = unit || "0";
+      return Math.round(workSpaceStore.playerInstance.creator.px(unit));
+    };
+    const isSelectClip = ref$3(false);
     const initData2 = () => {
-      if (!workSpaceStore.playerInstance.selected[0]) return;
-      Object.keys(formData).forEach((key2) => {
-        formData[key2] = workSpaceStore.playerInstance.selected[0][key2] || workSpaceStore.playerInstance.selected[0].conf[key2];
+      if (!workSpaceStore.playerInstance.selected[0]) {
+        formData.rotate = 0;
+        formData.x = 0;
+        formData.y = 0;
+        formData.type = "";
+        isSelectClip.value = false;
+        return;
+      }
+      isSelectClip.value = true;
+      let conf2 = workSpaceStore.playerInstance.selected[0].conf;
+      formData.rotate = radiansToDegrees(conf2.rotate || 0);
+      formData.x = unitToPx(conf2.x || 0);
+      formData.y = unitToPx(conf2.y || 0);
+      formData.type = conf2.type;
+    };
+    const handleRotate = (e) => {
+      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
+        rotation: degreesToRadians(formData.rotate)
       });
     };
+    const handleX = () => {
+      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
+        x: formData.x
+      });
+    };
+    const handleY = () => {
+      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
+        y: formData.y
+      });
+    };
+    watch(() => formData.rotate, (newVal, oldVal) => {
+    });
+    const formContainer = ref$3(null);
     onMounted(() => {
-      console.log("metaInfo创建了", formData);
       initData2();
+      formContainer.value.addEventListener("keydown", (e) => {
+        e.stopPropagation();
+      });
     });
     return (_ctx, _cache) => {
       const _component_Toolbar = script$1;
@@ -68601,27 +68643,17 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
             _: 1
           })
         ]),
-        createBaseVNode("div", _hoisted_5, [
+        createBaseVNode("div", {
+          class: "form-container",
+          ref_key: "formContainer",
+          ref: formContainer
+        }, [
           createVNode(_component_el_form, {
             "label-position": "top",
             "label-width": "auto",
             model: unref(formData)
           }, {
             default: withCtx(() => [
-              createVNode(_component_el_form_item, {
-                label: "clipName",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).clipName,
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(formData).clipName = $event),
-                    disabled: ""
-                  }, null, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
               createVNode(_component_el_form_item, {
                 label: "type",
                 class: "px-2 tw-pb-1"
@@ -68630,37 +68662,66 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   createVNode(_component_el_input, {
                     class: "cus-input",
                     modelValue: unref(formData).type,
-                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(formData).type = $event),
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(formData).type = $event),
                     disabled: ""
                   }, null, 8, ["modelValue"])
                 ]),
                 _: 1
               }),
               createVNode(_component_el_form_item, {
-                label: "width",
+                label: "rotate",
                 class: "px-2 tw-pb-1"
               }, {
                 default: withCtx(() => [
                   createVNode(_component_el_input, {
                     class: "cus-input",
-                    modelValue: unref(formData).width,
-                    "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => unref(formData).width = $event),
-                    disabled: ""
-                  }, null, 8, ["modelValue"])
+                    modelValue: unref(formData).rotate,
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(formData).rotate = $event),
+                    onKeydown: withKeys(handleRotate, ["enter"])
+                  }, {
+                    append: withCtx(() => [
+                      createTextVNode$1("deg")
+                    ]),
+                    _: 1
+                  }, 8, ["modelValue"])
                 ]),
                 _: 1
               }),
               createVNode(_component_el_form_item, {
-                label: "height",
+                label: "x",
                 class: "px-2 tw-pb-1"
               }, {
                 default: withCtx(() => [
                   createVNode(_component_el_input, {
                     class: "cus-input",
-                    modelValue: unref(formData).height,
-                    "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => unref(formData).height = $event),
-                    disabled: ""
-                  }, null, 8, ["modelValue"])
+                    modelValue: unref(formData).x,
+                    "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => unref(formData).x = $event),
+                    onKeydown: withKeys(handleX, ["enter"])
+                  }, {
+                    append: withCtx(() => [
+                      createTextVNode$1("px")
+                    ]),
+                    _: 1
+                  }, 8, ["modelValue"])
+                ]),
+                _: 1
+              }),
+              createVNode(_component_el_form_item, {
+                label: "y",
+                class: "px-2 tw-pb-1"
+              }, {
+                default: withCtx(() => [
+                  createVNode(_component_el_input, {
+                    class: "cus-input",
+                    modelValue: unref(formData).y,
+                    "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => unref(formData).y = $event),
+                    onKeydown: withKeys(handleY, ["enter"])
+                  }, {
+                    append: withCtx(() => [
+                      createTextVNode$1("px")
+                    ]),
+                    _: 1
+                  }, 8, ["modelValue"])
                 ]),
                 _: 1
               }),
@@ -68668,12 +68729,12 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
             ]),
             _: 1
           }, 8, ["model"])
-        ])
+        ], 512)
       ]);
     };
   }
 });
-const metaInfoVue = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-9e30bd95"]]);
+const metaInfoVue = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-3fba7b51"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -68721,7 +68782,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
     }
   }
 });
-const _withScopeId$2 = (n2) => (pushScopeId("data-v-93288483"), n2 = n2(), popScopeId(), n2);
+const _withScopeId$2 = (n2) => (pushScopeId("data-v-760af242"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$5 = { class: "toolbar" };
 const _hoisted_2$3 = { class: "side-bar-end" };
 const _hoisted_3$3 = /* @__PURE__ */ _withScopeId$2(() => /* @__PURE__ */ createBaseVNode("i", { class: "pi pi-arrow-left side-bar-button-icon" }, null, -1));
@@ -68735,7 +68796,6 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       menuStore.changeShow(false);
     };
     const onTabClick = (item) => {
-      console.log("click", item);
       leftToolStore.changeSelect(item);
     };
     return (_ctx, _cache) => {
@@ -68781,7 +68841,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-93288483"]]);
+const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-760af242"]]);
 const _hoisted_1$4 = {
   class: "w-full",
   style: { "background": "#fff" }
@@ -68811,7 +68871,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       }
       window.requestAnimationFrame(() => {
         if (workSpaceStore.playerInstance) {
-          console.log("playerWrapper", workSpaceStore.playerInstance.playerWrapper);
           workSpaceStore.playerInstance.playerWrapper.fit();
         }
       });
@@ -68836,7 +68895,6 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       });
     };
     const rollImg = (e) => {
-      console.log("鼠标滚轮开始滚动了", e);
     };
     onMounted(() => {
       parentWidth.value = container.value.offsetWidth;
@@ -68972,7 +69030,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-44ab940e"]]);
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-8264b75f"]]);
 const _withScopeId$1 = (n2) => (pushScopeId("data-v-f5cd6071"), n2 = n2(), popScopeId(), n2);
 const _hoisted_1$3 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
 const _hoisted_2$2 = { class: "relative" };
@@ -69255,10 +69313,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         app$2.registerExtension({
           name: "EasymskPage",
           setup(ui) {
-            console.log("onUIReady", ui);
             window.myUI = ui;
             mutationObserver.value = new MutationObserver((mutationsList) => {
-              console.log("mutationsList_dom发生了变化", mutationsList);
               let target2 = document.querySelector(".comfyui-body-left .side-tool-bar-container");
               let width = getComputedStyle(target2).getPropertyValue("--sidebar-width");
               if (width) {
