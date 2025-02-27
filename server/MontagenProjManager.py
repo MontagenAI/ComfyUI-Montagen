@@ -75,6 +75,22 @@ class MontagenProjManager:
             data = proj.addClip(modify_time, type)
             return web.json_response({"code": 0, "data": data})
 
+        @server.routes.post("/Montagen/Proj/{id}/Text/New")
+        async def addProjectTextClip(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            type = "text"
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            req_data = await request.post()
+            text = req_data.get("text", None)
+            if not text:
+                return web.Response(status=400)
+            data = proj.addClip(modify_time, type, text)
+            return web.json_response({"code": 0, "data": data})
+
         @server.routes.post("/Montagen/Proj/{id}/Name")
         async def updateProjectName(request):
             req_data = await request.post()
@@ -678,8 +694,9 @@ class MontagenProj:
                 return value
         return None
 
-    def addClip(self, modifyTime, type):
+    def addClip(self, modifyTime, type, typeData=None):
         self.modifyTime = modifyTime
+        worflow = None
         default_workflow_id = self.to_base36_random()
         if type == "video":
             worflow = {
@@ -804,10 +821,12 @@ class MontagenProj:
                     "version": 0.4,
                 },
             }
-        if "workflows" not in self.timeline:
-            self.timeline["workflows"] = []
-        workflows: list = self.timeline["workflows"]
-        workflows.append(worflow)
+
+        if worflow:
+            if "workflows" not in self.timeline:
+                self.timeline["workflows"] = []
+            workflows: list = self.timeline["workflows"]
+            workflows.append(worflow)
         clip = {
             "clipId": f"1_{default_workflow_id}",
             "clipName": "untitled",
@@ -823,6 +842,11 @@ class MontagenProj:
             "zIndex": 1,
             "children": [],
         }
+        if type == "text":
+            del clip["clipId"]
+            del clip["clipName"]
+            del clip["workflowId"]
+            clip["text"] = typeData
         self.timeline["children"].append(clip)
         self._saveToPath(self.result())
         return self.timeline
