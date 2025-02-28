@@ -55794,7 +55794,7 @@ function requireVideo$1() {
   requireMin();
   const t = requireLogger(), r = requireMd5(), { nodeRequire: s, isUA: o } = requireUtils();
   requireLodash();
-  const u = requireVideo$2(), h2 = requireQueue(), f = s("ffmpeg-probe"), p = s("../utils/ffmpeg"), d = s("../utils/opencv"), m = s("../utils/fs"), g = "player", y = "seeker", w = "init", b = 0.02, x = {};
+  const u = requireVideo$2(), h2 = requireQueue(), f = s("../utils/videoinfo"), p = s("../utils/ffmpeg"), d = s("../utils/opencv"), m = s("../utils/fs"), g = "player", y = "seeker", w = "init", b = 0.02, x = {};
   class C extends e {
     constructor(_) {
       super(_), this.setVolume(_.volume), this.setAudio(_.audio === void 0 ? true : !!_.audio), this.OFFSET_TIME = 0.05, this.adjustTime = 0, this.adjustRate = 1, this.time = 0, this.playing = false, this.perpared = false, this.queue = new h2(), this.$vh = {}, this.codec = _.codec, this.clarity = _.qscale || _.clarity || 2, this.voImageExtra = _.voImageExtra === void 0 ? "jpg" : _.voImageExtra;
