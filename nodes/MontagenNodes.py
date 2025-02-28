@@ -11,6 +11,8 @@ import random
 import io
 import torchaudio
 from PIL import Image
+from comfy_extras import nodes_compositing
+import torch
 
 
 class VideoClipAdapter:
@@ -403,6 +405,7 @@ class ImageClipAdapter(VideoClipAdapter):
             },
             "optional": {
                 "projectId": (sorted(projs), {"tooltip": "The project id."}),
+                "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -423,11 +426,14 @@ class ImageClipAdapter(VideoClipAdapter):
         self,
         image,
         name,
+        alpha=None,
         unique_id=None,
         projectId=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
+        imageLen = len(image)
+        format = "png" if imageLen == 1 else "gif"
         (
             userId,
             projectId,
@@ -440,11 +446,37 @@ class ImageClipAdapter(VideoClipAdapter):
             fileFullName,
             tmpFileName,
             tmpFullName,
-        ) = self.get_info("png", name, unique_id, projectId, prompt, extra_pnginfo)
-
-        i = 255.0 * image[0].cpu().numpy()
-        img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-        img.save(tmpFullName)
+        ) = self.get_info(format, name, unique_id, projectId, prompt, extra_pnginfo)
+        out_images = []
+        if alpha != None:
+            alpha = 1.0 - nodes_compositing.resize_mask(alpha, image.shape[1:])
+            for i in range(imageLen):
+                out_images.append(
+                    torch.cat((image[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2)
+                )
+        else:
+            for i in range(imageLen):
+                out_images.append(image[i])
+        image = torch.stack(out_images)
+        if format == "gif":
+            images = [
+                Image.fromarray(
+                    np.clip(255 * img.cpu().numpy(), 0, 255).astype(np.uint8)
+                )
+                for img in image
+            ]
+            images[0].save(
+                tmpFullName,
+                save_all=True,
+                append_images=images[1:],
+                duration=100,
+                loop=0,
+            )
+        else:
+            img = Image.fromarray(
+                np.clip(255 * image[0].cpu().numpy(), 0, 255).astype(np.uint8)
+            )
+            img.save(tmpFullName)
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
         addr = MontagenProjManager.instance.getAddr(
@@ -475,7 +507,7 @@ class ImageClipAdapter(VideoClipAdapter):
             clip_id,
             addr,
             name,
-            "image",
+            "gif" if format == "gif" else "image",
             duration,
         )
         return {

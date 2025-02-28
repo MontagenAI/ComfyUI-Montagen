@@ -6,8 +6,6 @@ const { isBrowser } = require('browser-or-node');
 class FFClip extends FFBase {
   constructor(conf = {}) {
     super({ type: 'clip', ...conf });
-    this.canvasWidth = conf.canvasWidth;
-    this.canvasHeight = conf.canvasHeight;
     this.visible = false;
     this.zIndex = 0;
     this.children = [];
@@ -315,7 +313,7 @@ class FFClip extends FFBase {
 
   get default() {
     return {
-      startTime: (this.parent?.type === 'spine' ? this.prevSibling?.endTime : 0) || 0,
+      startTime: (this.parent?.type === 'spine' ? this.prevSibling?.endTime ?? 0 : 0) || 0,
       endTime: '100%',
     };
   }
@@ -356,7 +354,8 @@ class FFClip extends FFBase {
   get flexibleDuration() {
     return (
       (this.conf.duration && this.conf.duration.toString().includes('%')) ||
-      (this.conf.end && this.conf.end.toString().includes('%'))
+      (this.conf.end && this.conf.end.toString().includes('%')) ||
+      (this.conf.start && this.conf.start.toString().includes('%'))
     );
   }
 
@@ -407,12 +406,25 @@ class FFClip extends FFBase {
     this.conf[key] = this.vu(val, this.conf[key]);
   }
 
-  units() {
+  get canvasWidth() {
     const creator = this.creator();
     if (creator) {
-      this.canvasWidth = creator.width;
-      this.canvasHeight = creator.height;
+      return creator.width;
+    } else {
+      return this.conf.canvasWidth;
     }
+  }
+
+  get canvasHeight() {
+    const creator = this.creator();
+    if (creator) {
+      return creator.height;
+    } else {
+      return this.conf.canvasHeight;
+    }
+  }
+
+  units() {
     return [
       ['rpx', this.canvasWidth, 360],
       ['px', 360, 360],

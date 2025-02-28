@@ -626,10 +626,35 @@ class MontagenProj:
                         "refId": self.to_base36_random(),
                     }
                 )
+            elif type == "gif":
+                self.timeline["children"].append(
+                    {
+                        "clipId": clip_id,
+                        "clipName": name,
+                        "src": addr,
+                        "workflowId": workflowId,
+                        "children": [],
+                        "type": "gif",
+                        "audio": False,
+                        "x": "50vw",
+                        "y": "50vh",
+                        "active": True,
+                        "loop": True,
+                        "duration": duration,
+                        "refId": self.to_base36_random(),
+                    }
+                )
         else:
             parent, child = value
             if child["type"] != "text":
-                child.update({"src": addr, "workflowId": workflowId, "clipName": name})
+                child.update(
+                    {
+                        "src": addr,
+                        "type": type,
+                        "workflowId": workflowId,
+                        "clipName": name,
+                    }
+                )
             else:
                 parent["children"].remove(child)
                 if type == "video":
@@ -677,6 +702,24 @@ class MontagenProj:
                             "x": "50vw",
                             "y": "50vh",
                             "active": True,
+                            "duration": duration,
+                            "refId": self.to_base36_random(),
+                        }
+                    )
+                elif type == "gif":
+                    parent["children"].append(
+                        {
+                            "clipId": clip_id,
+                            "clipName": name,
+                            "src": addr,
+                            "workflowId": workflowId,
+                            "children": [],
+                            "type": "gif",
+                            "audio": False,
+                            "x": "50vw",
+                            "y": "50vh",
+                            "active": True,
+                            "loop": True,
                             "duration": duration,
                             "refId": self.to_base36_random(),
                         }
