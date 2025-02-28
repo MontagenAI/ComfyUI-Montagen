@@ -5,16 +5,16 @@
  * @class
  */
 
-const { isBrowser } = require("browser-or-node");
+const { isBrowser } = require('browser-or-node');
 const ImageMaterial = require('./image');
 const min = require('lodash/min');
 const FFLogger = require('../utils/logger');
 const md5 = require('md5');
 const { nodeRequire, isUA } = require('../utils/utils');
-const { times } = require("lodash");
-const VideoHolder = require("../utils/video");
-const Queue = require("../utils/queue");
-const probe = nodeRequire('ffmpeg-probe');
+const { times } = require('lodash');
+const VideoHolder = require('../utils/video');
+const Queue = require('../utils/queue');
+const probe = nodeRequire('../utils/videoinfo');
 const FFmpegUtil = nodeRequire('../utils/ffmpeg');
 const cv = nodeRequire('../utils/opencv');
 const FS = nodeRequire('../utils/fs');
@@ -77,7 +77,7 @@ class VideoMaterial extends ImageMaterial {
       if (!PROBE_CACHE[this.path]) {
         PROBE_CACHE[this.path] = await probe(this.path);
       }
-      this.info = {...PROBE_CACHE[this.path]};
+      this.info = { ...PROBE_CACHE[this.path] };
       this.info.duration /= 1000; // from ms -> s
       try {
         this.videoCap = cv.VideoCapture(this.path);
@@ -102,8 +102,11 @@ class VideoMaterial extends ImageMaterial {
   async valloc(key) {
     if (this.$vh[key]) return this.$vh[key].$video;
     try {
-      this.$vh[key] = await VideoHolder.get(this.path,
-        this.creator.uuid, `${this.holderId}-${key}`);
+      this.$vh[key] = await VideoHolder.get(
+        this.path,
+        this.creator.uuid,
+        `${this.holderId}-${key}`,
+      );
     } catch (e) {
       return null;
     }
@@ -125,8 +128,7 @@ class VideoMaterial extends ImageMaterial {
     if (this.playing) return;
     const $video = await this.valloc(K_PLAYER);
     // 时间差在0.1秒内，就不重新seek里，留给adjust
-    if (Math.abs(seekTime - $video.currentTime) > 0.1
-       || !this.creator.getConf('adjustPlaySpeed')) {
+    if (Math.abs(seekTime - $video.currentTime) > 0.1 || !this.creator.getConf('adjustPlaySpeed')) {
       $video.currentTime = seekTime;
       // console.log('play', this.holderId, seekTime);
     }
@@ -138,10 +140,14 @@ class VideoMaterial extends ImageMaterial {
         this.playing = true;
         resolve();
       } else {
-        $video.addEventListener('playing', () => {
-          this.playing = true;
-          resolve();
-        }, { once: true });
+        $video.addEventListener(
+          'playing',
+          () => {
+            this.playing = true;
+            resolve();
+          },
+          { once: true },
+        );
         $video.play();
       }
     });
@@ -154,16 +160,16 @@ class VideoMaterial extends ImageMaterial {
       this.playing = false;
       this.perpared = false;
       this.velease(K_PLAYER); // 暂停后就释放
-    }
+    };
     if (!$video || !VideoMaterial.playing($video)) {
       clear();
     } else {
-      $video.addEventListener('pause', (e) => clear(), { once: true });
+      $video.addEventListener('pause', e => clear(), { once: true });
       $video.pause();
     }
   }
 
-  async perpare(time, play=false) {
+  async perpare(time, play = false) {
     if (this.perpared || !isBrowser) return;
     this.perpared = true;
     const $video = await this.valloc(K_PLAYER);
@@ -175,7 +181,7 @@ class VideoMaterial extends ImageMaterial {
     }
   }
 
-  async seekTo(seekTime, key=K_SEEKER) {
+  async seekTo(seekTime, key = K_SEEKER) {
     return new Promise(async (resolve, reject) => {
       const $video = await this.valloc(key);
       if (!$video) return resolve();
@@ -185,15 +191,19 @@ class VideoMaterial extends ImageMaterial {
         this.velease(key);
       } else {
         $video.currentTime = seekTime;
-        $video.addEventListener('seeked', () => {
-          resolve($video);
-          this.velease(key);
-        }, { once: true });
+        $video.addEventListener(
+          'seeked',
+          () => {
+            resolve($video);
+            this.velease(key);
+          },
+          { once: true },
+        );
       }
     });
   }
 
-  async queuedSeekTo(seekTime, key=K_SEEKER) {
+  async queuedSeekTo(seekTime, key = K_SEEKER) {
     return new Promise(async (resolve, reject) => {
       this.queue.enqueue(async () => {
         resolve(await this.seekTo(seekTime, key));
@@ -205,11 +215,11 @@ class VideoMaterial extends ImageMaterial {
     return this.creator.playbackRate * this.speed;
   }
 
-  seekTime(time, opt={}) {
+  seekTime(time, opt = {}) {
     return super.seekTime(isBrowser ? time + this.OFFSET_TIME : time, opt);
   }
 
-  async getFrameByTime(time, delta=0) {
+  async getFrameByTime(time, delta = 0) {
     this.time = time;
     const opt = {};
     const seekTime = this.seekTime(time, opt);
@@ -232,28 +242,34 @@ class VideoMaterial extends ImageMaterial {
         if (!$video) return resolve();
         this.playerDelay = seekTime - $video.currentTime;
         // console.log('playing', (this.$video.currentTime - time - this.getStartOffset()).toFixed(3))
-        if (this.creator.getConf('adjustPlaySpeed') // 只有Chrome可以，Safari这样调整会卡死
-         && (this.playrate * this.adjustRate).toFixed(3) === $video.playbackRate.toFixed(3)) { // 确保之前设置的已经生效了
-          if (Math.abs(this.playerDelay) > 0.05) {// 时间差太多，改speed
-            this.adjustRate += (this.playerDelay > 0 ? ADJ_STEP : -ADJ_STEP);
+        if (
+          this.creator.getConf('adjustPlaySpeed') && // 只有Chrome可以，Safari这样调整会卡死
+          (this.playrate * this.adjustRate).toFixed(3) === $video.playbackRate.toFixed(3)
+        ) {
+          // 确保之前设置的已经生效了
+          if (Math.abs(this.playerDelay) > 0.05) {
+            // 时间差太多，改speed
+            this.adjustRate += this.playerDelay > 0 ? ADJ_STEP : -ADJ_STEP;
             this.adjustRate = Math.max(Math.min(this.adjustRate, 1.05), 0.95);
           } else if ($video.playbackRate != this.playrate) {
             this.adjustRate += this.adjustRate > 1 ? -ADJ_STEP : ADJ_STEP;
           }
 
           const r = this.playrate * this.adjustRate;
-          if (r.toFixed(3) !== $video.playbackRate.toFixed(3) // 100ms内不能重复adjust
-           && Math.abs(this.creator.currentTime - this.adjustTime) > 100) {
+          if (
+            r.toFixed(3) !== $video.playbackRate.toFixed(3) && // 100ms内不能重复adjust
+            Math.abs(this.creator.currentTime - this.adjustTime) > 100
+          ) {
             // console.log('set rate!', this.holderId, (this.creator.currentTime*0.001).toFixed(3), r);
             $video.playbackRate = r;
             this.adjustTime = this.creator.currentTime;
           }
         }
         // console.log('force speed!', this.holderId, this.playerDelay.toFixed(3), $video.playbackRate);
-        resolve(this.drawCanvas($video, width, height));
+        resolve(this.drawCanvas($video, width, height, null, true));
       } else {
         // seek to time + ss (start offset)
-        resolve(this.drawCanvas(await this.queuedSeekTo(seekTime), width, height));
+        resolve(this.drawCanvas(await this.queuedSeekTo(seekTime), width, height, null, true));
       }
     });
   }
@@ -290,7 +306,7 @@ class VideoMaterial extends ImageMaterial {
   async extractAudio(dir, name) {
     const output = this.getOutputPath(dir, `${name}.mp3`);
     // 已经存在就不再导出了
-    if (FS.exists(output)) return this.apath = output;
+    if (FS.exists(output)) return (this.apath = output);
     let outOpts = `-loglevel info`.split(' ');
     outOpts = outOpts.concat(`-af atempo=${this.speed}`.split(' '));
     // outOpts = outOpts.concat(this.getSliceOpts());
@@ -308,24 +324,27 @@ class VideoMaterial extends ImageMaterial {
     inOpts = inOpts.concat(this.getSliceOpts());
     const output = this.getOutputPath(dir, `${name}_%d.${this.voImageExtra}`);
     // 已经存在就不再导出了
-    if (FS.exists(output.replace('%d', '0'))) return this.vpath = output;
-    this.vpath = await this.ffCmdExec({ command:this.vcommand, output, inOpts, outOpts });
+    if (FS.exists(output.replace('%d', '0'))) return (this.vpath = output);
+    this.vpath = await this.ffCmdExec({ command: this.vcommand, output, inOpts, outOpts });
     return this.vpath;
   }
 
   ffCmdExec({ command, output, inOpts, outOpts, onProgress }) {
-    const opt = function(opts) {
-      if (typeof opts === "string") opts = opts.split(' ');
+    const opt = function (opts) {
+      if (typeof opts === 'string') opts = opts.split(' ');
       if (opts instanceof Array) opts = opts.filter(a => a !== '');
       return opts;
-    }
+    };
     command.addInput(this.path).output(output);
     inOpts && command.inputOptions(opt(inOpts));
     outOpts && command.outputOptions(opt(outOpts));
     return new Promise((resolve, reject) => {
       command
         .on('start', commandLine => {
-          FFLogger.info({ pos: 'Material', msg: `${this.type} preProcessing start: ${commandLine}` });
+          FFLogger.info({
+            pos: 'Material',
+            msg: `${this.type} preProcessing start: ${commandLine}`,
+          });
         })
         .on('progress', progress => {
           onProgress && onProgress(progress);

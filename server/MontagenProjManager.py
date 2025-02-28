@@ -19,7 +19,8 @@ class MontagenProjManager:
     DBFILENAME = "projects.db"
     DEFAULTPROJNAME = "default"
     DEFAULTUSERID = "default"
-    FILEADDR = "/Montagen/Proj/{id}/{workflowId}/file/{filename}"
+    FILEADDR = "/Montagen/Proj/{id}/{workflowId}/clip/{clipId}/{filename}"
+    OLDFILEADDR = "/Montagen/Proj/{id}/{workflowId}/file/{filename}"
 
     def __init__(self, server: PromptServer):
         MontagenProjManager.instance = self
@@ -150,13 +151,41 @@ class MontagenProjManager:
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
             workflow_id = request.match_info.get("workflowId", None)
+            clip_id = request.match_info.get("clipId", None)
             filename = request.match_info.get("filename", None)
             if not project_id or not workflow_id or not filename:
                 return web.Response(status=404)
             proj = self._getProject(user_id, project_id)
             if not proj:
                 return web.Response(status=404)
-            file = proj.getOutputFile(workflow_id, filename)
+            file = proj.getOutputFile(workflow_id, clip_id, filename)
+            content_type = (
+                mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            )
+            file_extension = os.path.splitext(filename)[1].lower()
+            if file_extension in {".html", ".htm", ".js", ".css"}:
+                content_type = "application/octet-stream"  # Forces downlo
+            return web.FileResponse(
+                file,
+                headers={
+                    "Content-Disposition": f'filename="{filename}"',
+                    "Content-Type": content_type,
+                },
+            )
+
+        @server.routes.get(MontagenProjManager.OLDFILEADDR)
+        async def oldfileServer(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            clip_id = None
+            filename = request.match_info.get("filename", None)
+            if not project_id or not workflow_id or not filename:
+                return web.Response(status=404)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            file = proj.getOutputFile(workflow_id, clip_id, filename)
             content_type = (
                 mimetypes.guess_type(filename)[0] or "application/octet-stream"
             )
@@ -383,7 +412,9 @@ class MontagenProjManager:
             if conn:
                 conn.close()
 
-    def getAddr(self, userId: str, projectId: str, workflowId: str, filename: str):
+    def getAddr(
+        self, userId: str, projectId: str, workflowId: str, clipId: str, filename: str
+    ):
         if not projectId:
             raise Exception("projectId is empty")
         if not workflowId:
@@ -391,15 +422,32 @@ class MontagenProjManager:
         if not filename:
             raise Exception("filename is empty")
         return self.FILEADDR.format(
-            id=projectId, workflowId=workflowId, filename=filename
+            id=projectId, workflowId=workflowId, clipId=clipId, filename=filename
         )
 
     def modifyClip(
-        self, proj, workflowValue, workflowId, clip_id, addr, name, type, duration
+        self,
+        proj,
+        workflowValue,
+        workflowId,
+        clip_id,
+        addr,
+        name,
+        type,
+        duration,
+        hasAlpha=None,
     ):
         modify_time = self.updateProjectField(proj.userId, proj.projectId)
         return proj.modifyClip(
-            modify_time, workflowValue, workflowId, clip_id, addr, name, type, duration
+            modify_time,
+            workflowValue,
+            workflowId,
+            clip_id,
+            addr,
+            name,
+            type,
+            duration,
+            hasAlpha,
         )
 
 
@@ -539,7 +587,16 @@ class MontagenProj:
             yield from self._getNodes(child)
 
     def modifyClip(
-        self, modityTime, workflowValue, workflowId, clip_id, addr, name, type, duration
+        self,
+        modityTime,
+        workflowValue,
+        workflowId,
+        clip_id,
+        addr,
+        name,
+        type,
+        duration,
+        hasAlpha=None,
     ):
         addr = "/" + addr
         self.modifyTime = modityTime
@@ -576,25 +633,33 @@ class MontagenProj:
         value = self.getClipById(
             clip_id, self.timeline, self.timeline.get("children", [])
         )
-        if not value:
+        parent = None
+        child = None
+        if value:
+            parent, child = value
+        if not child or child["type"] == "text":
+            if child:
+                parent["children"].remove(child)
             if type == "video":
-                self.timeline["children"].append(
-                    {
-                        "clipId": clip_id,
-                        "clipName": name,
-                        "src": addr,
-                        "workflowId": workflowId,
-                        "children": [],
-                        "type": "video",
-                        "loop": True,
-                        "audio": False,
-                        "x": "50vw",
-                        "y": "50vh",
-                        "active": True,
-                        "duration": duration,
-                        "refId": self.to_base36_random(),
-                    }
-                )
+                videoClip = {
+                    "clipId": clip_id,
+                    "clipName": name,
+                    "src": addr,
+                    "workflowId": workflowId,
+                    "children": [],
+                    "type": "video",
+                    "loop": True,
+                    "audio": False,
+                    "x": "50vw",
+                    "y": "50vh",
+                    "active": True,
+                    "duration": duration,
+                    "refId": self.to_base36_random(),
+                }
+                self.timeline["children"].append(videoClip)
+                if hasAlpha:
+                    videoClip["codec"] = "libvpx-vp9"
+                    videoClip["voImageExtra"] = "png"
             elif type == "audio":
                 self.timeline["children"].append(
                     {
@@ -645,85 +710,20 @@ class MontagenProj:
                     }
                 )
         else:
-            parent, child = value
-            if child["type"] != "text":
-                child.update(
-                    {
-                        "src": addr,
-                        "type": type,
-                        "workflowId": workflowId,
-                        "clipName": name,
-                    }
-                )
-            else:
-                parent["children"].remove(child)
-                if type == "video":
-                    parent["children"].append(
-                        {
-                            "clipId": clip_id,
-                            "clipName": name,
-                            "src": addr,
-                            "workflowId": workflowId,
-                            "children": [],
-                            "type": "video",
-                            "loop": True,
-                            "audio": False,
-                            "x": "50vw",
-                            "y": "50vh",
-                            "active": True,
-                            "duration": duration,
-                            "refId": self.to_base36_random(),
-                        }
-                    )
-                elif type == "audio":
-                    parent["children"].append(
-                        {
-                            "clipId": clip_id,
-                            "clipName": name,
-                            "src": addr,
-                            "workflowId": workflowId,
-                            "type": "audio",
-                            "audio": True,
-                            "duration": duration,
-                            "refId": self.to_base36_random(),
-                            "children": [],
-                        }
-                    )
-                elif type == "image":
-                    parent["children"].append(
-                        {
-                            "clipId": clip_id,
-                            "clipName": name,
-                            "src": addr,
-                            "workflowId": workflowId,
-                            "children": [],
-                            "type": "image",
-                            "audio": False,
-                            "x": "50vw",
-                            "y": "50vh",
-                            "active": True,
-                            "duration": duration,
-                            "refId": self.to_base36_random(),
-                        }
-                    )
-                elif type == "gif":
-                    parent["children"].append(
-                        {
-                            "clipId": clip_id,
-                            "clipName": name,
-                            "src": addr,
-                            "workflowId": workflowId,
-                            "children": [],
-                            "type": "gif",
-                            "audio": False,
-                            "x": "50vw",
-                            "y": "50vh",
-                            "active": True,
-                            "loop": True,
-                            "duration": duration,
-                            "refId": self.to_base36_random(),
-                        }
-                    )
+            child.update(
+                {
+                    "src": addr,
+                    "type": type,
+                    "workflowId": workflowId,
+                    "clipName": name,
+                }
+            )
+            if type == "video":
+                child.pop("codec", None)
+                child.pop("voImageExtra", None)
+                if hasAlpha:
+                    child["codec"] = "libvpx-vp9"
+                    child["voImageExtra"] = "png"
         self._saveToPath(self.result())
         return self.timeline
 
@@ -757,10 +757,17 @@ class MontagenProj:
                             "order": 0,
                             "mode": 0,
                             "inputs": [
-                                {"name": "images", "type": "IMAGE", "link": None}
+                                {"name": "images", "type": "IMAGE", "link": None},
+                                {
+                                    "name": "alpha",
+                                    "type": "MASK",
+                                    "shape": 7,
+                                    "link": None,
+                                },
                             ],
                             "outputs": [
-                                {"name": "IMAGE", "type": "IMAGE", "links": None}
+                                {"name": "IMAGE", "type": "IMAGE", "links": None},
+                                {"name": "MASK", "type": "MASK", "links": None},
                             ],
                             "properties": {
                                 "Node name for S&R": "MontagenVideoClipAdapter"
@@ -839,15 +846,22 @@ class MontagenProj:
                             "order": 0,
                             "mode": 0,
                             "inputs": [
-                                {"name": "image", "type": "Image", "link": None}
+                                {"name": "image", "type": "IMAGE", "link": None},
+                                {
+                                    "name": "alpha",
+                                    "type": "MASK",
+                                    "shape": 7,
+                                    "link": None,
+                                },
                             ],
                             "outputs": [
-                                {"name": "IMAGE", "type": "IMAGE", "links": None}
+                                {"name": "IMAGE", "type": "IMAGE", "links": None},
+                                {"name": "MASK", "type": "MASK", "links": None},
                             ],
                             "properties": {
                                 "Node name for S&R": "MontagenImageClipAdapter"
                             },
-                            "widgets_values": ["", ""],
+                            "widgets_values": ["", 6, "", "image"],
                         }
                     ],
                     "links": [],
@@ -910,16 +924,21 @@ class MontagenProj:
         }
         return info_data
 
-    def getOutputPath(self, workflowId: str):
+    def getOutputPath(self, workflowId: str, clipId: str):
         if not workflowId:
             raise Exception("workflowId is empty")
-        workflowPath = os.path.join(self.basePath, self.OUTPUTDIR, workflowId)
-        if not os.path.exists(workflowPath):
-            os.makedirs(workflowPath)
-        return workflowPath
+        if clipId:
+            workflowClipPath = os.path.join(
+                self.basePath, self.OUTPUTDIR, workflowId, clipId
+            )
+        else:
+            workflowClipPath = os.path.join(self.basePath, self.OUTPUTDIR, workflowId)
+        if not os.path.exists(workflowClipPath):
+            os.makedirs(workflowClipPath)
+        return workflowClipPath
 
-    def getOutputFile(self, workflowId: str, filename: str):
-        return os.path.join(self.getOutputPath(workflowId), filename)
+    def getOutputFile(self, workflowId: str, clipId: str, filename: str):
+        return os.path.join(self.getOutputPath(workflowId, clipId), filename)
 
 
 MontagenProjManager(PromptServer.instance)

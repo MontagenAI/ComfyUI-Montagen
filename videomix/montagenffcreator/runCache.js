@@ -11,8 +11,16 @@ function extractParamsFromUrl(url) {
   const parts = url.split("/");
   const id = parts[3];
   const workflowId = parts[4];
-  const filename = parts[6];
-  return { id, workflowId, filename };
+  const type = parts[5];
+  let filename = null;
+  let clipId = null;
+  if (type == "file") {
+    filename = parts[6];
+  } else {
+    filename = parts[7];
+    clipId = parts[6];
+  }
+  return { id, workflowId, clipId, filename };
 }
 
 const CacheUtil = {
@@ -82,7 +90,18 @@ const CacheUtil = {
     if (!src) return src;
     if (src.startsWith("//") && this.projectbase) {
       src = src.substring(1);
-      const { id, workflowId, filename } = extractParamsFromUrl(src);
+      const { id, workflowId, clipId, filename } = extractParamsFromUrl(src);
+      if (clipId) {
+        const dstPath = path.join(
+          this.projectbase,
+          id,
+          "output",
+          workflowId,
+          clipId,
+          filename
+        );
+        return dstPath;
+      }
       const dstPath = path.join(
         this.projectbase,
         id,

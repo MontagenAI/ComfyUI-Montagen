@@ -5,7 +5,7 @@ import uuid
 import re
 
 
-def save_video(filename, frames, fps, pbar):
+def save_video(filename, frames, fps, pbar, hasAlpha):
     # Get the width and height of the first frame
     height, width, layers = frames[0].shape
     totalFrames = len(frames)
@@ -38,6 +38,34 @@ def save_video(filename, frames, fps, pbar):
         "libx264",
         filename,
     ]
+
+    if hasAlpha:
+        command = [
+            "ffmpeg",
+            "-y",
+            "-f",
+            "rawvideo",
+            "-vcodec",
+            "rawvideo",
+            "-s",
+            f"{width}x{height}",
+            "-pix_fmt",
+            "rgba",
+            "-r",
+            str(fps),
+            "-i",
+            temp_file,
+            "-an",
+            "-vcodec",
+            "libvpx-vp9",
+            "-b:v",
+            "1M",
+            "-pix_fmt",
+            "yuva420p",
+            "-crf",
+            "4",
+            filename,
+        ]
     # Start the subprocess
     process = subprocess.Popen(
         command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
