@@ -51,17 +51,17 @@
   text-align: left;
 }\r
 
-.form-container[data-v-3fba7b51] {\r
+.form-container[data-v-e2771472] {\r
 \r
     padding: 0.5rem
 }
 @media (min-width: 1536px) {
-.form-container[data-v-3fba7b51] {\r
+.form-container[data-v-e2771472] {\r
 \r
         padding: 1rem
 }
 }
-[data-v-3fba7b51] .el-form-item {\r
+[data-v-e2771472] .el-form-item {\r
 \r
     margin-bottom: 0.25rem;\r
 \r
@@ -68577,7 +68577,8 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       clipName: "",
       type: "",
       x: 0,
-      y: 0
+      y: 0,
+      text: ""
     });
     const radiansToDegrees = (radians) => {
       return radians * (180 / Math.PI) && Math.round(radians * (180 / Math.PI));
@@ -68596,6 +68597,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
         formData.x = 0;
         formData.y = 0;
         formData.type = "";
+        formData.text = "";
         isSelectClip.value = false;
         return;
       }
@@ -68605,6 +68607,9 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       formData.x = unitToPx(conf2.x || 0);
       formData.y = unitToPx(conf2.y || 0);
       formData.type = conf2.type;
+      if (conf2.type === "text") {
+        formData.text = conf2.text;
+      }
     };
     const handleRotate = (e) => {
       workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
@@ -68619,6 +68624,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     const handleY = () => {
       workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
         y: formData.y
+      });
+    };
+    const handleText = () => {
+      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
+        text: formData.text
       });
     };
     watch(() => formData.rotate, (newVal, oldVal) => {
@@ -68638,11 +68648,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("div", _hoisted_1$7, [
         createBaseVNode("div", _hoisted_2$4, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
-            start: withCtx(() => _cache[4] || (_cache[4] = [
+            start: withCtx(() => _cache[5] || (_cache[5] = [
               createBaseVNode("span", { class: "text-sm truncate" }, "transtion", -1)
             ])),
-            center: withCtx(() => _cache[5] || (_cache[5] = [])),
-            end: withCtx(() => _cache[6] || (_cache[6] = [
+            center: withCtx(() => _cache[6] || (_cache[6] = [])),
+            end: withCtx(() => _cache[7] || (_cache[7] = [
               createBaseVNode("div", {
                 class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200",
                 style: { "min-height": "28px" }
@@ -68687,7 +68697,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(formData).rotate = $event),
                     onKeydown: withKeys(handleRotate, ["enter"])
                   }, {
-                    append: withCtx(() => _cache[7] || (_cache[7] = [
+                    append: withCtx(() => _cache[8] || (_cache[8] = [
                       createTextVNode$1("deg")
                     ])),
                     _: 1
@@ -68706,7 +68716,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                     "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => unref(formData).x = $event),
                     onKeydown: withKeys(handleX, ["enter"])
                   }, {
-                    append: withCtx(() => _cache[8] || (_cache[8] = [
+                    append: withCtx(() => _cache[9] || (_cache[9] = [
                       createTextVNode$1("px")
                     ])),
                     _: 1
@@ -68725,7 +68735,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                     "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => unref(formData).y = $event),
                     onKeydown: withKeys(handleY, ["enter"])
                   }, {
-                    append: withCtx(() => _cache[9] || (_cache[9] = [
+                    append: withCtx(() => _cache[10] || (_cache[10] = [
                       createTextVNode$1("px")
                     ])),
                     _: 1
@@ -68733,6 +68743,21 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                 ]),
                 _: 1
               }),
+              unref(formData).type === "text" ? (openBlock(), createBlock(_component_el_form_item, {
+                key: 0,
+                label: "text",
+                class: "px-2 tw-pb-1"
+              }, {
+                default: withCtx(() => [
+                  createVNode(_component_el_input, {
+                    class: "cus-input",
+                    modelValue: unref(formData).text,
+                    "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => unref(formData).text = $event),
+                    onKeydown: withKeys(handleText, ["enter"])
+                  }, null, 8, ["modelValue"])
+                ]),
+                _: 1
+              })) : createCommentVNode("", true),
               createVNode(_component_el_form_item)
             ]),
             _: 1
@@ -68742,7 +68767,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const metaInfoVue = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-3fba7b51"]]);
+const metaInfoVue = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-e2771472"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
