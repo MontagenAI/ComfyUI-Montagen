@@ -1444,6 +1444,9 @@ class RefImpl {
 function unref(ref2) {
   return isRef(ref2) ? ref2.value : ref2;
 }
+function toValue(source) {
+  return isFunction(source) ? source() : unref(source);
+}
 const shallowUnwrapHandlers = {
   get: (target, key, receiver) => key === "__v_raw" ? target : unref(Reflect.get(target, key, receiver)),
   set: (target, key, value, receiver) => {
@@ -6881,6 +6884,44 @@ function patchClass(el, value, isSVG) {
 }
 const vShowOriginalDisplay = Symbol("_vod");
 const vShowHidden = Symbol("_vsh");
+const vShow = {
+  beforeMount(el, { value }, { transition }) {
+    el[vShowOriginalDisplay] = el.style.display === "none" ? "" : el.style.display;
+    if (transition && value) {
+      transition.beforeEnter(el);
+    } else {
+      setDisplay(el, value);
+    }
+  },
+  mounted(el, { value }, { transition }) {
+    if (transition && value) {
+      transition.enter(el);
+    }
+  },
+  updated(el, { value, oldValue }, { transition }) {
+    if (!value === !oldValue) return;
+    if (transition) {
+      if (value) {
+        transition.beforeEnter(el);
+        setDisplay(el, true);
+        transition.enter(el);
+      } else {
+        transition.leave(el, () => {
+          setDisplay(el, false);
+        });
+      }
+    } else {
+      setDisplay(el, value);
+    }
+  },
+  beforeUnmount(el, { value }) {
+    setDisplay(el, value);
+  }
+};
+function setDisplay(el, value) {
+  el.style.display = value ? el[vShowOriginalDisplay] : "none";
+  el[vShowHidden] = !value;
+}
 const CSS_VAR_TEXT = Symbol("");
 const displayRE = /(^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
@@ -7401,68 +7442,70 @@ function normalizeContainer(container) {
   return container;
 }
 export {
-  Text as $,
-  createTextVNode as A,
-  toDisplayString as B,
-  resolveComponent as C,
-  resolveDirective as D,
-  withDirectives as E,
-  createBlock as F,
-  withCtx as G,
-  createCommentVNode as H,
-  normalizeClass as I,
-  resolveDynamicComponent as J,
-  createVNode as K,
-  Transition as L,
-  Fragment as M,
-  unref as N,
-  isString as O,
-  isObject as P,
-  hasOwn as Q,
-  warn as R,
-  NOOP as S,
+  normalizeStyle as $,
+  inject as A,
+  hasInjectionContext as B,
+  createTextVNode as C,
+  toDisplayString as D,
+  resolveComponent as E,
+  resolveDirective as F,
+  withDirectives as G,
+  createBlock as H,
+  withCtx as I,
+  createCommentVNode as J,
+  normalizeClass as K,
+  resolveDynamicComponent as L,
+  createVNode as M,
+  Transition as N,
+  Fragment as O,
+  unref as P,
+  isString as Q,
+  isObject as R,
+  hasOwn as S,
   Teleport as T,
-  onUnmounted as U,
-  shallowRef as V,
-  isFunction as W,
-  useAttrs as X,
-  useSlots as Y,
-  withModifiers as Z,
-  normalizeStyle as _,
+  warn as U,
+  NOOP as V,
+  onUnmounted as W,
+  shallowRef as X,
+  isFunction as Y,
+  useAttrs as Z,
+  useSlots as _,
   createBaseVNode as a,
-  provide as a0,
-  isArray as a1,
-  onBeforeUnmount as a2,
-  onUpdated as a3,
-  TransitionGroup as a4,
-  renderList as a5,
-  createSlots as a6,
-  watchEffect as a7,
-  withKeys as a8,
-  createApp as a9,
+  Text as a0,
+  provide as a1,
+  isArray as a2,
+  onBeforeUnmount as a3,
+  onUpdated as a4,
+  TransitionGroup as a5,
+  renderList as a6,
+  createSlots as a7,
+  vShow as a8,
+  watchEffect as a9,
+  withKeys as aa,
+  createApp as ab,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
   onMounted as e,
   reactive as f,
   getCurrentInstance as g,
-  effectScope as h,
-  markRaw as i,
-  computed as j,
-  isRef as k,
-  isReactive as l,
+  computed as h,
+  renderSlot as i,
+  withModifiers as j,
+  effectScope as k,
+  markRaw as l,
   mergeProps as m,
   nextTick as n,
   openBlock as o,
-  toRef as p,
-  getCurrentScope as q,
+  toRaw as p,
+  isRef as q,
   ref as r,
-  onScopeDispose as s,
-  toRaw as t,
+  isReactive as s,
+  toValue as t,
   useId as u,
-  toRefs as v,
+  toRef as v,
   watch as w,
-  inject as x,
-  hasInjectionContext as y,
-  renderSlot as z
+  getCurrentScope as x,
+  onScopeDispose as y,
+  toRefs as z
 };
