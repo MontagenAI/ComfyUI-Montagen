@@ -1,8 +1,6 @@
 # ComfyUI-Montagen
 
-**Montagen** is a web video editor with timeline editing and preview.  
-**ComfyUI-Montagen** extends [ComfyUI](https://github.com/comfyanonymous/ComfyUI) with custom nodes, enabling media clip integration alongside AI-driven video generation and automation.
-
+A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation.
 
 ![Montagen ScreenShot](assets/montagenscreenshot1.png)
 
