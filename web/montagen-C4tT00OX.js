@@ -23,13 +23,13 @@
   background: var(--p-badge-secondary-background, #f1f5f9);
   color: var(--p-button-text-color);
 }
-.workflow[data-v-013efedc] {\r
+.workflow[data-v-279c5408] {\r
   background: #fff;
 }
-.workflow-header[data-v-013efedc] {\r
+.workflow-header[data-v-279c5408] {\r
   border: 1px solid var(--p-toolbar-border-color, #e2e8f0);
 }
-.list-item[data-v-013efedc] {\r
+.list-item[data-v-279c5408] {\r
   /* padding: 0 0.5rem; */\r
   /* background: var(--p-badge-secondary-background, #f1f5f9); */\r
   /* width: 80px; */\r
@@ -41,11 +41,11 @@
   height: 34px;\r
   width: 100%;
 }
-.list-item[data-v-013efedc]:hover {\r
+.list-item[data-v-279c5408]:hover {\r
   background: var(--p-badge-secondary-background, #f1f5f9);\r
   color: var(--p-button-text-color);
 }
-.name[data-v-013efedc] {\r
+.name[data-v-279c5408] {\r
   flex: 1;\r
   margin-left: 10px;\r
   text-align: left;
@@ -67843,8 +67843,8 @@ const _hoisted_11$1 = { id: "custom-dialog" };
 const _hoisted_12$1 = { class: "flex flex-col justify-center" };
 const _hoisted_13$1 = { class: "mb-2" };
 const _hoisted_14$1 = { class: "mb-2" };
-const _hoisted_15 = { class: "mb-2" };
-const _hoisted_16 = { class: "mb-2" };
+const _hoisted_15$1 = { class: "mb-2" };
+const _hoisted_16$1 = { class: "mb-2" };
 const _hoisted_17 = { class: "flex justify-center" };
 const _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "workFlow",
@@ -68128,7 +68128,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       placeholder: "description"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_15, [
+                  createBaseVNode("div", _hoisted_15$1, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.width,
                       "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.width = $event),
@@ -68136,7 +68136,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       placeholder: "videoWidth"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_16, [
+                  createBaseVNode("div", _hoisted_16$1, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.height,
                       "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.height = $event),
@@ -68406,6 +68406,11 @@ const _hoisted_13 = {
   class: "w-full flex items-center"
 };
 const _hoisted_14 = { class: "truncate w-full text-center name" };
+const _hoisted_15 = {
+  key: 4,
+  class: "w-full flex items-center"
+};
+const _hoisted_16 = { class: "truncate w-full text-center name" };
 const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "clips",
   setup(__props) {
@@ -68515,6 +68520,15 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                     })
                   ], -1)),
                   createBaseVNode("div", _hoisted_14, toDisplayString(item.clipName), 1)
+                ])) : createCommentVNode("", true),
+                item.type == "gif" ? (openBlock(), createElementBlock("div", _hoisted_15, [
+                  _cache[5] || (_cache[5] = createBaseVNode("div", null, [
+                    createBaseVNode("i", {
+                      class: "pi pi-images",
+                      style: { "font-size": "1rem" }
+                    })
+                  ], -1)),
+                  createBaseVNode("div", _hoisted_16, toDisplayString(item.clipName), 1)
                 ])) : createCommentVNode("", true)
               ], 8, _hoisted_6);
             }), 128))
@@ -68524,7 +68538,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-013efedc"]]);
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-279c5408"]]);
 const _hoisted_1$6 = { class: "w-full" };
 const _hoisted_2$4 = { class: "comfy-vue-side-bar-header" };
 const _sfc_main$7 = /* @__PURE__ */ defineComponent({
