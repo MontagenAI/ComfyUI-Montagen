@@ -42729,7 +42729,7 @@ function requireClip() {
   const a2 = requireBase(), { DisplayObject: e, createCanvas: t } = requireLib$2(), { dmap: r } = requireUtils(), { isBrowser: s } = requireLib$5();
   class o extends a2 {
     constructor(h = {}) {
-      super({ type: "clip", ...h }), this.canvasWidth = h.canvasWidth, this.canvasHeight = h.canvasHeight, this.visible = false, this.zIndex = 0, this.children = [], this.active = h.active !== void 0 ? !!h.active : true, this.onTime = () => false, this.createDisplay();
+      super({ type: "clip", ...h }), this.visible = false, this.zIndex = 0, this.children = [], this.active = h.active !== void 0 ? !!h.active : true, this.onTime = () => false, this.createDisplay();
     }
     get muted() {
       for (const h of this.parents)
@@ -42904,7 +42904,7 @@ function requireClip() {
     get default() {
       var h, f;
       return {
-        startTime: (((h = this.parent) == null ? void 0 : h.type) === "spine" ? (f = this.prevSibling) == null ? void 0 : f.endTime : 0) || 0,
+        startTime: (((h = this.parent) == null ? void 0 : h.type) === "spine" ? ((f = this.prevSibling) == null ? void 0 : f.endTime) ?? 0 : 0) || 0,
         endTime: "100%"
       };
     }
@@ -42932,7 +42932,7 @@ function requireClip() {
       return p > this.startTime ? p : this.startTime + 3;
     }
     get flexibleDuration() {
-      return this.conf.duration && this.conf.duration.toString().includes("%") || this.conf.end && this.conf.end.toString().includes("%");
+      return this.conf.duration && this.conf.duration.toString().includes("%") || this.conf.end && this.conf.end.toString().includes("%") || this.conf.start && this.conf.start.toString().includes("%");
     }
     get fps() {
       return this._fps || (this._fps = this.rootConf("fps")), this._fps;
@@ -42969,9 +42969,16 @@ function requireClip() {
     setConfRpx(h, f) {
       this.conf[h] = this.vu(f, this.conf[h]);
     }
-    units() {
+    get canvasWidth() {
       const h = this.creator();
-      return h && (this.canvasWidth = h.width, this.canvasHeight = h.height), [
+      return h ? h.width : this.conf.canvasWidth;
+    }
+    get canvasHeight() {
+      const h = this.creator();
+      return h ? h.height : this.conf.canvasHeight;
+    }
+    units() {
+      return [
         ["rpx", this.canvasWidth, 360],
         ["px", 360, 360],
         ["vw", this.canvasWidth, 100],
@@ -55993,9 +56000,9 @@ function requireGif$1() {
       }
       this.length = this.info.duration = this.frameInfo.reduce((T, _) => T + _.delay, 0), this.frames = this.frameInfo.length, this.canvas = this.initCanvas(b, x), this.canvasContext = this.canvas.getContext("2d"), this.imageData = [];
       for (let T = 0; T < this.frameInfo.length; T++) {
-        let _ = this.frameInfo[T].disposal > 2 ? 2 : this.frameInfo[T].disposal;
+        let _ = this.frameInfo[T].disposal >= 2 ? 3 : 1;
         const S = this.initCanvas(b, x), E = S.getContext("2d");
-        _ === 1 ? (this.drawCanvas(w[T], b, x), a2 ? E.drawImage(this.canvas, 0, 0, b, x) : this.imageData.push(this.canvasContext.getImageData(0, 0, b, x))) : a2 ? E.putImageData(w[T], 0, 0) : this.imageData.push(w[T]), a2 && this.imageData.push(S);
+        _ === 1 ? (this.drawCanvas(w[T], b, x), a2 ? E.drawImage(this.canvas, 0, 0, b, x) : this.imageData.push(this.canvasContext.getImageData(0, 0, b, x))) : (E.drawImage(this.canvas, 0, 0, b, x), this.drawCanvas(w[T], b, x, S), a2 || this.imageData.push(E.getImageData(0, 0, b, x))), a2 && this.imageData.push(S);
       }
     }
     getFrame(h) {
@@ -56004,8 +56011,8 @@ function requireGif$1() {
     }
     getIndex(h) {
       let f = 0, p = 0;
-      for (let d = 0; d < this.frameInfo.length && (f += this.frameInfo[d].delay / this.speed, !(f > h)); d++)
-        p = d;
+      for (let d = 0; d < this.frameInfo.length && (f += this.frameInfo[d].delay / this.speed, p = d, !(f > h)); d++)
+        ;
       return p;
     }
     async getFrameByTime(h) {
