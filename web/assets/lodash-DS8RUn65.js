@@ -18,13 +18,13 @@ lodash.exports;
     var HASH_UNDEFINED2 = "__lodash_hash_undefined__";
     var MAX_MEMOIZE_SIZE2 = 500;
     var PLACEHOLDER = "__lodash_placeholder__";
-    var CLONE_DEEP_FLAG2 = 1, CLONE_FLAT_FLAG2 = 2, CLONE_SYMBOLS_FLAG2 = 4;
+    var CLONE_DEEP_FLAG = 1, CLONE_FLAT_FLAG2 = 2, CLONE_SYMBOLS_FLAG2 = 4;
     var COMPARE_PARTIAL_FLAG = 1, COMPARE_UNORDERED_FLAG = 2;
     var WRAP_BIND_FLAG = 1, WRAP_BIND_KEY_FLAG = 2, WRAP_CURRY_BOUND_FLAG = 4, WRAP_CURRY_FLAG = 8, WRAP_CURRY_RIGHT_FLAG = 16, WRAP_PARTIAL_FLAG = 32, WRAP_PARTIAL_RIGHT_FLAG = 64, WRAP_ARY_FLAG = 128, WRAP_REARG_FLAG = 256, WRAP_FLIP_FLAG = 512;
     var DEFAULT_TRUNC_LENGTH = 30, DEFAULT_TRUNC_OMISSION = "...";
     var HOT_COUNT2 = 800, HOT_SPAN2 = 16;
     var LAZY_FILTER_FLAG = 1, LAZY_MAP_FLAG = 2, LAZY_WHILE_FLAG = 3;
-    var INFINITY2 = 1 / 0, MAX_SAFE_INTEGER2 = 9007199254740991, MAX_INTEGER = 17976931348623157e292, NAN = 0 / 0;
+    var INFINITY = 1 / 0, MAX_SAFE_INTEGER2 = 9007199254740991, MAX_INTEGER = 17976931348623157e292, NAN = 0 / 0;
     var MAX_ARRAY_LENGTH = 4294967295, MAX_ARRAY_INDEX = MAX_ARRAY_LENGTH - 1, HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1;
     var wrapFlags = [
       ["ary", WRAP_ARY_FLAG],
@@ -1140,7 +1140,7 @@ lodash.exports;
         return number;
       }
       function baseClone2(value, bitmask, customizer, key, object, stack) {
-        var result2, isDeep = bitmask & CLONE_DEEP_FLAG2, isFlat = bitmask & CLONE_FLAT_FLAG2, isFull = bitmask & CLONE_SYMBOLS_FLAG2;
+        var result2, isDeep = bitmask & CLONE_DEEP_FLAG, isFlat = bitmask & CLONE_FLAT_FLAG2, isFull = bitmask & CLONE_SYMBOLS_FLAG2;
         if (customizer) {
           result2 = object ? customizer(value, key, object, stack) : customizer(value);
         }
@@ -1188,7 +1188,7 @@ lodash.exports;
             result2.set(key2, baseClone2(subValue, bitmask, customizer, key2, value, stack));
           });
         }
-        var keysFunc = isFull ? isFlat ? getAllKeysIn2 : getAllKeys2 : isFlat ? keysIn2 : keys2;
+        var keysFunc = isFull ? isFlat ? getAllKeysIn : getAllKeys2 : isFlat ? keysIn2 : keys2;
         var props = isArr ? undefined$1 : keysFunc(value);
         arrayEach2(props || value, function(subValue, key2) {
           if (props) {
@@ -1896,7 +1896,7 @@ lodash.exports;
           return symbolToString2 ? symbolToString2.call(value) : "";
         }
         var result2 = value + "";
-        return result2 == "0" && 1 / value == -INFINITY2 ? "-0" : result2;
+        return result2 == "0" && 1 / value == -Infinity ? "-0" : result2;
       }
       function baseUniq(array, iteratee2, comparator) {
         var index = -1, includes2 = arrayIncludes, length = array.length, isCommon = true, result2 = [], seen = result2;
@@ -2448,7 +2448,7 @@ lodash.exports;
         bitmask |= isCurry ? WRAP_PARTIAL_FLAG : WRAP_PARTIAL_RIGHT_FLAG;
         bitmask &= ~(isCurry ? WRAP_PARTIAL_RIGHT_FLAG : WRAP_PARTIAL_FLAG);
         if (!(bitmask & WRAP_CURRY_BOUND_FLAG)) {
-          bitmask &= ~(WRAP_BIND_FLAG | WRAP_BIND_KEY_FLAG);
+          bitmask &= -4;
         }
         var newData = [
           func,
@@ -2482,7 +2482,7 @@ lodash.exports;
           return func(number);
         };
       }
-      var createSet = !(Set2 && 1 / setToArray(new Set2([, -0]))[1] == INFINITY2) ? noop : function(values2) {
+      var createSet = !(Set2 && 1 / setToArray(new Set2([, -0]))[1] == INFINITY) ? noop : function(values2) {
         return new Set2(values2);
       };
       function createToPairs(keysFunc) {
@@ -2504,7 +2504,7 @@ lodash.exports;
         }
         var length = partials ? partials.length : 0;
         if (!length) {
-          bitmask &= ~(WRAP_PARTIAL_FLAG | WRAP_PARTIAL_RIGHT_FLAG);
+          bitmask &= -97;
           partials = holders = undefined$1;
         }
         ary2 = ary2 === undefined$1 ? ary2 : nativeMax2(toInteger(ary2), 0);
@@ -2537,7 +2537,7 @@ lodash.exports;
         holders = newData[4];
         arity = newData[9] = newData[9] === undefined$1 ? isBindKey ? 0 : func.length : nativeMax2(newData[9] - length, 0);
         if (!arity && bitmask & (WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG)) {
-          bitmask &= ~(WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG);
+          bitmask &= -25;
         }
         if (!bitmask || bitmask == WRAP_BIND_FLAG) {
           var result2 = createBind(func, bitmask, thisArg);
@@ -2706,7 +2706,7 @@ lodash.exports;
       function getAllKeys2(object) {
         return baseGetAllKeys2(object, keys2, getSymbols2);
       }
-      function getAllKeysIn2(object) {
+      function getAllKeysIn(object) {
         return baseGetAllKeys2(object, keysIn2, getSymbolsIn2);
       }
       var getData = !metaMap ? noop : function(func) {
@@ -3103,7 +3103,7 @@ lodash.exports;
           return value;
         }
         var result2 = value + "";
-        return result2 == "0" && 1 / value == -INFINITY2 ? "-0" : result2;
+        return result2 == "0" && 1 / value == -Infinity ? "-0" : result2;
       }
       function toSource2(func) {
         if (func != null) {
@@ -3254,7 +3254,7 @@ lodash.exports;
       }
       function flattenDeep(array) {
         var length = array == null ? 0 : array.length;
-        return length ? baseFlatten2(array, INFINITY2) : [];
+        return length ? baseFlatten2(array, INFINITY) : [];
       }
       function flattenDepth(array, depth) {
         var length = array == null ? 0 : array.length;
@@ -3639,7 +3639,7 @@ lodash.exports;
         return baseFlatten2(map(collection, iteratee2), 1);
       }
       function flatMapDeep(collection, iteratee2) {
-        return baseFlatten2(map(collection, iteratee2), INFINITY2);
+        return baseFlatten2(map(collection, iteratee2), INFINITY);
       }
       function flatMapDepth(collection, iteratee2, depth) {
         depth = depth === undefined$1 ? 1 : toInteger(depth);
@@ -4032,11 +4032,11 @@ lodash.exports;
         return baseClone2(value, CLONE_SYMBOLS_FLAG2, customizer);
       }
       function cloneDeep(value) {
-        return baseClone2(value, CLONE_DEEP_FLAG2 | CLONE_SYMBOLS_FLAG2);
+        return baseClone2(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG2);
       }
       function cloneDeepWith(value, customizer) {
         customizer = typeof customizer == "function" ? customizer : undefined$1;
-        return baseClone2(value, CLONE_DEEP_FLAG2 | CLONE_SYMBOLS_FLAG2, customizer);
+        return baseClone2(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG2, customizer);
       }
       function conformsTo(object, source) {
         return source == null || baseConformsTo(object, source, keys2(source));
@@ -4167,7 +4167,7 @@ lodash.exports;
       }
       var isRegExp = nodeIsRegExp ? baseUnary2(nodeIsRegExp) : baseIsRegExp;
       function isSafeInteger(value) {
-        return isInteger(value) && value >= -MAX_SAFE_INTEGER2 && value <= MAX_SAFE_INTEGER2;
+        return isInteger(value) && value >= -9007199254740991 && value <= MAX_SAFE_INTEGER2;
       }
       var isSet2 = nodeIsSet2 ? baseUnary2(nodeIsSet2) : baseIsSet2;
       function isString(value) {
@@ -4208,7 +4208,7 @@ lodash.exports;
           return value === 0 ? value : 0;
         }
         value = toNumber(value);
-        if (value === INFINITY2 || value === -INFINITY2) {
+        if (value === INFINITY || value === -Infinity) {
           var sign = value < 0 ? -1 : 1;
           return sign * MAX_INTEGER;
         }
@@ -4243,7 +4243,7 @@ lodash.exports;
         return copyObject2(value, keysIn2(value));
       }
       function toSafeInteger(value) {
-        return value ? baseClamp(toInteger(value), -MAX_SAFE_INTEGER2, MAX_SAFE_INTEGER2) : value === 0 ? value : 0;
+        return value ? baseClamp(toInteger(value), -9007199254740991, MAX_SAFE_INTEGER2) : value === 0 ? value : 0;
       }
       function toString2(value) {
         return value == null ? "" : baseToString2(value);
@@ -4390,9 +4390,9 @@ lodash.exports;
           isDeep || (isDeep = path.length > 1);
           return path;
         });
-        copyObject2(object, getAllKeysIn2(object), result2);
+        copyObject2(object, getAllKeysIn(object), result2);
         if (isDeep) {
-          result2 = baseClone2(result2, CLONE_DEEP_FLAG2 | CLONE_FLAT_FLAG2 | CLONE_SYMBOLS_FLAG2, customOmitClone);
+          result2 = baseClone2(result2, CLONE_DEEP_FLAG | CLONE_FLAT_FLAG2 | CLONE_SYMBOLS_FLAG2, customOmitClone);
         }
         var length = paths.length;
         while (length--) {
@@ -4410,7 +4410,7 @@ lodash.exports;
         if (object == null) {
           return {};
         }
-        var props = arrayMap2(getAllKeysIn2(object), function(prop) {
+        var props = arrayMap2(getAllKeysIn(object), function(prop) {
           return [prop];
         });
         predicate = getIteratee(predicate);
@@ -4830,7 +4830,7 @@ lodash.exports;
         });
       }
       function conforms(source) {
-        return baseConforms(baseClone2(source, CLONE_DEEP_FLAG2));
+        return baseConforms(baseClone2(source, CLONE_DEEP_FLAG));
       }
       function constant2(value) {
         return function() {
@@ -4846,13 +4846,13 @@ lodash.exports;
         return value;
       }
       function iteratee(func) {
-        return baseIteratee(typeof func == "function" ? func : baseClone2(func, CLONE_DEEP_FLAG2));
+        return baseIteratee(typeof func == "function" ? func : baseClone2(func, CLONE_DEEP_FLAG));
       }
       function matches(source) {
-        return baseMatches(baseClone2(source, CLONE_DEEP_FLAG2));
+        return baseMatches(baseClone2(source, CLONE_DEEP_FLAG));
       }
       function matchesProperty(path, srcValue) {
-        return baseMatchesProperty(path, baseClone2(srcValue, CLONE_DEEP_FLAG2));
+        return baseMatchesProperty(path, baseClone2(srcValue, CLONE_DEEP_FLAG));
       }
       var method = baseRest(function(path, args) {
         return function(object) {
@@ -5534,7 +5534,6 @@ function arrayMap(array, iteratee) {
   return result;
 }
 var isArray = Array.isArray;
-var INFINITY$1 = 1 / 0;
 var symbolProto$1 = Symbol$1 ? Symbol$1.prototype : void 0, symbolToString = symbolProto$1 ? symbolProto$1.toString : void 0;
 function baseToString(value) {
   if (typeof value == "string") {
@@ -5547,7 +5546,7 @@ function baseToString(value) {
     return symbolToString ? symbolToString.call(value) : "";
   }
   var result = value + "";
-  return result == "0" && 1 / value == -INFINITY$1 ? "-0" : result;
+  return result == "0" && 1 / value == -Infinity ? "-0" : result;
 }
 function isObject(value) {
   var type = typeof value;
@@ -6108,13 +6107,12 @@ function castPath(value, object) {
   }
   return isKey(value, object) ? [value] : stringToPath(toString(value));
 }
-var INFINITY = 1 / 0;
 function toKey(value) {
   if (typeof value == "string" || isSymbol(value)) {
     return value;
   }
   var result = value + "";
-  return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+  return result == "0" && 1 / value == -Infinity ? "-0" : result;
 }
 function baseGet(object, path) {
   path = castPath(path, object);
@@ -6221,9 +6219,6 @@ var freeModule = freeExports && typeof module == "object" && module && !module.n
 var moduleExports = freeModule && freeModule.exports === freeExports;
 var Buffer = moduleExports ? root.Buffer : void 0, allocUnsafe = Buffer ? Buffer.allocUnsafe : void 0;
 function cloneBuffer(buffer, isDeep) {
-  if (isDeep) {
-    return buffer.slice();
-  }
   var length = buffer.length, result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
   buffer.copy(result);
   return result;
@@ -6275,9 +6270,6 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 function getAllKeys(object) {
   return baseGetAllKeys(object, keys, getSymbols);
 }
-function getAllKeysIn(object) {
-  return baseGetAllKeys(object, keysIn, getSymbolsIn);
-}
 var DataView = getNative(root, "DataView");
 var Promise$1 = getNative(root, "Promise");
 var Set = getNative(root, "Set");
@@ -6322,7 +6314,7 @@ function cloneArrayBuffer(arrayBuffer) {
   return result;
 }
 function cloneDataView(dataView, isDeep) {
-  var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer;
+  var buffer = dataView.buffer;
   return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
 }
 var reFlags = /\w*$/;
@@ -6336,7 +6328,7 @@ function cloneSymbol(symbol) {
   return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
 }
 function cloneTypedArray(typedArray, isDeep) {
-  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+  var buffer = typedArray.buffer;
   return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
 }
 var boolTag$1 = "[object Boolean]", dateTag$1 = "[object Date]", mapTag$2 = "[object Map]", numberTag$1 = "[object Number]", regexpTag$1 = "[object RegExp]", setTag$2 = "[object Set]", stringTag$1 = "[object String]", symbolTag$1 = "[object Symbol]";
@@ -6350,7 +6342,7 @@ function initCloneByTag(object, tag, isDeep) {
     case dateTag$1:
       return new Ctor(+object);
     case dataViewTag$1:
-      return cloneDataView(object, isDeep);
+      return cloneDataView(object);
     case float32Tag$1:
     case float64Tag$1:
     case int8Tag$1:
@@ -6360,7 +6352,7 @@ function initCloneByTag(object, tag, isDeep) {
     case uint8ClampedTag$1:
     case uint16Tag$1:
     case uint32Tag$1:
-      return cloneTypedArray(object, isDeep);
+      return cloneTypedArray(object);
     case mapTag$2:
       return new Ctor();
     case numberTag$1:
@@ -6389,14 +6381,14 @@ function baseIsSet(value) {
 }
 var nodeIsSet = nodeUtil && nodeUtil.isSet;
 var isSet = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
-var CLONE_DEEP_FLAG = 1, CLONE_FLAT_FLAG = 2, CLONE_SYMBOLS_FLAG$1 = 4;
+var CLONE_FLAT_FLAG = 2;
 var argsTag = "[object Arguments]", arrayTag = "[object Array]", boolTag = "[object Boolean]", dateTag = "[object Date]", errorTag = "[object Error]", funcTag = "[object Function]", genTag = "[object GeneratorFunction]", mapTag = "[object Map]", numberTag = "[object Number]", objectTag = "[object Object]", regexpTag = "[object RegExp]", setTag = "[object Set]", stringTag = "[object String]", symbolTag = "[object Symbol]", weakMapTag = "[object WeakMap]";
 var arrayBufferTag = "[object ArrayBuffer]", dataViewTag = "[object DataView]", float32Tag = "[object Float32Array]", float64Tag = "[object Float64Array]", int8Tag = "[object Int8Array]", int16Tag = "[object Int16Array]", int32Tag = "[object Int32Array]", uint8Tag = "[object Uint8Array]", uint8ClampedTag = "[object Uint8ClampedArray]", uint16Tag = "[object Uint16Array]", uint32Tag = "[object Uint32Array]";
 var cloneableTags = {};
 cloneableTags[argsTag] = cloneableTags[arrayTag] = cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] = cloneableTags[boolTag] = cloneableTags[dateTag] = cloneableTags[float32Tag] = cloneableTags[float64Tag] = cloneableTags[int8Tag] = cloneableTags[int16Tag] = cloneableTags[int32Tag] = cloneableTags[mapTag] = cloneableTags[numberTag] = cloneableTags[objectTag] = cloneableTags[regexpTag] = cloneableTags[setTag] = cloneableTags[stringTag] = cloneableTags[symbolTag] = cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] = cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
 cloneableTags[errorTag] = cloneableTags[funcTag] = cloneableTags[weakMapTag] = false;
 function baseClone(value, bitmask, customizer, key, object, stack) {
-  var result, isDeep = bitmask & CLONE_DEEP_FLAG, isFlat = bitmask & CLONE_FLAT_FLAG, isFull = bitmask & CLONE_SYMBOLS_FLAG$1;
+  var result, isFlat = bitmask & CLONE_FLAT_FLAG;
   if (result !== void 0) {
     return result;
   }
@@ -6406,24 +6398,24 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   var isArr = isArray(value);
   if (isArr) {
     result = initCloneArray(value);
-    if (!isDeep) {
+    {
       return copyArray(value, result);
     }
   } else {
     var tag = getTag(value), isFunc = tag == funcTag || tag == genTag;
     if (isBuffer(value)) {
-      return cloneBuffer(value, isDeep);
+      return cloneBuffer(value);
     }
     if (tag == objectTag || tag == argsTag || isFunc && !object) {
-      result = isFlat || isFunc ? {} : initCloneObject(value);
-      if (!isDeep) {
+      result = isFunc ? {} : initCloneObject(value);
+      {
         return isFlat ? copySymbolsIn(value, baseAssignIn(result, value)) : copySymbols(value, baseAssign(result, value));
       }
     } else {
       if (!cloneableTags[tag]) {
         return object ? value : {};
       }
-      result = initCloneByTag(value, tag, isDeep);
+      result = initCloneByTag(value, tag);
     }
   }
   stack || (stack = new Stack());
@@ -6441,7 +6433,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
       result.set(key2, baseClone(subValue, bitmask, customizer, key2, value, stack));
     });
   }
-  var keysFunc = isFull ? isFlat ? getAllKeysIn : getAllKeys : isFlat ? keysIn : keys;
+  var keysFunc = getAllKeys;
   var props = isArr ? void 0 : keysFunc(value);
   arrayEach(props || value, function(subValue, key2) {
     if (props) {
