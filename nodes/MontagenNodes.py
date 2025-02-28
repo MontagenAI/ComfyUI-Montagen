@@ -49,6 +49,7 @@ class VideoClipAdapter:
             },
             "optional": {
                 "projectId": (sorted(projs), {"tooltip": "The project id."}),
+                "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -57,7 +58,7 @@ class VideoClipAdapter:
             },
         }
 
-    RETURN_TYPES = ("IMAGE",)
+    RETURN_TYPES = ("IMAGE", "MASK")
     FUNCTION = "save_images"
 
     OUTPUT_NODE = True
@@ -169,7 +170,7 @@ class VideoClipAdapter:
             has_project_id = False
 
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
-        workflowPath = proj.getOutputPath(workflowId)
+        workflowPath = proj.getOutputPath(workflowId, clip_id)
         fileName = f"{current_time}_{self.to_base36_random()}.{ext}"
         fileFullName = os.path.join(workflowPath, fileName)
         tmpFileName = f"{current_time}_{self.to_base36_random()}_t.{ext}"
@@ -194,11 +195,30 @@ class VideoClipAdapter:
         images,
         name,
         preview_fps=25,
+        alpha=None,
         unique_id=None,
         projectId=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
+        pbar = ProgressBar(100)
+        imageLen = len(images)
+        oriImages = images
+        oriAlpha = alpha
+        out_images = []
+        if alpha != None:
+            alpha = 1.0 - nodes_compositing.resize_mask(alpha, images.shape[1:])
+            for i in range(imageLen):
+                out_images.append(
+                    torch.cat((images[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2)
+                )
+        else:
+            for i in range(imageLen):
+                out_images.append(images[i])
+        images = torch.stack(out_images)
+        hasAlpha = False
+        if images.dim() == 4 and images.shape[-1] == 4:
+            hasAlpha = True
         (
             userId,
             projectId,
@@ -211,10 +231,14 @@ class VideoClipAdapter:
             fileFullName,
             tmpFileName,
             tmpFullName,
-        ) = self.get_info("mp4", name, unique_id, projectId, prompt, extra_pnginfo)
-        pbar = ProgressBar(100)
-        imageLen = len(images)
-
+        ) = self.get_info(
+            "mp4" if not hasAlpha else "webm",
+            name,
+            unique_id,
+            projectId,
+            prompt,
+            extra_pnginfo,
+        )
         frames = []
         currentProgress = 0
         loadImageProgressItem = 100 / imageLen
@@ -223,13 +247,13 @@ class VideoClipAdapter:
             frames.append(frame)
             currentProgress = currentProgress + loadImageProgressItem
             pbar.update_absolute(currentProgress * 0.5)
-        videosave.save_video(tmpFullName, frames, preview_fps, pbar)
+        videosave.save_video(tmpFullName, frames, preview_fps, pbar, hasAlpha)
         pbar.update_absolute(100)
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
 
         addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, fileName
+            userId, projectId, workflowId, clip_id, fileName
         )
         if not has_project_id or not has_workflow:
             return {
@@ -248,7 +272,7 @@ class VideoClipAdapter:
                         }
                     ]
                 },
-                "result": (images,),
+                "result": (oriImages, oriAlpha),
             }
         duration = imageLen / preview_fps
         timeline = MontagenProjManager.instance.modifyClip(
@@ -260,6 +284,7 @@ class VideoClipAdapter:
             name,
             "video",
             duration,
+            hasAlpha
         )
         return {
             "ui": {
@@ -278,7 +303,7 @@ class VideoClipAdapter:
                     }
                 ]
             },
-            "result": (images,),
+            "result": (oriImages, oriAlpha),
         }
 
 
@@ -343,7 +368,7 @@ class AudioClipAdapter(VideoClipAdapter):
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
         addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, fileName
+            userId, projectId, workflowId, clip_id, fileName
         )
         if not has_project_id or not has_workflow:
             return {
@@ -402,6 +427,12 @@ class ImageClipAdapter(VideoClipAdapter):
             "required": {
                 "image": ("IMAGE", {"tooltip": "The image to preview."}),
                 "name": ("STRING",),
+                "preview_fps": (
+                    "INT",
+                    {
+                        "default": 6,
+                    },
+                ),
             },
             "optional": {
                 "projectId": (sorted(projs), {"tooltip": "The project id."}),
@@ -414,7 +445,7 @@ class ImageClipAdapter(VideoClipAdapter):
             },
         }
 
-    RETURN_TYPES = ("IMAGE",)
+    RETURN_TYPES = ("IMAGE", "MASK")
     FUNCTION = "save_picture"
 
     OUTPUT_NODE = True
@@ -426,6 +457,7 @@ class ImageClipAdapter(VideoClipAdapter):
         self,
         image,
         name,
+        preview_fps,
         alpha=None,
         unique_id=None,
         projectId=None,
@@ -433,6 +465,8 @@ class ImageClipAdapter(VideoClipAdapter):
         extra_pnginfo=None,
     ):
         imageLen = len(image)
+        oriImage = image
+        oriAlpha = alpha
         format = "png" if imageLen == 1 else "gif"
         (
             userId,
@@ -465,12 +499,14 @@ class ImageClipAdapter(VideoClipAdapter):
                 )
                 for img in image
             ]
+            duration = preview_fps / 60 * 1000
             images[0].save(
                 tmpFullName,
                 save_all=True,
                 append_images=images[1:],
-                duration=100,
+                duration=duration,
                 loop=0,
+                disposal=2
             )
         else:
             img = Image.fromarray(
@@ -480,7 +516,7 @@ class ImageClipAdapter(VideoClipAdapter):
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
         addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, fileName
+            userId, projectId, workflowId, clip_id, fileName
         )
         if not has_project_id or not has_workflow:
             return {
@@ -495,7 +531,7 @@ class ImageClipAdapter(VideoClipAdapter):
                         }
                     ]
                 },
-                "result": (image,),
+                "result": (oriImage, oriAlpha),
             }
 
         duration = 10
@@ -523,5 +559,5 @@ class ImageClipAdapter(VideoClipAdapter):
                     }
                 ]
             },
-            "result": (image,),
+            "result": (oriImage, oriAlpha),
         }

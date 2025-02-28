@@ -7,13 +7,12 @@
 
 const Material = require('./material');
 const { canvasRGBA } = require('stackblur-canvas');
-const { isBrowser } = require("browser-or-node");
-const { getRemote } = require("../utils/xhr");
+const { isBrowser } = require('browser-or-node');
+const { getRemote } = require('../utils/xhr');
 const { getPixels } = require('../utils/utils');
 const { utils, createCanvas, createImageData } = require('../../inkpaint/lib/index');
 
 class ImageMaterial extends Material {
-
   async init() {
     if (!this.path) return;
     let src = this.path;
@@ -25,9 +24,9 @@ class ImageMaterial extends Material {
     if (!pixels || !pixels.shape || pixels.shape.length < 3) return;
     let shape = pixels.shape;
     if (shape.length > 3) shape = shape.slice(shape.length - 3);
-    const width = this.info.width = shape[0];
-    const height = this.info.height = shape[1];
-    const buffer = new Uint8ClampedArray(pixels.data.buffer).slice(0, width*height*4);
+    const width = (this.info.width = shape[0]);
+    const height = (this.info.height = shape[1]);
+    const buffer = new Uint8ClampedArray(pixels.data.buffer).slice(0, width * height * 4);
     // this.imageData = new ImageData(buffer, width, height);
     this.imageData = createImageData(buffer, width, height);
     this.canvas = this.initCanvas(width, height);
@@ -35,10 +34,13 @@ class ImageMaterial extends Material {
     this.drawCanvas(this.imageData, width, height);
   }
 
-  drawCanvas(img, width, height, canvas=null) {
+  drawCanvas(img, width, height, canvas = null, clear = false) {
     if (!canvas) canvas = this.canvas;
     if (!canvas) return; // may destroyed
     const ctx = canvas.getContext('2d');
+    if (clear) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
     let blur = this.conf.blur && this.creator ? this.creator.px(this.conf.blur) : 0;
     if (blur > 0 && isBrowser) ctx.filter = `blur(${blur}px)`;
     ctx.drawImage(this.getImage(img), 0, 0, width, height);
