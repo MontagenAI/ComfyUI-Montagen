@@ -6822,6 +6822,28 @@ const withModifiers = (fn, modifiers) => {
     return fn(event, ...args);
   });
 };
+const keyNames = {
+  esc: "escape",
+  space: " ",
+  up: "arrow-up",
+  left: "arrow-left",
+  right: "arrow-right",
+  down: "arrow-down",
+  delete: "backspace"
+};
+const withKeys = (fn, modifiers) => {
+  const cache = fn._withKeys || (fn._withKeys = {});
+  const cacheKey = modifiers.join(".");
+  return cache[cacheKey] || (cache[cacheKey] = (event) => {
+    if (!("key" in event)) {
+      return;
+    }
+    const eventKey = hyphenate(event.key);
+    if (modifiers.some((k) => k === eventKey || keyNames[k] === eventKey)) {
+      return fn(event);
+    }
+  });
+};
 const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
 let renderer;
 function ensureRenderer() {
@@ -6901,7 +6923,8 @@ export {
   watchEffect as a6,
   pushScopeId as a7,
   popScopeId as a8,
-  createApp as a9,
+  withKeys as a9,
+  createApp as aa,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
