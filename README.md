@@ -1,8 +1,6 @@
 # ComfyUI-Montagen
 
-**Montagen**, a web video editor framework, starts with the basic key features of **timeline editing** and **video preview**.  
-**ComfyUI-Montagen** is an extension designed to enhance the video editing ability of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) with custom nodes and Montagen. It offers basic video editing features and **associates media clips with the ComfyUI workflow**. Furthermore, this extension unlocks the full potential of AI-based **video generation** and **task automation**.
-
+A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation.
 
 ![Montagen ScreenShot](assets/montagenscreenshot1.png)
 

@@ -499,7 +499,7 @@ class ImageClipAdapter(VideoClipAdapter):
                 )
                 for img in image
             ]
-            duration = preview_fps / 60 * 1000
+            duration = 1/preview_fps * 1000
             images[0].save(
                 tmpFullName,
                 save_all=True,
