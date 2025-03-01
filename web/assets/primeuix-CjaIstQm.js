@@ -1239,7 +1239,7 @@ var config_default = {
     }
   }
 };
-var style$f = ({ dt: n2 }) => `
+var style$g = ({ dt: n2 }) => `
 *,
 ::before,
 ::after {
@@ -1361,7 +1361,7 @@ var style$f = ({ dt: n2 }) => `
     }
 }
 `;
-var style$e = ({ dt: t2 }) => `
+var style$f = ({ dt: t2 }) => `
 .p-tooltip {
     position: absolute;
     display: none;
@@ -1422,7 +1422,7 @@ var style$e = ({ dt: t2 }) => `
     border-bottom-color: ${t2("tooltip.background")};
 }
 `;
-var style$d = ({ dt: n2 }) => `
+var style$e = ({ dt: n2 }) => `
 .p-badge {
     display: inline-flex;
     border-radius: ${n2("badge.border.radius")};
@@ -1498,7 +1498,7 @@ var style$d = ({ dt: n2 }) => `
     height: ${n2("badge.xl.height")};
 }
 `;
-var style$c = ({ dt: n2 }) => `
+var style$d = ({ dt: n2 }) => `
 .p-ink {
     display: block;
     position: absolute;
@@ -1519,7 +1519,7 @@ var style$c = ({ dt: n2 }) => `
     }
 }
 `;
-var style$b = ({ dt: o2 }) => `
+var style$c = ({ dt: o2 }) => `
 .p-button {
     display: inline-flex;
     cursor: pointer;
@@ -2160,7 +2160,7 @@ var style$b = ({ dt: o2 }) => `
     color: ${o2("button.link.active.color")};
 }
 `;
-var style$a = ({ dt: o2 }) => `
+var style$b = ({ dt: o2 }) => `
 .p-dialog {
     max-height: 90%;
     transform: scale(1);
@@ -2308,7 +2308,7 @@ var style$a = ({ dt: o2 }) => `
     flex-grow: 1;
 }
 `;
-var style$9 = ({ dt: n2 }) => `
+var style$a = ({ dt: n2 }) => `
 .p-contextmenu {
     background: ${n2("contextmenu.background")};
     color: ${n2("contextmenu.color")};
@@ -2455,7 +2455,7 @@ var style$9 = ({ dt: n2 }) => `
     transform: rotate(-90deg);
 }
 `;
-var style$8 = ({ dt: o2 }) => `
+var style$9 = ({ dt: o2 }) => `
 .p-toolbar {
     display: flex;
     align-items: center;
@@ -2476,7 +2476,7 @@ var style$8 = ({ dt: o2 }) => `
     align-items: center;
 }
 `;
-var style$7 = ({ dt: o2 }) => `
+var style$8 = ({ dt: o2 }) => `
 .p-confirmpopup {
     position: absolute;
     margin-top: ${o2("confirmpopup.gutter")};
@@ -2583,7 +2583,7 @@ var style$7 = ({ dt: o2 }) => `
     border-top-color: ${o2("confirmpopup.border.color")};
 }
 `;
-var style$6 = ({ dt: n2 }) => `
+var style$7 = ({ dt: n2 }) => `
 .p-splitter {
     display: flex;
     flex-wrap: nowrap;
@@ -2662,7 +2662,7 @@ var style$6 = ({ dt: n2 }) => `
     border: 0 none;
 }
 `;
-var style$5 = ({ dt: n2 }) => `
+var style$6 = ({ dt: n2 }) => `
 .p-divider-horizontal {
     display: flex;
     width: 100%;
@@ -2744,7 +2744,7 @@ var style$5 = ({ dt: n2 }) => `
     flex-direction: row-reverse;
 }
 `;
-var style$4 = ({ dt: n2 }) => `
+var style$5 = ({ dt: n2 }) => `
 .p-scrollpanel-content-container {
     overflow: hidden;
     width: 100%;
@@ -2810,7 +2810,7 @@ var style$4 = ({ dt: n2 }) => `
     user-select: none;
 }
 `;
-var style$3 = ({ dt: o2 }) => `
+var style$4 = ({ dt: o2 }) => `
 .p-togglebutton {
     display: inline-flex;
     cursor: pointer;
@@ -2918,7 +2918,7 @@ var style$3 = ({ dt: o2 }) => `
     padding: ${o2("togglebutton.content.lg.padding")};
 }
 `;
-var style$2 = ({ dt: t2 }) => `
+var style$3 = ({ dt: t2 }) => `
 .p-selectbutton {
     display: inline-flex;
     user-select: none;
@@ -2951,6 +2951,272 @@ var style$2 = ({ dt: t2 }) => `
 .p-selectbutton.p-invalid {
     outline: 1px solid ${t2("selectbutton.invalid.border.color")};
     outline-offset: 0;
+}
+`;
+var style$2 = ({ dt: n2 }) => `
+.p-menubar {
+    display: flex;
+    align-items: center;
+    background: ${n2("menubar.background")};
+    border: 1px solid ${n2("menubar.border.color")};
+    border-radius: ${n2("menubar.border.radius")};
+    color: ${n2("menubar.color")};
+    padding: ${n2("menubar.padding")};
+    gap: ${n2("menubar.gap")};
+}
+
+.p-menubar-start,
+.p-megamenu-end {
+    display: flex;
+    align-items: center;
+}
+
+.p-menubar-root-list,
+.p-menubar-submenu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: 0 none;
+}
+
+.p-menubar-root-list {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: ${n2("menubar.gap")};
+}
+
+.p-menubar-root-list > .p-menubar-item > .p-menubar-item-content {
+    border-radius: ${n2("menubar.base.item.border.radius")};
+}
+
+.p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link {
+    padding: ${n2("menubar.base.item.padding")};
+}
+
+.p-menubar-item-content {
+    transition: background ${n2("menubar.transition.duration")}, color ${n2("menubar.transition.duration")};
+    border-radius: ${n2("menubar.item.border.radius")};
+    color: ${n2("menubar.item.color")};
+}
+
+.p-menubar-item-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    color: inherit;
+    padding: ${n2("menubar.item.padding")};
+    gap: ${n2("menubar.item.gap")};
+    user-select: none;
+    outline: 0 none;
+}
+
+.p-menubar-item-label {
+    line-height: 1;
+}
+
+.p-menubar-item-icon {
+    color: ${n2("menubar.item.icon.color")};
+}
+
+.p-menubar-submenu-icon {
+    color: ${n2("menubar.submenu.icon.color")};
+    margin-left: auto;
+    font-size: ${n2("menubar.submenu.icon.size")};
+    width: ${n2("menubar.submenu.icon.size")};
+    height: ${n2("menubar.submenu.icon.size")};
+}
+
+.p-menubar-submenu .p-menubar-submenu-icon:dir(rtl) {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.p-menubar-item.p-focus > .p-menubar-item-content {
+    color: ${n2("menubar.item.focus.color")};
+    background: ${n2("menubar.item.focus.background")};
+}
+
+.p-menubar-item.p-focus > .p-menubar-item-content .p-menubar-item-icon {
+    color: ${n2("menubar.item.icon.focus.color")};
+}
+
+.p-menubar-item.p-focus > .p-menubar-item-content .p-menubar-submenu-icon {
+    color: ${n2("menubar.submenu.icon.focus.color")};
+}
+
+.p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover {
+    color: ${n2("menubar.item.focus.color")};
+    background: ${n2("menubar.item.focus.background")};
+}
+
+.p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover .p-menubar-item-icon {
+    color: ${n2("menubar.item.icon.focus.color")};
+}
+
+.p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover .p-menubar-submenu-icon {
+    color: ${n2("menubar.submenu.icon.focus.color")};
+}
+
+.p-menubar-item-active > .p-menubar-item-content {
+    color: ${n2("menubar.item.active.color")};
+    background: ${n2("menubar.item.active.background")};
+}
+
+.p-menubar-item-active > .p-menubar-item-content .p-menubar-item-icon {
+    color: ${n2("menubar.item.icon.active.color")};
+}
+
+.p-menubar-item-active > .p-menubar-item-content .p-menubar-submenu-icon {
+    color: ${n2("menubar.submenu.icon.active.color")};
+}
+
+.p-menubar-submenu {
+    display: none;
+    position: absolute;
+    min-width: 12.5rem;
+    z-index: 1;
+    background: ${n2("menubar.submenu.background")};
+    border: 1px solid ${n2("menubar.submenu.border.color")};
+    border-radius: ${n2("menubar.submenu.border.radius")};
+    box-shadow: ${n2("menubar.submenu.shadow")};
+    color: ${n2("menubar.submenu.color")};
+    flex-direction: column;
+    padding: ${n2("menubar.submenu.padding")};
+    gap: ${n2("menubar.submenu.gap")};
+}
+
+.p-menubar-submenu .p-menubar-separator {
+    border-block-start: 1px solid ${n2("menubar.separator.border.color")};
+}
+
+.p-menubar-submenu .p-menubar-item {
+    position: relative;
+}
+
+.p-menubar-submenu > .p-menubar-item-active > .p-menubar-submenu {
+    display: block;
+    left: 100%;
+    top: 0;
+}
+
+.p-menubar-end {
+    margin-left: auto;
+    align-self: center;
+}
+
+.p-menubar-end:dir(rtl) {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.p-menubar-button {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: ${n2("menubar.mobile.button.size")};
+    height: ${n2("menubar.mobile.button.size")};
+    position: relative;
+    color: ${n2("menubar.mobile.button.color")};
+    border: 0 none;
+    background: transparent;
+    border-radius: ${n2("menubar.mobile.button.border.radius")};
+    transition: background ${n2("menubar.transition.duration")}, color ${n2("menubar.transition.duration")}, outline-color ${n2("menubar.transition.duration")};
+    outline-color: transparent;
+}
+
+.p-menubar-button:hover {
+    color: ${n2("menubar.mobile.button.hover.color")};
+    background: ${n2("menubar.mobile.button.hover.background")};
+}
+
+.p-menubar-button:focus-visible {
+    box-shadow: ${n2("menubar.mobile.button.focus.ring.shadow")};
+    outline: ${n2("menubar.mobile.button.focus.ring.width")} ${n2("menubar.mobile.button.focus.ring.style")} ${n2("menubar.mobile.button.focus.ring.color")};
+    outline-offset: ${n2("menubar.mobile.button.focus.ring.offset")};
+}
+
+.p-menubar-mobile {
+    position: relative;
+}
+
+.p-menubar-mobile .p-menubar-button {
+    display: flex;
+}
+
+.p-menubar-mobile .p-menubar-root-list {
+    position: absolute;
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    padding: ${n2("menubar.submenu.padding")};
+    background: ${n2("menubar.submenu.background")};
+    border: 1px solid ${n2("menubar.submenu.border.color")};
+    box-shadow: ${n2("menubar.submenu.shadow")};
+    border-radius: ${n2("menubar.submenu.border.radius")};
+    gap: ${n2("menubar.submenu.gap")};
+}
+
+.p-menubar-mobile .p-menubar-root-list:dir(rtl) {
+    left: auto;
+    right: 0;
+}
+
+.p-menubar-mobile .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content > .p-menubar-item-link {
+    padding: ${n2("menubar.item.padding")};
+}
+
+.p-menubar-mobile-active .p-menubar-root-list {
+    display: flex;
+}
+
+.p-menubar-mobile .p-menubar-root-list .p-menubar-item {
+    width: 100%;
+    position: static;
+}
+
+.p-menubar-mobile .p-menubar-root-list .p-menubar-separator {
+    border-block-start: 1px solid ${n2("menubar.separator.border.color")};
+}
+
+.p-menubar-mobile .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content .p-menubar-submenu-icon {
+    margin-left: auto;
+    transition: transform 0.2s;
+}
+
+.p-menubar-mobile .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content .p-menubar-submenu-icon:dir(rtl),
+.p-menubar-mobile .p-menubar-submenu-icon:dir(rtl) {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.p-menubar-mobile .p-menubar-root-list > .p-menubar-item-active > .p-menubar-item-content .p-menubar-submenu-icon {
+    transform: rotate(-180deg);
+}
+
+.p-menubar-mobile .p-menubar-submenu .p-menubar-submenu-icon {
+    transition: transform 0.2s;
+    transform: rotate(90deg);
+}
+
+.p-menubar-mobile .p-menubar-item-active > .p-menubar-item-content .p-menubar-submenu-icon {
+    transform: rotate(-90deg);
+}
+
+.p-menubar-mobile .p-menubar-submenu {
+    width: 100%;
+    position: static;
+    box-shadow: none;
+    border: 0 none;
+    padding-inline-start: ${n2("menubar.submenu.mobile.indent")};
+    padding-inline-end: 0;
 }
 `;
 var style$1 = ({ dt: e2 }) => `
@@ -3510,7 +3776,7 @@ export {
   n$B as aW,
   a$E as aX,
   c$p as aY,
-  style$e as aZ,
+  style$f as aZ,
   hasClass as a_,
   e$j as aa,
   t$h as ab,
@@ -3550,23 +3816,24 @@ export {
   fadeIn as b8,
   isTouchDevice as b9,
   isRTL as bA,
-  style$5 as bB,
-  style$4 as bC,
-  style$3 as bD,
-  style$2 as bE,
+  style$6 as bB,
+  style$5 as bC,
+  style$4 as bD,
+  style$3 as bE,
   equals as bF,
   resolveFieldData as bG,
-  style$1 as bH,
-  style as bI,
-  h$4 as bJ,
-  definePreset as bK,
+  style$2 as bH,
+  style$1 as bI,
+  style as bJ,
+  h$4 as bK,
+  definePreset as bL,
   getAttribute as ba,
-  style$d as bb,
-  style$c as bc,
+  style$e as bb,
+  style$d as bc,
   getHeight as bd,
   getWidth as be,
   getOffset as bf,
-  style$b as bg,
+  style$c as bg,
   getLastFocusableElement as bh,
   focus as bi,
   getFirstFocusableElement as bj,
@@ -3574,19 +3841,19 @@ export {
   unblockBodyScroll as bl,
   $dt as bm,
   blockBodyScroll as bn,
-  style$a as bo,
+  style$b as bo,
   addStyle as bp,
-  style$9 as bq,
+  style$a as bq,
   findLastIndex as br,
   getHiddenElementOuterWidth as bs,
   getHiddenElementOuterHeight as bt,
   isPrintableCharacter as bu,
   nestedPosition as bv,
-  style$8 as bw,
-  style$7 as bx,
+  style$9 as bw,
+  style$8 as bx,
   absolutePosition as by,
-  style$6 as bz,
-  style$f as c,
+  style$7 as bz,
+  style$g as c,
   config_default as d,
   isNotEmpty$1 as e,
   dt as f,

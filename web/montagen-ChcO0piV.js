@@ -51,17 +51,17 @@
   text-align: left;
 }\r
 
-.form-container[data-v-36f8e6ec] {\r
+.form-container[data-v-5cd8ba6e] {\r
 \r
     padding: 0.5rem
 }
 @media (min-width: 1536px) {
-.form-container[data-v-36f8e6ec] {\r
+.form-container[data-v-5cd8ba6e] {\r
 \r
         padding: 1rem
 }
 }
-[data-v-36f8e6ec] .el-form-item {\r
+[data-v-5cd8ba6e] .el-form-item {\r
 \r
     margin-bottom: 0.25rem;\r
 \r
@@ -163,7 +163,11 @@
   background-color: transparent;
   padding: 0px;
 }
-.imagen-header[data-v-234ddf74] {\r
+[data-v-5b3e372b] .p-menubar-item-label {\r
+  line-height: revert;
+}\r
+
+.imagen-header[data-v-58e6d46e] {\r
   background: var(--comfy-menu-bg);\r
   color: var(--fg-color);\r
   box-shadow: var(--bar-shadow);\r
@@ -171,14 +175,14 @@
   font-size: 0.8em;\r
   box-sizing: border-box;
 }
-.comfyui-logo[data-v-234ddf74] {\r
+.comfyui-logo[data-v-58e6d46e] {\r
   font-size: 1.2em;
 }
-.flex-grow[data-v-234ddf74] {\r
+.flex-grow[data-v-58e6d46e] {\r
   flex: 1;
 }\r
 
-.new-imagen-box[data-v-b063ff01] {\r
+.new-imagen-box[data-v-b689b312] {\r
   position: fixed;\r
   width: 100%;\r
   height: 100vh;\r
@@ -190,7 +194,7 @@
   grid-template-columns: auto 1fr;\r
   grid-template-rows: 40px 1fr;
 }
-.new-imagen-box .image-box-top[data-v-b063ff01] {\r
+.new-imagen-box .image-box-top[data-v-b689b312] {\r
   grid-row: 1;\r
   grid-column: 1/span 2;\r
   background-color: #181818;\r
@@ -200,7 +204,7 @@
   box-shadow: var(--bar-shadow);\r
   z-index: 2;
 }
-.new-imagen-box .image-box-left[data-v-b063ff01] {\r
+.new-imagen-box .image-box-left[data-v-b689b312] {\r
   grid-row: 2;\r
   grid-column: 1;\r
   /* background-color: #181818; */\r
@@ -213,7 +217,7 @@
   width: var(--sidebar-width);\r
   /* box-sizing: border-box; */
 }
-.new-imagen-box .image-box-container[data-v-b063ff01] {\r
+.new-imagen-box .image-box-container[data-v-b689b312] {\r
   grid-row: 2;\r
   grid-column: 2;\r
   background-color: goldenrod;\r
@@ -289,13 +293,13 @@
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { d as defineComponent, r as ref$3, h as computed, c as createElementBlock, a as createBaseVNode, M as createVNode, H as createBlock, I as withCtx, O as Fragment, a6 as renderList$1, P as unref, T as Teleport, o as openBlock, G as withDirectives, D as toDisplayString, K as normalizeClass, j as withModifiers, f as reactive, e as onMounted, C as createTextVNode$1, J as createCommentVNode, w as watch, aa as withKeys, l as markRaw, a3 as onBeforeUnmount, L as resolveDynamicComponent, m as mergeProps$1, a1 as provide, W as onUnmounted, ab as createApp } from "./assets/vue-XiQZWZUp.js";
-import { d as defineStore, u as useDialog, a as useConfirm, s as storeToRefs, b as script, c as script$1, e as script$2, f as script$3, g as script$4, E as ElInput, n as nanoid, T as Tooltip, h as ElFormItem, i as ElButton, j as ElForm, k as script$5, l as script$6, m as script$7, o as script$8, p as script$9, z, q as script$b, r as script$c, D as DialogService, C as ConfirmationService, t as createPinia, v as ToastService } from "./assets/vendor-D8WzyPs9.js";
+import { d as defineComponent, r as ref$3, h as computed, c as createElementBlock, a as createBaseVNode, M as createVNode, H as createBlock, I as withCtx, O as Fragment, a6 as renderList$1, P as unref, T as Teleport, o as openBlock, G as withDirectives, D as toDisplayString, K as normalizeClass, j as withModifiers, f as reactive, e as onMounted, C as createTextVNode$1, J as createCommentVNode, w as watch, ac as withKeys, l as markRaw, a3 as onBeforeUnmount, L as resolveDynamicComponent, m as mergeProps$1, n as nextTick$1, a1 as provide, W as onUnmounted, ad as createApp } from "./assets/vue-DIu6tUfz.js";
+import { d as defineStore, u as useDialog, a as useConfirm, s as storeToRefs, b as script, c as script$1, e as script$2, f as script$3, g as script$4, E as ElInput, n as nanoid, T as Tooltip, h as ElFormItem, i as ElButton, j as ElForm, k as script$5, l as script$6, m as script$7, o as script$8, p as script$9, R as Ripple, q as script$a, z, r as script$c, t as script$d, D as DialogService, C as ConfirmationService, v as createPinia, w as ToastService } from "./assets/vendor-61jEMKXp.js";
 import "./assets/lodash-DS8RUn65.js";
-import { j as script$a, P as PrimeVue, k as index$3 } from "./assets/primevue-r4qVqvZ8.js";
-import { bJ as h, bK as definePreset } from "./assets/primeuix-D_dP66S6.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-BXg04Nq0.js";
-import "./assets/vueuse-CRMYv8me.js";
+import { l as script$b, P as PrimeVue, m as index$3 } from "./assets/primevue-DOEN_K8v.js";
+import { bK as h, bL as definePreset } from "./assets/primeuix-CjaIstQm.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-BDqDBI5p.js";
+import "./assets/vueuse-CBHLDPXy.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
@@ -67701,6 +67705,19 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     deleteTabs(projectId) {
       let idx = this.tabbsProject.findIndex((item) => item.projectId == projectId);
       this.tabbsProject.splice(idx, 1);
+      if (this.activeProject.projectId == projectId) {
+        this.activeProject = {};
+        this.openWorkFlow({
+          projectId: null,
+          timeLine: {
+            "type": "canvas",
+            "width": 1280,
+            "height": 720,
+            "name": "Composite",
+            "children": []
+          }
+        });
+      }
     },
     setActiveProject(project) {
       this.activeProject = project;
@@ -67849,18 +67866,18 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
-const _hoisted_1$a = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _hoisted_2$6 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$2 = { class: "text-sm truncate" };
-const _hoisted_4$2 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$1 = {
+const _hoisted_1$b = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _hoisted_2$7 = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3$3 = { class: "text-sm truncate" };
+const _hoisted_4$3 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_5$2 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$1 = ["onClick"];
-const _hoisted_7$1 = { class: "flex items-center" };
-const _hoisted_8$1 = { style: { "padding-left": "6px" } };
-const _hoisted_9$1 = { class: "p-2 flex" };
+const _hoisted_6$2 = ["onClick"];
+const _hoisted_7$2 = { class: "flex items-center" };
+const _hoisted_8$2 = { style: { "padding-left": "6px" } };
+const _hoisted_9$2 = { class: "p-2 flex" };
 const _hoisted_10$1 = { class: "ml-2" };
 const _hoisted_11$1 = { id: "custom-dialog" };
 const _hoisted_12$1 = { class: "flex flex-col justify-center" };
@@ -67869,7 +67886,7 @@ const _hoisted_14$1 = { class: "mb-2" };
 const _hoisted_15$1 = { class: "mb-2" };
 const _hoisted_16$1 = { class: "mb-2" };
 const _hoisted_17 = { class: "flex justify-center" };
-const _sfc_main$b = /* @__PURE__ */ defineComponent({
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "workFlow",
   setup(__props) {
     useDialog();
@@ -68031,15 +68048,15 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       const _component_Dialog = script$2;
       const _directive_tooltip = Tooltip;
       return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", _hoisted_1$a, [
-          createBaseVNode("div", _hoisted_2$6, [
+        createBaseVNode("div", _hoisted_1$b, [
+          createBaseVNode("div", _hoisted_2$7, [
             createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
               start: withCtx(() => [
-                createBaseVNode("span", _hoisted_3$2, toDisplayString(title.value), 1)
+                createBaseVNode("span", _hoisted_3$3, toDisplayString(title.value), 1)
               ]),
               center: withCtx(() => _cache[5] || (_cache[5] = [])),
               end: withCtx(() => [
-                createBaseVNode("div", _hoisted_4$2, [
+                createBaseVNode("div", _hoisted_4$3, [
                   withDirectives(createVNode(_component_Button, {
                     text: "",
                     icon: "pi pi-refresh",
@@ -68064,16 +68081,16 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
             })
           ]),
           createBaseVNode("div", null, [
-            createBaseVNode("ul", _hoisted_5$1, [
+            createBaseVNode("ul", _hoisted_5$2, [
               (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(list), (item) => {
                 return openBlock(), createElementBlock("li", {
                   class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3", item.projectId == unref(activeProject).projectId ? "active" : ""]),
                   key: item.projectId,
                   onClick: ($event) => getProjectDetail(item)
                 }, [
-                  createBaseVNode("div", _hoisted_7$1, [
+                  createBaseVNode("div", _hoisted_7$2, [
                     _cache[6] || (_cache[6] = createBaseVNode("i", { class: "fontello icon-montagen" }, null, -1)),
-                    createBaseVNode("span", _hoisted_8$1, toDisplayString(item.name), 1)
+                    createBaseVNode("span", _hoisted_8$2, toDisplayString(item.name), 1)
                   ]),
                   createVNode(_component_Button, {
                     icon: "pi pi-trash",
@@ -68084,7 +68101,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                     "aria-expanded": isVisible.value,
                     "aria-controls": isVisible.value ? "confirm" : null
                   }, null, 8, ["onClick", "aria-expanded", "aria-controls"])
-                ], 10, _hoisted_6$1);
+                ], 10, _hoisted_6$2);
               }), 128))
             ])
           ])
@@ -68116,7 +68133,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
           }
         }, {
           item: withCtx(({ item }) => [
-            createBaseVNode("div", _hoisted_9$1, [
+            createBaseVNode("div", _hoisted_9$2, [
               createBaseVNode("i", {
                 class: normalizeClass(item.icon)
               }, null, 2),
@@ -68193,9 +68210,9 @@ const _export_sfc = (sfc, props2) => {
   }
   return target2;
 };
-const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-d2759840"]]);
-const _hoisted_1$9 = { class: "w-full p-2" };
-const _sfc_main$a = /* @__PURE__ */ defineComponent({
+const workFlow = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-d2759840"]]);
+const _hoisted_1$a = { class: "w-full p-2" };
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "outPutForm",
   setup(__props, { expose: __expose }) {
     const fileStore = useFileStore();
@@ -68336,7 +68353,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       const _component_el_form_item = ElFormItem;
       const _component_el_button = ElButton;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$9, [
+      return openBlock(), createElementBlock("div", _hoisted_1$a, [
         createBaseVNode("div", null, [
           createVNode(_component_el_form, {
             "label-position": "top",
@@ -68400,21 +68417,21 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$8 = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _hoisted_2$5 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$1 = { class: "text-sm truncate" };
-const _hoisted_4$1 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5 = {
+const _hoisted_1$9 = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _hoisted_2$6 = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3$2 = { class: "text-sm truncate" };
+const _hoisted_4$2 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_5$1 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6 = ["onClick"];
-const _hoisted_7 = {
+const _hoisted_6$1 = ["onClick"];
+const _hoisted_7$1 = {
   key: 0,
   class: "w-full flex items-center"
 };
-const _hoisted_8 = { class: "truncate w-full text-center name" };
-const _hoisted_9 = {
+const _hoisted_8$1 = { class: "truncate w-full text-center name" };
+const _hoisted_9$1 = {
   key: 1,
   class: "w-full flex items-center"
 };
@@ -68434,7 +68451,7 @@ const _hoisted_15 = {
   class: "w-full flex items-center"
 };
 const _hoisted_16 = { class: "truncate w-full text-center name" };
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "clips",
   setup(__props) {
     const menuStore = useMenuStore();
@@ -68477,15 +68494,15 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       const _component_Button = script$3;
       const _component_Toolbar = script;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$8, [
-        createBaseVNode("div", _hoisted_2$5, [
+      return openBlock(), createElementBlock("div", _hoisted_1$9, [
+        createBaseVNode("div", _hoisted_2$6, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
-              createBaseVNode("span", _hoisted_3$1, toDisplayString(title.value), 1)
+              createBaseVNode("span", _hoisted_3$2, toDisplayString(title.value), 1)
             ]),
             center: withCtx(() => _cache[0] || (_cache[0] = [])),
             end: withCtx(() => [
-              createBaseVNode("div", _hoisted_4$1, [
+              createBaseVNode("div", _hoisted_4$2, [
                 withDirectives(createVNode(_component_Button, {
                   text: "",
                   icon: "pi pi-refresh",
@@ -68501,23 +68518,23 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
           })
         ]),
         createBaseVNode("div", null, [
-          createBaseVNode("ul", _hoisted_5, [
+          createBaseVNode("ul", _hoisted_5$1, [
             (openBlock(true), createElementBlock(Fragment, null, renderList$1(clips2.value, (item) => {
               return openBlock(), createElementBlock("li", {
                 onClick: ($event) => goWorkFlow(item),
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$1, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_8, toDisplayString(item.clipName), 1)
+                  createBaseVNode("div", _hoisted_8$1, toDisplayString(item.clipName), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9, [
+                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$1, [
                   _cache[2] || (_cache[2] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-image",
@@ -68553,7 +68570,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16, toDisplayString(item.clipName), 1)
                 ])) : createCommentVNode("", true)
-              ], 8, _hoisted_6);
+              ], 8, _hoisted_6$1);
             }), 128))
           ])
         ])
@@ -68561,10 +68578,10 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-24e9071f"]]);
-const _hoisted_1$7 = { class: "w-full" };
-const _hoisted_2$4 = { class: "comfy-vue-side-bar-header" };
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-24e9071f"]]);
+const _hoisted_1$8 = { class: "w-full" };
+const _hoisted_2$5 = { class: "comfy-vue-side-bar-header" };
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "metaInfo",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -68658,11 +68675,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       const _component_el_input = ElInput;
       const _component_el_form_item = ElFormItem;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$7, [
-        createBaseVNode("div", _hoisted_2$4, [
+      return openBlock(), createElementBlock("div", _hoisted_1$8, [
+        createBaseVNode("div", _hoisted_2$5, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => _cache[9] || (_cache[9] = [
-              createBaseVNode("span", { class: "text-sm truncate" }, "transtion", -1)
+              createBaseVNode("span", { class: "text-sm truncate" }, "transform", -1)
             ])),
             center: withCtx(() => _cache[10] || (_cache[10] = [])),
             end: withCtx(() => _cache[11] || (_cache[11] = [
@@ -68818,17 +68835,17 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const metaInfoVue = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-36f8e6ec"]]);
+const metaInfoVue = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-5cd8ba6e"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
-      {
-        name: "home",
-        tips: "projects",
-        selected: false,
-        icon: "fontello icon-montagen",
-        component: markRaw(workFlow)
-      },
+      // {
+      //   name: 'home',
+      //   tips: 'projects',
+      //   selected: false,
+      //   icon: 'fontello icon-montagen',
+      //   component: markRaw(workFlowVue)
+      // },
       {
         name: "clips",
         tips: "clips",
@@ -68838,7 +68855,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
       },
       {
         name: "infos",
-        tips: "infos",
+        tips: "properties",
         selected: false,
         icon: "pi pi-book",
         component: markRaw(metaInfoVue)
@@ -68848,7 +68865,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
         tips: "export",
         selected: false,
         icon: "pi pi-file-export",
-        component: markRaw(_sfc_main$a)
+        component: markRaw(_sfc_main$b)
       }
     ],
     selectedMenu: {}
@@ -68866,9 +68883,9 @@ const useLeftToolStore = defineStore("leftToolStore", {
     }
   }
 });
-const _hoisted_1$6 = { class: "toolbar" };
-const _hoisted_2$3 = { class: "side-bar-end" };
-const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+const _hoisted_1$7 = { class: "toolbar" };
+const _hoisted_2$4 = { class: "side-bar-end" };
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "leftToolbar",
   setup(__props) {
     const leftToolStore = useLeftToolStore();
@@ -68883,7 +68900,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_Button = script$3;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$6, [
+      return openBlock(), createElementBlock("div", _hoisted_1$7, [
         createBaseVNode("nav", null, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(menues), (item) => {
             return withDirectives((openBlock(), createBlock(_component_Button, {
@@ -68901,7 +68918,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
             ]);
           }), 256))
         ]),
-        createBaseVNode("div", _hoisted_2$3, [
+        createBaseVNode("div", _hoisted_2$4, [
           withDirectives((openBlock(), createBlock(_component_Button, {
             text: "",
             onClick: goBack,
@@ -68923,12 +68940,12 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-760af242"]]);
-const _hoisted_1$5 = {
+const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-760af242"]]);
+const _hoisted_1$6 = {
   class: "w-full",
   style: { "background": "#fff" }
 };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "boxContainer",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -69037,7 +69054,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
               size: splitterSizes.value[0]
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_1$5, [
+                createBaseVNode("div", _hoisted_1$6, [
                   (openBlock(), createBlock(resolveDynamicComponent(unref(selectedMenu).component)))
                 ])
               ]),
@@ -69112,10 +69129,10 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-fd7fd130"]]);
-const _hoisted_1$4 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
-const _hoisted_2$2 = { class: "relative" };
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-fd7fd130"]]);
+const _hoisted_1$5 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
+const _hoisted_2$3 = { class: "relative" };
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "projectTab",
   props: {
     title: {
@@ -69139,8 +69156,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         class: "flex p-2 gap-2 workflow-tab bg-transparent",
         ref: "workflowTabRef"
       }, _ctx.$attrs), [
-        createBaseVNode("span", _hoisted_1$4, toDisplayString(__props.projectOption.name), 1),
-        createBaseVNode("div", _hoisted_2$2, [
+        createBaseVNode("span", _hoisted_1$5, toDisplayString(__props.projectOption.name), 1),
+        createBaseVNode("div", _hoisted_2$3, [
           _cache[1] || (_cache[1] = createBaseVNode("span", { class: "status-indicator" }, "•", -1)),
           createVNode(_component_Button, {
             class: "close-button p-0 w-auto",
@@ -69155,9 +69172,9 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f5cd6071"]]);
-const _hoisted_1$3 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-f5cd6071"]]);
+const _hoisted_1$4 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "projectTabs",
   setup(__props) {
     const confirm = useConfirm();
@@ -69210,7 +69227,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_SelectButton = script$8;
       const _component_ScrollPanel = script$7;
-      return openBlock(), createElementBlock("div", _hoisted_1$3, [
+      return openBlock(), createElementBlock("div", _hoisted_1$4, [
         createVNode(_component_ScrollPanel, {
           class: "overflow-hidden no-drag bg-transparent",
           "pt:content": {
@@ -69243,7 +69260,207 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-48621d36"]]);
+const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-48621d36"]]);
+const _hoisted_1$3 = ["href"];
+const _hoisted_2$2 = { class: "p-menubar-item-label" };
+const _hoisted_3$1 = { id: "custom-dialog" };
+const _hoisted_4$1 = { class: "flex flex-col justify-center" };
+const _hoisted_5 = { class: "mb-2" };
+const _hoisted_6 = { class: "mb-2" };
+const _hoisted_7 = { class: "mb-2" };
+const _hoisted_8 = { class: "mb-2" };
+const _hoisted_9 = { class: "flex justify-center" };
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "CommandMenubar",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const { list, activeProjectId, activeProject } = storeToRefs(workSpaceStore);
+    const visible = ref$3(false);
+    const initialValues = ref$3({
+      name: "",
+      description: "",
+      width: 1280,
+      height: 720
+    });
+    const items = computed(() => {
+      let temp = {
+        label: "Project",
+        items: [
+          {
+            label: "add",
+            icon: "pi pi-plus",
+            command: (item) => {
+              console.log("点击属性按钮", item);
+              addworkflow();
+            }
+          },
+          {
+            separator: true
+          }
+        ]
+      };
+      list.value.forEach((item) => {
+        temp.items.push({
+          label: item.name,
+          icon: "fontello icon-montagen",
+          "id": item.projectId,
+          source: item,
+          command: (event2) => {
+            getProjectDetail(event2.item.source);
+          }
+        });
+      });
+      return [temp];
+    });
+    ref$3([
+      {
+        label: "project",
+        items: [
+          {
+            label: "add",
+            icon: "pi pi-plus",
+            command: (item) => {
+              addworkflow();
+            }
+          },
+          {
+            separator: true
+          },
+          {
+            label: "Vite.js",
+            icon: "fontello icon-montagen",
+            id: 1123123,
+            command: (item) => {
+              getProjectDetail(item.item);
+            }
+          }
+        ]
+      }
+    ]);
+    const getProjectDetail = async (item) => {
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
+      const json = await response.json();
+      let timeLine = json.data.timeline;
+      workSpaceStore.addTabs(item);
+      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
+    };
+    const addworkflow = async () => {
+      visible.value = true;
+    };
+    const onFormSubmit = () => {
+      console.log("表单提交数据", initialValues.value);
+      addList();
+    };
+    const addList = async () => {
+      let response = await app$2.api.fetchApi(`/Montagen/Proj/New`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(initialValues.value)
+      });
+      const json = await response.json();
+      console.log(json);
+      visible.value = false;
+      refreshList();
+    };
+    const refreshList = () => {
+      workSpaceStore.getlists();
+    };
+    return (_ctx, _cache) => {
+      const _component_Menubar = script$9;
+      const _component_el_input = ElInput;
+      const _component_Button = script$3;
+      const _component_Dialog = script$2;
+      const _directive_ripple = Ripple;
+      return openBlock(), createElementBlock(Fragment, null, [
+        createVNode(_component_Menubar, {
+          model: items.value,
+          class: "top-menubar border-none p-0 bg-transparent",
+          pt: {
+            rootList: "gap-0 flex-nowrap w-auto",
+            submenu: `dropdown-direction-down`,
+            item: "relative"
+          }
+        }, {
+          item: withCtx(({ item, props: props2, hasSubmenu }) => [
+            withDirectives((openBlock(), createElementBlock("a", mergeProps$1({
+              href: item.url,
+              "aria-hidden": "false"
+            }, props2.action), [
+              item.icon ? (openBlock(), createElementBlock("i", {
+                key: 0,
+                class: normalizeClass(item.icon)
+              }, null, 2)) : createCommentVNode("", true),
+              createBaseVNode("span", _hoisted_2$2, toDisplayString(item.label), 1)
+            ], 16, _hoisted_1$3)), [
+              [_directive_ripple]
+            ])
+          ]),
+          _: 1
+        }, 8, ["model"]),
+        (openBlock(), createBlock(Teleport, { to: "body" }, [
+          createBaseVNode("div", _hoisted_3$1, [
+            createVNode(_component_Dialog, {
+              visible: visible.value,
+              "onUpdate:visible": _cache[4] || (_cache[4] = ($event) => visible.value = $event),
+              header: "ADD PROJECT",
+              style: { width: "18rem" }
+            }, {
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_4$1, [
+                  createBaseVNode("div", _hoisted_5, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.name,
+                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => initialValues.value.name = $event),
+                      class: "w-full",
+                      placeholder: "name"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_6, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.description,
+                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => initialValues.value.description = $event),
+                      class: "w-full",
+                      placeholder: "description"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_7, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.width,
+                      "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.width = $event),
+                      class: "w-full",
+                      placeholder: "videoWidth"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_8, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.height,
+                      "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.height = $event),
+                      class: "w-full",
+                      placeholder: "videoHeight"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_9, [
+                    createVNode(_component_Button, {
+                      class: "w-full",
+                      type: "submit",
+                      severity: "secondary",
+                      label: "submit",
+                      onClick: onFormSubmit
+                    })
+                  ])
+                ])
+              ]),
+              _: 1
+            }, 8, ["visible"])
+          ])
+        ]))
+      ], 64);
+    };
+  }
+});
+const CommandMenubar = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-5b3e372b"]]);
 const _hoisted_1$2 = { class: "imagen-header flex w-full items-center" };
 const _hoisted_2$1 = { class: "flex-grow min-w-0 app-drag h-full" };
 const _sfc_main$3 = /* @__PURE__ */ defineComponent({
@@ -69254,12 +69471,13 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
       menuStore.changeShow(false);
     };
     return (_ctx, _cache) => {
-      const _component_Divider = script$9;
+      const _component_Divider = script$a;
       return openBlock(), createElementBlock("div", _hoisted_1$2, [
         createBaseVNode("h1", {
           class: "comfyui-logo mx-2 cursor-pointer",
           onClick: goBack
         }, "Montagen"),
+        createVNode(CommandMenubar),
         createVNode(_component_Divider, {
           layout: "vertical",
           class: "mx-2"
@@ -69272,7 +69490,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-234ddf74"]]);
+const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-58e6d46e"]]);
 const _hoisted_1$1 = { class: "flex flex-col gap-1" };
 const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "textNodeAdd",
@@ -69308,25 +69526,30 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         eimts("hide");
       }
     };
+    onMounted(() => {
+    });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$b;
-      const _component_Message = script$c;
+      const _component_Textarea = script$c;
+      const _component_Message = script$d;
       const _component_Button = script$3;
       const _component_Dialog = script$2;
       return openBlock(), createBlock(_component_Dialog, {
         visible: visible.value,
-        "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => visible.value = $event),
+        "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
         closable: true,
         position: "top",
         header: "ADD TEXT",
-        onHide: _cache[1] || (_cache[1] = ($event) => eimts("hide"))
+        onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
       }, {
         default: withCtx(() => [
-          createVNode(unref(script$a), {
+          createVNode(unref(script$b), {
             resolver: resolver.value,
             initialValues: initialValues.value,
             onSubmit: onFormSubmit,
-            class: "flex flex-col gap-4"
+            class: "flex flex-col gap-4",
+            onKeydown: _cache[0] || (_cache[0] = ($event) => {
+              $event.stopPropagation();
+            })
           }, {
             default: withCtx(($form) => {
               var _a2;
@@ -69383,10 +69606,13 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       workSpaceStore.getlists();
     };
     provide("getList", getList);
+    const textNodeAddRef = ref$3();
     watch(() => workSpaceStore.showTextAddNode, (val) => {
       if (val) {
         showAdd.value = true;
         workSpaceStore.setShowTextAddNode(false);
+        nextTick$1(() => {
+        });
       }
     });
     const changeAddStatus = () => {
@@ -69411,13 +69637,15 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
         ]),
         showAdd.value ? (openBlock(), createBlock(_sfc_main$2, {
           key: 0,
-          onHide: changeAddStatus
-        })) : createCommentVNode("", true)
+          onHide: changeAddStatus,
+          ref_key: "textNodeAddRef",
+          ref: textNodeAddRef
+        }, null, 512)) : createCommentVNode("", true)
       ]);
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b063ff01"]]);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b689b312"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
@@ -69507,6 +69735,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         app$2.registerExtension({
           name: "EasymskPage",
           setup(ui) {
+            setTimeout(() => {
+              let comfyuiLogo = ui.bodyTop.querySelector(".comfyui-menu .comfyui-logo");
+              if (comfyuiLogo) {
+                comfyuiLogo.style.cursor = "pointer";
+                comfyuiLogo.addEventListener("click", () => {
+                  menuStore.changeShow(true);
+                });
+              }
+            }, 0);
             window.myUI = ui;
             mutationObserver.value = new MutationObserver((mutationsList) => {
               let target2 = document.querySelector(".comfyui-body-left .side-tool-bar-container");

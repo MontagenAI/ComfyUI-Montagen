@@ -150,6 +150,17 @@ function normalizeClass(value) {
   }
   return res.trim();
 }
+function normalizeProps(props) {
+  if (!props) return null;
+  let { class: klass, style } = props;
+  if (klass && !isString(klass)) {
+    props.class = normalizeClass(klass);
+  }
+  if (style) {
+    props.style = normalizeStyle(style);
+  }
+  return props;
+}
 const specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly`;
 const isSpecialBooleanAttr = /* @__PURE__ */ makeMap(specialBooleanAttrs);
 function includeBooleanAttr(value) {
@@ -7479,10 +7490,12 @@ export {
   TransitionGroup as a5,
   renderList as a6,
   createSlots as a7,
-  vShow as a8,
-  watchEffect as a9,
-  withKeys as aa,
-  createApp as ab,
+  normalizeProps as a8,
+  guardReactiveProps as a9,
+  vShow as aa,
+  watchEffect as ab,
+  withKeys as ac,
+  createApp as ad,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
