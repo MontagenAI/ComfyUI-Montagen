@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-montagen"
 description = "A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation."
-version = "0.1.0"
+version = "0.1.1"
 license = {file = "LICENSE"}
 dependencies = ["moviepy"]
 

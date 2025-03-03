@@ -2,6 +2,25 @@
 
 Objective: Build a ComfyUI-based video editing framework.
 
+## [0.1.1] - 2025-03-01
+
+**Feature Update: Alpha Channel Support, Properties Panel, And Other Enhancements.**
+
+### Added
+
+- [UI] Easier Navigation: Click top-left `ComfyUI` or `Montagen`, to switch between the two pages.(#6)
+- [UI] Add `Properties` Panel: Support basic transform controls (`rotate`, `x`, `y`, `width`, `height`) for image and video clips.(#4)
+- [Editor] Add Text Clip Type: With addtional property `text` on `Properties` panel.(#7)
+- [Editor] Add `STICKER` Track Type: Support `gif` image clip as a sticker.(#13)
+
+### Changed
+
+- [Node] Alpha Channel Support: Add alpha input and output to `Clip Adapter` nodes.(#8)
+  - `Image Clip Adapter`: Add `preview_fps` parameter, working with alpha input to generate a `gif` image clip, as a special type on `STICKER` track.
+  - `Video Clip Adapter`: Working with alpha input to generate a `webm` video clip, as a common video type.
+- [UI] Move `Projects` To Header In `Montagen`:(#6)
+
+
 ## [0.1.0] - 2025-02-22
 
 ### Added
@@ -33,7 +52,6 @@ Objective: Build a ComfyUI-based video editing framework.
   - Basic Clip Manipulation: Supports `Select`, `Hide/Show`, `Delete` for single clip edit. And `Drag & Drop`, `Snap` clip within and across tracks.
 - [Player] Core Video Editing Components:
   - Transform Controls: `Position`, `Scale`, `Rotation`. Directly manipulate video clips in the Player viewport with real-time preview. 
-
 
 ### Changed
 

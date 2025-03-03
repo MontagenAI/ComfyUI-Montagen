@@ -2,59 +2,36 @@
 
 A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation.
 
-![Montagen ScreenShot](assets/montagenscreenshot1.png)
+![Montagen ScreenShot](assets/montagenscreenshot0.1.1.png)
 
-## [CHANGELOG](CHANGELOG.md) [0.1.0] - 2025-02-22
+## [CHANGELOG](CHANGELOG.md) [0.1.1] - 2025-03-01
+
+**Feature Update: Alpha Channel Support, Properties Panel, And Other Enhancements.**
 
 ### Added
 
-**Initial Release: Core Video Editing Features for ComfyUI.**
-
-- [Core] The Structural Mapping Between ComfyUI and Montagen:
-  - ComfyUI Workflows & Montagen Project: Combine multiple ComfyUI workflows into a structured timeline project for seamless video editing. Each workflow can be linked to only one Montagen project and cannot be shared across projects.
-  - ComfyUI Node & Montagen Clip: Within a ComfyUI workflow, a node's media output is linked to a `Clip Adapter` node, making it a media clip in a Montagen timeline project. A workflow can generate multiple independent clips, each editable separately.
-- [Node] Clip Adapter:    
-  Input: `[images | images | audio]`.   
-  Output: `<optional>` original input.   
-  Parameters: `name` (Clip identifier), `projectId` (No need to change).   
-  After ComfyUI workflow execution is complete, press `Preview` to open the Montagen UI. Types of `Clip Adapter` nodes:
-  - `Image Clip Adapter`: Montagen image clip.
-  - `Video Clip Adapter`: Set `preview_fps` to use image sequence as a Montagen video clip.
-  - `Audio Clip Adapter`: Montagen audio clip.
-- [UI] Montagen UI: Unified Montagen UI (`Navigation System`, `Project Tabs`, `Editor`, `Player`) based on the ComfyUI layout.
-  - Project Tabs: Each project opens in a dedicated tab, with each tab containing both an `Editor` and a `Player`.
-- [UI] Navigation System: The system includes all functional components, with new features being added to the navigation bar.
-  - `Projects`: Manage multiple projects, including `Create`, `Open`, `Delete`.
-  - `Clips`: Clips list of the project.
-  - `Export`: Export the project as a video file.
-- [Editor] Core Video Editing Components:
-  - Timeline Container: Basic component (`Time Ruler`, `Playhead`, `Hover Indicator`, `Zoom in/Out`). Supports multiple tracks to organize different clip types.
-  - Track Management: Track type (`Text`, `Audio`, `Video & Image`) for specific clips. With control of `Mute`, `Hide/Show` for specific type of tracks.
-  - Clip Creation: Start by using dedicated `Create` actions (`Create Image`, `Create Video`, `Create Audio`) to generate an empty clip. 
-  - Clip Editing: Seamlessly integrate clip with corresponding ComfyUI workflow for further editing through `Edit Workflow`.
-  - Basic Clip Manipulation: Supports `Select`, `Hide/Show`, `Delete` for single clip edit. And `Drag & Drop`, `Snap` clip within and across tracks.
-- [Player] Core Video Editing Components:
-  - Transform Controls: `Position`, `Scale`, `Rotation`. Directly manipulate video clips in the Player viewport with real-time preview. 
-
+- [UI] Easier Navigation: Click top-left `ComfyUI` or `Montagen`, to switch between the two pages.(#6)
+- [UI] Add `Properties` Panel: Support basic transform controls (`rotate`, `x`, `y`, `width`, `height`) for image and video clips.(#4)
+- [Editor] Add Text Clip Type: With addtional property `text` on `Properties` panel.(#7)
+- [Editor] Add `STICKER` Track Type: Support `gif` image clip as a sticker.(#13)
 
 ### Changed
 
-- [Editor] Frame Locate & Preview: Requires clicking the clip (instead of hovering) to preview and locate a frame.
-  
-### Removed
-
-- [Node] `Preview Images`: Deprecated, replaced by `Video Clip Adapter`.
-- [UI] Media Panel & Metadata Panel: Placeholder panels removed for cleaner UI. Replaced by Navigation System.
+- [Node] Alpha Channel Support: Add alpha input and output to `Clip Adapter` nodes.(#8)
+  - `Image Clip Adapter`: Add `preview_fps` parameter, working with alpha input to generate a `gif` image clip, as a special type on `STICKER` track.
+  - `Video Clip Adapter`: Working with alpha input to generate a `webm` video clip, as a common video type.
+- [UI] Move `Projects` To Header In `Montagen`:(#6)
 
 
 ## Usage
 
 ### Video Clip Adapter
 
-![PreviewImages ScreenShot](assets/previewimagesscreenshot1.png)
+![PreviewImages ScreenShot](assets/videoclipadapterscreenshot0.1.1.png)
 
+* `images` is required. `alpha` is optional, only for image sequence with alpha channel.
 * Set media clip `name` and `preview_fps` to use image sequence as a Montagen video clip.
-* After ComfyUI workflow execution is complete, press `Preview` to open the Montagen UI.
+* After ComfyUI workflow execution is complete, click `Preview` to open the Montagen UI.
 * Use input images as output, so node output is optional.
 
 ## Installation
