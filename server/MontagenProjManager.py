@@ -53,6 +53,18 @@ class MontagenProjManager:
                 return web.Response(status=404)
             return web.json_response({"code": 0, "data": proj.getClips()})
 
+        @server.routes.delete("/Montagen/Proj/{id}/Clip/{refId}")
+        async def deleteProjectClip(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            ref_id = request.match_info.get("refId", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.timelineDeleteClip(modify_time, ref_id)
+            return web.json_response({"code": 0})
+
         @server.routes.post("/Montagen/Proj/New")
         async def addProject(request):
             req_data = await request.json()
@@ -777,6 +789,19 @@ class MontagenProj:
                 self._deleteClip(clip)
             self._saveToPath(self.result())
 
+    def timelineDeleteClip(self, modifyTime, refId):
+        for clip in self._getNodes(
+            self.timeline,
+            lambda x: x.get("refId", None) == refId,
+            raw=True,
+        ):
+            self.modifyTime = modifyTime
+            self._deleteClip(clip)
+            self.workflowDeleteClip(
+                modifyTime, clip.get("workflowId"), clip.get("clipId")
+            )
+            self._saveToPath(self.result())
+
     def workflowRenameClip(self, modifyTime, workflowId, clipId, name):
         workflow = self._getWorkflowById(workflowId)
         if workflow:
@@ -845,6 +870,10 @@ class MontagenProj:
                 {
                     "workflow": workflow.get("workflow", {}),
                     "workflowId": workflow.get("id", None),
+                    "workflowName": workflow.get("workflow", {})
+                    .get("extra", {})
+                    .get(MontagenProjManager.MONTAGENPROJ, {})
+                    .get("montagenName", self.DEFAULTWORKFLOWNAME),
                     "clips": [
                         *self._getNodes(
                             self.timeline,
