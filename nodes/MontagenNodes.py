@@ -389,7 +389,7 @@ class ImageClipAdapter(VideoClipAdapter):
 
     @classmethod
     def INPUT_TYPES(s):
-        projs = s.get_projs()
+        # projs = s.get_projs()
         return {
             "required": {
                 "image": ("IMAGE", {"tooltip": "The image to preview."}),
