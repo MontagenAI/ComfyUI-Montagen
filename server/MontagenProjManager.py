@@ -12,6 +12,8 @@ import shutil
 import mimetypes
 import time
 import random
+from .LGraph import LGraph
+import copy
 
 
 class MontagenProjManager:
@@ -73,8 +75,8 @@ class MontagenProjManager:
             if not proj:
                 return web.Response(status=404)
             modify_time = self.updateProjectField(proj.userId, proj.projectId)
-            data = proj.addClip(modify_time, type)
-            return web.json_response({"code": 0, "data": data})
+            proj.addClip(modify_time, type)
+            return web.json_response({"code": 0})
 
         @server.routes.post("/Montagen/Proj/{id}/Text/New")
         async def addProjectTextClip(request):
@@ -89,8 +91,8 @@ class MontagenProjManager:
             text = req_data.get("text", None)
             if not text:
                 return web.Response(status=400)
-            data = proj.addClip(modify_time, type, text)
-            return web.json_response({"code": 0, "data": data})
+            proj.addClip(modify_time, type, text)
+            return web.json_response({"code": 0})
 
         @server.routes.post("/Montagen/Proj/{id}/Name")
         async def updateProjectName(request):
@@ -144,6 +146,90 @@ class MontagenProjManager:
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
             self._deleteProject(user_id, project_id)
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Workflow/New")
+        async def addWorkflow(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            req_data = await request.json()
+            name = req_data.get("name", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            workflow_id = proj.createWorkflow(modify_time, name)
+            return web.json_response({"code": 0, "data": workflow_id})
+
+        @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Rename")
+        async def renameWorkflow(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            req_data = await request.json()
+            name = req_data.get("name", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.renameWorkflow(modify_time, workflow_id, name)
+            return web.json_response({"code": 0})
+
+        @server.routes.delete("/Montagen/Proj/{id}/Workflow/{workflowId}")
+        async def deleteWorkflow(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.deleteWorkflow(modify_time, workflow_id)
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/New")
+        async def addWorkflowClip(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            req_data = await request.json()
+            type = req_data.get("type", None)
+            name = req_data.get("name", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.workflowAddClip(modify_time, workflow_id, project_id, name, type)
+            return web.json_response({"code": 0})
+
+        @server.routes.post(
+            "/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{clipId}/Rename"
+        )
+        async def renameWorkflowClip(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            clip_id = request.match_info.get("clipId", None)
+            req_data = await request.json()
+            name = req_data.get("name", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.workflowRenameClip(modify_time, workflow_id, clip_id, name)
+            return web.json_response({"code": 0})
+
+        @server.routes.delete("/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{clipId}")
+        async def deleteWorkflowClip(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            clip_id = request.match_info.get("clipId", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.workflowDeleteClip(modify_time, workflow_id, clip_id)
             return web.json_response({"code": 0})
 
         @server.routes.get(MontagenProjManager.FILEADDR)
@@ -268,7 +354,10 @@ class MontagenProjManager:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM projects ORDER BY createTime DESC")
             projects = cursor.fetchall()
-            return [dict(project) for project in projects]
+            return [
+                self._getProject(project["userId"], project["projectId"]).resultV2()
+                for project in projects
+            ]
         finally:
             if conn:
                 conn.close()
@@ -297,7 +386,7 @@ class MontagenProjManager:
         proj = self._getProject(userId, projectId)
         if not proj:
             return None
-        return proj.result()
+        return proj.resultV2()
 
     def _getProject(self, userId: str, projectId: str, check=True):
         key = f"{userId}_{projectId}"
@@ -431,6 +520,7 @@ class MontagenProjManager:
         workflowValue,
         workflowId,
         clip_id,
+        old_clip_id,
         addr,
         name,
         type,
@@ -443,6 +533,7 @@ class MontagenProjManager:
             workflowValue,
             workflowId,
             clip_id,
+            old_clip_id,
             addr,
             name,
             type,
@@ -454,7 +545,17 @@ class MontagenProjManager:
 class MontagenProj:
     INFOFILE = "info.json"
     OUTPUTDIR = "output"
+    DEFAULTWORKFLOWNAME = "Untitled Workflow"
+    DEFAULTCLIPNAME = "Untitled Clip"
     VERSIONINFO = {"version": "1.0.0", "type": "MontagenProj"}
+    SUPPORTEDTYPES = ["video", "image", "gif", "audio"]
+    CLIPCONTENT = {
+        "video": "src",
+        "image": "src",
+        "gif": "src",
+        "audio": "src",
+        "text": "text",
+    }
 
     def __init__(self, userId: str, projectId: str, width=None, height=None):
         self.basePath = MontagenProjManager.instance.getUserProjectBase(
@@ -466,7 +567,6 @@ class MontagenProj:
         info_file_path = os.path.join(self.basePath, self.INFOFILE)
         self.projectId = projectId
         self.userId = userId
-        default_workflow_id = self.to_base36_random()
         self.timeline = {
             "type": "canvas",
             "width": 1280 if not width else width,
@@ -569,22 +669,192 @@ class MontagenProj:
 
     def getClips(self):
         return {
-            "clips": [*self._getNodes(self.timeline)],
+            "clips": [
+                *self._getNodes(
+                    self.timeline,
+                    fn=lambda x: x.get("type", None) != "canvas",
+                    check=lambda clipId, workflowId: self._hasClipInWorkflow(
+                        workflowId, clipId
+                    ),
+                )
+            ],
             "workflows": self.timeline.get("workflows", []),
         }
 
-    def _getNodes(self, parent):
+    def _hasClipInWorkflow(self, workflowId, clipId):
+        workflow = self._getWorkflowById(workflowId)
+        if workflow:
+            lGraph = LGraph(workflow)
+            return lGraph.hasNode(clipId)
+        return False
+
+    def _getNodes(self, parent, fn=None, check=None, iterator=None, raw=False):
+        if iterator:
+            iterator(parent)
+        if not fn or fn(parent):
+            clipType = parent.get("type", "text")
+            clipId = parent.get("clipId", None)
+            clipName = parent.get("clipName", self.DEFAULTCLIPNAME)
+            workflowId = parent.get("workflowId", None)
+            if check and not check(clipId, workflowId):
+                clipId = None
+                clipName = None
+                workflowId = None
+            yield (
+                {
+                    "clipId": clipId,
+                    "clipName": clipName,
+                    "workflowId": workflowId,
+                    "src": parent.get(self.CLIPCONTENT.get(clipType, "src"), None),
+                    "type": parent.get("type"),
+                    "refId": parent.get("refId"),
+                }
+                if not raw
+                else parent
+            )
+
         children = parent.get("children", [])
         for child in children:
-            if child.get("clipId", None):
-                yield {
-                    "clipId": child.get("clipId"),
-                    "clipName": child.get("clipName", "untitled"),
-                    "workflowId": child.get("workflowId"),
-                    "src": child.get("src"),
-                    "type": child.get("type"),
+            yield from self._getNodes(child, fn, check, iterator, raw)
+
+    def _createEmptyWorkflow(self, name=None):
+        workflow_id = self.to_base36_random()
+        workflow_name = name or self.DEFAULTWORKFLOWNAME
+        lGraph = LGraph()
+        lGraph.setWorkflowInfo(self.userId, self.projectId, workflow_id, workflow_name)
+        return (lGraph.serialize(), workflow_id)
+
+    def createWorkflow(self, modifyTime, name):
+        workflow, workflow_id = self._createEmptyWorkflow(name)
+        self._addWorkflowToStore(modifyTime, workflow, workflow_id)
+        return workflow_id
+
+    def renameWorkflow(self, modifyTime, workflowId, name):
+        workflow = self._getWorkflowById(workflowId)
+        if workflow:
+            lGraph = LGraph(workflow)
+            lGraph.montagenName = name or self.DEFAULTWORKFLOWNAME
+            self.modifyTime = modifyTime
+            self._saveToPath(self.result())
+
+    def deleteWorkflow(self, modifyTime, workflowId):
+        workflow = self._getWorkflowById(workflowId)
+        if workflow:
+            self.modifyTime = modifyTime
+            workflows = self.timeline.get("workflows", [])
+            workflows.remove(workflow)
+            for clip in self._getNodes(
+                self.timeline,
+                lambda x: x.get("workflowId", None) == workflowId,
+                raw=True,
+            ):
+                self._deleteClip(clip)
+            self._saveToPath(self.result())
+
+    def workflowAddClip(self, modifyTime, workflowId, projectId, name, type):
+        workflow = self._getWorkflowById(workflowId)
+        name = name or self.DEFAULTCLIPNAME
+        type = type or "video"
+        if workflow:
+            self.modifyTime = modifyTime
+            lGraph = LGraph(workflow)
+            clip_id = self.to_base36_random()
+            lGraph.addEmptyNode(projectId, clip_id, name, type)
+            self._addEmptyClip(workflowId, clip_id, name, type)
+            self._saveToPath(self.result())
+
+    def workflowDeleteClip(self, modifyTime, workflowId, clipId):
+        workflow = self._getWorkflowById(workflowId)
+        if workflow:
+            self.modifyTime = modifyTime
+            lGraph = LGraph(workflow)
+            lGraph.deleteNode(clipId)
+            for clip in self._getNodes(
+                self.timeline,
+                lambda x: x.get("clipId", None) == clipId,
+                raw=True,
+            ):
+                self._deleteClip(clip)
+            self._saveToPath(self.result())
+
+    def workflowRenameClip(self, modifyTime, workflowId, clipId, name):
+        workflow = self._getWorkflowById(workflowId)
+        if workflow:
+            self.modifyTime = modifyTime
+            lGraph = LGraph(workflow)
+            lGraph.renameNode(clipId, name)
+            for clip in self._getNodes(
+                self.timeline, lambda x: x.get("clipId", None) == clipId, raw=True
+            ):
+                self._renameClip(clip, name)
+            self._saveToPath(self.result())
+
+    def _addEmptyClip(self, workflowId, clip_id, name, type):
+        clip = {
+            "clipId": clip_id,
+            "clipName": name,
+            "workflowId": workflowId,
+            "type": "text",
+            "fontSize": "10rpx",
+            "color": "#FFF",
+            "x": "50vw",
+            "y": "50vh",
+            "duration": 10,
+            "text": f"empty {type} clip\nright-click to edit",
+            "refId": self.to_base36_random(),
+            "zIndex": 1,
+            "children": [],
+        }
+        self.timeline["children"].append(clip)
+
+    def _deleteClip(self, clip):
+        parent = [
+            *self._getNodes(
+                self.timeline, lambda x: clip in x.get("children", []), raw=True
+            )
+        ]
+        if parent and len(parent) > 0 and parent[0]:
+            parent[0].get("children", []).remove(clip)
+
+    def _renameClip(self, clip, name):
+        clip["clipName"] = name
+
+    def _getWorkflowById(self, workflowId):
+        workflows = self.timeline.get("workflows", [])
+        for workflow in workflows:
+            if workflow.get("id") == workflowId:
+                return workflow
+        return None
+
+    def _addWorkflowToStore(self, modityTime, workflow, workflow_id):
+        if workflow:
+            self.modifyTime = modityTime
+            if "workflows" not in self.timeline:
+                self.timeline["workflows"] = []
+            workflows: list = self.timeline["workflows"]
+            workflows.append({"workflow": workflow, "id": workflow_id})
+            self._saveToPath(self.result())
+
+    def _getWorkflows(self):
+        if "workflows" not in self.timeline:
+            self.timeline["workflows"] = []
+        workflows: list = self.timeline["workflows"]
+        outWorkflows = []
+        for workflow in workflows:
+            outWorkflows.append(
+                {
+                    "workflow": workflow.get("workflow", {}),
+                    "workflowId": workflow.get("id", None),
+                    "clips": [
+                        *self._getNodes(
+                            self.timeline,
+                            lambda x: x.get("workflowId", None)
+                            == workflow.get("id", None),
+                        )
+                    ],
                 }
-            yield from self._getNodes(child)
+            )
+        return outWorkflows
 
     def modifyClip(
         self,
@@ -592,6 +862,7 @@ class MontagenProj:
         workflowValue,
         workflowId,
         clip_id,
+        old_clip_id,
         addr,
         name,
         type,
@@ -610,28 +881,16 @@ class MontagenProj:
                 break
         if matching_workflow:
             workflows.remove(matching_workflow)
-        workflowValue.update(
-            {
-                "extra": {
-                    **workflowValue.get("extra", {}),
-                    MontagenProjManager.MONTAGENPROJ: {
-                        "userId": self.userId,
-                        "projectId": self.projectId,
-                        "workflowId": workflowId,
-                    },
-                }
-            }
-        )
+        lGraph = LGraph(workflowValue)
+        lGraph.setWorkflowInfo(self.userId, self.projectId, workflowId, None)
         workflows.append(
             {
-                "workflow": {
-                    **workflowValue,
-                },
+                "workflow": workflowValue,
                 "id": workflowId,
             }
         )
         value = self.getClipById(
-            clip_id, self.timeline, self.timeline.get("children", [])
+            clip_id or old_clip_id, self.timeline, self.timeline.get("children", [])
         )
         parent = None
         child = None
@@ -642,7 +901,7 @@ class MontagenProj:
                 parent["children"].remove(child)
             if type == "video":
                 videoClip = {
-                    "clipId": clip_id,
+                    "clipId": clip_id or old_clip_id,
                     "clipName": name,
                     "src": addr,
                     "workflowId": workflowId,
@@ -663,7 +922,7 @@ class MontagenProj:
             elif type == "audio":
                 self.timeline["children"].append(
                     {
-                        "clipId": clip_id,
+                        "clipId": clip_id or old_clip_id,
                         "clipName": name,
                         "src": addr,
                         "workflowId": workflowId,
@@ -677,7 +936,7 @@ class MontagenProj:
             elif type == "image":
                 self.timeline["children"].append(
                     {
-                        "clipId": clip_id,
+                        "clipId": clip_id or old_clip_id,
                         "clipName": name,
                         "src": addr,
                         "workflowId": workflowId,
@@ -694,7 +953,7 @@ class MontagenProj:
             elif type == "gif":
                 self.timeline["children"].append(
                     {
-                        "clipId": clip_id,
+                        "clipId": clip_id or old_clip_id,
                         "clipName": name,
                         "src": addr,
                         "workflowId": workflowId,
@@ -739,174 +998,26 @@ class MontagenProj:
 
     def addClip(self, modifyTime, type, typeData=None):
         self.modifyTime = modifyTime
-        worflow = None
-        default_workflow_id = self.to_base36_random()
-        if type == "video":
-            worflow = {
-                "id": default_workflow_id,
-                "workflow": {
-                    "last_node_id": 1,
-                    "last_link_id": 0,
-                    "nodes": [
-                        {
-                            "id": 1,
-                            "type": "MontagenVideoClipAdapter",
-                            "pos": [415, 196],
-                            "size": [210, 130],
-                            "flags": {},
-                            "order": 0,
-                            "mode": 0,
-                            "inputs": [
-                                {"name": "images", "type": "IMAGE", "link": None},
-                                {
-                                    "name": "alpha",
-                                    "type": "MASK",
-                                    "shape": 7,
-                                    "link": None,
-                                },
-                            ],
-                            "outputs": [
-                                {"name": "IMAGE", "type": "IMAGE", "links": None},
-                                {"name": "MASK", "type": "MASK", "links": None},
-                            ],
-                            "properties": {
-                                "Node name for S&R": "MontagenVideoClipAdapter"
-                            },
-                            "widgets_values": ["", 25, "", "image"],
-                        }
-                    ],
-                    "links": [],
-                    "groups": [],
-                    "config": {},
-                    "extra": {
-                        "ds": {"scale": 1, "offset": [0, 0]},
-                        MontagenProjManager.MONTAGENPROJ: {
-                            "userId": self.userId,
-                            "projectId": self.projectId,
-                            "workflowId": default_workflow_id,
-                        },
-                    },
-                    "version": 0.4,
-                },
+        if type in self.SUPPORTEDTYPES:
+            workflow_id = self.createWorkflow(modifyTime, self.DEFAULTWORKFLOWNAME)
+            self.workflowAddClip(
+                modifyTime, workflow_id, self.projectId, self.DEFAULTCLIPNAME, type
+            )
+        else:
+            clip = {
+                "type": "text",
+                "fontSize": "10rpx",
+                "color": "#FFF",
+                "x": "50vw",
+                "y": "50vh",
+                "duration": 10,
+                "refId": self.to_base36_random(),
+                "zIndex": 1,
+                "text": typeData,
+                "children": [],
             }
-        elif type == "audio":
-            worflow = {
-                "id": default_workflow_id,
-                "workflow": {
-                    "last_node_id": 1,
-                    "last_link_id": 0,
-                    "nodes": [
-                        {
-                            "id": 1,
-                            "type": "MontagenAudioClipAdapter",
-                            "pos": [441, 244],
-                            "size": [315, 82],
-                            "flags": {},
-                            "order": 0,
-                            "mode": 0,
-                            "inputs": [
-                                {"name": "audio", "type": "AUDIO", "link": None}
-                            ],
-                            "outputs": [
-                                {"name": "AUDIO", "type": "AUDIO", "links": None}
-                            ],
-                            "properties": {
-                                "Node name for S&R": "MontagenAudioClipAdapter"
-                            },
-                            "widgets_values": ["", ""],
-                        }
-                    ],
-                    "links": [],
-                    "groups": [],
-                    "config": {},
-                    "extra": {
-                        "ds": {"scale": 1, "offset": [0, 0]},
-                        MontagenProjManager.MONTAGENPROJ: {
-                            "userId": self.userId,
-                            "projectId": self.projectId,
-                            "workflowId": default_workflow_id,
-                        },
-                    },
-                    "version": 0.4,
-                },
-            }
-        elif type == "image":
-            worflow = {
-                "id": default_workflow_id,
-                "workflow": {
-                    "last_node_id": 1,
-                    "last_link_id": 0,
-                    "nodes": [
-                        {
-                            "id": 1,
-                            "type": "MontagenImageClipAdapter",
-                            "pos": [590, 235],
-                            "size": [315, 82],
-                            "flags": {},
-                            "order": 0,
-                            "mode": 0,
-                            "inputs": [
-                                {"name": "image", "type": "IMAGE", "link": None},
-                                {
-                                    "name": "alpha",
-                                    "type": "MASK",
-                                    "shape": 7,
-                                    "link": None,
-                                },
-                            ],
-                            "outputs": [
-                                {"name": "IMAGE", "type": "IMAGE", "links": None},
-                                {"name": "MASK", "type": "MASK", "links": None},
-                            ],
-                            "properties": {
-                                "Node name for S&R": "MontagenImageClipAdapter"
-                            },
-                            "widgets_values": ["", 6, "", "image"],
-                        }
-                    ],
-                    "links": [],
-                    "groups": [],
-                    "config": {},
-                    "extra": {
-                        "ds": {"scale": 1, "offset": [0, 0]},
-                        MontagenProjManager.MONTAGENPROJ: {
-                            "userId": self.userId,
-                            "projectId": self.projectId,
-                            "workflowId": default_workflow_id,
-                        },
-                    },
-                    "version": 0.4,
-                },
-            }
-
-        if worflow:
-            if "workflows" not in self.timeline:
-                self.timeline["workflows"] = []
-            workflows: list = self.timeline["workflows"]
-            workflows.append(worflow)
-        clip = {
-            "clipId": f"1_{default_workflow_id}",
-            "clipName": "untitled",
-            "workflowId": default_workflow_id,
-            "type": "text",
-            "fontSize": "10rpx",
-            "color": "#FFF",
-            "x": "50vw",
-            "y": "50vh",
-            "duration": 10,
-            "text": f"empty {type} clip\nright-click to edit",
-            "refId": self.to_base36_random(),
-            "zIndex": 1,
-            "children": [],
-        }
-        if type == "text":
-            del clip["clipId"]
-            del clip["clipName"]
-            del clip["workflowId"]
-            clip["text"] = typeData
-        self.timeline["children"].append(clip)
-        self._saveToPath(self.result())
-        return self.timeline
+            self.timeline["children"].append(clip)
+            self._saveToPath(self.result())
 
     def result(self):
         base_info = {
@@ -923,6 +1034,25 @@ class MontagenProj:
             "timeline": self.timeline,
         }
         return info_data
+
+    def resultV2(self):
+        info_data = self.result()
+        info_data["workflows"] = self._getWorkflows()
+        timeline = copy.deepcopy(info_data["timeline"])
+        info_data["timeline"] = timeline
+        for clip in self._getNodes(
+            timeline, iterator=lambda x: self._changeClipProperty(x)
+        ):
+            pass
+        return info_data
+
+    def _changeClipProperty(self, clip):
+        clipId = clip.get("clipId")
+        workflowId = clip.get("workflowId")
+        if not self._hasClipInWorkflow(workflowId, clipId):
+            clip["workflowId"] = None
+            clip["clipId"] = None
+            clip["clipName"] = None
 
     def getOutputPath(self, workflowId: str, clipId: str):
         if not workflowId:

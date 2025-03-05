@@ -3,6 +3,7 @@ import os
 import numpy as np
 from . import videosave
 from ..server.MontagenProjManager import MontagenProjManager
+from ..server.LGraph import LGraph
 from datetime import datetime
 import shutil
 from comfy.utils import ProgressBar
@@ -25,7 +26,7 @@ class VideoClipAdapter:
     @classmethod
     def get_projs(s):
         projs = [
-            f'{proj.get("name")}{VideoClipAdapter.PROJECTSPLIT}{proj.get("projectId")}'
+            f'{proj.get("baseInfo",{}).get("name")}{VideoClipAdapter.PROJECTSPLIT}{proj.get("baseInfo",{}).get("projectId")}'
             for proj in MontagenProjManager.instance.getProjects(
                 MontagenProjManager.DEFAULTUSERID
             )
@@ -108,25 +109,17 @@ class VideoClipAdapter:
         userId = MontagenProjManager.DEFAULTUSERID
         projectId_context = None
         workflowId = None
+        clip_id = None
         if "workflow" in extra_pnginfo:
-            userId = (
-                extra_pnginfo["workflow"]
-                .get("extra", {})
-                .get(MontagenProjManager.MONTAGENPROJ, {})
-                .get("userId", MontagenProjManager.DEFAULTUSERID)
+            workflowNode = extra_pnginfo["workflow"]
+            lGraph = LGraph(workflowNode)
+            userId = lGraph.montagenInfo.get(
+                "userId", MontagenProjManager.DEFAULTUSERID
             )
-            projectId_context = (
-                extra_pnginfo["workflow"]
-                .get("extra", {})
-                .get(MontagenProjManager.MONTAGENPROJ, {})
-                .get("projectId", None)
-            )
-            workflowId = (
-                extra_pnginfo["workflow"]
-                .get("extra", {})
-                .get(MontagenProjManager.MONTAGENPROJ, {})
-                .get("workflowId", None)
-            )
+            projectId_context = lGraph.montagenInfo.get("projectId", None)
+            workflowId = lGraph.montagenInfo.get("workflowId", None)
+            clip_id = lGraph.getClipIdFromId(unique_id)
+
         has_workflow = True
         # workflowId = "workflow123"
         if not workflowId:
@@ -138,7 +131,9 @@ class VideoClipAdapter:
             projectId = projectId_context
         if not workflowId:
             workflowId = self.to_base36_random()
-        clip_id = f"{unique_id}_{workflowId}"
+        old_clip_id = f"{unique_id}_{workflowId}"
+        # if not clip_id:
+        #     clip_id = self.to_base36_random()
         has_project_id = True
         if not projectId:
             projectId = self.to_base36_random()
@@ -188,6 +183,7 @@ class VideoClipAdapter:
             fileFullName,
             tmpFileName,
             tmpFullName,
+            old_clip_id
         )
 
     def save_images(
@@ -231,6 +227,7 @@ class VideoClipAdapter:
             fileFullName,
             tmpFileName,
             tmpFullName,
+            old_clip_id
         ) = self.get_info(
             "mp4" if not hasAlpha else "webm",
             name,
@@ -253,7 +250,7 @@ class VideoClipAdapter:
             shutil.move(tmpFullName, fileFullName)
 
         addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, clip_id, fileName
+            userId, projectId, workflowId, clip_id or old_clip_id, fileName
         )
         if not has_project_id or not has_workflow:
             return {
@@ -268,7 +265,7 @@ class VideoClipAdapter:
                             "userId": userId,
                             "projectId": projectId,
                             "workflowId": workflowId,
-                            "clipId": clip_id,
+                            "clipId": clip_id or old_clip_id,
                         }
                     ]
                 },
@@ -280,11 +277,12 @@ class VideoClipAdapter:
             extra_pnginfo.get("workflow", {}),
             workflowId,
             clip_id,
+            old_clip_id,
             addr,
             name,
             "video",
             duration,
-            hasAlpha
+            hasAlpha,
         )
         return {
             "ui": {
@@ -298,7 +296,7 @@ class VideoClipAdapter:
                         "userId": userId,
                         "projectId": projectId,
                         "workflowId": workflowId,
-                        "clipId": clip_id,
+                        "clipId": clip_id or old_clip_id,
                         "timeline": timeline,
                     }
                 ]
@@ -359,6 +357,7 @@ class AudioClipAdapter(VideoClipAdapter):
             fileFullName,
             tmpFileName,
             tmpFullName,
+            old_clip_id
         ) = self.get_info("mp3", name, unique_id, projectId, prompt, extra_pnginfo)
         buff = io.BytesIO()
         wavform = audio["waveform"].cpu()[0]
@@ -368,7 +367,7 @@ class AudioClipAdapter(VideoClipAdapter):
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
         addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, clip_id, fileName
+            userId, projectId, workflowId, clip_id or old_clip_id, fileName
         )
         if not has_project_id or not has_workflow:
             return {
@@ -379,7 +378,7 @@ class AudioClipAdapter(VideoClipAdapter):
                             "userId": userId,
                             "projectId": projectId,
                             "workflowId": workflowId,
-                            "clipId": clip_id,
+                            "clipId": clip_id or old_clip_id,
                         }
                     ]
                 },
@@ -393,6 +392,7 @@ class AudioClipAdapter(VideoClipAdapter):
             extra_pnginfo.get("workflow", {}),
             workflowId,
             clip_id,
+            old_clip_id,
             addr,
             name,
             "audio",
@@ -406,7 +406,7 @@ class AudioClipAdapter(VideoClipAdapter):
                         "userId": userId,
                         "projectId": projectId,
                         "workflowId": workflowId,
-                        "clipId": clip_id,
+                        "clipId": clip_id or old_clip_id,
                         "timeline": timeline,
                     }
                 ]
@@ -480,6 +480,7 @@ class ImageClipAdapter(VideoClipAdapter):
             fileFullName,
             tmpFileName,
             tmpFullName,
+            old_clip_id
         ) = self.get_info(format, name, unique_id, projectId, prompt, extra_pnginfo)
         out_images = []
         if alpha != None:
@@ -499,14 +500,14 @@ class ImageClipAdapter(VideoClipAdapter):
                 )
                 for img in image
             ]
-            duration = 1/preview_fps * 1000
+            duration = 1 / preview_fps * 1000
             images[0].save(
                 tmpFullName,
                 save_all=True,
                 append_images=images[1:],
                 duration=duration,
                 loop=0,
-                disposal=2
+                disposal=2,
             )
         else:
             img = Image.fromarray(
@@ -516,7 +517,7 @@ class ImageClipAdapter(VideoClipAdapter):
         if os.path.exists(tmpFullName):
             shutil.move(tmpFullName, fileFullName)
         addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, clip_id, fileName
+            userId, projectId, workflowId, clip_id or old_clip_id, fileName
         )
         if not has_project_id or not has_workflow:
             return {
@@ -527,7 +528,7 @@ class ImageClipAdapter(VideoClipAdapter):
                             "userId": userId,
                             "projectId": projectId,
                             "workflowId": workflowId,
-                            "clipId": clip_id,
+                            "clipId": clip_id or old_clip_id,
                         }
                     ]
                 },
@@ -541,6 +542,7 @@ class ImageClipAdapter(VideoClipAdapter):
             extra_pnginfo.get("workflow", {}),
             workflowId,
             clip_id,
+            old_clip_id,
             addr,
             name,
             "gif" if format == "gif" else "image",
@@ -554,7 +556,7 @@ class ImageClipAdapter(VideoClipAdapter):
                         "userId": userId,
                         "projectId": projectId,
                         "workflowId": workflowId,
-                        "clipId": clip_id,
+                        "clipId": clip_id or old_clip_id,
                         "timeline": timeline,
                     }
                 ]
