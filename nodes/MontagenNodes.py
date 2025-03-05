@@ -2,7 +2,7 @@ import folder_paths
 import os
 import numpy as np
 from . import videosave
-from ..server.MontagenProjManager import MontagenProjManager
+from ..server.MontagenProjManager import MontagenProjManager, default_project_id
 from ..server.LGraph import LGraph
 from datetime import datetime
 import shutil
@@ -23,24 +23,24 @@ class VideoClipAdapter:
     def __init__(self):
         self.output_dir = folder_paths.get_temp_directory()
 
-    @classmethod
-    def get_projs(s):
-        projs = [
-            f'{proj.get("baseInfo",{}).get("name")}{VideoClipAdapter.PROJECTSPLIT}{proj.get("baseInfo",{}).get("projectId")}'
-            for proj in MontagenProjManager.instance.getProjects(
-                MontagenProjManager.DEFAULTUSERID
-            )
-        ]
-        projs.insert(0, "")
-        return projs
+    # @classmethod
+    # def get_projs(s):
+    #     projs = [
+    #         f'{proj.get("baseInfo",{}).get("name")}{VideoClipAdapter.PROJECTSPLIT}{proj.get("baseInfo",{}).get("projectId")}'
+    #         for proj in MontagenProjManager.instance.getProjects(
+    #             MontagenProjManager.DEFAULTUSERID
+    #         )
+    #     ]
+    #     projs.insert(0, "")
+    #     return projs
 
     @classmethod
     def INPUT_TYPES(s):
-        projs = s.get_projs()
+        # projs = s.get_projs()
         return {
             "required": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
-                "name": ("STRING",),
+                "name": ("STRING", {"default", "Untitled Clip"}),
                 "preview_fps": (
                     "INT",
                     {
@@ -49,7 +49,7 @@ class VideoClipAdapter:
                 ),
             },
             "optional": {
-                "projectId": (sorted(projs), {"tooltip": "The project id."}),
+                "tag": ("STRING", {"tooltip": "The tag."}),
                 "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
             },
             "hidden": {
@@ -71,11 +71,11 @@ class VideoClipAdapter:
     def IS_CHANGED(s, **keywords):
         return datetime.now().isoformat()
 
-    def process_project_id(self, projectId):
-        if VideoClipAdapter.PROJECTSPLIT in projectId:
-            parts = projectId.split(VideoClipAdapter.PROJECTSPLIT)
-            projectId = parts[-1]
-        return projectId
+    # def process_project_id(self, projectId):
+    #     if VideoClipAdapter.PROJECTSPLIT in projectId:
+    #         parts = projectId.split(VideoClipAdapter.PROJECTSPLIT)
+    #         projectId = parts[-1]
+    #     return projectId
 
     def to_base36_random(self) -> str:
         timestamp = int(time.time() * 1000000)
@@ -96,7 +96,7 @@ class VideoClipAdapter:
         ext,
         name,
         unique_id=None,
-        projectId=None,
+        tag=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
@@ -120,50 +120,20 @@ class VideoClipAdapter:
             workflowId = lGraph.montagenInfo.get("workflowId", None)
             clip_id = lGraph.getClipIdFromId(unique_id)
 
-        has_workflow = True
-        # workflowId = "workflow123"
-        if not workflowId:
-            has_workflow = False
-        new_context = False
-        if not projectId_context:
-            new_context = True
+        projectId = default_project_id  # default project id
         if projectId_context:
             projectId = projectId_context
         if not workflowId:
             workflowId = self.to_base36_random()
         old_clip_id = f"{unique_id}_{workflowId}"
-        # if not clip_id:
-        #     clip_id = self.to_base36_random()
         has_project_id = True
-        if not projectId:
-            projectId = self.to_base36_random()
-            has_project_id = False
-        projectId = self.process_project_id(projectId)
-        if has_workflow and new_context and has_project_id:
-            current_proj_id = None
-            for node in prompt.values():
-                class_type = node.get("class_type")
-                if class_type in [
-                    "MontagenVideoClipAdapter",
-                    "MontagenAudioClipAdapter",
-                    "MontagenImageClipAdapter",
-                ]:
-                    node_proj_id = node.get("inputs", {}).get("projectId")
-                    if node_proj_id:
-                        if not current_proj_id:
-                            current_proj_id = node_proj_id
-                        if current_proj_id != node_proj_id:
-                            raise ValueError(
-                                f"All projectId you provide must be the same."
-                            )
         proj = MontagenProjManager.instance._getProject(userId, projectId, True)
-        if has_workflow and has_project_id:
-            if not proj:
-                raise ValueError(f"The project your provide {projectId} is not found.")
+        if not proj:
+            projectId = default_project_id
+            proj = MontagenProjManager.instance._getProject(userId, projectId, True)
         if not proj:
             proj = MontagenProjManager.instance._getProject(userId, projectId, False)
             has_project_id = False
-
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         workflowPath = proj.getOutputPath(workflowId, clip_id)
         fileName = f"{current_time}_{self.to_base36_random()}.{ext}"
@@ -177,13 +147,12 @@ class VideoClipAdapter:
             proj,
             workflowId,
             clip_id,
-            has_workflow,
             has_project_id,
             fileName,
             fileFullName,
             tmpFileName,
             tmpFullName,
-            old_clip_id
+            old_clip_id,
         )
 
     def save_images(
@@ -193,7 +162,7 @@ class VideoClipAdapter:
         preview_fps=25,
         alpha=None,
         unique_id=None,
-        projectId=None,
+        tag=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
@@ -221,18 +190,17 @@ class VideoClipAdapter:
             proj,
             workflowId,
             clip_id,
-            has_workflow,
             has_project_id,
             fileName,
             fileFullName,
             tmpFileName,
             tmpFullName,
-            old_clip_id
+            old_clip_id,
         ) = self.get_info(
             "mp4" if not hasAlpha else "webm",
             name,
             unique_id,
-            projectId,
+            tag,
             prompt,
             extra_pnginfo,
         )
@@ -252,7 +220,7 @@ class VideoClipAdapter:
         addr = MontagenProjManager.instance.getAddr(
             userId, projectId, workflowId, clip_id or old_clip_id, fileName
         )
-        if not has_project_id or not has_workflow:
+        if not has_project_id:
             return {
                 "ui": {
                     "videos": [
@@ -312,14 +280,14 @@ class AudioClipAdapter(VideoClipAdapter):
 
     @classmethod
     def INPUT_TYPES(s):
-        projs = s.get_projs()
+        # projs = s.get_projs()
         return {
             "required": {
                 "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
-                "name": ("STRING",),
+                "name": ("STRING", {"default", "Untitled Clip"}),
             },
             "optional": {
-                "projectId": (sorted(projs), {"tooltip": "The project id."}),
+                "tag": ("STRING", {"tooltip": "The tag."}),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -341,7 +309,7 @@ class AudioClipAdapter(VideoClipAdapter):
         audio,
         name,
         unique_id=None,
-        projectId=None,
+        tag=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
@@ -351,14 +319,13 @@ class AudioClipAdapter(VideoClipAdapter):
             proj,
             workflowId,
             clip_id,
-            has_workflow,
             has_project_id,
             fileName,
             fileFullName,
             tmpFileName,
             tmpFullName,
-            old_clip_id
-        ) = self.get_info("mp3", name, unique_id, projectId, prompt, extra_pnginfo)
+            old_clip_id,
+        ) = self.get_info("mp3", name, unique_id, tag, prompt, extra_pnginfo)
         buff = io.BytesIO()
         wavform = audio["waveform"].cpu()[0]
         torchaudio.save(buff, wavform, audio["sample_rate"], format="MP3")
@@ -369,7 +336,7 @@ class AudioClipAdapter(VideoClipAdapter):
         addr = MontagenProjManager.instance.getAddr(
             userId, projectId, workflowId, clip_id or old_clip_id, fileName
         )
-        if not has_project_id or not has_workflow:
+        if not has_project_id:
             return {
                 "ui": {
                     "videos": [
@@ -426,7 +393,7 @@ class ImageClipAdapter(VideoClipAdapter):
         return {
             "required": {
                 "image": ("IMAGE", {"tooltip": "The image to preview."}),
-                "name": ("STRING",),
+                "name": ("STRING", {"default", "Untitled Clip"}),
                 "preview_fps": (
                     "INT",
                     {
@@ -435,7 +402,7 @@ class ImageClipAdapter(VideoClipAdapter):
                 ),
             },
             "optional": {
-                "projectId": (sorted(projs), {"tooltip": "The project id."}),
+                "tag": ("STRING", {"tooltip": "The tag."}),
                 "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
             },
             "hidden": {
@@ -460,7 +427,7 @@ class ImageClipAdapter(VideoClipAdapter):
         preview_fps,
         alpha=None,
         unique_id=None,
-        projectId=None,
+        tag=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
@@ -474,14 +441,13 @@ class ImageClipAdapter(VideoClipAdapter):
             proj,
             workflowId,
             clip_id,
-            has_workflow,
             has_project_id,
             fileName,
             fileFullName,
             tmpFileName,
             tmpFullName,
-            old_clip_id
-        ) = self.get_info(format, name, unique_id, projectId, prompt, extra_pnginfo)
+            old_clip_id,
+        ) = self.get_info(format, name, unique_id, tag, prompt, extra_pnginfo)
         out_images = []
         if alpha != None:
             alpha = 1.0 - nodes_compositing.resize_mask(alpha, image.shape[1:])
@@ -519,7 +485,7 @@ class ImageClipAdapter(VideoClipAdapter):
         addr = MontagenProjManager.instance.getAddr(
             userId, projectId, workflowId, clip_id or old_clip_id, fileName
         )
-        if not has_project_id or not has_workflow:
+        if not has_project_id:
             return {
                 "ui": {
                     "videos": [
