@@ -525,6 +525,14 @@ function equals(obj1, obj2, field) {
   if (field) return resolveFieldData(obj1, field) === resolveFieldData(obj2, field);
   else return deepEquals(obj1, obj2);
 }
+function contains(value, list) {
+  if (value != null && list && list.length) {
+    for (const val of list) {
+      if (equals(value, val)) return true;
+    }
+  }
+  return false;
+}
 function isObject$1(value, empty = true) {
   return value instanceof Object && value.constructor === Object && (empty || Object.keys(value).length !== 0);
 }
@@ -1239,7 +1247,7 @@ var config_default = {
     }
   }
 };
-var style$g = ({ dt: n2 }) => `
+var style$k = ({ dt: n2 }) => `
 *,
 ::before,
 ::after {
@@ -1361,7 +1369,7 @@ var style$g = ({ dt: n2 }) => `
     }
 }
 `;
-var style$f = ({ dt: t2 }) => `
+var style$j = ({ dt: t2 }) => `
 .p-tooltip {
     position: absolute;
     display: none;
@@ -1422,7 +1430,7 @@ var style$f = ({ dt: t2 }) => `
     border-bottom-color: ${t2("tooltip.background")};
 }
 `;
-var style$e = ({ dt: n2 }) => `
+var style$i = ({ dt: n2 }) => `
 .p-badge {
     display: inline-flex;
     border-radius: ${n2("badge.border.radius")};
@@ -1498,7 +1506,7 @@ var style$e = ({ dt: n2 }) => `
     height: ${n2("badge.xl.height")};
 }
 `;
-var style$d = ({ dt: n2 }) => `
+var style$h = ({ dt: n2 }) => `
 .p-ink {
     display: block;
     position: absolute;
@@ -1519,7 +1527,7 @@ var style$d = ({ dt: n2 }) => `
     }
 }
 `;
-var style$c = ({ dt: o2 }) => `
+var style$g = ({ dt: o2 }) => `
 .p-button {
     display: inline-flex;
     cursor: pointer;
@@ -2160,7 +2168,7 @@ var style$c = ({ dt: o2 }) => `
     color: ${o2("button.link.active.color")};
 }
 `;
-var style$b = ({ dt: o2 }) => `
+var style$f = ({ dt: o2 }) => `
 .p-dialog {
     max-height: 90%;
     transform: scale(1);
@@ -2308,7 +2316,7 @@ var style$b = ({ dt: o2 }) => `
     flex-grow: 1;
 }
 `;
-var style$a = ({ dt: n2 }) => `
+var style$e = ({ dt: n2 }) => `
 .p-contextmenu {
     background: ${n2("contextmenu.background")};
     color: ${n2("contextmenu.color")};
@@ -2455,7 +2463,7 @@ var style$a = ({ dt: n2 }) => `
     transform: rotate(-90deg);
 }
 `;
-var style$9 = ({ dt: o2 }) => `
+var style$d = ({ dt: o2 }) => `
 .p-toolbar {
     display: flex;
     align-items: center;
@@ -2476,7 +2484,7 @@ var style$9 = ({ dt: o2 }) => `
     align-items: center;
 }
 `;
-var style$8 = ({ dt: o2 }) => `
+var style$c = ({ dt: o2 }) => `
 .p-confirmpopup {
     position: absolute;
     margin-top: ${o2("confirmpopup.gutter")};
@@ -2581,6 +2589,417 @@ var style$8 = ({ dt: o2 }) => `
 .p-confirmpopup-flipped:before {
     border-bottom-color: transparent;
     border-top-color: ${o2("confirmpopup.border.color")};
+}
+`;
+var style$b = ({ dt: n2 }) => `
+.p-iconfield {
+    position: relative;
+}
+
+.p-inputicon {
+    position: absolute;
+    top: 50%;
+    margin-top: calc(-1 * (${n2("icon.size")} / 2));
+    color: ${n2("iconfield.icon.color")};
+    line-height: 1;
+    z-index: 1;
+}
+
+.p-iconfield .p-inputicon:first-child {
+    inset-inline-start: ${n2("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputicon:last-child {
+    inset-inline-end: ${n2("form.field.padding.x")};
+}
+
+.p-iconfield .p-inputtext:not(:first-child),
+.p-iconfield .p-inputwrapper:not(:first-child) .p-inputtext {
+    padding-inline-start: calc((${n2("form.field.padding.x")} * 2) + ${n2("icon.size")});
+}
+
+.p-iconfield .p-inputtext:not(:last-child) {
+    padding-inline-end: calc((${n2("form.field.padding.x")} * 2) + ${n2("icon.size")});
+}
+
+.p-iconfield:has(.p-inputfield-sm) .p-inputicon {
+    font-size: ${n2("form.field.sm.font.size")};
+    width: ${n2("form.field.sm.font.size")};
+    height: ${n2("form.field.sm.font.size")};
+    margin-top: calc(-1 * (${n2("form.field.sm.font.size")} / 2));
+}
+
+.p-iconfield:has(.p-inputfield-lg) .p-inputicon {
+    font-size: ${n2("form.field.lg.font.size")};
+    width: ${n2("form.field.lg.font.size")};
+    height: ${n2("form.field.lg.font.size")};
+    margin-top: calc(-1 * (${n2("form.field.lg.font.size")} / 2));
+}
+`;
+var style$a = ({ dt: n2 }) => `
+.p-inputtext {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-size: 1rem;
+    color: ${n2("inputtext.color")};
+    background: ${n2("inputtext.background")};
+    padding-block: ${n2("inputtext.padding.y")};
+    padding-inline: ${n2("inputtext.padding.x")};
+    border: 1px solid ${n2("inputtext.border.color")};
+    transition: background ${n2("inputtext.transition.duration")}, color ${n2("inputtext.transition.duration")}, border-color ${n2("inputtext.transition.duration")}, outline-color ${n2("inputtext.transition.duration")}, box-shadow ${n2("inputtext.transition.duration")};
+    appearance: none;
+    border-radius: ${n2("inputtext.border.radius")};
+    outline-color: transparent;
+    box-shadow: ${n2("inputtext.shadow")};
+}
+
+.p-inputtext:enabled:hover {
+    border-color: ${n2("inputtext.hover.border.color")};
+}
+
+.p-inputtext:enabled:focus {
+    border-color: ${n2("inputtext.focus.border.color")};
+    box-shadow: ${n2("inputtext.focus.ring.shadow")};
+    outline: ${n2("inputtext.focus.ring.width")} ${n2("inputtext.focus.ring.style")} ${n2("inputtext.focus.ring.color")};
+    outline-offset: ${n2("inputtext.focus.ring.offset")};
+}
+
+.p-inputtext.p-invalid {
+    border-color: ${n2("inputtext.invalid.border.color")};
+}
+
+.p-inputtext.p-variant-filled {
+    background: ${n2("inputtext.filled.background")};
+}
+
+.p-inputtext.p-variant-filled:enabled:hover {
+    background: ${n2("inputtext.filled.hover.background")};
+}
+
+.p-inputtext.p-variant-filled:enabled:focus {
+    background: ${n2("inputtext.filled.focus.background")};
+}
+
+.p-inputtext:disabled {
+    opacity: 1;
+    background: ${n2("inputtext.disabled.background")};
+    color: ${n2("inputtext.disabled.color")};
+}
+
+.p-inputtext::placeholder {
+    color: ${n2("inputtext.placeholder.color")};
+}
+
+.p-inputtext.p-invalid::placeholder {
+    color: ${n2("inputtext.invalid.placeholder.color")};
+}
+
+.p-inputtext-sm {
+    font-size: ${n2("inputtext.sm.font.size")};
+    padding-block: ${n2("inputtext.sm.padding.y")};
+    padding-inline: ${n2("inputtext.sm.padding.x")};
+}
+
+.p-inputtext-lg {
+    font-size: ${n2("inputtext.lg.font.size")};
+    padding-block: ${n2("inputtext.lg.padding.y")};
+    padding-inline: ${n2("inputtext.lg.padding.x")};
+}
+
+.p-inputtext-fluid {
+    width: 100%;
+}
+`;
+var style$9 = ({ dt: e2 }) => `
+.p-tree {
+    background: ${e2("tree.background")};
+    color: ${e2("tree.color")};
+    padding: ${e2("tree.padding")};
+}
+
+.p-tree-root-children,
+.p-tree-node-children {
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+    margin: 0;
+    gap: ${e2("tree.gap")};
+}
+
+.p-tree-root-children {
+    padding: 0;
+    padding-block-start: ${e2("tree.gap")};
+}
+
+.p-tree-node-children {
+    padding: 0;
+    padding-block-start: ${e2("tree.gap")};
+    padding-inline-start: ${e2("tree.indent")};
+}
+
+.p-tree-node {
+    padding: 0;
+    outline: 0 none;
+}
+
+.p-tree-node-content {
+    border-radius: ${e2("tree.node.border.radius")};
+    padding: ${e2("tree.node.padding")};
+    display: flex;
+    align-items: center;
+    outline-color: transparent;
+    color: ${e2("tree.node.color")};
+    gap: ${e2("tree.node.gap")};
+    transition: background ${e2("tree.transition.duration")}, color ${e2("tree.transition.duration")}, outline-color ${e2("tree.transition.duration")}, box-shadow ${e2("tree.transition.duration")};
+}
+
+.p-tree-node:focus-visible > .p-tree-node-content {
+    box-shadow: ${e2("tree.node.focus.ring.shadow")};
+    outline: ${e2("tree.node.focus.ring.width")} ${e2("tree.node.focus.ring.style")} ${e2("tree.node.focus.ring.color")};
+    outline-offset: ${e2("tree.node.focus.ring.offset")};
+}
+
+.p-tree-node-content.p-tree-node-selectable:not(.p-tree-node-selected):hover {
+    background: ${e2("tree.node.hover.background")};
+    color: ${e2("tree.node.hover.color")};
+}
+
+.p-tree-node-content.p-tree-node-selectable:not(.p-tree-node-selected):hover .p-tree-node-icon {
+    color: ${e2("tree.node.icon.hover.color")};
+}
+
+.p-tree-node-content.p-tree-node-selected {
+    background: ${e2("tree.node.selected.background")};
+    color: ${e2("tree.node.selected.color")};
+}
+
+.p-tree-node-content.p-tree-node-selected .p-tree-node-toggle-button {
+    color: inherit;
+}
+
+.p-tree-node-toggle-button {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    width: ${e2("tree.node.toggle.button.size")};
+    height: ${e2("tree.node.toggle.button.size")};
+    color: ${e2("tree.node.toggle.button.color")};
+    border: 0 none;
+    background: transparent;
+    border-radius: ${e2("tree.node.toggle.button.border.radius")};
+    transition: background ${e2("tree.transition.duration")}, color ${e2("tree.transition.duration")}, border-color ${e2("tree.transition.duration")}, outline-color ${e2("tree.transition.duration")}, box-shadow ${e2("tree.transition.duration")};
+    outline-color: transparent;
+    padding: 0;
+}
+
+.p-tree-node-toggle-button:enabled:hover {
+    background: ${e2("tree.node.toggle.button.hover.background")};
+    color: ${e2("tree.node.toggle.button.hover.color")};
+}
+
+.p-tree-node-content.p-tree-node-selected .p-tree-node-toggle-button:hover {
+    background: ${e2("tree.node.toggle.button.selected.hover.background")};
+    color: ${e2("tree.node.toggle.button.selected.hover.color")};
+}
+
+.p-tree-root {
+    overflow: auto;
+}
+
+.p-tree-node-selectable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.p-tree-node-leaf > .p-tree-node-content .p-tree-node-toggle-button {
+    visibility: hidden;
+}
+
+.p-tree-node-icon {
+    color: ${e2("tree.node.icon.color")};
+    transition: color ${e2("tree.transition.duration")};
+}
+
+.p-tree-node-content.p-tree-node-selected .p-tree-node-icon {
+    color: ${e2("tree.node.icon.selected.color")};
+}
+
+.p-tree-filter {
+    margin: ${e2("tree.filter.margin")};
+}
+
+.p-tree-filter-input {
+    width: 100%;
+}
+
+.p-tree-loading {
+    position: relative;
+    height: 100%;
+}
+
+.p-tree-loading-icon {
+    font-size: ${e2("tree.loading.icon.size")};
+    width: ${e2("tree.loading.icon.size")};
+    height: ${e2("tree.loading.icon.size")};
+}
+
+.p-tree .p-tree-mask {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-tree-flex-scrollable {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+}
+
+.p-tree-flex-scrollable .p-tree-root {
+    flex: 1;
+}
+`;
+var style$8 = ({ dt: c2 }) => `
+.p-checkbox {
+    position: relative;
+    display: inline-flex;
+    user-select: none;
+    vertical-align: bottom;
+    width: ${c2("checkbox.width")};
+    height: ${c2("checkbox.height")};
+}
+
+.p-checkbox-input {
+    cursor: pointer;
+    appearance: none;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 1;
+    outline: 0 none;
+    border: 1px solid transparent;
+    border-radius: ${c2("checkbox.border.radius")};
+}
+
+.p-checkbox-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: ${c2("checkbox.border.radius")};
+    border: 1px solid ${c2("checkbox.border.color")};
+    background: ${c2("checkbox.background")};
+    width: ${c2("checkbox.width")};
+    height: ${c2("checkbox.height")};
+    transition: background ${c2("checkbox.transition.duration")}, color ${c2("checkbox.transition.duration")}, border-color ${c2("checkbox.transition.duration")}, box-shadow ${c2("checkbox.transition.duration")}, outline-color ${c2("checkbox.transition.duration")};
+    outline-color: transparent;
+    box-shadow: ${c2("checkbox.shadow")};
+}
+
+.p-checkbox-icon {
+    transition-duration: ${c2("checkbox.transition.duration")};
+    color: ${c2("checkbox.icon.color")};
+    font-size: ${c2("checkbox.icon.size")};
+    width: ${c2("checkbox.icon.size")};
+    height: ${c2("checkbox.icon.size")};
+}
+
+.p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+    border-color: ${c2("checkbox.hover.border.color")};
+}
+
+.p-checkbox-checked .p-checkbox-box {
+    border-color: ${c2("checkbox.checked.border.color")};
+    background: ${c2("checkbox.checked.background")};
+}
+
+.p-checkbox-checked .p-checkbox-icon {
+    color: ${c2("checkbox.icon.checked.color")};
+}
+
+.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+    background: ${c2("checkbox.checked.hover.background")};
+    border-color: ${c2("checkbox.checked.hover.border.color")};
+}
+
+.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-icon {
+    color: ${c2("checkbox.icon.checked.hover.color")};
+}
+
+.p-checkbox:not(.p-disabled):has(.p-checkbox-input:focus-visible) .p-checkbox-box {
+    border-color: ${c2("checkbox.focus.border.color")};
+    box-shadow: ${c2("checkbox.focus.ring.shadow")};
+    outline: ${c2("checkbox.focus.ring.width")} ${c2("checkbox.focus.ring.style")} ${c2("checkbox.focus.ring.color")};
+    outline-offset: ${c2("checkbox.focus.ring.offset")};
+}
+
+.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:focus-visible) .p-checkbox-box {
+    border-color: ${c2("checkbox.checked.focus.border.color")};
+}
+
+.p-checkbox.p-invalid > .p-checkbox-box {
+    border-color: ${c2("checkbox.invalid.border.color")};
+}
+
+.p-checkbox.p-variant-filled .p-checkbox-box {
+    background: ${c2("checkbox.filled.background")};
+}
+
+.p-checkbox-checked.p-variant-filled .p-checkbox-box {
+    background: ${c2("checkbox.checked.background")};
+}
+
+.p-checkbox-checked.p-variant-filled:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+    background: ${c2("checkbox.checked.hover.background")};
+}
+
+.p-checkbox.p-disabled {
+    opacity: 1;
+}
+
+.p-checkbox.p-disabled .p-checkbox-box {
+    background: ${c2("checkbox.disabled.background")};
+    border-color: ${c2("checkbox.checked.disabled.border.color")};
+}
+
+.p-checkbox.p-disabled .p-checkbox-box .p-checkbox-icon {
+    color: ${c2("checkbox.icon.disabled.color")};
+}
+
+.p-checkbox-sm,
+.p-checkbox-sm .p-checkbox-box {
+    width: ${c2("checkbox.sm.width")};
+    height: ${c2("checkbox.sm.height")};
+}
+
+.p-checkbox-sm .p-checkbox-icon {
+    font-size: ${c2("checkbox.icon.sm.size")};
+    width: ${c2("checkbox.icon.sm.size")};
+    height: ${c2("checkbox.icon.sm.size")};
+}
+
+.p-checkbox-lg,
+.p-checkbox-lg .p-checkbox-box {
+    width: ${c2("checkbox.lg.width")};
+    height: ${c2("checkbox.lg.height")};
+}
+
+.p-checkbox-lg .p-checkbox-icon {
+    font-size: ${c2("checkbox.icon.lg.size")};
+    width: ${c2("checkbox.icon.lg.size")};
+    height: ${c2("checkbox.icon.lg.size")};
 }
 `;
 var style$7 = ({ dt: n2 }) => `
@@ -3776,7 +4195,7 @@ export {
   n$B as aW,
   a$E as aX,
   c$p as aY,
-  style$f as aZ,
+  style$j as aZ,
   hasClass as a_,
   e$j as aa,
   t$h as ab,
@@ -3815,25 +4234,31 @@ export {
   createElement as b7,
   fadeIn as b8,
   isTouchDevice as b9,
-  isRTL as bA,
-  style$6 as bB,
-  style$5 as bC,
-  style$4 as bD,
-  style$3 as bE,
-  equals as bF,
-  resolveFieldData as bG,
-  style$2 as bH,
-  style$1 as bI,
-  style as bJ,
-  h$4 as bK,
-  definePreset as bL,
+  style$a as bA,
+  style$9 as bB,
+  style$8 as bC,
+  contains as bD,
+  equals as bE,
+  resolveFieldData as bF,
+  find as bG,
+  style$7 as bH,
+  isRTL as bI,
+  style$6 as bJ,
+  style$5 as bK,
+  style$4 as bL,
+  style$3 as bM,
+  style$2 as bN,
+  style$1 as bO,
+  style as bP,
+  h$4 as bQ,
+  definePreset as bR,
   getAttribute as ba,
-  style$e as bb,
-  style$d as bc,
+  style$i as bb,
+  style$h as bc,
   getHeight as bd,
   getWidth as be,
   getOffset as bf,
-  style$c as bg,
+  style$g as bg,
   getLastFocusableElement as bh,
   focus as bi,
   getFirstFocusableElement as bj,
@@ -3841,19 +4266,19 @@ export {
   unblockBodyScroll as bl,
   $dt as bm,
   blockBodyScroll as bn,
-  style$b as bo,
+  style$f as bo,
   addStyle as bp,
-  style$a as bq,
+  style$e as bq,
   findLastIndex as br,
   getHiddenElementOuterWidth as bs,
   getHiddenElementOuterHeight as bt,
   isPrintableCharacter as bu,
   nestedPosition as bv,
-  style$9 as bw,
-  style$8 as bx,
+  style$d as bw,
+  style$c as bx,
   absolutePosition as by,
-  style$7 as bz,
-  style$g as c,
+  style$b as bz,
+  style$k as c,
   config_default as d,
   isNotEmpty$1 as e,
   dt as f,
