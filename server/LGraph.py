@@ -71,9 +71,9 @@ class LGraph:
     def montagenWorkflowId(self):
         return self.montagenInfo.get("workflowId")
 
-    def addEmptyNode(self, projectId, clipId, name, type):
+    def addEmptyNode(self, clipId, name, type, tag=None):
         state = self.state
-        node = LGraphNode.CreateNode(self, projectId, clipId, name, type)
+        node = LGraphNode.CreateNode(self, clipId, name, type, tag)
         node.id = state["lastNodeId"] + 1
         if state["lastNodeId"] < node.id:
             state["lastNodeId"] = node.id
@@ -121,8 +121,7 @@ class LGraph:
                     for j, node in enumerate(self.nodes):
                         lGraphNode = LGraphNode(self, node)
                         if lGraphNode.id == lLink.origin_id:
-                            for k, slot in enumerate(lGraphNode.outputs):
-                                lslot = LGraphNodeOutput(slot)
+                            for k, lslot in enumerate(lGraphNode.outputs):
                                 for l, llink in enumerate(lslot.links):
                                     if llink == linkId:
                                         lslot.links.pop(l)
@@ -140,8 +139,7 @@ class LGraph:
                         for k, node in enumerate(self.nodes):
                             lGraphNode = LGraphNode(self, node)
                             if lGraphNode.id == lLink.target_id:
-                                for l, slot in enumerate(lGraphNode.inputs):
-                                    lslot = LGraphNodeInput(slot)
+                                for l, lslot in enumerate(lGraphNode.inputs):
                                     if linkId == lslot.link:
                                         lslot.link = None
                     break

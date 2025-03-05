@@ -793,7 +793,7 @@ class MontagenProj:
             self.modifyTime = modifyTime
             lGraph = LGraph(workflow)
             clip_id = self.to_base36_random()
-            lGraph.addEmptyNode(projectId, clip_id, name, type)
+            lGraph.addEmptyNode(clip_id, name, type)
             self._addEmptyClip(workflowId, clip_id, name, type)
             self._saveToPath(self.result())
 

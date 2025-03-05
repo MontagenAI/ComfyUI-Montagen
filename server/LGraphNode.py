@@ -138,7 +138,7 @@ class LGraphNode:
 
     widgetsNameIndex = {"video": 0, "audio": 0, "image": 0, "gif": 0}
 
-    widgetsProjectIdIndex = {"video": 2, "audio": 1, "image": 2, "gif": 2}
+    widgetsTagIndex = {"video": 2, "audio": 1, "image": 2, "gif": 2}
 
     GraphNodeClassMap = {
         "MontagenVideoClipAdapter": "video",
@@ -192,12 +192,12 @@ class LGraphNode:
         self.widgets[LGraphNode.widgetsNameIndex[self.type]] = value
 
     @property
-    def projectId(self):
-        return self.widgets[LGraphNode.widgetsProjectIdIndex[self.type]]
+    def tag(self):
+        return self.widgets[LGraphNode.widgetsTagIndex[self.type]]
 
-    @projectId.setter
-    def projectId(self, value):
-        self.widgets[LGraphNode.widgetsProjectIdIndex[self.type]] = value
+    @tag.setter
+    def tag(self, value):
+        self.widgets[LGraphNode.widgetsTagIndex[self.type]] = value
 
     @property
     def inputs(self):
@@ -212,12 +212,12 @@ class LGraphNode:
         return [LGraphNodeOutput(output) for output in self.data["outputs"]]
 
     @staticmethod
-    def CreateNode(graph, projectId, clipId, name, type):
+    def CreateNode(graph, clipId, name, type, tag=None):
         if type not in LGraphNode.GraphNodeTemplate:
             raise Exception("Node type not found")
         node_data = LGraphNode.GraphNodeTemplate[type].copy()
         lGraphNode = LGraphNode(graph, node_data)
         lGraphNode.clipName = name
         lGraphNode.clipId = clipId
-        lGraphNode.projectId = projectId
+        lGraphNode.tag = tag
         return lGraphNode

@@ -135,7 +135,7 @@ class VideoClipAdapter:
             proj = MontagenProjManager.instance._getProject(userId, projectId, False)
             has_project_id = False
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
-        workflowPath = proj.getOutputPath(workflowId, clip_id)
+        workflowPath = proj.getOutputPath(workflowId, clip_id or old_clip_id)
         fileName = f"{current_time}_{self.to_base36_random()}.{ext}"
         fileFullName = os.path.join(workflowPath, fileName)
         tmpFileName = f"{current_time}_{self.to_base36_random()}_t.{ext}"
