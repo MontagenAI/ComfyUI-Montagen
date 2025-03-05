@@ -112,6 +112,10 @@ class MontagenProjManager:
             name = req_data["name"]
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
+            if project_id == default_project_id:
+                return web.json_response(
+                    {"code": -1, "msg": "Cannot rename default project"}
+                )
             proj = self._getProject(user_id, project_id)
             if not proj:
                 return web.Response(status=404)
@@ -127,6 +131,10 @@ class MontagenProjManager:
             description = req_data["description"]
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
+            if project_id == default_project_id:
+                return web.json_response(
+                    {"code": -1, "msg": "Cannot rename default project"}
+                )
             proj = self._getProject(user_id, project_id)
             if not proj:
                 return web.Response(status=404)
@@ -157,6 +165,10 @@ class MontagenProjManager:
         async def deleteProject(request):
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
+            if project_id == default_project_id:
+                return web.json_response(
+                    {"code": -1, "msg": "Cannot delete default project"}
+                )
             self._deleteProject(user_id, project_id)
             return web.json_response({"code": 0})
 
@@ -356,6 +368,8 @@ class MontagenProjManager:
                 conn.close()
 
     def getProjects(self, userId: str):
+        global default_project
+        global default_project_id
         self.createSqliteDbForUserIfNeeded(userId)
         user_projs_root = self.getUserProjectsRoot(userId)
         db_path = os.path.join(user_projs_root, self.DBFILENAME)
@@ -364,9 +378,11 @@ class MontagenProjManager:
             conn = sqlite3.connect(db_path)
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM projects ORDER BY createTime DESC")
+            cursor.execute(
+                f"SELECT * FROM projects where projectId!='{default_project_id}' ORDER BY createTime DESC"
+            )
             projects = cursor.fetchall()
-            return [
+            return [default_project.resultV2()] + [
                 self._getProject(project["userId"], project["projectId"]).resultV2()
                 for project in projects
             ]
@@ -439,7 +455,13 @@ class MontagenProjManager:
                 self.projcache.pop(key, None)
 
     def addProject(
-        self, userId: str, name: str, description: str, width=None, height=None
+        self,
+        userId: str,
+        name: str,
+        description: str,
+        width=None,
+        height=None,
+        project_id=None,
     ):
         if not name:
             raise Exception("name is empty")
@@ -453,7 +475,7 @@ class MontagenProjManager:
             conn = sqlite3.connect(db_path)
             cursor = conn.cursor()
 
-            project_id = str(uuid.uuid4())
+            project_id = project_id or str(uuid.uuid4())
             create_time = datetime.now()
 
             cursor.execute(
@@ -873,7 +895,7 @@ class MontagenProj:
                     "workflowName": workflow.get("workflow", {})
                     .get("extra", {})
                     .get(MontagenProjManager.MONTAGENPROJ, {})
-                    .get("montagenName", self.DEFAULTWORKFLOWNAME),
+                    .get("workflowName", self.DEFAULTWORKFLOWNAME),
                     "clips": [
                         *self._getNodes(
                             self.timeline,
@@ -909,15 +931,16 @@ class MontagenProj:
                 matching_workflow = workflow
                 break
         if matching_workflow:
-            workflows.remove(matching_workflow)
-        lGraph = LGraph(workflowValue)
-        lGraph.setWorkflowInfo(self.userId, self.projectId, workflowId, None)
-        workflows.append(
-            {
-                "workflow": workflowValue,
-                "id": workflowId,
-            }
-        )
+            matching_workflow["workflow"] = workflowValue
+        else:
+            lGraph = LGraph(workflowValue)
+            lGraph.setWorkflowInfo(self.userId, self.projectId, workflowId, None)
+            workflows.append(
+                {
+                    "workflow": workflowValue,
+                    "id": workflowId,
+                }
+            )
         value = self.getClipById(
             clip_id or old_clip_id, self.timeline, self.timeline.get("children", [])
         )
@@ -1028,7 +1051,16 @@ class MontagenProj:
     def addClip(self, modifyTime, type, typeData=None):
         self.modifyTime = modifyTime
         if type in self.SUPPORTEDTYPES:
-            workflow_id = self.createWorkflow(modifyTime, self.DEFAULTWORKFLOWNAME)
+            workflows = self.timeline.get("workflows", [])
+            currentWorkflow = None
+            for workflow in workflows:
+                currentWorkflow = LGraph(workflow)
+                break
+            workflow_id = (
+                currentWorkflow.montagenWorkflowId
+                if currentWorkflow
+                else self.createWorkflow(modifyTime, self.DEFAULTWORKFLOWNAME)
+            )
             self.workflowAddClip(
                 modifyTime, workflow_id, self.projectId, self.DEFAULTCLIPNAME, type
             )
@@ -1100,4 +1132,26 @@ class MontagenProj:
         return os.path.join(self.getOutputPath(workflowId, clipId), filename)
 
 
+default_project_id = "1"
+default_project_name = "default"
+default_project_description = "default project"
+default_project = None
+
+
+def createDefaultProject():
+    global default_project
+    projManager = MontagenProjManager.instance
+    userId = projManager.DEFAULTUSERID
+    default_project = projManager._getProject(userId, default_project_id)
+    if not default_project:
+        projManager.addProject(
+            userId,
+            default_project_name,
+            default_project_description,
+            project_id=default_project_id,
+        )
+        default_project = projManager._getProject(userId, default_project_id)
+
+
 MontagenProjManager(PromptServer.instance)
+createDefaultProject()
