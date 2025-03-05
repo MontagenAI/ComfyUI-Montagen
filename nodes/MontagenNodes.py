@@ -40,7 +40,7 @@ class VideoClipAdapter:
         return {
             "required": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
-                "name": ("STRING", {"default", "Untitled Clip"}),
+                "name": ("STRING", {"default":"Untitled Clip"}),
                 "preview_fps": (
                     "INT",
                     {
@@ -284,7 +284,7 @@ class AudioClipAdapter(VideoClipAdapter):
         return {
             "required": {
                 "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
-                "name": ("STRING", {"default", "Untitled Clip"}),
+                "name": ("STRING", {"default": "Untitled Clip"}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
@@ -393,7 +393,7 @@ class ImageClipAdapter(VideoClipAdapter):
         return {
             "required": {
                 "image": ("IMAGE", {"tooltip": "The image to preview."}),
-                "name": ("STRING", {"default", "Untitled Clip"}),
+                "name": ("STRING", {"default": "Untitled Clip"}),
                 "preview_fps": (
                     "INT",
                     {
