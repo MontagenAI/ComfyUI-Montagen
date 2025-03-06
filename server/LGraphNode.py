@@ -1,3 +1,6 @@
+import copy
+
+
 class LGraphNodeInput:
     def __init__(self, data):
         self.data = data
@@ -153,6 +156,9 @@ class LGraphNode:
     def serialize(self):
         return self.data
 
+    def clone(self):
+        return copy.deepcopy(self.data)
+
     @property
     def widgets(self):
         return self.data.get("widgets_values")
@@ -215,7 +221,7 @@ class LGraphNode:
     def CreateNode(graph, clipId, name, type, tag=None):
         if type not in LGraphNode.GraphNodeTemplate:
             raise Exception("Node type not found")
-        node_data = LGraphNode.GraphNodeTemplate[type].copy()
+        node_data = copy.deepcopy(LGraphNode.GraphNodeTemplate[type])
         lGraphNode = LGraphNode(graph, node_data)
         lGraphNode.clipName = name
         lGraphNode.clipId = clipId
