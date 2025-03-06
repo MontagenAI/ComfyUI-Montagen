@@ -172,6 +172,30 @@ class MontagenProjManager:
             self._deleteProject(user_id, project_id)
             return web.json_response({"code": 0})
 
+        @server.routes.get("/Montagen/Proj/{id}/Workflow/{workflowId}")
+        async def getWorkflow(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            workflow_id = request.match_info.get("workflowId", None)
+            project_id = request.match_info.get("id", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            workflow = proj.getWorkflow(workflow_id)
+            return web.json_response({"code": 0, "data": workflow})
+
+        @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Edit")
+        async def updateWorkflow(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            req_data = await request.json()
+            workflow_id = request.match_info.get("workflowId", None)
+            proj = self._getProject(user_id, project_id)
+            if not proj:
+                return web.Response(status=404)
+            modify_time = self.updateProjectField(proj.userId, proj.projectId)
+            proj.onWorkflowModify(modify_time, req_data)
+            return web.json_response({"code": 0})
+
         @server.routes.post("/Montagen/Proj/{id}/Workflow/New")
         async def addWorkflow(request):
             user_id = server.user_manager.get_request_user_id(request)
@@ -682,6 +706,20 @@ class MontagenProj:
         self.name = name
         self._saveToPath(self.result())
 
+    def onWorkflowModify(self, modityTime: datetime, workflow: dict):
+        if not workflow:
+            raise Exception("workflow is empty")
+        if not modityTime:
+            modityTime = datetime.now()
+        lGraph = LGraph(workflow)
+        if lGraph.montagenWorkflowId is None:
+            raise Exception("workflow is not montagen workflow")
+        matching_workflow = self._getWorkflowById(lGraph.montagenWorkflowId)
+        if not matching_workflow:
+            raise Exception("workflow is not in timeline")
+        matching_workflow["workflow"] = workflow
+        self._saveToPath(self.result())
+
     def onDescriptionModify(self, modityTime: datetime, description: str):
         if not description:
             raise Exception("description is empty")
@@ -757,6 +795,12 @@ class MontagenProj:
         lGraph = LGraph()
         lGraph.setWorkflowInfo(self.userId, self.projectId, workflow_id, workflow_name)
         return (lGraph.serialize(), workflow_id)
+
+    def getWorkflow(self, workflowId):
+        workflow = self._getWorkflowById(workflowId)
+        if workflow:
+            return workflow.get("workflow", None)
+        return None
 
     def createWorkflow(self, modifyTime, name):
         workflow, workflow_id = self._createEmptyWorkflow(name)
