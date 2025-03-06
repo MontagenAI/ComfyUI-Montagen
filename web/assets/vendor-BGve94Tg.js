@@ -6775,13 +6775,6 @@ function useConfirm() {
   return PrimeVueConfirm;
 }
 var PrimeVueDialogSymbol = Symbol();
-function useDialog() {
-  var PrimeVueDialog = inject(PrimeVueDialogSymbol);
-  if (!PrimeVueDialog) {
-    throw new Error("No PrimeVue Dialog provided!");
-  }
-  return PrimeVueDialog;
-}
 var classes$e = {
   root: "p-confirmdialog",
   icon: "p-confirmdialog-icon",
@@ -15473,36 +15466,35 @@ var ToastService = {
   }
 };
 export {
-  ToastService as A,
   ConfirmationService as C,
   DialogService as D,
-  ElInput as E,
+  ElFormItem as E,
   Ripple as R,
   Tooltip as T,
-  useConfirm as a,
-  script$i as b,
-  script$j as c,
+  ElInput as a,
+  ElButton as b,
+  ElForm as c,
   defineStore as d,
-  script$k as e,
-  script$m as f,
-  script$h as g,
-  ElFormItem as h,
-  ElButton as i,
-  ElForm as j,
-  script$d as k,
-  script$a as l,
-  script$b as m,
-  nanoid as n,
-  script$g as o,
-  script$9 as p,
-  script$8 as q,
-  script$6 as r,
+  script$i as e,
+  script$d as f,
+  script$a as g,
+  script$m as h,
+  script$k as i,
+  script$b as j,
+  script$j as k,
+  script$g as l,
+  script$9 as m,
+  script$8 as n,
+  script$6 as o,
+  script$h as p,
+  script$4 as q,
+  script$3 as r,
   storeToRefs as s,
-  script$4 as t,
-  useDialog as u,
-  script$3 as v,
-  script$7 as w,
-  script as x,
-  createPinia as y,
+  script$7 as t,
+  useConfirm as u,
+  script as v,
+  nanoid as w,
+  createPinia as x,
+  ToastService as y,
   z
 };
