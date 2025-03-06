@@ -68444,17 +68444,30 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     const onFormSubmit = async ({ valid, values }) => {
       if (valid) {
         isloading.value = true;
-        let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/${initialValues.value.workflowId}/Clip/New`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            name: values.textContent,
-            type: initialValues.value.type
-          })
-        });
-        await response.json();
+        if (initialValues.value.type === "workflow") {
+          let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/New`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name: values.textContent
+            })
+          });
+          await response.json();
+        } else {
+          let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/${initialValues.value.workflowId}/Clip/New`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name: values.textContent,
+              type: initialValues.value.type
+            })
+          });
+          await response.json();
+        }
         isloading.value = false;
         visible.value = false;
         eimts("hide");
@@ -68480,7 +68493,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
         "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
         closable: true,
         position: "top",
-        header: "ADD Clip",
+        header: `ADD ${initialValues.value.type == "workflow" ? "Workflow" : "Clip"}`,
         onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
       }, {
         default: withCtx(() => [
@@ -68528,7 +68541,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
           }, 8, ["resolver", "initialValues"])
         ]),
         _: 1
-      }, 8, ["visible"]);
+      }, 8, ["visible", "header"]);
     };
   }
 });
@@ -68670,7 +68683,10 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       console.log("onNodeContentClick_当前点击的node", node2);
       if (node2.gradeType === 1) return;
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: node2.projectId, workflowId: node2.workflowId });
-      workflowUtils.openTabByWorkFlowData(toRaw(node2.workflow), flag || node2.label);
+      if (flag && node2.gradeType === 3) return;
+      let data = flag ? flag.activeState : node2.workflow;
+      (flag == null ? void 0 : flag.filename) && (flag.filename = node2.label);
+      workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
     };
     let gradeType = ref$3(1);
     const menuTargetNode = ref$3();
@@ -68685,10 +68701,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
     const addClipRef = ref$3();
     const openedAndSaveWorkFlow = () => {
-      console.log("新建clip时判断workflow 是否打开 并报错", menuTargetNode.value);
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
       if (flag) {
-        console.log("更新节点数据", flag, flag.activeState);
         updateWorkflow(toRaw(flag == null ? void 0 : flag.activeState) || {});
       }
     };
@@ -68729,6 +68743,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             icon: "pi pi-file",
             command: () => {
               console.log("新增workflow");
+              addClipRef.value.show(menuTargetNode.value, "workflow");
             }
           },
           {
@@ -68759,7 +68774,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                   label: "Delete"
                 },
                 accept: () => {
-                  deleteWorkflow(menuTargetNode.value.projectId);
+                  deleteProject(menuTargetNode.value.projectId);
                 },
                 reject: () => {
                 }
@@ -68816,7 +68831,26 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             label: "Delete Workflow",
             icon: "pi pi-trash",
             command: () => {
-              console.log("删除workflow");
+              confirm.require({
+                group: "dialog",
+                message: `Are you sure delete ${menuTargetNode.value.label} workflow?`,
+                header: "Confirmation",
+                icon: "pi pi-exclamation-triangle",
+                position: "top",
+                rejectProps: {
+                  label: "Cancel",
+                  severity: "secondary",
+                  outlined: true
+                },
+                acceptProps: {
+                  label: "Delete"
+                },
+                accept: () => {
+                  deleteWorkflow(menuTargetNode.value);
+                },
+                reject: () => {
+                }
+              });
             }
           }
         ]);
@@ -68899,6 +68933,10 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         body: JSON.stringify({ name })
       });
       await response.json();
+      let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
+      if (flag) {
+        flag.filename = name;
+      }
       renameEditingNode.value = {};
       refreshList();
     };
@@ -68943,13 +68981,27 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       console.log("refreshList");
       workSpaceStore.getlists();
     };
-    const deleteWorkflow = async (projectId) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`, {
+    const deleteWorkflow = async (data) => {
+      var _a2, _b2, _c2, _d2;
+      console.log("deleteWorkflow", data);
+      let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+      if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === data.workflowId) {
+        if (app$1.extensionManager.workflow.openWorkflows.length > 1) {
+          const nextWorkflow = app$1.extensionManager.workflow.openedWorkflowIndexShift(1);
+          app$1.extensionManager.workflow.closeWorkflow(activeWorkflow);
+          if (nextWorkflow) {
+            app$1.loadGraphData(JSON.parse(JSON.stringify(nextWorkflow.activeState)), true, true, nextWorkflow);
+          }
+        }
+      }
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Workflow/${data.workflowId}`, {
         method: "DELETE"
       });
       await response.json();
-      workSpaceStore.deleteTabs(projectId);
       refreshList();
+    };
+    const deleteProject = async (data) => {
+      console.log("deleteWorkflow", data);
     };
     return (_ctx, _cache) => {
       const _component_Button = script$4;
