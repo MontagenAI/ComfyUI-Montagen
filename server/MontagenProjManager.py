@@ -856,7 +856,7 @@ class MontagenProj:
                     "clipName": clipName,
                     "workflowId": workflowId,
                     "src": parent.get(self.CLIPCONTENT.get(clipType, "src"), None),
-                    "type": parent.get("type"),
+                    "type": parent.get("srcType", None) or parent.get("type", None),
                     "refId": parent.get("refId"),
                 }
                 if not raw
@@ -964,6 +964,7 @@ class MontagenProj:
             "clipName": name,
             "workflowId": workflowId,
             "type": "text",
+            "srcType": type,
             "fontSize": "10rpx",
             "color": "#FFF",
             "x": "50vw",
