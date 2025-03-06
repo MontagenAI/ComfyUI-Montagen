@@ -1,4 +1,5 @@
 import copy
+import random
 
 
 class LGraphNodeInput:
@@ -50,94 +51,48 @@ class LGraphNodeOutput:
 
 
 class LGraphNode:
-
-    GraphNodeTemplate = {
-        "video": {
-            "id": 1,
-            "type": "MontagenVideoClipAdapter",
-            "pos": [415, 196],
-            "size": [210, 130],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-                {"name": "images", "type": "IMAGE", "link": None},
-                {
-                    "name": "alpha",
-                    "type": "MASK",
-                    "shape": 7,
-                    "link": None,
-                },
-            ],
-            "outputs": [
-                {"name": "IMAGE", "type": "IMAGE", "links": None},
-                {"name": "MASK", "type": "MASK", "links": None},
-            ],
-            "properties": {"Node name for S&R": "MontagenVideoClipAdapter"},
-            "widgets_values": ["", 25, "", "image"],
-        },
-        "audio": {
-            "id": 1,
-            "type": "MontagenAudioClipAdapter",
-            "pos": [441, 244],
-            "size": [315, 82],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [{"name": "audio", "type": "AUDIO", "link": None}],
-            "outputs": [{"name": "AUDIO", "type": "AUDIO", "links": None}],
-            "properties": {"Node name for S&R": "MontagenAudioClipAdapter"},
-            "widgets_values": ["", ""],
-        },
-        "image": {
-            "id": 1,
-            "type": "MontagenImageClipAdapter",
-            "pos": [590, 235],
-            "size": [315, 82],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-                {"name": "image", "type": "IMAGE", "link": None},
-                {
-                    "name": "alpha",
-                    "type": "MASK",
-                    "shape": 7,
-                    "link": None,
-                },
-            ],
-            "outputs": [
-                {"name": "IMAGE", "type": "IMAGE", "links": None},
-                {"name": "MASK", "type": "MASK", "links": None},
-            ],
-            "properties": {"Node name for S&R": "MontagenImageClipAdapter"},
-            "widgets_values": ["", 6, "", "image"],
-        },
-        "gif": {
-            "id": 1,
-            "type": "MontagenImageClipAdapter",
-            "pos": [590, 235],
-            "size": [315, 82],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-                {"name": "image", "type": "IMAGE", "link": None},
-                {
-                    "name": "alpha",
-                    "type": "MASK",
-                    "shape": 7,
-                    "link": None,
-                },
-            ],
-            "outputs": [
-                {"name": "IMAGE", "type": "IMAGE", "links": None},
-                {"name": "MASK", "type": "MASK", "links": None},
-            ],
-            "properties": {"Node name for S&R": "MontagenImageClipAdapter"},
-            "widgets_values": ["", 6, "", "image"],
-        },
-    }
+    positions = [
+        [415, 200],
+        [420, 205],
+        [425, 210],
+        [430, 215],
+        [435, 220],
+        [440, 225],
+        [445, 230],
+        [450, 235],
+        [455, 240],
+        [460, 245],
+        [315, 200],
+        [320, 205],
+        [325, 210],
+        [330, 215],
+        [335, 220],
+        [340, 225],
+        [345, 230],
+        [350, 235],
+        [355, 240],
+        [360, 245],
+        [415, 300],
+        [420, 305],
+        [425, 310],
+        [430, 315],
+        [435, 320],
+        [440, 325],
+        [445, 330],
+        [450, 335],
+        [455, 340],
+        [460, 345],
+        [315, 300],
+        [320, 405],
+        [325, 410],
+        [330, 415],
+        [335, 420],
+        [340, 425],
+        [345, 430],
+        [350, 435],
+        [355, 440],
+        [360, 445],
+    ]
 
     widgetsNameIndex = {"video": 0, "audio": 0, "image": 0, "gif": 0}
 
@@ -158,6 +113,97 @@ class LGraphNode:
 
     def clone(self):
         return copy.deepcopy(self.data)
+
+    @staticmethod
+    def createTemplage():
+        position = random.choice(LGraphNode.positions)
+        return {
+            "video": {
+                "id": 1,
+                "type": "MontagenVideoClipAdapter",
+                "pos": position,
+                "size": [210, 130],
+                "flags": {},
+                "order": 0,
+                "mode": 0,
+                "inputs": [
+                    {"name": "images", "type": "IMAGE", "link": None},
+                    {
+                        "name": "alpha",
+                        "type": "MASK",
+                        "shape": 7,
+                        "link": None,
+                    },
+                ],
+                "outputs": [
+                    {"name": "IMAGE", "type": "IMAGE", "links": None},
+                    {"name": "MASK", "type": "MASK", "links": None},
+                ],
+                "properties": {"Node name for S&R": "MontagenVideoClipAdapter"},
+                "widgets_values": ["", 25, "", "image"],
+            },
+            "audio": {
+                "id": 1,
+                "type": "MontagenAudioClipAdapter",
+                "pos": position,
+                "size": [315, 82],
+                "flags": {},
+                "order": 0,
+                "mode": 0,
+                "inputs": [{"name": "audio", "type": "AUDIO", "link": None}],
+                "outputs": [{"name": "AUDIO", "type": "AUDIO", "links": None}],
+                "properties": {"Node name for S&R": "MontagenAudioClipAdapter"},
+                "widgets_values": ["", ""],
+            },
+            "image": {
+                "id": 1,
+                "type": "MontagenImageClipAdapter",
+                "pos": position,
+                "size": [315, 82],
+                "flags": {},
+                "order": 0,
+                "mode": 0,
+                "inputs": [
+                    {"name": "image", "type": "IMAGE", "link": None},
+                    {
+                        "name": "alpha",
+                        "type": "MASK",
+                        "shape": 7,
+                        "link": None,
+                    },
+                ],
+                "outputs": [
+                    {"name": "IMAGE", "type": "IMAGE", "links": None},
+                    {"name": "MASK", "type": "MASK", "links": None},
+                ],
+                "properties": {"Node name for S&R": "MontagenImageClipAdapter"},
+                "widgets_values": ["", 6, "", "image"],
+            },
+            "gif": {
+                "id": 1,
+                "type": "MontagenImageClipAdapter",
+                "pos": position,
+                "size": [315, 82],
+                "flags": {},
+                "order": 0,
+                "mode": 0,
+                "inputs": [
+                    {"name": "image", "type": "IMAGE", "link": None},
+                    {
+                        "name": "alpha",
+                        "type": "MASK",
+                        "shape": 7,
+                        "link": None,
+                    },
+                ],
+                "outputs": [
+                    {"name": "IMAGE", "type": "IMAGE", "links": None},
+                    {"name": "MASK", "type": "MASK", "links": None},
+                ],
+                "properties": {"Node name for S&R": "MontagenImageClipAdapter"},
+                "widgets_values": ["", 6, "", "image"],
+            },
+        }
 
     @property
     def widgets(self):
@@ -219,9 +265,10 @@ class LGraphNode:
 
     @staticmethod
     def CreateNode(graph, clipId, name, type, tag=None):
-        if type not in LGraphNode.GraphNodeTemplate:
+        graphNodeTemplate = LGraphNode.createTemplage()
+        if type not in graphNodeTemplate:
             raise Exception("Node type not found")
-        node_data = copy.deepcopy(LGraphNode.GraphNodeTemplate[type])
+        node_data = graphNodeTemplate[type]
         lGraphNode = LGraphNode(graph, node_data)
         lGraphNode.clipName = name
         lGraphNode.clipId = clipId
