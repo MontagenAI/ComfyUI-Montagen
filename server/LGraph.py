@@ -121,11 +121,13 @@ class LGraph:
                         lGraphNode = LGraphNode(self, node)
                         if lGraphNode.id == lLink.origin_id:
                             for k, lslot in enumerate(lGraphNode.outputs):
-                                for l, llink in enumerate(lslot.links):
-                                    if llink == linkId:
-                                        lslot.links.pop(l)
-                                if len(lslot.links) == 0:
-                                    lslot.links = None
+                                if not lslot.links:
+                                    for l, llink in enumerate(lslot.links):
+                                        if llink == linkId:
+                                            lslot.links.pop(l)
+                                    if len(lslot.links) == 0:
+                                        lslot.links = None
+                            break
                 break
 
     def disconnectOutput(self, nodeOutput: LGraphNode, links):
@@ -133,7 +135,7 @@ class LGraph:
             for j, link in enumerate(self.links):
                 lLink = LLink.create_from_array(link)
                 if lLink.id == linkId:
-                    self.links.pop(i)
+                    self.links.pop(j)
                     if lLink.target_id:
                         for k, node in enumerate(self.nodes):
                             lGraphNode = LGraphNode(self, node)
@@ -141,6 +143,7 @@ class LGraph:
                                 for l, lslot in enumerate(lGraphNode.inputs):
                                     if linkId == lslot.link:
                                         lslot.link = None
+                                break
                     break
 
     def hasNode(self, clipId):

@@ -40,7 +40,7 @@ class VideoClipAdapter:
         return {
             "required": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
-                "name": ("STRING", {"default":"Untitled Clip"}),
+                "name": ("STRING", {"default": "Untitled Clip"}),
                 "preview_fps": (
                     "INT",
                     {
@@ -252,6 +252,13 @@ class VideoClipAdapter:
             duration,
             hasAlpha,
         )
+        MontagenProjManager.instance.onProcessEnd(
+            {
+                "projectId": projectId,
+                "workflowId": workflowId,
+                "clipId": clip_id or old_clip_id,
+            }
+        )
         return {
             "ui": {
                 "videos": [
@@ -364,6 +371,13 @@ class AudioClipAdapter(VideoClipAdapter):
             name,
             "audio",
             duration,
+        )
+        MontagenProjManager.instance.onProcessEnd(
+            {
+                "projectId": projectId,
+                "workflowId": workflowId,
+                "clipId": clip_id or old_clip_id,
+            }
         )
         return {
             "ui": {
@@ -513,6 +527,13 @@ class ImageClipAdapter(VideoClipAdapter):
             name,
             "gif" if format == "gif" else "image",
             duration,
+        )
+        MontagenProjManager.instance.onProcessEnd(
+            {
+                "projectId": projectId,
+                "workflowId": workflowId,
+                "clipId": clip_id or old_clip_id,
+            }
         )
         return {
             "ui": {

@@ -30,6 +30,7 @@ def error_handling_decorator(func):
 
 class MontagenProjManager:
     MONTAGENPROJ = "MontagenProj"
+    MONTAGENPROCESSEND = "MontagenProcessEnd"
     DBFILENAME = "projects.db"
     DEFAULTPROJNAME = "default"
     DEFAULTUSERID = "default"
@@ -672,7 +673,13 @@ class MontagenProjManager:
             dst_lgraph = LGraph(dst_workflow)
             dst_lgraph.importNode(exports)
             dst_project.save()
-        pass
+
+    def onProcessEnd(self, data):
+        PromptServer.instance.send_sync(
+            MontagenProjManager.MONTAGENPROCESSEND,
+            data,
+            PromptServer.instance.client_id,
+        )
 
 
 class MontagenProj:
@@ -737,9 +744,9 @@ class MontagenProj:
             self.timeline = info_data.get("timeline", self.timeline)
 
     def to_base36_random(self) -> str:
-        timestamp = int(time.time() * 1000000)
-        random_number = random.randint(0, 9999)
-        combined_value = timestamp * 10000 + random_number
+        timestamp = int(time.time() * 10000000)
+        random_number = random.randint(0, 999999)
+        combined_value = timestamp * 1000000 + random_number
         alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
         base36 = []
 
@@ -899,6 +906,11 @@ class MontagenProj:
             self.modifyTime = modifyTime
             workflows = self.timeline.get("workflows", [])
             workflows.remove(workflow)
+            try:
+                path = self.getOutputPath(workflowId,None)
+                shutil.rmtree(path)
+            except:
+                pass
             for clip in self._getNodes(
                 self.timeline,
                 lambda x: x.get("workflowId", None) == workflowId,
@@ -985,6 +997,14 @@ class MontagenProj:
         ]
         if parent and len(parent) > 0 and parent[0]:
             parent[0].get("children", []).remove(clip)
+            try:
+                clipId = clip.get("clipId")
+                workflowId = clip.get("workflowId")
+                if clipId and workflowId:
+                    path = self.getOutputPath(workflowId, clipId)
+                    shutil.rmtree(path)
+            except:
+                pass
 
     def _renameClip(self, clip, name):
         clip["clipName"] = name
@@ -1054,6 +1074,8 @@ class MontagenProj:
         else:
             lGraph = LGraph(workflowValue)
             lGraph.setWorkflowInfo(self.userId, self.projectId, workflowId, None)
+            if not lGraph.montagenName:
+                lGraph.montagenName = self.DEFAULTWORKFLOWNAME
             self.timeline["workflows"].append(
                 {
                     "workflow": workflowValue,
@@ -1260,6 +1282,7 @@ def createDefaultProject():
     global default_project
     projManager = MontagenProjManager.instance
     userId = projManager.DEFAULTUSERID
+    projManager.createSqliteDbForUserIfNeeded(userId)
     default_project = projManager._getProject(userId, default_project_id)
     if not default_project:
         projManager.addProject(
