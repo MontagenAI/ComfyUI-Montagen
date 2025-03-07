@@ -30,6 +30,7 @@ def error_handling_decorator(func):
 
 class MontagenProjManager:
     MONTAGENPROJ = "MontagenProj"
+    MONTAGENPROCESSEND = "MontagenProcessEnd"
     DBFILENAME = "projects.db"
     DEFAULTPROJNAME = "default"
     DEFAULTUSERID = "default"
@@ -672,7 +673,9 @@ class MontagenProjManager:
             dst_lgraph = LGraph(dst_workflow)
             dst_lgraph.importNode(exports)
             dst_project.save()
-        pass
+    
+    def onProcessEnd(self,data):
+        PromptServer.instance.send_sync(MontagenProjManager.MONTAGENPROCESSEND, data, PromptServer.instance.client_id)
 
 
 class MontagenProj:
@@ -737,9 +740,9 @@ class MontagenProj:
             self.timeline = info_data.get("timeline", self.timeline)
 
     def to_base36_random(self) -> str:
-        timestamp = int(time.time() * 1000000)
-        random_number = random.randint(0, 9999)
-        combined_value = timestamp * 10000 + random_number
+        timestamp = int(time.time() * 10000000)
+        random_number = random.randint(0, 999999)
+        combined_value = timestamp * 1000000 + random_number
         alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
         base36 = []
 
@@ -1054,6 +1057,8 @@ class MontagenProj:
         else:
             lGraph = LGraph(workflowValue)
             lGraph.setWorkflowInfo(self.userId, self.projectId, workflowId, None)
+            if not lGraph.montagenName:
+                lGraph.montagenName= self.DEFAULTWORKFLOWNAME
             self.timeline["workflows"].append(
                 {
                     "workflow": workflowValue,
