@@ -69076,7 +69076,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
           app$1.loadGraphData({}, true, true, {});
         }
       } else {
-        app$1.loadGraphData(JSON.parse(JSON.stringify(activeWorkflow)), true, true, activeWorkflow);
+        app$1.loadGraphData(JSON.parse(JSON.stringify(activeWorkflow.activeState)), true, true, activeWorkflow);
       }
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
         method: "DELETE"
@@ -69109,7 +69109,14 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       });
       let originSelect = (_a2 = app$1.canvas) == null ? void 0 : _a2.onNodeSelected;
       app$1.canvas.onNodeSelected = function() {
+        var _a3, _b2;
         originSelect && originSelect.apply(this, arguments);
+        let node2 = arguments[0];
+        if ((_a3 = node2.properties) == null ? void 0 : _a3.clipId) {
+          (_b2 = node2.properties) == null ? void 0 : _b2.clipId;
+        } else {
+          `${node2.id}_${node2.extra.Montagen.workflowId}`;
+        }
         console.log("onNodeSelected__当前选中的node", arguments);
       };
     });
