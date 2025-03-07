@@ -68744,7 +68744,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       if (extraData && (extraData == null ? void 0 : extraData.workflowId)) {
         selectedKeys.value = { [extraData == null ? void 0 : extraData.workflowId]: true };
       }
-      if (extraData.projectId === ((_c2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _c2.projectId) && extraData.workflowId === ((_d2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _d2.workflowId)) {
+      if (extraData && (extraData == null ? void 0 : extraData.projectId) === ((_c2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _c2.projectId) && extraData.workflowId === ((_d2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _d2.workflowId)) {
         let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData.projectId}/Workflow/${extraData.workflowId}`, {
           method: "GET"
         });
@@ -69102,13 +69102,14 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       });
     };
     onMounted(() => {
+      var _a2;
       setProxyWorkFlow();
       app$1.api.addEventListener("MontagenProcessEnd", function(params) {
         console.log("MontagenProcessEnd_蒙太奇节点执行完成", params);
       });
-      let originSelect = app$1.canvas.onNodeSelected;
+      let originSelect = (_a2 = app$1.canvas) == null ? void 0 : _a2.onNodeSelected;
       app$1.canvas.onNodeSelected = function() {
-        originSelect.apply(this, arguments);
+        originSelect && originSelect.apply(this, arguments);
         console.log("onNodeSelected__当前选中的node", arguments);
       };
     });
