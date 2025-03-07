@@ -673,9 +673,13 @@ class MontagenProjManager:
             dst_lgraph = LGraph(dst_workflow)
             dst_lgraph.importNode(exports)
             dst_project.save()
-    
-    def onProcessEnd(self,data):
-        PromptServer.instance.send_sync(MontagenProjManager.MONTAGENPROCESSEND, data, PromptServer.instance.client_id)
+
+    def onProcessEnd(self, data):
+        PromptServer.instance.send_sync(
+            MontagenProjManager.MONTAGENPROCESSEND,
+            data,
+            PromptServer.instance.client_id,
+        )
 
 
 class MontagenProj:
@@ -902,6 +906,11 @@ class MontagenProj:
             self.modifyTime = modifyTime
             workflows = self.timeline.get("workflows", [])
             workflows.remove(workflow)
+            try:
+                path = self.getOutputPath(workflowId,None)
+                shutil.rmtree(path)
+            except:
+                pass
             for clip in self._getNodes(
                 self.timeline,
                 lambda x: x.get("workflowId", None) == workflowId,
@@ -988,6 +997,14 @@ class MontagenProj:
         ]
         if parent and len(parent) > 0 and parent[0]:
             parent[0].get("children", []).remove(clip)
+            try:
+                clipId = clip.get("clipId")
+                workflowId = clip.get("workflowId")
+                if clipId and workflowId:
+                    path = self.getOutputPath(workflowId, clipId)
+                    shutil.rmtree(path)
+            except:
+                pass
 
     def _renameClip(self, clip, name):
         clip["clipName"] = name
@@ -1058,7 +1075,7 @@ class MontagenProj:
             lGraph = LGraph(workflowValue)
             lGraph.setWorkflowInfo(self.userId, self.projectId, workflowId, None)
             if not lGraph.montagenName:
-                lGraph.montagenName= self.DEFAULTWORKFLOWNAME
+                lGraph.montagenName = self.DEFAULTWORKFLOWNAME
             self.timeline["workflows"].append(
                 {
                     "workflow": workflowValue,
@@ -1265,6 +1282,7 @@ def createDefaultProject():
     global default_project
     projManager = MontagenProjManager.instance
     userId = projManager.DEFAULTUSERID
+    projManager.createSqliteDbForUserIfNeeded(userId)
     default_project = projManager._getProject(userId, default_project_id)
     if not default_project:
         projManager.addProject(
