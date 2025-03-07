@@ -69068,6 +69068,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       var _a2, _b2, _c2, _d2;
       console.log("deleteWorkflow", data);
       let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+      let changeTracker = activeWorkflow.changeTracker;
       let flag = false;
       if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data) {
         flag = true;
@@ -69078,6 +69079,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
           i2--;
         }
       }
+      app$1.extensionManager.workflow.activeWorkflow.changeTracker = changeTracker;
       if (flag) {
         if (app$1.extensionManager.workflow.openWorkflows.length > 0) {
           app$1.loadGraphData(JSON.parse(JSON.stringify(app$1.extensionManager.workflow.openWorkflows[0].activeState)), true, true, app$1.extensionManager.workflow.openWorkflows[0]);
