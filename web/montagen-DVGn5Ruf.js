@@ -308,7 +308,7 @@
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { d as defineComponent, h as computed, f as reactive, r as ref$3, e as onMounted, c as createElementBlock, o as openBlock, a as createBaseVNode, M as createVNode, I as withCtx, P as unref, C as createTextVNode$1, w as watch, H as createBlock, J as createCommentVNode, ac as withKeys, G as withDirectives, D as toDisplayString, j as withModifiers, O as Fragment, T as Teleport, p as toRaw, l as markRaw, a6 as renderList$1, a3 as onBeforeUnmount, L as resolveDynamicComponent, m as mergeProps$1, K as normalizeClass, n as nextTick$1, a1 as provide, W as onUnmounted, ad as createApp } from "./assets/vue-CrE7Z3iC.js";
-import { d as defineStore, s as storeToRefs, E as ElFormItem, a as ElInput, b as ElButton, c as ElForm, e as script, f as script$1, z, g as script$3, h as script$4, i as script$5, u as useConfirm, j as script$6, k as script$7, l as script$8, T as Tooltip, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, R as Ripple, t as script$f, v as script$g, D as DialogService, C as ConfirmationService, w as nanoid, x as createPinia, y as ToastService } from "./assets/vendor-BGve94Tg.js";
+import { d as defineStore, s as storeToRefs, E as ElFormItem, a as ElInput, b as ElButton, c as ElForm, e as script, f as script$1, z, g as script$3, h as script$4, i as script$5, u as useConfirm, j as script$6, k as script$7, l as script$8, T as Tooltip, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, R as Ripple, t as script$f, v as script$g, D as DialogService, C as ConfirmationService, w as customAlphabet, x as createPinia, y as ToastService } from "./assets/vendor-BuFZAbFD.js";
 import "./assets/lodash-DS8RUn65.js";
 import { q as script$2, P as PrimeVue, r as index$3 } from "./assets/primevue-DVKVlSHj.js";
 import { bR as h, bS as definePreset } from "./assets/primeuix-BOWwxKyx.js";
@@ -68594,7 +68594,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       video: "pi pi-video",
       audio: "pi pi-headphones",
       image: "pi pi-image",
-      text: "pi pi-file"
+      text: "pi pi-file",
+      gif: "pi pi-objects-column"
     };
     const treeNodes = computed(() => {
       let temp = [];
@@ -68672,16 +68673,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const menu = ref$3();
     const onNodeContentClick = async (e, node2) => {
       var _a2, _b2, _c2, _d2, _e2;
-      if (node2.children && node2.children.length > 0) {
-        if (expandedKeys.value[node2.key]) {
-          delete expandedKeys.value[node2.key];
-        } else {
-          expandedKeys.value[node2.key] = true;
-          selectedKeys.value = { [node2.key]: true };
-        }
-        expandedKeys.value = { ...expandedKeys.value };
-      }
-      console.log("onNodeContentClick_当前点击的node", node2);
       if (node2.gradeType === 1) return;
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: node2.projectId, workflowId: node2.workflowId });
       if (flag && node2.gradeType === 3) {
@@ -68748,12 +68739,12 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       }
     };
     const openedRelaodWorkFlow = async () => {
-      var _a2, _b2;
+      var _a2, _b2, _c2, _d2;
       let extraData = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj;
       if (extraData && (extraData == null ? void 0 : extraData.workflowId)) {
         selectedKeys.value = { [extraData == null ? void 0 : extraData.workflowId]: true };
       }
-      if (extraData.projectId === menuTargetNode.value.projectId && extraData.workflowId === menuTargetNode.value.workflowId) {
+      if (extraData.projectId === ((_c2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _c2.projectId) && extraData.workflowId === ((_d2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _d2.workflowId)) {
         let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData.projectId}/Workflow/${extraData.workflowId}`, {
           method: "GET"
         });
@@ -68909,7 +68900,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             label: "Edit Clip",
             icon: "pi pi-file-edit",
             command: (e) => {
-              console.log("编辑workflow clip", toRaw(menuTargetNode.value.workflow));
               let rawData = toRaw(menuTargetNode.value.workflow);
               if (workflowUtils.isWorkFlowOpend(rawData.extra.MontagenProj)) ;
               else {
@@ -68924,7 +68914,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             label: "Delete Clip",
             icon: "pi pi-trash",
             command: () => {
-              console.log("删除workflow clip");
               confirm.require({
                 group: "dialog",
                 message: `Are you sure delete ${menuTargetNode.value.label} clip?`,
@@ -68958,6 +68947,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       console.log("gradeType_____", gradeType.value);
       switch (gradeType.value) {
         case 1:
+          renameProject(newLabel);
           break;
         case 2:
           renameWorkflow(newLabel);
@@ -68966,6 +68956,21 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
           renameClip(newLabel);
           break;
       }
+    };
+    const renameProject = async (name) => {
+      let node2 = renameEditingNode.value;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Name`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+          name
+        }).toString()
+      });
+      await response.json();
+      renameEditingNode.value = {};
+      refreshList();
     };
     const renameWorkflow = async (name) => {
       console.log("重命名workflow", renameEditingNode.value, name);
@@ -69007,6 +69012,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         body: JSON.stringify({ name })
       });
       await response.json();
+      openedRelaodWorkFlow();
       renameEditingNode.value = {};
       refreshList();
     };
@@ -69019,7 +69025,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const addClipAfter = (e) => {
-      console.log("addClipAfter", e);
       openedRelaodWorkFlow();
       refreshList();
     };
@@ -69029,7 +69034,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
     const deleteWorkflow = async (data) => {
       var _a2, _b2, _c2, _d2;
-      console.log("deleteWorkflow", data);
       let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
       if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === data.workflowId) {
         if (app$1.extensionManager.workflow.openWorkflows.length > 1) {
@@ -69052,6 +69056,28 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const deleteProject = async (data) => {
+      var _a2, _b2, _c2, _d2;
+      console.log("deleteWorkflow", data);
+      let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+      let flag = false;
+      if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data) {
+        flag = true;
+      }
+      for (let i2 = 0; i2 < app$1.extensionManager.workflow.openWorkflows.length; i2++) {
+        if (((_d2 = (_c2 = app$1.extensionManager.workflow.openWorkflows[i2].activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.projectId) === data) {
+          app$1.extensionManager.workflow.closeWorkflow(app$1.extensionManager.workflow.openWorkflows[i2]);
+          i2--;
+        }
+      }
+      if (flag) {
+        if (app$1.extensionManager.workflow.openWorkflows.length > 0) {
+          app$1.loadGraphData(JSON.parse(JSON.stringify(app$1.extensionManager.workflow.openWorkflows[0].activeState)), true, true, app$1.extensionManager.workflow.openWorkflows[0]);
+        } else {
+          app$1.loadGraphData({}, true, true, {});
+        }
+      } else {
+        app$1.loadGraphData(JSON.parse(JSON.stringify(activeWorkflow)), true, true, activeWorkflow);
+      }
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
         method: "DELETE"
       });
@@ -69071,13 +69097,20 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         },
         set(value2) {
           activeWorkflowdescrptionValueSetSetter.call(this, value2);
-          console.log("activeWorkflow_在这里监听到了tab的切换", value2);
           openedRelaodWorkFlow();
         }
       });
     };
     onMounted(() => {
       setProxyWorkFlow();
+      app$1.api.addEventListener("MontagenProcessEnd", function(params) {
+        console.log("MontagenProcessEnd_蒙太奇节点执行完成", params);
+      });
+      let originSelect = app$1.canvas.onNodeSelected;
+      app$1.canvas.onNodeSelected = function() {
+        originSelect.apply(this, arguments);
+        console.log("onNodeSelected__当前选中的node", arguments);
+      };
     });
     return (_ctx, _cache) => {
       const _component_Button = script$4;
@@ -69091,7 +69124,10 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock(Fragment, null, [
         createBaseVNode("div", null, [
           createBaseVNode("div", _hoisted_1$9, [
-            createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
+            createVNode(_component_Toolbar, {
+              class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8",
+              style: { "min-height": "37px" }
+            }, {
               start: withCtx(() => _cache[7] || (_cache[7] = [
                 createBaseVNode("span", { class: "text-sm truncate" }, "explorer", -1)
               ])),
@@ -69102,7 +69138,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                     text: "",
                     icon: "pi pi-refresh",
                     class: "p-button-secondary py-1 2xl:py-2",
-                    "aria-label": "refresh",
                     onClick: refreshList
                   }, null, 512), [
                     [_directive_tooltip, "refresh"]
@@ -69111,7 +69146,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                     text: "",
                     icon: "pi pi-plus",
                     class: "p-button-secondary py-1 2xl:py-2",
-                    "aria-label": "add",
                     onClick: addworkflow
                   }, null, 512), [
                     [_directive_tooltip, "add"]
@@ -70143,19 +70177,19 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         workSpaceStore.openWorkFlow({ projectId: data.projectId, timeLine: data.timeline });
       }
     };
+    const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
     const checkWorkflow = () => {
       var _a2, _b2;
       let data = app$1.graph.serialize();
       if ((_b2 = (_a2 = data.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId) return;
       app$1.graph.extra.MontagenProj = {
-        workflowId: nanoid(13)
+        workflowId: cusWorkflowID()
       };
     };
     const watchWorkFlowTabClosed = () => {
       let closeworkflow = app$1.extensionManager.workflow.closeWorkflow;
       app$1.extensionManager.workflow.closeWorkflow = async function() {
         var _a2, _b2;
-        console.log("arguments", arguments);
         let data = JSON.parse(JSON.stringify((_a2 = arguments[0]) == null ? void 0 : _a2.activeState));
         closeworkflow.apply(this, arguments);
         console.log("123", data);
@@ -70178,7 +70212,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         id: "mentegen-explorer",
         icon: "fontello icon-montagen",
         title: "explorer",
-        tooltip: "open explorer",
+        tooltip: "MONTAGEN PROJECTS",
         type: "custom1",
         render: (el) => {
           if (el.__vue_app__) {

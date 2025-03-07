@@ -6364,15 +6364,23 @@ function render$h(_ctx, _cache, $props, $setup, $data, $options) {
   }, _ctx.ptm("end")), [renderSlot(_ctx.$slots, "end")], 16)], 16, _hoisted_1$d);
 }
 script$i.render = render$h;
-const urlAlphabet = "useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";
-let nanoid = (size = 21) => {
-  let id = "";
-  let bytes = crypto.getRandomValues(new Uint8Array(size |= 0));
-  while (size--) {
-    id += urlAlphabet[bytes[size] & 63];
-  }
-  return id;
+let random = (bytes) => crypto.getRandomValues(new Uint8Array(bytes));
+let customRandom = (alphabet, defaultSize, getRandom) => {
+  let mask3 = (2 << Math.log2(alphabet.length - 1)) - 1;
+  let step = -~(1.6 * mask3 * defaultSize / alphabet.length);
+  return (size = defaultSize) => {
+    let id = "";
+    while (true) {
+      let bytes = getRandom(step);
+      let j = step | 0;
+      while (j--) {
+        id += alphabet[bytes[j] & mask3] || "";
+        if (id.length >= size) return id;
+      }
+    }
+  };
 };
+let customAlphabet = (alphabet, size = 21) => customRandom(alphabet, size | 0, random);
 var ConfirmationEventBus = EventBus();
 var OverlayEventBus = EventBus();
 var classes$f = {
@@ -15493,7 +15501,7 @@ export {
   script$7 as t,
   useConfirm as u,
   script as v,
-  nanoid as w,
+  customAlphabet as w,
   createPinia as x,
   ToastService as y,
   z
