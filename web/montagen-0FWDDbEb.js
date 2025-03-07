@@ -68982,7 +68982,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const renameWorkflow = async (name) => {
-      console.log("重命名workflow", renameEditingNode.value, name);
       let node2 = renameEditingNode.value;
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Rename`, {
         method: "POST",
@@ -69046,7 +69045,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === data.workflowId) {
         if (app$1.extensionManager.workflow.openWorkflows.length > 1) {
           const nextWorkflow = app$1.extensionManager.workflow.openedWorkflowIndexShift(1);
+          let changeTracker = activeWorkflow.changeTracker;
           app$1.extensionManager.workflow.closeWorkflow(activeWorkflow);
+          app$1.extensionManager.workflow.activeWorkflow.changeTracker = changeTracker;
           if (nextWorkflow) {
             app$1.loadGraphData(JSON.parse(JSON.stringify(nextWorkflow.activeState)), true, true, nextWorkflow);
           }
@@ -69117,14 +69118,21 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       });
       let originSelect = (_a2 = app$1.canvas) == null ? void 0 : _a2.onNodeSelected;
       app$1.canvas.onNodeSelected = function() {
-        var _a3, _b2, _c2, _d2, _e2, _f2;
+        var _a3, _b2, _c2, _d2;
         originSelect && originSelect.apply(this, arguments);
         let node2 = arguments[0];
-        if ((_a3 = node2.properties) == null ? void 0 : _a3.clipId) {
-          (_b2 = node2.properties) == null ? void 0 : _b2.clipId;
+        let clipId = null;
+        let workflowId = (_b2 = (_a3 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _a3.MontagenProj) == null ? void 0 : _b2.workflowId;
+        if ((_c2 = node2.properties) == null ? void 0 : _c2.clipId) {
+          clipId = (_d2 = node2.properties) == null ? void 0 : _d2.clipId;
         } else {
-          if ((_d2 = (_c2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) {
-            `${node2.id}_${(_f2 = (_e2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _e2.MontagenProj) == null ? void 0 : _f2.workflowId}`;
+          if (workflowId) {
+            clipId = `${node2.id}_${workflowId}`;
+          }
+        }
+        if (clipId) {
+          for (let i2 = 0; i2 < list.value.length; i2++) {
+            if (list.value[i2].workflows.length > 0) ;
           }
         }
         console.log("onNodeSelected__当前选中的node", arguments);
