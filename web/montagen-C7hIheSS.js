@@ -68671,6 +68671,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const selectedKeys = ref$3({});
     const menu = ref$3();
     const onNodeContentClick = async (e, node2) => {
+      var _a2, _b2, _c2, _d2, _e2;
       if (node2.children && node2.children.length > 0) {
         if (expandedKeys.value[node2.key]) {
           delete expandedKeys.value[node2.key];
@@ -68683,9 +68684,30 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       console.log("onNodeContentClick_当前点击的node", node2);
       if (node2.gradeType === 1) return;
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: node2.projectId, workflowId: node2.workflowId });
-      if (flag && node2.gradeType === 3) return;
+      if (flag && node2.gradeType === 3) {
+        let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+        if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === node2.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === node2.workflowId) {
+          let id = "";
+          if (node2.clipId.includes("_")) {
+            id = node2.clipId.split("_")[0];
+          } else {
+            let temp = activeWorkflow.activeState.nodes;
+            for (let i2 = 0; i2 < temp.length; i2++) {
+              if (((_e2 = temp[i2].properties) == null ? void 0 : _e2.clipId) === node2.clipId) {
+                id = temp[i2].id;
+                break;
+              }
+            }
+          }
+          let grahBode = id && app$1.graph.getNodeById(id);
+          if (grahBode) {
+            app$1.canvas.selectNode(grahBode);
+          }
+          return;
+        }
+      }
       let data = flag ? flag.activeState : node2.workflow;
-      (flag == null ? void 0 : flag.filename) && (flag.filename = node2.label);
+      (flag == null ? void 0 : flag.filename) && node2.gradeType == 2 && (flag.filename = node2.label);
       workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
     };
     let gradeType = ref$3(1);
@@ -68701,9 +68723,13 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
     const addClipRef = ref$3();
     const openedAndSaveWorkFlow = () => {
+      var _a2, _b2, _c2, _d2;
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
       if (flag) {
-        updateWorkflow(toRaw(flag == null ? void 0 : flag.activeState) || {});
+        let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+        if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === menuTargetNode.value.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === menuTargetNode.value.workflowId) {
+          updateWorkflow(toRaw(flag == null ? void 0 : flag.activeState) || {});
+        }
       }
     };
     const openedRelaodWorkFlow = async () => {
@@ -68896,6 +68922,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                   label: "Delete"
                 },
                 accept: () => {
+                  openedAndSaveWorkFlow();
                   deleteClip(menuTargetNode.value);
                 },
                 reject: () => {
@@ -68952,6 +68979,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       await response.json();
     };
     const renameClip = async (name) => {
+      openedAndSaveWorkFlow();
       let node2 = renameEditingNode.value;
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Clip/${node2.clipId}/Rename`, {
         method: "POST",
@@ -68993,6 +69021,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             app$1.loadGraphData(JSON.parse(JSON.stringify(nextWorkflow.activeState)), true, true, nextWorkflow);
           }
         }
+      } else {
+        let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: data.projectId, workflowId: data.workflowId });
+        if (flag) {
+          app$1.extensionManager.workflow.closeWorkflow(flag);
+        }
       }
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Workflow/${data.workflowId}`, {
         method: "DELETE"
@@ -69003,6 +69036,25 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const deleteProject = async (data) => {
       console.log("deleteWorkflow", data);
     };
+    const setProxyWorkFlow = () => {
+      let activeWorkflowdescrption = Object.getOwnPropertyDescriptor(app$1.extensionManager.workflow, "activeWorkflow");
+      let activeWorkflowdescrptionValue = activeWorkflowdescrption.value;
+      let activeWorkflowdescrptionValueSet = Object.getOwnPropertyDescriptor(activeWorkflowdescrptionValue.__proto__, "value");
+      let activeWorkflowdescrptionValueSetSetter = activeWorkflowdescrptionValueSet.set;
+      let activeWorkflowdescrptionValueSetGetter = activeWorkflowdescrptionValueSet.get;
+      Object.defineProperty(activeWorkflowdescrptionValue, "value", {
+        get() {
+          return activeWorkflowdescrptionValueSetGetter.call(this);
+        },
+        set(value2) {
+          activeWorkflowdescrptionValueSetSetter.call(this, value2);
+          console.log("activeWorkflow_在这里监听到了tab的切换", value2);
+        }
+      });
+    };
+    onMounted(() => {
+      setProxyWorkFlow();
+    });
     return (_ctx, _cache) => {
       const _component_Button = script$4;
       const _component_Toolbar = script;
@@ -70075,21 +70127,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         workflowId: nanoid(13)
       };
     };
-    const setProxyWorkFlow = () => {
-      let activeWorkflowdescrption = Object.getOwnPropertyDescriptor(app$1.extensionManager.workflow, "activeWorkflow");
-      let activeWorkflowdescrptionValue = activeWorkflowdescrption.value;
-      let activeWorkflowdescrptionValueSet = Object.getOwnPropertyDescriptor(activeWorkflowdescrptionValue.__proto__, "value");
-      let activeWorkflowdescrptionValueSetSetter = activeWorkflowdescrptionValueSet.set;
-      let activeWorkflowdescrptionValueSetGetter = activeWorkflowdescrptionValueSet.get;
-      Object.defineProperty(activeWorkflowdescrptionValue, "value", {
-        get() {
-          return activeWorkflowdescrptionValueSetGetter.call(this);
-        },
-        set(value2) {
-          activeWorkflowdescrptionValueSetSetter.call(this, value2);
-        }
-      });
-    };
     const watchWorkFlowTabClosed = () => {
       let closeworkflow = app$1.extensionManager.workflow.closeWorkflow;
       app$1.extensionManager.workflow.closeWorkflow = function() {
@@ -70140,7 +70177,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         app$1.registerExtension({
           name: "EasymskPage",
           setup(ui) {
-            setProxyWorkFlow();
             watchWorkFlowTabClosed();
             setTimeout(() => {
               let comfyuiLogo = ui.bodyTop.querySelector(".comfyui-menu .comfyui-logo");
