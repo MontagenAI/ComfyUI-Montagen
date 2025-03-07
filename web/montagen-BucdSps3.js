@@ -68595,7 +68595,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       audio: "pi pi-headphones",
       image: "pi pi-image",
       text: "pi pi-file",
-      gif: "pi pi-objects-column"
+      gif: "pi pi-image"
     };
     const treeNodes = computed(() => {
       let temp = [];
