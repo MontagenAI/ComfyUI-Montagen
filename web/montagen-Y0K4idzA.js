@@ -68673,6 +68673,15 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const menu = ref$3();
     const onNodeContentClick = async (e, node2) => {
       var _a2, _b2, _c2, _d2, _e2;
+      if (node2.children && node2.children.length > 0) {
+        if (expandedKeys.value[node2.key]) {
+          delete expandedKeys.value[node2.key];
+        } else {
+          expandedKeys.value[node2.key] = true;
+          selectedKeys.value = { [node2.key]: true };
+        }
+        expandedKeys.value = { ...expandedKeys.value };
+      }
       if (node2.gradeType === 1) return;
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: node2.projectId, workflowId: node2.workflowId });
       if (flag && node2.gradeType === 3) {
@@ -69029,7 +69038,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const refreshList = () => {
-      console.log("refreshList");
       workSpaceStore.getlists();
     };
     const deleteWorkflow = async (data) => {
@@ -70202,7 +70210,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         var _a2, _b2;
         let data = JSON.parse(JSON.stringify((_a2 = arguments[0]) == null ? void 0 : _a2.activeState));
         closeworkflow.apply(this, arguments);
-        console.log("123", data);
         let extra = (_b2 = data == null ? void 0 : data.extra) == null ? void 0 : _b2.MontagenProj;
         if (extra && (extra == null ? void 0 : extra.projectId) && (extra == null ? void 0 : extra.workflowId)) {
           let response = await app$1.api.fetchApi(`/Montagen/Proj/${extra == null ? void 0 : extra.projectId}/Workflow/${extra == null ? void 0 : extra.workflowId}/Edit`, {
@@ -70213,6 +70220,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             body: JSON.stringify(data)
           });
           await response.json();
+          workSpaceStore.getlists();
         }
       };
     };
