@@ -68702,6 +68702,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
           let grahBode = id && app$1.graph.getNodeById(id);
           if (grahBode) {
             app$1.canvas.selectNode(grahBode);
+            centerNodeInCanvas(app$1.graph, grahBode, app$1.canvas.canvas);
           }
           return;
         }
@@ -68710,6 +68711,21 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       (flag == null ? void 0 : flag.filename) && node2.gradeType == 2 && (flag.filename = node2.label);
       workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
     };
+    function centerNodeInCanvas(graph, node2, canvas2) {
+      if (!node2 || !canvas2) return;
+      let canvasRect = canvas2.getBoundingClientRect();
+      let canvasCenter = {
+        x: canvasRect.width / 2,
+        y: canvasRect.height / 2
+      };
+      let nodeCenter = {
+        x: node2.pos[0] + node2.size[0] / 2,
+        y: node2.pos[1] + node2.size[1] / 2
+      };
+      graph.extra.ds.offset[0] = canvasCenter.x - nodeCenter.x * graph.extra.ds.scale;
+      graph.extra.ds.offset[1] = canvasCenter.y - nodeCenter.y * graph.extra.ds.scale;
+      graph.setDirtyCanvas(true, true);
+    }
     let gradeType = ref$3(1);
     const menuTargetNode = ref$3();
     const handleContextMenu = (event2, node2) => {
@@ -68723,11 +68739,10 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
     const addClipRef = ref$3();
     const openedAndSaveWorkFlow = () => {
-      var _a2, _b2, _c2, _d2;
       let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
       if (flag) {
-        let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
-        if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === menuTargetNode.value.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === menuTargetNode.value.workflowId) {
+        if (flag == null ? void 0 : flag._isModified) {
+          flag.save();
           updateWorkflow(toRaw(flag == null ? void 0 : flag.activeState) || {});
         }
       }
@@ -68735,6 +68750,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const openedRelaodWorkFlow = async () => {
       var _a2, _b2;
       let extraData = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj;
+      if (extraData && (extraData == null ? void 0 : extraData.workflowId)) {
+        selectedKeys.value = { [extraData == null ? void 0 : extraData.workflowId]: true };
+      }
       if (extraData.projectId === menuTargetNode.value.projectId && extraData.workflowId === menuTargetNode.value.workflowId) {
         let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData.projectId}/Workflow/${extraData.workflowId}`, {
           method: "GET"
@@ -69034,7 +69052,12 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const deleteProject = async (data) => {
-      console.log("deleteWorkflow", data);
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
+        method: "DELETE"
+      });
+      await response.json();
+      workSpaceStore.deleteTabs(data);
+      refreshList();
     };
     const setProxyWorkFlow = () => {
       let activeWorkflowdescrption = Object.getOwnPropertyDescriptor(app$1.extensionManager.workflow, "activeWorkflow");
@@ -69049,6 +69072,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         set(value2) {
           activeWorkflowdescrptionValueSetSetter.call(this, value2);
           console.log("activeWorkflow_在这里监听到了tab的切换", value2);
+          openedRelaodWorkFlow();
         }
       });
     };
@@ -70129,9 +70153,23 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
     const watchWorkFlowTabClosed = () => {
       let closeworkflow = app$1.extensionManager.workflow.closeWorkflow;
-      app$1.extensionManager.workflow.closeWorkflow = function() {
+      app$1.extensionManager.workflow.closeWorkflow = async function() {
+        var _a2, _b2;
+        console.log("arguments", arguments);
+        let data = JSON.parse(JSON.stringify((_a2 = arguments[0]) == null ? void 0 : _a2.activeState));
         closeworkflow.apply(this, arguments);
-        console.log("123", arguments);
+        console.log("123", data);
+        let extra = (_b2 = data == null ? void 0 : data.extra) == null ? void 0 : _b2.MontagenProj;
+        if (extra && (extra == null ? void 0 : extra.projectId) && (extra == null ? void 0 : extra.workflowId)) {
+          let response = await app$1.api.fetchApi(`/Montagen/Proj/${extra == null ? void 0 : extra.projectId}/Workflow/${extra == null ? void 0 : extra.workflowId}/Edit`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          });
+          await response.json();
+        }
       };
     };
     const mutationObserver = ref$3(null);
