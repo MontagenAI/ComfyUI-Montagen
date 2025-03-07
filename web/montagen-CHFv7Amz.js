@@ -69139,7 +69139,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               style: { "min-height": "37px" }
             }, {
               start: withCtx(() => _cache[7] || (_cache[7] = [
-                createBaseVNode("span", { class: "text-sm truncate" }, "projects", -1)
+                createBaseVNode("span", { class: "text-sm truncate" }, "PROJECTS", -1)
               ])),
               center: withCtx(() => _cache[8] || (_cache[8] = [])),
               end: withCtx(() => [
