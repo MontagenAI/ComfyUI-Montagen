@@ -2,7 +2,7 @@
 
 Objective: Build a ComfyUI-based video editing framework.
 
-## [0.1.2] - 2025-03-08
+## [0.1.2] - 2025-03-07
 
 **Feature Update: Better Project Manipulation With New Directory Hierarchy.**
 
