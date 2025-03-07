@@ -69109,13 +69109,15 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       });
       let originSelect = (_a2 = app$1.canvas) == null ? void 0 : _a2.onNodeSelected;
       app$1.canvas.onNodeSelected = function() {
-        var _a3, _b2;
+        var _a3, _b2, _c2, _d2, _e2, _f2;
         originSelect && originSelect.apply(this, arguments);
         let node2 = arguments[0];
         if ((_a3 = node2.properties) == null ? void 0 : _a3.clipId) {
           (_b2 = node2.properties) == null ? void 0 : _b2.clipId;
         } else {
-          `${node2.id}_${node2.extra.Montagen.workflowId}`;
+          if ((_d2 = (_c2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) {
+            `${node2.id}_${(_f2 = (_e2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _e2.MontagenProj) == null ? void 0 : _f2.workflowId}`;
+          }
         }
         console.log("onNodeSelected__当前选中的node", arguments);
       };
@@ -69137,7 +69139,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               style: { "min-height": "37px" }
             }, {
               start: withCtx(() => _cache[7] || (_cache[7] = [
-                createBaseVNode("span", { class: "text-sm truncate" }, "explorer", -1)
+                createBaseVNode("span", { class: "text-sm truncate" }, "projects", -1)
               ])),
               center: withCtx(() => _cache[8] || (_cache[8] = [])),
               end: withCtx(() => [
@@ -70220,7 +70222,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         id: "mentegen-explorer",
         icon: "fontello icon-montagen",
         title: "explorer",
-        tooltip: "MONTAGEN PROJECTS",
+        tooltip: "PROJECTS",
         type: "custom1",
         render: (el) => {
           if (el.__vue_app__) {
