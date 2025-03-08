@@ -2,6 +2,21 @@
 
 Objective: Build a ComfyUI-based video editing framework.
 
+## [0.1.2] - 2025-03-07
+
+**Feature Update: Better Project Manipulation With New Directory Hierarchy.**
+
+### Changed
+
+- [UI] Enhanced Project Panel: Display the project hierarchy, including the workflows and clips within each project, with full manipulation.(#14)
+- [UI] ComfyUI Tab Sync: Synchronize the state of items between Project Panel and ComfyUI Tabs.(#16)
+- [UI] Workflow As Directory: `Add` or `Edit` clips in the specified original workflow instead of opening a new workflow.(#18)
+
+### Fixed
+
+- [UI] Keyboard Letter Conflict: When input 'a', 's' key, it's not working.(#5)
+
+
 ## [0.1.1] - 2025-03-01
 
 **Feature Update: Alpha Channel Support, Properties Panel, And Other Enhancements.**
@@ -18,7 +33,7 @@ Objective: Build a ComfyUI-based video editing framework.
 - [Node] Alpha Channel Support: Add alpha input and output to `Clip Adapter` nodes.(#8)
   - `Image Clip Adapter`: Add `preview_fps` parameter, working with alpha input to generate a `gif` image clip, as a special type on `STICKER` track.
   - `Video Clip Adapter`: Working with alpha input to generate a `webm` video clip, as a common video type.
-- [UI] Move `Projects` To Header In `Montagen`:(#6)
+- [UI] Move `Projects` To Header In `Montagen`:(#10)
 
 
 ## [0.1.0] - 2025-02-22
