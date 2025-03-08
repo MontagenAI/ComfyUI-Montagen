@@ -906,11 +906,6 @@ class MontagenProj:
             self.modifyTime = modifyTime
             workflows = self.timeline.get("workflows", [])
             workflows.remove(workflow)
-            try:
-                path = self.getOutputPath(workflowId,None)
-                shutil.rmtree(path)
-            except:
-                pass
             for clip in self._getNodes(
                 self.timeline,
                 lambda x: x.get("workflowId", None) == workflowId,
@@ -918,6 +913,11 @@ class MontagenProj:
             ):
                 self._deleteClip(clip)
             self._saveToPath(self.result())
+            try:
+                path = self.getOutputPath(workflowId,None)
+                shutil.rmtree(path)
+            except:
+                pass
 
     def workflowAddClip(self, modifyTime, workflowId, projectId, name, type):
         workflow = self._getWorkflowById(workflowId)
