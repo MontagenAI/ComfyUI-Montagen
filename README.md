@@ -44,7 +44,7 @@ A built-in video editor for ComfyUI, integrating media clips with custom nodes, 
 * `Video Clip Adapter` & `Image Clip Adapter`
   * `images` is required. `alpha` is optional, only for image sequence with alpha channel.
   * Set `preview_fps` to use image sequence as a Montagen clip.
-* `Audio Clip Adapter` & `Image Clip Adapter`
+* `Audio Clip Adapter`
   * `audio` is required.
  * Use input images as output, so node output is optional.
  * Set media clip `name` to inditify the clip from `PROJECTS` panel.
