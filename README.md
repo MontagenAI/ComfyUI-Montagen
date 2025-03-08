@@ -2,37 +2,53 @@
 
 A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation.
 
-![Montagen ScreenShot](assets/montagenscreenshot0.1.1.png)
+![Montagen ScreenShot](assets/montagenscreenshot0.1.2.png)
 
-## [CHANGELOG](CHANGELOG.md) [0.1.1] - 2025-03-01
 
-**Feature Update: Alpha Channel Support, Properties Panel, And Other Enhancements.**
+## [CHANGELOG](CHANGELOG.md) [0.1.2] - 2025-03-08
 
-### Added
-
-- [UI] Easier Navigation: Click top-left `ComfyUI` or `Montagen`, to switch between the two pages.(#6)
-- [UI] Add `Properties` Panel: Support basic transform controls (`rotate`, `x`, `y`, `width`, `height`) for image and video clips.(#4)
-- [Editor] Add Text Clip Type: With addtional property `text` on `Properties` panel.(#7)
-- [Editor] Add `STICKER` Track Type: Support `gif` image clip as a sticker.(#13)
+**Feature Update: Better Project Manipulation With New Directory Hierarchy.**
 
 ### Changed
 
-- [Node] Alpha Channel Support: Add alpha input and output to `Clip Adapter` nodes.(#8)
-  - `Image Clip Adapter`: Add `preview_fps` parameter, working with alpha input to generate a `gif` image clip, as a special type on `STICKER` track.
-  - `Video Clip Adapter`: Working with alpha input to generate a `webm` video clip, as a common video type.
-- [UI] Move `Projects` To Header In `Montagen`:(#6)
+- [UI] Enhanced Project Panel in `ComfyUI`: (#14)
+  - Display the project hierarchy, including the workflows and clips within each project.
+  - Left Click to `Select` item.
+  - Right click to open a menu with options: `Open`, `Add`, `Rename`, `Delete`.
+- [UI] `ComfyUI` Tab Sync: Synchronize the `Select` state of items between the Project Panel and ComfyUI Tabs.(#16)
+  - A `Workflow` from `Projects` Panel, is linked to the `Workflow` tab in `ComfyUI`.
+  - A `Clip` from `Projects` Panel, is linked to the `Clip Adapter` node in the `Workflow` page.
+- [UI] Workflow As Directory: `Add` or `Edit` clips in the specified original workflow instead of opening a new workflow.(#18)
+- [UI] Explorer Panel In `Montagen`: Combine `Project` and `Property` together in one panel.(#9)
+
+### Fixed
+
+- [UI] Keyboard Letter Conflict: When input 'a', 's' key, it's not working.(#5)
 
 
 ## Usage
 
-### Video Clip Adapter
+### Integrating Media Clips With `Clip Adapter` Nodes
 
-![PreviewImages ScreenShot](assets/videoclipadapterscreenshot0.1.1.png)
+![Montagen ScreenShot In ComfyUI](assets/montagenscreenshotincomfyui0.1.2.png)
 
-* `images` is required. `alpha` is optional, only for image sequence with alpha channel.
-* Set media clip `name` and `preview_fps` to use image sequence as a Montagen video clip.
-* After ComfyUI workflow execution is complete, click `Preview` to open the Montagen UI.
-* Use input images as output, so node output is optional.
+#### Steps
+
+1. Add a project with `width` and `height` from Montagen `PROJECTS` panel.
+2. Add a workflow in the project, and add `Clip Adapter` nodes.
+3. Execute the workflow.
+4. `Open` and `Edit` clips in `Montagen`.
+
+#### `Clip Adapter` Nodes
+
+* `Video Clip Adapter` & `Image Clip Adapter`
+  * `images` is required. `alpha` is optional, only for image sequence with alpha channel.
+  * Set `preview_fps` to use image sequence as a Montagen clip.
+* `Audio Clip Adapter` & `Image Clip Adapter`
+  * `audio` is required.
+ * Use input images as output, so node output is optional.
+ * Set media clip `name` to inditify the clip from `PROJECTS` panel.
+
 
 ## Installation
 
