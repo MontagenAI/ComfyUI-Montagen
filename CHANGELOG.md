@@ -44,9 +44,9 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.1.0] - 2025-02-22
 
-### Added
-
 **Initial Release: Core Video Editing Features for ComfyUI.**
+
+### Added
 
 - [Core] The Structural Mapping Between ComfyUI and Montagen:
   - ComfyUI Workflows & Montagen Project: Combine multiple ComfyUI workflows into a structured timeline project for seamless video editing. Each workflow can be linked to only one Montagen project and cannot be shared across projects.
@@ -86,9 +86,9 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.0.1] - 2025-01-25
 
-### Added
-
 **Technical Validation: A ComfyUI Custom Node for Image Sequence Preview with a Timeline Component.**
+
+### Added
 
 - [Node] `Preview Images`: Input images, output (optional) the input images. Set 'FPS', and click 'Preview' button to open the Montagen UI with image sequence.
 - [UI] Montagen UI Draft: A classic video editor layout (`Media Panel`, `Metadata Panel`, `Editor`, `Player`).
