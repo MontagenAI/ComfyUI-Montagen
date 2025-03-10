@@ -7,10 +7,12 @@ A built-in video editor for ComfyUI, integrating media clips with custom nodes, 
 
 ## [CHANGELOG](CHANGELOG.md) [0.1.2] - 2025-03-08
 
-**Feature Update: Better Project Manipulation With New Directory Hierarchy.**
+*Feature Update: Better Project Manipulation With New Directory Hierarchy.*
 
 ### Changed
 
+- [Core] The Structural Mapping Between ComfyUI and Montagen:
+  - ComfyUI Node & Montagen Clip: Treat workflow as directory, `Add` or `Edit` clips in the specified original workflow instead of opening a new workflow.(#18)
 - [UI] Enhanced Project Panel in `ComfyUI`: (#14)
   - Display the project hierarchy, including the workflows and clips within each project.
   - Left Click to `Select` item.
@@ -18,7 +20,6 @@ A built-in video editor for ComfyUI, integrating media clips with custom nodes, 
 - [UI] `ComfyUI` Tab Sync: Synchronize the `Select` state of items between the Project Panel and ComfyUI Tabs.(#16)
   - A `Workflow` from `Projects` Panel, is linked to the `Workflow` tab in `ComfyUI`.
   - A `Clip` from `Projects` Panel, is linked to the `Clip Adapter` node in the `Workflow` page.
-- [UI] Workflow As Directory: `Add` or `Edit` clips in the specified original workflow instead of opening a new workflow.(#18)
 - [UI] Explorer Panel In `Montagen`: Combine `Project` and `Property` together in one panel.(#9)
 
 ### Fixed
