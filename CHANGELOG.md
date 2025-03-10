@@ -4,7 +4,7 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.1.2] - 2025-03-08
 
-**Feature Update: Better Project Manipulation With New Directory Hierarchy.**
+*Feature Update: Better Project Manipulation With New Directory Hierarchy.*
 
 ### Changed
 
@@ -25,7 +25,7 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.1.1] - 2025-03-01
 
-**Feature Update: Alpha Channel Support, Properties Panel, And Other Enhancements.**
+*Feature Update: Alpha Channel Support, Properties Panel, And Other Enhancements.*
 
 ### Added
 
@@ -44,7 +44,7 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.1.0] - 2025-02-22
 
-**Initial Release: Core Video Editing Features for ComfyUI.**
+*Initial Release: Core Video Editing Features for ComfyUI.*
 
 ### Added
 
@@ -86,7 +86,7 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.0.1] - 2025-01-25
 
-**Technical Validation: A ComfyUI Custom Node for Image Sequence Preview with a Timeline Component.**
+*Technical Validation: A ComfyUI Custom Node for Image Sequence Preview with a Timeline Component.*
 
 ### Added
 
