@@ -1,5 +1,6 @@
 from .LLink import LLink
 from .LGraphNode import LGraphNode
+from .Utils import to_base36_random
 
 
 class LGraph:
@@ -257,6 +258,9 @@ class LGraph:
             old_to_new_ids[node["id"]] = new_id
             node["id"] = new_id
             imported_nodes.append(node)
+            lNode = LGraphNode(self, node)
+            if lNode.isMontagenNode:
+                lNode.clipId = to_base36_random()
 
         # Process links
         for link in imported_data["links"]:

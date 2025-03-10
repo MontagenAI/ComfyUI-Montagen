@@ -14,6 +14,7 @@ import torchaudio
 from PIL import Image
 from comfy_extras import nodes_compositing
 import torch
+from ..server.Utils import to_base36_random
 
 
 class VideoClipAdapter:
@@ -124,7 +125,7 @@ class VideoClipAdapter:
         if projectId_context:
             projectId = projectId_context
         if not workflowId:
-            workflowId = self.to_base36_random()
+            workflowId = to_base36_random()
         old_clip_id = f"{unique_id}_{workflowId}"
         has_project_id = True
         proj = MontagenProjManager.instance._getProject(userId, projectId, True)
@@ -136,9 +137,9 @@ class VideoClipAdapter:
             has_project_id = False
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         workflowPath = proj.getOutputPath(workflowId, clip_id or old_clip_id)
-        fileName = f"{current_time}_{self.to_base36_random()}.{ext}"
+        fileName = f"{current_time}_{to_base36_random()}.{ext}"
         fileFullName = os.path.join(workflowPath, fileName)
-        tmpFileName = f"{current_time}_{self.to_base36_random()}_t.{ext}"
+        tmpFileName = f"{current_time}_{to_base36_random()}_t.{ext}"
         tmpFullName = os.path.join(workflowPath, tmpFileName)
 
         return (

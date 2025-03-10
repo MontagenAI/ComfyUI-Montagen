@@ -234,6 +234,10 @@ class LGraphNode:
     @property
     def type(self):
         return LGraphNode.GraphNodeClassMap[self.data["type"]]
+    
+    @property
+    def isMontagenNode(self):
+        return self.data["type"] in LGraphNode.GraphNodeClassMap
 
     @property
     def clipName(self):

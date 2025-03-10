@@ -9,10 +9,10 @@ import sqlite3
 import threading
 import shutil
 import mimetypes
-import time
-import random
 from .LGraph import LGraph
+from .LGraphNode import LGraphNode
 import copy
+from .Utils import to_base36_random
 
 
 def error_handling_decorator(func):
@@ -672,6 +672,7 @@ class MontagenProjManager:
                 raise Exception("Dst workflow not found")
             dst_lgraph = LGraph(dst_workflow)
             dst_lgraph.importNode(exports)
+            dst_project.synWorkflowAndClip(dst_workflow)
             dst_project.save()
 
     def onProcessEnd(self, data):
@@ -712,7 +713,7 @@ class MontagenProj:
             "width": 1280 if not width else width,
             "height": 720 if not height else height,
             "name": "montagen",
-            "refId": self.to_base36_random(),
+            "refId": to_base36_random(),
             "children": [],
             "workflows": [],
         }
@@ -742,20 +743,6 @@ class MontagenProj:
             if self.projectId != projectId or self.userId != userId:
                 raise Exception("ProjectId or UserId not match")
             self.timeline = info_data.get("timeline", self.timeline)
-
-    def to_base36_random(self) -> str:
-        timestamp = int(time.time() * 10000000)
-        random_number = random.randint(0, 999999)
-        combined_value = timestamp * 1000000 + random_number
-        alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
-        base36 = []
-
-        while combined_value != 0:
-            combined_value, i = divmod(combined_value, 36)
-            base36.append(alphabet[i])
-
-        result = "".join(reversed(base36))
-        return result.zfill(9)
 
     def onCreated(self, name: str, description: str, createTime: datetime):
         if not name:
@@ -803,7 +790,32 @@ class MontagenProj:
         if not matching_workflow:
             raise Exception("workflow is not in timeline")
         matching_workflow["workflow"] = workflow
+        self.synWorkflowAndClip(workflow)
         self._saveToPath(self.result())
+
+    def synWorkflowAndClip(self, workflow: dict):
+        lGraph = LGraph(workflow)
+        workflowId = lGraph.montagenWorkflowId
+        for node in lGraph.nodes:
+            lGraphNode = LGraphNode(lGraph, node)
+            if lGraphNode.isMontagenNode:
+                if (
+                    len(
+                        [
+                            *self._getNodes(
+                                self.timeline,
+                                fn=lambda x: x.get("clipId", None) == lGraphNode.clipId,
+                            )
+                        ]
+                    )
+                    <= 0
+                ):
+                    self._addEmptyClip(
+                        workflowId,
+                        lGraphNode.clipId,
+                        lGraphNode.clipName,
+                        lGraphNode.type,
+                    )
 
     def onDescriptionModify(self, modityTime: datetime, description: str):
         if not description:
@@ -875,7 +887,7 @@ class MontagenProj:
             yield from self._getNodes(child, fn, check, iterator, raw)
 
     def _createEmptyWorkflow(self, name=None):
-        workflow_id = self.to_base36_random()
+        workflow_id = to_base36_random()
         workflow_name = name or self.DEFAULTWORKFLOWNAME
         lGraph = LGraph()
         lGraph.setWorkflowInfo(self.userId, self.projectId, workflow_id, workflow_name)
@@ -914,7 +926,7 @@ class MontagenProj:
                 self._deleteClip(clip)
             self._saveToPath(self.result())
             try:
-                path = self.getOutputPath(workflowId,None)
+                path = self.getOutputPath(workflowId, None)
                 shutil.rmtree(path)
             except:
                 pass
@@ -926,7 +938,7 @@ class MontagenProj:
         if workflow:
             self.modifyTime = modifyTime
             lGraph = LGraph(workflow)
-            clip_id = self.to_base36_random()
+            clip_id = to_base36_random()
             lGraph.addEmptyNode(clip_id, name, type)
             self._addEmptyClip(workflowId, clip_id, name, type)
             self._saveToPath(self.result())
@@ -983,7 +995,7 @@ class MontagenProj:
             "y": "50vh",
             "duration": 10,
             "text": f"empty {type} clip\nright-click to edit",
-            "refId": self.to_base36_random(),
+            "refId": to_base36_random(),
             "zIndex": 1,
             "children": [],
         }
@@ -1106,7 +1118,7 @@ class MontagenProj:
                     "y": "50vh",
                     "active": True,
                     "duration": duration,
-                    "refId": self.to_base36_random(),
+                    "refId": to_base36_random(),
                 }
                 self.timeline["children"].append(videoClip)
                 if hasAlpha:
@@ -1122,7 +1134,7 @@ class MontagenProj:
                         "type": "audio",
                         "audio": True,
                         "duration": duration,
-                        "refId": self.to_base36_random(),
+                        "refId": to_base36_random(),
                         "children": [],
                     }
                 )
@@ -1140,7 +1152,7 @@ class MontagenProj:
                         "y": "50vh",
                         "active": True,
                         "duration": duration,
-                        "refId": self.to_base36_random(),
+                        "refId": to_base36_random(),
                     }
                 )
             elif type == "gif":
@@ -1158,7 +1170,7 @@ class MontagenProj:
                         "active": True,
                         "loop": True,
                         "duration": duration,
-                        "refId": self.to_base36_random(),
+                        "refId": to_base36_random(),
                     }
                 )
         else:
@@ -1213,7 +1225,7 @@ class MontagenProj:
                 "x": "50vw",
                 "y": "50vh",
                 "duration": 10,
-                "refId": self.to_base36_random(),
+                "refId": to_base36_random(),
                 "zIndex": 1,
                 "text": typeData,
                 "children": [],
