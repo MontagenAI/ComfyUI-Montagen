@@ -68483,7 +68483,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
         }
         isloading.value = false;
         visible.value = false;
-        eimts("hide");
+        eimts("hide", { type: initialValues.value.type });
       }
     };
     onMounted(() => {
@@ -69081,6 +69081,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const addClipAfter = (e) => {
       openedRelaodWorkFlow();
       refreshList();
+      if (props2.showMeta && e && e.type == "text") {
+        getProjectDetail({ projectId: workSpaceStore.activeProject.projectId });
+      }
     };
     const copyPasteClip = async () => {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${clipBoard.projectId}/Workflow/${clipBoard.workflowId}/Clip/${clipBoard.clipId}/Copy`, {
@@ -69156,6 +69159,12 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       await response.json();
       workSpaceStore.deleteTabs(data);
       refreshList();
+    };
+    const getProjectDetail = async (item) => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
+      const json = await response.json();
+      let timeLine = json.data.timeline;
+      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
     };
     const setProxyWorkFlow = () => {
       let activeWorkflowdescrption = Object.getOwnPropertyDescriptor(app$1.extensionManager.workflow, "activeWorkflow");
@@ -70268,6 +70277,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       chainCallback(nodeType.prototype, "onNodeCreated", function(...arg) {
         checkWorkflow();
         this.addWidget("button", "preview", "image", () => {
+          console.log("preview", this);
+          let MontagenProj = app$1.extensionManager.workflow.activeWorkflow.activeState.extra.MontagenProj;
+          let projectId = MontagenProj.projectId || "1";
+          let project = workSpaceStore.list.find((item) => item.baseInfo.projectId == projectId);
+          if (project) {
+            console.log("project 名称", project.baseInfo.name);
+            workSpaceStore.addTabs({ projectId: project.baseInfo.projectId, label: project.baseInfo.name, baseInfo: project.baseInfo });
+            workSpaceStore.openWorkFlow({ projectId: project.baseInfo.projectId, timeLine: project.timeline });
+          }
           menuStore.changeShow(true);
         });
       });
