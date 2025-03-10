@@ -68456,17 +68456,30 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
           });
           await response.json();
         } else {
-          let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/${initialValues.value.workflowId}/Clip/New`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              name: values.textContent,
-              type: initialValues.value.type
-            })
-          });
-          await response.json();
+          if (initialValues.value.type === "text") {
+            let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Text/New`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              body: new URLSearchParams({
+                text: values.textContent
+              }).toString()
+            });
+            await response.json();
+          } else {
+            let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/${initialValues.value.workflowId}/Clip/New`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                name: values.textContent,
+                type: initialValues.value.type
+              })
+            });
+            await response.json();
+          }
         }
         isloading.value = false;
         visible.value = false;
@@ -68781,6 +68794,15 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               separator: true
             }
           ]);
+        } else {
+          temp.push({
+            label: "Add Text Clip",
+            icon: "pi pi-file",
+            command: () => {
+              openedAndSaveWorkFlow();
+              addClipRef.value.show(menuTargetNode.value, "text");
+            }
+          });
         }
         temp.push(...[
           {
@@ -68853,23 +68875,17 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               addClipRef.value.show(menuTargetNode.value, "image");
             }
           },
-          {
-            label: "Add Text Clip",
-            icon: "pi pi-file",
-            command: () => {
-              openedAndSaveWorkFlow();
-              addClipRef.value.show(menuTargetNode.value, "text");
-            }
-          },
+          // {
+          //   label: 'Add Text Clip',
+          //   icon: 'pi pi-file',
+          //   command: () => {
+          //     openedAndSaveWorkFlow();
+          //     // console.log('Refresh');
+          //     addClipRef.value.show(menuTargetNode.value, 'text');
+          //   },
+          // },
           {
             separator: true
-          },
-          {
-            label: "Paste Clip",
-            icon: "pi pi-file-edit",
-            command: (e) => {
-              copyPasteClip();
-            }
           },
           {
             label: "Rename Workflow",
@@ -68906,6 +68922,15 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             }
           }
         ]);
+        if (clipBoard) {
+          temp.push({
+            label: "Paste Clip",
+            icon: "pi pi-file-edit",
+            command: (e) => {
+              copyPasteClip();
+            }
+          });
+        }
       } else if (gradeType.value === 3) {
         temp.push(...[
           {
@@ -68925,17 +68950,18 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               };
             }
           },
-          {
-            label: "Edit Clip",
-            icon: "pi pi-file-edit",
-            command: (e) => {
-              let rawData = toRaw(menuTargetNode.value.workflow);
-              if (workflowUtils.isWorkFlowOpend(rawData.extra.MontagenProj)) ;
-              else {
-                app$1.loadGraphData(rawData, true, true, menuTargetNode.value.workflowName);
-              }
-            }
-          },
+          // {
+          //   label: 'Edit Clip',
+          //   icon: 'pi pi-file-edit',
+          //   command: (e) => {
+          //     // console.log('编辑workflow clip', toRaw(menuTargetNode.value.workflow));
+          //     let rawData = toRaw(menuTargetNode.value.workflow);
+          //     if (workflowUtils.isWorkFlowOpend(rawData.extra.MontagenProj)) {// 已经打开了
+          //     } else { // 重新打开workflow
+          //       app.loadGraphData(rawData, true, true, menuTargetNode.value.workflowName);
+          //     }
+          //   },
+          // },
           {
             separator: true
           },
@@ -69068,6 +69094,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         })
       });
       await response.json();
+      clipBoard = null;
       refreshList();
     };
     const refreshList = () => {
@@ -69143,7 +69170,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         set(value2) {
           activeWorkflowdescrptionValueSetSetter.call(this, value2);
           openedRelaodWorkFlow();
-        }
+        },
+        configurable: true
       });
     };
     onMounted(() => {
