@@ -799,23 +799,23 @@ class MontagenProj:
         for node in lGraph.nodes:
             lGraphNode = LGraphNode(lGraph, node)
             if lGraphNode.isMontagenNode:
-                if (
-                    len(
-                        [
-                            *self._getNodes(
-                                self.timeline,
-                                fn=lambda x: x.get("clipId", None) == lGraphNode.clipId,
-                            )
-                        ]
-                    )
-                    <= 0
-                ):
+                first_item = next(
+                    self._getNodes(
+                        self.timeline,
+                        fn=lambda x: x.get("clipId", None) == lGraphNode.clipId,
+                        raw=True,
+                    ),
+                    None,
+                )
+                if not first_item:
                     self._addEmptyClip(
                         workflowId,
                         lGraphNode.clipId,
                         lGraphNode.clipName,
                         lGraphNode.type,
                     )
+                else:
+                    first_item["clipName"] = lGraphNode.clipName
 
     def onDescriptionModify(self, modityTime: datetime, description: str):
         if not description:
