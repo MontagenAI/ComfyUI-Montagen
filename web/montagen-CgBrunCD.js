@@ -68506,8 +68506,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
         "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
         closable: true,
         position: "top",
-        header: `ADD ${initialValues.value.type == "workflow" ? "Workflow" : "Clip"}`,
-        onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
+        header: `ADD ${initialValues.value.type == "workflow" ? "Workflow" : "Clip"}`
       }, {
         default: withCtx(() => [
           createVNode(unref(script$2), {
@@ -68760,11 +68759,21 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         }
       }
     };
-    const openedRelaodWorkFlow = async () => {
+    const openedRelaodWorkFlow = async (flag = false) => {
       var _a2, _b2, _c2, _d2;
       let extraData = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj;
       if (extraData && (extraData == null ? void 0 : extraData.workflowId)) {
         selectedKeys.value = { [extraData == null ? void 0 : extraData.workflowId]: true };
+      }
+      if (flag && extraData) {
+        let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData == null ? void 0 : extraData.projectId}/Workflow/${extraData == null ? void 0 : extraData.workflowId}/Edit`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(app$1.extensionManager.workflow.activeWorkflow.activeState)
+        });
+        await response.json();
       }
       if (extraData && (extraData == null ? void 0 : extraData.projectId) === ((_c2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _c2.projectId) && extraData.workflowId === ((_d2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _d2.workflowId)) {
         let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData.projectId}/Workflow/${extraData.workflowId}`, {
@@ -68998,8 +69007,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     });
     const renameEditingNode = ref$3({});
     const handleRename = (newLabel) => {
-      console.log("重命名", newLabel);
-      console.log("gradeType_____", gradeType.value);
       switch (gradeType.value) {
         case 1:
           renameProject(newLabel);
@@ -69178,7 +69185,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         },
         set(value2) {
           activeWorkflowdescrptionValueSetSetter.call(this, value2);
-          openedRelaodWorkFlow();
+          console.log("activeWorkflow_在这里监听到了tab的切换", value2);
+          openedRelaodWorkFlow(true);
         },
         configurable: true
       });
