@@ -837,16 +837,17 @@ class MontagenProj:
                 json.dump(value, f)
 
     def getClips(self):
-        return {
-            "clips": [
-                *self._getNodes(
+        return [
+            *(
+                clip
+                for clip in self._getNodes(
                     self.timeline,
-                    fn=lambda x: x.get("type", None) != "canvas",
+                    fn=lambda x: x.get("type", None) in self.CLIPCONTENT,
                     check=lambda x: self._hasClipInWorkflow(x),
                 )
-            ],
-            "workflows": self.timeline.get("workflows", []),
-        }
+                if not self._hasClipInWorkflow(clip)
+            )
+        ]
 
     def _hasClipInWorkflow(self, clip, workflow=None):
         clipId = clip.get("clipId")
