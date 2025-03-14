@@ -1,11 +1,9 @@
 from .LLink import LLink
 from .LGraphNode import LGraphNode
-from .Utils import to_base36_random
+from .Utils import to_base36_random, MONTAGENPROJ
 
 
 class LGraph:
-    MONTAGENPROJ = "MontagenProj"
-
     def __init__(self, data=None):
         self.state = {
             "lastGroupId": 0,
@@ -19,22 +17,34 @@ class LGraph:
                 data = data["workflow"]
             self.data = data
         else:
-            self.data = {
-                "last_node_id": 0,
-                "last_link_id": 0,
-                "nodes": [],
-                "links": [],
-                "groups": [],
-                "config": {},
-                "extra": {
-                    "ds": {
-                        "scale": 0.6830134553650705,
-                        "offset": [112.17316262637709, 297.8017098189753],
-                    }
-                },
-                "version": 0.4,
-            }
+            self.data = LGraph.create_empty_workflow()
         self.configure(data)
+
+    @staticmethod
+    def create_empty_workflow(
+        user_id=None, project_id=None, workflow_id=None, workflow_name=None
+    ):
+        return {
+            "last_node_id": 0,
+            "last_link_id": 0,
+            "nodes": [],
+            "links": [],
+            "groups": [],
+            "config": {},
+            "extra": {
+                "ds": {
+                    "scale": 1,
+                    "offset": [100, 300],
+                },
+                MONTAGENPROJ: {
+                    "userId": user_id,
+                    "projectId": project_id,
+                    "workflowId": workflow_id,
+                    "workflowName": workflow_name,
+                },
+            },
+            "version": 0.4,
+        }
 
     @property
     def extra(self):
@@ -44,7 +54,7 @@ class LGraph:
 
     @property
     def montagenInfo(self):
-        return self.extra.get(LGraph.MONTAGENPROJ, {})
+        return self.extra.get(MONTAGENPROJ, {})
 
     @property
     def nodes(self):
@@ -87,7 +97,7 @@ class LGraph:
             "workflowId": workflow_id,
             "workflowName": workflow_name or self.montagenName,
         }
-        self.extra[LGraph.MONTAGENPROJ] = montagen_workflow_info
+        self.extra[MONTAGENPROJ] = montagen_workflow_info
 
     def deleteNode(self, clipId):
         for i, node in enumerate(self.nodes):
@@ -157,7 +167,7 @@ class LGraph:
     def getClipIdFromId(self, nodeId):
         for node in self.nodes:
             lGraphNode = LGraphNode(self, node)
-            if lGraphNode.id == nodeId:
+            if str(lGraphNode.id) == str(nodeId):
                 return lGraphNode.clipId
         return None
 

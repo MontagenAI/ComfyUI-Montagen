@@ -1,0 +1,222 @@
+import os
+import json
+from datetime import datetime
+import shutil
+from .Utils import (
+    to_base36_random,
+    INFOFILE,
+    WORKFLOWBASEPATH,
+    VERSIONINFO,
+    create_path,
+    rename_path,
+    DEFAULTWORKFLOWNAME,
+    ASSETSDIR,
+    REfSDIR,
+)
+from .MontagenWorkflow import MontagenWorkflow
+from .MontagenCacheManager import MontagenCacheManager
+from .MontagenMaterial import MontagenMaterial
+
+
+class MontagenProj:
+
+    def __init__(self, project_base):
+        self.project_path = project_base
+        self.project_data = self._load_project()
+        self.montagen_cache_manager = MontagenCacheManager()
+        self.montagen_material = MontagenMaterial(ASSETSDIR, REfSDIR, self)
+        self.cache_key = f"{self.project_id}_montagen_workflows"
+
+    @property
+    def project_path_name(self):
+        return os.path.basename(self.project_path)
+
+    @property
+    def project_base_name(self):
+        return os.path.dirname(self.project_path)
+
+    @property
+    def width(self):
+        return self.project_data.get("width")
+
+    @property
+    def height(self):
+        return self.project_data.get("height")
+
+    @property
+    def user_id(self):
+        return self.project_data.get("baseInfo", {}).get("userId")
+
+    @property
+    def project_id(self):
+        return self.project_data.get("baseInfo", {}).get("projectId")
+
+    @property
+    def project_name(self):
+        return self.project_data.get("baseInfo", {}).get("name")
+
+    @project_name.setter
+    def project_name(self, value):
+        self.project_data["baseInfo"]["name"] = value
+
+    @property
+    def modify_time(self):
+        return datetime.fromisoformat(
+            self.project_data.get("baseInfo", {}).get("modifyTime")
+        )
+
+    @modify_time.setter
+    def modify_time(self, value):
+        self.project_data["baseInfo"]["modifyTime"] = value.isoformat()
+
+    @property
+    def description(self):
+        return self.project_data.get("baseInfo", {}).get("description")
+
+    @description.setter
+    def description(self, value):
+        self.project_data["baseInfo"]["description"] = value
+
+    @property
+    def workflows(self):
+        cached_workflows = self.montagen_cache_manager.get(self.cache_key)
+        if cached_workflows is not None:
+            cached_workflows.sort(
+                key=lambda x: (x.workflow_name, -x.modify_time.timestamp())
+            )
+            return cached_workflows
+
+        workflows_path = os.path.join(self.project_path, WORKFLOWBASEPATH)
+        if not os.path.exists(workflows_path):
+            os.makedirs(workflows_path)
+            return []
+
+        workflows = []
+        for workflow_name in os.listdir(workflows_path):
+            workflow_path = os.path.join(workflows_path, workflow_name)
+            if os.path.isdir(workflow_path):
+                workflow = MontagenWorkflow.create_from_path(workflow_path, self)
+                if workflow:
+                    workflows.append(workflow)
+        workflows.sort(key=lambda x: (x.workflow_name, -x.modify_time.timestamp()))
+        self.montagen_cache_manager.add(self.cache_key, workflows)
+        return workflows
+
+    def _load_project(self):
+        project_json = os.path.join(self.project_path, INFOFILE)
+        if not os.path.exists(project_json):
+            raise FileNotFoundError(f"{project_json} file not found")
+        with open(project_json, "r") as file:
+            project_json = json.load(file)
+        if "version" in project_json and "baseInfo" in project_json:
+            return project_json
+        raise ValueError(f"Invalid {project_json} file")
+
+    def _save_project(self):
+        self.save_project(self.project_path, self.project_data)
+
+    def to_json(self):
+        return {
+            **self.project_data,
+            "workflows": [workflow.to_json() for workflow in self.workflows],
+        }
+
+    @staticmethod
+    def save_project(project_path, project_data):
+        project_json = os.path.join(project_path, INFOFILE)
+        with open(project_json, "w") as file:
+            json.dump(project_data, file, indent=4)
+
+    @staticmethod
+    def create_new_project(
+        base_path,
+        user_id: str,
+        name: str,
+        description: str,
+        project_id=None,
+        width=1280,
+        height=720,
+    ):
+        if not name:
+            raise Exception("name is empty")
+        if not user_id:
+            raise Exception("user_id is empty")
+        if not description:
+            description = name
+        if not base_path:
+            raise Exception("base_path is empty")
+        if not width:
+            width=1280
+        if not height:
+            height=720
+        project_id = project_id or to_base36_random()
+        current_time = datetime.now()
+        base_info = {
+            "createTime": current_time.isoformat(),
+            "modifyTime": current_time.isoformat(),
+            "description": description,
+            "name": name,
+            "projectId": project_id,
+            "userId": user_id,
+        }
+        info_data = {
+            "baseInfo": base_info,
+            "version": VERSIONINFO,
+            "width": width,
+            "height": height,
+        }
+        base_name = create_path(base_path, name)
+        MontagenProj.save_project(os.path.join(base_path, base_name), info_data)
+        return MontagenProj(os.path.join(base_path, base_name))
+
+    @staticmethod
+    def create_from_path(project_path: str):
+        try:
+            if not os.path.exists(project_path):
+                return None
+            return MontagenProj(project_path)
+        except:
+            return None
+
+    def get_workflow(self, workflow_id: str):
+        for workflow in self.workflows:
+            if workflow.workflow_id == workflow_id:
+                return workflow
+        return None
+
+    def project_rename(self, name: str):
+        if not name:
+            raise Exception("name is empty")
+        if name != self.name:
+            self.modify_time = datetime.now()
+            self.project_name = name
+            self._save_project()
+            new_name = rename_path(self.project_base_name, self.project_path_name, name)
+            self.project_path = os.path.join(self.project_base_name, new_name)
+            self.montagen_cache_manager.delete(self.cache_key)
+            self.montagen_material.clear_cache()
+
+    def project_change_description(self, description: str):
+        if not description:
+            raise Exception("description is empty")
+        if description != self.description:
+            self.modify_time = datetime.now()
+            self.description = description
+            self._save_project()
+
+    def delete(self):
+        if self.project_path:
+            shutil.rmtree(self.project_path)
+
+    def project_delete_workflow(self, workflow_id: str):
+        workflow = self.get_workflow(workflow_id)
+        if workflow:
+            workflow.delete()
+            self.montagen_cache_manager.delete(self.cache_key)
+
+    def project_add_workflow(self, workflow_name: str):
+        workflow_name = workflow_name or DEFAULTWORKFLOWNAME
+        workflow_id = to_base36_random()
+        MontagenWorkflow.create_new_workflow(workflow_id, workflow_name, self)
+        self.montagen_cache_manager.delete(self.cache_key)
+        return workflow_id

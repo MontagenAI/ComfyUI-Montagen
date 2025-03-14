@@ -2,46 +2,33 @@ import folder_paths
 import os
 import numpy as np
 from . import videosave
-from ..server.MontagenProjManager import MontagenProjManager, default_project_id
+from ..server.MontagenProjManager import MontagenProjManager
 from ..server.LGraph import LGraph
 from datetime import datetime
-import shutil
 from comfy.utils import ProgressBar
-import time
-import random
 import io
 import torchaudio
 from PIL import Image
 from comfy_extras import nodes_compositing
 import torch
-from ..server.Utils import to_base36_random
+from ..server.Utils import (
+    defualt_user_info,
+    DEFAULTCLIPNAME,
+    DEFAULTUSERID,
+    DEFAULTWORKFLOWNAME,
+)
 
 
 class VideoClipAdapter:
-
-    PROJECTSPLIT = "__"
-
     def __init__(self):
         self.output_dir = folder_paths.get_temp_directory()
 
-    # @classmethod
-    # def get_projs(s):
-    #     projs = [
-    #         f'{proj.get("baseInfo",{}).get("name")}{VideoClipAdapter.PROJECTSPLIT}{proj.get("baseInfo",{}).get("projectId")}'
-    #         for proj in MontagenProjManager.instance.getProjects(
-    #             MontagenProjManager.DEFAULTUSERID
-    #         )
-    #     ]
-    #     projs.insert(0, "")
-    #     return projs
-
     @classmethod
     def INPUT_TYPES(s):
-        # projs = s.get_projs()
         return {
             "required": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
-                "name": ("STRING", {"default": "Untitled Clip"}),
+                "name": ("STRING", {"default": DEFAULTCLIPNAME}),
                 "preview_fps": (
                     "INT",
                     {
@@ -72,26 +59,6 @@ class VideoClipAdapter:
     def IS_CHANGED(s, **keywords):
         return datetime.now().isoformat()
 
-    # def process_project_id(self, projectId):
-    #     if VideoClipAdapter.PROJECTSPLIT in projectId:
-    #         parts = projectId.split(VideoClipAdapter.PROJECTSPLIT)
-    #         projectId = parts[-1]
-    #     return projectId
-
-    def to_base36_random(self) -> str:
-        timestamp = int(time.time() * 1000000)
-        random_number = random.randint(0, 9999)
-        combined_value = timestamp * 10000 + random_number
-        alphabet = "0123456789abcdefghijklmnopqrstuvwxyz"
-        base36 = []
-
-        while combined_value != 0:
-            combined_value, i = divmod(combined_value, 36)
-            base36.append(alphabet[i])
-
-        result = "".join(reversed(base36))
-        return result.zfill(9)
-
     def get_info(
         self,
         ext,
@@ -107,53 +74,45 @@ class VideoClipAdapter:
             raise ValueError("prompt is required.")
         if not name:
             raise ValueError("name is required.")
-        userId = MontagenProjManager.DEFAULTUSERID
-        projectId_context = None
-        workflowId = None
+        user_id = DEFAULTUSERID
+        project_id_context = None
+        workflow_id = None
         clip_id = None
         if "workflow" in extra_pnginfo:
-            workflowNode = extra_pnginfo["workflow"]
-            lGraph = LGraph(workflowNode)
-            userId = lGraph.montagenInfo.get(
-                "userId", MontagenProjManager.DEFAULTUSERID
+            workflow_node = extra_pnginfo["workflow"]
+            lgraph = LGraph(workflow_node)
+            user_id = lgraph.montagenInfo.get("userId", DEFAULTUSERID)
+            project_id_context = lgraph.montagenInfo.get("projectId", None)
+            workflow_id = lgraph.montagenInfo.get("workflowId", None)
+            clip_id = lgraph.getClipIdFromId(unique_id)
+
+        project_id = defualt_user_info["default_project_id"]  # default project id
+        if project_id_context:
+            project_id = project_id_context
+        proj = MontagenProjManager.instance.get_project(user_id, project_id)
+        if not proj:
+            raise ValueError("proj is required.")
+        else:
+            if not workflow_id:
+                workflow_id = proj.project_add_workflow(DEFAULTWORKFLOWNAME)
+            workflow = proj.get_workflow(workflow_id)
+            if not workflow:
+                raise ValueError("workflow is required.")
+            workflow.syn_workflow_clip(extra_pnginfo["workflow"])
+            old_clip_id = f"{unique_id}_{workflow_id}"
+            (fileFullName, tmpFullName) = workflow.get_output_path(
+                clip_id or old_clip_id, ext
             )
-            projectId_context = lGraph.montagenInfo.get("projectId", None)
-            workflowId = lGraph.montagenInfo.get("workflowId", None)
-            clip_id = lGraph.getClipIdFromId(unique_id)
-
-        projectId = default_project_id  # default project id
-        if projectId_context:
-            projectId = projectId_context
-        if not workflowId:
-            workflowId = to_base36_random()
-        old_clip_id = f"{unique_id}_{workflowId}"
-        has_project_id = True
-        proj = MontagenProjManager.instance._getProject(userId, projectId, True)
-        if not proj:
-            projectId = default_project_id
-            proj = MontagenProjManager.instance._getProject(userId, projectId, True)
-        if not proj:
-            proj = MontagenProjManager.instance._getProject(userId, projectId, False)
-            has_project_id = False
-        current_time = datetime.now().strftime("%Y%m%d%H%M%S")
-        workflowPath = proj.getOutputPath(workflowId, clip_id or old_clip_id)
-        fileName = f"{current_time}_{to_base36_random()}.{ext}"
-        fileFullName = os.path.join(workflowPath, fileName)
-        tmpFileName = f"{current_time}_{to_base36_random()}_t.{ext}"
-        tmpFullName = os.path.join(workflowPath, tmpFileName)
-
         return (
-            userId,
-            projectId,
+            user_id,
+            project_id,
             proj,
-            workflowId,
+            workflow_id,
             clip_id,
-            has_project_id,
-            fileName,
-            fileFullName,
-            tmpFileName,
-            tmpFullName,
             old_clip_id,
+            fileFullName,
+            tmpFullName,
+            workflow,
         )
 
     def save_images(
@@ -191,12 +150,10 @@ class VideoClipAdapter:
             proj,
             workflowId,
             clip_id,
-            has_project_id,
-            fileName,
-            fileFullName,
-            tmpFileName,
-            tmpFullName,
             old_clip_id,
+            fileFullName,
+            tmpFullName,
+            workflow,
         ) = self.get_info(
             "mp4" if not hasAlpha else "webm",
             name,
@@ -216,39 +173,14 @@ class VideoClipAdapter:
         videosave.save_video(tmpFullName, frames, preview_fps, pbar, hasAlpha)
         pbar.update_absolute(100)
         if os.path.exists(tmpFullName):
-            shutil.move(tmpFullName, fileFullName)
+            workflow.output_copy(clip_id or old_clip_id, tmpFullName, fileFullName)
 
-        addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, clip_id or old_clip_id, fileName
-        )
-        if not has_project_id:
-            return {
-                "ui": {
-                    "videos": [
-                        {
-                            "addr": addr,
-                            "fps": preview_fps,
-                            "width": frames[0].shape[1],
-                            "height": frames[0].shape[0],
-                            "imageLen": imageLen,
-                            "userId": userId,
-                            "projectId": projectId,
-                            "workflowId": workflowId,
-                            "clipId": clip_id or old_clip_id,
-                        }
-                    ]
-                },
-                "result": (oriImages, oriAlpha),
-            }
         duration = imageLen / preview_fps
-        timeline = MontagenProjManager.instance.modifyClip(
-            proj,
-            extra_pnginfo.get("workflow", {}),
-            workflowId,
+        MontagenProjManager.instance.modify_clip(
+            workflow,
             clip_id,
             old_clip_id,
-            addr,
-            name,
+            fileFullName,
             "video",
             duration,
             hasAlpha,
@@ -264,7 +196,6 @@ class VideoClipAdapter:
             "ui": {
                 "videos": [
                     {
-                        "addr": addr,
                         "fps": preview_fps,
                         "width": frames[0].shape[1],
                         "height": frames[0].shape[0],
@@ -273,7 +204,6 @@ class VideoClipAdapter:
                         "projectId": projectId,
                         "workflowId": workflowId,
                         "clipId": clip_id or old_clip_id,
-                        "timeline": timeline,
                     }
                 ]
             },
@@ -288,11 +218,10 @@ class AudioClipAdapter(VideoClipAdapter):
 
     @classmethod
     def INPUT_TYPES(s):
-        # projs = s.get_projs()
         return {
             "required": {
                 "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
-                "name": ("STRING", {"default": "Untitled Clip"}),
+                "name": ("STRING", {"default": DEFAULTCLIPNAME}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
@@ -327,12 +256,10 @@ class AudioClipAdapter(VideoClipAdapter):
             proj,
             workflowId,
             clip_id,
-            has_project_id,
-            fileName,
-            fileFullName,
-            tmpFileName,
-            tmpFullName,
             old_clip_id,
+            fileFullName,
+            tmpFullName,
+            workflow,
         ) = self.get_info("mp3", name, unique_id, tag, prompt, extra_pnginfo)
         buff = io.BytesIO()
         wavform = audio["waveform"].cpu()[0]
@@ -340,36 +267,15 @@ class AudioClipAdapter(VideoClipAdapter):
         with open(tmpFullName, "wb") as f:
             f.write(buff.getbuffer())
         if os.path.exists(tmpFullName):
-            shutil.move(tmpFullName, fileFullName)
-        addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, clip_id or old_clip_id, fileName
-        )
-        if not has_project_id:
-            return {
-                "ui": {
-                    "videos": [
-                        {
-                            "addr": addr,
-                            "userId": userId,
-                            "projectId": projectId,
-                            "workflowId": workflowId,
-                            "clipId": clip_id or old_clip_id,
-                        }
-                    ]
-                },
-                "result": (audio,),
-            }
+            workflow.output_copy(clip_id or old_clip_id, tmpFullName, fileFullName)
 
         duration = wavform.size(1) / audio["sample_rate"]
 
-        timeline = MontagenProjManager.instance.modifyClip(
-            proj,
-            extra_pnginfo.get("workflow", {}),
-            workflowId,
+        MontagenProjManager.instance.modify_clip(
+            workflow,
             clip_id,
             old_clip_id,
-            addr,
-            name,
+            fileFullName,
             "audio",
             duration,
         )
@@ -384,12 +290,10 @@ class AudioClipAdapter(VideoClipAdapter):
             "ui": {
                 "videos": [
                     {
-                        "addr": addr,
                         "userId": userId,
                         "projectId": projectId,
                         "workflowId": workflowId,
                         "clipId": clip_id or old_clip_id,
-                        "timeline": timeline,
                     }
                 ]
             },
@@ -404,11 +308,10 @@ class ImageClipAdapter(VideoClipAdapter):
 
     @classmethod
     def INPUT_TYPES(s):
-        # projs = s.get_projs()
         return {
             "required": {
                 "image": ("IMAGE", {"tooltip": "The image to preview."}),
-                "name": ("STRING", {"default": "Untitled Clip"}),
+                "name": ("STRING", {"default": DEFAULTCLIPNAME}),
                 "preview_fps": (
                     "INT",
                     {
@@ -456,12 +359,10 @@ class ImageClipAdapter(VideoClipAdapter):
             proj,
             workflowId,
             clip_id,
-            has_project_id,
-            fileName,
-            fileFullName,
-            tmpFileName,
-            tmpFullName,
             old_clip_id,
+            fileFullName,
+            tmpFullName,
+            workflow,
         ) = self.get_info(format, name, unique_id, tag, prompt, extra_pnginfo)
         out_images = []
         if alpha != None:
@@ -496,36 +397,14 @@ class ImageClipAdapter(VideoClipAdapter):
             )
             img.save(tmpFullName)
         if os.path.exists(tmpFullName):
-            shutil.move(tmpFullName, fileFullName)
-        addr = MontagenProjManager.instance.getAddr(
-            userId, projectId, workflowId, clip_id or old_clip_id, fileName
-        )
-        if not has_project_id:
-            return {
-                "ui": {
-                    "videos": [
-                        {
-                            "addr": addr,
-                            "userId": userId,
-                            "projectId": projectId,
-                            "workflowId": workflowId,
-                            "clipId": clip_id or old_clip_id,
-                        }
-                    ]
-                },
-                "result": (oriImage, oriAlpha),
-            }
-
+            workflow.output_copy(clip_id or old_clip_id, tmpFullName, fileFullName)
         duration = 10
 
-        timeline = MontagenProjManager.instance.modifyClip(
-            proj,
-            extra_pnginfo.get("workflow", {}),
-            workflowId,
+        MontagenProjManager.instance.modify_clip(
+            workflow,
             clip_id,
             old_clip_id,
-            addr,
-            name,
+            fileFullName,
             "gif" if format == "gif" else "image",
             duration,
         )
@@ -540,12 +419,10 @@ class ImageClipAdapter(VideoClipAdapter):
             "ui": {
                 "videos": [
                     {
-                        "addr": addr,
                         "userId": userId,
                         "projectId": projectId,
                         "workflowId": workflowId,
                         "clipId": clip_id or old_clip_id,
-                        "timeline": timeline,
                     }
                 ]
             },
