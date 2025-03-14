@@ -56,6 +56,10 @@ class LGraph:
     def montagenInfo(self):
         return self.extra.get(MONTAGENPROJ, {})
 
+    @montagenInfo.setter
+    def montagenInfo(self, value):
+        self.extra[MONTAGENPROJ] = value
+
     @property
     def nodes(self):
         if "nodes" not in self.data:
@@ -132,7 +136,7 @@ class LGraph:
                         lGraphNode = LGraphNode(self, node)
                         if lGraphNode.id == lLink.origin_id:
                             for k, lslot in enumerate(lGraphNode.outputs):
-                                if not lslot.links:
+                                if lslot.links:
                                     for l, llink in enumerate(lslot.links):
                                         if llink == linkId:
                                             lslot.links.pop(l)

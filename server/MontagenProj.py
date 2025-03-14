@@ -146,9 +146,9 @@ class MontagenProj:
         if not base_path:
             raise Exception("base_path is empty")
         if not width:
-            width=1280
+            width = 1280
         if not height:
-            height=720
+            height = 720
         project_id = project_id or to_base36_random()
         current_time = datetime.now()
         base_info = {
@@ -190,9 +190,9 @@ class MontagenProj:
         if name != self.name:
             self.modify_time = datetime.now()
             self.project_name = name
-            self._save_project()
             new_name = rename_path(self.project_base_name, self.project_path_name, name)
             self.project_path = os.path.join(self.project_base_name, new_name)
+            self._save_project()
             self.montagen_cache_manager.delete(self.cache_key)
             self.montagen_material.clear_cache()
 
@@ -214,9 +214,9 @@ class MontagenProj:
             workflow.delete()
             self.montagen_cache_manager.delete(self.cache_key)
 
-    def project_add_workflow(self, workflow_name: str):
+    def project_add_workflow(self, workflow_id, workflow_name: str):
         workflow_name = workflow_name or DEFAULTWORKFLOWNAME
-        workflow_id = to_base36_random()
+        workflow_id = workflow_id or to_base36_random()
         MontagenWorkflow.create_new_workflow(workflow_id, workflow_name, self)
         self.montagen_cache_manager.delete(self.cache_key)
         return workflow_id

@@ -180,7 +180,7 @@ class MontagenProjManager:
             proj = self.get_project(user_id, project_id)
             if not proj:
                 raise Exception("Project not found")
-            workflow_id = proj.project_add_workflow(name)
+            workflow_id = proj.project_add_workflow(None, name)
             return web.json_response({"code": 0, "data": workflow_id})
 
         @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Rename")

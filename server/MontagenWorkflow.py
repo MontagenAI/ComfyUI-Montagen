@@ -239,11 +239,11 @@ class MontagenWorkflow:
         if name != self.workflow_name:
             self.modify_time = datetime.now()
             self.workflow_name = name
-            self._save_workflow()
             newname = rename_path(
                 self.workflow_base_name, self.workflow_path_name, name
             )
-            self.workflow_path = os.path.join(self.workflow_base_path, newname)
+            self.workflow_path = os.path.join(self.workflow_base_name, newname)
+            self._save_workflow()
 
     def workflow_modify_clip(
         self,
@@ -319,7 +319,9 @@ class MontagenWorkflow:
         self._save_workflow()
 
     def syn_workflow_clip(self, workflow: dict):
+        montagen_info = self.workflow.montagenInfo
         self.workflow = workflow
+        self.workflow.montagenInfo = montagen_info
         self.modify_time = datetime.now()
         for node in self.workflow.nodes:
             lGraphNode = LGraphNode(self.workflow, node)
@@ -332,11 +334,12 @@ class MontagenWorkflow:
                         lGraphNode.type,
                     )
                 else:
-                    first_item["clipName"] = lGraphNode.clipName
-                    new_path = self._rename_clip_path(
-                        first_item["path"], lGraphNode.clipName
-                    )
-                    first_item["path"] = new_path
+                    if first_item["clipName"] != lGraphNode.clipName:
+                        first_item["clipName"] = lGraphNode.clipName
+                        new_path = self._rename_clip_path(
+                            first_item["path"], lGraphNode.clipName
+                        )
+                        first_item["path"] = new_path
         clip_ids_in_nodes = {
             lGraphNode.clipId
             for node in self.workflow.nodes

@@ -16,6 +16,7 @@ from ..server.Utils import (
     DEFAULTCLIPNAME,
     DEFAULTUSERID,
     DEFAULTWORKFLOWNAME,
+    to_base36_random,
 )
 
 
@@ -94,7 +95,10 @@ class VideoClipAdapter:
             raise ValueError("proj is required.")
         else:
             if not workflow_id:
-                workflow_id = proj.project_add_workflow(DEFAULTWORKFLOWNAME)
+                workflow_id = to_base36_random()
+            workflow = proj.get_workflow(workflow_id)
+            if not workflow:
+                proj.project_add_workflow(workflow_id, DEFAULTWORKFLOWNAME)
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
                 raise ValueError("workflow is required.")

@@ -27,9 +27,9 @@ class MontagenMaterial:
         self.key = f"{self.project.project_id}_montagen_materials"
         self.cache_manager = MontagenCacheManager()
         self.supported_types = supported_types or {
-            "video": [".mp4", ".avi", ".mkv"],
+            "video": [".mp4", ".webm"],
             "audio": [".mp3", ".wav", ".aac"],
-            "image": [".jpg", ".jpeg", ".png", ".gif"],
+            "image": [".jpg", ".jpeg", ".png"],
             "gif": [".gif"],
             "srt": [".srt"],
         }
