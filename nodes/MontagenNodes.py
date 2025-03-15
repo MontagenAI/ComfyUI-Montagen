@@ -56,9 +56,9 @@ class VideoClipAdapter:
     CATEGORY = "Montagen"
     DESCRIPTION = "Montagen Images Preview"
 
-    @classmethod
-    def IS_CHANGED(s, **keywords):
-        return datetime.now().isoformat()
+    # @classmethod
+    # def IS_CHANGED(s, **keywords):
+    #     return datetime.now().isoformat()
 
     def get_info(
         self,

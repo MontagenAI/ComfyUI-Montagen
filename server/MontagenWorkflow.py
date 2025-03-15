@@ -278,12 +278,12 @@ class MontagenWorkflow:
                 "duration": duration,
                 "refId": to_base36_random(),
             }
-            clip["timeline"]["children"][0] = videoClip
+            clip["timeline"]["children"][0][0] = videoClip
             if hasAlpha:
                 videoClip["codec"] = "libvpx-vp9"
                 videoClip["voImageExtra"] = "png"
         elif type == "audio":
-            clip["timeline"]["children"][0] = {
+            clip["timeline"]["children"][0][0] = {
                 "src": src,
                 "type": "audio",
                 "audio": True,
@@ -292,7 +292,7 @@ class MontagenWorkflow:
                 "children": [],
             }
         elif type == "image":
-            clip["timeline"]["children"][0] = {
+            clip["timeline"]["children"][0][0] = {
                 "src": src,
                 "children": [],
                 "type": "image",
@@ -304,7 +304,7 @@ class MontagenWorkflow:
                 "refId": to_base36_random(),
             }
         elif type == "gif":
-            clip["timeline"]["children"][0] = {
+            clip["timeline"]["children"][0][0] = {
                 "src": src,
                 "children": [],
                 "type": "gif",
@@ -387,16 +387,22 @@ class MontagenWorkflow:
                 "refId": to_base36_random(),
                 "children": [
                     {
-                        "type": "text",
-                        "fontSize": "10rpx",
-                        "color": "#FFF",
-                        "x": "50vw",
-                        "y": "50vh",
-                        "duration": 10,
-                        "text": f"empty {type} clip",
-                        "refId": ref_id,
-                        "zIndex": 1,
-                        "children": [],
+                        "type": "spine",
+                        "refId": "1a7w6fizda9dp7md",
+                        "children": [
+                            {
+                                "type": "text",
+                                "fontSize": "10rpx",
+                                "color": "#FFF",
+                                "x": "50vw",
+                                "y": "50vh",
+                                "duration": 10,
+                                "text": f"empty {type} clip",
+                                "refId": ref_id,
+                                "zIndex": 1,
+                                "children": [],
+                            }
+                        ],
                     }
                 ],
             },

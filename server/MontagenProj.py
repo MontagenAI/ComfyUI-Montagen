@@ -119,7 +119,12 @@ class MontagenProj:
         return {
             **self.project_data,
             "workflows": [workflow.to_json() for workflow in self.workflows],
+            "assets": self.montagen_material.get_materials_by_location(False),
+            "refs": self.montagen_material.get_materials_by_location(True),
         }
+
+    def to_simple_json(self):
+        return {**self.project_data}
 
     @staticmethod
     def save_project(project_path, project_data):

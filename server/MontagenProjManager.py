@@ -9,6 +9,8 @@ from .Utils import (
     defualt_user_info,
     MONTAGENPROCESSEND,
     FILEADDR,
+    generate_unique_filename,
+    to_base36_random,
 )
 from .MontagenProj import MontagenProj
 from .MontagenCacheManager import MontagenCacheManager
@@ -39,7 +41,7 @@ class MontagenProjManager:
             user_id = server.user_manager.get_request_user_id(request)
             projs = self.get_projects(user_id)
             return web.json_response(
-                {"code": 0, "data": [proj.to_json() for proj in projs]}
+                {"code": 0, "data": [proj.to_simple_json() for proj in projs]}
             )
 
         @server.routes.get("/Montagen/Proj/{id}")
@@ -75,6 +77,52 @@ class MontagenProjManager:
                 user_id, name, description, None, width, height
             )
             return web.json_response({"code": 0, "data": project_id})
+
+        @server.routes.post("/Montagen/Proj/{id}/Assets/Upload")
+        @error_handling_decorator
+        async def upload_files(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            if not project_id:
+                raise Exception("project_id is empty")
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+
+            ramdom = to_base36_random()
+            reader = await request.multipart()
+            while True:
+                part = await reader.next()
+                if part is None:
+                    break
+                if part.filename:
+                    tmp_base = os.path.join(folder_paths.get_temp_directory(), ramdom)
+                    if not os.path.exists(tmp_base):
+                        os.makedirs(tmp_base)
+                    filename = generate_unique_filename(tmp_base, part.filename)
+                    file_path = os.path.join(tmp_base, filename)
+                    with open(file_path, "wb") as f:
+                        while True:
+                            chunk = await part.read_chunk()
+                            if not chunk:
+                                break
+                            f.write(chunk)
+                    proj.montagen_material.add_material(file_path)
+            return web.json_response({"code": 0})
+
+        @server.routes.delete("/Montagen/Proj/{id}/Assets/Delete/{filename}")
+        @error_handling_decorator
+        async def delete_project_asset(request):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            if not project_id:
+                raise Exception("project_id is empty")
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            filename = request.match_info.get("filename", None)
+            proj.montagen_material.delete_material(filename)
+            return web.json_response({"code": 0})
 
         @server.routes.post("/Montagen/Proj/{id}/New/{type}")
         @error_handling_decorator

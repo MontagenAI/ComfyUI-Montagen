@@ -36,6 +36,25 @@ def create_unique_directory(base_dir: str) -> str:
     os.makedirs(dir_name)
     return dir_name
 
+def generate_unique_filename(directory: str, filename: str) -> str:
+    """
+    Generate a unique filename in the given directory.
+    If the filename already exists, append a counter to the filename until a unique name is found.
+
+    :param directory: The directory where the file will be saved.
+    :param filename: The base filename to use.
+    :return: A unique filename.
+    """
+    base_name, ext = os.path.splitext(filename)
+    counter = 0
+    unique_filename = filename
+
+    while os.path.exists(os.path.join(directory, unique_filename)):
+        counter += 1
+        unique_filename = f"{base_name}_{counter}{ext}"
+
+    return unique_filename
+
 
 def create_path(base: str, name: str):
     name = re.sub(illegal_chars_pattern, "", name)
