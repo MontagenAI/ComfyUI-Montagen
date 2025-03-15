@@ -416,7 +416,7 @@
   display: flex;\r
   overflow: hidden;
 }\r
-.explorer-container[data-v-8f4d06a5] {
+.explorer-container[data-v-08b8c547] {
   background-color: #fff;
 }.hideBox {
   opacity: 0;
@@ -71387,16 +71387,14 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     const onNodeContentClick = async (e, node2) => {
       switch (node2.fileType) {
         case "workflows":
-          console.log(node2, "当前点击的node 是workflows", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
-          if (selectedKeys.value[node2.key]) {
-            expandedKeys.value[node2.key] = true;
-          }
-          break;
         case "folder_assets":
         case "folder_workflow":
           if (selectedKeys.value[node2.key]) {
             expandedKeys.value[node2.key] = true;
+          } else {
+            delete expandedKeys.value[node2.key];
           }
+          expandedKeys.value = { ...expandedKeys.value };
           break;
         case "clip":
           console.log(node2, "当前点击的node 是assets", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
@@ -71729,7 +71727,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-8f4d06a5"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-08b8c547"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
