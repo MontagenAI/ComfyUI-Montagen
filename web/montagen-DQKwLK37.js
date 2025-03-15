@@ -416,7 +416,7 @@
   display: flex;\r
   overflow: hidden;
 }\r
-.explorer-container[data-v-1e4630e3] {
+.explorer-container[data-v-8f4d06a5] {
   background-color: #fff;
 }.hideBox {
   opacity: 0;
@@ -68328,9 +68328,13 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         const json = await response.json();
         console.log(json);
         this.list = json.data;
-        if (this.list.length) {
-          this.getProjectDetail("2u4ed2i28ig8hzm");
+        let id = null;
+        if (this.list.length > 1) {
+          let id2 = this.list[1].baseInfo.projectId;
+        } else {
+          let id2 = this.list[0].baseInfo.projectId;
         }
+        this.getProjectDetail("2u4ed2i28ig8hzm");
       } catch (err) {
       } finally {
       }
@@ -71305,7 +71309,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
 const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-b689b312"]]);
 const _hoisted_1 = { class: "h-full tw-bg-[#ffffff] flex flex-col" };
 const _hoisted_2 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_3 = { class: "flex flex-row" };
 const _hoisted_4 = { class: "flex-1 overflow-hidden" };
 const _hoisted_5 = { class: "custom-content" };
 const _hoisted_6 = { id: "custom-dialog" };
@@ -71725,7 +71729,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-1e4630e3"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-8f4d06a5"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
