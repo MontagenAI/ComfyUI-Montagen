@@ -3,7 +3,74 @@
   try {
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode(`@charset "UTF-8";:root{--el-color-white:#ffffff;--el-color-black:#000000;--el-color-primary-rgb:64,158,255;--el-color-success-rgb:103,194,58;--el-color-warning-rgb:230,162,60;--el-color-danger-rgb:245,108,108;--el-color-error-rgb:245,108,108;--el-color-info-rgb:144,147,153;--el-font-size-extra-large:20px;--el-font-size-large:18px;--el-font-size-medium:16px;--el-font-size-base:14px;--el-font-size-small:13px;--el-font-size-extra-small:12px;--el-font-family:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;--el-font-weight-primary:500;--el-font-line-height-primary:24px;--el-index-normal:1;--el-index-top:1000;--el-index-popper:2000;--el-border-radius-base:4px;--el-border-radius-small:2px;--el-border-radius-round:20px;--el-border-radius-circle:100%;--el-transition-duration:0.3s;--el-transition-duration-fast:0.2s;--el-transition-function-ease-in-out-bezier:cubic-bezier(0.645,0.045,0.355,1);--el-transition-function-fast-bezier:cubic-bezier(0.23,1,0.32,1);--el-transition-all:all var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);--el-transition-fade:opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-md-fade:transform var(--el-transition-duration) var(--el-transition-function-fast-bezier),opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-fade-linear:opacity var(--el-transition-duration-fast) linear;--el-transition-border:border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-box-shadow:box-shadow var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-color:color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-component-size-large:40px;--el-component-size:32px;--el-component-size-small:24px;color-scheme:light;--el-color-primary:#409eff;--el-color-primary-light-3:rgb(121.3,187.1,255);--el-color-primary-light-5:rgb(159.5,206.5,255);--el-color-primary-light-7:rgb(197.7,225.9,255);--el-color-primary-light-8:rgb(216.8,235.6,255);--el-color-primary-light-9:rgb(235.9,245.3,255);--el-color-primary-dark-2:rgb(51.2,126.4,204);--el-color-success:#67c23a;--el-color-success-light-3:rgb(148.6,212.3,117.1);--el-color-success-light-5:rgb(179,224.5,156.5);--el-color-success-light-7:rgb(209.4,236.7,195.9);--el-color-success-light-8:rgb(224.6,242.8,215.6);--el-color-success-light-9:rgb(239.8,248.9,235.3);--el-color-success-dark-2:rgb(82.4,155.2,46.4);--el-color-warning:#e6a23c;--el-color-warning-light-3:rgb(237.5,189.9,118.5);--el-color-warning-light-5:rgb(242.5,208.5,157.5);--el-color-warning-light-7:rgb(247.5,227.1,196.5);--el-color-warning-light-8:rgb(250,236.4,216);--el-color-warning-light-9:rgb(252.5,245.7,235.5);--el-color-warning-dark-2:rgb(184,129.6,48);--el-color-danger:#f56c6c;--el-color-danger-light-3:rgb(248,152.1,152.1);--el-color-danger-light-5:rgb(250,181.5,181.5);--el-color-danger-light-7:rgb(252,210.9,210.9);--el-color-danger-light-8:rgb(253,225.6,225.6);--el-color-danger-light-9:rgb(254,240.3,240.3);--el-color-danger-dark-2:rgb(196,86.4,86.4);--el-color-error:#f56c6c;--el-color-error-light-3:rgb(248,152.1,152.1);--el-color-error-light-5:rgb(250,181.5,181.5);--el-color-error-light-7:rgb(252,210.9,210.9);--el-color-error-light-8:rgb(253,225.6,225.6);--el-color-error-light-9:rgb(254,240.3,240.3);--el-color-error-dark-2:rgb(196,86.4,86.4);--el-color-info:#909399;--el-color-info-light-3:rgb(177.3,179.4,183.6);--el-color-info-light-5:rgb(199.5,201,204);--el-color-info-light-7:rgb(221.7,222.6,224.4);--el-color-info-light-8:rgb(232.8,233.4,234.6);--el-color-info-light-9:rgb(243.9,244.2,244.8);--el-color-info-dark-2:rgb(115.2,117.6,122.4);--el-bg-color:#ffffff;--el-bg-color-page:#f2f3f5;--el-bg-color-overlay:#ffffff;--el-text-color-primary:#303133;--el-text-color-regular:#606266;--el-text-color-secondary:#909399;--el-text-color-placeholder:#a8abb2;--el-text-color-disabled:#c0c4cc;--el-border-color:#dcdfe6;--el-border-color-light:#e4e7ed;--el-border-color-lighter:#ebeef5;--el-border-color-extra-light:#f2f6fc;--el-border-color-dark:#d4d7de;--el-border-color-darker:#cdd0d6;--el-fill-color:#f0f2f5;--el-fill-color-light:#f5f7fa;--el-fill-color-lighter:#fafafa;--el-fill-color-extra-light:#fafcff;--el-fill-color-dark:#ebedf0;--el-fill-color-darker:#e6e8eb;--el-fill-color-blank:#ffffff;--el-box-shadow:0px 12px 32px 4px rgba(0,0,0,0.04),0px 8px 20px rgba(0,0,0,0.08);--el-box-shadow-light:0px 0px 12px rgba(0,0,0,0.12);--el-box-shadow-lighter:0px 0px 6px rgba(0,0,0,0.12);--el-box-shadow-dark:0px 16px 48px 16px rgba(0,0,0,0.08),0px 12px 32px rgba(0,0,0,0.12),0px 8px 16px -8px rgba(0,0,0,0.16);--el-disabled-bg-color:var(--el-fill-color-light);--el-disabled-text-color:var(--el-text-color-placeholder);--el-disabled-border-color:var(--el-border-color-light);--el-overlay-color:rgba(0,0,0,0.8);--el-overlay-color-light:rgba(0,0,0,0.7);--el-overlay-color-lighter:rgba(0,0,0,0.5);--el-mask-color:rgba(255,255,255,0.9);--el-mask-color-extra-light:rgba(255,255,255,0.3);--el-border-width:1px;--el-border-style:solid;--el-border-color-hover:var(--el-text-color-disabled);--el-border:var(--el-border-width) var(--el-border-style) var(--el-border-color);--el-svg-monochrome-grey:var(--el-border-color)}.fade-in-linear-enter-active,.fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.fade-in-linear-enter-from,.fade-in-linear-leave-to{opacity:0}.el-fade-in-linear-enter-active,.el-fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.el-fade-in-linear-enter-from,.el-fade-in-linear-leave-to{opacity:0}.el-fade-in-enter-active,.el-fade-in-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-fade-in-enter-from,.el-fade-in-leave-active{opacity:0}.el-zoom-in-center-enter-active,.el-zoom-in-center-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-zoom-in-center-enter-from,.el-zoom-in-center-leave-active{opacity:0;transform:scaleX(0)}.el-zoom-in-top-enter-active,.el-zoom-in-top-leave-active{opacity:1;transform:scaleY(1);transform-origin:center top;transition:var(--el-transition-md-fade)}.el-zoom-in-top-enter-active[data-popper-placement^=top],.el-zoom-in-top-leave-active[data-popper-placement^=top]{transform-origin:center bottom}.el-zoom-in-top-enter-from,.el-zoom-in-top-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-bottom-enter-active,.el-zoom-in-bottom-leave-active{opacity:1;transform:scaleY(1);transform-origin:center bottom;transition:var(--el-transition-md-fade)}.el-zoom-in-bottom-enter-from,.el-zoom-in-bottom-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-left-enter-active,.el-zoom-in-left-leave-active{opacity:1;transform:scale(1);transform-origin:top left;transition:var(--el-transition-md-fade)}.el-zoom-in-left-enter-from,.el-zoom-in-left-leave-active{opacity:0;transform:scale(.45)}.collapse-transition{transition:var(--el-transition-duration) height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.el-collapse-transition-enter-active,.el-collapse-transition-leave-active{transition:var(--el-transition-duration) max-height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.horizontal-collapse-transition{transition:var(--el-transition-duration) width ease-in-out,var(--el-transition-duration) padding-left ease-in-out,var(--el-transition-duration) padding-right ease-in-out}.el-list-enter-active,.el-list-leave-active{transition:all 1s}.el-list-enter-from,.el-list-leave-to{opacity:0;transform:translateY(-30px)}.el-list-leave-active{position:absolute!important}.el-opacity-transition{transition:opacity var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-icon-loading{animation:rotating 2s linear infinite}.el-icon--right{margin-left:5px}.el-icon--left{margin-right:5px}@keyframes rotating{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.el-icon{--color:inherit;align-items:center;display:inline-flex;height:1em;justify-content:center;line-height:1em;position:relative;width:1em;fill:currentColor;color:var(--color);font-size:inherit}.el-icon.is-loading{animation:rotating 2s linear infinite}.el-icon svg{height:1em;width:1em}.el-textarea{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;display:inline-block;font-size:var(--el-font-size-base);position:relative;vertical-align:bottom;width:100%}.el-textarea__inner{-webkit-appearance:none;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));display:block;font-family:inherit;font-size:inherit;line-height:1.5;padding:5px 11px;position:relative;resize:vertical;transition:var(--el-transition-box-shadow);width:100%}.el-textarea__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-textarea__inner:focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset;outline:none}.el-textarea .el-input__count{background:var(--el-fill-color-blank);bottom:5px;color:var(--el-color-info);font-size:12px;line-height:14px;position:absolute;right:10px}.el-textarea.is-disabled .el-textarea__inner{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;color:var(--el-disabled-text-color);cursor:not-allowed}.el-textarea.is-disabled .el-textarea__inner::placeholder{color:var(--el-text-color-placeholder)}.el-textarea.is-exceed .el-textarea__inner{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-textarea.is-exceed .el-input__count{color:var(--el-color-danger)}.el-input{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;--el-input-height:var(--el-component-size);box-sizing:border-box;display:inline-flex;font-size:var(--el-font-size-base);line-height:var(--el-input-height);position:relative;vertical-align:middle;width:var(--el-input-width)}.el-input::-webkit-scrollbar{width:6px;z-index:11}.el-input::-webkit-scrollbar:horizontal{height:6px}.el-input::-webkit-scrollbar-thumb{background:var(--el-text-color-disabled);border-radius:5px;width:6px}.el-input::-webkit-scrollbar-corner,.el-input::-webkit-scrollbar-track{background:var(--el-fill-color-blank)}.el-input::-webkit-scrollbar-track-piece{background:var(--el-fill-color-blank);width:6px}.el-input .el-input__clear,.el-input .el-input__password{color:var(--el-input-icon-color);cursor:pointer;font-size:14px}.el-input .el-input__clear:hover,.el-input .el-input__password:hover{color:var(--el-input-clear-hover-color)}.el-input .el-input__count{align-items:center;color:var(--el-color-info);display:inline-flex;font-size:12px;height:100%}.el-input .el-input__count .el-input__count-inner{background:var(--el-fill-color-blank);display:inline-block;line-height:normal;padding-left:8px}.el-input__wrapper{align-items:center;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;cursor:text;display:inline-flex;flex-grow:1;justify-content:center;padding:1px 11px;transform:translateZ(0);transition:var(--el-transition-box-shadow)}.el-input__wrapper:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-input__wrapper.is-focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset}.el-input{--el-input-inner-height:calc(var(--el-input-height, 32px) - 2px)}.el-input__inner{-webkit-appearance:none;background:none;border:none;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));flex-grow:1;font-size:inherit;height:var(--el-input-inner-height);line-height:var(--el-input-inner-height);outline:none;padding:0;width:100%}.el-input__inner:focus{outline:none}.el-input__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-input__inner[type=password]::-ms-reveal{display:none}.el-input__inner[type=number]{line-height:1}.el-input__prefix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;line-height:var(--el-input-inner-height);pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__prefix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__prefix-inner>:last-child{margin-right:8px}.el-input__prefix-inner>:first-child,.el-input__prefix-inner>:first-child.el-input__icon{margin-left:0}.el-input__suffix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;line-height:var(--el-input-inner-height);pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__suffix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__suffix-inner>:first-child{margin-left:8px}.el-input .el-input__icon{align-items:center;display:flex;height:inherit;justify-content:center;line-height:inherit;margin-left:8px;transition:all var(--el-transition-duration)}.el-input__validateIcon{pointer-events:none}.el-input.is-active .el-input__wrapper{box-shadow:0 0 0 1px var(--el-input-focus-color, ) inset}.el-input.is-disabled{cursor:not-allowed}.el-input.is-disabled .el-input__wrapper{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;cursor:not-allowed;pointer-events:none}.el-input.is-disabled .el-input__inner{color:var(--el-disabled-text-color);-webkit-text-fill-color:var(--el-disabled-text-color);cursor:not-allowed}.el-input.is-disabled .el-input__inner::placeholder{color:var(--el-text-color-placeholder)}.el-input.is-disabled .el-input__icon{cursor:not-allowed}.el-input.is-exceed .el-input__wrapper{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-input.is-exceed .el-input__suffix .el-input__count{color:var(--el-color-danger)}.el-input--large{--el-input-height:var(--el-component-size-large);font-size:14px}.el-input--large .el-input__wrapper{padding:1px 15px}.el-input--large{--el-input-inner-height:calc(var(--el-input-height, 40px) - 2px)}.el-input--small{--el-input-height:var(--el-component-size-small);font-size:12px}.el-input--small .el-input__wrapper{padding:1px 7px}.el-input--small{--el-input-inner-height:calc(var(--el-input-height, 24px) - 2px)}.el-input-group{align-items:stretch;display:inline-flex;width:100%}.el-input-group__append,.el-input-group__prepend{align-items:center;background-color:var(--el-fill-color-light);border-radius:var(--el-input-border-radius);color:var(--el-color-info);display:inline-flex;justify-content:center;min-height:100%;padding:0 20px;position:relative;white-space:nowrap}.el-input-group__append:focus,.el-input-group__prepend:focus{outline:none}.el-input-group__append .el-button,.el-input-group__append .el-select,.el-input-group__prepend .el-button,.el-input-group__prepend .el-select{display:inline-block;margin:0 -20px}.el-input-group__append button.el-button,.el-input-group__append button.el-button:hover,.el-input-group__append div.el-select .el-select__wrapper,.el-input-group__append div.el-select:hover .el-select__wrapper,.el-input-group__prepend button.el-button,.el-input-group__prepend button.el-button:hover,.el-input-group__prepend div.el-select .el-select__wrapper,.el-input-group__prepend div.el-select:hover .el-select__wrapper{background-color:transparent;border-color:transparent;color:inherit}.el-input-group__append .el-button,.el-input-group__append .el-input,.el-input-group__prepend .el-button,.el-input-group__prepend .el-input{font-size:inherit}.el-input-group__prepend{border-bottom-right-radius:0;border-right:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group__append{border-left:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-group--prepend>.el-input__wrapper,.el-input-group__append{border-bottom-left-radius:0;border-top-left-radius:0}.el-input-group--prepend .el-input-group__prepend .el-select .el-select__wrapper{border-bottom-right-radius:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group--append>.el-input__wrapper{border-bottom-right-radius:0;border-top-right-radius:0}.el-input-group--append .el-input-group__append .el-select .el-select__wrapper{border-bottom-left-radius:0;border-top-left-radius:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-hidden{display:none!important}.el-form{--el-form-label-font-size:var(--el-font-size-base);--el-form-inline-content-width:220px}.el-form--inline .el-form-item{display:inline-flex;margin-right:32px;vertical-align:middle}.el-form--inline.el-form--label-top{display:flex;flex-wrap:wrap}.el-form--inline.el-form--label-top .el-form-item{display:block}.el-form-item{display:flex;--font-size:14px;margin-bottom:18px}.el-form-item .el-form-item{margin-bottom:0}.el-form-item .el-input__validateIcon{display:none}.el-form-item--large{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:22px}.el-form-item--large .el-form-item__label{height:40px;line-height:40px}.el-form-item--large .el-form-item__content{line-height:40px}.el-form-item--large .el-form-item__error{padding-top:4px}.el-form-item--default{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--default .el-form-item__label{height:32px;line-height:32px}.el-form-item--default .el-form-item__content{line-height:32px}.el-form-item--default .el-form-item__error{padding-top:2px}.el-form-item--small{--font-size:12px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--small .el-form-item__label{height:24px;line-height:24px}.el-form-item--small .el-form-item__content{line-height:24px}.el-form-item--small .el-form-item__error{padding-top:2px}.el-form-item--label-left .el-form-item__label{justify-content:flex-start}.el-form-item--label-top{display:block}.el-form-item--label-top .el-form-item__label{display:inline-block;height:auto;line-height:22px;margin-bottom:8px;text-align:left;vertical-align:middle}.el-form-item__label-wrap{display:flex}.el-form-item__label{align-items:flex-start;box-sizing:border-box;color:var(--el-text-color-regular);display:inline-flex;flex:0 0 auto;font-size:var(--el-form-label-font-size);height:32px;justify-content:flex-end;line-height:32px;padding:0 12px 0 0}.el-form-item__content{align-items:center;display:flex;flex:1;flex-wrap:wrap;font-size:var(--font-size);line-height:32px;min-width:0;position:relative}.el-form-item__content .el-input-group{vertical-align:top}.el-form-item__error{color:var(--el-color-danger);font-size:12px;left:0;line-height:1;padding-top:2px;position:absolute;top:100%}.el-form-item__error--inline{display:inline-block;left:auto;margin-left:10px;position:relative;top:auto}.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label-wrap>.el-form-item__label:before,.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label:before{color:var(--el-color-danger);content:"*";margin-right:4px}.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label-wrap>.el-form-item__label:after,.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label:after{color:var(--el-color-danger);content:"*";margin-left:4px}.el-form-item.is-error .el-input-tag__wrapper,.el-form-item.is-error .el-input-tag__wrapper.is-focus,.el-form-item.is-error .el-input-tag__wrapper:focus,.el-form-item.is-error .el-input-tag__wrapper:hover,.el-form-item.is-error .el-input__wrapper,.el-form-item.is-error .el-input__wrapper.is-focus,.el-form-item.is-error .el-input__wrapper:focus,.el-form-item.is-error .el-input__wrapper:hover,.el-form-item.is-error .el-select__wrapper,.el-form-item.is-error .el-select__wrapper.is-focus,.el-form-item.is-error .el-select__wrapper:focus,.el-form-item.is-error .el-select__wrapper:hover,.el-form-item.is-error .el-textarea__inner,.el-form-item.is-error .el-textarea__inner.is-focus,.el-form-item.is-error .el-textarea__inner:focus,.el-form-item.is-error .el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-form-item.is-error .el-input-group__append .el-input__wrapper,.el-form-item.is-error .el-input-group__prepend .el-input__wrapper{box-shadow:inset 0 0 0 1px transparent}.el-form-item.is-error .el-input-group__append .el-input__validateIcon,.el-form-item.is-error .el-input-group__prepend .el-input__validateIcon{display:none}.el-form-item.is-error .el-input__validateIcon{color:var(--el-color-danger)}.el-form-item--feedback .el-input__validateIcon{display:inline-flex}.el-button{--el-button-font-weight:var(--el-font-weight-primary);--el-button-border-color:var(--el-border-color);--el-button-bg-color:var(--el-fill-color-blank);--el-button-text-color:var(--el-text-color-regular);--el-button-disabled-text-color:var(--el-disabled-text-color);--el-button-disabled-bg-color:var(--el-fill-color-blank);--el-button-disabled-border-color:var(--el-border-color-light);--el-button-divide-border-color:rgba(255,255,255,0.5);--el-button-hover-text-color:var(--el-color-primary);--el-button-hover-bg-color:var(--el-color-primary-light-9);--el-button-hover-border-color:var(--el-color-primary-light-7);--el-button-active-text-color:var(--el-button-hover-text-color);--el-button-active-border-color:var(--el-color-primary);--el-button-active-bg-color:var(--el-button-hover-bg-color);--el-button-outline-color:var(--el-color-primary-light-5);--el-button-hover-link-text-color:var(--el-text-color-secondary);--el-button-active-color:var(--el-text-color-primary);align-items:center;-webkit-appearance:none;background-color:var(--el-button-bg-color);border:var(--el-border);border-color:var(--el-button-border-color);box-sizing:border-box;color:var(--el-button-text-color);cursor:pointer;display:inline-flex;font-weight:var(--el-button-font-weight);height:32px;justify-content:center;line-height:1;outline:none;text-align:center;transition:.1s;-webkit-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.el-button:hover{background-color:var(--el-button-hover-bg-color);border-color:var(--el-button-hover-border-color);color:var(--el-button-hover-text-color);outline:none}.el-button:active{background-color:var(--el-button-active-bg-color);border-color:var(--el-button-active-border-color);color:var(--el-button-active-text-color);outline:none}.el-button:focus-visible{outline:2px solid var(--el-button-outline-color);outline-offset:1px;transition:outline-offset 0s,outline 0s}.el-button>span{align-items:center;display:inline-flex}.el-button+.el-button{margin-left:12px}.el-button{border-radius:var(--el-border-radius-base);font-size:var(--el-font-size-base)}.el-button,.el-button.is-round{padding:8px 15px}.el-button::-moz-focus-inner{border:0}.el-button [class*=el-icon]+span{margin-left:6px}.el-button [class*=el-icon] svg{vertical-align:bottom}.el-button.is-plain{--el-button-hover-text-color:var(--el-color-primary);--el-button-hover-bg-color:var(--el-fill-color-blank);--el-button-hover-border-color:var(--el-color-primary)}.el-button.is-active{background-color:var(--el-button-active-bg-color);border-color:var(--el-button-active-border-color);color:var(--el-button-active-text-color);outline:none}.el-button.is-disabled,.el-button.is-disabled:hover{background-color:var(--el-button-disabled-bg-color);background-image:none;border-color:var(--el-button-disabled-border-color);color:var(--el-button-disabled-text-color);cursor:not-allowed}.el-button.is-loading{pointer-events:none;position:relative}.el-button.is-loading:before{background-color:var(--el-mask-color-extra-light);border-radius:inherit;bottom:-1px;content:"";left:-1px;pointer-events:none;position:absolute;right:-1px;top:-1px;z-index:1}.el-button.is-round{border-radius:var(--el-border-radius-round)}.el-button.is-circle{border-radius:50%;padding:8px;width:32px}.el-button.is-text{background-color:transparent;border:0 solid transparent;color:var(--el-button-text-color)}.el-button.is-text.is-disabled{background-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button.is-text:not(.is-disabled):hover{background-color:var(--el-fill-color-light)}.el-button.is-text:not(.is-disabled):focus-visible{outline:2px solid var(--el-button-outline-color);outline-offset:1px;transition:outline-offset 0s,outline 0s}.el-button.is-text:not(.is-disabled):active{background-color:var(--el-fill-color)}.el-button.is-text:not(.is-disabled).is-has-bg{background-color:var(--el-fill-color-light)}.el-button.is-text:not(.is-disabled).is-has-bg:hover{background-color:var(--el-fill-color)}.el-button.is-text:not(.is-disabled).is-has-bg:active{background-color:var(--el-fill-color-dark)}.el-button__text--expand{letter-spacing:.3em;margin-right:-.3em}.el-button.is-link{background:transparent;border-color:transparent;color:var(--el-button-text-color);height:auto;padding:2px}.el-button.is-link:hover{color:var(--el-button-hover-link-text-color)}.el-button.is-link.is-disabled{background-color:transparent!important;border-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button.is-link:not(.is-disabled):active,.el-button.is-link:not(.is-disabled):hover{background-color:transparent;border-color:transparent}.el-button.is-link:not(.is-disabled):active{color:var(--el-button-active-color)}.el-button--text{background:transparent;border-color:transparent;color:var(--el-color-primary);padding-left:0;padding-right:0}.el-button--text.is-disabled{background-color:transparent!important;border-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button--text:not(.is-disabled):hover{background-color:transparent;border-color:transparent;color:var(--el-color-primary-light-3)}.el-button--text:not(.is-disabled):active{background-color:transparent;border-color:transparent;color:var(--el-color-primary-dark-2)}.el-button__link--expand{letter-spacing:.3em;margin-right:-.3em}.el-button--primary{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-primary);--el-button-border-color:var(--el-color-primary);--el-button-outline-color:var(--el-color-primary-light-5);--el-button-active-color:var(--el-color-primary-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-primary-light-5);--el-button-hover-bg-color:var(--el-color-primary-light-3);--el-button-hover-border-color:var(--el-color-primary-light-3);--el-button-active-bg-color:var(--el-color-primary-dark-2);--el-button-active-border-color:var(--el-color-primary-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-primary-light-5);--el-button-disabled-border-color:var(--el-color-primary-light-5)}.el-button--primary.is-link,.el-button--primary.is-plain,.el-button--primary.is-text{--el-button-text-color:var(--el-color-primary);--el-button-bg-color:var(--el-color-primary-light-9);--el-button-border-color:var(--el-color-primary-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-primary);--el-button-hover-border-color:var(--el-color-primary);--el-button-active-text-color:var(--el-color-white)}.el-button--primary.is-link.is-disabled,.el-button--primary.is-link.is-disabled:active,.el-button--primary.is-link.is-disabled:focus,.el-button--primary.is-link.is-disabled:hover,.el-button--primary.is-plain.is-disabled,.el-button--primary.is-plain.is-disabled:active,.el-button--primary.is-plain.is-disabled:focus,.el-button--primary.is-plain.is-disabled:hover,.el-button--primary.is-text.is-disabled,.el-button--primary.is-text.is-disabled:active,.el-button--primary.is-text.is-disabled:focus,.el-button--primary.is-text.is-disabled:hover{background-color:var(--el-color-primary-light-9);border-color:var(--el-color-primary-light-8);color:var(--el-color-primary-light-5)}.el-button--success{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-success);--el-button-border-color:var(--el-color-success);--el-button-outline-color:var(--el-color-success-light-5);--el-button-active-color:var(--el-color-success-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-success-light-5);--el-button-hover-bg-color:var(--el-color-success-light-3);--el-button-hover-border-color:var(--el-color-success-light-3);--el-button-active-bg-color:var(--el-color-success-dark-2);--el-button-active-border-color:var(--el-color-success-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-success-light-5);--el-button-disabled-border-color:var(--el-color-success-light-5)}.el-button--success.is-link,.el-button--success.is-plain,.el-button--success.is-text{--el-button-text-color:var(--el-color-success);--el-button-bg-color:var(--el-color-success-light-9);--el-button-border-color:var(--el-color-success-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-success);--el-button-hover-border-color:var(--el-color-success);--el-button-active-text-color:var(--el-color-white)}.el-button--success.is-link.is-disabled,.el-button--success.is-link.is-disabled:active,.el-button--success.is-link.is-disabled:focus,.el-button--success.is-link.is-disabled:hover,.el-button--success.is-plain.is-disabled,.el-button--success.is-plain.is-disabled:active,.el-button--success.is-plain.is-disabled:focus,.el-button--success.is-plain.is-disabled:hover,.el-button--success.is-text.is-disabled,.el-button--success.is-text.is-disabled:active,.el-button--success.is-text.is-disabled:focus,.el-button--success.is-text.is-disabled:hover{background-color:var(--el-color-success-light-9);border-color:var(--el-color-success-light-8);color:var(--el-color-success-light-5)}.el-button--warning{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-warning);--el-button-border-color:var(--el-color-warning);--el-button-outline-color:var(--el-color-warning-light-5);--el-button-active-color:var(--el-color-warning-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-warning-light-5);--el-button-hover-bg-color:var(--el-color-warning-light-3);--el-button-hover-border-color:var(--el-color-warning-light-3);--el-button-active-bg-color:var(--el-color-warning-dark-2);--el-button-active-border-color:var(--el-color-warning-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-warning-light-5);--el-button-disabled-border-color:var(--el-color-warning-light-5)}.el-button--warning.is-link,.el-button--warning.is-plain,.el-button--warning.is-text{--el-button-text-color:var(--el-color-warning);--el-button-bg-color:var(--el-color-warning-light-9);--el-button-border-color:var(--el-color-warning-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-warning);--el-button-hover-border-color:var(--el-color-warning);--el-button-active-text-color:var(--el-color-white)}.el-button--warning.is-link.is-disabled,.el-button--warning.is-link.is-disabled:active,.el-button--warning.is-link.is-disabled:focus,.el-button--warning.is-link.is-disabled:hover,.el-button--warning.is-plain.is-disabled,.el-button--warning.is-plain.is-disabled:active,.el-button--warning.is-plain.is-disabled:focus,.el-button--warning.is-plain.is-disabled:hover,.el-button--warning.is-text.is-disabled,.el-button--warning.is-text.is-disabled:active,.el-button--warning.is-text.is-disabled:focus,.el-button--warning.is-text.is-disabled:hover{background-color:var(--el-color-warning-light-9);border-color:var(--el-color-warning-light-8);color:var(--el-color-warning-light-5)}.el-button--danger{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-danger);--el-button-border-color:var(--el-color-danger);--el-button-outline-color:var(--el-color-danger-light-5);--el-button-active-color:var(--el-color-danger-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-danger-light-5);--el-button-hover-bg-color:var(--el-color-danger-light-3);--el-button-hover-border-color:var(--el-color-danger-light-3);--el-button-active-bg-color:var(--el-color-danger-dark-2);--el-button-active-border-color:var(--el-color-danger-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-danger-light-5);--el-button-disabled-border-color:var(--el-color-danger-light-5)}.el-button--danger.is-link,.el-button--danger.is-plain,.el-button--danger.is-text{--el-button-text-color:var(--el-color-danger);--el-button-bg-color:var(--el-color-danger-light-9);--el-button-border-color:var(--el-color-danger-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-danger);--el-button-hover-border-color:var(--el-color-danger);--el-button-active-text-color:var(--el-color-white)}.el-button--danger.is-link.is-disabled,.el-button--danger.is-link.is-disabled:active,.el-button--danger.is-link.is-disabled:focus,.el-button--danger.is-link.is-disabled:hover,.el-button--danger.is-plain.is-disabled,.el-button--danger.is-plain.is-disabled:active,.el-button--danger.is-plain.is-disabled:focus,.el-button--danger.is-plain.is-disabled:hover,.el-button--danger.is-text.is-disabled,.el-button--danger.is-text.is-disabled:active,.el-button--danger.is-text.is-disabled:focus,.el-button--danger.is-text.is-disabled:hover{background-color:var(--el-color-danger-light-9);border-color:var(--el-color-danger-light-8);color:var(--el-color-danger-light-5)}.el-button--info{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-info);--el-button-border-color:var(--el-color-info);--el-button-outline-color:var(--el-color-info-light-5);--el-button-active-color:var(--el-color-info-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-info-light-5);--el-button-hover-bg-color:var(--el-color-info-light-3);--el-button-hover-border-color:var(--el-color-info-light-3);--el-button-active-bg-color:var(--el-color-info-dark-2);--el-button-active-border-color:var(--el-color-info-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-info-light-5);--el-button-disabled-border-color:var(--el-color-info-light-5)}.el-button--info.is-link,.el-button--info.is-plain,.el-button--info.is-text{--el-button-text-color:var(--el-color-info);--el-button-bg-color:var(--el-color-info-light-9);--el-button-border-color:var(--el-color-info-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-info);--el-button-hover-border-color:var(--el-color-info);--el-button-active-text-color:var(--el-color-white)}.el-button--info.is-link.is-disabled,.el-button--info.is-link.is-disabled:active,.el-button--info.is-link.is-disabled:focus,.el-button--info.is-link.is-disabled:hover,.el-button--info.is-plain.is-disabled,.el-button--info.is-plain.is-disabled:active,.el-button--info.is-plain.is-disabled:focus,.el-button--info.is-plain.is-disabled:hover,.el-button--info.is-text.is-disabled,.el-button--info.is-text.is-disabled:active,.el-button--info.is-text.is-disabled:focus,.el-button--info.is-text.is-disabled:hover{background-color:var(--el-color-info-light-9);border-color:var(--el-color-info-light-8);color:var(--el-color-info-light-5)}.el-button--large{--el-button-size:40px;height:var(--el-button-size)}.el-button--large [class*=el-icon]+span{margin-left:8px}.el-button--large{border-radius:var(--el-border-radius-base);font-size:var(--el-font-size-base);padding:12px 19px}.el-button--large.is-round{padding:12px 19px}.el-button--large.is-circle{padding:12px;width:var(--el-button-size)}.el-button--small{--el-button-size:24px;height:var(--el-button-size)}.el-button--small [class*=el-icon]+span{margin-left:4px}.el-button--small{border-radius:calc(var(--el-border-radius-base) - 1px);font-size:12px;padding:5px 11px}.el-button--small.is-round{padding:5px 11px}.el-button--small.is-circle{padding:5px;width:var(--el-button-size)}.workflow[data-v-d2759840] {
+      elementStyle.appendChild(document.createTextNode(`@charset "UTF-8";:root{--el-color-white:#ffffff;--el-color-black:#000000;--el-color-primary-rgb:64,158,255;--el-color-success-rgb:103,194,58;--el-color-warning-rgb:230,162,60;--el-color-danger-rgb:245,108,108;--el-color-error-rgb:245,108,108;--el-color-info-rgb:144,147,153;--el-font-size-extra-large:20px;--el-font-size-large:18px;--el-font-size-medium:16px;--el-font-size-base:14px;--el-font-size-small:13px;--el-font-size-extra-small:12px;--el-font-family:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;--el-font-weight-primary:500;--el-font-line-height-primary:24px;--el-index-normal:1;--el-index-top:1000;--el-index-popper:2000;--el-border-radius-base:4px;--el-border-radius-small:2px;--el-border-radius-round:20px;--el-border-radius-circle:100%;--el-transition-duration:0.3s;--el-transition-duration-fast:0.2s;--el-transition-function-ease-in-out-bezier:cubic-bezier(0.645,0.045,0.355,1);--el-transition-function-fast-bezier:cubic-bezier(0.23,1,0.32,1);--el-transition-all:all var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);--el-transition-fade:opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-md-fade:transform var(--el-transition-duration) var(--el-transition-function-fast-bezier),opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-fade-linear:opacity var(--el-transition-duration-fast) linear;--el-transition-border:border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-box-shadow:box-shadow var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-color:color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-component-size-large:40px;--el-component-size:32px;--el-component-size-small:24px;color-scheme:light;--el-color-primary:#409eff;--el-color-primary-light-3:rgb(121.3,187.1,255);--el-color-primary-light-5:rgb(159.5,206.5,255);--el-color-primary-light-7:rgb(197.7,225.9,255);--el-color-primary-light-8:rgb(216.8,235.6,255);--el-color-primary-light-9:rgb(235.9,245.3,255);--el-color-primary-dark-2:rgb(51.2,126.4,204);--el-color-success:#67c23a;--el-color-success-light-3:rgb(148.6,212.3,117.1);--el-color-success-light-5:rgb(179,224.5,156.5);--el-color-success-light-7:rgb(209.4,236.7,195.9);--el-color-success-light-8:rgb(224.6,242.8,215.6);--el-color-success-light-9:rgb(239.8,248.9,235.3);--el-color-success-dark-2:rgb(82.4,155.2,46.4);--el-color-warning:#e6a23c;--el-color-warning-light-3:rgb(237.5,189.9,118.5);--el-color-warning-light-5:rgb(242.5,208.5,157.5);--el-color-warning-light-7:rgb(247.5,227.1,196.5);--el-color-warning-light-8:rgb(250,236.4,216);--el-color-warning-light-9:rgb(252.5,245.7,235.5);--el-color-warning-dark-2:rgb(184,129.6,48);--el-color-danger:#f56c6c;--el-color-danger-light-3:rgb(248,152.1,152.1);--el-color-danger-light-5:rgb(250,181.5,181.5);--el-color-danger-light-7:rgb(252,210.9,210.9);--el-color-danger-light-8:rgb(253,225.6,225.6);--el-color-danger-light-9:rgb(254,240.3,240.3);--el-color-danger-dark-2:rgb(196,86.4,86.4);--el-color-error:#f56c6c;--el-color-error-light-3:rgb(248,152.1,152.1);--el-color-error-light-5:rgb(250,181.5,181.5);--el-color-error-light-7:rgb(252,210.9,210.9);--el-color-error-light-8:rgb(253,225.6,225.6);--el-color-error-light-9:rgb(254,240.3,240.3);--el-color-error-dark-2:rgb(196,86.4,86.4);--el-color-info:#909399;--el-color-info-light-3:rgb(177.3,179.4,183.6);--el-color-info-light-5:rgb(199.5,201,204);--el-color-info-light-7:rgb(221.7,222.6,224.4);--el-color-info-light-8:rgb(232.8,233.4,234.6);--el-color-info-light-9:rgb(243.9,244.2,244.8);--el-color-info-dark-2:rgb(115.2,117.6,122.4);--el-bg-color:#ffffff;--el-bg-color-page:#f2f3f5;--el-bg-color-overlay:#ffffff;--el-text-color-primary:#303133;--el-text-color-regular:#606266;--el-text-color-secondary:#909399;--el-text-color-placeholder:#a8abb2;--el-text-color-disabled:#c0c4cc;--el-border-color:#dcdfe6;--el-border-color-light:#e4e7ed;--el-border-color-lighter:#ebeef5;--el-border-color-extra-light:#f2f6fc;--el-border-color-dark:#d4d7de;--el-border-color-darker:#cdd0d6;--el-fill-color:#f0f2f5;--el-fill-color-light:#f5f7fa;--el-fill-color-lighter:#fafafa;--el-fill-color-extra-light:#fafcff;--el-fill-color-dark:#ebedf0;--el-fill-color-darker:#e6e8eb;--el-fill-color-blank:#ffffff;--el-box-shadow:0px 12px 32px 4px rgba(0,0,0,0.04),0px 8px 20px rgba(0,0,0,0.08);--el-box-shadow-light:0px 0px 12px rgba(0,0,0,0.12);--el-box-shadow-lighter:0px 0px 6px rgba(0,0,0,0.12);--el-box-shadow-dark:0px 16px 48px 16px rgba(0,0,0,0.08),0px 12px 32px rgba(0,0,0,0.12),0px 8px 16px -8px rgba(0,0,0,0.16);--el-disabled-bg-color:var(--el-fill-color-light);--el-disabled-text-color:var(--el-text-color-placeholder);--el-disabled-border-color:var(--el-border-color-light);--el-overlay-color:rgba(0,0,0,0.8);--el-overlay-color-light:rgba(0,0,0,0.7);--el-overlay-color-lighter:rgba(0,0,0,0.5);--el-mask-color:rgba(255,255,255,0.9);--el-mask-color-extra-light:rgba(255,255,255,0.3);--el-border-width:1px;--el-border-style:solid;--el-border-color-hover:var(--el-text-color-disabled);--el-border:var(--el-border-width) var(--el-border-style) var(--el-border-color);--el-svg-monochrome-grey:var(--el-border-color)}.fade-in-linear-enter-active,.fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.fade-in-linear-enter-from,.fade-in-linear-leave-to{opacity:0}.el-fade-in-linear-enter-active,.el-fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.el-fade-in-linear-enter-from,.el-fade-in-linear-leave-to{opacity:0}.el-fade-in-enter-active,.el-fade-in-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-fade-in-enter-from,.el-fade-in-leave-active{opacity:0}.el-zoom-in-center-enter-active,.el-zoom-in-center-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-zoom-in-center-enter-from,.el-zoom-in-center-leave-active{opacity:0;transform:scaleX(0)}.el-zoom-in-top-enter-active,.el-zoom-in-top-leave-active{opacity:1;transform:scaleY(1);transform-origin:center top;transition:var(--el-transition-md-fade)}.el-zoom-in-top-enter-active[data-popper-placement^=top],.el-zoom-in-top-leave-active[data-popper-placement^=top]{transform-origin:center bottom}.el-zoom-in-top-enter-from,.el-zoom-in-top-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-bottom-enter-active,.el-zoom-in-bottom-leave-active{opacity:1;transform:scaleY(1);transform-origin:center bottom;transition:var(--el-transition-md-fade)}.el-zoom-in-bottom-enter-from,.el-zoom-in-bottom-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-left-enter-active,.el-zoom-in-left-leave-active{opacity:1;transform:scale(1);transform-origin:top left;transition:var(--el-transition-md-fade)}.el-zoom-in-left-enter-from,.el-zoom-in-left-leave-active{opacity:0;transform:scale(.45)}.collapse-transition{transition:var(--el-transition-duration) height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.el-collapse-transition-enter-active,.el-collapse-transition-leave-active{transition:var(--el-transition-duration) max-height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.horizontal-collapse-transition{transition:var(--el-transition-duration) width ease-in-out,var(--el-transition-duration) padding-left ease-in-out,var(--el-transition-duration) padding-right ease-in-out}.el-list-enter-active,.el-list-leave-active{transition:all 1s}.el-list-enter-from,.el-list-leave-to{opacity:0;transform:translateY(-30px)}.el-list-leave-active{position:absolute!important}.el-opacity-transition{transition:opacity var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-icon-loading{animation:rotating 2s linear infinite}.el-icon--right{margin-left:5px}.el-icon--left{margin-right:5px}@keyframes rotating{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.el-icon{--color:inherit;align-items:center;display:inline-flex;height:1em;justify-content:center;line-height:1em;position:relative;width:1em;fill:currentColor;color:var(--color);font-size:inherit}.el-icon.is-loading{animation:rotating 2s linear infinite}.el-icon svg{height:1em;width:1em}.el-textarea{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;display:inline-block;font-size:var(--el-font-size-base);position:relative;vertical-align:bottom;width:100%}.el-textarea__inner{-webkit-appearance:none;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));display:block;font-family:inherit;font-size:inherit;line-height:1.5;padding:5px 11px;position:relative;resize:vertical;transition:var(--el-transition-box-shadow);width:100%}.el-textarea__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-textarea__inner:focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset;outline:none}.el-textarea .el-input__count{background:var(--el-fill-color-blank);bottom:5px;color:var(--el-color-info);font-size:12px;line-height:14px;position:absolute;right:10px}.el-textarea.is-disabled .el-textarea__inner{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;color:var(--el-disabled-text-color);cursor:not-allowed}.el-textarea.is-disabled .el-textarea__inner::placeholder{color:var(--el-text-color-placeholder)}.el-textarea.is-exceed .el-textarea__inner{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-textarea.is-exceed .el-input__count{color:var(--el-color-danger)}.el-input{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;--el-input-height:var(--el-component-size);box-sizing:border-box;display:inline-flex;font-size:var(--el-font-size-base);line-height:var(--el-input-height);position:relative;vertical-align:middle;width:var(--el-input-width)}.el-input::-webkit-scrollbar{width:6px;z-index:11}.el-input::-webkit-scrollbar:horizontal{height:6px}.el-input::-webkit-scrollbar-thumb{background:var(--el-text-color-disabled);border-radius:5px;width:6px}.el-input::-webkit-scrollbar-corner,.el-input::-webkit-scrollbar-track{background:var(--el-fill-color-blank)}.el-input::-webkit-scrollbar-track-piece{background:var(--el-fill-color-blank);width:6px}.el-input .el-input__clear,.el-input .el-input__password{color:var(--el-input-icon-color);cursor:pointer;font-size:14px}.el-input .el-input__clear:hover,.el-input .el-input__password:hover{color:var(--el-input-clear-hover-color)}.el-input .el-input__count{align-items:center;color:var(--el-color-info);display:inline-flex;font-size:12px;height:100%}.el-input .el-input__count .el-input__count-inner{background:var(--el-fill-color-blank);display:inline-block;line-height:normal;padding-left:8px}.el-input__wrapper{align-items:center;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;cursor:text;display:inline-flex;flex-grow:1;justify-content:center;padding:1px 11px;transform:translateZ(0);transition:var(--el-transition-box-shadow)}.el-input__wrapper:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-input__wrapper.is-focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset}.el-input{--el-input-inner-height:calc(var(--el-input-height, 32px) - 2px)}.el-input__inner{-webkit-appearance:none;background:none;border:none;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));flex-grow:1;font-size:inherit;height:var(--el-input-inner-height);line-height:var(--el-input-inner-height);outline:none;padding:0;width:100%}.el-input__inner:focus{outline:none}.el-input__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-input__inner[type=password]::-ms-reveal{display:none}.el-input__inner[type=number]{line-height:1}.el-input__prefix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;line-height:var(--el-input-inner-height);pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__prefix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__prefix-inner>:last-child{margin-right:8px}.el-input__prefix-inner>:first-child,.el-input__prefix-inner>:first-child.el-input__icon{margin-left:0}.el-input__suffix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;line-height:var(--el-input-inner-height);pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__suffix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__suffix-inner>:first-child{margin-left:8px}.el-input .el-input__icon{align-items:center;display:flex;height:inherit;justify-content:center;line-height:inherit;margin-left:8px;transition:all var(--el-transition-duration)}.el-input__validateIcon{pointer-events:none}.el-input.is-active .el-input__wrapper{box-shadow:0 0 0 1px var(--el-input-focus-color, ) inset}.el-input.is-disabled{cursor:not-allowed}.el-input.is-disabled .el-input__wrapper{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;cursor:not-allowed;pointer-events:none}.el-input.is-disabled .el-input__inner{color:var(--el-disabled-text-color);-webkit-text-fill-color:var(--el-disabled-text-color);cursor:not-allowed}.el-input.is-disabled .el-input__inner::placeholder{color:var(--el-text-color-placeholder)}.el-input.is-disabled .el-input__icon{cursor:not-allowed}.el-input.is-exceed .el-input__wrapper{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-input.is-exceed .el-input__suffix .el-input__count{color:var(--el-color-danger)}.el-input--large{--el-input-height:var(--el-component-size-large);font-size:14px}.el-input--large .el-input__wrapper{padding:1px 15px}.el-input--large{--el-input-inner-height:calc(var(--el-input-height, 40px) - 2px)}.el-input--small{--el-input-height:var(--el-component-size-small);font-size:12px}.el-input--small .el-input__wrapper{padding:1px 7px}.el-input--small{--el-input-inner-height:calc(var(--el-input-height, 24px) - 2px)}.el-input-group{align-items:stretch;display:inline-flex;width:100%}.el-input-group__append,.el-input-group__prepend{align-items:center;background-color:var(--el-fill-color-light);border-radius:var(--el-input-border-radius);color:var(--el-color-info);display:inline-flex;justify-content:center;min-height:100%;padding:0 20px;position:relative;white-space:nowrap}.el-input-group__append:focus,.el-input-group__prepend:focus{outline:none}.el-input-group__append .el-button,.el-input-group__append .el-select,.el-input-group__prepend .el-button,.el-input-group__prepend .el-select{display:inline-block;margin:0 -20px}.el-input-group__append button.el-button,.el-input-group__append button.el-button:hover,.el-input-group__append div.el-select .el-select__wrapper,.el-input-group__append div.el-select:hover .el-select__wrapper,.el-input-group__prepend button.el-button,.el-input-group__prepend button.el-button:hover,.el-input-group__prepend div.el-select .el-select__wrapper,.el-input-group__prepend div.el-select:hover .el-select__wrapper{background-color:transparent;border-color:transparent;color:inherit}.el-input-group__append .el-button,.el-input-group__append .el-input,.el-input-group__prepend .el-button,.el-input-group__prepend .el-input{font-size:inherit}.el-input-group__prepend{border-bottom-right-radius:0;border-right:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group__append{border-left:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-group--prepend>.el-input__wrapper,.el-input-group__append{border-bottom-left-radius:0;border-top-left-radius:0}.el-input-group--prepend .el-input-group__prepend .el-select .el-select__wrapper{border-bottom-right-radius:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group--append>.el-input__wrapper{border-bottom-right-radius:0;border-top-right-radius:0}.el-input-group--append .el-input-group__append .el-select .el-select__wrapper{border-bottom-left-radius:0;border-top-left-radius:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-hidden{display:none!important}.el-form{--el-form-label-font-size:var(--el-font-size-base);--el-form-inline-content-width:220px}.el-form--inline .el-form-item{display:inline-flex;margin-right:32px;vertical-align:middle}.el-form--inline.el-form--label-top{display:flex;flex-wrap:wrap}.el-form--inline.el-form--label-top .el-form-item{display:block}.el-form-item{display:flex;--font-size:14px;margin-bottom:18px}.el-form-item .el-form-item{margin-bottom:0}.el-form-item .el-input__validateIcon{display:none}.el-form-item--large{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:22px}.el-form-item--large .el-form-item__label{height:40px;line-height:40px}.el-form-item--large .el-form-item__content{line-height:40px}.el-form-item--large .el-form-item__error{padding-top:4px}.el-form-item--default{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--default .el-form-item__label{height:32px;line-height:32px}.el-form-item--default .el-form-item__content{line-height:32px}.el-form-item--default .el-form-item__error{padding-top:2px}.el-form-item--small{--font-size:12px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--small .el-form-item__label{height:24px;line-height:24px}.el-form-item--small .el-form-item__content{line-height:24px}.el-form-item--small .el-form-item__error{padding-top:2px}.el-form-item--label-left .el-form-item__label{justify-content:flex-start}.el-form-item--label-top{display:block}.el-form-item--label-top .el-form-item__label{display:inline-block;height:auto;line-height:22px;margin-bottom:8px;text-align:left;vertical-align:middle}.el-form-item__label-wrap{display:flex}.el-form-item__label{align-items:flex-start;box-sizing:border-box;color:var(--el-text-color-regular);display:inline-flex;flex:0 0 auto;font-size:var(--el-form-label-font-size);height:32px;justify-content:flex-end;line-height:32px;padding:0 12px 0 0}.el-form-item__content{align-items:center;display:flex;flex:1;flex-wrap:wrap;font-size:var(--font-size);line-height:32px;min-width:0;position:relative}.el-form-item__content .el-input-group{vertical-align:top}.el-form-item__error{color:var(--el-color-danger);font-size:12px;left:0;line-height:1;padding-top:2px;position:absolute;top:100%}.el-form-item__error--inline{display:inline-block;left:auto;margin-left:10px;position:relative;top:auto}.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label-wrap>.el-form-item__label:before,.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label:before{color:var(--el-color-danger);content:"*";margin-right:4px}.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label-wrap>.el-form-item__label:after,.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label:after{color:var(--el-color-danger);content:"*";margin-left:4px}.el-form-item.is-error .el-input-tag__wrapper,.el-form-item.is-error .el-input-tag__wrapper.is-focus,.el-form-item.is-error .el-input-tag__wrapper:focus,.el-form-item.is-error .el-input-tag__wrapper:hover,.el-form-item.is-error .el-input__wrapper,.el-form-item.is-error .el-input__wrapper.is-focus,.el-form-item.is-error .el-input__wrapper:focus,.el-form-item.is-error .el-input__wrapper:hover,.el-form-item.is-error .el-select__wrapper,.el-form-item.is-error .el-select__wrapper.is-focus,.el-form-item.is-error .el-select__wrapper:focus,.el-form-item.is-error .el-select__wrapper:hover,.el-form-item.is-error .el-textarea__inner,.el-form-item.is-error .el-textarea__inner.is-focus,.el-form-item.is-error .el-textarea__inner:focus,.el-form-item.is-error .el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-form-item.is-error .el-input-group__append .el-input__wrapper,.el-form-item.is-error .el-input-group__prepend .el-input__wrapper{box-shadow:inset 0 0 0 1px transparent}.el-form-item.is-error .el-input-group__append .el-input__validateIcon,.el-form-item.is-error .el-input-group__prepend .el-input__validateIcon{display:none}.el-form-item.is-error .el-input__validateIcon{color:var(--el-color-danger)}.el-form-item--feedback .el-input__validateIcon{display:inline-flex}.el-button{--el-button-font-weight:var(--el-font-weight-primary);--el-button-border-color:var(--el-border-color);--el-button-bg-color:var(--el-fill-color-blank);--el-button-text-color:var(--el-text-color-regular);--el-button-disabled-text-color:var(--el-disabled-text-color);--el-button-disabled-bg-color:var(--el-fill-color-blank);--el-button-disabled-border-color:var(--el-border-color-light);--el-button-divide-border-color:rgba(255,255,255,0.5);--el-button-hover-text-color:var(--el-color-primary);--el-button-hover-bg-color:var(--el-color-primary-light-9);--el-button-hover-border-color:var(--el-color-primary-light-7);--el-button-active-text-color:var(--el-button-hover-text-color);--el-button-active-border-color:var(--el-color-primary);--el-button-active-bg-color:var(--el-button-hover-bg-color);--el-button-outline-color:var(--el-color-primary-light-5);--el-button-hover-link-text-color:var(--el-text-color-secondary);--el-button-active-color:var(--el-text-color-primary);align-items:center;-webkit-appearance:none;background-color:var(--el-button-bg-color);border:var(--el-border);border-color:var(--el-button-border-color);box-sizing:border-box;color:var(--el-button-text-color);cursor:pointer;display:inline-flex;font-weight:var(--el-button-font-weight);height:32px;justify-content:center;line-height:1;outline:none;text-align:center;transition:.1s;-webkit-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.el-button:hover{background-color:var(--el-button-hover-bg-color);border-color:var(--el-button-hover-border-color);color:var(--el-button-hover-text-color);outline:none}.el-button:active{background-color:var(--el-button-active-bg-color);border-color:var(--el-button-active-border-color);color:var(--el-button-active-text-color);outline:none}.el-button:focus-visible{outline:2px solid var(--el-button-outline-color);outline-offset:1px;transition:outline-offset 0s,outline 0s}.el-button>span{align-items:center;display:inline-flex}.el-button+.el-button{margin-left:12px}.el-button{border-radius:var(--el-border-radius-base);font-size:var(--el-font-size-base)}.el-button,.el-button.is-round{padding:8px 15px}.el-button::-moz-focus-inner{border:0}.el-button [class*=el-icon]+span{margin-left:6px}.el-button [class*=el-icon] svg{vertical-align:bottom}.el-button.is-plain{--el-button-hover-text-color:var(--el-color-primary);--el-button-hover-bg-color:var(--el-fill-color-blank);--el-button-hover-border-color:var(--el-color-primary)}.el-button.is-active{background-color:var(--el-button-active-bg-color);border-color:var(--el-button-active-border-color);color:var(--el-button-active-text-color);outline:none}.el-button.is-disabled,.el-button.is-disabled:hover{background-color:var(--el-button-disabled-bg-color);background-image:none;border-color:var(--el-button-disabled-border-color);color:var(--el-button-disabled-text-color);cursor:not-allowed}.el-button.is-loading{pointer-events:none;position:relative}.el-button.is-loading:before{background-color:var(--el-mask-color-extra-light);border-radius:inherit;bottom:-1px;content:"";left:-1px;pointer-events:none;position:absolute;right:-1px;top:-1px;z-index:1}.el-button.is-round{border-radius:var(--el-border-radius-round)}.el-button.is-circle{border-radius:50%;padding:8px;width:32px}.el-button.is-text{background-color:transparent;border:0 solid transparent;color:var(--el-button-text-color)}.el-button.is-text.is-disabled{background-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button.is-text:not(.is-disabled):hover{background-color:var(--el-fill-color-light)}.el-button.is-text:not(.is-disabled):focus-visible{outline:2px solid var(--el-button-outline-color);outline-offset:1px;transition:outline-offset 0s,outline 0s}.el-button.is-text:not(.is-disabled):active{background-color:var(--el-fill-color)}.el-button.is-text:not(.is-disabled).is-has-bg{background-color:var(--el-fill-color-light)}.el-button.is-text:not(.is-disabled).is-has-bg:hover{background-color:var(--el-fill-color)}.el-button.is-text:not(.is-disabled).is-has-bg:active{background-color:var(--el-fill-color-dark)}.el-button__text--expand{letter-spacing:.3em;margin-right:-.3em}.el-button.is-link{background:transparent;border-color:transparent;color:var(--el-button-text-color);height:auto;padding:2px}.el-button.is-link:hover{color:var(--el-button-hover-link-text-color)}.el-button.is-link.is-disabled{background-color:transparent!important;border-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button.is-link:not(.is-disabled):active,.el-button.is-link:not(.is-disabled):hover{background-color:transparent;border-color:transparent}.el-button.is-link:not(.is-disabled):active{color:var(--el-button-active-color)}.el-button--text{background:transparent;border-color:transparent;color:var(--el-color-primary);padding-left:0;padding-right:0}.el-button--text.is-disabled{background-color:transparent!important;border-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button--text:not(.is-disabled):hover{background-color:transparent;border-color:transparent;color:var(--el-color-primary-light-3)}.el-button--text:not(.is-disabled):active{background-color:transparent;border-color:transparent;color:var(--el-color-primary-dark-2)}.el-button__link--expand{letter-spacing:.3em;margin-right:-.3em}.el-button--primary{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-primary);--el-button-border-color:var(--el-color-primary);--el-button-outline-color:var(--el-color-primary-light-5);--el-button-active-color:var(--el-color-primary-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-primary-light-5);--el-button-hover-bg-color:var(--el-color-primary-light-3);--el-button-hover-border-color:var(--el-color-primary-light-3);--el-button-active-bg-color:var(--el-color-primary-dark-2);--el-button-active-border-color:var(--el-color-primary-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-primary-light-5);--el-button-disabled-border-color:var(--el-color-primary-light-5)}.el-button--primary.is-link,.el-button--primary.is-plain,.el-button--primary.is-text{--el-button-text-color:var(--el-color-primary);--el-button-bg-color:var(--el-color-primary-light-9);--el-button-border-color:var(--el-color-primary-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-primary);--el-button-hover-border-color:var(--el-color-primary);--el-button-active-text-color:var(--el-color-white)}.el-button--primary.is-link.is-disabled,.el-button--primary.is-link.is-disabled:active,.el-button--primary.is-link.is-disabled:focus,.el-button--primary.is-link.is-disabled:hover,.el-button--primary.is-plain.is-disabled,.el-button--primary.is-plain.is-disabled:active,.el-button--primary.is-plain.is-disabled:focus,.el-button--primary.is-plain.is-disabled:hover,.el-button--primary.is-text.is-disabled,.el-button--primary.is-text.is-disabled:active,.el-button--primary.is-text.is-disabled:focus,.el-button--primary.is-text.is-disabled:hover{background-color:var(--el-color-primary-light-9);border-color:var(--el-color-primary-light-8);color:var(--el-color-primary-light-5)}.el-button--success{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-success);--el-button-border-color:var(--el-color-success);--el-button-outline-color:var(--el-color-success-light-5);--el-button-active-color:var(--el-color-success-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-success-light-5);--el-button-hover-bg-color:var(--el-color-success-light-3);--el-button-hover-border-color:var(--el-color-success-light-3);--el-button-active-bg-color:var(--el-color-success-dark-2);--el-button-active-border-color:var(--el-color-success-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-success-light-5);--el-button-disabled-border-color:var(--el-color-success-light-5)}.el-button--success.is-link,.el-button--success.is-plain,.el-button--success.is-text{--el-button-text-color:var(--el-color-success);--el-button-bg-color:var(--el-color-success-light-9);--el-button-border-color:var(--el-color-success-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-success);--el-button-hover-border-color:var(--el-color-success);--el-button-active-text-color:var(--el-color-white)}.el-button--success.is-link.is-disabled,.el-button--success.is-link.is-disabled:active,.el-button--success.is-link.is-disabled:focus,.el-button--success.is-link.is-disabled:hover,.el-button--success.is-plain.is-disabled,.el-button--success.is-plain.is-disabled:active,.el-button--success.is-plain.is-disabled:focus,.el-button--success.is-plain.is-disabled:hover,.el-button--success.is-text.is-disabled,.el-button--success.is-text.is-disabled:active,.el-button--success.is-text.is-disabled:focus,.el-button--success.is-text.is-disabled:hover{background-color:var(--el-color-success-light-9);border-color:var(--el-color-success-light-8);color:var(--el-color-success-light-5)}.el-button--warning{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-warning);--el-button-border-color:var(--el-color-warning);--el-button-outline-color:var(--el-color-warning-light-5);--el-button-active-color:var(--el-color-warning-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-warning-light-5);--el-button-hover-bg-color:var(--el-color-warning-light-3);--el-button-hover-border-color:var(--el-color-warning-light-3);--el-button-active-bg-color:var(--el-color-warning-dark-2);--el-button-active-border-color:var(--el-color-warning-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-warning-light-5);--el-button-disabled-border-color:var(--el-color-warning-light-5)}.el-button--warning.is-link,.el-button--warning.is-plain,.el-button--warning.is-text{--el-button-text-color:var(--el-color-warning);--el-button-bg-color:var(--el-color-warning-light-9);--el-button-border-color:var(--el-color-warning-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-warning);--el-button-hover-border-color:var(--el-color-warning);--el-button-active-text-color:var(--el-color-white)}.el-button--warning.is-link.is-disabled,.el-button--warning.is-link.is-disabled:active,.el-button--warning.is-link.is-disabled:focus,.el-button--warning.is-link.is-disabled:hover,.el-button--warning.is-plain.is-disabled,.el-button--warning.is-plain.is-disabled:active,.el-button--warning.is-plain.is-disabled:focus,.el-button--warning.is-plain.is-disabled:hover,.el-button--warning.is-text.is-disabled,.el-button--warning.is-text.is-disabled:active,.el-button--warning.is-text.is-disabled:focus,.el-button--warning.is-text.is-disabled:hover{background-color:var(--el-color-warning-light-9);border-color:var(--el-color-warning-light-8);color:var(--el-color-warning-light-5)}.el-button--danger{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-danger);--el-button-border-color:var(--el-color-danger);--el-button-outline-color:var(--el-color-danger-light-5);--el-button-active-color:var(--el-color-danger-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-danger-light-5);--el-button-hover-bg-color:var(--el-color-danger-light-3);--el-button-hover-border-color:var(--el-color-danger-light-3);--el-button-active-bg-color:var(--el-color-danger-dark-2);--el-button-active-border-color:var(--el-color-danger-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-danger-light-5);--el-button-disabled-border-color:var(--el-color-danger-light-5)}.el-button--danger.is-link,.el-button--danger.is-plain,.el-button--danger.is-text{--el-button-text-color:var(--el-color-danger);--el-button-bg-color:var(--el-color-danger-light-9);--el-button-border-color:var(--el-color-danger-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-danger);--el-button-hover-border-color:var(--el-color-danger);--el-button-active-text-color:var(--el-color-white)}.el-button--danger.is-link.is-disabled,.el-button--danger.is-link.is-disabled:active,.el-button--danger.is-link.is-disabled:focus,.el-button--danger.is-link.is-disabled:hover,.el-button--danger.is-plain.is-disabled,.el-button--danger.is-plain.is-disabled:active,.el-button--danger.is-plain.is-disabled:focus,.el-button--danger.is-plain.is-disabled:hover,.el-button--danger.is-text.is-disabled,.el-button--danger.is-text.is-disabled:active,.el-button--danger.is-text.is-disabled:focus,.el-button--danger.is-text.is-disabled:hover{background-color:var(--el-color-danger-light-9);border-color:var(--el-color-danger-light-8);color:var(--el-color-danger-light-5)}.el-button--info{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-info);--el-button-border-color:var(--el-color-info);--el-button-outline-color:var(--el-color-info-light-5);--el-button-active-color:var(--el-color-info-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-info-light-5);--el-button-hover-bg-color:var(--el-color-info-light-3);--el-button-hover-border-color:var(--el-color-info-light-3);--el-button-active-bg-color:var(--el-color-info-dark-2);--el-button-active-border-color:var(--el-color-info-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-info-light-5);--el-button-disabled-border-color:var(--el-color-info-light-5)}.el-button--info.is-link,.el-button--info.is-plain,.el-button--info.is-text{--el-button-text-color:var(--el-color-info);--el-button-bg-color:var(--el-color-info-light-9);--el-button-border-color:var(--el-color-info-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-info);--el-button-hover-border-color:var(--el-color-info);--el-button-active-text-color:var(--el-color-white)}.el-button--info.is-link.is-disabled,.el-button--info.is-link.is-disabled:active,.el-button--info.is-link.is-disabled:focus,.el-button--info.is-link.is-disabled:hover,.el-button--info.is-plain.is-disabled,.el-button--info.is-plain.is-disabled:active,.el-button--info.is-plain.is-disabled:focus,.el-button--info.is-plain.is-disabled:hover,.el-button--info.is-text.is-disabled,.el-button--info.is-text.is-disabled:active,.el-button--info.is-text.is-disabled:focus,.el-button--info.is-text.is-disabled:hover{background-color:var(--el-color-info-light-9);border-color:var(--el-color-info-light-8);color:var(--el-color-info-light-5)}.el-button--large{--el-button-size:40px;height:var(--el-button-size)}.el-button--large [class*=el-icon]+span{margin-left:8px}.el-button--large{border-radius:var(--el-border-radius-base);font-size:var(--el-font-size-base);padding:12px 19px}.el-button--large.is-round{padding:12px 19px}.el-button--large.is-circle{padding:12px;width:var(--el-button-size)}.el-button--small{--el-button-size:24px;height:var(--el-button-size)}.el-button--small [class*=el-icon]+span{margin-left:4px}.el-button--small{border-radius:calc(var(--el-border-radius-base) - 1px);font-size:12px;padding:5px 11px}.el-button--small.is-round{padding:5px 11px}.el-button--small.is-circle{padding:5px;width:var(--el-button-size)}
+.global-dialog .p-dialog-header {
+    padding: 0.5rem
+}
+@media (min-width: 1536px) {
+.global-dialog .p-dialog-header {
+        padding: var(--p-dialog-header-padding)
+}
+}
+.global-dialog .p-dialog-header {
+    padding-bottom: 0px
+}
+.global-dialog .p-dialog-content {
+    padding: 0.5rem
+}
+@media (min-width: 1536px) {
+.global-dialog .p-dialog-content {
+        padding: var(--p-dialog-content-padding)
+}
+}
+.global-dialog .p-dialog-content {
+    padding-top: 0px
+}
+
+.settings-container[data-v-d3564705] {\r
+  display: flex;\r
+  height: 70vh;\r
+  width: 60vw;\r
+  max-width: 1024px;\r
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+.settings-container[data-v-d3564705] {\r
+    flex-direction: column;\r
+    height: auto;\r
+    width: 80vw;
+}
+.settings-sidebar[data-v-d3564705] {\r
+    width: 100%;
+}
+.settings-content[data-v-d3564705] {\r
+    height: 350px;
+}
+}\r
+\r
+/* Show a separator line above the Keybinding tab */\r
+/* This indicates the start of custom setting panels */
+.settings-sidebar[data-v-d3564705] .p-listbox-option[aria-label='Keybinding'] {\r
+  position: relative;
+}
+.settings-sidebar[data-v-d3564705] .p-listbox-option[aria-label='Keybinding']::before {\r
+  position: absolute;\r
+  top: 0px;\r
+  left: 0px;\r
+  width: 100%;\r
+  --tw-content: '';\r
+  content: var(--tw-content);\r
+  border-top: 1px solid var(--p-divider-border-color);
+}\r
+
+.pi-cog[data-v-d76691f6] {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
+.version-tag[data-v-d76691f6] {
+  margin-left: 0.5rem;
+}
+.workflow[data-v-d2759840] {
   background: #fff;
 }
 .list-none[data-v-d2759840] {
@@ -83,25 +150,133 @@
 .explorer-container[data-v-c41ef1d4] {
   background: #fff;
   border-radius: none;
-}[data-v-760af242] .left-tool-button {
+}
+.panels-container[data-v-8adac5b7] {\r
+  height: 100%;\r
+  width: 100%;\r
+  position: relative;\r
+  background: #fff;
+}
+.resizable-panel[data-v-8adac5b7] {\r
+  background: white;\r
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
+  overflow: hidden;\r
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.panel-header[data-v-8adac5b7] {\r
+  background: #f8f9fa;\r
+  cursor: pointer;\r
+  border-bottom: 1px solid #eee;\r
+  display: flex;\r
+  justify-content: space-between;\r
+  align-items: center;\r
+  -webkit-user-select: none;\r
+     -moz-user-select: none;\r
+          user-select: none;\r
+  box-sizing: border-box;
+}
+.toggle-icon[data-v-8adac5b7] {\r
+  font-size: 0.8em;\r
+  opacity: 0.6;
+}
+.panel-content[data-v-8adac5b7] {\r
+  /* padding: 16px;\r
+  height: calc(100% - 48px);\r
+  overflow: auto; */
+}
+.gutter[data-v-8adac5b7] {\r
+  background: #ddd;\r
+  position: relative;\r
+  transition: all 0.3s;
+}
+.gutter.gutter-active[data-v-8adac5b7] {\r
+  background: #ccc;\r
+  cursor: row-resize;
+}
+.gutter[data-v-8adac5b7]:not(.gutter-active) {\r
+  pointer-events: none;\r
+  opacity: 0;
+}\r
+\r
+/* 垂直布局分隔条 */
+.gutter[data-direction="vertical"][data-v-8adac5b7] {\r
+  height: 10px;\r
+  cursor: row-resize;
+}\r
+\r
+/* 水平布局分隔条 */
+.gutter[data-direction="horizontal"][data-v-8adac5b7] {\r
+  width: 5px;\r
+  cursor: col-resize;
+}
+[data-v-8adac5b7] .gutter-vertical {\r
+  /* opacity: 0; */\r
+  background-color: #fff;
+&:hover {\r
+    background-color: #3b82f6;
+}
+}\r
+\r
+/* .panel:not(:first-child) {\r
+  position: relative;\r
+\r
+  &::before {\r
+    content: '';\r
+    width: 100%;\r
+    height: 4px;\r
+    display: block;\r
+    background-color: green;\r
+    top: -4px;\r
+    left: 0;\r
+  }\r
+} */\r
+\r
+/* :deep(.expand) {\r
+\r
+  &+.gutter-vertical {\r
+    opacity: 1;\r
+  }\r
+} */
+.panel[data-v-8adac5b7] {\r
+  overflow: hidden;
+}\r
+
+.split-container[data-v-e7912b00] {\r
+  /* height: 100vh; */\r
+  width: 100%;
+}
+.custom-content[data-v-e7912b00] {\r
+  padding: 20px;
+}
+.custom-content h3[data-v-e7912b00] {\r
+  margin-bottom: 15px;\r
+  color: #333;
+}
+.custom-content li[data-v-e7912b00] {\r
+  padding: 8px;\r
+  margin: 4px 0;\r
+  background: #f8f9fa;\r
+  border-radius: 4px;
+}\r
+[data-v-59fc9bca] .left-tool-button {
   /* Your styles here */
   width: var(--sidebar-width);
   height: var(--sidebar-width);
   border-radius: 0 !important;
   box-sizing: border-box;
 }
-[data-v-760af242] .left-tool-button .pi,[data-v-760af242] .left-tool-button .fontello {
+[data-v-59fc9bca] .left-tool-button .pi,[data-v-59fc9bca] .left-tool-button .fontello {
   font-size: var(--sidebar-icon-size, 1rem) !important;
 }
-[data-v-760af242] .left-tool-button.left-tool-button-select {
+[data-v-59fc9bca] .left-tool-button.left-tool-button-select {
   border-left: 4px solid var(--p-button-text-primary-color);
 }
-.toolbar[data-v-760af242] {
+.toolbar[data-v-59fc9bca] {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.side-bar-end[data-v-760af242] {
+.side-bar-end[data-v-59fc9bca] {
   align-self: flex-end;
   margin-top: auto;
   width: 100%;
@@ -109,11 +284,11 @@
   flex-direction: column;
   align-items: center;
 }
-.side-bar-button[data-v-760af242] {
+.side-bar-button[data-v-59fc9bca] {
   width: var(--sidebar-width);
   height: var(--sidebar-width);
 }
-.dark-theme .p-button-text[data-v-760af242] {
+.dark-theme .p-button-text[data-v-59fc9bca] {
   color: var(--p-button-text-secondary-color);
 }[data-v-dd393c1b] .split-container {
   border: none;
@@ -241,7 +416,9 @@
   display: flex;\r
   overflow: hidden;
 }\r
-.hideBox {
+.explorer-container[data-v-1e4630e3] {
+  background-color: #fff;
+}.hideBox {
   opacity: 0;
   pointer-events: none;
 }
@@ -251,10 +428,183 @@
 .p-togglebutton-content {
   background: transparent !important;
   padding: 0 !important;
-}/* @font-face {\r
-  font-family: 'fontello';\r
-  src: url('http://36.134.79.170:7777/images/fontello.ttf') format('truetype');\r
+}*, ::before, ::after {\r
+    --tw-border-spacing-x: 0;\r
+    --tw-border-spacing-y: 0;\r
+    --tw-translate-x: 0;\r
+    --tw-translate-y: 0;\r
+    --tw-rotate: 0;\r
+    --tw-skew-x: 0;\r
+    --tw-skew-y: 0;\r
+    --tw-scale-x: 1;\r
+    --tw-scale-y: 1;\r
+    --tw-pan-x:  ;\r
+    --tw-pan-y:  ;\r
+    --tw-pinch-zoom:  ;\r
+    --tw-scroll-snap-strictness: proximity;\r
+    --tw-gradient-from-position:  ;\r
+    --tw-gradient-via-position:  ;\r
+    --tw-gradient-to-position:  ;\r
+    --tw-ordinal:  ;\r
+    --tw-slashed-zero:  ;\r
+    --tw-numeric-figure:  ;\r
+    --tw-numeric-spacing:  ;\r
+    --tw-numeric-fraction:  ;\r
+    --tw-ring-inset:  ;\r
+    --tw-ring-offset-width: 0px;\r
+    --tw-ring-offset-color: #fff;\r
+    --tw-ring-color: rgb(66 153 225 / 0.5);\r
+    --tw-ring-offset-shadow: 0 0 #0000;\r
+    --tw-ring-shadow: 0 0 #0000;\r
+    --tw-shadow: 0 0 #0000;\r
+    --tw-shadow-colored: 0 0 #0000;\r
+    --tw-blur:  ;\r
+    --tw-brightness:  ;\r
+    --tw-contrast:  ;\r
+    --tw-grayscale:  ;\r
+    --tw-hue-rotate:  ;\r
+    --tw-invert:  ;\r
+    --tw-saturate:  ;\r
+    --tw-sepia:  ;\r
+    --tw-drop-shadow:  ;\r
+    --tw-backdrop-blur:  ;\r
+    --tw-backdrop-brightness:  ;\r
+    --tw-backdrop-contrast:  ;\r
+    --tw-backdrop-grayscale:  ;\r
+    --tw-backdrop-hue-rotate:  ;\r
+    --tw-backdrop-invert:  ;\r
+    --tw-backdrop-opacity:  ;\r
+    --tw-backdrop-saturate:  ;\r
+    --tw-backdrop-sepia:  ;\r
+    --tw-contain-size:  ;\r
+    --tw-contain-layout:  ;\r
+    --tw-contain-paint:  ;\r
+    --tw-contain-style:  
+}\r
+::backdrop {\r
+    --tw-border-spacing-x: 0;\r
+    --tw-border-spacing-y: 0;\r
+    --tw-translate-x: 0;\r
+    --tw-translate-y: 0;\r
+    --tw-rotate: 0;\r
+    --tw-skew-x: 0;\r
+    --tw-skew-y: 0;\r
+    --tw-scale-x: 1;\r
+    --tw-scale-y: 1;\r
+    --tw-pan-x:  ;\r
+    --tw-pan-y:  ;\r
+    --tw-pinch-zoom:  ;\r
+    --tw-scroll-snap-strictness: proximity;\r
+    --tw-gradient-from-position:  ;\r
+    --tw-gradient-via-position:  ;\r
+    --tw-gradient-to-position:  ;\r
+    --tw-ordinal:  ;\r
+    --tw-slashed-zero:  ;\r
+    --tw-numeric-figure:  ;\r
+    --tw-numeric-spacing:  ;\r
+    --tw-numeric-fraction:  ;\r
+    --tw-ring-inset:  ;\r
+    --tw-ring-offset-width: 0px;\r
+    --tw-ring-offset-color: #fff;\r
+    --tw-ring-color: rgb(66 153 225 / 0.5);\r
+    --tw-ring-offset-shadow: 0 0 #0000;\r
+    --tw-ring-shadow: 0 0 #0000;\r
+    --tw-shadow: 0 0 #0000;\r
+    --tw-shadow-colored: 0 0 #0000;\r
+    --tw-blur:  ;\r
+    --tw-brightness:  ;\r
+    --tw-contrast:  ;\r
+    --tw-grayscale:  ;\r
+    --tw-hue-rotate:  ;\r
+    --tw-invert:  ;\r
+    --tw-saturate:  ;\r
+    --tw-sepia:  ;\r
+    --tw-drop-shadow:  ;\r
+    --tw-backdrop-blur:  ;\r
+    --tw-backdrop-brightness:  ;\r
+    --tw-backdrop-contrast:  ;\r
+    --tw-backdrop-grayscale:  ;\r
+    --tw-backdrop-hue-rotate:  ;\r
+    --tw-backdrop-invert:  ;\r
+    --tw-backdrop-opacity:  ;\r
+    --tw-backdrop-saturate:  ;\r
+    --tw-backdrop-sepia:  ;\r
+    --tw-contain-size:  ;\r
+    --tw-contain-layout:  ;\r
+    --tw-contain-paint:  ;\r
+    --tw-contain-style:  
+}\r
+.tw-absolute {\r
+    position: absolute
+}\r
+.tw-left-0 {\r
+    left: 0px
+}\r
+.tw-top-0 {\r
+    top: 0px
+}\r
+.tw-mb-1 {\r
+    margin-bottom: 0.25rem
+}\r
+.tw-h-100 {\r
+    height: 28rem
+}\r
+.tw-bg-\\[\\#50d71e\\] {\r
+    --tw-bg-opacity: 1;\r
+    background-color: rgb(80 215 30 / var(--tw-bg-opacity, 1))
+}\r
+.tw-bg-transparent {\r
+    background-color: transparent
+}\r
+.tw-bg-\\[\\#ffffff\\] {\r
+    --tw-bg-opacity: 1;\r
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+}\r
+.tw-p-2 {\r
+    padding: 0.5rem
+}\r
+.tw-pb-1 {\r
+    padding-bottom: 0.25rem
+}\r
+.tw-ps-1 {\r
+    padding-inline-start: 0.25rem
+}\r
+.tw-pe-1 {\r
+    padding-inline-end: 0.25rem
+}\r
+.tw-content-\\[\\'\\'\\] {\r
+    --tw-content: '';\r
+    content: var(--tw-content)
+}\r
+\r
+/* @layer primevue, tailwind-utilities;\r
+\r
+@layer tailwind-utilities {\r
+  @tailwind components;\r
+  @tailwind utilities;\r
 } */\r
+\r
+/* @layer tailwind-utilities {\r
+  @tailwind components;\r
+  @tailwind utilities;\r
+} */\r
+\r
+@media (min-width: 1536px) {\r
+    .\\32xl\\:tw-p-4 {\r
+        padding: 1rem
+    }\r
+    .\\32xl\\:tw-p-\\[var\\(--p-dialog-content-padding\\)\\] {\r
+        padding: var(--p-dialog-content-padding)
+    }\r
+    .\\32xl\\:tw-p-\\[var\\(--p-dialog-header-padding\\)\\] {\r
+        padding: var(--p-dialog-header-padding)
+    }
+}\r
+\r
+@font-face {\r
+  font-family: 'fontello';\r
+   src: url('data:font/woff2;charset=utf-8;base64,d09GMgABAAAAAArMABAAAAAAF6AAAApuAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCSggOCZwMEQgKhCiDXAsMAAE2AiQDFAQgBYVoB0AMgRwbMxZRVIwKUZSkxYjsiwPbCc2CTrWJ5+BE8EiTt5xJKRWhfXZGSDLrP/2m/bkzAyFEa6R1UjGlLXVfd8s+Uf8S1wYImMlumi29HyCyZPkePEUVoNFVYdp9UJ80ZeD/X13vB4sKSIGj3PAsOUQOaSjwIWHpo5RxpqhfUburthzOf+VC/2uttP91zxyqjY1MTQiEQ8lKxu327Fy2e+ZggY55JgRYHuWVR3Qhd3EkU54VWxcf6SK0TCeAwCixXMUbeLvKD/Fs10EO6kATX3gqAAQAH52MWgD4+O0Zx4dEYdg1tBUZCBwC5APY+II/SbsgAWwJexDANvDQB8iKoe8tcbR+efuEmnF49At8IXjn/1MM8ms4AIDA1ufAwXm4DzBtKvoEEn0yhGKR1P4PGN4ezIPrl5E8Ixi6Gljhb4rQ+sfcHkDgKS2z9PInZu9eIj/8lcjdIvGtbDX2vMK8/lJkXHob++S8B2+AtpiQhCUGCOh5G2Awbz7AoeELXz60K84JoEqJjS3PY4sbIozvdoTdYJzXAXG7M7FGgyXiHZzwa9yTc2X3+QkdLotTQFqC+zJwmz7nSUuN2Eh4eBDElKtD4xz5vE6DePQWUf01JaYZLjdL5Dp5uOc3fyem2439SvvtUxplhMJxa+FbVoOqOpBorTk/xTJVJhU92klbjVvqQaosL6WvV+qY5VN+quTMGwXm2LkB9wlcFKW/h5xlkd7Ii/rTLRvsBD8l6eY81AxFzsxTfoVotJgDErQUwusgLHyVsFhEsei8z1AOyLL2O4rmZulGIQSvjku76KdAzlVIHY/MDDXq/7d2R8sccUT1OpVXrr7JybLPwnhIUDiVWOnoL2ABVs4mNHRMyoxbLZqAxQrrbqEelLF0AlZIS+Hk5qeQrsBtwsgZHS0LRodSMVlnhct42VsN2Y60IscewcQUBojwouUYUzRIOoItbXSgb2FIKwV30lmEfz4Ov2FifwDHzJFTcPNavjimZah+lbwzny/7gAuNNWrGlUXADShLuPgC3Cbhsphxz+Ee7qqAH3ZTIsPqp5DeGFPwY9E4Slc/SjasP16+S030F/ksjoHtvCig9nV6+bYcdj7zgPkD0bA4fx/yn0eHSsQvMiDMY3Pl4B4eWjXB/VVqJCwIUzxuUZw7uzveoDJ1HI5YYDRrnTMurnHrAHAUTR2P/sZskAO2gAiOJ0qpOmNB2NXQqN8l/C1qidMiDgM5qvwIXt8tC7sO7IoxCk+B04ZKCxwPts62zuSAhoaVWcCzMqJgxiiEcQplgsKYROFMpghmoUimUBSzlqfAVN8rcn75Lpk66GtLuT2QisjUtN+V0zLjtb8u07ELV4hYC5VvZQFHiJZ5qWgqhoql4qh4KoFKpJKoZLp0qLfWMr4QnDW3q3V7rs9qyqS76zeTCTKCjE4gC9Jahqy2etd26sePVU5wyg6WqptztHa2vsjqNCmtLNPVLKCTI5vjx9fkQreYLsvDLjhHndy9oWBDrCvF6tejvfeR3W25aUXMLsmHeq1ZTwHGLyhQgO5IHygkq4K44b7RIjQmq+fUaQ0swvz5uGVta6tKn5zPkMWpMKWVg5cDxQCreCwiHOEkwze7nGPj7POYblI/FqrVlETVFduFbJHypcWo2ySMu/RF6H51X0S1fzPHaEKlxhjqlK1KvBthjNcKiiNSN4JlMCTWIQYu4eqcKnu5o9Knq0k4dmWretcZKlcwR2UC1yzKKQNpoCxrFZLX8agExYgqBcwln6296GHJ1OdAqRqWkIRUpay/+51ZFkXFhVZaxCgMWFC+3uQkqOQhwWPq1Jt3sBUVQtJDGtlvZzw/bwlq8JiObhlKmb0XVDRNxVu1Rxb0vK3k6bfZgKlT4G9e4WF65d7kpD53LTMtzwKVmM3fuFfnrgp23NRPXA2KI7bOJiiJUS+Fe13nWEjmQmZHpphqolh1TadSemvFbpFvYZ07mnp1djfqr3gtmjrsEaza8x+xdmAhjtiHPdjbXeddJe4zi1RXjv2ZQmT9zV/GveWvYnf5R4OzsslHJmzdoQNQVn5nbRobm9CQLmEKXFUzKFqoZTCsLk2dVmNMUVSkFdYcpuVwtWESF1Ab0M6IOnII6GREXT6gDt2MqCeHgF5G7r7UOwBUe/RzooFcAgY50dAsgDCMEw3PJWAEJzUyOdSwUahho1HDxqBGjcWjno0TWRqfQ8AERvZElmDySTD5ZJh8Ckw+FSafBpNPh8lnwOyYmepDqfbsWXPhW0bSZqNSzZG46aGqbm6qj/A0Tyc+XydakERZhFiolWGRVuYsnqCKloBgYKmFpGU60fIkyqPCCq0cK7VyrNLKsdoCWqMTrdVJrtOZFVivVWCDVoGNWgU2WUCbdaItOtVsTb1tO6vtdEsOuy3YPnl/jDfMOzBQlXJLGX+Lx7YvOlD3kgYC/Q8utHIk5Kue3BdwJwCB4cBLcbCA5DRV71O3xF8IvUInU64mXLTZtsbdlzVUcPX0eQ56Lr5dWysve4MGON3en307O7s7cF/gpdhzV3fVlWiN9gf1fsGdKTdzKLe0f592QLuQeG935dy+3t7HMD3dfT1DqwK7B7BK3aKp927fliO02jPUe4BWJ4ztO7o1pGf0+X9azgTIi9+0JgUv4s/GuVhoSPRYcWamfrK/tOjy0OND21+MmvxCbNmStt8T162d6d3ZX5o03G/oiaHtD7gnrfsYiNnGMx/9/rxp92HiD+SI/qOzL6TH1memk7/Ee/n8V97Jb05682vvlfOJX70+o////a/P/t1zT2Zo9nCPevdfa/9ce7fmU4UlQ3v+yffsQZ94Epb/e0G/e9m/noRfEgDAyOnOCOHEygjEmmXOGLH1IIAGQITRFklwEDomjGtvTYtLiS3WFTk8xYgNDwl0OqyKRZY42cGoGQxsPRGwIC7Wo/m7uaylgAAQcLI656WRrtJflSj+xV2eFP4fcHEDgKIdUJt3ZiSEfoLcBYSWlN4MMWqhmM1PAXMkTAFfkMEt0/baOuTzKvy9F01ZnmlTg6DgToPBgpckh/TPDQGFmCHBRjGQ9UpDRUpnJrYhoN9wkLACmAKAQXA7YzA48ZDkWn9LCq3/YEjQshky3GUYKnqp8V3YEN/LqMZMzMJizMFkTMQkzIMuUTWS6LJlypZHNwaLoZtJ4Z6MGRiNaSY9GvPF9qS6nKvdBnQTMJNKz8P4KKfZdLqx5rbpwD/3Lq5O0n/p7tbbz9ZjWGW88Fncihe3KM+OqApQmRjoxHhMxHxMw2jMAT6+/HjJj391SS/G82BPRh+oy5IuEx583n9WeqZf1Nkz/NujkYXjVJaeiwVBZgO+eZggJ9BCGXfT1YZVopu1Xk5p5FjojnR41Zx37oKJ2fPmTXhUml8bb95X6ZQAk6LvylkoliHDCNaTrKOoOMbQWgcVWRL2JDBixJXpv8xPtVHqfWo77ZbzOGi6F8929vuIdgzcopPZ/Wf5YKnyAcnDVdUH7wNgK456Hzhg+mJpU0f/LWNT/zyNY4ml9yrIe2AOhPkSip3uV1aBhCQxtnulaHXvgzP5Xvo/xHYfe3vvkMbJME0AAA==') format('woff2');\r
+}\r
 \r
 .fontello {\r
   font-family: "fontello";\r
@@ -306,14 +656,17 @@
     console.error("vite-plugin-css-injected-by-js", e);
   }
 })();
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key2, value2) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value: value2 }) : obj[key2] = value2;
+var __publicField = (obj, key2, value2) => __defNormalProp(obj, typeof key2 !== "symbol" ? key2 + "" : key2, value2);
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { d as defineComponent, h as computed, f as reactive, r as ref$3, e as onMounted, c as createElementBlock, o as openBlock, a as createBaseVNode, M as createVNode, I as withCtx, P as unref, C as createTextVNode$1, G as withDirectives, D as toDisplayString, O as Fragment, a6 as renderList$1, K as normalizeClass, J as createCommentVNode, w as watch, H as createBlock, ac as withKeys, j as withModifiers, T as Teleport, p as toRaw, l as markRaw, a3 as onBeforeUnmount, L as resolveDynamicComponent, m as mergeProps$1, n as nextTick$1, a1 as provide, W as onUnmounted, ad as createApp } from "./assets/vue-CrE7Z3iC.js";
-import { d as defineStore, s as storeToRefs, E as ElFormItem, a as ElInput, b as ElButton, c as ElForm, e as script, T as Tooltip, f as script$1, g as script$2, h as script$3, z, i as script$5, j as script$6, u as useConfirm, k as script$7, l as script$8, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, R as Ripple, t as script$f, v as script$g, D as DialogService, C as ConfirmationService, w as customAlphabet, x as createPinia, y as ToastService } from "./assets/vendor-DfK0wuZL.js";
+import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, S as unref, M as createVNode, C as createTextVNode$1, a as createBaseVNode, f as reactive, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, ac as withKeys, k as withModifiers, q as toRaw, T as Teleport, a2 as normalizeStyle, j as renderSlot$1, a6 as onBeforeUnmount, n as nextTick$1, a4 as provide, Z as onUnmounted, ad as createApp } from "./assets/vue-mTqs3s9N.js";
+import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, z, o as script$b, u as useConfirm, p as script$c, q as script$d, r as script$e, t as script$f, S as Split, v as script$g, w as script$h, x as script$i, R as Ripple, y as script$j, A as customAlphabet, D as DialogService, C as ConfirmationService, B as createPinia, F as ToastService } from "./assets/vendor-Bzg841qP.js";
 import "./assets/lodash-DS8RUn65.js";
-import { q as script$4, P as PrimeVue, r as index$3 } from "./assets/primevue-DVKVlSHj.js";
-import { bR as h, bS as definePreset } from "./assets/primeuix-BOWwxKyx.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-BZElwuhe.js";
-import "./assets/vueuse-mgXXWkvV.js";
+import { u as usePrimeVue, r as script$a, P as PrimeVue, t as index$3 } from "./assets/primevue-Bk4_9uLx.js";
+import { bW as h, bX as definePreset } from "./assets/primeuix-DEoQIFoy.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-Bb9DjssG.js";
+import "./assets/vueuse-ehZJJDg_.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
@@ -372,11 +725,216 @@ const useMenuStore = defineStore("menuStore", {
 });
 let app$1 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? void 0 : _b.app) || null;
 ((_d = (_c = window.comfyAPI) == null ? void 0 : _c.api) == null ? void 0 : _d.api) || null;
-((_f = (_e = window.comfyAPI) == null ? void 0 : _e.ui) == null ? void 0 : _f.$el) || null;
+let $el = ((_f = (_e = window.comfyAPI) == null ? void 0 : _e.ui) == null ? void 0 : _f.$el) || null;
 ((_h = (_g = window.comfyAPI) == null ? void 0 : _g.dialog) == null ? void 0 : _h.ComfyDialog) || null;
 ((_j = (_i = window.comfyAPI) == null ? void 0 : _i.widgets) == null ? void 0 : _j.ComfyWidgets) || null;
 ((_l = (_k = window.comfyAPI) == null ? void 0 : _k.utils) == null ? void 0 : _l.applyTextReplacements) || null;
 ((_n = (_m = window.comfyAPI) == null ? void 0 : _m.groupNode) == null ? void 0 : _n.GroupNodeConfig) || null;
+const useDialogStore = defineStore("dialog", () => {
+  const dialogStack = ref$3([]);
+  const genDialogKey = () => `dialog-${Math.random().toString(36).slice(2, 9)}`;
+  function riseDialog(options) {
+    const dialogKey = options.key;
+    const index2 = dialogStack.value.findIndex((d) => d.key === dialogKey);
+    if (index2 !== -1) {
+      const dialogs = dialogStack.value.splice(index2, 1);
+      dialogStack.value.push(...dialogs);
+    }
+  }
+  function closeDialog(options) {
+    if (!options) {
+      dialogStack.value.pop();
+      return;
+    }
+    const dialogKey = options.key;
+    const index2 = dialogStack.value.findIndex((d) => d.key === dialogKey);
+    if (index2 === -1) {
+      return;
+    }
+    dialogStack.value.splice(index2, 1);
+  }
+  function createDialog(options) {
+    if (dialogStack.value.length >= 10) {
+      dialogStack.value.shift();
+    }
+    const dialog = {
+      key: options.key,
+      visible: true,
+      title: options.title,
+      headerComponent: options.headerComponent ? markRaw(options.headerComponent) : void 0,
+      component: markRaw(options.component),
+      contentProps: { ...options.props },
+      dialogComponentProps: {
+        maximizable: false,
+        modal: true,
+        closable: true,
+        closeOnEscape: true,
+        dismissableMask: true,
+        ...options.dialogComponentProps,
+        maximized: false,
+        onMaximize: () => {
+          dialog.dialogComponentProps.maximized = true;
+        },
+        onUnmaximize: () => {
+          dialog.dialogComponentProps.maximized = false;
+        },
+        onAfterHide: () => {
+          var _a2, _b2;
+          (_b2 = (_a2 = options.dialogComponentProps) == null ? void 0 : _a2.onClose) == null ? void 0 : _b2.call(_a2);
+          closeDialog(dialog);
+        },
+        pt: {
+          root: {
+            onMousedown: () => {
+              riseDialog(dialog);
+            }
+          }
+        }
+      }
+    };
+    dialogStack.value.push(dialog);
+    return dialog;
+  }
+  function showDialog(options) {
+    const dialogKey = options.key || genDialogKey();
+    let dialog = dialogStack.value.find((d) => d.key === dialogKey);
+    if (dialog) {
+      dialog.visible = true;
+      riseDialog(dialog);
+    } else {
+      dialog = createDialog({ ...options, key: dialogKey });
+    }
+    return dialog;
+  }
+  return {
+    dialogStack,
+    riseDialog,
+    showDialog,
+    closeDialog
+  };
+});
+const _hoisted_1$i = ["id"];
+const _sfc_main$k = /* @__PURE__ */ defineComponent({
+  __name: "GlobalDialog",
+  setup(__props) {
+    const dialogStore = useDialogStore();
+    const primevue = usePrimeVue();
+    const baseZIndex = computed(() => {
+      var _a2, _b2;
+      return ((_b2 = (_a2 = primevue == null ? void 0 : primevue.config) == null ? void 0 : _a2.zIndex) == null ? void 0 : _b2.modal) ?? 2100;
+    });
+    onMounted(() => {
+      document.createElement("div");
+    });
+    return (_ctx, _cache) => {
+      return openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(dialogStore).dialogStack, (item, index2) => {
+        return openBlock(), createBlock(unref(script), mergeProps$1({
+          key: item.key,
+          visible: item.visible,
+          "onUpdate:visible": ($event) => item.visible = $event,
+          class: "global-dialog",
+          ref_for: true
+        }, item.dialogComponentProps, {
+          "auto-z-index": false,
+          "pt:mask:style": { zIndex: baseZIndex.value + index2 + 1 },
+          "aria-labelledby": item.key
+        }), {
+          header: withCtx(() => [
+            item.headerComponent ? (openBlock(), createBlock(resolveDynamicComponent(item.headerComponent), {
+              key: 0,
+              id: item.key
+            }, null, 8, ["id"])) : (openBlock(), createElementBlock("h3", {
+              key: 1,
+              id: item.key
+            }, toDisplayString(item.title || " "), 9, _hoisted_1$i))
+          ]),
+          default: withCtx(() => [
+            (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({ ref_for: true }, item.contentProps, {
+              maximized: item.dialogComponentProps.maximized
+            }), null, 16, ["maximized"]))
+          ]),
+          _: 2
+        }, 1040, ["visible", "onUpdate:visible", "pt:mask:style", "aria-labelledby"]);
+      }), 128);
+    };
+  }
+});
+const _hoisted_1$h = { class: "settings-container" };
+const _sfc_main$j = /* @__PURE__ */ defineComponent({
+  __name: "SettingDialogContent",
+  setup(__props) {
+    const activeTab = ref$3("general");
+    const selectedCity = ref$3();
+    const cities = ref$3([
+      { name: "New York", code: "NY" },
+      { name: "Rome", code: "RM" },
+      { name: "London", code: "LDN" },
+      { name: "Istanbul", code: "IST" },
+      { name: "Paris", code: "PRS" }
+    ]);
+    return (_ctx, _cache) => {
+      const _component_Listbox = script$1;
+      const _component_ScrollPanel = script$2;
+      const _component_Divider = script$3;
+      const _component_TabPanels = script$4;
+      const _component_Tabs = script$5;
+      return openBlock(), createElementBlock("div", _hoisted_1$h, [
+        createVNode(_component_ScrollPanel, { class: "settings-sidebar flex-shrink-0 p-2 w-48 2xl:w-64" }, {
+          default: withCtx(() => [
+            createVNode(_component_Listbox, {
+              modelValue: selectedCity.value,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => selectedCity.value = $event),
+              options: cities.value,
+              optionLabel: "name",
+              class: "border-none w-full"
+            }, null, 8, ["modelValue", "options"])
+          ]),
+          _: 1
+        }),
+        createVNode(_component_Divider, {
+          layout: "vertical",
+          class: "mx-1 2xl:mx-4 hidden md:flex"
+        }),
+        createVNode(_component_Divider, {
+          layout: "horizontal",
+          class: "flex md:hidden"
+        }),
+        createVNode(_component_Tabs, {
+          value: activeTab.value,
+          class: "settings-content h-full w-full"
+        }, {
+          default: withCtx(() => [
+            createVNode(_component_TabPanels, { class: "settings-tab-panels h-full w-full pr-0" }, {
+              default: withCtx(() => _cache[1] || (_cache[1] = [
+                createTextVNode$1(" 12131 ")
+              ])),
+              _: 1
+            })
+          ]),
+          _: 1
+        }, 8, ["value"])
+      ]);
+    };
+  }
+});
+const _export_sfc = (sfc, props2) => {
+  const target2 = sfc.__vccOpts || sfc;
+  for (const [key2, val] of props2) {
+    target2[key2] = val;
+  }
+  return target2;
+};
+const SettingDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-d3564705"]]);
+const _sfc_main$i = {};
+function _sfc_render$1(_ctx, _cache) {
+  return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createBaseVNode("h2", { class: "px-4" }, [
+      createBaseVNode("i", { class: "pi pi-cog" }),
+      createBaseVNode("span", null, "设置")
+    ], -1)
+  ]));
+}
+const SettingDialogHeader = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$1], ["__scopeId", "data-v-d76691f6"]]);
 const blankGraph = {
   last_node_id: 0,
   last_link_id: 0,
@@ -15466,7 +16024,7 @@ function updateStyle(a2, e) {
       s = m[o], setProp(u, o, s ?? "");
   }
 }
-var style$1 = {
+var style = {
   create: updateStyle,
   update: updateStyle
 }, whitespaceRE = /\s+/;
@@ -15623,7 +16181,7 @@ var transition$1 = inBrowser ? {
   remove: function(a2, e) {
     a2.data.show !== true ? leave(a2, e) : e();
   }
-} : {}, platformModules = [attrs, klass, events$1, domProps, style$1, transition$1], modules = platformModules.concat(baseModules), patch = createPatchFunction({ nodeOps, modules });
+} : {}, platformModules = [attrs, klass, events$1, domProps, style, transition$1], modules = platformModules.concat(baseModules), patch = createPatchFunction({ nodeOps, modules });
 isIE9 && document.addEventListener("selectionchange", function() {
   var a2 = document.activeElement;
   a2 && a2.vmodel && trigger(a2, "input");
@@ -67699,7 +68257,10 @@ const workflowUtils = {
     return flag;
   },
   openTabByWorkFlowData(data, name) {
-    app$1.loadGraphData(data, true, true, name);
+    return new Promise(async (resolve, reject) => {
+      await app$1.loadGraphData(data, true, true, name);
+      resolve();
+    });
   }
 };
 const useWorkSpaceStore = defineStore("workSpaceStore", {
@@ -67767,9 +68328,17 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         const json = await response.json();
         console.log(json);
         this.list = json.data;
+        if (this.list.length) {
+          this.getProjectDetail("2u4ed2i28ig8hzm");
+        }
       } catch (err) {
       } finally {
       }
+    },
+    async getProjectDetail(projectId) {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`);
+      const json = await response.json();
+      this.activeProject = json.data;
     },
     /**
      * @property {Function} createWorkFlow 创建工作流
@@ -67900,15 +68469,8 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
-const _export_sfc = (sfc, props2) => {
-  const target2 = sfc.__vccOpts || sfc;
-  for (const [key2, val] of props2) {
-    target2[key2] = val;
-  }
-  return target2;
-};
-const _hoisted_1$e = { class: "w-full p-2" };
-const _sfc_main$f = /* @__PURE__ */ defineComponent({
+const _hoisted_1$g = { class: "w-full p-2" };
+const _sfc_main$h = /* @__PURE__ */ defineComponent({
   __name: "outPutForm",
   setup(__props, { expose: __expose }) {
     const fileStore = useFileStore();
@@ -68049,7 +68611,7 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
       const _component_el_form_item = ElFormItem;
       const _component_el_button = ElButton;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$e, [
+      return openBlock(), createElementBlock("div", _hoisted_1$g, [
         createBaseVNode("div", null, [
           createVNode(_component_el_form, {
             "label-position": "top",
@@ -68113,30 +68675,30 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$d = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _hoisted_2$8 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$3 = { class: "text-sm truncate" };
-const _hoisted_4$3 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$2 = {
+const _hoisted_1$f = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _hoisted_2$a = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3$5 = { class: "text-sm truncate" };
+const _hoisted_4$5 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_5$3 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$2 = ["onClick", "onContextmenu"];
-const _hoisted_7$2 = {
+const _hoisted_6$3 = ["onClick", "onContextmenu"];
+const _hoisted_7$3 = {
   key: 0,
   class: "w-full flex items-center"
 };
-const _hoisted_8$2 = { class: "truncate w-full text-center name" };
-const _hoisted_9$1 = {
+const _hoisted_8$3 = { class: "truncate w-full text-center name" };
+const _hoisted_9$2 = {
   key: 1,
   class: "w-full flex items-center"
 };
-const _hoisted_10 = { class: "truncate text-center name" };
-const _hoisted_11 = {
+const _hoisted_10$1 = { class: "truncate text-center name" };
+const _hoisted_11$1 = {
   key: 2,
   class: "w-full flex items-center"
 };
-const _hoisted_12 = { class: "truncate text-center name" };
+const _hoisted_12$1 = { class: "truncate text-center name" };
 const _hoisted_13 = {
   key: 3,
   class: "w-full flex items-center"
@@ -68147,7 +68709,7 @@ const _hoisted_15 = {
   class: "w-full flex items-center"
 };
 const _hoisted_16 = { class: "truncate w-full text-center name" };
-const _sfc_main$e = /* @__PURE__ */ defineComponent({
+const _sfc_main$g = /* @__PURE__ */ defineComponent({
   __name: "clips",
   setup(__props) {
     useMenuStore();
@@ -68190,19 +68752,19 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
       getClips();
     });
     return (_ctx, _cache) => {
-      const _component_Button = script;
-      const _component_Toolbar = script$1;
-      const _component_ContextMenu = script$2;
+      const _component_Button = script$6;
+      const _component_Toolbar = script$7;
+      const _component_ContextMenu = script$8;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$d, [
-        createBaseVNode("div", _hoisted_2$8, [
+      return openBlock(), createElementBlock("div", _hoisted_1$f, [
+        createBaseVNode("div", _hoisted_2$a, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
-              createBaseVNode("span", _hoisted_3$3, toDisplayString(title.value), 1)
+              createBaseVNode("span", _hoisted_3$5, toDisplayString(title.value), 1)
             ]),
             center: withCtx(() => _cache[0] || (_cache[0] = [])),
             end: withCtx(() => [
-              createBaseVNode("div", _hoisted_4$3, [
+              createBaseVNode("div", _hoisted_4$5, [
                 withDirectives(createVNode(_component_Button, {
                   text: "",
                   icon: "pi pi-refresh",
@@ -68218,7 +68780,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
           })
         ]),
         createBaseVNode("div", null, [
-          createBaseVNode("ul", _hoisted_5$2, [
+          createBaseVNode("ul", _hoisted_5$3, [
             (openBlock(true), createElementBlock(Fragment, null, renderList$1(clips2.value, (item) => {
               return openBlock(), createElementBlock("li", {
                 onClick: ($event) => goWorkFlow(item),
@@ -68226,32 +68788,32 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$2, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$3, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_8$2, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_8$3, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$1, [
+                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$2, [
                   _cache[2] || (_cache[2] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-image",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_10, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_10$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "video" ? (openBlock(), createElementBlock("div", _hoisted_11, [
+                item.type == "video" ? (openBlock(), createElementBlock("div", _hoisted_11$1, [
                   _cache[3] || (_cache[3] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-video",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_12, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_12$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
                 item.type == "audio" ? (openBlock(), createElementBlock("div", _hoisted_13, [
                   _cache[4] || (_cache[4] = createBaseVNode("div", null, [
@@ -68271,7 +68833,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$2);
+              ], 40, _hoisted_6$3);
             }), 128))
           ])
         ]),
@@ -68292,10 +68854,10 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-f4c79b70"]]);
-const _hoisted_1$c = { class: "w-full h-full flex-col flex" };
-const _hoisted_2$7 = { class: "comfy-vue-side-bar-header" };
-const _sfc_main$d = /* @__PURE__ */ defineComponent({
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-f4c79b70"]]);
+const _hoisted_1$e = { class: "w-full h-full flex-col flex" };
+const _hoisted_2$9 = { class: "comfy-vue-side-bar-header" };
+const _sfc_main$f = /* @__PURE__ */ defineComponent({
   __name: "metaInfo",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -68385,12 +68947,12 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
       });
     });
     return (_ctx, _cache) => {
-      const _component_Toolbar = script$1;
+      const _component_Toolbar = script$7;
       const _component_el_input = ElInput;
       const _component_el_form_item = ElFormItem;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$c, [
-        createBaseVNode("div", _hoisted_2$7, [
+      return openBlock(), createElementBlock("div", _hoisted_1$e, [
+        createBaseVNode("div", _hoisted_2$9, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => _cache[9] || (_cache[9] = [
               createBaseVNode("span", { class: "text-sm truncate" }, "transform", -1)
@@ -68549,10 +69111,10 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const metaInfo = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-09310f7b"]]);
-const _hoisted_1$b = { class: "editable-text" };
-const _hoisted_2$6 = { key: 0 };
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
+const metaInfo = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-09310f7b"]]);
+const _hoisted_1$d = { class: "editable-text" };
+const _hoisted_2$8 = { key: 0 };
+const _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "EditableText",
   props: {
     modelValue: {},
@@ -68575,9 +69137,9 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
       mounted: (el) => el.focus()
     };
     return (_ctx, _cache) => {
-      const _component_InputText = script$3;
-      return openBlock(), createElementBlock("div", _hoisted_1$b, [
-        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$6, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
+      const _component_InputText = script$9;
+      return openBlock(), createElementBlock("div", _hoisted_1$d, [
+        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$8, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
           key: 1,
           type: "text",
           size: "small",
@@ -68601,9 +69163,9 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-5404c5f4"]]);
-const _hoisted_1$a = { class: "flex flex-col gap-1" };
-const _sfc_main$b = /* @__PURE__ */ defineComponent({
+const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-5404c5f4"]]);
+const _hoisted_1$c = { class: "flex flex-col gap-1" };
+const _sfc_main$d = /* @__PURE__ */ defineComponent({
   __name: "addClipDialog",
   emits: ["hide"],
   setup(__props, { expose: __expose, emit: __emit }) {
@@ -68678,10 +69240,10 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       }
     });
     return (_ctx, _cache) => {
-      const _component_InputText = script$3;
-      const _component_Message = script$5;
-      const _component_Button = script;
-      const _component_Dialog = script$6;
+      const _component_InputText = script$9;
+      const _component_Message = script$b;
+      const _component_Button = script$6;
+      const _component_Dialog = script;
       return openBlock(), createBlock(_component_Dialog, {
         visible: visible.value,
         "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
@@ -68690,7 +69252,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
         header: `ADD ${initialValues.value.type == "workflow" ? "Workflow" : "Clip"}`
       }, {
         default: withCtx(() => [
-          createVNode(unref(script$4), {
+          createVNode(unref(script$a), {
             resolver: resolver.value,
             initialValues: initialValues.value,
             onSubmit: onFormSubmit,
@@ -68702,7 +69264,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
             default: withCtx(($form) => {
               var _a2;
               return [
-                createBaseVNode("div", _hoisted_1$a, [
+                createBaseVNode("div", _hoisted_1$c, [
                   createVNode(_component_InputText, {
                     name: "textContent",
                     autocomplete: "off"
@@ -68738,16 +69300,16 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$9 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_2$5 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_3$2 = { id: "custom-dialog" };
-const _hoisted_4$2 = { class: "flex flex-col justify-center" };
-const _hoisted_5$1 = { class: "mb-2" };
-const _hoisted_6$1 = { class: "mb-2" };
-const _hoisted_7$1 = { class: "mb-2" };
-const _hoisted_8$1 = { class: "mb-2" };
-const _hoisted_9 = { class: "flex justify-center" };
-const _sfc_main$a = /* @__PURE__ */ defineComponent({
+const _hoisted_1$b = { class: "comfy-vue-side-bar-header" };
+const _hoisted_2$7 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_3$4 = { id: "custom-dialog" };
+const _hoisted_4$4 = { class: "flex flex-col justify-center" };
+const _hoisted_5$2 = { class: "mb-2" };
+const _hoisted_6$2 = { class: "mb-2" };
+const _hoisted_7$2 = { class: "mb-2" };
+const _hoisted_8$2 = { class: "mb-2" };
+const _hoisted_9$1 = { class: "flex justify-center" };
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "TreeExplorer",
   props: {
     showMeta: { type: Boolean }
@@ -69427,17 +69989,17 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       };
     });
     return (_ctx, _cache) => {
-      const _component_Button = script;
-      const _component_Toolbar = script$1;
-      const _component_Tree = script$7;
-      const _component_ContextMenu = script$2;
-      const _component_ConfirmDialog = script$8;
+      const _component_Button = script$6;
+      const _component_Toolbar = script$7;
+      const _component_Tree = script$c;
+      const _component_ContextMenu = script$8;
+      const _component_ConfirmDialog = script$d;
       const _component_el_input = ElInput;
-      const _component_Dialog = script$6;
+      const _component_Dialog = script;
       const _directive_tooltip = Tooltip;
       return openBlock(), createElementBlock(Fragment, null, [
         createBaseVNode("div", null, [
-          createBaseVNode("div", _hoisted_1$9, [
+          createBaseVNode("div", _hoisted_1$b, [
             createVNode(_component_Toolbar, {
               class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8",
               style: { "min-height": "37px" }
@@ -69447,7 +70009,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               ])),
               center: withCtx(() => _cache[8] || (_cache[8] = [])),
               end: withCtx(() => [
-                createBaseVNode("div", _hoisted_2$5, [
+                createBaseVNode("div", _hoisted_2$7, [
                   withDirectives(createVNode(_component_Button, {
                     text: "",
                     icon: "pi pi-refresh",
@@ -69519,7 +70081,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         }, null, 8, ["model"]),
         createVNode(_component_ConfirmDialog, { group: "dialog" }),
         (openBlock(), createBlock(Teleport, { to: "body" }, [
-          createBaseVNode("div", _hoisted_3$2, [
+          createBaseVNode("div", _hoisted_3$4, [
             createVNode(_component_Dialog, {
               visible: visible.value,
               "onUpdate:visible": _cache[6] || (_cache[6] = ($event) => visible.value = $event),
@@ -69527,8 +70089,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               style: { width: "18rem" }
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_4$2, [
-                  createBaseVNode("div", _hoisted_5$1, [
+                createBaseVNode("div", _hoisted_4$4, [
+                  createBaseVNode("div", _hoisted_5$2, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.name,
                       "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.name = $event),
@@ -69536,7 +70098,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       placeholder: "name"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_6$1, [
+                  createBaseVNode("div", _hoisted_6$2, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.description,
                       "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.description = $event),
@@ -69544,7 +70106,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       placeholder: "description"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_7$1, [
+                  createBaseVNode("div", _hoisted_7$2, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.width,
                       "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => initialValues.value.width = $event),
@@ -69552,7 +70114,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       placeholder: "videoWidth"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_8$1, [
+                  createBaseVNode("div", _hoisted_8$2, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.height,
                       "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => initialValues.value.height = $event),
@@ -69560,7 +70122,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       placeholder: "videoHeight"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_9, [
+                  createBaseVNode("div", _hoisted_9$1, [
                     createVNode(_component_Button, {
                       class: "w-full",
                       type: "submit",
@@ -69575,7 +70137,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             }, 8, ["visible"])
           ])
         ])),
-        createVNode(_sfc_main$b, {
+        createVNode(_sfc_main$d, {
           ref_key: "addClipRef",
           ref: addClipRef,
           onHide: addClipAfter
@@ -69584,8 +70146,8 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$8 = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+const _hoisted_1$a = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "explorer",
   props: {
     showMeta: {
@@ -69596,9 +70158,9 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props2 = __props;
     return (_ctx, _cache) => {
-      const _component_SplitterPanel = script$a;
-      const _component_Splitter = script$9;
-      return openBlock(), createElementBlock("div", _hoisted_1$8, [
+      const _component_SplitterPanel = script$e;
+      const _component_Splitter = script$f;
+      return openBlock(), createElementBlock("div", _hoisted_1$a, [
         createVNode(_component_Splitter, {
           style: { "height": "100%" },
           layout: "vertical",
@@ -69610,7 +70172,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
           default: withCtx(() => [
             createVNode(_component_SplitterPanel, { class: "" }, {
               default: withCtx(() => [
-                createVNode(_sfc_main$a, { "show-meta": __props.showMeta }, null, 8, ["show-meta"])
+                createVNode(_sfc_main$c, { "show-meta": __props.showMeta }, null, 8, ["show-meta"])
               ]),
               _: 1
             }),
@@ -69630,7 +70192,275 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const explorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-c41ef1d4"]]);
+const explorerVue = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-c41ef1d4"]]);
+const PREFIX_CLASS = "comfyui-maskpage-";
+function sleep(ms = 100, value2) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(value2);
+    }, ms);
+  });
+}
+class Toast {
+  constructor() {
+    __publicField(this, "element", $el(`div.${PREFIX_CLASS}toast`));
+    __publicField(this, "children", HTMLElement);
+    __publicField(this, "container", document.body);
+    this.container.appendChild(this.element);
+  }
+  async show(data) {
+    let animContainer = $el(`div.${PREFIX_CLASS}toast-container`, [
+      $el("div", [$el("span", [
+        ...data.icon ? [$el("i", { className: data.icon })] : [],
+        $el("span", data.content)
+      ])])
+    ]);
+    animContainer.setAttribute("toast-id", data.id);
+    this.element.replaceChildren(animContainer);
+    this.container.appendChild(this.element);
+    await sleep(64);
+    animContainer.style.marginTop = `-${animContainer.offsetHeight}px`;
+    await sleep(64);
+    animContainer.classList.add("show");
+    if (data.duration) {
+      await sleep(data.duration);
+      this.hide(data.id);
+    }
+  }
+  async hide(id) {
+    const msg = document.querySelector(`.${PREFIX_CLASS}toast > [toast-id="${id}"]`);
+    if (msg === null || msg === void 0 ? void 0 : msg.classList.contains("show")) {
+      msg.classList.remove("show");
+      await sleep(750);
+    }
+    msg && msg.remove();
+  }
+  async clearAllMessages() {
+    let container = document.querySelector(`.${PREFIX_CLASS}container`);
+    container && (container.innerHTML = "");
+  }
+  async info(content, duration = 3e3, actions = []) {
+    this.show({
+      id: `toast-info`,
+      icon: `mdi mdi-information ${PREFIX_CLASS}theme`,
+      content,
+      duration
+    });
+  }
+  async success(content, duration = 3e3) {
+    this.show({
+      id: `toast-success`,
+      icon: `mdi mdi-check-circle ${PREFIX_CLASS}success`,
+      content,
+      duration
+    });
+  }
+  async error(content, duration = 3e3) {
+    this.show({
+      id: `toast-error`,
+      icon: `mdi mdi-close-circle ${PREFIX_CLASS}error`,
+      content,
+      duration
+    });
+  }
+  async warn(content, duration = 3e3) {
+    this.show({
+      id: `toast-warn`,
+      icon: `mdi mdi-alert-circle ${PREFIX_CLASS}warning`,
+      content,
+      duration
+    });
+  }
+  async showLoading(content, duration = 0) {
+    this.show({
+      id: `toast-loading`,
+      icon: `mdi mdi-rotate-right loading`,
+      content,
+      duration
+    });
+  }
+  async hideLoading() {
+    this.hide("toast-loading");
+  }
+}
+new Toast();
+const _sfc_main$a = {
+  props: {
+    // 面板配置数组
+    panels: {
+      type: Array,
+      required: true,
+      validator: (value2) => value2.length >= 1,
+      default: () => [
+        { title: "面板1", size: 50, expanded: true },
+        { title: "面板2", size: 50, expanded: true }
+      ]
+    },
+    // 布局方向
+    direction: {
+      type: String,
+      default: "vertical",
+      validator: (v) => ["vertical", "horizontal"].includes(v)
+    },
+    // 最小尺寸
+    minSize: {
+      type: Number,
+      default: 46
+    }
+  },
+  data() {
+    return {
+      splitInstance: null,
+      panelElements: [],
+      gutterElements: [],
+      headerHeight: 40
+      // 标题高度
+    };
+  },
+  computed: {
+    // 根据方向确定尺寸属性
+    sizeProperty() {
+      return this.direction === "vertical" ? "height" : "width";
+    },
+    // 分隔条尺寸
+    gutterSize() {
+      return this.direction === "vertical" ? 4 : 5;
+    },
+    autoSize() {
+      var _a2;
+      return 150 / ((_a2 = this.$refs.container) == null ? void 0 : _a2.offsetHeight) * 100;
+    }
+  },
+  watch: {
+    // 面板配置变化时重新初始化
+    panels: {
+      deep: true,
+      handler() {
+      }
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.initSplit();
+    });
+  },
+  methods: {
+    // 初始化分割布局
+    initSplit() {
+      this.containerHeight = this.$refs.container.offsetHeight;
+      let total = 0;
+      this.panels.forEach((panel, index2) => {
+        if (index2 != 0) {
+          panel.size = this.headerHeight / this.containerHeight * 100;
+          total += panel.size;
+        }
+      });
+      this.panels[0].size = 100 - total;
+      this.splitInstance = Split(this.panelElements, {
+        direction: this.direction,
+        sizes: this.panels.map((p) => p.size),
+        minSize: this.headerHeight,
+        gutterSize: this.gutterSize,
+        // gutter: (index) => this.gutterElements[index],
+        dragInterval: 1,
+        onDragStart: (e) => {
+          console.log("onDragStart", e);
+          this.$refs.container.classList.add("dragging");
+        },
+        onDragEnd: () => {
+          this.$refs.container.classList.remove("dragging");
+        },
+        onDrag: (sizes) => {
+        }
+      });
+    },
+    // 切换面板展开状态
+    togglePanel(index2) {
+      this.panels[index2].expanded = !this.panels[index2].expanded;
+      this.$forceUpdate();
+      let total = 0;
+      if (this.panels[index2].expanded) {
+        this.panels.forEach((panel, idx) => {
+          if (panel.expanded && idx !== index2) {
+            panel.size = this.autoSize;
+          }
+          if (idx != index2) {
+            total += panel.size;
+          }
+        });
+        this.panels[index2].size = 100 - total;
+      } else {
+        this.panels[index2].size = 46 / this.$refs.container.offsetHeight * 100;
+        console.log(this.splitInstance.getSizes(), "total");
+        if (index2 > 0 && this.panels[index2 - 1].expanded) {
+          let temp = this.splitInstance.getSizes();
+          temp[index2] = this.panels[index2].size;
+          temp.splice(index2 - 1, 1);
+          this.panels[index2 - 1].size = 100 - temp.reduce((sum2, size) => sum2 + size, 0);
+        }
+      }
+      this.$nextTick(() => {
+        if (this.splitInstance) {
+          console.log(this.panels.map((p) => p.size), "total");
+          this.splitInstance.setSizes(this.panels.map((p) => p.size));
+        }
+      });
+    },
+    // 判断是否显示分隔条
+    shouldShowGutter(index2) {
+      return this.panels[index2].expanded && this.panels[index2 + 1].expanded;
+    },
+    // 调整布局比例
+    adjustLayout() {
+      const total = this.panels.filter((p) => p.expanded).reduce((sum2, p) => sum2 + p.size, 0);
+      this.panels.forEach((panel) => {
+        if (panel.expanded) {
+          panel.size = panel.size / total * 100;
+        }
+      });
+    }
+  },
+  beforeUnmount() {
+    if (this.splitInstance) this.splitInstance.destroy();
+  }
+};
+const _hoisted_1$9 = {
+  class: "panels-container tw-h-100",
+  ref: "container"
+};
+const _hoisted_2$6 = ["onClick"];
+const _hoisted_3$3 = { class: "tw-ps-1" };
+const _hoisted_4$3 = { class: "panel-content flex-1 overflow-hidden" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", _hoisted_1$9, [
+    (openBlock(true), createElementBlock(Fragment, null, renderList$1($props.panels, (panel, index2) => {
+      return openBlock(), createElementBlock("div", {
+        key: index2,
+        class: normalizeClass(["panel flex flex-col", { "expand": panel.expanded }]),
+        ref_for: true,
+        ref: (el) => $data.panelElements[index2] = el
+      }, [
+        createBaseVNode("div", {
+          class: "panel-header py-1 px-2",
+          onClick: ($event) => $options.togglePanel(index2),
+          style: normalizeStyle({ height: `${$data.headerHeight}px` })
+        }, [
+          createBaseVNode("div", null, [
+            createBaseVNode("i", {
+              class: normalizeClass(["pi", panel.expanded ? "pi-chevron-down" : "pi-chevron-right"]),
+              style: { "font-size": "1rem" }
+            }, null, 2),
+            createBaseVNode("span", _hoisted_3$3, toDisplayString(panel.title), 1)
+          ])
+        ], 12, _hoisted_2$6),
+        createBaseVNode("div", _hoisted_4$3, [
+          renderSlot$1(_ctx.$slots, `panel-${index2}`, { panel }, void 0, true)
+        ])
+      ], 2);
+    }), 128))
+  ], 512);
+}
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render], ["__scopeId", "data-v-8adac5b7"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -69639,7 +70469,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
         tips: "PROJECTS",
         selected: false,
         icon: "pi pi-copy",
-        component: markRaw(explorer)
+        component: markRaw(explorerVue)
       },
       {
         name: "clips",
@@ -69660,14 +70490,14 @@ const useLeftToolStore = defineStore("leftToolStore", {
         tips: "EXPORT",
         selected: false,
         icon: "pi pi-file-export",
-        component: markRaw(_sfc_main$f)
+        component: markRaw(_sfc_main$h)
       }
       // {
       //   name: 'home',
       //   tips: 'explorer',
       //   selected: false,
       //   icon: 'pi pi-file-export',
-      //   component: markRaw(TreeExplorerVue)
+      //   component: markRaw(splitPanelVue)
       // },
     ],
     selectedMenu: {}
@@ -69685,24 +70515,32 @@ const useLeftToolStore = defineStore("leftToolStore", {
     }
   }
 });
-const _hoisted_1$7 = { class: "toolbar" };
-const _hoisted_2$4 = { class: "side-bar-end" };
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+const _hoisted_1$8 = { class: "toolbar" };
+const _hoisted_2$5 = { class: "side-bar-end" };
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "leftToolbar",
   setup(__props) {
     const leftToolStore = useLeftToolStore();
     const { menues } = storeToRefs(leftToolStore);
+    const dialogStore = useDialogStore();
     const menuStore = useMenuStore();
     const goBack = () => {
       menuStore.changeShow(false);
+    };
+    const showSetting = () => {
+      dialogStore.showDialog({
+        key: "global-settings-mongaton",
+        headerComponent: SettingDialogHeader,
+        component: SettingDialogContent
+      });
     };
     const onTabClick = (item) => {
       leftToolStore.changeSelect(item);
     };
     return (_ctx, _cache) => {
-      const _component_Button = script;
+      const _component_Button = script$6;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$7, [
+      return openBlock(), createElementBlock("div", _hoisted_1$8, [
         createBaseVNode("nav", null, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(menues), (item) => {
             return withDirectives((openBlock(), createBlock(_component_Button, {
@@ -69720,7 +70558,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
             ]);
           }), 256))
         ]),
-        createBaseVNode("div", _hoisted_2$4, [
+        createBaseVNode("div", _hoisted_2$5, [
           withDirectives((openBlock(), createBlock(_component_Button, {
             text: "",
             onClick: goBack,
@@ -69736,18 +70574,34 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
             _: 1
           })), [
             [_directive_tooltip, { value: "back", showDelay: 300, hideDelay: 300 }]
+          ]),
+          withDirectives((openBlock(), createBlock(_component_Button, {
+            text: "",
+            onClick: showSetting,
+            pt: {
+              root: {
+                class: `side-bar-button p-button-primary`
+              }
+            }
+          }, {
+            icon: withCtx(() => _cache[1] || (_cache[1] = [
+              createBaseVNode("i", { class: "pi pi-cog side-bar-button-icon" }, null, -1)
+            ])),
+            _: 1
+          })), [
+            [_directive_tooltip, { value: "setting", showDelay: 300, hideDelay: 300 }]
           ])
         ])
       ]);
     };
   }
 });
-const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-760af242"]]);
-const _hoisted_1$6 = {
+const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-59fc9bca"]]);
+const _hoisted_1$7 = {
   class: "w-full",
   style: { "background": "#fff" }
 };
-const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "boxContainer",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -69838,7 +70692,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$9), {
+        createVNode(unref(script$f), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -69848,7 +70702,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$a), {
+            createVNode(unref(script$e), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -69856,17 +70710,17 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
               size: splitterSizes.value[0]
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_1$6, [
+                createBaseVNode("div", _hoisted_1$7, [
                   (openBlock(), createBlock(resolveDynamicComponent(unref(selectedMenu).component), { showMeta: true }))
                 ])
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$a), {
+            createVNode(unref(script$e), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$9), {
+                createVNode(unref(script$f), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -69879,7 +70733,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$a), {
+                    createVNode(unref(script$e), {
                       class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70,
@@ -69902,7 +70756,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$a), {
+                    createVNode(unref(script$e), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -69931,10 +70785,10 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-dd393c1b"]]);
-const _hoisted_1$5 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
-const _hoisted_2$3 = { class: "relative" };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-dd393c1b"]]);
+const _hoisted_1$6 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
+const _hoisted_2$4 = { class: "relative" };
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "projectTab",
   props: {
     title: {
@@ -69953,13 +70807,13 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       emit("close", { option, event: event2 });
     };
     return (_ctx, _cache) => {
-      const _component_Button = script;
+      const _component_Button = script$6;
       return openBlock(), createElementBlock("div", mergeProps$1({
         class: "flex p-2 gap-2 workflow-tab bg-transparent",
         ref: "workflowTabRef"
       }, _ctx.$attrs), [
-        createBaseVNode("span", _hoisted_1$5, toDisplayString(__props.projectOption.name || __props.projectOption.label), 1),
-        createBaseVNode("div", _hoisted_2$3, [
+        createBaseVNode("span", _hoisted_1$6, toDisplayString(__props.projectOption.name || __props.projectOption.label), 1),
+        createBaseVNode("div", _hoisted_2$4, [
           _cache[1] || (_cache[1] = createBaseVNode("span", { class: "status-indicator" }, "•", -1)),
           createVNode(_component_Button, {
             class: "close-button p-0 w-auto",
@@ -69974,9 +70828,9 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-85e82633"]]);
-const _hoisted_1$4 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-85e82633"]]);
+const _hoisted_1$5 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "projectTabs",
   setup(__props) {
     const confirm = useConfirm();
@@ -70029,10 +70883,10 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       });
     };
     return (_ctx, _cache) => {
-      const _component_SelectButton = script$d;
-      const _component_ScrollPanel = script$b;
-      const _component_ConfirmPopup = script$c;
-      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+      const _component_SelectButton = script$h;
+      const _component_ScrollPanel = script$2;
+      const _component_ConfirmPopup = script$g;
+      return openBlock(), createElementBlock("div", _hoisted_1$5, [
         createVNode(_component_ScrollPanel, {
           class: "overflow-hidden no-drag bg-transparent",
           "pt:content": {
@@ -70066,16 +70920,16 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-0009f528"]]);
-const _hoisted_1$3 = { class: "p-menubar-item-label" };
-const _hoisted_2$2 = { id: "custom-dialog" };
-const _hoisted_3$1 = { class: "flex flex-col justify-center" };
-const _hoisted_4$1 = { class: "mb-2" };
-const _hoisted_5 = { class: "mb-2" };
-const _hoisted_6 = { class: "mb-2" };
-const _hoisted_7 = { class: "mb-2" };
-const _hoisted_8 = { class: "flex justify-center" };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-0009f528"]]);
+const _hoisted_1$4 = { class: "p-menubar-item-label" };
+const _hoisted_2$3 = { id: "custom-dialog" };
+const _hoisted_3$2 = { class: "flex flex-col justify-center" };
+const _hoisted_4$2 = { class: "mb-2" };
+const _hoisted_5$1 = { class: "mb-2" };
+const _hoisted_6$1 = { class: "mb-2" };
+const _hoisted_7$1 = { class: "mb-2" };
+const _hoisted_8$1 = { class: "flex justify-center" };
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "CommandMenubar",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -70174,10 +71028,10 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       workSpaceStore.getlists();
     };
     return (_ctx, _cache) => {
-      const _component_Menubar = script$e;
+      const _component_Menubar = script$i;
       const _component_el_input = ElInput;
-      const _component_Button = script;
-      const _component_Dialog = script$6;
+      const _component_Button = script$6;
+      const _component_Dialog = script;
       const _directive_ripple = Ripple;
       return openBlock(), createElementBlock(Fragment, null, [
         createVNode(_component_Menubar, {
@@ -70195,7 +71049,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                 key: 0,
                 class: normalizeClass(item.icon)
               }, null, 2)) : createCommentVNode("", true),
-              createBaseVNode("span", _hoisted_1$3, toDisplayString(item.label), 1)
+              createBaseVNode("span", _hoisted_1$4, toDisplayString(item.label), 1)
             ], 16)), [
               [_directive_ripple]
             ])
@@ -70203,7 +71057,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           _: 1
         }, 8, ["model"]),
         (openBlock(), createBlock(Teleport, { to: "body" }, [
-          createBaseVNode("div", _hoisted_2$2, [
+          createBaseVNode("div", _hoisted_2$3, [
             createVNode(_component_Dialog, {
               visible: visible.value,
               "onUpdate:visible": _cache[4] || (_cache[4] = ($event) => visible.value = $event),
@@ -70211,8 +71065,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               style: { width: "18rem" }
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_3$1, [
-                  createBaseVNode("div", _hoisted_4$1, [
+                createBaseVNode("div", _hoisted_3$2, [
+                  createBaseVNode("div", _hoisted_4$2, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.name,
                       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => initialValues.value.name = $event),
@@ -70220,7 +71074,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "name"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_5, [
+                  createBaseVNode("div", _hoisted_5$1, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.description,
                       "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => initialValues.value.description = $event),
@@ -70228,7 +71082,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "description"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_6, [
+                  createBaseVNode("div", _hoisted_6$1, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.width,
                       "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.width = $event),
@@ -70236,7 +71090,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "videoWidth"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_7, [
+                  createBaseVNode("div", _hoisted_7$1, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.height,
                       "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.height = $event),
@@ -70244,7 +71098,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "videoHeight"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_8, [
+                  createBaseVNode("div", _hoisted_8$1, [
                     createVNode(_component_Button, {
                       class: "w-full",
                       type: "submit",
@@ -70263,10 +71117,10 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const CommandMenubar = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f6eeaf71"]]);
-const _hoisted_1$2 = { class: "imagen-header flex w-full items-center" };
-const _hoisted_2$1 = { class: "flex-grow min-w-0 app-drag h-full" };
-const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+const CommandMenubar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f6eeaf71"]]);
+const _hoisted_1$3 = { class: "imagen-header flex w-full items-center" };
+const _hoisted_2$2 = { class: "flex-grow min-w-0 app-drag h-full" };
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "imagenHeader",
   setup(__props) {
     const menuStore = useMenuStore();
@@ -70274,8 +71128,8 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
       menuStore.changeShow(false);
     };
     return (_ctx, _cache) => {
-      const _component_Divider = script$f;
-      return openBlock(), createElementBlock("div", _hoisted_1$2, [
+      const _component_Divider = script$3;
+      return openBlock(), createElementBlock("div", _hoisted_1$3, [
         createBaseVNode("h1", {
           class: "comfyui-logo mx-2 cursor-pointer",
           onClick: goBack
@@ -70285,7 +71139,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           layout: "vertical",
           class: "mx-2"
         }),
-        createBaseVNode("div", _hoisted_2$1, [
+        createBaseVNode("div", _hoisted_2$2, [
           createVNode(projectTabs)
         ]),
         _cache[0] || (_cache[0] = createBaseVNode("div", { style: { "width": "60px" } }, null, -1))
@@ -70293,9 +71147,9 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-58e6d46e"]]);
-const _hoisted_1$1 = { class: "flex flex-col gap-1" };
-const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-58e6d46e"]]);
+const _hoisted_1$2 = { class: "flex flex-col gap-1" };
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "textNodeAdd",
   emits: ["hide"],
   setup(__props, { emit: __emit }) {
@@ -70332,10 +71186,10 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
     });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$g;
-      const _component_Message = script$5;
-      const _component_Button = script;
-      const _component_Dialog = script$6;
+      const _component_Textarea = script$j;
+      const _component_Message = script$b;
+      const _component_Button = script$6;
+      const _component_Dialog = script;
       return openBlock(), createBlock(_component_Dialog, {
         visible: visible.value,
         "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
@@ -70345,7 +71199,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
       }, {
         default: withCtx(() => [
-          createVNode(unref(script$4), {
+          createVNode(unref(script$a), {
             resolver: resolver.value,
             initialValues: initialValues.value,
             onSubmit: onFormSubmit,
@@ -70357,7 +71211,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
             default: withCtx(($form) => {
               var _a2;
               return [
-                createBaseVNode("div", _hoisted_1$1, [
+                createBaseVNode("div", _hoisted_1$2, [
                   createVNode(_component_Textarea, {
                     name: "textContent",
                     rows: "5",
@@ -70395,11 +71249,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1 = { class: "new-imagen-box grid" };
-const _hoisted_2 = { class: "image-box-top" };
-const _hoisted_3 = { class: "image-box-left" };
-const _hoisted_4 = { class: "image-box-container" };
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+const _hoisted_1$1 = { class: "new-imagen-box grid" };
+const _hoisted_2$1 = { class: "image-box-top" };
+const _hoisted_3$1 = { class: "image-box-left" };
+const _hoisted_4$1 = { class: "image-box-container" };
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "index",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -70427,18 +71281,18 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", null, [
-        createBaseVNode("div", _hoisted_1, [
-          createBaseVNode("div", _hoisted_2, [
+        createBaseVNode("div", _hoisted_1$1, [
+          createBaseVNode("div", _hoisted_2$1, [
             createVNode(imagenHeader)
           ]),
-          createBaseVNode("div", _hoisted_3, [
+          createBaseVNode("div", _hoisted_3$1, [
             createVNode(leftToolbar)
           ]),
-          createBaseVNode("div", _hoisted_4, [
+          createBaseVNode("div", _hoisted_4$1, [
             createVNode(boxContainer)
           ])
         ]),
-        showAdd.value ? (openBlock(), createBlock(_sfc_main$2, {
+        showAdd.value ? (openBlock(), createBlock(_sfc_main$3, {
           key: 0,
           onHide: changeAddStatus,
           ref_key: "textNodeAddRef",
@@ -70448,7 +71302,430 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b689b312"]]);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-b689b312"]]);
+const _hoisted_1 = { class: "h-full tw-bg-[#ffffff] flex flex-col" };
+const _hoisted_2 = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_4 = { class: "flex-1 overflow-hidden" };
+const _hoisted_5 = { class: "custom-content" };
+const _hoisted_6 = { id: "custom-dialog" };
+const _hoisted_7 = { class: "flex flex-col justify-center" };
+const _hoisted_8 = { class: "mb-2" };
+const _hoisted_9 = { class: "mb-2" };
+const _hoisted_10 = { class: "mb-2" };
+const _hoisted_11 = { class: "mb-2" };
+const _hoisted_12 = { class: "flex justify-center" };
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "newExplorer",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const { list, activeProject } = storeToRefs(workSpaceStore);
+    const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
+    const panelConfig = computed(() => {
+      return [
+        { title: activeProject.value.baseInfo.name, expanded: true },
+        { title: "大纲视图", expanded: false }
+      ];
+    });
+    const treeNodes = computed(() => {
+      var _a2, _b2;
+      console.log(activeProject.value, "activeProject.value");
+      let assetObj = {
+        key: "0",
+        label: "assets",
+        type: "folder",
+        fileType: "folder_assets",
+        icon: "fontello icon-montagen",
+        children: (((_a2 = activeProject.value) == null ? void 0 : _a2.assets) || []).map((asset) => {
+          return Object.assign({}, asset, {
+            key: "asset_" + cusWorkflowID(),
+            label: asset.file_name,
+            type: "file",
+            icon: "pi pi-file",
+            fileType: "assets"
+          });
+        })
+      };
+      let workflowObj = {
+        key: "1",
+        label: "workflows",
+        type: "folder",
+        fileType: "folder_workflow",
+        icon: "fontello icon-montagen",
+        children: (((_b2 = activeProject.value) == null ? void 0 : _b2.workflows) || []).map((workflow) => {
+          return Object.assign({}, workflow, {
+            key: workflow.workflowId,
+            label: workflow.workflowName || workflow.workflowId,
+            type: "folder",
+            icon: "pi pi-file",
+            fileType: "workflows",
+            projectId: activeProject.value.baseInfo.projectId,
+            children: workflow.clips.map((node2) => {
+              return Object.assign({}, node2, {
+                key: node2.clipId,
+                label: node2.clipName,
+                type: "folder",
+                icon: "pi pi-file",
+                fileType: "clip",
+                workflowData: workflow.workflow,
+                workflowName: workflow.workflowName,
+                projectId: activeProject.value.baseInfo.projectId
+              });
+            })
+          });
+        })
+      };
+      console.log(assetObj, "assetObj");
+      return [assetObj, workflowObj];
+    });
+    const expandedKeys = ref$3({});
+    const selectedKeys = ref$3({});
+    const onNodeContentClick = async (e, node2) => {
+      switch (node2.fileType) {
+        case "workflows":
+          console.log(node2, "当前点击的node 是workflows", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
+          if (selectedKeys.value[node2.key]) {
+            expandedKeys.value[node2.key] = true;
+          }
+          break;
+        case "folder_assets":
+        case "folder_workflow":
+          if (selectedKeys.value[node2.key]) {
+            expandedKeys.value[node2.key] = true;
+          }
+          break;
+        case "clip":
+          console.log(node2, "当前点击的node 是assets", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
+          if (selectedKeys.value[node2.key]) {
+            checkWorkflowIsOpen(node2);
+          }
+          break;
+      }
+    };
+    const handleContextMenu = (event2, node2) => {
+      menuTargetNode.value = node2;
+      event2.preventDefault();
+      switch (node2.fileType) {
+        case "clip":
+        case "workflows":
+          menu.value.show(event2);
+          break;
+      }
+    };
+    const checkWorkflowIsOpen = async (node2) => {
+      var _a2, _b2, _c2, _d2, _e2;
+      let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: node2.projectId, workflowId: node2.workflowId });
+      let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+      if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === node2.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === node2.workflowId) ;
+      else {
+        let data = flag ? flag.activeState : node2.workflowData;
+        await workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.workflowName);
+      }
+      let id = "";
+      if (node2.clipId.includes("_")) {
+        id = node2.clipId.split("_")[0];
+      } else {
+        let temp = activeWorkflow.activeState.nodes;
+        for (let i2 = 0; i2 < temp.length; i2++) {
+          if (((_e2 = temp[i2].properties) == null ? void 0 : _e2.clipId) === node2.clipId) {
+            id = temp[i2].id;
+            break;
+          }
+        }
+      }
+      let grahBode = id && app$1.graph.getNodeById(id);
+      if (grahBode) {
+        app$1.canvas.selectNode(grahBode);
+        centerNodeInCanvas(app$1.graph, grahBode, app$1.canvas.canvas);
+      }
+    };
+    function centerNodeInCanvas(graph, node2, canvas2) {
+      if (!node2 || !canvas2) return;
+      let canvasRect = canvas2.getBoundingClientRect();
+      let canvasCenter = {
+        x: canvasRect.width / 2,
+        y: canvasRect.height / 2
+      };
+      let nodeCenter = {
+        x: node2.pos[0] + node2.size[0] / 2,
+        y: node2.pos[1] + node2.size[1] / 2
+      };
+      graph.extra.ds.offset[0] = canvasCenter.x - nodeCenter.x * graph.extra.ds.scale;
+      graph.extra.ds.offset[1] = canvasCenter.y - nodeCenter.y * graph.extra.ds.scale;
+      graph.setDirtyCanvas(true, true);
+    }
+    const visible = ref$3(false);
+    const initialValues = ref$3({
+      name: "",
+      description: "",
+      width: 1280,
+      height: 720
+    });
+    const menu = ref$3();
+    const menuTargetNode = ref$3({});
+    const menuItems = computed(() => {
+      let temp = [];
+      switch (menuTargetNode.value.fileType) {
+        case "clip":
+          temp.push(...[
+            {
+              label: "Rename Clip",
+              icon: "pi pi-file-edit",
+              command: (e) => renameCommand(menuTargetNode.value)
+            }
+          ]);
+          break;
+        case "workflows":
+          temp.push(...[
+            {
+              label: "Rename Workflow",
+              icon: "pi pi-file-edit",
+              command: (e) => renameCommand(menuTargetNode.value)
+            }
+          ]);
+          break;
+      }
+      return temp;
+    });
+    const renameCommand = (node2) => {
+      renameEditingNode.value = node2;
+      console.log(renameEditingNode.value, "更改name");
+    };
+    const renameEditingNode = ref$3({});
+    const handleRename = (newLabel) => {
+      switch (renameEditingNode.value.fileType) {
+        case "clip":
+          renameClip(newLabel, renameEditingNode.value);
+          break;
+        case "workflows":
+          renameWorkflow(newLabel, renameEditingNode.value);
+          break;
+        default:
+          console.log("更改name", renameEditingNode.value);
+          renameEditingNode.value = {};
+      }
+    };
+    const renameClip = async (name, data) => {
+      let node2 = data;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Clip/${node2.clipId}/Rename`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name })
+      });
+      await response.json();
+      renameEditingNode.value = {};
+      refreshList();
+    };
+    const renameWorkflow = async (name, data) => {
+      let node2 = data;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Rename`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name })
+      });
+      await response.json();
+      let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: data.projectId, workflowId: data.workflowId });
+      if (flag) {
+        flag.filename = name;
+      }
+      renameEditingNode.value = {};
+    };
+    const addProject = async () => {
+      visible.value = true;
+    };
+    const onFormSubmit = () => {
+      addList();
+    };
+    const addList = async () => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/New`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(initialValues.value)
+      });
+      await response.json();
+      visible.value = false;
+      refreshList();
+    };
+    const refreshList = async () => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${workSpaceStore.activeProject.baseInfo.projectId}`);
+      const json = await response.json();
+      workSpaceStore.setActiveProject(json.data);
+    };
+    return (_ctx, _cache) => {
+      const _component_Button = script$6;
+      const _component_Toolbar = script$7;
+      const _component_Tree = script$c;
+      const _component_ContextMenu = script$8;
+      const _component_el_input = ElInput;
+      const _component_Dialog = script;
+      const _directive_tooltip = Tooltip;
+      return openBlock(), createElementBlock(Fragment, null, [
+        createBaseVNode("div", _hoisted_1, [
+          createBaseVNode("div", _hoisted_2, [
+            createVNode(_component_Toolbar, {
+              class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8",
+              style: { "min-height": "37px" }
+            }, {
+              start: withCtx(() => _cache[7] || (_cache[7] = [
+                createBaseVNode("span", { class: "text-sm truncate" }, "PROJECTS", -1)
+              ])),
+              center: withCtx(() => _cache[8] || (_cache[8] = [])),
+              end: withCtx(() => [
+                createBaseVNode("div", _hoisted_3, [
+                  withDirectives(createVNode(_component_Button, {
+                    text: "",
+                    icon: "pi pi-refresh",
+                    class: "p-button-secondary py-1 2xl:py-2",
+                    onClick: refreshList
+                  }, null, 512), [
+                    [_directive_tooltip, "refresh"]
+                  ]),
+                  withDirectives(createVNode(_component_Button, {
+                    text: "",
+                    icon: "pi pi-plus",
+                    class: "p-button-secondary py-1 2xl:py-2",
+                    onClick: addProject
+                  }, null, 512), [
+                    [_directive_tooltip, "add"]
+                  ])
+                ])
+              ]),
+              _: 1
+            })
+          ]),
+          createBaseVNode("div", _hoisted_4, [
+            createVNode(ResizablePanels, {
+              panels: panelConfig.value,
+              direction: "vertical"
+            }, {
+              "panel-0": withCtx(() => [
+                createBaseVNode("div", _hoisted_5, [
+                  createVNode(_component_Tree, {
+                    class: "tree-explorer py-0 px-2 2xl:px-4",
+                    value: treeNodes.value,
+                    expandedKeys: expandedKeys.value,
+                    "onUpdate:expandedKeys": _cache[0] || (_cache[0] = ($event) => expandedKeys.value = $event),
+                    selectionMode: "single",
+                    selectionKeys: selectedKeys.value,
+                    "onUpdate:selectionKeys": _cache[1] || (_cache[1] = ($event) => selectedKeys.value = $event),
+                    pt: {
+                      nodeLabel: "tree-explorer-node-label",
+                      nodeContent: ({ context: context2 }) => ({
+                        class: "group/tree-node",
+                        onClick: (e) => onNodeContentClick(e, context2.node),
+                        onContextmenu: (e) => handleContextMenu(e, context2.node)
+                      }),
+                      nodeToggleButton: () => ({
+                        onClick: (e) => {
+                          e.stopImmediatePropagation();
+                        }
+                      })
+                    }
+                  }, {
+                    folder: withCtx(({ node: node2 }) => {
+                      var _a2;
+                      return [
+                        createVNode(EditableText, {
+                          modelValue: node2.label,
+                          isEditing: ((_a2 = renameEditingNode.value) == null ? void 0 : _a2.key) == node2.key,
+                          onEdit: handleRename
+                        }, null, 8, ["modelValue", "isEditing"])
+                      ];
+                    }),
+                    _: 1
+                  }, 8, ["value", "expandedKeys", "selectionKeys", "pt"])
+                ])
+              ]),
+              "panel-1": withCtx(() => _cache[9] || (_cache[9] = [
+                createBaseVNode("div", { class: "custom-content" }, [
+                  createBaseVNode("h3", null, "大纲视图")
+                ], -1)
+              ])),
+              _: 1
+            }, 8, ["panels"])
+          ])
+        ]),
+        createVNode(_component_ContextMenu, {
+          ref_key: "menu",
+          ref: menu,
+          model: menuItems.value,
+          pt: {
+            root: { style: { zIndex: 2022 } },
+            overlay: {
+              "aria-hidden": false,
+              "aria-modal": true,
+              role: "menu"
+            }
+          }
+        }, null, 8, ["model"]),
+        (openBlock(), createBlock(Teleport, { to: "body" }, [
+          createBaseVNode("div", _hoisted_6, [
+            createVNode(_component_Dialog, {
+              visible: visible.value,
+              "onUpdate:visible": _cache[6] || (_cache[6] = ($event) => visible.value = $event),
+              header: "ADD PROJECT",
+              style: { width: "18rem" }
+            }, {
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_7, [
+                  createBaseVNode("div", _hoisted_8, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.name,
+                      "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.name = $event),
+                      class: "w-full",
+                      placeholder: "name"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_9, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.description,
+                      "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.description = $event),
+                      class: "w-full",
+                      placeholder: "description"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_10, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.width,
+                      "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => initialValues.value.width = $event),
+                      class: "w-full",
+                      placeholder: "videoWidth"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_11, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.height,
+                      "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => initialValues.value.height = $event),
+                      class: "w-full",
+                      placeholder: "videoHeight"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_12, [
+                    createVNode(_component_Button, {
+                      class: "w-full",
+                      type: "submit",
+                      severity: "secondary",
+                      label: "submit",
+                      onClick: onFormSubmit
+                    })
+                  ])
+                ])
+              ]),
+              _: 1
+            }, 8, ["visible"])
+          ])
+        ]))
+      ], 64);
+    };
+  }
+});
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-1e4630e3"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
@@ -70480,17 +71757,42 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const addUploadWidget = function(nodeType, nodeData, type2, icon) {
       chainCallback(nodeType.prototype, "onNodeCreated", function(...arg) {
         checkWorkflow();
-        this.addWidget("button", "preview", "image", () => {
+        this.addWidget("button", "preview", "image", (e) => {
+          var _a2, _b2, _c2, _d2;
           console.log("preview", this);
-          let MontagenProj = app$1.extensionManager.workflow.activeWorkflow.activeState.extra.MontagenProj;
-          let projectId = MontagenProj.projectId || "1";
-          let project = workSpaceStore.list.find((item) => item.baseInfo.projectId == projectId);
-          if (project) {
-            console.log("project 名称", project.baseInfo.name);
-            workSpaceStore.addTabs({ projectId: project.baseInfo.projectId, label: project.baseInfo.name, baseInfo: project.baseInfo });
-            workSpaceStore.openWorkFlow({ projectId: project.baseInfo.projectId, timeLine: project.timeline });
+          let workflowId = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId;
+          let clipId = null;
+          if ((_c2 = this.properties) == null ? void 0 : _c2.clipId) {
+            clipId = (_d2 = this.properties) == null ? void 0 : _d2.clipId;
+          } else {
+            if (workflowId) {
+              clipId = `${this.id}_${workflowId}`;
+            }
           }
-          menuStore.changeShow(true);
+          if (clipId) {
+            let sourceData = workSpaceStore.activeProject.workflows;
+            let tempClip = null;
+            for (let i2 = 0; i2 < sourceData.length; i2++) {
+              for (let j = 0; j < sourceData[i2].clips.length; j++) {
+                if (sourceData[i2].clips[j].clipId == clipId) {
+                  console.log("preview", sourceData[i2].clips[j]);
+                  tempClip = sourceData[i2].clips[j];
+                  break;
+                }
+              }
+            }
+            if (tempClip) {
+              workSpaceStore.openWorkFlow({ projectId: workSpaceStore.activeProject.baseInfo.projectId, timeLine: tempClip.timeline });
+              menuStore.changeShow(true);
+            } else {
+              app$1.extensionManager.toast.add({
+                severity: "info",
+                summary: "tips!",
+                detail: "no timeline,please run first!",
+                life: 3e3
+              });
+            }
+          }
         });
       });
     };
@@ -70500,14 +71802,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         workSpaceStore.openWorkFlow({ projectId: data.projectId, timeLine: data.timeline });
       }
     };
-    const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
     const checkWorkflow = () => {
-      var _a2, _b2;
+      var _a2, _b2, _c2;
       let data = app$1.graph.serialize();
-      if ((_b2 = (_a2 = data.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId) return;
-      app$1.graph.extra.MontagenProj = {
-        workflowId: cusWorkflowID()
-      };
+      if (!((_b2 = (_a2 = data.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId)) return;
+      if ((_c2 = workSpaceStore.activeProject) == null ? void 0 : _c2.baseInfo) {
+        app$1.graph.extra.MontagenProj.projectId = workSpaceStore.activeProject.baseInfo.projectId;
+      }
     };
     const watchWorkFlowTabClosed = () => {
       let closeworkflow = app$1.extensionManager.workflow.closeWorkflow;
@@ -70542,7 +71843,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             el.__vue_app__.unmount();
           }
           el.innerHTML = "";
-          const app2 = createApp(explorer);
+          const app2 = createApp(newExplorer);
           app2.use(PrimeVue, {
             theme: {
               preset: definePreset(index$3, {
@@ -70570,7 +71871,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       });
       if (switchRef.value) {
         app$1.registerExtension({
-          name: "EasymskPage",
+          name: "Montagen",
           setup(ui) {
             watchWorkFlowTabClosed();
             setTimeout(() => {
@@ -70613,7 +71914,28 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 }
               });
             }
-          }
+          },
+          settings: [
+            {
+              id: "Montagen.TestSetting.asd",
+              name: "Test Setting",
+              type: "text",
+              defaultValue: "Hello, world!"
+            },
+            {
+              id: "Montagen.TestBoolean.boolean",
+              name: "Test Boolean",
+              type: "boolean",
+              defaultValue: true
+            },
+            {
+              id: "Montagen.TestBoolean.boolean1",
+              name: "Test Combo",
+              type: "combo",
+              defaultValue: "option1",
+              options: ["option1", "option2", "option3"]
+            }
+          ]
         });
       }
     };
@@ -70641,12 +71963,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           onClick: switchChange
         }, null, 512), [
           [_directive_tooltip, "open MontagenEditor"]
-        ])
+        ]),
+        createVNode(_sfc_main$k)
       ], 64);
     };
   }
 });
-const fontUrl = "/assets/fontello-BWfW8qGK.ttf";
 const ComfyUIPreset = definePreset(index$3, {
   semantic: {
     primary: index$3["primitive"].blue
@@ -70661,14 +71983,6 @@ maskpage.style.cssText = `
   z-index: 1100;
 `;
 document.body.append(maskpage);
-const style = document.createElement("style");
-style.textContent = `
-  @font-face {
-    font-family: 'fontello';
-    src: url('/extensions/ComfyUI-Montagen${fontUrl}') format('truetype');
-  }
-`;
-document.head.appendChild(style);
 const app = createApp(_sfc_main);
 for (const [key2, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key2, component);
