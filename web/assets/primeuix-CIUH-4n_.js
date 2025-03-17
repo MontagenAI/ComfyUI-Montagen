@@ -1305,7 +1305,7 @@ var config_default = {
     }
   }
 };
-var style$o = ({ dt: n2 }) => `
+var style$n = ({ dt: n2 }) => `
 *,
 ::before,
 ::after {
@@ -1427,7 +1427,7 @@ var style$o = ({ dt: n2 }) => `
     }
 }
 `;
-var style$n = ({ dt: t2 }) => `
+var style$m = ({ dt: t2 }) => `
 .p-tooltip {
     position: absolute;
     display: none;
@@ -1488,7 +1488,7 @@ var style$n = ({ dt: t2 }) => `
     border-bottom-color: ${t2("tooltip.background")};
 }
 `;
-var style$m = ({ dt: n2 }) => `
+var style$l = ({ dt: n2 }) => `
 .p-badge {
     display: inline-flex;
     border-radius: ${n2("badge.border.radius")};
@@ -1564,7 +1564,7 @@ var style$m = ({ dt: n2 }) => `
     height: ${n2("badge.xl.height")};
 }
 `;
-var style$l = ({ dt: n2 }) => `
+var style$k = ({ dt: n2 }) => `
 .p-ink {
     display: block;
     position: absolute;
@@ -1585,7 +1585,7 @@ var style$l = ({ dt: n2 }) => `
     }
 }
 `;
-var style$k = ({ dt: o2 }) => `
+var style$j = ({ dt: o2 }) => `
 .p-button {
     display: inline-flex;
     cursor: pointer;
@@ -2226,7 +2226,7 @@ var style$k = ({ dt: o2 }) => `
     color: ${o2("button.link.active.color")};
 }
 `;
-var style$j = ({ dt: o2 }) => `
+var style$i = ({ dt: o2 }) => `
 .p-dialog {
     max-height: 90%;
     transform: scale(1);
@@ -2374,7 +2374,7 @@ var style$j = ({ dt: o2 }) => `
     flex-grow: 1;
 }
 `;
-var style$i = ({ dt: n2 }) => `
+var style$h = ({ dt: n2 }) => `
 .p-tabs {
     display: flex;
     flex-direction: column;
@@ -2518,7 +2518,7 @@ var style$i = ({ dt: n2 }) => `
     transition: 250ms cubic-bezier(0.35, 0, 0.25, 1);
 }
 `;
-var style$h = ({ dt: n2 }) => `
+var style$g = ({ dt: n2 }) => `
 .p-divider-horizontal {
     display: flex;
     width: 100%;
@@ -2600,7 +2600,7 @@ var style$h = ({ dt: n2 }) => `
     flex-direction: row-reverse;
 }
 `;
-var style$g = ({ dt: n2 }) => `
+var style$f = ({ dt: n2 }) => `
 .p-scrollpanel-content-container {
     overflow: hidden;
     width: 100%;
@@ -2666,7 +2666,7 @@ var style$g = ({ dt: n2 }) => `
     user-select: none;
 }
 `;
-var style$f = ({ dt: n2 }) => `
+var style$e = ({ dt: n2 }) => `
 .p-iconfield {
     position: relative;
 }
@@ -2711,7 +2711,7 @@ var style$f = ({ dt: n2 }) => `
     margin-top: calc(-1 * (${n2("form.field.lg.font.size")} / 2));
 }
 `;
-var style$e = ({ dt: n2 }) => `
+var style$d = ({ dt: n2 }) => `
 .p-inputtext {
     font-family: inherit;
     font-feature-settings: inherit;
@@ -2785,7 +2785,7 @@ var style$e = ({ dt: n2 }) => `
     width: 100%;
 }
 `;
-var style$d = ({ dt: r2 }) => `
+var style$c = ({ dt: r2 }) => `
 .p-virtualscroller-loader {
     background: ${r2("virtualscroller.loader.mask.background")};
     color: ${r2("virtualscroller.loader.mask.color")};
@@ -2797,7 +2797,7 @@ var style$d = ({ dt: r2 }) => `
     height: ${r2("virtualscroller.loader.icon.size")};
 }
 `;
-var style$c = ({ dt: o2 }) => `
+var style$b = ({ dt: o2 }) => `
 .p-listbox {
     background: ${o2("listbox.background")};
     color: ${o2("listbox.color")};
@@ -2907,7 +2907,7 @@ var style$c = ({ dt: o2 }) => `
     padding: ${o2("listbox.empty.message.padding")};
 }
 `;
-var style$b = ({ dt: n2 }) => `
+var style$a = ({ dt: n2 }) => `
 .p-contextmenu {
     background: ${n2("contextmenu.background")};
     color: ${n2("contextmenu.color")};
@@ -3054,7 +3054,7 @@ var style$b = ({ dt: n2 }) => `
     transform: rotate(-90deg);
 }
 `;
-var style$a = ({ dt: o2 }) => `
+var style$9 = ({ dt: o2 }) => `
 .p-toolbar {
     display: flex;
     align-items: center;
@@ -3075,7 +3075,7 @@ var style$a = ({ dt: o2 }) => `
     align-items: center;
 }
 `;
-var style$9 = ({ dt: o2 }) => `
+var style$8 = ({ dt: o2 }) => `
 .p-confirmpopup {
     position: absolute;
     margin-top: ${o2("confirmpopup.gutter")};
@@ -3180,20 +3180,6 @@ var style$9 = ({ dt: o2 }) => `
 .p-confirmpopup-flipped:before {
     border-bottom-color: transparent;
     border-top-color: ${o2("confirmpopup.border.color")};
-}
-`;
-var style$8 = ({ dt: n2 }) => `
-.p-confirmdialog .p-dialog-content {
-    display: flex;
-    align-items: center;
-    gap:  ${n2("confirmdialog.content.gap")};
-}
-
-.p-confirmdialog-icon {
-    color: ${n2("confirmdialog.icon.color")};
-    font-size: ${n2("confirmdialog.icon.size")};
-    width: ${n2("confirmdialog.icon.size")};
-    height: ${n2("confirmdialog.icon.size")};
 }
 `;
 var style$7 = ({ dt: e2 }) => `
@@ -4562,7 +4548,7 @@ export {
   r$R as ay,
   l$9 as az,
   isClient as b,
-  style$n as b0,
+  style$m as b0,
   hasClass as b1,
   getOuterWidth as b2,
   getOuterHeight as b3,
@@ -4572,40 +4558,39 @@ export {
   getWindowScrollLeft as b7,
   getWindowScrollTop as b8,
   ZIndex as b9,
-  style$c as bA,
+  style$b as bA,
   findLastIndex as bB,
   isPrintableCharacter as bC,
-  style$b as bD,
+  style$a as bD,
   getHiddenElementOuterWidth as bE,
   getHiddenElementOuterHeight as bF,
   nestedPosition as bG,
-  style$a as bH,
-  style$9 as bI,
+  style$9 as bH,
+  style$8 as bI,
   absolutePosition as bJ,
-  style$8 as bK,
-  style$7 as bL,
-  style$6 as bM,
-  contains as bN,
-  find as bO,
-  style$5 as bP,
-  style$4 as bQ,
-  isRTL as bR,
-  style$3 as bS,
-  style$2 as bT,
-  style$1 as bU,
-  style as bV,
-  h$4 as bW,
-  definePreset as bX,
+  style$7 as bK,
+  style$6 as bL,
+  contains as bM,
+  find as bN,
+  style$5 as bO,
+  style$4 as bP,
+  isRTL as bQ,
+  style$3 as bR,
+  style$2 as bS,
+  style$1 as bT,
+  style as bU,
+  h$4 as bV,
+  definePreset as bW,
   createElement as ba,
   fadeIn as bb,
   isTouchDevice as bc,
   getAttribute as bd,
-  style$m as be,
-  style$l as bf,
+  style$l as be,
+  style$k as bf,
   getHeight as bg,
   getWidth as bh,
   getOffset as bi,
-  style$k as bj,
+  style$j as bj,
   getLastFocusableElement as bk,
   focus as bl,
   getFirstFocusableElement as bm,
@@ -4613,16 +4598,16 @@ export {
   unblockBodyScroll as bo,
   $dt as bp,
   blockBodyScroll as bq,
-  style$j as br,
+  style$i as br,
   addStyle as bs,
-  style$i as bt,
-  style$h as bu,
-  style$g as bv,
-  style$f as bw,
-  style$e as bx,
-  style$d as by,
+  style$h as bt,
+  style$g as bu,
+  style$f as bv,
+  style$e as bw,
+  style$d as bx,
+  style$c as by,
   isVisible as bz,
-  style$o as c,
+  style$n as c,
   config_default as d,
   isNotEmpty$1 as e,
   dt as f,

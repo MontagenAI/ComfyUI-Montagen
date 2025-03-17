@@ -151,19 +151,19 @@
   background: #fff;
   border-radius: none;
 }
-.panels-container[data-v-8adac5b7] {\r
+.panels-container[data-v-a9fec170] {\r
   height: 100%;\r
   width: 100%;\r
   position: relative;\r
   background: #fff;
 }
-.resizable-panel[data-v-8adac5b7] {\r
+.resizable-panel[data-v-a9fec170] {\r
   background: white;\r
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
   overflow: hidden;\r
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.panel-header[data-v-8adac5b7] {\r
+.panel-header[data-v-a9fec170] {\r
   background: #f8f9fa;\r
   cursor: pointer;\r
   border-bottom: 1px solid #eee;\r
@@ -175,41 +175,41 @@
           user-select: none;\r
   box-sizing: border-box;
 }
-.toggle-icon[data-v-8adac5b7] {\r
+.toggle-icon[data-v-a9fec170] {\r
   font-size: 0.8em;\r
   opacity: 0.6;
 }
-.panel-content[data-v-8adac5b7] {\r
+.panel-content[data-v-a9fec170] {\r
   /* padding: 16px;\r
   height: calc(100% - 48px);\r
   overflow: auto; */
 }
-.gutter[data-v-8adac5b7] {\r
+.gutter[data-v-a9fec170] {\r
   background: #ddd;\r
   position: relative;\r
   transition: all 0.3s;
 }
-.gutter.gutter-active[data-v-8adac5b7] {\r
+.gutter.gutter-active[data-v-a9fec170] {\r
   background: #ccc;\r
   cursor: row-resize;
 }
-.gutter[data-v-8adac5b7]:not(.gutter-active) {\r
+.gutter[data-v-a9fec170]:not(.gutter-active) {\r
   pointer-events: none;\r
   opacity: 0;
 }\r
 \r
 /* 垂直布局分隔条 */
-.gutter[data-direction="vertical"][data-v-8adac5b7] {\r
+.gutter[data-direction="vertical"][data-v-a9fec170] {\r
   height: 10px;\r
   cursor: row-resize;
 }\r
 \r
 /* 水平布局分隔条 */
-.gutter[data-direction="horizontal"][data-v-8adac5b7] {\r
+.gutter[data-direction="horizontal"][data-v-a9fec170] {\r
   width: 5px;\r
   cursor: col-resize;
 }
-[data-v-8adac5b7] .gutter-vertical {\r
+[data-v-a9fec170] .gutter-vertical {\r
   /* opacity: 0; */\r
   background-color: #fff;
 &:hover {\r
@@ -237,8 +237,11 @@
     opacity: 1;\r
   }\r
 } */
-.panel[data-v-8adac5b7] {\r
+.panel[data-v-a9fec170] {\r
   overflow: hidden;
+}
+.panel.expand[data-v-a9fec170] {\r
+  overflow-y: auto;
 }\r
 
 .split-container[data-v-e7912b00] {\r
@@ -258,7 +261,15 @@
   background: #f8f9fa;\r
   border-radius: 4px;
 }\r
-[data-v-59fc9bca] .left-tool-button {
+.choose-project[data-v-98872769] {
+  display: flex;
+  height: 70vh;
+  width: 60vw;
+  max-width: 1024px;
+  overflow: hidden;
+}.explorer-container[data-v-a862ea71] {
+  background-color: #fff;
+}[data-v-59fc9bca] .left-tool-button {
   /* Your styles here */
   width: var(--sidebar-width);
   height: var(--sidebar-width);
@@ -416,9 +427,7 @@
   display: flex;\r
   overflow: hidden;
 }\r
-.explorer-container[data-v-08b8c547] {
-  background-color: #fff;
-}.hideBox {
+.hideBox {
   opacity: 0;
   pointer-events: none;
 }
@@ -546,31 +555,31 @@
 .tw-mb-1 {\r
     margin-bottom: 0.25rem
 }\r
+.tw-mb-2 {\r
+    margin-bottom: 0.5rem
+}\r
 .tw-h-100 {\r
     height: 28rem
-}\r
-.tw-bg-\\[\\#50d71e\\] {\r
-    --tw-bg-opacity: 1;\r
-    background-color: rgb(80 215 30 / var(--tw-bg-opacity, 1))
-}\r
-.tw-bg-transparent {\r
-    background-color: transparent
 }\r
 .tw-bg-\\[\\#ffffff\\] {\r
     --tw-bg-opacity: 1;\r
     background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
 }\r
+.tw-bg-transparent {\r
+    background-color: transparent
+}\r
 .tw-p-2 {\r
     padding: 0.5rem
+}\r
+.tw-py-2 {\r
+    padding-top: 0.5rem;\r
+    padding-bottom: 0.5rem
 }\r
 .tw-pb-1 {\r
     padding-bottom: 0.25rem
 }\r
 .tw-ps-1 {\r
     padding-inline-start: 0.25rem
-}\r
-.tw-pe-1 {\r
-    padding-inline-end: 0.25rem
 }\r
 .tw-content-\\[\\'\\'\\] {\r
     --tw-content: '';\r
@@ -660,11 +669,11 @@ var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value2) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value: value2 }) : obj[key2] = value2;
 var __publicField = (obj, key2, value2) => __defNormalProp(obj, typeof key2 !== "symbol" ? key2 + "" : key2, value2);
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, S as unref, M as createVNode, C as createTextVNode$1, a as createBaseVNode, f as reactive, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, ac as withKeys, k as withModifiers, q as toRaw, T as Teleport, a2 as normalizeStyle, j as renderSlot$1, a6 as onBeforeUnmount, n as nextTick$1, a4 as provide, Z as onUnmounted, ad as createApp } from "./assets/vue-mTqs3s9N.js";
-import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, z, o as script$b, u as useConfirm, p as script$c, q as script$d, r as script$e, t as script$f, S as Split, v as script$g, w as script$h, x as script$i, R as Ripple, y as script$j, A as customAlphabet, D as DialogService, C as ConfirmationService, B as createPinia, F as ToastService } from "./assets/vendor-Bzg841qP.js";
+import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, S as unref, M as createVNode, C as createTextVNode$1, a as createBaseVNode, f as reactive, G as withDirectives, K as normalizeClass, J as createCommentVNode, k as withModifiers, ac as withKeys, a2 as normalizeStyle, j as renderSlot$1, T as Teleport, q as toRaw, w as watch, a6 as onBeforeUnmount, n as nextTick$1, a4 as provide, Z as onUnmounted, ad as createApp } from "./assets/vue-mTqs3s9N.js";
+import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, S as Split, o as script$a, p as customAlphabet, q as script$b, r as script$c, u as useConfirm, t as script$d, v as script$e, w as script$f, R as Ripple, z, x as script$h, y as script$i, D as DialogService, C as ConfirmationService, A as createPinia, B as ToastService } from "./assets/vendor-DEJ0QMjh.js";
 import "./assets/lodash-DS8RUn65.js";
-import { u as usePrimeVue, r as script$a, P as PrimeVue, t as index$3 } from "./assets/primevue-Bk4_9uLx.js";
-import { bW as h, bX as definePreset } from "./assets/primeuix-DEoQIFoy.js";
+import { u as usePrimeVue, r as script$g, P as PrimeVue, t as index$3 } from "./assets/primevue-B_eiB-bV.js";
+import { bV as h, bW as definePreset } from "./assets/primeuix-CIUH-4n_.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-Bb9DjssG.js";
 import "./assets/vueuse-ehZJJDg_.js";
 import "./assets/ctrl-CUqN8X7N.js";
@@ -51536,9 +51545,9 @@ function requireKeyFrame() {
   }
   return keyFrame = t, keyFrame;
 }
-var node$1, hasRequiredNode;
+var node, hasRequiredNode;
 function requireNode() {
-  if (hasRequiredNode) return node$1;
+  if (hasRequiredNode) return node;
   hasRequiredNode = 1;
   const FFClip = requireClip(), { BLEND_MODES } = requireLib$2(), KeyFrames = requireKeyFrame(), _FFNode = class ____FFNode extends FFClip {
     /**
@@ -51839,7 +51848,7 @@ function requireNode() {
   };
   dv(_FFNode, "D_LIST", ["scale", "opacity"]);
   let FFNode = _FFNode;
-  return node$1 = FFNode, node$1;
+  return node = FFNode, node;
 }
 function _typeof(a2) {
   "@babel/helpers - typeof";
@@ -68283,10 +68292,15 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     // 已经点击打开过的项目列表
     activeProject: {},
     // 当前选中的项目
-    showTextAddNode: false
+    showTextAddNode: false,
     // 是否显示文本节点
+    activeNode: {}
+    // 当前选中的节点
   }),
   actions: {
+    setActiveNode(node2) {
+      this.activeNode = node2;
+    },
     setShowTextAddNode(flag) {
       this.showTextAddNode = flag;
     },
@@ -68328,13 +68342,6 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         const json = await response.json();
         console.log(json);
         this.list = json.data;
-        let id = null;
-        if (this.list.length > 1) {
-          id = this.list[1].baseInfo.projectId;
-        } else {
-          id = this.list[0].baseInfo.projectId;
-        }
-        this.getProjectDetail(id);
       } catch (err) {
       } finally {
       }
@@ -68680,7 +68687,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1$f = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _hoisted_2$a = { class: "comfy-vue-side-bar-header" };
+const _hoisted_2$b = { class: "comfy-vue-side-bar-header" };
 const _hoisted_3$5 = { class: "text-sm truncate" };
 const _hoisted_4$5 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
 const _hoisted_5$3 = {
@@ -68688,12 +68695,12 @@ const _hoisted_5$3 = {
   style: { "margin": "0" }
 };
 const _hoisted_6$3 = ["onClick", "onContextmenu"];
-const _hoisted_7$3 = {
+const _hoisted_7$2 = {
   key: 0,
   class: "w-full flex items-center"
 };
-const _hoisted_8$3 = { class: "truncate w-full text-center name" };
-const _hoisted_9$2 = {
+const _hoisted_8$2 = { class: "truncate w-full text-center name" };
+const _hoisted_9$1 = {
   key: 1,
   class: "w-full flex items-center"
 };
@@ -68703,7 +68710,7 @@ const _hoisted_11$1 = {
   class: "w-full flex items-center"
 };
 const _hoisted_12$1 = { class: "truncate text-center name" };
-const _hoisted_13 = {
+const _hoisted_13$1 = {
   key: 3,
   class: "w-full flex items-center"
 };
@@ -68761,7 +68768,7 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
       const _component_ContextMenu = script$8;
       const _directive_tooltip = Tooltip;
       return openBlock(), createElementBlock("div", _hoisted_1$f, [
-        createBaseVNode("div", _hoisted_2$a, [
+        createBaseVNode("div", _hoisted_2$b, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
               createBaseVNode("span", _hoisted_3$5, toDisplayString(title.value), 1)
@@ -68792,16 +68799,16 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$3, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$2, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_8$3, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_8$2, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$2, [
+                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$1, [
                   _cache[2] || (_cache[2] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-image",
@@ -68819,7 +68826,7 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_12$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "audio" ? (openBlock(), createElementBlock("div", _hoisted_13, [
+                item.type == "audio" ? (openBlock(), createElementBlock("div", _hoisted_13$1, [
                   _cache[4] || (_cache[4] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-headphones",
@@ -68859,266 +68866,9 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
   }
 });
 const clips = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-f4c79b70"]]);
-const _hoisted_1$e = { class: "w-full h-full flex-col flex" };
-const _hoisted_2$9 = { class: "comfy-vue-side-bar-header" };
+const _hoisted_1$e = { class: "editable-text" };
+const _hoisted_2$a = { key: 0 };
 const _sfc_main$f = /* @__PURE__ */ defineComponent({
-  __name: "metaInfo",
-  setup(__props) {
-    const workSpaceStore = useWorkSpaceStore();
-    workSpaceStore.playerInstance.on("changed", (e) => {
-      initData2();
-    });
-    workSpaceStore.playerInstance.on("select", (e) => {
-      initData2();
-    });
-    let formData = reactive({
-      width: 0,
-      height: 0,
-      rotate: 0,
-      clipName: "",
-      type: "",
-      x: 0,
-      y: 0,
-      text: ""
-    });
-    const radiansToDegrees = (radians) => {
-      return radians * (180 / Math.PI) && Math.round(radians * (180 / Math.PI));
-    };
-    const degreesToRadians = (degrees) => {
-      return degrees * (Math.PI / 180);
-    };
-    const unitToPx = (unit) => {
-      unit = unit || "0";
-      return Math.round(workSpaceStore.playerInstance.creator.px(unit));
-    };
-    const isSelectClip = ref$3(false);
-    const initData2 = () => {
-      if (!workSpaceStore.playerInstance.selected[0]) {
-        formData.rotate = 0;
-        formData.x = 0;
-        formData.y = 0;
-        formData.type = "";
-        formData.text = "";
-        formData.width = 0;
-        formData.height = 0;
-        isSelectClip.value = false;
-        return;
-      }
-      isSelectClip.value = true;
-      let conf2 = workSpaceStore.playerInstance.selected[0].conf;
-      formData.rotate = radiansToDegrees(conf2.rotate || 0);
-      formData.x = unitToPx(conf2.x || 0);
-      formData.y = unitToPx(conf2.y || 0);
-      formData.width = unitToPx(conf2.width || 0);
-      formData.height = unitToPx(conf2.height || 0);
-      formData.type = conf2.type;
-      if (conf2.type === "text") {
-        formData.text = conf2.text;
-      }
-    };
-    const handleRotate = (e) => {
-      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
-        rotation: degreesToRadians(formData.rotate)
-      });
-    };
-    const handleX = () => {
-      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
-        x: formData.x
-      });
-    };
-    const handleY = () => {
-      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
-        y: formData.y
-      });
-    };
-    const handleText = () => {
-      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
-        text: formData.text
-      });
-    };
-    const handleWorY = (type2) => {
-      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], {
-        [type2]: formData[type2] + "px"
-      });
-    };
-    watch(() => formData.rotate, (newVal, oldVal) => {
-    });
-    const formContainer = ref$3(null);
-    onMounted(() => {
-      initData2();
-      formContainer.value.addEventListener("keydown", (e) => {
-        e.stopPropagation();
-      });
-    });
-    return (_ctx, _cache) => {
-      const _component_Toolbar = script$7;
-      const _component_el_input = ElInput;
-      const _component_el_form_item = ElFormItem;
-      const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$e, [
-        createBaseVNode("div", _hoisted_2$9, [
-          createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
-            start: withCtx(() => _cache[9] || (_cache[9] = [
-              createBaseVNode("span", { class: "text-sm truncate" }, "transform", -1)
-            ])),
-            center: withCtx(() => _cache[10] || (_cache[10] = [])),
-            end: withCtx(() => _cache[11] || (_cache[11] = [
-              createBaseVNode("div", {
-                class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200",
-                style: { "min-height": "28px" }
-              }, null, -1)
-            ])),
-            _: 1
-          })
-        ]),
-        createBaseVNode("div", {
-          class: "form-container flex-1 overflow-hidden overflow-y-auto",
-          ref_key: "formContainer",
-          ref: formContainer
-        }, [
-          createVNode(_component_el_form, {
-            "label-position": "top",
-            "label-width": "auto",
-            model: unref(formData)
-          }, {
-            default: withCtx(() => [
-              createVNode(_component_el_form_item, {
-                label: "type",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).type,
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(formData).type = $event),
-                    disabled: ""
-                  }, null, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              createVNode(_component_el_form_item, {
-                label: "rotate",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).rotate,
-                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(formData).rotate = $event),
-                    onKeydown: withKeys(handleRotate, ["enter"])
-                  }, {
-                    append: withCtx(() => _cache[12] || (_cache[12] = [
-                      createTextVNode$1("deg")
-                    ])),
-                    _: 1
-                  }, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              createVNode(_component_el_form_item, {
-                label: "x",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).x,
-                    "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => unref(formData).x = $event),
-                    onKeydown: withKeys(handleX, ["enter"])
-                  }, {
-                    append: withCtx(() => _cache[13] || (_cache[13] = [
-                      createTextVNode$1("px")
-                    ])),
-                    _: 1
-                  }, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              createVNode(_component_el_form_item, {
-                label: "y",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).y,
-                    "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => unref(formData).y = $event),
-                    onKeydown: withKeys(handleY, ["enter"])
-                  }, {
-                    append: withCtx(() => _cache[14] || (_cache[14] = [
-                      createTextVNode$1("px")
-                    ])),
-                    _: 1
-                  }, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              createVNode(_component_el_form_item, {
-                label: "width",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).width,
-                    "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => unref(formData).width = $event),
-                    onKeydown: _cache[5] || (_cache[5] = withKeys(($event) => handleWorY("width"), ["enter"]))
-                  }, {
-                    append: withCtx(() => _cache[15] || (_cache[15] = [
-                      createTextVNode$1("px")
-                    ])),
-                    _: 1
-                  }, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              createVNode(_component_el_form_item, {
-                label: "height",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).height,
-                    "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => unref(formData).height = $event),
-                    onKeydown: _cache[7] || (_cache[7] = withKeys(($event) => handleWorY("height"), ["enter"]))
-                  }, {
-                    append: withCtx(() => _cache[16] || (_cache[16] = [
-                      createTextVNode$1("px")
-                    ])),
-                    _: 1
-                  }, 8, ["modelValue"])
-                ]),
-                _: 1
-              }),
-              unref(formData).type === "text" ? (openBlock(), createBlock(_component_el_form_item, {
-                key: 0,
-                label: "text",
-                class: "px-2 tw-pb-1"
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_input, {
-                    class: "cus-input",
-                    modelValue: unref(formData).text,
-                    "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => unref(formData).text = $event),
-                    onKeydown: withKeys(handleText, ["enter"])
-                  }, null, 8, ["modelValue"])
-                ]),
-                _: 1
-              })) : createCommentVNode("", true),
-              createVNode(_component_el_form_item)
-            ]),
-            _: 1
-          }, 8, ["model"])
-        ], 512)
-      ]);
-    };
-  }
-});
-const metaInfo = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-09310f7b"]]);
-const _hoisted_1$d = { class: "editable-text" };
-const _hoisted_2$8 = { key: 0 };
-const _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "EditableText",
   props: {
     modelValue: {},
@@ -69142,8 +68892,8 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _component_InputText = script$9;
-      return openBlock(), createElementBlock("div", _hoisted_1$d, [
-        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$8, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
+      return openBlock(), createElementBlock("div", _hoisted_1$e, [
+        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$a, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
           key: 1,
           type: "text",
           size: "small",
@@ -69167,1036 +68917,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-5404c5f4"]]);
-const _hoisted_1$c = { class: "flex flex-col gap-1" };
-const _sfc_main$d = /* @__PURE__ */ defineComponent({
-  __name: "addClipDialog",
-  emits: ["hide"],
-  setup(__props, { expose: __expose, emit: __emit }) {
-    useWorkSpaceStore();
-    const visible = ref$3(false);
-    const eimts = __emit;
-    const initialValues = ref$3({
-      textContent: "",
-      type: "",
-      workflowId: "",
-      projectId: ""
-    });
-    const resolver = ref$3(h(
-      z.object({
-        textContent: z.string().min(1, { message: "name content is required." })
-      })
-    ));
-    const isloading = ref$3(false);
-    const onFormSubmit = async ({ valid, values }) => {
-      if (valid) {
-        isloading.value = true;
-        if (initialValues.value.type === "workflow") {
-          let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/New`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              name: values.textContent
-            })
-          });
-          await response.json();
-        } else {
-          if (initialValues.value.type === "text") {
-            let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Text/New`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              body: new URLSearchParams({
-                text: values.textContent
-              }).toString()
-            });
-            await response.json();
-          } else {
-            let response = await app$1.api.fetchApi(`/Montagen/Proj/${initialValues.value.projectId}/Workflow/${initialValues.value.workflowId}/Clip/New`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                name: values.textContent,
-                type: initialValues.value.type
-              })
-            });
-            await response.json();
-          }
-        }
-        isloading.value = false;
-        visible.value = false;
-        eimts("hide", { type: initialValues.value.type });
-      }
-    };
-    onMounted(() => {
-    });
-    __expose({
-      show(data, type2) {
-        initialValues.value.type = type2;
-        initialValues.value.projectId = data.projectId;
-        initialValues.value.workflowId = data.workflowId;
-        visible.value = true;
-      }
-    });
-    return (_ctx, _cache) => {
-      const _component_InputText = script$9;
-      const _component_Message = script$b;
-      const _component_Button = script$6;
-      const _component_Dialog = script;
-      return openBlock(), createBlock(_component_Dialog, {
-        visible: visible.value,
-        "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
-        closable: true,
-        position: "top",
-        header: `ADD ${initialValues.value.type == "workflow" ? "Workflow" : "Clip"}`
-      }, {
-        default: withCtx(() => [
-          createVNode(unref(script$a), {
-            resolver: resolver.value,
-            initialValues: initialValues.value,
-            onSubmit: onFormSubmit,
-            class: "flex flex-col gap-4",
-            onKeydown: _cache[0] || (_cache[0] = ($event) => {
-              $event.stopPropagation();
-            })
-          }, {
-            default: withCtx(($form) => {
-              var _a2;
-              return [
-                createBaseVNode("div", _hoisted_1$c, [
-                  createVNode(_component_InputText, {
-                    name: "textContent",
-                    autocomplete: "off"
-                  }),
-                  ((_a2 = $form.textContent) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
-                    key: 0,
-                    severity: "error",
-                    size: "small",
-                    variant: "simple"
-                  }, {
-                    default: withCtx(() => {
-                      var _a3;
-                      return [
-                        createTextVNode$1(toDisplayString((_a3 = $form.textContent.error) == null ? void 0 : _a3.message), 1)
-                      ];
-                    }),
-                    _: 2
-                  }, 1024)) : createCommentVNode("", true)
-                ]),
-                createVNode(_component_Button, {
-                  type: "submit",
-                  severity: "secondary",
-                  label: "Submit",
-                  loading: isloading.value
-                }, null, 8, ["loading"])
-              ];
-            }),
-            _: 1
-          }, 8, ["resolver", "initialValues"])
-        ]),
-        _: 1
-      }, 8, ["visible", "header"]);
-    };
-  }
-});
-const _hoisted_1$b = { class: "comfy-vue-side-bar-header" };
-const _hoisted_2$7 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_3$4 = { id: "custom-dialog" };
-const _hoisted_4$4 = { class: "flex flex-col justify-center" };
-const _hoisted_5$2 = { class: "mb-2" };
-const _hoisted_6$2 = { class: "mb-2" };
-const _hoisted_7$2 = { class: "mb-2" };
-const _hoisted_8$2 = { class: "mb-2" };
-const _hoisted_9$1 = { class: "flex justify-center" };
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
-  __name: "TreeExplorer",
-  props: {
-    showMeta: { type: Boolean }
-  },
-  setup(__props) {
-    const confirm = useConfirm();
-    const workSpaceStore = useWorkSpaceStore();
-    const menuStore = useMenuStore();
-    const { list, activeProjectId, activeProject } = storeToRefs(workSpaceStore);
-    const props2 = __props;
-    const visible = ref$3(false);
-    const initialValues = ref$3({
-      name: "",
-      description: "",
-      width: 1280,
-      height: 720
-    });
-    const addworkflow = async () => {
-      visible.value = true;
-    };
-    const onFormSubmit = () => {
-      addList();
-    };
-    const addList = async () => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/New`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(initialValues.value)
-      });
-      await response.json();
-      visible.value = false;
-      refreshList();
-    };
-    const clipsIcon = {
-      video: "pi pi-video",
-      audio: "pi pi-headphones",
-      image: "pi pi-image",
-      text: "pi pi-file",
-      gif: "pi pi-image"
-    };
-    const treeNodes = computed(() => {
-      let temp = [];
-      for (let i2 = 0; i2 < list.value.length; i2++) {
-        let tempObj = list.value[i2];
-        tempObj.label = list.value[i2].baseInfo.name;
-        tempObj.key = list.value[i2].baseInfo.projectId;
-        tempObj.icon = "fontello icon-montagen";
-        tempObj.type = "folder";
-        tempObj.gradeType = 1;
-        tempObj.projectId = list.value[i2].baseInfo.projectId;
-        if (list.value[i2].workflows.length) {
-          tempObj.children = list.value[i2].workflows.map((workflow) => {
-            return {
-              label: workflow.workflowName || workflow.workflowId,
-              key: workflow.workflowId,
-              workflowId: workflow.workflowId,
-              projectId: list.value[i2].baseInfo.projectId,
-              icon: "pi pi-file",
-              type: "folder",
-              workflow: workflow.workflow,
-              gradeType: 2,
-              children: workflow.clips.length ? workflow.clips.map((clip2) => {
-                return {
-                  label: clip2.clipName,
-                  key: clip2.clipId,
-                  clipId: clip2.clipId,
-                  workflowId: workflow.workflowId,
-                  projectId: list.value[i2].baseInfo.projectId,
-                  icon: clipsIcon[clip2.type],
-                  type: "folder",
-                  gradeType: 3,
-                  workflow: workflow.workflow,
-                  workflowName: workflow.workflowName
-                };
-              }) : []
-            };
-          });
-        } else {
-          tempObj.children = [];
-        }
-        if (props2.showMeta && workSpaceStore.activeProject.projectId === tempObj.projectId) {
-          temp.push(tempObj);
-          break;
-        } else if (!props2.showMeta) {
-          temp.push(tempObj);
-        }
-      }
-      return temp;
-    });
-    ref$3([
-      {
-        key: "0",
-        label: "Node 0",
-        type: "folder",
-        icon: "fontello icon-montagen",
-        children: [
-          {
-            key: "0-0",
-            label: "Node 0-0",
-            type: "folder",
-            icon: "pi pi-file",
-            children: [
-              { key: "0-0-0", label: "Node 0-0-0", type: "folder", icon: "pi pi-image" },
-              { key: "0-0-1", label: "Node 0-0-1", type: "folder", icon: "pi pi-video" }
-            ]
-          },
-          { key: "0-1", label: "Node 0-1", type: "folder", icon: "pi pi-file", children: [] }
-        ]
-      },
-      { key: "1", label: "Node 1", type: "folder", icon: "fontello icon-montagen", children: [] }
-    ]);
-    const expandedKeys = ref$3({});
-    const selectedKeys = ref$3({});
-    const menu = ref$3();
-    const onNodeContentClick = async (e, node2) => {
-      var _a2, _b2, _c2, _d2, _e2;
-      if (node2.children && node2.children.length > 0) {
-        if (expandedKeys.value[node2.key]) {
-          delete expandedKeys.value[node2.key];
-        } else {
-          expandedKeys.value[node2.key] = true;
-          selectedKeys.value = { [node2.key]: true };
-        }
-        expandedKeys.value = { ...expandedKeys.value };
-      }
-      if (node2.gradeType === 1) return;
-      let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: node2.projectId, workflowId: node2.workflowId });
-      if (flag && node2.gradeType === 3) {
-        let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
-        if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === node2.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === node2.workflowId) {
-          let id = "";
-          if (node2.clipId.includes("_")) {
-            id = node2.clipId.split("_")[0];
-          } else {
-            let temp = activeWorkflow.activeState.nodes;
-            for (let i2 = 0; i2 < temp.length; i2++) {
-              if (((_e2 = temp[i2].properties) == null ? void 0 : _e2.clipId) === node2.clipId) {
-                id = temp[i2].id;
-                break;
-              }
-            }
-          }
-          let grahBode = id && app$1.graph.getNodeById(id);
-          if (grahBode) {
-            app$1.canvas.selectNode(grahBode);
-            centerNodeInCanvas(app$1.graph, grahBode, app$1.canvas.canvas);
-          }
-          return;
-        }
-      }
-      let data = flag ? flag.activeState : node2.workflow;
-      (flag == null ? void 0 : flag.filename) && node2.gradeType == 2 && (flag.filename = node2.label);
-      workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
-    };
-    function centerNodeInCanvas(graph, node2, canvas2) {
-      if (!node2 || !canvas2) return;
-      let canvasRect = canvas2.getBoundingClientRect();
-      let canvasCenter = {
-        x: canvasRect.width / 2,
-        y: canvasRect.height / 2
-      };
-      let nodeCenter = {
-        x: node2.pos[0] + node2.size[0] / 2,
-        y: node2.pos[1] + node2.size[1] / 2
-      };
-      graph.extra.ds.offset[0] = canvasCenter.x - nodeCenter.x * graph.extra.ds.scale;
-      graph.extra.ds.offset[1] = canvasCenter.y - nodeCenter.y * graph.extra.ds.scale;
-      graph.setDirtyCanvas(true, true);
-    }
-    let gradeType = ref$3(1);
-    const menuTargetNode = ref$3();
-    const handleContextMenu = (event2, node2) => {
-      gradeType.value = node2.gradeType || node2.key.split("-").length;
-      menuTargetNode.value = node2;
-      event2.preventDefault();
-      menu.value.show(event2);
-    };
-    const renameCommand = (node2) => {
-      renameEditingNode.value = node2;
-    };
-    const addClipRef = ref$3();
-    const openedAndSaveWorkFlow = () => {
-      let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
-      if (flag) {
-        if (flag == null ? void 0 : flag._isModified) {
-          flag.save();
-          updateWorkflow(toRaw(flag == null ? void 0 : flag.activeState) || {});
-        }
-      }
-    };
-    const openedRelaodWorkFlow = async (flag = false) => {
-      var _a2, _b2, _c2, _d2;
-      let extraData = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj;
-      if (extraData && (extraData == null ? void 0 : extraData.workflowId)) {
-        selectedKeys.value = { [extraData == null ? void 0 : extraData.workflowId]: true };
-      }
-      if (flag && extraData) {
-        let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData == null ? void 0 : extraData.projectId}/Workflow/${extraData == null ? void 0 : extraData.workflowId}/Edit`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(app$1.extensionManager.workflow.activeWorkflow.activeState)
-        });
-        await response.json();
-      }
-      if (extraData && (extraData == null ? void 0 : extraData.projectId) === ((_c2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _c2.projectId) && extraData.workflowId === ((_d2 = menuTargetNode == null ? void 0 : menuTargetNode.value) == null ? void 0 : _d2.workflowId)) {
-        let response = await app$1.api.fetchApi(`/Montagen/Proj/${extraData.projectId}/Workflow/${extraData.workflowId}`, {
-          method: "GET"
-        });
-        const json = await response.json();
-        workflowUtils.openTabByWorkFlowData(json.data, app$1.extensionManager.workflow.activeWorkflow);
-      }
-    };
-    let clipBoard = null;
-    const menuItems = computed(() => {
-      let temp = [];
-      if (gradeType.value === 1) {
-        if (!props2.showMeta) {
-          temp.push(...[
-            {
-              label: "Open Montagen",
-              icon: "pi pi-folder-open",
-              command: () => {
-                console.log("Open Montagen", menuTargetNode.value, toRaw(menuTargetNode.value.timeline));
-                workSpaceStore.addTabs(menuTargetNode.value);
-                workSpaceStore.openWorkFlow({ projectId: menuTargetNode.value.projectId, timeLine: toRaw(menuTargetNode.value.timeline) });
-                menuStore.changeShow(true);
-              }
-            },
-            {
-              separator: true
-            }
-          ]);
-        } else {
-          temp.push({
-            label: "Add Text Clip",
-            icon: "pi pi-file",
-            command: () => {
-              openedAndSaveWorkFlow();
-              addClipRef.value.show(menuTargetNode.value, "text");
-            }
-          });
-        }
-        temp.push(...[
-          {
-            label: "Add Workflow",
-            icon: "pi pi-file",
-            command: () => {
-              console.log("新增workflow");
-              addClipRef.value.show(menuTargetNode.value, "workflow");
-            }
-          },
-          {
-            label: "Rename Project",
-            icon: "pi pi-file-edit",
-            command: () => renameCommand(menuTargetNode.value)
-          },
-          {
-            separator: true
-          },
-          {
-            label: "Delete Project",
-            icon: "pi pi-trash",
-            command: () => {
-              console.log("Delete", menuTargetNode.value);
-              confirm.require({
-                group: "dialog",
-                message: `Are you sure delete ${menuTargetNode.value.baseInfo.name} project?`,
-                header: "Confirmation",
-                icon: "pi pi-exclamation-triangle",
-                position: "top",
-                rejectProps: {
-                  label: "Cancel",
-                  severity: "secondary",
-                  outlined: true
-                },
-                acceptProps: {
-                  label: "Delete"
-                },
-                accept: () => {
-                  deleteProject(menuTargetNode.value.projectId);
-                },
-                reject: () => {
-                }
-              });
-            }
-          }
-        ]);
-      } else if (gradeType.value === 2) {
-        temp.push(...[
-          {
-            label: "Add Video Clip",
-            icon: "pi pi-video",
-            command: () => {
-              openedAndSaveWorkFlow();
-              addClipRef.value.show(menuTargetNode.value, "video");
-            }
-          },
-          {
-            label: "Add Audio Clip",
-            icon: "pi pi-headphones",
-            command: () => {
-              openedAndSaveWorkFlow();
-              addClipRef.value.show(menuTargetNode.value, "audio");
-            }
-          },
-          {
-            label: "Add Image Clip",
-            icon: "pi pi-image",
-            command: () => {
-              openedAndSaveWorkFlow();
-              addClipRef.value.show(menuTargetNode.value, "image");
-            }
-          },
-          // {
-          //   label: 'Add Text Clip',
-          //   icon: 'pi pi-file',
-          //   command: () => {
-          //     openedAndSaveWorkFlow();
-          //     // console.log('Refresh');
-          //     addClipRef.value.show(menuTargetNode.value, 'text');
-          //   },
-          // },
-          {
-            separator: true
-          },
-          {
-            label: "Rename Workflow",
-            icon: "pi pi-file-edit",
-            command: () => renameCommand(menuTargetNode.value)
-          },
-          {
-            separator: true
-          },
-          {
-            label: "Delete Workflow",
-            icon: "pi pi-trash",
-            command: () => {
-              confirm.require({
-                group: "dialog",
-                message: `Are you sure delete ${menuTargetNode.value.label} workflow?`,
-                header: "Confirmation",
-                icon: "pi pi-exclamation-triangle",
-                position: "top",
-                rejectProps: {
-                  label: "Cancel",
-                  severity: "secondary",
-                  outlined: true
-                },
-                acceptProps: {
-                  label: "Delete"
-                },
-                accept: () => {
-                  deleteWorkflow(menuTargetNode.value);
-                },
-                reject: () => {
-                }
-              });
-            }
-          }
-        ]);
-        if (clipBoard) {
-          temp.push({
-            label: "Paste Clip",
-            icon: "pi pi-file-edit",
-            command: (e) => {
-              copyPasteClip();
-            }
-          });
-        }
-      } else if (gradeType.value === 3) {
-        temp.push({
-          label: "Rename Clip",
-          icon: "pi pi-file-edit",
-          command: (e) => renameCommand(menuTargetNode.value)
-        });
-        if (!props2.showMeta) {
-          temp.push({
-            label: "Copy Clip",
-            icon: "pi pi-file-edit",
-            command: (e) => {
-              console.log("复制workflow clip", toRaw(menuTargetNode.value));
-              clipBoard = {
-                clipId: menuTargetNode.value.clipId,
-                workflowId: menuTargetNode.value.workflowId,
-                projectId: menuTargetNode.value.projectId
-              };
-            }
-          });
-        } else {
-          temp.push({
-            label: "Edit Clip",
-            icon: "pi pi-file-edit",
-            command: (e) => {
-              console.log("编辑workflow clip", e, toRaw(menuTargetNode.value));
-              menuStore.changeShow(false);
-              let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
-              let data = flag ? flag.activeState : node.workflow;
-              (flag == null ? void 0 : flag.filename) && menuTargetNode.value.gradeType == 2 && (flag.filename = node.label);
-              workflowUtils.openTabByWorkFlowData(toRaw(data), flag || menuTargetNode.value.label);
-            }
-          });
-        }
-        temp.push(...[
-          // {
-          //   label: 'Edit Clip',
-          //   icon: 'pi pi-file-edit',
-          //   command: (e) => {
-          //     // console.log('编辑workflow clip', toRaw(menuTargetNode.value.workflow));
-          //     let rawData = toRaw(menuTargetNode.value.workflow);
-          //     if (workflowUtils.isWorkFlowOpend(rawData.extra.MontagenProj)) {// 已经打开了
-          //     } else { // 重新打开workflow
-          //       app.loadGraphData(rawData, true, true, menuTargetNode.value.workflowName);
-          //     }
-          //   },
-          // },
-          {
-            separator: true
-          },
-          {
-            label: "Delete Clip",
-            icon: "pi pi-trash",
-            command: () => {
-              confirm.require({
-                group: "dialog",
-                message: `Are you sure delete ${menuTargetNode.value.label} clip?`,
-                header: "Confirmation",
-                icon: "pi pi-exclamation-triangle",
-                position: "top",
-                rejectProps: {
-                  label: "Cancel",
-                  severity: "secondary",
-                  outlined: true
-                },
-                acceptProps: {
-                  label: "Delete"
-                },
-                accept: () => {
-                  openedAndSaveWorkFlow();
-                  deleteClip(menuTargetNode.value);
-                },
-                reject: () => {
-                }
-              });
-            }
-          }
-        ]);
-      }
-      return temp;
-    });
-    const renameEditingNode = ref$3({});
-    const handleRename = (newLabel) => {
-      switch (gradeType.value) {
-        case 1:
-          renameProject(newLabel);
-          break;
-        case 2:
-          renameWorkflow(newLabel);
-          break;
-        case 3:
-          renameClip(newLabel);
-          break;
-      }
-    };
-    const renameProject = async (name) => {
-      let node2 = renameEditingNode.value;
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Name`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: new URLSearchParams({
-          name
-        }).toString()
-      });
-      await response.json();
-      renameEditingNode.value = {};
-      refreshList();
-    };
-    const renameWorkflow = async (name) => {
-      let node2 = renameEditingNode.value;
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Rename`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name })
-      });
-      await response.json();
-      let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: menuTargetNode.value.projectId, workflowId: menuTargetNode.value.workflowId });
-      if (flag) {
-        flag.filename = name;
-      }
-      renameEditingNode.value = {};
-      refreshList();
-    };
-    const updateWorkflow = async (data) => {
-      let node2 = menuTargetNode.value;
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Edit`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-      await response.json();
-    };
-    const renameClip = async (name) => {
-      openedAndSaveWorkFlow();
-      let node2 = renameEditingNode.value;
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Workflow/${node2.workflowId}/Clip/${node2.clipId}/Rename`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name })
-      });
-      await response.json();
-      openedRelaodWorkFlow();
-      renameEditingNode.value = {};
-      refreshList();
-    };
-    const deleteClip = async (data) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Workflow/${data.workflowId}/Clip/${data.clipId}`, {
-        method: "DELETE"
-      });
-      await response.json();
-      openedRelaodWorkFlow();
-      refreshList();
-    };
-    const addClipAfter = (e) => {
-      openedRelaodWorkFlow();
-      refreshList();
-      getProjectDetail({ projectId: workSpaceStore.activeProject.projectId });
-    };
-    const copyPasteClip = async () => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${clipBoard.projectId}/Workflow/${clipBoard.workflowId}/Clip/${clipBoard.clipId}/Copy`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          "project_id_to": menuTargetNode.value.projectId,
-          "workflow_id_to": menuTargetNode.value.workflowId
-        })
-      });
-      await response.json();
-      clipBoard = null;
-      refreshList();
-    };
-    const refreshList = () => {
-      workSpaceStore.getlists();
-    };
-    const deleteWorkflow = async (data) => {
-      var _a2, _b2, _c2, _d2;
-      let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
-      if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === data.workflowId) {
-        if (app$1.extensionManager.workflow.openWorkflows.length > 1) {
-          const nextWorkflow = app$1.extensionManager.workflow.openedWorkflowIndexShift(1);
-          let changeTracker = activeWorkflow.changeTracker;
-          app$1.extensionManager.workflow.closeWorkflow(activeWorkflow);
-          app$1.extensionManager.workflow.activeWorkflow.changeTracker = changeTracker;
-          if (nextWorkflow) {
-            app$1.loadGraphData(JSON.parse(JSON.stringify(nextWorkflow.activeState)), true, true, nextWorkflow);
-          }
-        }
-      } else {
-        let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: data.projectId, workflowId: data.workflowId });
-        if (flag) {
-          app$1.extensionManager.workflow.closeWorkflow(flag);
-        }
-      }
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Workflow/${data.workflowId}`, {
-        method: "DELETE"
-      });
-      await response.json();
-      refreshList();
-    };
-    const deleteProject = async (data) => {
-      var _a2, _b2, _c2, _d2;
-      console.log("deleteWorkflow", data);
-      let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
-      let changeTracker = activeWorkflow.changeTracker;
-      let flag = false;
-      if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data) {
-        flag = true;
-      }
-      for (let i2 = 0; i2 < app$1.extensionManager.workflow.openWorkflows.length; i2++) {
-        if (((_d2 = (_c2 = app$1.extensionManager.workflow.openWorkflows[i2].activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.projectId) === data) {
-          app$1.extensionManager.workflow.closeWorkflow(app$1.extensionManager.workflow.openWorkflows[i2]);
-          i2--;
-        }
-      }
-      app$1.extensionManager.workflow.activeWorkflow.changeTracker = changeTracker;
-      if (flag) {
-        if (app$1.extensionManager.workflow.openWorkflows.length > 0) {
-          app$1.loadGraphData(JSON.parse(JSON.stringify(app$1.extensionManager.workflow.openWorkflows[0].activeState)), true, true, app$1.extensionManager.workflow.openWorkflows[0]);
-        } else {
-          app$1.loadGraphData({}, true, true, {});
-        }
-      } else {
-        app$1.loadGraphData(JSON.parse(JSON.stringify(activeWorkflow.activeState)), true, true, activeWorkflow);
-      }
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
-        method: "DELETE"
-      });
-      await response.json();
-      workSpaceStore.deleteTabs(data);
-      refreshList();
-    };
-    const getProjectDetail = async (item) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
-      const json = await response.json();
-      let timeLine = json.data.timeline;
-      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
-    };
-    const setProxyWorkFlow = () => {
-      let activeWorkflowdescrption = Object.getOwnPropertyDescriptor(app$1.extensionManager.workflow, "activeWorkflow");
-      let activeWorkflowdescrptionValue = activeWorkflowdescrption.value;
-      let activeWorkflowdescrptionValueSet = Object.getOwnPropertyDescriptor(activeWorkflowdescrptionValue.__proto__, "value");
-      let activeWorkflowdescrptionValueSetSetter = activeWorkflowdescrptionValueSet.set;
-      let activeWorkflowdescrptionValueSetGetter = activeWorkflowdescrptionValueSet.get;
-      Object.defineProperty(activeWorkflowdescrptionValue, "value", {
-        get() {
-          return activeWorkflowdescrptionValueSetGetter.call(this);
-        },
-        set(value2) {
-          activeWorkflowdescrptionValueSetSetter.call(this, value2);
-          if (value2._isModified) {
-            value2.save();
-            openedRelaodWorkFlow(true);
-          }
-        },
-        configurable: true
-      });
-    };
-    onMounted(() => {
-      var _a2;
-      setProxyWorkFlow();
-      app$1.api.addEventListener("MontagenProcessEnd", function(params) {
-        refreshList();
-      });
-      let originSelect = (_a2 = app$1.canvas) == null ? void 0 : _a2.onNodeSelected;
-      app$1.canvas.onNodeSelected = function() {
-        var _a3, _b2, _c2, _d2;
-        originSelect && originSelect.apply(this, arguments);
-        let node2 = arguments[0];
-        let clipId = null;
-        let workflowId = (_b2 = (_a3 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _a3.MontagenProj) == null ? void 0 : _b2.workflowId;
-        if ((_c2 = node2.properties) == null ? void 0 : _c2.clipId) {
-          clipId = (_d2 = node2.properties) == null ? void 0 : _d2.clipId;
-        } else {
-          if (workflowId) {
-            clipId = `${node2.id}_${workflowId}`;
-          }
-        }
-        if (clipId) {
-          for (let i2 = 0; i2 < list.value.length; i2++) {
-            if (list.value[i2].workflows.length > 0) {
-              for (let j = 0; j < list.value[i2].workflows.length; j++) {
-                if (list.value[i2].workflows[j].workflowId === workflowId) {
-                  let clips2 = list.value[i2].workflows[j].clips;
-                  for (let k = 0; k < clips2.length; k++) {
-                    if (clips2[k].clipId === clipId) {
-                      selectedKeys.value = { [clipId]: true };
-                      break;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      };
-    });
-    return (_ctx, _cache) => {
-      const _component_Button = script$6;
-      const _component_Toolbar = script$7;
-      const _component_Tree = script$c;
-      const _component_ContextMenu = script$8;
-      const _component_ConfirmDialog = script$d;
-      const _component_el_input = ElInput;
-      const _component_Dialog = script;
-      const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", null, [
-          createBaseVNode("div", _hoisted_1$b, [
-            createVNode(_component_Toolbar, {
-              class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8",
-              style: { "min-height": "37px" }
-            }, {
-              start: withCtx(() => _cache[7] || (_cache[7] = [
-                createBaseVNode("span", { class: "text-sm truncate" }, "PROJECTS", -1)
-              ])),
-              center: withCtx(() => _cache[8] || (_cache[8] = [])),
-              end: withCtx(() => [
-                createBaseVNode("div", _hoisted_2$7, [
-                  withDirectives(createVNode(_component_Button, {
-                    text: "",
-                    icon: "pi pi-refresh",
-                    class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: refreshList
-                  }, null, 512), [
-                    [_directive_tooltip, "refresh"]
-                  ]),
-                  withDirectives(createVNode(_component_Button, {
-                    text: "",
-                    icon: "pi pi-plus",
-                    class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: addworkflow
-                  }, null, 512), [
-                    [_directive_tooltip, "add"]
-                  ])
-                ])
-              ]),
-              _: 1
-            })
-          ]),
-          createVNode(_component_Tree, {
-            class: "tree-explorer py-0 px-2 2xl:px-4",
-            value: treeNodes.value,
-            expandedKeys: expandedKeys.value,
-            "onUpdate:expandedKeys": _cache[0] || (_cache[0] = ($event) => expandedKeys.value = $event),
-            selectionMode: "single",
-            selectionKeys: selectedKeys.value,
-            "onUpdate:selectionKeys": _cache[1] || (_cache[1] = ($event) => selectedKeys.value = $event),
-            pt: {
-              nodeLabel: "tree-explorer-node-label",
-              nodeContent: ({ context: context2 }) => ({
-                class: "group/tree-node",
-                onClick: (e) => onNodeContentClick(e, context2.node),
-                onContextmenu: (e) => handleContextMenu(e, context2.node)
-              }),
-              nodeToggleButton: () => ({
-                onClick: (e) => {
-                  e.stopImmediatePropagation();
-                }
-              })
-            }
-          }, {
-            folder: withCtx(({ node: node2 }) => {
-              var _a2;
-              return [
-                createVNode(EditableText, {
-                  modelValue: node2.label,
-                  isEditing: ((_a2 = renameEditingNode.value) == null ? void 0 : _a2.key) == node2.key,
-                  onEdit: handleRename
-                }, null, 8, ["modelValue", "isEditing"])
-              ];
-            }),
-            _: 1
-          }, 8, ["value", "expandedKeys", "selectionKeys", "pt"])
-        ]),
-        createVNode(_component_ContextMenu, {
-          ref_key: "menu",
-          ref: menu,
-          model: menuItems.value,
-          pt: {
-            root: { style: { zIndex: 2022 } },
-            overlay: {
-              "aria-hidden": false,
-              "aria-modal": true,
-              role: "menu"
-            }
-          }
-        }, null, 8, ["model"]),
-        createVNode(_component_ConfirmDialog, { group: "dialog" }),
-        (openBlock(), createBlock(Teleport, { to: "body" }, [
-          createBaseVNode("div", _hoisted_3$4, [
-            createVNode(_component_Dialog, {
-              visible: visible.value,
-              "onUpdate:visible": _cache[6] || (_cache[6] = ($event) => visible.value = $event),
-              header: "ADD PROJECT",
-              style: { width: "18rem" }
-            }, {
-              default: withCtx(() => [
-                createBaseVNode("div", _hoisted_4$4, [
-                  createBaseVNode("div", _hoisted_5$2, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.name,
-                      "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.name = $event),
-                      class: "w-full",
-                      placeholder: "name"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_6$2, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.description,
-                      "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.description = $event),
-                      class: "w-full",
-                      placeholder: "description"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_7$2, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.width,
-                      "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => initialValues.value.width = $event),
-                      class: "w-full",
-                      placeholder: "videoWidth"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_8$2, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.height,
-                      "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => initialValues.value.height = $event),
-                      class: "w-full",
-                      placeholder: "videoHeight"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_9$1, [
-                    createVNode(_component_Button, {
-                      class: "w-full",
-                      type: "submit",
-                      severity: "secondary",
-                      label: "submit",
-                      onClick: onFormSubmit
-                    })
-                  ])
-                ])
-              ]),
-              _: 1
-            }, 8, ["visible"])
-          ])
-        ])),
-        createVNode(_sfc_main$d, {
-          ref_key: "addClipRef",
-          ref: addClipRef,
-          onHide: addClipAfter
-        }, null, 512)
-      ], 64);
-    };
-  }
-});
-const _hoisted_1$a = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _sfc_main$b = /* @__PURE__ */ defineComponent({
-  __name: "explorer",
-  props: {
-    showMeta: {
-      type: Boolean,
-      default: false
-    }
-  },
-  setup(__props) {
-    const props2 = __props;
-    return (_ctx, _cache) => {
-      const _component_SplitterPanel = script$e;
-      const _component_Splitter = script$f;
-      return openBlock(), createElementBlock("div", _hoisted_1$a, [
-        createVNode(_component_Splitter, {
-          style: { "height": "100%" },
-          layout: "vertical",
-          pt: {
-            root: { class: "explorer-container" },
-            gutter: { class: "explorer-split-gutter" }
-          }
-        }, {
-          default: withCtx(() => [
-            createVNode(_component_SplitterPanel, { class: "" }, {
-              default: withCtx(() => [
-                createVNode(_sfc_main$c, { "show-meta": __props.showMeta }, null, 8, ["show-meta"])
-              ]),
-              _: 1
-            }),
-            props2.showMeta ? (openBlock(), createBlock(_component_SplitterPanel, {
-              key: 0,
-              class: ""
-            }, {
-              default: withCtx(() => [
-                createVNode(metaInfo)
-              ]),
-              _: 1
-            })) : createCommentVNode("", true)
-          ]),
-          _: 1
-        })
-      ]);
-    };
-  }
-});
-const explorerVue = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-c41ef1d4"]]);
+const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-5404c5f4"]]);
 const PREFIX_CLASS = "comfyui-maskpage-";
 function sleep(ms = 100, value2) {
   return new Promise((resolve) => {
@@ -70288,7 +69009,7 @@ class Toast {
   }
 }
 new Toast();
-const _sfc_main$a = {
+const _sfc_main$e = {
   props: {
     // 面板配置数组
     panels: {
@@ -70428,15 +69149,15 @@ const _sfc_main$a = {
     if (this.splitInstance) this.splitInstance.destroy();
   }
 };
-const _hoisted_1$9 = {
+const _hoisted_1$d = {
   class: "panels-container tw-h-100",
   ref: "container"
 };
-const _hoisted_2$6 = ["onClick"];
-const _hoisted_3$3 = { class: "tw-ps-1" };
-const _hoisted_4$3 = { class: "panel-content flex-1 overflow-hidden" };
+const _hoisted_2$9 = ["onClick"];
+const _hoisted_3$4 = { class: "tw-ps-1" };
+const _hoisted_4$4 = { class: "panel-content flex-1 overflow-hidden" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$9, [
+  return openBlock(), createElementBlock("div", _hoisted_1$d, [
     (openBlock(true), createElementBlock(Fragment, null, renderList$1($props.panels, (panel, index2) => {
       return openBlock(), createElementBlock("div", {
         key: index2,
@@ -70444,890 +69165,208 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ref_for: true,
         ref: (el) => $data.panelElements[index2] = el
       }, [
-        createBaseVNode("div", {
-          class: "panel-header py-1 px-2",
-          onClick: ($event) => $options.togglePanel(index2),
-          style: normalizeStyle({ height: `${$data.headerHeight}px` })
-        }, [
-          createBaseVNode("div", null, [
-            createBaseVNode("i", {
-              class: normalizeClass(["pi", panel.expanded ? "pi-chevron-down" : "pi-chevron-right"]),
-              style: { "font-size": "1rem" }
-            }, null, 2),
-            createBaseVNode("span", _hoisted_3$3, toDisplayString(panel.title), 1)
+        createBaseVNode("div", null, [
+          createBaseVNode("div", {
+            class: "panel-header py-1 px-2",
+            onClick: ($event) => $options.togglePanel(index2),
+            style: normalizeStyle({ height: `${$data.headerHeight}px` })
+          }, [
+            createBaseVNode("div", null, [
+              createBaseVNode("i", {
+                class: normalizeClass(["pi", panel.expanded ? "pi-chevron-down" : "pi-chevron-right"]),
+                style: { "font-size": "1rem" }
+              }, null, 2),
+              createBaseVNode("span", _hoisted_3$4, toDisplayString(panel.title), 1)
+            ])
+          ], 12, _hoisted_2$9),
+          createBaseVNode("div", _hoisted_4$4, [
+            renderSlot$1(_ctx.$slots, `panel-${index2}`, { panel }, void 0, true)
           ])
-        ], 12, _hoisted_2$6),
-        createBaseVNode("div", _hoisted_4$3, [
-          renderSlot$1(_ctx.$slots, `panel-${index2}`, { panel }, void 0, true)
         ])
       ], 2);
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render], ["__scopeId", "data-v-8adac5b7"]]);
-const useLeftToolStore = defineStore("leftToolStore", {
-  state: (_) => ({
-    menues: [
-      {
-        name: "home1",
-        tips: "PROJECTS",
-        selected: false,
-        icon: "pi pi-copy",
-        component: markRaw(explorerVue)
-      },
-      {
-        name: "clips",
-        tips: "ClIPS",
-        selected: false,
-        icon: "pi pi-copy",
-        component: markRaw(clips)
-      },
-      // {
-      //   name: 'infos',
-      //   tips: 'properties',
-      //   selected: false,
-      //   icon: 'pi pi-book',
-      //   component: markRaw(metaInfoVue)
-      // },
-      {
-        name: "mark",
-        tips: "EXPORT",
-        selected: false,
-        icon: "pi pi-file-export",
-        component: markRaw(_sfc_main$h)
-      }
-      // {
-      //   name: 'home',
-      //   tips: 'explorer',
-      //   selected: false,
-      //   icon: 'pi pi-file-export',
-      //   component: markRaw(splitPanelVue)
-      // },
-    ],
-    selectedMenu: {}
-  }),
-  actions: {
-    changeSelect(item) {
-      this.menues.forEach((ele) => {
-        if (item.name == ele.name) {
-          ele.selected = !ele.selected;
-          this.selectedMenu = ele.selected ? ele : {};
-        } else {
-          ele.selected = false;
-        }
-      });
-    }
-  }
-});
-const _hoisted_1$8 = { class: "toolbar" };
-const _hoisted_2$5 = { class: "side-bar-end" };
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
-  __name: "leftToolbar",
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render], ["__scopeId", "data-v-a9fec170"]]);
+const _hoisted_1$c = { class: "choose-project flex h-96" };
+const _hoisted_2$8 = { class: "list-box" };
+const _sfc_main$d = /* @__PURE__ */ defineComponent({
+  __name: "chooseProject",
   setup(__props) {
-    const leftToolStore = useLeftToolStore();
-    const { menues } = storeToRefs(leftToolStore);
-    const dialogStore = useDialogStore();
-    const menuStore = useMenuStore();
-    const goBack = () => {
-      menuStore.changeShow(false);
-    };
-    const showSetting = () => {
-      dialogStore.showDialog({
-        key: "global-settings-mongaton",
-        headerComponent: SettingDialogHeader,
-        component: SettingDialogContent
+    const workSpaceStore = useWorkSpaceStore();
+    const { list } = storeToRefs(workSpaceStore);
+    const selectedProject = ref$3();
+    const projects = computed(() => {
+      return list.value.map((item) => {
+        item.name = item.baseInfo.name;
+        return item;
       });
-    };
-    const onTabClick = (item) => {
-      leftToolStore.changeSelect(item);
+    });
+    const handleTabSelection = (val) => {
+      let id = val.baseInfo.projectId;
+      workSpaceStore.getProjectDetail(id);
     };
     return (_ctx, _cache) => {
-      const _component_Button = script$6;
-      const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$8, [
-        createBaseVNode("nav", null, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(menues), (item) => {
-            return withDirectives((openBlock(), createBlock(_component_Button, {
-              icon: item.icon,
-              text: "",
-              "aria-label": "Save",
-              pt: {
-                root: {
-                  class: `left-tool-button ${item.selected ? "p-button-primary left-tool-button-select" : "p-button-secondary"}`
-                }
-              },
-              onClick: ($event) => onTabClick(item)
-            }, null, 8, ["icon", "pt", "onClick"])), [
-              [_directive_tooltip, { value: item.tips, showDelay: 300, hideDelay: 300 }]
-            ]);
-          }), 256))
-        ]),
-        createBaseVNode("div", _hoisted_2$5, [
-          withDirectives((openBlock(), createBlock(_component_Button, {
-            text: "",
-            onClick: goBack,
-            pt: {
-              root: {
-                class: `side-bar-button p-button-primary`
-              }
-            }
-          }, {
-            icon: withCtx(() => _cache[0] || (_cache[0] = [
-              createBaseVNode("i", { class: "pi pi-arrow-left side-bar-button-icon" }, null, -1)
-            ])),
-            _: 1
-          })), [
-            [_directive_tooltip, { value: "back", showDelay: 300, hideDelay: 300 }]
-          ]),
-          withDirectives((openBlock(), createBlock(_component_Button, {
-            text: "",
-            onClick: showSetting,
-            pt: {
-              root: {
-                class: `side-bar-button p-button-primary`
-              }
-            }
-          }, {
-            icon: withCtx(() => _cache[1] || (_cache[1] = [
-              createBaseVNode("i", { class: "pi pi-cog side-bar-button-icon" }, null, -1)
-            ])),
-            _: 1
-          })), [
-            [_directive_tooltip, { value: "setting", showDelay: 300, hideDelay: 300 }]
-          ])
+      const _component_Listbox = script$1;
+      return openBlock(), createElementBlock("div", _hoisted_1$c, [
+        createBaseVNode("div", _hoisted_2$8, [
+          createVNode(_component_Listbox, {
+            modelValue: selectedProject.value,
+            "onUpdate:modelValue": [
+              _cache[0] || (_cache[0] = ($event) => selectedProject.value = $event),
+              handleTabSelection
+            ],
+            options: projects.value,
+            optionLabel: "name",
+            class: "w-full md:w-56 border-none"
+          }, null, 8, ["modelValue", "options"])
         ])
       ]);
     };
   }
 });
-const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-59fc9bca"]]);
-const _hoisted_1$7 = {
-  class: "w-full",
-  style: { "background": "#fff" }
-};
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
-  __name: "boxContainer",
-  setup(__props) {
-    const workSpaceStore = useWorkSpaceStore();
-    const leftToolStore = useLeftToolStore();
-    const { menues, selectedMenu } = storeToRefs(leftToolStore);
-    const showLeftPanel = computed(() => {
-      return menues.value.some((item) => item.selected);
-    });
-    watch(showLeftPanel, () => {
-      parentWidth && updateSizes();
-    });
-    const splitterSizes = ref$3([20, 80]);
-    let observer2;
-    const parentWidth = ref$3(0);
-    const container = ref$3(null);
-    const updateSizes = () => {
-      if (showLeftPanel.value) {
-        const leftSize = 200 / parentWidth.value * 100;
-        splitterSizes.value = [leftSize, 100 - leftSize];
-      } else {
-        splitterSizes.value = [0, 100];
-      }
-      window.requestAnimationFrame(() => {
-        if (workSpaceStore.playerInstance) {
-          workSpaceStore.playerInstance.playerWrapper.fit();
-        }
-      });
-    };
-    const playerWrapper = ref$3(null);
-    const playerRef = ref$3(null);
-    const tracksRef = ref$3(null);
-    ref$3(null);
-    const initPlayer = (width, height) => {
-      workSpaceStore.createPlayer({
-        value: {
-          "type": "canvas",
-          "width": width,
-          "height": height,
-          "name": "Composite",
-          "children": []
-        },
-        previewContainer: playerRef.value,
-        trackContainer: tracksRef.value,
-        hideControls: true,
-        hideMiniBar: true
-      });
-    };
-    const rollImg = (e) => {
-    };
-    onMounted(() => {
-      parentWidth.value = container.value.offsetWidth;
-      updateSizes();
-      observer2 = new ResizeObserver((entries) => {
-        parentWidth.value = entries[0].contentRect.width;
-        updateSizes();
-      });
-      observer2.observe(container.value);
-      let width = 1280;
-      let height = 720;
-      if (playerWrapper.value) {
-        let scale = 1280 / 720;
-        if (playerWrapper.value.offsetHeight > 720) {
-          height = 720;
-          width = 1280;
-        } else {
-          height = playerWrapper.value.offsetHeight;
-          width = playerWrapper.value.offsetHeight * scale;
-        }
-      }
-      workSpaceStore.setPlayerContainerInstance(playerRef.value);
-      workSpaceStore.setTrackContainerInstance(tracksRef.value);
-      workSpaceStore.setPlayerContainerWidth(width);
-      workSpaceStore.setPlayerContainerHeight(height);
-      initPlayer(width, height);
-      new ResizeObserver((entries) => {
-        console.log("entries", entries);
-        for (const entry of entries) {
-          const { width: width2, height: height2 } = entry.contentRect;
-          console.log(`Element: ${entry.target}`);
-          console.log(`Element size: ${width2}px x ${height2}px`);
-        }
-      });
-    });
-    onBeforeUnmount(() => observer2 == null ? void 0 : observer2.disconnect());
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: "w-full h-full",
-        ref_key: "container",
-        ref: container
-      }, [
-        createVNode(unref(script$f), {
-          sizes: splitterSizes.value,
-          "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
-          dt: { "background": "#262626", "height": "100%", "width": "100%" },
-          pt: {
-            root: { class: `split-container ${showLeftPanel.value ? "" : "left-hidden"}` },
-            gutter: { class: `split-gutter-main ${showLeftPanel.value ? "" : "split-gutter-hidden"}` }
-          }
-        }, {
-          default: withCtx(() => [
-            createVNode(unref(script$e), {
-              class: "flex",
-              pt: {
-                root: { class: "split-panel-left" }
-              },
-              size: splitterSizes.value[0]
-            }, {
-              default: withCtx(() => [
-                createBaseVNode("div", _hoisted_1$7, [
-                  (openBlock(), createBlock(resolveDynamicComponent(unref(selectedMenu).component), { showMeta: true }))
-                ])
-              ]),
-              _: 1
-            }, 8, ["size"]),
-            createVNode(unref(script$e), {
-              size: splitterSizes.value[1]
-            }, {
-              default: withCtx(() => [
-                createVNode(unref(script$f), {
-                  layout: "vertical",
-                  pt: {
-                    gutter: { class: "split-gutter" },
-                    root: {
-                      style: {
-                        width: "100%"
-                      },
-                      class: "my-custom-pannel"
-                    }
-                  }
-                }, {
-                  default: withCtx(() => [
-                    createVNode(unref(script$e), {
-                      class: "flex items-center justify-center",
-                      size: 70,
-                      minSize: 70,
-                      pt: { root: { style: { overflow: "hidden" } } }
-                    }, {
-                      default: withCtx(() => [
-                        createBaseVNode("div", {
-                          ref_key: "playerWrapper",
-                          ref: playerWrapper,
-                          class: "w-full h-full flex justify-center",
-                          style: { "background-color": "#262626", "align-items": "center", "position": "relative" },
-                          onMousewheel: withModifiers(rollImg, ["prevent"])
-                        }, [
-                          createBaseVNode("div", {
-                            ref_key: "playerRef",
-                            ref: playerRef,
-                            class: "player"
-                          }, null, 512)
-                        ], 544)
-                      ]),
-                      _: 1
-                    }),
-                    createVNode(unref(script$e), {
-                      class: "flex items-center justify-center",
-                      size: 30,
-                      minSize: 30,
-                      pt: { root: { style: { overflow: "visible" } } }
-                    }, {
-                      default: withCtx(() => [
-                        createBaseVNode("div", {
-                          ref_key: "tracksRef",
-                          ref: tracksRef,
-                          class: "tracks w-full h-full",
-                          style: { "max-height": "320px" }
-                        }, null, 512)
-                      ]),
-                      _: 1
-                    })
-                  ]),
-                  _: 1
-                })
-              ]),
-              _: 1
-            }, 8, ["size"])
-          ]),
-          _: 1
-        }, 8, ["sizes", "pt"])
-      ], 512);
-    };
-  }
-});
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-dd393c1b"]]);
-const _hoisted_1$6 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
-const _hoisted_2$4 = { class: "relative" };
-const _sfc_main$7 = /* @__PURE__ */ defineComponent({
-  __name: "projectTab",
+const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-98872769"]]);
+const _hoisted_1$b = { class: "px-2 tw-mb-2" };
+const _hoisted_2$7 = { class: "content" };
+const _hoisted_3$3 = { class: "px-2 tw-mb-2" };
+const _hoisted_4$3 = { class: "content" };
+const _hoisted_5$2 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$2 = { class: "content" };
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
+  __name: "propertyAsset",
   props: {
-    title: {
-      type: String,
-      required: true,
-      default: "Default Title"
-    },
-    projectOption: {
-      type: Object
-    }
+    data: {}
   },
-  emits: ["close"],
-  setup(__props, { emit: __emit }) {
-    const emit = __emit;
-    const onCloseWorkflow = (option, event2) => {
-      emit("close", { option, event: event2 });
-    };
-    return (_ctx, _cache) => {
-      const _component_Button = script$6;
-      return openBlock(), createElementBlock("div", mergeProps$1({
-        class: "flex p-2 gap-2 workflow-tab bg-transparent",
-        ref: "workflowTabRef"
-      }, _ctx.$attrs), [
-        createBaseVNode("span", _hoisted_1$6, toDisplayString(__props.projectOption.name || __props.projectOption.label), 1),
-        createBaseVNode("div", _hoisted_2$4, [
-          _cache[1] || (_cache[1] = createBaseVNode("span", { class: "status-indicator" }, "•", -1)),
-          createVNode(_component_Button, {
-            class: "close-button p-0 w-auto",
-            icon: "pi pi-times",
-            text: "",
-            severity: "secondary",
-            size: "small",
-            onClick: _cache[0] || (_cache[0] = withModifiers(($event) => onCloseWorkflow(__props.projectOption, $event), ["stop"]))
-          })
-        ])
-      ], 16);
-    };
-  }
-});
-const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-85e82633"]]);
-const _hoisted_1$5 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
-  __name: "projectTabs",
   setup(__props) {
-    const confirm = useConfirm();
-    const workSpaceStore = useWorkSpaceStore();
-    const { tabbsProject, activeProject } = storeToRefs(workSpaceStore);
-    const onWorkflowChange = (e) => {
-      if (e) {
-        workSpaceStore.setActiveProject(e);
-        getProjectDetail(e);
-      }
-    };
-    const getProjectDetail = async (item) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
-      const json = await response.json();
-      let timeLine = json.data.timeline;
-      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
-    };
-    const handleWheel = (event2) => {
-      const scrollElement = event2.currentTarget;
-      const scrollAmount = event2.deltaX || event2.deltaY;
-      scrollElement.scroll({
-        left: scrollElement.scrollLeft + scrollAmount
-      });
-    };
-    const onCloseWorkflow = (option) => {
-      console.log("onCloseWorkflow_当前点击tab 发生了关闭事件", option);
-      confirm.require({
-        target: option.event.currentTarget,
-        message: `Are you sure closed tab ${option.option.label}?`,
-        icon: "pi pi-exclamation-triangle",
-        rejectProps: {
-          label: "Cancel",
-          severity: "secondary",
-          outlined: true
-        },
-        acceptProps: {
-          label: "Close"
-        },
-        accept: () => {
-          console.log("删除work flow");
-          workSpaceStore.deleteTabs(option.option.projectId);
-        },
-        reject: () => {
-        },
-        onShow: () => {
-          setTimeout(() => {
-            window.document.querySelector(".p-confirmpopup.p-component").click();
-          }, 0);
-        }
-      });
-    };
     return (_ctx, _cache) => {
-      const _component_SelectButton = script$h;
-      const _component_ScrollPanel = script$2;
-      const _component_ConfirmPopup = script$g;
-      return openBlock(), createElementBlock("div", _hoisted_1$5, [
-        createVNode(_component_ScrollPanel, {
-          class: "overflow-hidden no-drag bg-transparent",
-          "pt:content": {
-            class: "p-0 w-full h-full",
-            onwheel: handleWheel
-          },
-          "pt:barX": "h-1"
-        }, {
-          default: withCtx(() => [
-            createVNode(_component_SelectButton, {
-              class: "workflow-tabs bg-transparent my-inline",
-              modelValue: unref(activeProject),
-              "onUpdate:modelValue": onWorkflowChange,
-              options: unref(tabbsProject),
-              optionLabel: "name",
-              dataKey: "projectId"
-            }, {
-              option: withCtx(({ option }) => [
-                createVNode(projectTab, {
-                  onClose: onCloseWorkflow,
-                  "project-option": option
-                }, null, 8, ["project-option"])
-              ]),
-              _: 1
-            }, 8, ["modelValue", "options"])
-          ]),
-          _: 1
-        }, 8, ["pt:content"]),
-        createVNode(_component_ConfirmPopup)
-      ]);
-    };
-  }
-});
-const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-0009f528"]]);
-const _hoisted_1$4 = { class: "p-menubar-item-label" };
-const _hoisted_2$3 = { id: "custom-dialog" };
-const _hoisted_3$2 = { class: "flex flex-col justify-center" };
-const _hoisted_4$2 = { class: "mb-2" };
-const _hoisted_5$1 = { class: "mb-2" };
-const _hoisted_6$1 = { class: "mb-2" };
-const _hoisted_7$1 = { class: "mb-2" };
-const _hoisted_8$1 = { class: "flex justify-center" };
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
-  __name: "CommandMenubar",
-  setup(__props) {
-    const workSpaceStore = useWorkSpaceStore();
-    const { list, activeProjectId, activeProject } = storeToRefs(workSpaceStore);
-    const visible = ref$3(false);
-    const initialValues = ref$3({
-      name: "",
-      description: "",
-      width: 1280,
-      height: 720
-    });
-    const items = computed(() => {
-      let temp = {
-        label: "Project",
-        items: [
-          {
-            label: "add",
-            icon: "pi pi-plus",
-            command: (item) => {
-              console.log("点击属性按钮", item);
-              addworkflow();
-            }
-          },
-          {
-            separator: true
-          }
-        ]
-      };
-      list.value.forEach((item) => {
-        temp.items.push({
-          label: item.baseInfo.name,
-          projectId: item.baseInfo.projectId,
-          icon: "fontello icon-montagen",
-          "id": item.projectId,
-          source: item,
-          command: (event2) => {
-            getProjectDetail(event2.item.source);
-          }
-        });
-      });
-      return [temp];
-    });
-    ref$3([
-      {
-        label: "project",
-        items: [
-          {
-            label: "add",
-            icon: "pi pi-plus",
-            command: (item) => {
-              addworkflow();
-            }
-          },
-          {
-            separator: true
-          },
-          {
-            label: "Vite.js",
-            icon: "fontello icon-montagen",
-            id: 1123123,
-            command: (item) => {
-              getProjectDetail(item.item);
-            }
-          }
-        ]
-      }
-    ]);
-    const getProjectDetail = async (item) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
-      const json = await response.json();
-      let timeLine = json.data.timeline;
-      workSpaceStore.addTabs(item);
-      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
-    };
-    const addworkflow = async () => {
-      visible.value = true;
-    };
-    const onFormSubmit = () => {
-      console.log("表单提交数据", initialValues.value);
-      addList();
-    };
-    const addList = async () => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/New`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(initialValues.value)
-      });
-      const json = await response.json();
-      console.log(json);
-      visible.value = false;
-      refreshList();
-    };
-    const refreshList = () => {
-      workSpaceStore.getlists();
-    };
-    return (_ctx, _cache) => {
-      const _component_Menubar = script$i;
-      const _component_el_input = ElInput;
-      const _component_Button = script$6;
-      const _component_Dialog = script;
-      const _directive_ripple = Ripple;
-      return openBlock(), createElementBlock(Fragment, null, [
-        createVNode(_component_Menubar, {
-          model: items.value,
-          class: "top-menubar border-none p-0 bg-transparent",
-          pt: {
-            rootList: "gap-0 flex-nowrap w-auto",
-            submenu: `dropdown-direction-down`,
-            item: "relative"
-          }
-        }, {
-          item: withCtx(({ item, props: props2, hasSubmenu }) => [
-            withDirectives((openBlock(), createElementBlock("a", mergeProps$1({ "aria-hidden": "false" }, props2.action), [
-              item.icon ? (openBlock(), createElementBlock("i", {
-                key: 0,
-                class: normalizeClass(item.icon)
-              }, null, 2)) : createCommentVNode("", true),
-              createBaseVNode("span", _hoisted_1$4, toDisplayString(item.label), 1)
-            ], 16)), [
-              [_directive_ripple]
-            ])
-          ]),
-          _: 1
-        }, 8, ["model"]),
-        (openBlock(), createBlock(Teleport, { to: "body" }, [
-          createBaseVNode("div", _hoisted_2$3, [
-            createVNode(_component_Dialog, {
-              visible: visible.value,
-              "onUpdate:visible": _cache[4] || (_cache[4] = ($event) => visible.value = $event),
-              header: "ADD PROJECT",
-              style: { width: "18rem" }
-            }, {
-              default: withCtx(() => [
-                createBaseVNode("div", _hoisted_3$2, [
-                  createBaseVNode("div", _hoisted_4$2, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.name,
-                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => initialValues.value.name = $event),
-                      class: "w-full",
-                      placeholder: "name"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_5$1, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.description,
-                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => initialValues.value.description = $event),
-                      class: "w-full",
-                      placeholder: "description"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_6$1, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.width,
-                      "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.width = $event),
-                      class: "w-full",
-                      placeholder: "videoWidth"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_7$1, [
-                    createVNode(_component_el_input, {
-                      modelValue: initialValues.value.height,
-                      "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.height = $event),
-                      class: "w-full",
-                      placeholder: "videoHeight"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  createBaseVNode("div", _hoisted_8$1, [
-                    createVNode(_component_Button, {
-                      class: "w-full",
-                      type: "submit",
-                      severity: "secondary",
-                      label: "submit",
-                      onClick: onFormSubmit
-                    })
-                  ])
-                ])
-              ]),
-              _: 1
-            }, 8, ["visible"])
-          ])
-        ]))
-      ], 64);
-    };
-  }
-});
-const CommandMenubar = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f6eeaf71"]]);
-const _hoisted_1$3 = { class: "imagen-header flex w-full items-center" };
-const _hoisted_2$2 = { class: "flex-grow min-w-0 app-drag h-full" };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
-  __name: "imagenHeader",
-  setup(__props) {
-    const menuStore = useMenuStore();
-    const goBack = () => {
-      menuStore.changeShow(false);
-    };
-    return (_ctx, _cache) => {
-      const _component_Divider = script$3;
-      return openBlock(), createElementBlock("div", _hoisted_1$3, [
-        createBaseVNode("h1", {
-          class: "comfyui-logo mx-2 cursor-pointer",
-          onClick: goBack
-        }, "Montagen"),
-        createVNode(CommandMenubar),
-        createVNode(_component_Divider, {
-          layout: "vertical",
-          class: "mx-2"
-        }),
-        createBaseVNode("div", _hoisted_2$2, [
-          createVNode(projectTabs)
-        ]),
-        _cache[0] || (_cache[0] = createBaseVNode("div", { style: { "width": "60px" } }, null, -1))
-      ]);
-    };
-  }
-});
-const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-58e6d46e"]]);
-const _hoisted_1$2 = { class: "flex flex-col gap-1" };
-const _sfc_main$3 = /* @__PURE__ */ defineComponent({
-  __name: "textNodeAdd",
-  emits: ["hide"],
-  setup(__props, { emit: __emit }) {
-    const workSpaceStore = useWorkSpaceStore();
-    const visible = ref$3(true);
-    const eimts = __emit;
-    const initialValues = ref$3({
-      textContent: ""
-    });
-    const resolver = ref$3(h(
-      z.object({
-        textContent: z.string().min(1, { message: "text content is required." })
-      })
-    ));
-    const isloading = ref$3(false);
-    const onFormSubmit = async ({ valid, values }) => {
-      if (valid) {
-        isloading.value = true;
-        let response = await app$1.api.fetchApi(`/Montagen/Proj/${workSpaceStore.activeProject.projectId}/Text/New`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: new URLSearchParams({
-            text: values.textContent
-          }).toString()
-        });
-        const json = await response.json();
-        isloading.value = false;
-        workSpaceStore.openWorkFlow({ projectId: workSpaceStore.activeProject.projectId, timeLine: json.data });
-        eimts("hide");
-      }
-    };
-    onMounted(() => {
-    });
-    return (_ctx, _cache) => {
-      const _component_Textarea = script$j;
-      const _component_Message = script$b;
-      const _component_Button = script$6;
-      const _component_Dialog = script;
-      return openBlock(), createBlock(_component_Dialog, {
-        visible: visible.value,
-        "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
-        closable: true,
-        position: "top",
-        header: "ADD TEXT",
-        onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
-      }, {
-        default: withCtx(() => [
-          createVNode(unref(script$a), {
-            resolver: resolver.value,
-            initialValues: initialValues.value,
-            onSubmit: onFormSubmit,
-            class: "flex flex-col gap-4",
-            onKeydown: _cache[0] || (_cache[0] = ($event) => {
-              $event.stopPropagation();
-            })
-          }, {
-            default: withCtx(($form) => {
-              var _a2;
-              return [
-                createBaseVNode("div", _hoisted_1$2, [
-                  createVNode(_component_Textarea, {
-                    name: "textContent",
-                    rows: "5",
-                    cols: "30",
-                    style: { "resize": "none" }
-                  }),
-                  ((_a2 = $form.textContent) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
-                    key: 0,
-                    severity: "error",
-                    size: "small",
-                    variant: "simple"
-                  }, {
-                    default: withCtx(() => {
-                      var _a3;
-                      return [
-                        createTextVNode$1(toDisplayString((_a3 = $form.textContent.error) == null ? void 0 : _a3.message), 1)
-                      ];
-                    }),
-                    _: 2
-                  }, 1024)) : createCommentVNode("", true)
-                ]),
-                createVNode(_component_Button, {
-                  type: "submit",
-                  severity: "secondary",
-                  label: "ADD TEXT",
-                  loading: isloading.value
-                }, null, 8, ["loading"])
-              ];
-            }),
-            _: 1
-          }, 8, ["resolver", "initialValues"])
-        ]),
-        _: 1
-      }, 8, ["visible"]);
-    };
-  }
-});
-const _hoisted_1$1 = { class: "new-imagen-box grid" };
-const _hoisted_2$1 = { class: "image-box-top" };
-const _hoisted_3$1 = { class: "image-box-left" };
-const _hoisted_4$1 = { class: "image-box-container" };
-const _sfc_main$2 = /* @__PURE__ */ defineComponent({
-  __name: "index",
-  setup(__props) {
-    const workSpaceStore = useWorkSpaceStore();
-    const showAdd = ref$3(false);
-    const getList = async () => {
-      console.log("getList");
-      workSpaceStore.getlists();
-    };
-    provide("getList", getList);
-    const textNodeAddRef = ref$3();
-    watch(() => workSpaceStore.showTextAddNode, (val) => {
-      if (val) {
-        showAdd.value = true;
-        workSpaceStore.setShowTextAddNode(false);
-        nextTick$1(() => {
-        });
-      }
-    });
-    const changeAddStatus = () => {
-      console.log("changeAddStatus", "弹窗影藏了");
-      showAdd.value = false;
-    };
-    onMounted(() => {
-      getList();
-    });
-    return (_ctx, _cache) => {
+      const _component_InputText = script$9;
       return openBlock(), createElementBlock("div", null, [
-        createBaseVNode("div", _hoisted_1$1, [
-          createBaseVNode("div", _hoisted_2$1, [
-            createVNode(imagenHeader)
-          ]),
-          createBaseVNode("div", _hoisted_3$1, [
-            createVNode(leftToolbar)
-          ]),
-          createBaseVNode("div", _hoisted_4$1, [
-            createVNode(boxContainer)
+        createBaseVNode("div", _hoisted_1$b, [
+          _cache[3] || (_cache[3] = createBaseVNode("div", { class: "label tw-py-2" }, "名称:", -1)),
+          createBaseVNode("div", _hoisted_2$7, [
+            createVNode(_component_InputText, {
+              modelValue: _ctx.data.file_name,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.data.file_name = $event),
+              class: "w-full"
+            }, null, 8, ["modelValue"])
           ])
         ]),
-        showAdd.value ? (openBlock(), createBlock(_sfc_main$3, {
-          key: 0,
-          onHide: changeAddStatus,
-          ref_key: "textNodeAddRef",
-          ref: textNodeAddRef
-        }, null, 512)) : createCommentVNode("", true)
+        createBaseVNode("div", _hoisted_3$3, [
+          _cache[4] || (_cache[4] = createBaseVNode("div", { class: "label tw-py-2" }, "宽度:", -1)),
+          createBaseVNode("div", _hoisted_4$3, [
+            createVNode(_component_InputText, {
+              modelValue: _ctx.data.width,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.data.width = $event),
+              class: "w-full"
+            }, null, 8, ["modelValue"])
+          ])
+        ]),
+        createBaseVNode("div", _hoisted_5$2, [
+          _cache[5] || (_cache[5] = createBaseVNode("div", { class: "label tw-py-2" }, "高度:", -1)),
+          createBaseVNode("div", _hoisted_6$2, [
+            createVNode(_component_InputText, {
+              modelValue: _ctx.data.height,
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
+              class: "w-full"
+            }, null, 8, ["modelValue"])
+          ])
+        ])
       ]);
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-b689b312"]]);
-const _hoisted_1 = { class: "h-full tw-bg-[#ffffff] flex flex-col" };
-const _hoisted_2 = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3 = { class: "flex flex-row" };
-const _hoisted_4 = { class: "flex-1 overflow-hidden" };
-const _hoisted_5 = { class: "custom-content" };
-const _hoisted_6 = { id: "custom-dialog" };
-const _hoisted_7 = { class: "flex flex-col justify-center" };
-const _hoisted_8 = { class: "mb-2" };
+const _hoisted_1$a = { class: "px-2 tw-mb-2" };
+const _hoisted_2$6 = { class: "content" };
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
+  __name: "propertyClip",
+  props: {
+    data: {}
+  },
+  setup(__props) {
+    return (_ctx, _cache) => {
+      const _component_InputText = script$9;
+      return openBlock(), createElementBlock("div", null, [
+        createBaseVNode("div", _hoisted_1$a, [
+          _cache[1] || (_cache[1] = createBaseVNode("div", { class: "label tw-py-2" }, "名称:", -1)),
+          createBaseVNode("div", _hoisted_2$6, [
+            createVNode(_component_InputText, {
+              modelValue: _ctx.data.clipName,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.data.clipName = $event),
+              class: "w-full"
+            }, null, 8, ["modelValue"])
+          ])
+        ])
+      ]);
+    };
+  }
+});
+const _hoisted_1$9 = { class: "property-collection" };
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
+  __name: "propertyCollection",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const { activeNode } = storeToRefs(workSpaceStore);
+    const fileType = computed(() => {
+      return activeNode.value.fileType;
+    });
+    const components = {
+      "assets": markRaw(_sfc_main$c),
+      "clip": markRaw(_sfc_main$b)
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$9, [
+        (openBlock(), createBlock(resolveDynamicComponent(components[fileType.value]), { data: unref(activeNode) }, null, 8, ["data"]))
+      ]);
+    };
+  }
+});
+const previewUtils = {
+  "image": function(url2) {
+    return {
+      "type": "canvas",
+      "width": 1280,
+      "height": 720,
+      "name": "montagen",
+      "children": [
+        {
+          "type": "spine",
+          "children": [
+            {
+              "src": "//Montagen/Proj/2u4ed2i28ig8hzm/File/Untitled Clip_20250315142945.png",
+              "children": [],
+              "type": "image",
+              "duration": 1
+            }
+          ]
+        }
+      ]
+    };
+  }
+};
+const _hoisted_1$8 = { class: "h-full tw-bg-[#ffffff] flex flex-col" };
+const _hoisted_2$5 = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3$2 = { class: "flex flex-row" };
+const _hoisted_4$2 = { class: "flex-1 overflow-hidden" };
+const _hoisted_5$1 = { class: "custom-content" };
+const _hoisted_6$1 = { class: "custom-content" };
+const _hoisted_7$1 = { id: "custom-dialog" };
+const _hoisted_8$1 = { class: "flex flex-col justify-center" };
 const _hoisted_9 = { class: "mb-2" };
 const _hoisted_10 = { class: "mb-2" };
 const _hoisted_11 = { class: "mb-2" };
-const _hoisted_12 = { class: "flex justify-center" };
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+const _hoisted_12 = { class: "mb-2" };
+const _hoisted_13 = { class: "flex justify-center" };
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "newExplorer",
   setup(__props) {
+    const dialogStore = useDialogStore();
     const workSpaceStore = useWorkSpaceStore();
     const { list, activeProject } = storeToRefs(workSpaceStore);
     const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
     const panelConfig = computed(() => {
+      var _a2, _b2;
       return [
-        { title: activeProject.value.baseInfo.name, expanded: true },
+        { title: (_b2 = (_a2 = activeProject.value) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.name, expanded: true },
         { title: "大纲视图", expanded: false }
       ];
     });
@@ -71385,6 +69424,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     const expandedKeys = ref$3({});
     const selectedKeys = ref$3({});
     const onNodeContentClick = async (e, node2) => {
+      console.log(node2, "当前点击的node 是assets", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
       switch (node2.fileType) {
         case "workflows":
         case "folder_assets":
@@ -71397,11 +69437,16 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           expandedKeys.value = { ...expandedKeys.value };
           break;
         case "clip":
-          console.log(node2, "当前点击的node 是assets", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
           if (selectedKeys.value[node2.key]) {
+            workSpaceStore.setActiveNode(node2);
             checkWorkflowIsOpen(node2);
           }
           break;
+        case "assets":
+          if (selectedKeys.value[node2.key]) {
+            workSpaceStore.setActiveNode(node2);
+            previewWithPlayer(node2);
+          }
       }
     };
     const handleContextMenu = (event2, node2) => {
@@ -71413,6 +69458,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           menu.value.show(event2);
           break;
       }
+    };
+    const previewWithPlayer = (node2) => {
+      let timeLine = previewUtils[node2["file_type"]](node2["file_path"]);
+      console.log(timeLine, "timeLine_12121");
+      workSpaceStore.openWorkFlow({ projectId: "", timeLine });
     };
     const checkWorkflowIsOpen = async (node2) => {
       var _a2, _b2, _c2, _d2, _e2;
@@ -71559,17 +69609,24 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       const json = await response.json();
       workSpaceStore.setActiveProject(json.data);
     };
+    const chooseProject = () => {
+      dialogStore.showDialog({
+        key: "global-chooseproject-mongaton",
+        title: "Choose Project",
+        component: ChooseProjectVue
+      });
+    };
     return (_ctx, _cache) => {
       const _component_Button = script$6;
       const _component_Toolbar = script$7;
-      const _component_Tree = script$c;
+      const _component_Tree = script$a;
       const _component_ContextMenu = script$8;
       const _component_el_input = ElInput;
       const _component_Dialog = script;
       const _directive_tooltip = Tooltip;
       return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", _hoisted_1, [
-          createBaseVNode("div", _hoisted_2, [
+        createBaseVNode("div", _hoisted_1$8, [
+          createBaseVNode("div", _hoisted_2$5, [
             createVNode(_component_Toolbar, {
               class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8",
               style: { "min-height": "37px" }
@@ -71579,7 +69636,23 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
               ])),
               center: withCtx(() => _cache[8] || (_cache[8] = [])),
               end: withCtx(() => [
-                createBaseVNode("div", _hoisted_3, [
+                createBaseVNode("div", _hoisted_3$2, [
+                  withDirectives(createVNode(_component_Button, {
+                    text: "",
+                    icon: "pi pi-th-large",
+                    class: "p-button-secondary py-1 2xl:py-2",
+                    onClick: chooseProject
+                  }, null, 512), [
+                    [_directive_tooltip, "Browse project"]
+                  ]),
+                  withDirectives(createVNode(_component_Button, {
+                    text: "",
+                    icon: "pi pi-folder-open",
+                    class: "p-button-secondary py-1 2xl:py-2",
+                    onClick: refreshList
+                  }, null, 512), [
+                    [_directive_tooltip, "Open project in local file system"]
+                  ]),
                   withDirectives(createVNode(_component_Button, {
                     text: "",
                     icon: "pi pi-refresh",
@@ -71601,13 +69674,14 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
               _: 1
             })
           ]),
-          createBaseVNode("div", _hoisted_4, [
-            createVNode(ResizablePanels, {
+          createBaseVNode("div", _hoisted_4$2, [
+            unref(activeProject).baseInfo ? (openBlock(), createBlock(ResizablePanels, {
+              key: 0,
               panels: panelConfig.value,
               direction: "vertical"
             }, {
               "panel-0": withCtx(() => [
-                createBaseVNode("div", _hoisted_5, [
+                createBaseVNode("div", _hoisted_5$1, [
                   createVNode(_component_Tree, {
                     class: "tree-explorer py-0 px-2 2xl:px-4",
                     value: treeNodes.value,
@@ -71644,13 +69718,13 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                   }, 8, ["value", "expandedKeys", "selectionKeys", "pt"])
                 ])
               ]),
-              "panel-1": withCtx(() => _cache[9] || (_cache[9] = [
-                createBaseVNode("div", { class: "custom-content" }, [
-                  createBaseVNode("h3", null, "大纲视图")
-                ], -1)
-              ])),
+              "panel-1": withCtx(() => [
+                createBaseVNode("div", _hoisted_6$1, [
+                  createVNode(_sfc_main$a)
+                ])
+              ]),
               _: 1
-            }, 8, ["panels"])
+            }, 8, ["panels"])) : createCommentVNode("", true)
           ])
         ]),
         createVNode(_component_ContextMenu, {
@@ -71667,7 +69741,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           }
         }, null, 8, ["model"]),
         (openBlock(), createBlock(Teleport, { to: "body" }, [
-          createBaseVNode("div", _hoisted_6, [
+          createBaseVNode("div", _hoisted_7$1, [
             createVNode(_component_Dialog, {
               visible: visible.value,
               "onUpdate:visible": _cache[6] || (_cache[6] = ($event) => visible.value = $event),
@@ -71675,8 +69749,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
               style: { width: "18rem" }
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_7, [
-                  createBaseVNode("div", _hoisted_8, [
+                createBaseVNode("div", _hoisted_8$1, [
+                  createBaseVNode("div", _hoisted_9, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.name,
                       "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.name = $event),
@@ -71684,7 +69758,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                       placeholder: "name"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_9, [
+                  createBaseVNode("div", _hoisted_10, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.description,
                       "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.description = $event),
@@ -71692,7 +69766,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                       placeholder: "description"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_10, [
+                  createBaseVNode("div", _hoisted_11, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.width,
                       "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => initialValues.value.width = $event),
@@ -71700,7 +69774,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                       placeholder: "videoWidth"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_11, [
+                  createBaseVNode("div", _hoisted_12, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.height,
                       "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => initialValues.value.height = $event),
@@ -71708,7 +69782,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                       placeholder: "videoHeight"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_12, [
+                  createBaseVNode("div", _hoisted_13, [
                     createVNode(_component_Button, {
                       class: "w-full",
                       type: "submit",
@@ -71727,7 +69801,849 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-08b8c547"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a862ea71"]]);
+const useLeftToolStore = defineStore("leftToolStore", {
+  state: (_) => ({
+    menues: [
+      {
+        name: "home1",
+        tips: "PROJECTS",
+        selected: false,
+        icon: "pi pi-copy",
+        component: markRaw(newExplorer)
+      },
+      {
+        name: "clips",
+        tips: "ClIPS",
+        selected: false,
+        icon: "pi pi-copy",
+        component: markRaw(clips)
+      },
+      // {
+      //   name: 'infos',
+      //   tips: 'properties',
+      //   selected: false,
+      //   icon: 'pi pi-book',
+      //   component: markRaw(metaInfoVue)
+      // },
+      {
+        name: "mark",
+        tips: "EXPORT",
+        selected: false,
+        icon: "pi pi-file-export",
+        component: markRaw(_sfc_main$h)
+      }
+      // {
+      //   name: 'home',
+      //   tips: 'explorer',
+      //   selected: false,
+      //   icon: 'pi pi-file-export',
+      //   component: markRaw(splitPanelVue)
+      // },
+    ],
+    selectedMenu: {}
+  }),
+  actions: {
+    changeSelect(item) {
+      this.menues.forEach((ele) => {
+        if (item.name == ele.name) {
+          ele.selected = !ele.selected;
+          this.selectedMenu = ele.selected ? ele : {};
+        } else {
+          ele.selected = false;
+        }
+      });
+    }
+  }
+});
+const _hoisted_1$7 = { class: "toolbar" };
+const _hoisted_2$4 = { class: "side-bar-end" };
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+  __name: "leftToolbar",
+  setup(__props) {
+    const leftToolStore = useLeftToolStore();
+    const { menues } = storeToRefs(leftToolStore);
+    const dialogStore = useDialogStore();
+    const menuStore = useMenuStore();
+    const goBack = () => {
+      menuStore.changeShow(false);
+    };
+    const showSetting = () => {
+      dialogStore.showDialog({
+        key: "global-settings-mongaton",
+        headerComponent: SettingDialogHeader,
+        component: SettingDialogContent
+      });
+    };
+    const onTabClick = (item) => {
+      leftToolStore.changeSelect(item);
+    };
+    return (_ctx, _cache) => {
+      const _component_Button = script$6;
+      const _directive_tooltip = Tooltip;
+      return openBlock(), createElementBlock("div", _hoisted_1$7, [
+        createBaseVNode("nav", null, [
+          (openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(menues), (item) => {
+            return withDirectives((openBlock(), createBlock(_component_Button, {
+              icon: item.icon,
+              text: "",
+              "aria-label": "Save",
+              pt: {
+                root: {
+                  class: `left-tool-button ${item.selected ? "p-button-primary left-tool-button-select" : "p-button-secondary"}`
+                }
+              },
+              onClick: ($event) => onTabClick(item)
+            }, null, 8, ["icon", "pt", "onClick"])), [
+              [_directive_tooltip, { value: item.tips, showDelay: 300, hideDelay: 300 }]
+            ]);
+          }), 256))
+        ]),
+        createBaseVNode("div", _hoisted_2$4, [
+          withDirectives((openBlock(), createBlock(_component_Button, {
+            text: "",
+            onClick: goBack,
+            pt: {
+              root: {
+                class: `side-bar-button p-button-primary`
+              }
+            }
+          }, {
+            icon: withCtx(() => _cache[0] || (_cache[0] = [
+              createBaseVNode("i", { class: "pi pi-arrow-left side-bar-button-icon" }, null, -1)
+            ])),
+            _: 1
+          })), [
+            [_directive_tooltip, { value: "back", showDelay: 300, hideDelay: 300 }]
+          ]),
+          withDirectives((openBlock(), createBlock(_component_Button, {
+            text: "",
+            onClick: showSetting,
+            pt: {
+              root: {
+                class: `side-bar-button p-button-primary`
+              }
+            }
+          }, {
+            icon: withCtx(() => _cache[1] || (_cache[1] = [
+              createBaseVNode("i", { class: "pi pi-cog side-bar-button-icon" }, null, -1)
+            ])),
+            _: 1
+          })), [
+            [_directive_tooltip, { value: "setting", showDelay: 300, hideDelay: 300 }]
+          ])
+        ])
+      ]);
+    };
+  }
+});
+const leftToolbar = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-59fc9bca"]]);
+const _hoisted_1$6 = {
+  class: "w-full",
+  style: { "background": "#fff" }
+};
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "boxContainer",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const leftToolStore = useLeftToolStore();
+    const { menues, selectedMenu } = storeToRefs(leftToolStore);
+    const showLeftPanel = computed(() => {
+      return menues.value.some((item) => item.selected);
+    });
+    watch(showLeftPanel, () => {
+      parentWidth && updateSizes();
+    });
+    const splitterSizes = ref$3([20, 80]);
+    let observer2;
+    const parentWidth = ref$3(0);
+    const container = ref$3(null);
+    const updateSizes = () => {
+      if (showLeftPanel.value) {
+        const leftSize = 200 / parentWidth.value * 100;
+        splitterSizes.value = [leftSize, 100 - leftSize];
+      } else {
+        splitterSizes.value = [0, 100];
+      }
+      window.requestAnimationFrame(() => {
+        if (workSpaceStore.playerInstance) {
+          workSpaceStore.playerInstance.playerWrapper.fit();
+        }
+      });
+    };
+    const playerWrapper = ref$3(null);
+    const playerRef = ref$3(null);
+    const tracksRef = ref$3(null);
+    ref$3(null);
+    const initPlayer = (width, height) => {
+      workSpaceStore.createPlayer({
+        value: {
+          "type": "canvas",
+          "width": width,
+          "height": height,
+          "name": "Composite",
+          "children": []
+        },
+        previewContainer: playerRef.value,
+        trackContainer: tracksRef.value,
+        hideControls: true,
+        hideMiniBar: true
+      });
+    };
+    const rollImg = (e) => {
+    };
+    onMounted(() => {
+      parentWidth.value = container.value.offsetWidth;
+      updateSizes();
+      observer2 = new ResizeObserver((entries) => {
+        parentWidth.value = entries[0].contentRect.width;
+        updateSizes();
+      });
+      observer2.observe(container.value);
+      let width = 1280;
+      let height = 720;
+      if (playerWrapper.value) {
+        let scale = 1280 / 720;
+        if (playerWrapper.value.offsetHeight > 720) {
+          height = 720;
+          width = 1280;
+        } else {
+          height = playerWrapper.value.offsetHeight;
+          width = playerWrapper.value.offsetHeight * scale;
+        }
+      }
+      workSpaceStore.setPlayerContainerInstance(playerRef.value);
+      workSpaceStore.setTrackContainerInstance(tracksRef.value);
+      workSpaceStore.setPlayerContainerWidth(width);
+      workSpaceStore.setPlayerContainerHeight(height);
+      initPlayer(width, height);
+      new ResizeObserver((entries) => {
+        console.log("entries", entries);
+        for (const entry of entries) {
+          const { width: width2, height: height2 } = entry.contentRect;
+          console.log(`Element: ${entry.target}`);
+          console.log(`Element size: ${width2}px x ${height2}px`);
+        }
+      });
+    });
+    onBeforeUnmount(() => observer2 == null ? void 0 : observer2.disconnect());
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: "w-full h-full",
+        ref_key: "container",
+        ref: container
+      }, [
+        createVNode(unref(script$c), {
+          sizes: splitterSizes.value,
+          "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
+          dt: { "background": "#262626", "height": "100%", "width": "100%" },
+          pt: {
+            root: { class: `split-container ${showLeftPanel.value ? "" : "left-hidden"}` },
+            gutter: { class: `split-gutter-main ${showLeftPanel.value ? "" : "split-gutter-hidden"}` }
+          }
+        }, {
+          default: withCtx(() => [
+            createVNode(unref(script$b), {
+              class: "flex",
+              pt: {
+                root: { class: "split-panel-left" }
+              },
+              size: splitterSizes.value[0]
+            }, {
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_1$6, [
+                  (openBlock(), createBlock(resolveDynamicComponent(unref(selectedMenu).component), { showMeta: true }))
+                ])
+              ]),
+              _: 1
+            }, 8, ["size"]),
+            createVNode(unref(script$b), {
+              size: splitterSizes.value[1]
+            }, {
+              default: withCtx(() => [
+                createVNode(unref(script$c), {
+                  layout: "vertical",
+                  pt: {
+                    gutter: { class: "split-gutter" },
+                    root: {
+                      style: {
+                        width: "100%"
+                      },
+                      class: "my-custom-pannel"
+                    }
+                  }
+                }, {
+                  default: withCtx(() => [
+                    createVNode(unref(script$b), {
+                      class: "flex items-center justify-center",
+                      size: 70,
+                      minSize: 70,
+                      pt: { root: { style: { overflow: "hidden" } } }
+                    }, {
+                      default: withCtx(() => [
+                        createBaseVNode("div", {
+                          ref_key: "playerWrapper",
+                          ref: playerWrapper,
+                          class: "w-full h-full flex justify-center",
+                          style: { "background-color": "#262626", "align-items": "center", "position": "relative" },
+                          onMousewheel: withModifiers(rollImg, ["prevent"])
+                        }, [
+                          createBaseVNode("div", {
+                            ref_key: "playerRef",
+                            ref: playerRef,
+                            class: "player"
+                          }, null, 512)
+                        ], 544)
+                      ]),
+                      _: 1
+                    }),
+                    createVNode(unref(script$b), {
+                      class: "flex items-center justify-center",
+                      size: 30,
+                      minSize: 30,
+                      pt: { root: { style: { overflow: "visible" } } }
+                    }, {
+                      default: withCtx(() => [
+                        createBaseVNode("div", {
+                          ref_key: "tracksRef",
+                          ref: tracksRef,
+                          class: "tracks w-full h-full",
+                          style: { "max-height": "320px" }
+                        }, null, 512)
+                      ]),
+                      _: 1
+                    })
+                  ]),
+                  _: 1
+                })
+              ]),
+              _: 1
+            }, 8, ["size"])
+          ]),
+          _: 1
+        }, 8, ["sizes", "pt"])
+      ], 512);
+    };
+  }
+});
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-dd393c1b"]]);
+const _hoisted_1$5 = { class: "workflow-label text-sm max-w-[150px] truncate inline-block" };
+const _hoisted_2$3 = { class: "relative" };
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  __name: "projectTab",
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: "Default Title"
+    },
+    projectOption: {
+      type: Object
+    }
+  },
+  emits: ["close"],
+  setup(__props, { emit: __emit }) {
+    const emit = __emit;
+    const onCloseWorkflow = (option, event2) => {
+      emit("close", { option, event: event2 });
+    };
+    return (_ctx, _cache) => {
+      const _component_Button = script$6;
+      return openBlock(), createElementBlock("div", mergeProps$1({
+        class: "flex p-2 gap-2 workflow-tab bg-transparent",
+        ref: "workflowTabRef"
+      }, _ctx.$attrs), [
+        createBaseVNode("span", _hoisted_1$5, toDisplayString(__props.projectOption.name || __props.projectOption.label), 1),
+        createBaseVNode("div", _hoisted_2$3, [
+          _cache[1] || (_cache[1] = createBaseVNode("span", { class: "status-indicator" }, "•", -1)),
+          createVNode(_component_Button, {
+            class: "close-button p-0 w-auto",
+            icon: "pi pi-times",
+            text: "",
+            severity: "secondary",
+            size: "small",
+            onClick: _cache[0] || (_cache[0] = withModifiers(($event) => onCloseWorkflow(__props.projectOption, $event), ["stop"]))
+          })
+        ])
+      ], 16);
+    };
+  }
+});
+const projectTab = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-85e82633"]]);
+const _hoisted_1$4 = { class: "workflow-tabs-container flex flex-row max-w-full h-full" };
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "projectTabs",
+  setup(__props) {
+    const confirm = useConfirm();
+    const workSpaceStore = useWorkSpaceStore();
+    const { tabbsProject, activeProject } = storeToRefs(workSpaceStore);
+    const onWorkflowChange = (e) => {
+      if (e) {
+        workSpaceStore.setActiveProject(e);
+        getProjectDetail(e);
+      }
+    };
+    const getProjectDetail = async (item) => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
+      const json = await response.json();
+      let timeLine = json.data.timeline;
+      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
+    };
+    const handleWheel = (event2) => {
+      const scrollElement = event2.currentTarget;
+      const scrollAmount = event2.deltaX || event2.deltaY;
+      scrollElement.scroll({
+        left: scrollElement.scrollLeft + scrollAmount
+      });
+    };
+    const onCloseWorkflow = (option) => {
+      console.log("onCloseWorkflow_当前点击tab 发生了关闭事件", option);
+      confirm.require({
+        target: option.event.currentTarget,
+        message: `Are you sure closed tab ${option.option.label}?`,
+        icon: "pi pi-exclamation-triangle",
+        rejectProps: {
+          label: "Cancel",
+          severity: "secondary",
+          outlined: true
+        },
+        acceptProps: {
+          label: "Close"
+        },
+        accept: () => {
+          console.log("删除work flow");
+          workSpaceStore.deleteTabs(option.option.projectId);
+        },
+        reject: () => {
+        },
+        onShow: () => {
+          setTimeout(() => {
+            window.document.querySelector(".p-confirmpopup.p-component").click();
+          }, 0);
+        }
+      });
+    };
+    return (_ctx, _cache) => {
+      const _component_SelectButton = script$e;
+      const _component_ScrollPanel = script$2;
+      const _component_ConfirmPopup = script$d;
+      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+        createVNode(_component_ScrollPanel, {
+          class: "overflow-hidden no-drag bg-transparent",
+          "pt:content": {
+            class: "p-0 w-full h-full",
+            onwheel: handleWheel
+          },
+          "pt:barX": "h-1"
+        }, {
+          default: withCtx(() => [
+            createVNode(_component_SelectButton, {
+              class: "workflow-tabs bg-transparent my-inline",
+              modelValue: unref(activeProject),
+              "onUpdate:modelValue": onWorkflowChange,
+              options: unref(tabbsProject),
+              optionLabel: "name",
+              dataKey: "projectId"
+            }, {
+              option: withCtx(({ option }) => [
+                createVNode(projectTab, {
+                  onClose: onCloseWorkflow,
+                  "project-option": option
+                }, null, 8, ["project-option"])
+              ]),
+              _: 1
+            }, 8, ["modelValue", "options"])
+          ]),
+          _: 1
+        }, 8, ["pt:content"]),
+        createVNode(_component_ConfirmPopup)
+      ]);
+    };
+  }
+});
+const projectTabs = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-0009f528"]]);
+const _hoisted_1$3 = { class: "p-menubar-item-label" };
+const _hoisted_2$2 = { id: "custom-dialog" };
+const _hoisted_3$1 = { class: "flex flex-col justify-center" };
+const _hoisted_4$1 = { class: "mb-2" };
+const _hoisted_5 = { class: "mb-2" };
+const _hoisted_6 = { class: "mb-2" };
+const _hoisted_7 = { class: "mb-2" };
+const _hoisted_8 = { class: "flex justify-center" };
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "CommandMenubar",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const { list, activeProjectId, activeProject } = storeToRefs(workSpaceStore);
+    const visible = ref$3(false);
+    const initialValues = ref$3({
+      name: "",
+      description: "",
+      width: 1280,
+      height: 720
+    });
+    const items = computed(() => {
+      let temp = {
+        label: "Project",
+        items: [
+          {
+            label: "add",
+            icon: "pi pi-plus",
+            command: (item) => {
+              console.log("点击属性按钮", item);
+              addworkflow();
+            }
+          },
+          {
+            separator: true
+          }
+        ]
+      };
+      list.value.forEach((item) => {
+        temp.items.push({
+          label: item.baseInfo.name,
+          projectId: item.baseInfo.projectId,
+          icon: "fontello icon-montagen",
+          "id": item.projectId,
+          source: item,
+          command: (event2) => {
+            getProjectDetail(event2.item.source);
+          }
+        });
+      });
+      return [temp];
+    });
+    ref$3([
+      {
+        label: "project",
+        items: [
+          {
+            label: "add",
+            icon: "pi pi-plus",
+            command: (item) => {
+              addworkflow();
+            }
+          },
+          {
+            separator: true
+          },
+          {
+            label: "Vite.js",
+            icon: "fontello icon-montagen",
+            id: 1123123,
+            command: (item) => {
+              getProjectDetail(item.item);
+            }
+          }
+        ]
+      }
+    ]);
+    const getProjectDetail = async (item) => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${item.projectId}`);
+      const json = await response.json();
+      let timeLine = json.data.timeline;
+      workSpaceStore.addTabs(item);
+      workSpaceStore.openWorkFlow({ projectId: item.projectId, timeLine });
+    };
+    const addworkflow = async () => {
+      visible.value = true;
+    };
+    const onFormSubmit = () => {
+      console.log("表单提交数据", initialValues.value);
+      addList();
+    };
+    const addList = async () => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/New`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(initialValues.value)
+      });
+      const json = await response.json();
+      console.log(json);
+      visible.value = false;
+      refreshList();
+    };
+    const refreshList = () => {
+      workSpaceStore.getlists();
+    };
+    return (_ctx, _cache) => {
+      const _component_Menubar = script$f;
+      const _component_el_input = ElInput;
+      const _component_Button = script$6;
+      const _component_Dialog = script;
+      const _directive_ripple = Ripple;
+      return openBlock(), createElementBlock(Fragment, null, [
+        createVNode(_component_Menubar, {
+          model: items.value,
+          class: "top-menubar border-none p-0 bg-transparent",
+          pt: {
+            rootList: "gap-0 flex-nowrap w-auto",
+            submenu: `dropdown-direction-down`,
+            item: "relative"
+          }
+        }, {
+          item: withCtx(({ item, props: props2, hasSubmenu }) => [
+            withDirectives((openBlock(), createElementBlock("a", mergeProps$1({ "aria-hidden": "false" }, props2.action), [
+              item.icon ? (openBlock(), createElementBlock("i", {
+                key: 0,
+                class: normalizeClass(item.icon)
+              }, null, 2)) : createCommentVNode("", true),
+              createBaseVNode("span", _hoisted_1$3, toDisplayString(item.label), 1)
+            ], 16)), [
+              [_directive_ripple]
+            ])
+          ]),
+          _: 1
+        }, 8, ["model"]),
+        (openBlock(), createBlock(Teleport, { to: "body" }, [
+          createBaseVNode("div", _hoisted_2$2, [
+            createVNode(_component_Dialog, {
+              visible: visible.value,
+              "onUpdate:visible": _cache[4] || (_cache[4] = ($event) => visible.value = $event),
+              header: "ADD PROJECT",
+              style: { width: "18rem" }
+            }, {
+              default: withCtx(() => [
+                createBaseVNode("div", _hoisted_3$1, [
+                  createBaseVNode("div", _hoisted_4$1, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.name,
+                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => initialValues.value.name = $event),
+                      class: "w-full",
+                      placeholder: "name"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_5, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.description,
+                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => initialValues.value.description = $event),
+                      class: "w-full",
+                      placeholder: "description"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_6, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.width,
+                      "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.width = $event),
+                      class: "w-full",
+                      placeholder: "videoWidth"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_7, [
+                    createVNode(_component_el_input, {
+                      modelValue: initialValues.value.height,
+                      "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.height = $event),
+                      class: "w-full",
+                      placeholder: "videoHeight"
+                    }, null, 8, ["modelValue"])
+                  ]),
+                  createBaseVNode("div", _hoisted_8, [
+                    createVNode(_component_Button, {
+                      class: "w-full",
+                      type: "submit",
+                      severity: "secondary",
+                      label: "submit",
+                      onClick: onFormSubmit
+                    })
+                  ])
+                ])
+              ]),
+              _: 1
+            }, 8, ["visible"])
+          ])
+        ]))
+      ], 64);
+    };
+  }
+});
+const CommandMenubar = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f6eeaf71"]]);
+const _hoisted_1$2 = { class: "imagen-header flex w-full items-center" };
+const _hoisted_2$1 = { class: "flex-grow min-w-0 app-drag h-full" };
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  __name: "imagenHeader",
+  setup(__props) {
+    const menuStore = useMenuStore();
+    const goBack = () => {
+      menuStore.changeShow(false);
+    };
+    return (_ctx, _cache) => {
+      const _component_Divider = script$3;
+      return openBlock(), createElementBlock("div", _hoisted_1$2, [
+        createBaseVNode("h1", {
+          class: "comfyui-logo mx-2 cursor-pointer",
+          onClick: goBack
+        }, "Montagen"),
+        createVNode(CommandMenubar),
+        createVNode(_component_Divider, {
+          layout: "vertical",
+          class: "mx-2"
+        }),
+        createBaseVNode("div", _hoisted_2$1, [
+          createVNode(projectTabs)
+        ]),
+        _cache[0] || (_cache[0] = createBaseVNode("div", { style: { "width": "60px" } }, null, -1))
+      ]);
+    };
+  }
+});
+const imagenHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-58e6d46e"]]);
+const _hoisted_1$1 = { class: "flex flex-col gap-1" };
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+  __name: "textNodeAdd",
+  emits: ["hide"],
+  setup(__props, { emit: __emit }) {
+    const workSpaceStore = useWorkSpaceStore();
+    const visible = ref$3(true);
+    const eimts = __emit;
+    const initialValues = ref$3({
+      textContent: ""
+    });
+    const resolver = ref$3(h(
+      z.object({
+        textContent: z.string().min(1, { message: "text content is required." })
+      })
+    ));
+    const isloading = ref$3(false);
+    const onFormSubmit = async ({ valid, values }) => {
+      if (valid) {
+        isloading.value = true;
+        let response = await app$1.api.fetchApi(`/Montagen/Proj/${workSpaceStore.activeProject.projectId}/Text/New`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: new URLSearchParams({
+            text: values.textContent
+          }).toString()
+        });
+        const json = await response.json();
+        isloading.value = false;
+        workSpaceStore.openWorkFlow({ projectId: workSpaceStore.activeProject.projectId, timeLine: json.data });
+        eimts("hide");
+      }
+    };
+    onMounted(() => {
+    });
+    return (_ctx, _cache) => {
+      const _component_Textarea = script$h;
+      const _component_Message = script$i;
+      const _component_Button = script$6;
+      const _component_Dialog = script;
+      return openBlock(), createBlock(_component_Dialog, {
+        visible: visible.value,
+        "onUpdate:visible": _cache[1] || (_cache[1] = ($event) => visible.value = $event),
+        closable: true,
+        position: "top",
+        header: "ADD TEXT",
+        onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
+      }, {
+        default: withCtx(() => [
+          createVNode(unref(script$g), {
+            resolver: resolver.value,
+            initialValues: initialValues.value,
+            onSubmit: onFormSubmit,
+            class: "flex flex-col gap-4",
+            onKeydown: _cache[0] || (_cache[0] = ($event) => {
+              $event.stopPropagation();
+            })
+          }, {
+            default: withCtx(($form) => {
+              var _a2;
+              return [
+                createBaseVNode("div", _hoisted_1$1, [
+                  createVNode(_component_Textarea, {
+                    name: "textContent",
+                    rows: "5",
+                    cols: "30",
+                    style: { "resize": "none" }
+                  }),
+                  ((_a2 = $form.textContent) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                    key: 0,
+                    severity: "error",
+                    size: "small",
+                    variant: "simple"
+                  }, {
+                    default: withCtx(() => {
+                      var _a3;
+                      return [
+                        createTextVNode$1(toDisplayString((_a3 = $form.textContent.error) == null ? void 0 : _a3.message), 1)
+                      ];
+                    }),
+                    _: 2
+                  }, 1024)) : createCommentVNode("", true)
+                ]),
+                createVNode(_component_Button, {
+                  type: "submit",
+                  severity: "secondary",
+                  label: "ADD TEXT",
+                  loading: isloading.value
+                }, null, 8, ["loading"])
+              ];
+            }),
+            _: 1
+          }, 8, ["resolver", "initialValues"])
+        ]),
+        _: 1
+      }, 8, ["visible"]);
+    };
+  }
+});
+const _hoisted_1 = { class: "new-imagen-box grid" };
+const _hoisted_2 = { class: "image-box-top" };
+const _hoisted_3 = { class: "image-box-left" };
+const _hoisted_4 = { class: "image-box-container" };
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "index",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const showAdd = ref$3(false);
+    const getList = async () => {
+      console.log("getList");
+      workSpaceStore.getlists();
+    };
+    provide("getList", getList);
+    const textNodeAddRef = ref$3();
+    watch(() => workSpaceStore.showTextAddNode, (val) => {
+      if (val) {
+        showAdd.value = true;
+        workSpaceStore.setShowTextAddNode(false);
+        nextTick$1(() => {
+        });
+      }
+    });
+    const changeAddStatus = () => {
+      console.log("changeAddStatus", "弹窗影藏了");
+      showAdd.value = false;
+    };
+    onMounted(() => {
+      getList();
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", null, [
+        createBaseVNode("div", _hoisted_1, [
+          createBaseVNode("div", _hoisted_2, [
+            createVNode(imagenHeader)
+          ]),
+          createBaseVNode("div", _hoisted_3, [
+            createVNode(leftToolbar)
+          ]),
+          createBaseVNode("div", _hoisted_4, [
+            createVNode(boxContainer)
+          ])
+        ]),
+        showAdd.value ? (openBlock(), createBlock(_sfc_main$2, {
+          key: 0,
+          onHide: changeAddStatus,
+          ref_key: "textNodeAddRef",
+          ref: textNodeAddRef
+        }, null, 512)) : createCommentVNode("", true)
+      ]);
+    };
+  }
+});
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b689b312"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
@@ -71762,6 +70678,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         this.addWidget("button", "preview", "image", (e) => {
           var _a2, _b2, _c2, _d2;
           console.log("preview", this);
+          if (!workSpaceStore.activeProject.baseInfo) {
+            app$1.extensionManager.toast.add({
+              severity: "info",
+              summary: "tips!",
+              detail: "please choose a project first!",
+              life: 3e3
+            });
+          }
           let workflowId = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId;
           let clipId = null;
           if ((_c2 = this.properties) == null ? void 0 : _c2.clipId) {
