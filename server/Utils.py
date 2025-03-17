@@ -3,6 +3,10 @@ import random
 import os
 import re
 import shutil
+from typing import Callable
+import subprocess
+import sys
+import json
 
 
 def to_base36_random() -> str:
@@ -35,6 +39,7 @@ def create_unique_directory(base_dir: str) -> str:
 
     os.makedirs(dir_name)
     return dir_name
+
 
 def generate_unique_filename(directory: str, filename: str) -> str:
     """
@@ -73,6 +78,143 @@ def rename_path(base: str, oldname: str, newname: str):
     os.rename(os.path.join(base, oldname), path)
     path = os.path.basename(path)
     return path
+
+
+def stream_probe(data_source: Callable[[Callable[[bytes], None]], None], cmd):
+    ffmpeg_cmd = cmd
+    process = subprocess.Popen(
+        ffmpeg_cmd,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+
+    def write_to_ffmpeg(chunk):
+        try:
+            if chunk and process.stdin:
+                process.stdin.write(chunk)
+                process.stdin.flush()
+                return True
+        except Exception as e:
+            pass
+        return False
+
+    data_source(write_to_ffmpeg)
+
+    try:
+        if process.stdin:
+            process.stdin.close()
+    except:
+        pass
+    stdout, stderr = process.communicate()
+    return_code = process.returncode
+
+    if return_code != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        raise subprocess.CalledProcessError(
+            return_code, ffmpeg_cmd, output=stdout, stderr=stderr
+        )
+
+    return stdout, stderr
+
+
+def extract_video_audio_metadata(data_source, total_size, type):
+    metadata = {}
+
+    # Extract video metadata
+    video_cmd = [
+        "ffprobe",
+        "-v",
+        "error",
+        "-select_streams",
+        "v:0",
+        "-show_entries",
+        "stream=width,height,r_frame_rate,pix_fmt,color_space,bit_rate,codec_name",
+        "-show_entries",
+        "format=duration",
+        "-of",
+        "json",
+        "-",
+    ]
+    try:
+        stdout, stderr = stream_probe(data_source, video_cmd)
+        probe = json.loads(stdout)
+        video_stream = probe.get("streams", [{}])[0]
+        format_info = probe.get("format", {})
+        metadata.update(
+            {
+                "width": video_stream.get("width"),
+                "height": video_stream.get("height"),
+                "frame_rate": eval(video_stream.get("r_frame_rate", "0/1")),
+                "pixel_format": video_stream.get("pix_fmt"),
+                "color_space": video_stream.get("color_space"),
+                "bit_rate": video_stream.get("bit_rate"),
+                "codec_name": video_stream.get("codec_name"),
+                "duration": float(format_info.get("duration", 0)),
+            }
+        )
+    except Exception as e:
+        print(f"Error extracting video metadata: {e}", file=sys.stderr)
+    if type not in ["video", "audio"]:
+        return metadata
+    # Extract audio metadata
+    audio_cmd = [
+        "ffprobe",
+        "-v",
+        "error",
+        "-select_streams",
+        "a:0",
+        "-show_entries",
+        "stream=channels,bit_rate,sample_rate,codec_name,duration",
+        "-show_entries",
+        "format=duration",
+        "-of",
+        "json",
+        "-",
+    ]
+    try:
+        stdout, stderr = stream_probe(data_source, audio_cmd)
+        probe = json.loads(stdout)
+        audio_stream = probe.get("streams", [{}])[0]
+        format_info = probe.get("format", {})
+        metadata.update(
+            {
+                "channels": audio_stream.get("channels"),
+                "sample_rate": audio_stream.get("sample_rate"),
+            }
+        )
+        duration = float(format_info.get("duration", 0))
+        if not duration:
+            if audio_stream.get("bit_rate"):
+                duration = total_size * 8 / int(audio_stream.get("bit_rate"))
+        if "codec_name" in metadata:
+            metadata["audio_codec"] = audio_stream.get("codec_name")
+        else:
+            metadata["codec_name"] = audio_stream.get("codec_name")
+        if "bit_rate" in metadata:
+            metadata["audio_bit_rate"] = audio_stream.get("bit_rate")
+        else:
+            metadata["bit_rate"] = audio_stream.get("bit_rate")
+        if "duration" in metadata:
+            metadata["audio_duration"] = duration
+        else:
+            metadata["duration"] = duration
+    except Exception as e:
+        print(f"Error extracting audio metadata: {e}", file=sys.stderr)
+    return metadata
+
+
+def localfile_video_audio_info(file_path: str, total_size, type):
+    def data_source(write_to_ffmpeg):
+        with open(file_path, "rb") as f:
+            while True:
+                chunk = f.read(4096 * 8)
+                if not chunk:
+                    break
+                if not write_to_ffmpeg(chunk):
+                    break
+
+    return extract_video_audio_metadata(data_source, total_size, type)
 
 
 MONTAGENPROJ = "MontagenProj"
