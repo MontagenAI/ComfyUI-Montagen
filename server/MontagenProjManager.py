@@ -480,7 +480,7 @@ class MontagenProjManager:
         if not os.path.exists(refs):
             os.makedirs(refs)
         for project_name in os.listdir(refs):
-            project_path = os.path.join(user_projs_root, project_name)
+            project_path = os.path.join(refs, project_name)
             project = ExternMontagenProj.create_from_path(project_path)
             if project:
                 projects.append(project)
