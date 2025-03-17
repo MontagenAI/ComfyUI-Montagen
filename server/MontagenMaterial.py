@@ -2,9 +2,14 @@ import os
 import shutil
 from typing import Any, Dict, List, Optional
 import json
-import subprocess
 from .MontagenCacheManager import MontagenCacheManager
-from PIL import Image
+from .Utils import localfile_video_audio_info, FILEADDR
+from .remotefile.RemoteFileHandler import RemoteFileHandler
+import asyncio
+import threading
+from collections import deque
+import time
+from queue import Queue
 
 
 class MontagenMaterial:
@@ -65,6 +70,8 @@ class MontagenMaterial:
             "file_type": file_type,
             "is_ref": False,
             **metadata,
+            "src": "/"
+            + FILEADDR.format(id=self.project.project_id, filename=file_name),
         }
 
     def _get_ref_info(self, ref_path: str) -> Optional[Dict[str, Any]]:
@@ -92,6 +99,10 @@ class MontagenMaterial:
         except Exception as e:
             print(f"Error reading reference file {ref_path}: {e}")
             return None
+        src = "/" + FILEADDR.format(
+            id=self.project.project_id, filename=ref_info["file_name"]
+        )
+        ref_info["src"] = src
         return ref_info
 
     def _get_file_type(self, file_name: str) -> Optional[str]:
@@ -176,12 +187,18 @@ class MontagenMaterial:
         """
         materials = self.get_material_list()
         return [
-            material for material in materials if material["file_type"] == file_type
+            {key: value for key, value in material.items() if key not in "inner"}
+            for material in materials
+            if material["file_type"] == file_type
         ]
 
     def get_materials_by_location(self, isRef: bool) -> List[Dict[str, Any]]:
         materials = self.get_material_list()
-        return [material for material in materials if material["is_ref"] == isRef]
+        return [
+            {key: value for key, value in material.items() if key not in "inner"}
+            for material in materials
+            if material["is_ref"] == isRef
+        ]
 
     def delete_material(self, file_name: str):
         """
@@ -233,7 +250,7 @@ class MontagenMaterial:
         file_type = self._get_file_type(file_name)
         if not file_type:
             raise ValueError(f"Unsupported file type: {file_name}")
-
+        total_size = os.path.getsize(file_path)
         asset_dir = self._get_asset_dir(file_type)
         if not os.path.exists(asset_dir):
             os.makedirs(asset_dir)
@@ -248,10 +265,8 @@ class MontagenMaterial:
         shutil.copy(file_path, target_path)
 
         metadata = {}
-        if file_type in ["video", "audio"]:
-            metadata = self._extract_video_audio_metadata(target_path)
-        elif file_type in ["image", "gif"]:
-            metadata = self._extract_image_metadata(target_path)
+        if file_type in ["video", "audio", "image", "gif"]:
+            metadata = localfile_video_audio_info(target_path, total_size, file_type)
 
         # Write metadata to a metadata file
         metadata_file_path = f"{target_path}.meta"
@@ -261,53 +276,37 @@ class MontagenMaterial:
         self.cache_manager.delete(self.key)
         return file_name
 
-    def add_material_ref(self, file_path: str):
-        """
-        Add a material reference to the appropriate directory.
+    def add_material_ref(self, file_config: dict, register_action):
+        state = {"stop": False}
+        type = file_config.get("type", "local")
+        handler = RemoteFileHandler.create_handler_from_config(type)
+        iter = handler.get_file_info(file_config, self._get_file_type, state)
 
-        :param file_path: Path to the file to be referenced.
-        """
-        if not os.path.exists(file_path):
-            raise FileNotFoundError(f"File {file_path} does not exist.")
+        def stop_action():
+            state["stop"] = True
 
-        file_name = os.path.basename(file_path)
-        file_type = self._get_file_type(file_name)
-        if not file_type:
-            raise ValueError(f"Unsupported file type: {file_name}")
+        with register_action(stop_action) as _:
+            for file_info in iter:
+                file_name = file_info.get("file_name")
+                file_type = file_info.get("file_type")
 
-        ref_dir = self._get_ref_dir(file_type)
-        if not os.path.exists(ref_dir):
-            os.makedirs(ref_dir)
+                ref_dir = self._get_ref_dir(file_type)
+                if not os.path.exists(ref_dir):
+                    os.makedirs(ref_dir)
 
-        file_name = self.get_unique_file_name(file_name)
-        ref_file_name = f"{os.path.splitext(file_name)[0]}.txt"
-        ref_file_path = os.path.join(ref_dir, ref_file_name)
-
-        if os.path.exists(ref_file_path):
-            raise FileExistsError(f"Reference file {ref_file_path} already exists.")
-        metadata = {}
-        if file_type in ["video", "audio"]:
-            metadata = self._extract_video_audio_metadata(file_path)
-        elif file_type == "image":
-            metadata = self._extract_image_metadata(file_path)
-        relative_ref_path = os.path.relpath(
-            ref_file_path, os.path.join(self.project.project_path, self.refs_dir)
-        )
-        ref_info = {
-            "ref_path": relative_ref_path,
-            "file_path": file_path,
-            "file_name": file_name,
-            "file_time": os.path.getmtime(file_path),
-            "file_size": os.path.getsize(file_path),
-            "file_type": file_type,
-            "is_ref": True,
-            **metadata,
-        }
-        with open(ref_file_path, "w") as ref_file:
-            json.dump(ref_info, ref_file)
+                file_name = self.get_unique_file_name(file_name)
+                ref_file_name = f"{os.path.splitext(file_name)[0]}.txt"
+                ref_file_path = os.path.join(ref_dir, ref_file_name)
+                relative_ref_path = os.path.relpath(
+                    ref_file_path,
+                    os.path.join(self.project.project_path, self.refs_dir),
+                )
+                file_info["ref_path"] = relative_ref_path
+                file_info["file_name"] = file_name
+                with open(ref_file_path, "w") as ref_file:
+                    json.dump(file_info, ref_file)
 
         self.cache_manager.delete(self.key)
-        return file_name
 
     def get_material(self, file_name: str) -> Optional[Dict[str, Any]]:
         """
@@ -326,37 +325,31 @@ class MontagenMaterial:
                 return material
         return None
 
-    def read_material_file(self, file_name: str, action) -> Optional[bytes]:
-        """
-        Read the content of a specified material file and execute the provided action function.
+    # def read_material_file(self, file_name: str, action) -> Optional[bytes]:
+    #     """
+    #     Read the content of a specified material file and execute the provided action function.
 
-        :param material: A dictionary containing material information, must include the "file_path" key.
-        :param action: A function or method that accepts a file object as a parameter and is called when the file is opened.
-        :return: Returns None if the file path is invalid or the file does not exist; otherwise, it processes the file using the action function without directly returning the file content.
-        """
-        material = self.get_material(file_name)
-        file_path = material.get("file_path")
-        full_file_path = file_path and os.path.abspath(
-            os.path.join(self.project.project_path, self.assets_dir, file_path)
-        )
-        if not full_file_path or not os.path.exists(full_file_path):
-            material["exists"] = False
-            raise FileNotFoundError(f"File {full_file_path} not found.")
-        with open(full_file_path, "rb") as file:
-            action(full_file_path)
+    #     :param material: A dictionary containing material information, must include the "file_path" key.
+    #     :param action: A function or method that accepts a file object as a parameter and is called when the file is opened.
+    #     :return: Returns None if the file path is invalid or the file does not exist; otherwise, it processes the file using the action function without directly returning the file content.
+    #     """
+    #     material = self.get_material(file_name)
+    #     file_path = material.get("file_path")
+    #     full_file_path = file_path and os.path.abspath(
+    #         os.path.join(self.project.project_path, self.assets_dir, file_path)
+    #     )
+    #     if not full_file_path or not os.path.exists(full_file_path):
+    #         material["exists"] = False
+    #         raise FileNotFoundError(f"File {full_file_path} not found.")
+    #     with open(full_file_path, "rb") as file:
+    #         action(full_file_path)
 
-    def get_material_path(self, file_name: str):
+    def get_material_size(self, file_name: str):
         material = self.get_material(file_name)
         if not material:
             raise FileNotFoundError(f"File {file_name} not found.")
-        file_path = material.get("file_path")
-        full_file_path = file_path and os.path.abspath(
-            os.path.join(self.project.project_path, self.assets_dir, file_path)
-        )
-        if not full_file_path or not os.path.exists(full_file_path):
-            material["exists"] = False
-            raise FileNotFoundError(f"File {full_file_path} not found.")
-        return file_path
+        file_size = material.get("file_size", 0)
+        return file_size
 
     def get_unique_file_name(self, file_name: str) -> str:
         """
@@ -378,105 +371,45 @@ class MontagenMaterial:
     def clear_cache(self):
         self.cache_manager.delete(self.key)
 
-    def _extract_video_audio_metadata(self, file_path: str) -> Dict[str, Any]:
-        """
-        Extract metadata for video and audio files using ffprobe.
-
-        :param file_path: Path to the file.
-        :return: Dictionary containing metadata.
-        """
-        metadata = {}
-        cmd = [
-            "ffprobe",
-            "-v",
-            "error",
-            "-select_streams",
-            "v:0",
-            "-show_entries",
-            "stream=width,height,r_frame_rate,pix_fmt,color_space,bit_rate,codec_name",
-            "-show_entries",
-            "format=duration",
-            "-of",
-            "json",
-            file_path,
-        ]
-        try:
-            result = subprocess.run(
-                cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+    async def get_material_content(self, filename, start, end, register_action):
+        material = self.get_material(filename)
+        material = {**material}
+        is_ref = material.get("is_ref")
+        type = "local"
+        if not is_ref:
+            file_path = material.get("file_path")
+            file_path = file_path and os.path.abspath(
+                os.path.join(self.project.project_path, self.assets_dir, file_path)
             )
-            probe = json.loads(result.stdout)
-            video_stream = probe.get("streams", [{}])[0]
-            format_info = probe.get("format", {})
-            metadata.update(
-                {
-                    "width": video_stream.get("width"),
-                    "height": video_stream.get("height"),
-                    "frame_rate": eval(video_stream.get("r_frame_rate", "0/1")),
-                    "pixel_format": video_stream.get("pix_fmt"),
-                    "color_space": video_stream.get("color_space"),
-                    "bit_rate": video_stream.get("bit_rate"),
-                    "codec_name": video_stream.get("codec_name"),
-                    "duration": float(format_info.get("duration", 0)),
-                }
-            )
-        except Exception as e:
-            print(f"Error: {e}")
+            material["file_path"] = file_path
+        else:
+            type = material.get("inner", {}).get("type")
+        handler = RemoteFileHandler.create_handler_from_config(type)
+        state = {"stop": False}
+        iter_content = handler.get_file_content(start, end, material, state)
+        datas = Queue()
+        file_content_stop = False
 
-        cmd = [
-            "ffprobe",
-            "-v",
-            "error",
-            "-select_streams",
-            "a:0",
-            "-show_entries",
-            "stream=channels,bit_rate,sample_rate,codec_name",
-            "-show_entries",
-            "format=duration",
-            "-of",
-            "json",
-            file_path,
-        ]
-        try:
-            result = subprocess.run(
-                cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
-            )
-            probe = json.loads(result.stdout)
+        def stop():
+            nonlocal file_content_stop
+            state["stop"] = True
+            file_content_stop = True
 
-            audio_stream = probe.get("streams", [{}])[0]
-            format_info = probe.get("format", {})
+        def task():
+            nonlocal file_content_stop
+            try:
+                with register_action(stop) as _:
+                    for content in iter_content:
+                        datas.put(content)
+            except Exception as e:
+                pass
+            finally:
+                file_content_stop = True
 
-            metadata.update(
-                {
-                    "channels": audio_stream.get("channels"),
-                    "bit_rate": audio_stream.get("bit_rate"),
-                    "sample_rate": audio_stream.get("sample_rate"),
-                    "duration": float(format_info.get("duration", 0)),
-                }
-            )
-            if "codec_name" in metadata:
-                metadata["audio_codec"] = audio_stream["codec_name"]
-            else:
-                metadata["codec_name"] = audio_stream["codec_name"]
-        except Exception as e:
-            print(f"Error: {e}")
-        return metadata
+        t = threading.Thread(target=task, daemon=True)
+        t.start()
 
-    def _extract_image_metadata(self, file_path: str) -> Dict[str, Any]:
-        """
-        Extract metadata for image files using PIL.
-
-        :param file_path: Path to the file.
-        :return: Dictionary containing metadata.
-        """
-        try:
-            with Image.open(file_path) as img:
-                width, height = img.size
-                return {
-                    "width": width,
-                    "height": height,
-                    "format": img.format,
-                    "mode": img.mode,
-                }
-        except Exception as e:
-            print(f"Error extracting metadata for {file_path}: {e}")
-            return {}
+        while not file_content_stop:
+            data = datas.get(timeout=0.1)
+            if data:
+                yield data

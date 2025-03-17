@@ -175,6 +175,35 @@ class MontagenProj:
         return MontagenProj(os.path.join(base_path, base_name))
 
     @staticmethod
+    def create_open_project(
+        project_path,
+        user_id,
+    ):
+        if not project_path:
+            raise Exception("project_path is empty")
+        name = os.path.basename(project_path)
+        width = 1280
+        height = 720
+        project_id = to_base36_random()
+        current_time = datetime.now()
+        base_info = {
+            "createTime": current_time.isoformat(),
+            "modifyTime": current_time.isoformat(),
+            "description": name,
+            "name": name,
+            "projectId": project_id,
+            "userId": user_id,
+        }
+        info_data = {
+            "baseInfo": base_info,
+            "version": VERSIONINFO,
+            "width": width,
+            "height": height,
+        }
+        MontagenProj.save_project(project_path, info_data)
+        return MontagenProj(project_path)
+
+    @staticmethod
     def create_from_path(project_path: str):
         try:
             if not os.path.exists(project_path):
@@ -192,7 +221,7 @@ class MontagenProj:
     def project_rename(self, name: str):
         if not name:
             raise Exception("name is empty")
-        if name != self.name:
+        if name != self.project_name:
             self.modify_time = datetime.now()
             self.project_name = name
             new_name = rename_path(self.project_base_name, self.project_path_name, name)
@@ -208,6 +237,10 @@ class MontagenProj:
             self.modify_time = datetime.now()
             self.description = description
             self._save_project()
+
+    def project_change_time(self):
+        self.modify_time = datetime.now()
+        self._save_project()
 
     def delete(self):
         if self.project_path:
