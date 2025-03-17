@@ -267,7 +267,7 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-a862ea71] {
+}.explorer-container[data-v-397ca071] {
   background-color: #fff;
 }[data-v-59fc9bca] .left-tool-button {
   /* Your styles here */
@@ -69332,10 +69332,12 @@ const previewUtils = {
           "type": "spine",
           "children": [
             {
-              "src": "//Montagen/Proj/2u4ed2i28ig8hzm/File/Untitled Clip_20250315142945.png",
+              "src": url2,
               "children": [],
               "type": "image",
-              "duration": 1
+              "duration": 1,
+              "x": "50vw",
+              "y": "50vh"
             }
           ]
         }
@@ -69460,8 +69462,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }
     };
     const previewWithPlayer = (node2) => {
-      let timeLine = previewUtils[node2["file_type"]](node2["file_path"]);
-      console.log(timeLine, "timeLine_12121");
+      let timeLine = previewUtils[node2["file_type"]](node2["src"]);
       workSpaceStore.openWorkFlow({ projectId: "", timeLine });
     };
     const checkWorkflowIsOpen = async (node2) => {
@@ -69801,7 +69802,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a862ea71"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-397ca071"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
