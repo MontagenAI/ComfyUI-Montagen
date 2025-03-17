@@ -44,7 +44,7 @@ class LocalFileHandler:
             remaining = end - start
             while remaining > 0:
                 if state["stop"]:
-                    break
+                    raise Exception("stopped")
                 data = file.read(min(remaining, 1024 * 64))
                 if not data:
                     break

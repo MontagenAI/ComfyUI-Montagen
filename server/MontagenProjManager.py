@@ -24,7 +24,6 @@ def error_handling_decorator(func):
         stop_actions = []
 
         async def checkRequest():
-            nonlocal stop_actions
             while True:
                 if not request.protocol.connected:
                     for stop_action in stop_actions:
@@ -43,7 +42,6 @@ def error_handling_decorator(func):
                 stop_actions.remove(action)
 
         def register_action(action):
-            nonlocal stop_actions
             stop_actions.append(action)
             return _action(action)
 
@@ -167,7 +165,6 @@ class MontagenProjManager:
                 proj.montagen_material.add_material_ref, config, register_action
             )
             proj.project_change_time()
-            request.rel_url
             return web.json_response({"code": 0})
 
         @server.routes.delete("/Montagen/Proj/{id}/Assets/Delete/{filename}")
@@ -436,7 +433,6 @@ class MontagenProjManager:
             response.headers["Content-Length"] = str(end - start)
 
             await response.prepare(request)
-
             async for chunk in proj.montagen_material.get_material_content(
                 filename, start, end, register_action
             ):

@@ -4,6 +4,8 @@ from ..Utils import extract_video_audio_metadata
 from datetime import datetime
 import os
 from contextlib import contextmanager
+from queue import Queue
+import threading
 
 
 class FTPFileHandler:
@@ -100,45 +102,46 @@ class FTPFileHandler:
             raise ValueError("Invalid start or end position.")
 
         remaining = end - start
-        offset = start
+        datas = Queue()
+        end = False
 
-        def read_in_chunks():
-            nonlocal remaining, offset
-            while remaining > 0:
-                if state["stop"]:
-                    break
+        def task():
+            try:
+                nonlocal remaining, end
                 with self.open(file_info.get("inner")) as ftp:
+                    ftp.sendcmd(f"REST {start}")
                     chunk_size = min(remaining, 1024 * 1024)
 
-                    ftp.sendcmd(f"REST {offset}")
-
-                    buffer = None
-
                     def handle_binary(data):
-                        nonlocal buffer
-                        buffer = data
-                        raise StopIteration()
+                        nonlocal remaining
+                        remaining -= len(data)
+                        datas.put(data)
+                        if state["stop"]:
+                            raise Exception("stopped")
+                        if remaining == 0:
+                            raise Exception("stopped")
 
-                    try:
-                        ftp.retrbinary(
-                            f"RETR {file_path}", handle_binary, blocksize=chunk_size
-                        )
-                    except Exception as e:
-                        pass
+                    ftp.retrbinary(
+                        f"RETR {file_path}", handle_binary, blocksize=chunk_size
+                    )
 
-                    if not buffer:
-                        break
+            except Exception as e:
+                pass
+            finally:
+                end = True
 
-                    remaining -= len(buffer)
-                    offset += len(buffer)
+        t = threading.Thread(target=task, daemon=True)
+        t.start()
 
-                yield buffer
-
-        try:
-            for chunk in read_in_chunks():
-                yield chunk
-        except Exception as e:
-            pass
+        while True:
+            try:
+                if state["stop"]:
+                    raise Exception("stopped")
+                data = datas.get(timeout=0.05)
+                yield data
+            except Exception as e:
+                if end:
+                    raise Exception("stopped")
 
     def _ftp_video_audio_info(self, config, file_path, total_size, file_type) -> dict:
         def data_source(write_to_ffmpeg):

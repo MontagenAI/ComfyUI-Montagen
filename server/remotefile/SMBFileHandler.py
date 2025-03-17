@@ -73,7 +73,7 @@ class SMBFileHandler:
 
                 while remaining > 0:
                     if state["stop"]:
-                        break
+                        raise Exception("stopped")
                     chunk_size = min(remaining, 64 * 1024)  # 64KB chunks
                     data = file.read(chunk_size)
                     if not data:

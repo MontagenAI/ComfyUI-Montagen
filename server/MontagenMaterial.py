@@ -409,7 +409,11 @@ class MontagenMaterial:
         t = threading.Thread(target=task, daemon=True)
         t.start()
 
-        while not file_content_stop:
-            data = datas.get(timeout=0.1)
-            if data:
+        while True:
+            try:
+                data = datas.get(block=False)
                 yield data
+            except Exception as e:
+                if file_content_stop:
+                    break
+                await asyncio.sleep(0.05)
