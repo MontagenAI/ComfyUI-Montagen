@@ -151,19 +151,19 @@
   background: #fff;
   border-radius: none;
 }
-.panels-container[data-v-a9fec170] {\r
+.panels-container[data-v-6e569096] {\r
   height: 100%;\r
   width: 100%;\r
   position: relative;\r
   background: #fff;
 }
-.resizable-panel[data-v-a9fec170] {\r
+.resizable-panel[data-v-6e569096] {\r
   background: white;\r
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
   overflow: hidden;\r
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.panel-header[data-v-a9fec170] {\r
+.panel-header[data-v-6e569096] {\r
   background: #f8f9fa;\r
   cursor: pointer;\r
   border-bottom: 1px solid #eee;\r
@@ -175,41 +175,41 @@
           user-select: none;\r
   box-sizing: border-box;
 }
-.toggle-icon[data-v-a9fec170] {\r
+.toggle-icon[data-v-6e569096] {\r
   font-size: 0.8em;\r
   opacity: 0.6;
 }
-.panel-content[data-v-a9fec170] {\r
+.panel-content[data-v-6e569096] {\r
   /* padding: 16px;\r
   height: calc(100% - 48px);\r
   overflow: auto; */
 }
-.gutter[data-v-a9fec170] {\r
+.gutter[data-v-6e569096] {\r
   background: #ddd;\r
   position: relative;\r
   transition: all 0.3s;
 }
-.gutter.gutter-active[data-v-a9fec170] {\r
+.gutter.gutter-active[data-v-6e569096] {\r
   background: #ccc;\r
   cursor: row-resize;
 }
-.gutter[data-v-a9fec170]:not(.gutter-active) {\r
+.gutter[data-v-6e569096]:not(.gutter-active) {\r
   pointer-events: none;\r
   opacity: 0;
 }\r
 \r
 /* 垂直布局分隔条 */
-.gutter[data-direction="vertical"][data-v-a9fec170] {\r
+.gutter[data-direction="vertical"][data-v-6e569096] {\r
   height: 10px;\r
   cursor: row-resize;
 }\r
 \r
 /* 水平布局分隔条 */
-.gutter[data-direction="horizontal"][data-v-a9fec170] {\r
+.gutter[data-direction="horizontal"][data-v-6e569096] {\r
   width: 5px;\r
   cursor: col-resize;
 }
-[data-v-a9fec170] .gutter-vertical {\r
+[data-v-6e569096] .gutter-vertical {\r
   /* opacity: 0; */\r
   background-color: #fff;
 &:hover {\r
@@ -237,10 +237,10 @@
     opacity: 1;\r
   }\r
 } */
-.panel[data-v-a9fec170] {\r
+.panel[data-v-6e569096] {\r
   overflow: hidden;
 }
-.panel.expand[data-v-a9fec170] {\r
+.panel.expand[data-v-6e569096] {\r
   overflow-y: auto;
 }\r
 
@@ -261,19 +261,25 @@
   background: #f8f9fa;\r
   border-radius: 4px;
 }\r
-.choose-project[data-v-98872769] {
+.choose-project[data-v-28563753] {
   display: flex;
   height: 70vh;
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.folder-project[data-v-c92352aa] {
+}.folder-project[data-v-57c85119] {
   display: flex;
   height: 40vh;
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-a38c9535] {
+}.wrapper-ref[data-v-acd94bdb] {
+  display: flex;
+  height: 70vh;
+  width: 60vw;
+  max-width: 1024px;
+  overflow: hidden;
+}.explorer-container[data-v-ad6d6394] {
   background-color: #fff;
 }[data-v-59fc9bca] .left-tool-button {
   /* Your styles here */
@@ -558,6 +564,9 @@
 .tw-top-0 {\r
     top: 0px
 }\r
+.tw-m-2 {\r
+    margin: 0.5rem
+}\r
 .tw-mb-1 {\r
     margin-bottom: 0.25rem
 }\r
@@ -567,14 +576,14 @@
 .tw-h-100 {\r
     height: 28rem
 }\r
-.tw-w-2\\/4 {\r
-    width: 50%
-}\r
-.tw-w-5\\/6 {\r
-    width: 83.333333%
+.tw-h-full {\r
+    height: 100%
 }\r
 .tw-w-11\\/12 {\r
     width: 91.666667%
+}\r
+.tw-w-full {\r
+    width: 100%
 }\r
 .tw-bg-\\[\\#ffffff\\] {\r
     --tw-bg-opacity: 1;\r
@@ -680,14 +689,11 @@
     console.error("vite-plugin-css-injected-by-js", e);
   }
 })();
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key2, value2) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value: value2 }) : obj[key2] = value2;
-var __publicField = (obj, key2, value2) => __defNormalProp(obj, typeof key2 !== "symbol" ? key2 + "" : key2, value2);
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, S as unref, M as createVNode, C as createTextVNode$1, a as createBaseVNode, f as reactive, G as withDirectives, K as normalizeClass, J as createCommentVNode, k as withModifiers, ac as withKeys, a2 as normalizeStyle, j as renderSlot$1, T as Teleport, q as toRaw, w as watch, a6 as onBeforeUnmount, n as nextTick$1, a4 as provide, Z as onUnmounted, ad as createApp } from "./assets/vue-mTqs3s9N.js";
-import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, S as Split, o as script$a, p as script$c, q as customAlphabet, r as script$d, t as script$e, u as useConfirm, v as script$f, w as script$g, x as script$h, R as Ripple, z, y as script$i, D as DialogService, C as ConfirmationService, A as createPinia, B as ToastService } from "./assets/vendor-BC63U0nc.js";
+import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, S as Split, o as script$a, p as script$c, q as script$d, r as script$e, t as script$f, u as customAlphabet, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, R as Ripple, B as z, C as script$l, D as DialogService, F as ConfirmationService, G as createPinia, H as ToastService } from "./assets/vendor-CYRZOXem.js";
 import "./assets/lodash-DS8RUn65.js";
-import { u as usePrimeVue, r as script$b, P as PrimeVue, t as index$3 } from "./assets/primevue-B_eiB-bV.js";
+import { u as usePrimeVue, t as script$b, P as PrimeVue, v as index$3 } from "./assets/primevue-DNEUd4ld.js";
 import { bV as h, bW as definePreset } from "./assets/primeuix-CIUH-4n_.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-Bb9DjssG.js";
 import "./assets/vueuse-ehZJJDg_.js";
@@ -749,7 +755,7 @@ const useMenuStore = defineStore("menuStore", {
 });
 let app$1 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? void 0 : _b.app) || null;
 ((_d = (_c = window.comfyAPI) == null ? void 0 : _c.api) == null ? void 0 : _d.api) || null;
-let $el = ((_f = (_e = window.comfyAPI) == null ? void 0 : _e.ui) == null ? void 0 : _f.$el) || null;
+((_f = (_e = window.comfyAPI) == null ? void 0 : _e.ui) == null ? void 0 : _f.$el) || null;
 ((_h = (_g = window.comfyAPI) == null ? void 0 : _g.dialog) == null ? void 0 : _h.ComfyDialog) || null;
 ((_j = (_i = window.comfyAPI) == null ? void 0 : _i.widgets) == null ? void 0 : _j.ComfyWidgets) || null;
 ((_l = (_k = window.comfyAPI) == null ? void 0 : _k.utils) == null ? void 0 : _l.applyTextReplacements) || null;
@@ -837,8 +843,8 @@ const useDialogStore = defineStore("dialog", () => {
     closeDialog
   };
 });
-const _hoisted_1$j = ["id"];
-const _sfc_main$l = /* @__PURE__ */ defineComponent({
+const _hoisted_1$k = ["id"];
+const _sfc_main$m = /* @__PURE__ */ defineComponent({
   __name: "GlobalDialog",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -870,7 +876,7 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
             }, null, 8, ["id"])) : (openBlock(), createElementBlock("h3", {
               key: 1,
               id: item.key
-            }, toDisplayString(item.title || " "), 9, _hoisted_1$j))
+            }, toDisplayString(item.title || " "), 9, _hoisted_1$k))
           ]),
           default: withCtx(() => [
             (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({ ref_for: true }, item.contentProps, {
@@ -883,8 +889,8 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$i = { class: "settings-container" };
-const _sfc_main$k = /* @__PURE__ */ defineComponent({
+const _hoisted_1$j = { class: "settings-container" };
+const _sfc_main$l = /* @__PURE__ */ defineComponent({
   __name: "SettingDialogContent",
   setup(__props) {
     const activeTab = ref$3("general");
@@ -902,7 +908,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       const _component_Divider = script$3;
       const _component_TabPanels = script$4;
       const _component_Tabs = script$5;
-      return openBlock(), createElementBlock("div", _hoisted_1$i, [
+      return openBlock(), createElementBlock("div", _hoisted_1$j, [
         createVNode(_component_ScrollPanel, { class: "settings-sidebar flex-shrink-0 p-2 w-48 2xl:w-64" }, {
           default: withCtx(() => [
             createVNode(_component_Listbox, {
@@ -948,8 +954,8 @@ const _export_sfc = (sfc, props2) => {
   }
   return target2;
 };
-const SettingDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-d3564705"]]);
-const _sfc_main$j = {};
+const SettingDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-d3564705"]]);
+const _sfc_main$k = {};
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h2", { class: "px-4" }, [
@@ -958,7 +964,7 @@ function _sfc_render$1(_ctx, _cache) {
     ], -1)
   ]));
 }
-const SettingDialogHeader = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$1], ["__scopeId", "data-v-d76691f6"]]);
+const SettingDialogHeader = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$1], ["__scopeId", "data-v-d76691f6"]]);
 const blankGraph = {
   last_node_id: 0,
   last_link_id: 0,
@@ -68495,8 +68501,8 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
-const _hoisted_1$h = { class: "w-full p-2" };
-const _sfc_main$i = /* @__PURE__ */ defineComponent({
+const _hoisted_1$i = { class: "w-full p-2" };
+const _sfc_main$j = /* @__PURE__ */ defineComponent({
   __name: "outPutForm",
   setup(__props, { expose: __expose }) {
     const fileStore = useFileStore();
@@ -68637,7 +68643,7 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
       const _component_el_form_item = ElFormItem;
       const _component_el_button = ElButton;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$h, [
+      return openBlock(), createElementBlock("div", _hoisted_1$i, [
         createBaseVNode("div", null, [
           createVNode(_component_el_form, {
             "label-position": "top",
@@ -68701,41 +68707,41 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$g = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _hoisted_2$c = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$6 = { class: "text-sm truncate" };
-const _hoisted_4$6 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$4 = {
+const _hoisted_1$h = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _hoisted_2$d = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3$7 = { class: "text-sm truncate" };
+const _hoisted_4$7 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_5$5 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$3 = ["onClick", "onContextmenu"];
-const _hoisted_7$2 = {
+const _hoisted_6$4 = ["onClick", "onContextmenu"];
+const _hoisted_7$3 = {
   key: 0,
   class: "w-full flex items-center"
 };
-const _hoisted_8$2 = { class: "truncate w-full text-center name" };
-const _hoisted_9$1 = {
+const _hoisted_8$3 = { class: "truncate w-full text-center name" };
+const _hoisted_9$2 = {
   key: 1,
   class: "w-full flex items-center"
 };
-const _hoisted_10$1 = { class: "truncate text-center name" };
-const _hoisted_11$1 = {
+const _hoisted_10$2 = { class: "truncate text-center name" };
+const _hoisted_11$2 = {
   key: 2,
   class: "w-full flex items-center"
 };
-const _hoisted_12$1 = { class: "truncate text-center name" };
-const _hoisted_13$1 = {
+const _hoisted_12$2 = { class: "truncate text-center name" };
+const _hoisted_13$2 = {
   key: 3,
   class: "w-full flex items-center"
 };
-const _hoisted_14 = { class: "truncate w-full text-center name" };
-const _hoisted_15 = {
+const _hoisted_14$1 = { class: "truncate w-full text-center name" };
+const _hoisted_15$1 = {
   key: 4,
   class: "w-full flex items-center"
 };
-const _hoisted_16 = { class: "truncate w-full text-center name" };
-const _sfc_main$h = /* @__PURE__ */ defineComponent({
+const _hoisted_16$1 = { class: "truncate w-full text-center name" };
+const _sfc_main$i = /* @__PURE__ */ defineComponent({
   __name: "clips",
   setup(__props) {
     useMenuStore();
@@ -68782,15 +68788,15 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
       const _component_Toolbar = script$7;
       const _component_ContextMenu = script$8;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$g, [
-        createBaseVNode("div", _hoisted_2$c, [
+      return openBlock(), createElementBlock("div", _hoisted_1$h, [
+        createBaseVNode("div", _hoisted_2$d, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
-              createBaseVNode("span", _hoisted_3$6, toDisplayString(title.value), 1)
+              createBaseVNode("span", _hoisted_3$7, toDisplayString(title.value), 1)
             ]),
             center: withCtx(() => _cache[0] || (_cache[0] = [])),
             end: withCtx(() => [
-              createBaseVNode("div", _hoisted_4$6, [
+              createBaseVNode("div", _hoisted_4$7, [
                 withDirectives(createVNode(_component_Button, {
                   text: "",
                   icon: "pi pi-refresh",
@@ -68806,7 +68812,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
           })
         ]),
         createBaseVNode("div", null, [
-          createBaseVNode("ul", _hoisted_5$4, [
+          createBaseVNode("ul", _hoisted_5$5, [
             (openBlock(true), createElementBlock(Fragment, null, renderList$1(clips2.value, (item) => {
               return openBlock(), createElementBlock("li", {
                 onClick: ($event) => goWorkFlow(item),
@@ -68814,52 +68820,52 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$2, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$3, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_8$2, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_8$3, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$1, [
+                item.type == "image" ? (openBlock(), createElementBlock("div", _hoisted_9$2, [
                   _cache[2] || (_cache[2] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-image",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_10$1, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_10$2, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "video" ? (openBlock(), createElementBlock("div", _hoisted_11$1, [
+                item.type == "video" ? (openBlock(), createElementBlock("div", _hoisted_11$2, [
                   _cache[3] || (_cache[3] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-video",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_12$1, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_12$2, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "audio" ? (openBlock(), createElementBlock("div", _hoisted_13$1, [
+                item.type == "audio" ? (openBlock(), createElementBlock("div", _hoisted_13$2, [
                   _cache[4] || (_cache[4] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-headphones",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_14, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_14$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
-                item.type == "gif" ? (openBlock(), createElementBlock("div", _hoisted_15, [
+                item.type == "gif" ? (openBlock(), createElementBlock("div", _hoisted_15$1, [
                   _cache[5] || (_cache[5] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-images",
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_16, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_16$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$3);
+              ], 40, _hoisted_6$4);
             }), 128))
           ])
         ]),
@@ -68880,10 +68886,10 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-f4c79b70"]]);
-const _hoisted_1$f = { class: "editable-text" };
-const _hoisted_2$b = { key: 0 };
-const _sfc_main$g = /* @__PURE__ */ defineComponent({
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-f4c79b70"]]);
+const _hoisted_1$g = { class: "editable-text" };
+const _hoisted_2$c = { key: 0 };
+const _sfc_main$h = /* @__PURE__ */ defineComponent({
   __name: "EditableText",
   props: {
     modelValue: {},
@@ -68907,8 +68913,8 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _component_InputText = script$9;
-      return openBlock(), createElementBlock("div", _hoisted_1$f, [
-        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$b, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
+      return openBlock(), createElementBlock("div", _hoisted_1$g, [
+        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$c, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
           key: 1,
           type: "text",
           size: "small",
@@ -68932,99 +68938,8 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-5404c5f4"]]);
-const PREFIX_CLASS = "comfyui-maskpage-";
-function sleep(ms = 100, value2) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(value2);
-    }, ms);
-  });
-}
-class Toast {
-  constructor() {
-    __publicField(this, "element", $el(`div.${PREFIX_CLASS}toast`));
-    __publicField(this, "children", HTMLElement);
-    __publicField(this, "container", document.body);
-    this.container.appendChild(this.element);
-  }
-  async show(data) {
-    let animContainer = $el(`div.${PREFIX_CLASS}toast-container`, [
-      $el("div", [$el("span", [
-        ...data.icon ? [$el("i", { className: data.icon })] : [],
-        $el("span", data.content)
-      ])])
-    ]);
-    animContainer.setAttribute("toast-id", data.id);
-    this.element.replaceChildren(animContainer);
-    this.container.appendChild(this.element);
-    await sleep(64);
-    animContainer.style.marginTop = `-${animContainer.offsetHeight}px`;
-    await sleep(64);
-    animContainer.classList.add("show");
-    if (data.duration) {
-      await sleep(data.duration);
-      this.hide(data.id);
-    }
-  }
-  async hide(id) {
-    const msg = document.querySelector(`.${PREFIX_CLASS}toast > [toast-id="${id}"]`);
-    if (msg === null || msg === void 0 ? void 0 : msg.classList.contains("show")) {
-      msg.classList.remove("show");
-      await sleep(750);
-    }
-    msg && msg.remove();
-  }
-  async clearAllMessages() {
-    let container = document.querySelector(`.${PREFIX_CLASS}container`);
-    container && (container.innerHTML = "");
-  }
-  async info(content, duration = 3e3, actions = []) {
-    this.show({
-      id: `toast-info`,
-      icon: `mdi mdi-information ${PREFIX_CLASS}theme`,
-      content,
-      duration
-    });
-  }
-  async success(content, duration = 3e3) {
-    this.show({
-      id: `toast-success`,
-      icon: `mdi mdi-check-circle ${PREFIX_CLASS}success`,
-      content,
-      duration
-    });
-  }
-  async error(content, duration = 3e3) {
-    this.show({
-      id: `toast-error`,
-      icon: `mdi mdi-close-circle ${PREFIX_CLASS}error`,
-      content,
-      duration
-    });
-  }
-  async warn(content, duration = 3e3) {
-    this.show({
-      id: `toast-warn`,
-      icon: `mdi mdi-alert-circle ${PREFIX_CLASS}warning`,
-      content,
-      duration
-    });
-  }
-  async showLoading(content, duration = 0) {
-    this.show({
-      id: `toast-loading`,
-      icon: `mdi mdi-rotate-right loading`,
-      content,
-      duration
-    });
-  }
-  async hideLoading() {
-    this.hide("toast-loading");
-  }
-}
-new Toast();
-const _sfc_main$f = {
+const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-5404c5f4"]]);
+const _sfc_main$g = {
   props: {
     // 面板配置数组
     panels: {
@@ -69164,15 +69079,15 @@ const _sfc_main$f = {
     if (this.splitInstance) this.splitInstance.destroy();
   }
 };
-const _hoisted_1$e = {
+const _hoisted_1$f = {
   class: "panels-container tw-h-100",
   ref: "container"
 };
-const _hoisted_2$a = ["onClick"];
-const _hoisted_3$5 = { class: "tw-ps-1" };
-const _hoisted_4$5 = { class: "panel-content flex-1 overflow-hidden" };
+const _hoisted_2$b = ["onClick"];
+const _hoisted_3$6 = { class: "tw-ps-1" };
+const _hoisted_4$6 = { class: "panel-content flex-1 overflow-hidden" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$e, [
+  return openBlock(), createElementBlock("div", _hoisted_1$f, [
     (openBlock(true), createElementBlock(Fragment, null, renderList$1($props.panels, (panel, index2) => {
       return openBlock(), createElementBlock("div", {
         key: index2,
@@ -69191,10 +69106,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 class: normalizeClass(["pi", panel.expanded ? "pi-chevron-down" : "pi-chevron-right"]),
                 style: { "font-size": "1rem" }
               }, null, 2),
-              createBaseVNode("span", _hoisted_3$5, toDisplayString(panel.title), 1)
+              createBaseVNode("span", _hoisted_3$6, toDisplayString(panel.title), 1)
             ])
-          ], 12, _hoisted_2$a),
-          createBaseVNode("div", _hoisted_4$5, [
+          ], 12, _hoisted_2$b),
+          createBaseVNode("div", _hoisted_4$6, [
             renderSlot$1(_ctx.$slots, `panel-${index2}`, { panel }, void 0, true)
           ])
         ])
@@ -69202,10 +69117,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render], ["__scopeId", "data-v-a9fec170"]]);
-const _hoisted_1$d = { class: "choose-project flex h-96" };
-const _hoisted_2$9 = { class: "list-box" };
-const _sfc_main$e = /* @__PURE__ */ defineComponent({
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render], ["__scopeId", "data-v-6e569096"]]);
+const _hoisted_1$e = { class: "choose-project flex h-96" };
+const _hoisted_2$a = { class: "list-box" };
+const _sfc_main$f = /* @__PURE__ */ defineComponent({
   __name: "chooseProject",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -69223,8 +69138,8 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _component_Listbox = script$1;
-      return openBlock(), createElementBlock("div", _hoisted_1$d, [
-        createBaseVNode("div", _hoisted_2$9, [
+      return openBlock(), createElementBlock("div", _hoisted_1$e, [
+        createBaseVNode("div", _hoisted_2$a, [
           createVNode(_component_Listbox, {
             modelValue: selectedProject.value,
             "onUpdate:modelValue": [
@@ -69233,20 +69148,21 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
             ],
             options: projects.value,
             optionLabel: "name",
-            class: "w-full md:w-56 border-none"
+            listStyle: "max-height:auto",
+            class: "w-full tw-h-full md:w-56 border-none"
           }, null, 8, ["modelValue", "options"])
         ])
       ]);
     };
   }
 });
-const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-98872769"]]);
-const _hoisted_1$c = { class: "folder-project" };
-const _hoisted_2$8 = { class: "form-wrapper w-full" };
-const _hoisted_3$4 = { class: "form-item" };
-const _hoisted_4$4 = { class: "form-item-content" };
-const _hoisted_5$3 = { class: "flex justify-center" };
-const _sfc_main$d = /* @__PURE__ */ defineComponent({
+const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-28563753"]]);
+const _hoisted_1$d = { class: "folder-project" };
+const _hoisted_2$9 = { class: "form-wrapper w-full" };
+const _hoisted_3$5 = { class: "form-item" };
+const _hoisted_4$5 = { class: "form-item-content" };
+const _hoisted_5$4 = { class: "flex justify-center" };
+const _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "chooseFolderProject",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -69277,7 +69193,6 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
           })
         });
         const json = await response.json();
-        console.log(json, "提交成功");
         if (json.code == 0) {
           workSpaceStore.setActiveProject(json.data);
           dialogStore.closeDialog();
@@ -69296,8 +69211,8 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
       const _component_Message = script$a;
       const _component_Button = script$6;
       const _component_Form = script$b;
-      return openBlock(), createElementBlock("div", _hoisted_1$c, [
-        createBaseVNode("div", _hoisted_2$8, [
+      return openBlock(), createElementBlock("div", _hoisted_1$d, [
+        createBaseVNode("div", _hoisted_2$9, [
           createVNode(_component_Form, {
             initialValues,
             resolver,
@@ -69307,9 +69222,9 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
             default: withCtx(($form) => {
               var _a2;
               return [
-                createBaseVNode("div", _hoisted_3$4, [
+                createBaseVNode("div", _hoisted_3$5, [
                   _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "请输入项目文件夹路径地址:", -1)),
-                  createBaseVNode("div", _hoisted_4$4, [
+                  createBaseVNode("div", _hoisted_4$5, [
                     createVNode(_component_InputText, {
                       name: "path",
                       type: "text",
@@ -69332,7 +69247,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                     }, 1024)) : createCommentVNode("", true)
                   ])
                 ]),
-                createBaseVNode("div", _hoisted_5$3, [
+                createBaseVNode("div", _hoisted_5$4, [
                   createVNode(_component_Button, {
                     class: "tw-w-11/12",
                     type: "submit",
@@ -69349,14 +69264,14 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-c92352aa"]]);
-const _hoisted_1$b = { class: "px-2 tw-mb-2" };
-const _hoisted_2$7 = { class: "content" };
-const _hoisted_3$3 = { class: "px-2 tw-mb-2" };
-const _hoisted_4$3 = { class: "content" };
-const _hoisted_5$2 = { class: "px-2 tw-mb-2" };
-const _hoisted_6$2 = { class: "content" };
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
+const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-57c85119"]]);
+const _hoisted_1$c = { class: "px-2 tw-mb-2" };
+const _hoisted_2$8 = { class: "content" };
+const _hoisted_3$4 = { class: "px-2 tw-mb-2" };
+const _hoisted_4$4 = { class: "content" };
+const _hoisted_5$3 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$3 = { class: "content" };
+const _sfc_main$d = /* @__PURE__ */ defineComponent({
   __name: "propertyAsset",
   props: {
     data: {}
@@ -69365,9 +69280,9 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_InputText = script$9;
       return openBlock(), createElementBlock("div", null, [
-        createBaseVNode("div", _hoisted_1$b, [
+        createBaseVNode("div", _hoisted_1$c, [
           _cache[3] || (_cache[3] = createBaseVNode("div", { class: "label tw-py-2" }, "名称:", -1)),
-          createBaseVNode("div", _hoisted_2$7, [
+          createBaseVNode("div", _hoisted_2$8, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.file_name,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.data.file_name = $event),
@@ -69375,9 +69290,9 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_3$3, [
+        createBaseVNode("div", _hoisted_3$4, [
           _cache[4] || (_cache[4] = createBaseVNode("div", { class: "label tw-py-2" }, "宽度:", -1)),
-          createBaseVNode("div", _hoisted_4$3, [
+          createBaseVNode("div", _hoisted_4$4, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.width,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.data.width = $event),
@@ -69385,9 +69300,9 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_5$2, [
+        createBaseVNode("div", _hoisted_5$3, [
           _cache[5] || (_cache[5] = createBaseVNode("div", { class: "label tw-py-2" }, "高度:", -1)),
-          createBaseVNode("div", _hoisted_6$2, [
+          createBaseVNode("div", _hoisted_6$3, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.height,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
@@ -69399,9 +69314,9 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$a = { class: "px-2 tw-mb-2" };
-const _hoisted_2$6 = { class: "content" };
-const _sfc_main$b = /* @__PURE__ */ defineComponent({
+const _hoisted_1$b = { class: "px-2 tw-mb-2" };
+const _hoisted_2$7 = { class: "content" };
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "propertyClip",
   props: {
     data: {}
@@ -69410,9 +69325,9 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_InputText = script$9;
       return openBlock(), createElementBlock("div", null, [
-        createBaseVNode("div", _hoisted_1$a, [
+        createBaseVNode("div", _hoisted_1$b, [
           _cache[1] || (_cache[1] = createBaseVNode("div", { class: "label tw-py-2" }, "名称:", -1)),
-          createBaseVNode("div", _hoisted_2$6, [
+          createBaseVNode("div", _hoisted_2$7, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.clipName,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.data.clipName = $event),
@@ -69424,8 +69339,8 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$9 = { class: "property-collection" };
-const _sfc_main$a = /* @__PURE__ */ defineComponent({
+const _hoisted_1$a = { class: "property-collection" };
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "propertyCollection",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -69434,16 +69349,572 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       return activeNode.value.fileType;
     });
     const components = {
-      "assets": markRaw(_sfc_main$c),
-      "clip": markRaw(_sfc_main$b)
+      "assets": markRaw(_sfc_main$d),
+      "clip": markRaw(_sfc_main$c)
     };
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$9, [
+      return openBlock(), createElementBlock("div", _hoisted_1$a, [
         (openBlock(), createBlock(resolveDynamicComponent(components[fileType.value]), { data: unref(activeNode) }, null, 8, ["data"]))
       ]);
     };
   }
 });
+const _hoisted_1$9 = { class: "wrapper-ref" };
+const _hoisted_2$6 = { class: "card tw-w-full" };
+const _hoisted_3$3 = { class: "form-item tw-m-2" };
+const _hoisted_4$3 = { class: "form-item-content" };
+const _hoisted_5$2 = { class: "flex justify-center" };
+const _hoisted_6$2 = { class: "form-item tw-m-2" };
+const _hoisted_7$2 = { class: "form-item-content" };
+const _hoisted_8$2 = { class: "form-item tw-m-2" };
+const _hoisted_9$1 = { class: "form-item-content" };
+const _hoisted_10$1 = { class: "form-item tw-m-2" };
+const _hoisted_11$1 = { class: "form-item-content" };
+const _hoisted_12$1 = { class: "form-item tw-m-2" };
+const _hoisted_13$1 = { class: "form-item-content" };
+const _hoisted_14 = { class: "flex justify-center" };
+const _hoisted_15 = { class: "form-item tw-m-2" };
+const _hoisted_16 = { class: "form-item-content" };
+const _hoisted_17 = { class: "form-item tw-m-2" };
+const _hoisted_18 = { class: "form-item-content" };
+const _hoisted_19 = { class: "form-item tw-m-2" };
+const _hoisted_20 = { class: "form-item-content" };
+const _hoisted_21 = { class: "form-item tw-m-2" };
+const _hoisted_22 = { class: "form-item-content" };
+const _hoisted_23 = { class: "flex justify-center" };
+const _hoisted_24 = { class: "form-item tw-m-2" };
+const _hoisted_25 = { class: "form-item-content" };
+const _hoisted_26 = { class: "flex justify-center" };
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
+  __name: "addRefDialog",
+  setup(__props) {
+    const dialogStore = useDialogStore();
+    const workSpaceStore = useWorkSpaceStore();
+    const protocolType = ref$3("http");
+    const tabChange = (e) => {
+      protocolType.value = e;
+    };
+    const httpForm = reactive({
+      file_path: ""
+    });
+    const httpResolver = ({ values }) => {
+      const errors = {};
+      if (!values.file_path) {
+        errors.file_path = [{ message: "path is required." }];
+      }
+      return {
+        values,
+        errors
+      };
+    };
+    const smbForm = reactive({
+      file_path: "",
+      username: "",
+      password: "",
+      server: ""
+    });
+    const smbResolver = ({ values }) => {
+      const errors = {};
+      if (!values.file_path) {
+        errors.file_path = [{ message: "path is required." }];
+      }
+      if (!values.username) {
+        errors.username = [{ message: "username is required." }];
+      }
+      if (!values.password) {
+        errors.password = [{ message: "password is required." }];
+      }
+      if (!values.server) {
+        errors.server = [{ message: "server is required." }];
+      }
+      return {
+        values,
+        errors
+      };
+    };
+    const ftpForm = reactive({
+      file_path: "",
+      username: "",
+      password: "",
+      server: ""
+    });
+    const ftpResolver = ({ values }) => {
+      const errors = {};
+      if (!values.file_path) {
+        errors.file_path = [{ message: "path is required." }];
+      }
+      if (!values.username) {
+        errors.username = [{ message: "username is required." }];
+      }
+      if (!values.password) {
+        errors.password = [{ message: "password is required." }];
+      }
+      if (!values.server) {
+        errors.server = [{ message: "server is required." }];
+      }
+      return {
+        values,
+        errors
+      };
+    };
+    const localForm = reactive({
+      file_path: ""
+    });
+    const localResolver = ({ values }) => {
+      const errors = {};
+      if (!values.file_path) {
+        errors.file_path = [{ message: "path is required." }];
+      }
+      return {
+        values,
+        errors
+      };
+    };
+    const onFormSubmit = async ({ values, valid }) => {
+      if (valid) {
+        console.log(values);
+        let projectId = workSpaceStore.activeProject.baseInfo.projectId;
+        let data = Object.assign({}, values, { type: protocolType.value });
+        let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}/Assets/Refs`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            ...data
+          })
+        });
+        const json = await response.json();
+        console.log(json);
+        if (json.code == 0) {
+          dialogStore.closeDialog();
+          workSpaceStore.getProjectDetail(projectId);
+        } else {
+          app$1.extensionManager.toast.add({
+            severity: "info",
+            summary: "tips!",
+            detail: json.msg,
+            life: 3e3
+          });
+        }
+      } else {
+        console.log("invalid");
+      }
+    };
+    return (_ctx, _cache) => {
+      const _component_Tab = script$d;
+      const _component_TabList = script$c;
+      const _component_InputText = script$9;
+      const _component_Message = script$a;
+      const _component_Button = script$6;
+      const _component_Form = script$b;
+      const _component_TabPanel = script$e;
+      const _component_TabPanels = script$4;
+      const _component_Tabs = script$5;
+      return openBlock(), createElementBlock("div", _hoisted_1$9, [
+        createBaseVNode("div", _hoisted_2$6, [
+          createVNode(_component_Tabs, {
+            value: protocolType.value,
+            "onUpdate:value": tabChange
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_TabList, null, {
+                default: withCtx(() => [
+                  createVNode(_component_Tab, { value: "http" }, {
+                    default: withCtx(() => _cache[0] || (_cache[0] = [
+                      createTextVNode$1("http协议")
+                    ])),
+                    _: 1
+                  }),
+                  createVNode(_component_Tab, { value: "smb" }, {
+                    default: withCtx(() => _cache[1] || (_cache[1] = [
+                      createTextVNode$1("smb协议")
+                    ])),
+                    _: 1
+                  }),
+                  createVNode(_component_Tab, { value: "ftp" }, {
+                    default: withCtx(() => _cache[2] || (_cache[2] = [
+                      createTextVNode$1("ftp协议")
+                    ])),
+                    _: 1
+                  }),
+                  createVNode(_component_Tab, { value: "local" }, {
+                    default: withCtx(() => _cache[3] || (_cache[3] = [
+                      createTextVNode$1("本地路径")
+                    ])),
+                    _: 1
+                  })
+                ]),
+                _: 1
+              }),
+              createVNode(_component_TabPanels, null, {
+                default: withCtx(() => [
+                  createVNode(_component_TabPanel, { value: "http" }, {
+                    default: withCtx(() => [
+                      createVNode(_component_Form, {
+                        initialValues: httpForm,
+                        resolver: httpResolver,
+                        onSubmit: onFormSubmit,
+                        class: "flex flex-col tw-w-full"
+                      }, {
+                        default: withCtx(($form) => {
+                          var _a2;
+                          return [
+                            createBaseVNode("div", _hoisted_3$3, [
+                              _cache[4] || (_cache[4] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_4$3, [
+                                createVNode(_component_InputText, {
+                                  name: "file_path",
+                                  type: "text",
+                                  placeholder: "path",
+                                  fluid: ""
+                                }),
+                                ((_a2 = $form.file_path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form.file_path.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_5$2, [
+                              createVNode(_component_Button, {
+                                class: "tw-w-full",
+                                type: "submit",
+                                severity: "secondary",
+                                label: "Submit"
+                              })
+                            ])
+                          ];
+                        }),
+                        _: 1
+                      }, 8, ["initialValues"])
+                    ]),
+                    _: 1
+                  }),
+                  createVNode(_component_TabPanel, { value: "smb" }, {
+                    default: withCtx(() => [
+                      createVNode(_component_Form, {
+                        initialValues: smbForm,
+                        resolver: smbResolver,
+                        onSubmit: onFormSubmit,
+                        class: "flex flex-col tw-w-full"
+                      }, {
+                        default: withCtx(($form1) => {
+                          var _a2, _b2, _c2, _d2;
+                          return [
+                            createBaseVNode("div", _hoisted_6$2, [
+                              _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_7$2, [
+                                createVNode(_component_InputText, {
+                                  name: "file_path",
+                                  type: "text",
+                                  placeholder: "path",
+                                  fluid: ""
+                                }),
+                                ((_a2 = $form1.file_path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form1.file_path.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_8$2, [
+                              _cache[6] || (_cache[6] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "username:", -1)),
+                              createBaseVNode("div", _hoisted_9$1, [
+                                createVNode(_component_InputText, {
+                                  name: "username",
+                                  type: "text",
+                                  placeholder: "username",
+                                  fluid: ""
+                                }),
+                                ((_b2 = $form1.username) == null ? void 0 : _b2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form1.username.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_10$1, [
+                              _cache[7] || (_cache[7] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
+                              createBaseVNode("div", _hoisted_11$1, [
+                                createVNode(_component_InputText, {
+                                  name: "username",
+                                  type: "text",
+                                  placeholder: "password",
+                                  fluid: ""
+                                }),
+                                ((_c2 = $form1.password) == null ? void 0 : _c2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form1.password.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_12$1, [
+                              _cache[8] || (_cache[8] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "server:", -1)),
+                              createBaseVNode("div", _hoisted_13$1, [
+                                createVNode(_component_InputText, {
+                                  name: "server",
+                                  type: "text",
+                                  placeholder: "server",
+                                  fluid: ""
+                                }),
+                                ((_d2 = $form1.server) == null ? void 0 : _d2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form1.server.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_14, [
+                              createVNode(_component_Button, {
+                                class: "tw-w-full",
+                                type: "submit",
+                                severity: "secondary",
+                                label: "Submit"
+                              })
+                            ])
+                          ];
+                        }),
+                        _: 1
+                      }, 8, ["initialValues"])
+                    ]),
+                    _: 1
+                  }),
+                  createVNode(_component_TabPanel, { value: "ftp" }, {
+                    default: withCtx(() => [
+                      createVNode(_component_Form, {
+                        initialValues: ftpForm,
+                        resolver: ftpResolver,
+                        onSubmit: onFormSubmit,
+                        class: "flex flex-col tw-w-full"
+                      }, {
+                        default: withCtx(($form2) => {
+                          var _a2, _b2, _c2, _d2;
+                          return [
+                            createBaseVNode("div", _hoisted_15, [
+                              _cache[9] || (_cache[9] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_16, [
+                                createVNode(_component_InputText, {
+                                  name: "file_path",
+                                  type: "text",
+                                  placeholder: "path",
+                                  fluid: ""
+                                }),
+                                ((_a2 = $form2.file_path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form2.file_path.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_17, [
+                              _cache[10] || (_cache[10] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "username:", -1)),
+                              createBaseVNode("div", _hoisted_18, [
+                                createVNode(_component_InputText, {
+                                  name: "username",
+                                  type: "text",
+                                  placeholder: "username",
+                                  fluid: ""
+                                }),
+                                ((_b2 = $form2.username) == null ? void 0 : _b2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form2.username.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_19, [
+                              _cache[11] || (_cache[11] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
+                              createBaseVNode("div", _hoisted_20, [
+                                createVNode(_component_InputText, {
+                                  name: "username",
+                                  type: "text",
+                                  placeholder: "password",
+                                  fluid: ""
+                                }),
+                                ((_c2 = $form2.password) == null ? void 0 : _c2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form2.password.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_21, [
+                              _cache[12] || (_cache[12] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "server:", -1)),
+                              createBaseVNode("div", _hoisted_22, [
+                                createVNode(_component_InputText, {
+                                  name: "server",
+                                  type: "text",
+                                  placeholder: "server",
+                                  fluid: ""
+                                }),
+                                ((_d2 = $form2.server) == null ? void 0 : _d2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form2.server.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_23, [
+                              createVNode(_component_Button, {
+                                class: "tw-w-full",
+                                type: "submit",
+                                severity: "secondary",
+                                label: "Submit"
+                              })
+                            ])
+                          ];
+                        }),
+                        _: 1
+                      }, 8, ["initialValues"])
+                    ]),
+                    _: 1
+                  }),
+                  createVNode(_component_TabPanel, { value: "local" }, {
+                    default: withCtx(() => [
+                      createVNode(_component_Form, {
+                        initialValues: localForm,
+                        resolver: localResolver,
+                        onSubmit: onFormSubmit,
+                        class: "flex flex-col tw-w-full"
+                      }, {
+                        default: withCtx(($form3) => {
+                          var _a2;
+                          return [
+                            createBaseVNode("div", _hoisted_24, [
+                              _cache[13] || (_cache[13] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_25, [
+                                createVNode(_component_InputText, {
+                                  name: "file_path",
+                                  type: "text",
+                                  placeholder: "path",
+                                  fluid: ""
+                                }),
+                                ((_a2 = $form3.file_path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form3.file_path.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_26, [
+                              createVNode(_component_Button, {
+                                class: "tw-w-full",
+                                type: "submit",
+                                severity: "secondary",
+                                label: "Submit"
+                              })
+                            ])
+                          ];
+                        }),
+                        _: 1
+                      }, 8, ["initialValues"])
+                    ]),
+                    _: 1
+                  })
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          }, 8, ["value"])
+        ])
+      ]);
+    };
+  }
+});
+const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-acd94bdb"]]);
 const previewUtils = {
   "image": function(url2) {
     return {
@@ -69462,6 +69933,77 @@ const previewUtils = {
               "duration": 1,
               "x": "50vw",
               "y": "50vh"
+            }
+          ]
+        }
+      ]
+    };
+  },
+  "video": function(url2, node2) {
+    return {
+      "type": "canvas",
+      "width": 1280,
+      "height": 720,
+      "name": "montagen",
+      "children": [
+        {
+          "type": "spine",
+          "children": [
+            {
+              "src": url2,
+              "children": [],
+              "type": "video",
+              "x": "50vw",
+              "y": "50vh",
+              "duration": node2.audio_duration,
+              "loop": false
+            }
+          ]
+        }
+      ]
+    };
+  },
+  "audio": function(url2, node2) {
+    return {
+      "type": "canvas",
+      "width": 1280,
+      "height": 720,
+      "name": "montagen",
+      "children": [
+        {
+          "type": "spine",
+          "children": [
+            {
+              "src": url2,
+              "children": [],
+              "type": "audio",
+              "audio": true,
+              "start": 0
+            }
+          ]
+        }
+      ]
+    };
+  },
+  "gif": function(url2, node2) {
+    return {
+      "type": "canvas",
+      "width": 1280,
+      "height": 720,
+      "name": "montagen",
+      "children": [
+        {
+          "type": "spine",
+          "children": [
+            {
+              "src": url2,
+              "children": [],
+              "type": "gif",
+              "x": "50vw",
+              "y": "50vh",
+              "duration": 1,
+              "height": node2.height,
+              "width": node2.width
             }
           ]
         }
@@ -69497,8 +70039,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       ];
     });
     const treeNodes = computed(() => {
-      var _a2, _b2;
-      console.log(activeProject.value, "activeProject.value");
+      var _a2, _b2, _c2;
       let assetObj = {
         key: "0",
         label: "assets",
@@ -69544,8 +70085,24 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
           });
         })
       };
-      console.log(assetObj, "assetObj");
-      return [assetObj, workflowObj];
+      const refObj = {
+        key: "2",
+        label: "refs",
+        type: "folder",
+        fileType: "folder_ref",
+        icon: "fontello icon-montagen",
+        children: (((_c2 = activeProject.value) == null ? void 0 : _c2.refs) || []).map((ref2) => {
+          return Object.assign({}, ref2, {
+            key: ref2.file_name,
+            label: ref2.file_name,
+            type: "folder",
+            icon: "pi pi-file",
+            fileType: "ref",
+            projectId: activeProject.value.baseInfo.projectId
+          });
+        })
+      };
+      return [assetObj, workflowObj, refObj];
     });
     const expandedKeys = ref$3({});
     const selectedKeys = ref$3({});
@@ -69555,6 +70112,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
         case "workflows":
         case "folder_assets":
         case "folder_workflow":
+        case "folder_ref":
           if (selectedKeys.value[node2.key]) {
             expandedKeys.value[node2.key] = true;
           } else {
@@ -69569,6 +70127,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
           }
           break;
         case "assets":
+        case "ref":
           if (selectedKeys.value[node2.key]) {
             workSpaceStore.setActiveNode(node2);
             previewWithPlayer(node2);
@@ -69576,17 +70135,19 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }
     };
     const handleContextMenu = (event2, node2) => {
+      console.log("右键点击的节点:", node2);
       menuTargetNode.value = node2;
       event2.preventDefault();
       switch (node2.fileType) {
         case "clip":
         case "workflows":
+        case "folder_ref":
           menu.value.show(event2);
           break;
       }
     };
     const previewWithPlayer = (node2) => {
-      let timeLine = previewUtils[node2["file_type"]](node2["src"]);
+      let timeLine = previewUtils[node2["file_type"]](node2["src"], node2);
       workSpaceStore.openWorkFlow({ projectId: "", timeLine });
     };
     const checkWorkflowIsOpen = async (node2) => {
@@ -69658,6 +70219,22 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
               label: "Rename Workflow",
               icon: "pi pi-file-edit",
               command: (e) => renameCommand(menuTargetNode.value)
+            }
+          ]);
+          break;
+        case "folder_ref":
+          temp.push(...[
+            {
+              label: "Add ref",
+              icon: "pi pi-plus",
+              command: (e) => {
+                console.log(menuTargetNode.value, "Add ref");
+                dialogStore.showDialog({
+                  key: "global-addref-mongaton",
+                  title: "Add ref",
+                  component: addRefDialog
+                });
+              }
             }
           ]);
           break;
@@ -69751,7 +70328,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_Button = script$6;
       const _component_Toolbar = script$7;
-      const _component_Tree = script$c;
+      const _component_Tree = script$f;
       const _component_ContextMenu = script$8;
       const _component_el_input = ElInput;
       const _component_Dialog = script;
@@ -69852,7 +70429,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
               ]),
               "panel-1": withCtx(() => [
                 createBaseVNode("div", _hoisted_6$1, [
-                  createVNode(_sfc_main$a)
+                  createVNode(_sfc_main$b)
                 ])
               ]),
               _: 1
@@ -69934,7 +70511,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a38c9535"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-ad6d6394"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -69964,7 +70541,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
         tips: "EXPORT",
         selected: false,
         icon: "pi pi-file-export",
-        component: markRaw(_sfc_main$i)
+        component: markRaw(_sfc_main$j)
       }
       // {
       //   name: 'home',
@@ -70166,7 +70743,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$e), {
+        createVNode(unref(script$h), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -70176,7 +70753,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$d), {
+            createVNode(unref(script$g), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -70190,11 +70767,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$d), {
+            createVNode(unref(script$g), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$e), {
+                createVNode(unref(script$h), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -70207,7 +70784,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$d), {
+                    createVNode(unref(script$g), {
                       class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70,
@@ -70230,7 +70807,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$d), {
+                    createVNode(unref(script$g), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -70357,9 +70934,9 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       });
     };
     return (_ctx, _cache) => {
-      const _component_SelectButton = script$g;
+      const _component_SelectButton = script$j;
       const _component_ScrollPanel = script$2;
-      const _component_ConfirmPopup = script$f;
+      const _component_ConfirmPopup = script$i;
       return openBlock(), createElementBlock("div", _hoisted_1$4, [
         createVNode(_component_ScrollPanel, {
           class: "overflow-hidden no-drag bg-transparent",
@@ -70502,7 +71079,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       workSpaceStore.getlists();
     };
     return (_ctx, _cache) => {
-      const _component_Menubar = script$h;
+      const _component_Menubar = script$k;
       const _component_el_input = ElInput;
       const _component_Button = script$6;
       const _component_Dialog = script;
@@ -70660,7 +71237,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
     });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$i;
+      const _component_Textarea = script$l;
       const _component_Message = script$a;
       const _component_Button = script$6;
       const _component_Dialog = script;
@@ -71023,7 +71600,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         }, null, 512), [
           [_directive_tooltip, "open MontagenEditor"]
         ]),
-        createVNode(_sfc_main$l)
+        createVNode(_sfc_main$m)
       ], 64);
     };
   }
