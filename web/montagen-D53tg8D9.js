@@ -69932,7 +69932,8 @@ const previewUtils = {
               "type": "image",
               "duration": 1,
               "x": "50vw",
-              "y": "50vh"
+              "y": "50vh",
+              "object-fit": "contain"
             }
           ]
         }
@@ -69956,7 +69957,8 @@ const previewUtils = {
               "x": "50vw",
               "y": "50vh",
               "duration": node2.audio_duration,
-              "loop": false
+              "loop": false,
+              "object-fit": "contain"
             }
           ]
         }
@@ -69978,7 +69980,8 @@ const previewUtils = {
               "children": [],
               "type": "audio",
               "audio": true,
-              "start": 0
+              "start": 0,
+              "object-fit": "contain"
             }
           ]
         }
@@ -70003,7 +70006,8 @@ const previewUtils = {
               "y": "50vh",
               "duration": 1,
               "height": node2.height,
-              "width": node2.width
+              "width": node2.width,
+              "object-fit": "contain"
             }
           ]
         }
