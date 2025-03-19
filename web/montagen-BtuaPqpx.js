@@ -261,25 +261,25 @@
   background: #f8f9fa;\r
   border-radius: 4px;
 }\r
-.choose-project[data-v-28563753] {
+.choose-project[data-v-4b73fd74] {
   display: flex;
   height: 70vh;
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.folder-project[data-v-57c85119] {
+}.folder-project[data-v-4bf87573] {
   display: flex;
   height: 40vh;
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.wrapper-ref[data-v-acd94bdb] {
+}.wrapper-ref[data-v-0108ad8a] {
   display: flex;
   height: 70vh;
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-ad6d6394] {
+}.explorer-container[data-v-c18ce0d6] {
   background-color: #fff;
 }[data-v-59fc9bca] .left-tool-button {
   /* Your styles here */
@@ -394,7 +394,7 @@
   flex: 1;
 }\r
 
-.new-imagen-box[data-v-b689b312] {\r
+.new-imagen-box[data-v-86bc622b] {\r
   position: fixed;\r
   width: 100%;\r
   height: 100vh;\r
@@ -406,7 +406,7 @@
   grid-template-columns: auto 1fr;\r
   grid-template-rows: 40px 1fr;
 }
-.new-imagen-box .image-box-top[data-v-b689b312] {\r
+.new-imagen-box .image-box-top[data-v-86bc622b] {\r
   grid-row: 1;\r
   grid-column: 1/span 2;\r
   background-color: #181818;\r
@@ -416,7 +416,7 @@
   box-shadow: var(--bar-shadow);\r
   z-index: 2;
 }
-.new-imagen-box .image-box-left[data-v-b689b312] {\r
+.new-imagen-box .image-box-left[data-v-86bc622b] {\r
   grid-row: 2;\r
   grid-column: 1;\r
   /* background-color: #181818; */\r
@@ -429,7 +429,7 @@
   width: var(--sidebar-width);\r
   /* box-sizing: border-box; */
 }
-.new-imagen-box .image-box-container[data-v-b689b312] {\r
+.new-imagen-box .image-box-container[data-v-86bc622b] {\r
   grid-row: 2;\r
   grid-column: 2;\r
   background-color: goldenrod;\r
@@ -567,6 +567,14 @@
 .tw-m-2 {\r
     margin: 0.5rem
 }\r
+.tw-mx-2 {\r
+    margin-left: 0.5rem;\r
+    margin-right: 0.5rem
+}\r
+.tw-my-2 {\r
+    margin-top: 0.5rem;\r
+    margin-bottom: 0.5rem
+}\r
 .tw-mb-1 {\r
     margin-bottom: 0.25rem
 }\r
@@ -598,6 +606,10 @@
 .tw-py-2 {\r
     padding-top: 0.5rem;\r
     padding-bottom: 0.5rem
+}\r
+.tw-px-4 {\r
+    padding-left: 1rem;\r
+    padding-right: 1rem
 }\r
 .tw-pb-1 {\r
     padding-bottom: 0.25rem
@@ -690,11 +702,11 @@
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, S as unref, M as createVNode, C as createTextVNode$1, a as createBaseVNode, f as reactive, G as withDirectives, K as normalizeClass, J as createCommentVNode, k as withModifiers, ac as withKeys, a2 as normalizeStyle, j as renderSlot$1, T as Teleport, q as toRaw, w as watch, a6 as onBeforeUnmount, n as nextTick$1, a4 as provide, Z as onUnmounted, ad as createApp } from "./assets/vue-mTqs3s9N.js";
-import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, S as Split, o as script$a, p as script$c, q as script$d, r as script$e, t as script$f, u as customAlphabet, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, R as Ripple, B as z, C as script$l, D as DialogService, F as ConfirmationService, G as createPinia, H as ToastService } from "./assets/vendor-CYRZOXem.js";
+import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, S as unref, M as createVNode, C as createTextVNode$1, a as createBaseVNode, f as reactive, G as withDirectives, K as normalizeClass, J as createCommentVNode, k as withModifiers, ac as withKeys, a2 as normalizeStyle, j as renderSlot$1, n as nextTick$1, T as Teleport, q as toRaw, w as watch, a6 as onBeforeUnmount, a4 as provide, Z as onUnmounted, ad as createApp } from "./assets/vue-mTqs3s9N.js";
+import { d as defineStore, s as script, a as script$1, b as script$2, c as script$3, e as script$4, f as script$5, g as storeToRefs, E as ElFormItem, h as ElInput, i as ElButton, j as ElForm, k as script$6, T as Tooltip, l as script$7, m as script$8, n as script$9, S as Split, u as useConfirm, o as script$a, p as script$b, q as script$d, r as script$e, t as script$f, v as script$g, w as customAlphabet, x as script$h, y as script$i, z as script$j, A as script$k, B as script$l, R as Ripple, C as z, D as script$m, F as DialogService, G as ConfirmationService, H as createPinia, I as ToastService } from "./assets/vendor-BCGDScWR.js";
 import "./assets/lodash-DS8RUn65.js";
-import { u as usePrimeVue, t as script$b, P as PrimeVue, v as index$3 } from "./assets/primevue-DNEUd4ld.js";
-import { bV as h, bW as definePreset } from "./assets/primeuix-CIUH-4n_.js";
+import { u as usePrimeVue, t as script$c, P as PrimeVue, v as index$3 } from "./assets/primevue-DM_I3ryo.js";
+import { bW as h, bX as definePreset } from "./assets/primeuix-DEoQIFoy.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-Bb9DjssG.js";
 import "./assets/vueuse-ehZJJDg_.js";
 import "./assets/ctrl-CUqN8X7N.js";
@@ -68357,12 +68369,16 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     setActiveProjectId(projectId) {
       this.activeProjectId = projectId;
     },
-    async getlists() {
+    async getlists(flag) {
       try {
         let response = await app$1.api.fetchApi("/Montagen/Proj/List");
         const json = await response.json();
         console.log(json);
         this.list = json.data;
+        if (flag) {
+          let id = this.list[0].baseInfo.projectId;
+          this.getProjectDetail(id);
+        }
       } catch (err) {
       } finally {
       }
@@ -69123,42 +69139,135 @@ const _hoisted_2$a = { class: "list-box" };
 const _sfc_main$f = /* @__PURE__ */ defineComponent({
   __name: "chooseProject",
   setup(__props) {
+    const confirm = useConfirm();
     const workSpaceStore = useWorkSpaceStore();
     const { list } = storeToRefs(workSpaceStore);
     const selectedProject = ref$3();
     const projects = computed(() => {
       return list.value.map((item) => {
         item.name = item.baseInfo.name;
+        item.projectId = item.baseInfo.projectId;
         return item;
       });
     });
-    const handleTabSelection = (val) => {
-      let id = val.baseInfo.projectId;
-      workSpaceStore.getProjectDetail(id);
+    const projectSelection = computed(() => {
+      return workSpaceStore.activeProject.baseInfo.projectId;
+    });
+    let lastSelected = null;
+    const handleChange = (event2) => {
+      console.log("event", event2);
+      if (!event2.value) {
+        nextTick$1(() => {
+          selectedProject.value = lastSelected;
+        });
+      } else {
+        lastSelected = event2.value;
+      }
     };
+    const handleTabSelection = (val) => {
+      if (!val) return;
+      workSpaceStore.getProjectDetail(val);
+    };
+    const menu = ref$3();
+    const menuTargetNode = ref$3();
+    const onRightClick = (event2) => {
+      console.log("event", event2);
+      const target2 = event2.target.closest(".p-listbox-option");
+      if (target2) {
+        const index2 = Array.from(target2.parentNode.children).indexOf(target2);
+        console.log("index", index2);
+        let option = projects.value[index2];
+        menuTargetNode.value = option;
+        menu.value.show(event2);
+      }
+    };
+    const deleteProject = async (data) => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
+        method: "DELETE"
+      });
+      await response.json();
+      workSpaceStore.getlists();
+    };
+    const menuItems = [
+      {
+        label: "删除",
+        icon: "pi pi-fw pi-trash",
+        command: () => {
+          console.log("删除项目");
+          confirm.require({
+            group: "dialog",
+            message: `Are you sure delete ${menuTargetNode.value.baseInfo.name} project?`,
+            header: "Confirmation",
+            icon: "pi pi-exclamation-triangle",
+            position: "top",
+            rejectProps: {
+              label: "Cancel",
+              severity: "secondary",
+              outlined: true
+            },
+            acceptProps: {
+              label: "Delete"
+            },
+            accept: () => {
+              deleteProject(menuTargetNode.value.baseInfo.projectId);
+            }
+          });
+        }
+      }
+    ];
+    onMounted(() => {
+      lastSelected = projectSelection.value;
+    });
     return (_ctx, _cache) => {
       const _component_Listbox = script$1;
-      return openBlock(), createElementBlock("div", _hoisted_1$e, [
-        createBaseVNode("div", _hoisted_2$a, [
-          createVNode(_component_Listbox, {
-            modelValue: selectedProject.value,
-            "onUpdate:modelValue": [
-              _cache[0] || (_cache[0] = ($event) => selectedProject.value = $event),
-              handleTabSelection
-            ],
-            options: projects.value,
-            optionLabel: "name",
-            listStyle: "max-height:auto",
-            class: "w-full tw-h-full md:w-56 border-none"
-          }, null, 8, ["modelValue", "options"])
-        ])
-      ]);
+      const _component_ContextMenu = script$8;
+      const _component_ConfirmDialog = script$a;
+      return openBlock(), createElementBlock(Fragment, null, [
+        createBaseVNode("div", _hoisted_1$e, [
+          createBaseVNode("div", _hoisted_2$a, [
+            createVNode(_component_Listbox, {
+              modelValue: selectedProject.value,
+              "onUpdate:modelValue": [
+                _cache[0] || (_cache[0] = ($event) => selectedProject.value = $event),
+                handleTabSelection
+              ],
+              defaultValue: projectSelection.value,
+              options: projects.value,
+              optionLabel: "name",
+              onChange: handleChange,
+              optionValue: "projectId",
+              onContextmenu: _cache[1] || (_cache[1] = withModifiers(($event) => onRightClick($event), ["prevent"])),
+              listStyle: "max-height:auto",
+              class: "w-full tw-h-full md:w-56 border-none"
+            }, {
+              option: withCtx(({ option }) => [
+                createBaseVNode("div", null, toDisplayString(option.name), 1)
+              ]),
+              _: 1
+            }, 8, ["modelValue", "defaultValue", "options"])
+          ])
+        ]),
+        createVNode(_component_ContextMenu, {
+          ref_key: "menu",
+          ref: menu,
+          model: menuItems,
+          pt: {
+            root: { style: { zIndex: 2022 } },
+            overlay: {
+              "aria-hidden": false,
+              "aria-modal": true,
+              role: "menu"
+            }
+          }
+        }, null, 512),
+        createVNode(_component_ConfirmDialog, { group: "dialog" })
+      ], 64);
     };
   }
 });
-const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-28563753"]]);
+const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-4b73fd74"]]);
 const _hoisted_1$d = { class: "folder-project" };
-const _hoisted_2$9 = { class: "form-wrapper w-full" };
+const _hoisted_2$9 = { class: "form-wrapper w-full tw-px-4" };
 const _hoisted_3$5 = { class: "form-item" };
 const _hoisted_4$5 = { class: "form-item-content" };
 const _hoisted_5$4 = { class: "flex justify-center" };
@@ -69181,8 +69290,10 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
         errors
       };
     };
+    const isLoading = ref$3(false);
     const onFormSubmit = async ({ values, valid }) => {
       if (valid) {
+        isLoading.value = true;
         let response = await app$1.api.fetchApi(`/Montagen/Proj/Open`, {
           method: "POST",
           headers: {
@@ -69192,10 +69303,12 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
             path: values.path
           })
         });
+        isLoading.value = false;
         const json = await response.json();
         if (json.code == 0) {
           workSpaceStore.setActiveProject(json.data);
           dialogStore.closeDialog();
+          workSpaceStore.getlists();
         } else {
           app$1.extensionManager.toast.add({
             severity: "info",
@@ -69208,9 +69321,9 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _component_InputText = script$9;
-      const _component_Message = script$a;
+      const _component_Message = script$b;
       const _component_Button = script$6;
-      const _component_Form = script$b;
+      const _component_Form = script$c;
       return openBlock(), createElementBlock("div", _hoisted_1$d, [
         createBaseVNode("div", _hoisted_2$9, [
           createVNode(_component_Form, {
@@ -69249,11 +69362,12 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                 ]),
                 createBaseVNode("div", _hoisted_5$4, [
                   createVNode(_component_Button, {
-                    class: "tw-w-11/12",
+                    class: "tw-w-full",
                     type: "submit",
+                    loading: isLoading.value,
                     severity: "secondary",
                     label: "Submit"
-                  })
+                  }, null, 8, ["loading"])
                 ])
               ];
             }),
@@ -69264,7 +69378,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-57c85119"]]);
+const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-4bf87573"]]);
 const _hoisted_1$c = { class: "px-2 tw-mb-2" };
 const _hoisted_2$8 = { class: "content" };
 const _hoisted_3$4 = { class: "px-2 tw-mb-2" };
@@ -69361,28 +69475,28 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
 });
 const _hoisted_1$9 = { class: "wrapper-ref" };
 const _hoisted_2$6 = { class: "card tw-w-full" };
-const _hoisted_3$3 = { class: "form-item tw-m-2" };
+const _hoisted_3$3 = { class: "form-item tw-my-2" };
 const _hoisted_4$3 = { class: "form-item-content" };
 const _hoisted_5$2 = { class: "flex justify-center" };
-const _hoisted_6$2 = { class: "form-item tw-m-2" };
+const _hoisted_6$2 = { class: "form-item tw-my-2" };
 const _hoisted_7$2 = { class: "form-item-content" };
-const _hoisted_8$2 = { class: "form-item tw-m-2" };
-const _hoisted_9$1 = { class: "form-item-content" };
-const _hoisted_10$1 = { class: "form-item tw-m-2" };
-const _hoisted_11$1 = { class: "form-item-content" };
-const _hoisted_12$1 = { class: "form-item tw-m-2" };
-const _hoisted_13$1 = { class: "form-item-content" };
-const _hoisted_14 = { class: "flex justify-center" };
-const _hoisted_15 = { class: "form-item tw-m-2" };
+const _hoisted_8$2 = { class: "flex justify-center" };
+const _hoisted_9$1 = { class: "form-item tw-my-2" };
+const _hoisted_10$1 = { class: "form-item-content" };
+const _hoisted_11$1 = { class: "form-item tw-my-2" };
+const _hoisted_12$1 = { class: "form-item-content" };
+const _hoisted_13$1 = { class: "form-item tw-my-2" };
+const _hoisted_14 = { class: "form-item-content" };
+const _hoisted_15 = { class: "form-item tw-my-2" };
 const _hoisted_16 = { class: "form-item-content" };
-const _hoisted_17 = { class: "form-item tw-m-2" };
-const _hoisted_18 = { class: "form-item-content" };
-const _hoisted_19 = { class: "form-item tw-m-2" };
-const _hoisted_20 = { class: "form-item-content" };
-const _hoisted_21 = { class: "form-item tw-m-2" };
-const _hoisted_22 = { class: "form-item-content" };
-const _hoisted_23 = { class: "flex justify-center" };
-const _hoisted_24 = { class: "form-item tw-m-2" };
+const _hoisted_17 = { class: "flex justify-center" };
+const _hoisted_18 = { class: "form-item tw-my-2" };
+const _hoisted_19 = { class: "form-item-content" };
+const _hoisted_20 = { class: "form-item tw-my-2" };
+const _hoisted_21 = { class: "form-item-content" };
+const _hoisted_22 = { class: "form-item tw-my-2" };
+const _hoisted_23 = { class: "form-item-content" };
+const _hoisted_24 = { class: "form-item tw-my-2" };
 const _hoisted_25 = { class: "form-item-content" };
 const _hoisted_26 = { class: "flex justify-center" };
 const _sfc_main$a = /* @__PURE__ */ defineComponent({
@@ -69390,7 +69504,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const dialogStore = useDialogStore();
     const workSpaceStore = useWorkSpaceStore();
-    const protocolType = ref$3("http");
+    const protocolType = ref$3("local");
     const tabChange = (e) => {
       protocolType.value = e;
     };
@@ -69502,13 +69616,13 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       }
     };
     return (_ctx, _cache) => {
-      const _component_Tab = script$d;
-      const _component_TabList = script$c;
+      const _component_Tab = script$e;
+      const _component_TabList = script$d;
       const _component_InputText = script$9;
-      const _component_Message = script$a;
+      const _component_Message = script$b;
       const _component_Button = script$6;
-      const _component_Form = script$b;
-      const _component_TabPanel = script$e;
+      const _component_Form = script$c;
+      const _component_TabPanel = script$f;
       const _component_TabPanels = script$4;
       const _component_Tabs = script$5;
       return openBlock(), createElementBlock("div", _hoisted_1$9, [
@@ -69520,27 +69634,27 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             default: withCtx(() => [
               createVNode(_component_TabList, null, {
                 default: withCtx(() => [
-                  createVNode(_component_Tab, { value: "http" }, {
+                  createVNode(_component_Tab, { value: "local" }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
+                      createTextVNode$1("本地路径")
+                    ])),
+                    _: 1
+                  }),
+                  createVNode(_component_Tab, { value: "http" }, {
+                    default: withCtx(() => _cache[1] || (_cache[1] = [
                       createTextVNode$1("http协议")
                     ])),
                     _: 1
                   }),
                   createVNode(_component_Tab, { value: "smb" }, {
-                    default: withCtx(() => _cache[1] || (_cache[1] = [
+                    default: withCtx(() => _cache[2] || (_cache[2] = [
                       createTextVNode$1("smb协议")
                     ])),
                     _: 1
                   }),
                   createVNode(_component_Tab, { value: "ftp" }, {
-                    default: withCtx(() => _cache[2] || (_cache[2] = [
-                      createTextVNode$1("ftp协议")
-                    ])),
-                    _: 1
-                  }),
-                  createVNode(_component_Tab, { value: "local" }, {
                     default: withCtx(() => _cache[3] || (_cache[3] = [
-                      createTextVNode$1("本地路径")
+                      createTextVNode$1("ftp协议")
                     ])),
                     _: 1
                   })
@@ -69549,6 +69663,57 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
               }),
               createVNode(_component_TabPanels, null, {
                 default: withCtx(() => [
+                  createVNode(_component_TabPanel, { value: "local" }, {
+                    default: withCtx(() => [
+                      createVNode(_component_Form, {
+                        initialValues: localForm,
+                        resolver: localResolver,
+                        onSubmit: onFormSubmit,
+                        class: "flex flex-col tw-w-full"
+                      }, {
+                        default: withCtx(($form3) => {
+                          var _a2;
+                          return [
+                            createBaseVNode("div", _hoisted_3$3, [
+                              _cache[4] || (_cache[4] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_4$3, [
+                                createVNode(_component_InputText, {
+                                  name: "file_path",
+                                  type: "text",
+                                  placeholder: "path",
+                                  fluid: ""
+                                }),
+                                ((_a2 = $form3.file_path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                                  key: 0,
+                                  severity: "error",
+                                  size: "small",
+                                  variant: "simple"
+                                }, {
+                                  default: withCtx(() => {
+                                    var _a3;
+                                    return [
+                                      createTextVNode$1(toDisplayString((_a3 = $form3.file_path.error) == null ? void 0 : _a3.message), 1)
+                                    ];
+                                  }),
+                                  _: 2
+                                }, 1024)) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createBaseVNode("div", _hoisted_5$2, [
+                              createVNode(_component_Button, {
+                                class: "tw-w-full",
+                                type: "submit",
+                                severity: "secondary",
+                                label: "Submit"
+                              })
+                            ])
+                          ];
+                        }),
+                        _: 1
+                      }, 8, ["initialValues"])
+                    ]),
+                    _: 1
+                  }),
                   createVNode(_component_TabPanel, { value: "http" }, {
                     default: withCtx(() => [
                       createVNode(_component_Form, {
@@ -69560,9 +69725,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_3$3, [
-                              _cache[4] || (_cache[4] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
-                              createBaseVNode("div", _hoisted_4$3, [
+                            createBaseVNode("div", _hoisted_6$2, [
+                              _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_7$2, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -69585,7 +69750,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_5$2, [
+                            createBaseVNode("div", _hoisted_8$2, [
                               createVNode(_component_Button, {
                                 class: "tw-w-full",
                                 type: "submit",
@@ -69611,9 +69776,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form1) => {
                           var _a2, _b2, _c2, _d2;
                           return [
-                            createBaseVNode("div", _hoisted_6$2, [
-                              _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
-                              createBaseVNode("div", _hoisted_7$2, [
+                            createBaseVNode("div", _hoisted_9$1, [
+                              _cache[6] || (_cache[6] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_10$1, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -69636,9 +69801,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_8$2, [
-                              _cache[6] || (_cache[6] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "username:", -1)),
-                              createBaseVNode("div", _hoisted_9$1, [
+                            createBaseVNode("div", _hoisted_11$1, [
+                              _cache[7] || (_cache[7] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "username:", -1)),
+                              createBaseVNode("div", _hoisted_12$1, [
                                 createVNode(_component_InputText, {
                                   name: "username",
                                   type: "text",
@@ -69661,9 +69826,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_10$1, [
-                              _cache[7] || (_cache[7] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
-                              createBaseVNode("div", _hoisted_11$1, [
+                            createBaseVNode("div", _hoisted_13$1, [
+                              _cache[8] || (_cache[8] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
+                              createBaseVNode("div", _hoisted_14, [
                                 createVNode(_component_InputText, {
                                   name: "username",
                                   type: "text",
@@ -69686,9 +69851,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_12$1, [
-                              _cache[8] || (_cache[8] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "server:", -1)),
-                              createBaseVNode("div", _hoisted_13$1, [
+                            createBaseVNode("div", _hoisted_15, [
+                              _cache[9] || (_cache[9] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "server:", -1)),
+                              createBaseVNode("div", _hoisted_16, [
                                 createVNode(_component_InputText, {
                                   name: "server",
                                   type: "text",
@@ -69711,7 +69876,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_14, [
+                            createBaseVNode("div", _hoisted_17, [
                               createVNode(_component_Button, {
                                 class: "tw-w-full",
                                 type: "submit",
@@ -69737,9 +69902,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form2) => {
                           var _a2, _b2, _c2, _d2;
                           return [
-                            createBaseVNode("div", _hoisted_15, [
-                              _cache[9] || (_cache[9] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
-                              createBaseVNode("div", _hoisted_16, [
+                            createBaseVNode("div", _hoisted_18, [
+                              _cache[10] || (_cache[10] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
+                              createBaseVNode("div", _hoisted_19, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -69762,9 +69927,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_17, [
-                              _cache[10] || (_cache[10] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "username:", -1)),
-                              createBaseVNode("div", _hoisted_18, [
+                            createBaseVNode("div", _hoisted_20, [
+                              _cache[11] || (_cache[11] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "username:", -1)),
+                              createBaseVNode("div", _hoisted_21, [
                                 createVNode(_component_InputText, {
                                   name: "username",
                                   type: "text",
@@ -69787,9 +69952,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_19, [
-                              _cache[11] || (_cache[11] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
-                              createBaseVNode("div", _hoisted_20, [
+                            createBaseVNode("div", _hoisted_22, [
+                              _cache[12] || (_cache[12] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
+                              createBaseVNode("div", _hoisted_23, [
                                 createVNode(_component_InputText, {
                                   name: "username",
                                   type: "text",
@@ -69812,9 +69977,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_21, [
-                              _cache[12] || (_cache[12] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "server:", -1)),
-                              createBaseVNode("div", _hoisted_22, [
+                            createBaseVNode("div", _hoisted_24, [
+                              _cache[13] || (_cache[13] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "server:", -1)),
+                              createBaseVNode("div", _hoisted_25, [
                                 createVNode(_component_InputText, {
                                   name: "server",
                                   type: "text",
@@ -69831,57 +69996,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                                     var _a3;
                                     return [
                                       createTextVNode$1(toDisplayString((_a3 = $form2.server.error) == null ? void 0 : _a3.message), 1)
-                                    ];
-                                  }),
-                                  _: 2
-                                }, 1024)) : createCommentVNode("", true)
-                              ])
-                            ]),
-                            createBaseVNode("div", _hoisted_23, [
-                              createVNode(_component_Button, {
-                                class: "tw-w-full",
-                                type: "submit",
-                                severity: "secondary",
-                                label: "Submit"
-                              })
-                            ])
-                          ];
-                        }),
-                        _: 1
-                      }, 8, ["initialValues"])
-                    ]),
-                    _: 1
-                  }),
-                  createVNode(_component_TabPanel, { value: "local" }, {
-                    default: withCtx(() => [
-                      createVNode(_component_Form, {
-                        initialValues: localForm,
-                        resolver: localResolver,
-                        onSubmit: onFormSubmit,
-                        class: "flex flex-col tw-w-full"
-                      }, {
-                        default: withCtx(($form3) => {
-                          var _a2;
-                          return [
-                            createBaseVNode("div", _hoisted_24, [
-                              _cache[13] || (_cache[13] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "文件地址:", -1)),
-                              createBaseVNode("div", _hoisted_25, [
-                                createVNode(_component_InputText, {
-                                  name: "file_path",
-                                  type: "text",
-                                  placeholder: "path",
-                                  fluid: ""
-                                }),
-                                ((_a2 = $form3.file_path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
-                                  key: 0,
-                                  severity: "error",
-                                  size: "small",
-                                  variant: "simple"
-                                }, {
-                                  default: withCtx(() => {
-                                    var _a3;
-                                    return [
-                                      createTextVNode$1(toDisplayString((_a3 = $form3.file_path.error) == null ? void 0 : _a3.message), 1)
                                     ];
                                   }),
                                   _: 2
@@ -69914,7 +70028,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-acd94bdb"]]);
+const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-0108ad8a"]]);
 const previewUtils = {
   "image": function(url2) {
     return {
@@ -70049,7 +70163,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
         label: "assets",
         type: "folder",
         fileType: "folder_assets",
-        icon: "fontello icon-montagen",
+        leaf: false,
+        // icon: 'fontello icon-montagen',
         children: (((_a2 = activeProject.value) == null ? void 0 : _a2.assets) || []).map((asset) => {
           return Object.assign({}, asset, {
             key: "asset_" + cusWorkflowID(),
@@ -70065,7 +70180,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
         label: "workflows",
         type: "folder",
         fileType: "folder_workflow",
-        icon: "fontello icon-montagen",
+        leaf: false,
+        // icon: 'fontello icon-montagen',
         children: (((_b2 = activeProject.value) == null ? void 0 : _b2.workflows) || []).map((workflow) => {
           return Object.assign({}, workflow, {
             key: workflow.workflowId,
@@ -70094,7 +70210,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
         label: "refs",
         type: "folder",
         fileType: "folder_ref",
-        icon: "fontello icon-montagen",
+        leaf: false,
+        // icon: 'fontello icon-montagen',
         children: (((_c2 = activeProject.value) == null ? void 0 : _c2.refs) || []).map((ref2) => {
           return Object.assign({}, ref2, {
             key: ref2.file_name,
@@ -70292,9 +70409,6 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       }
       renameEditingNode.value = {};
     };
-    const addProject = async () => {
-      visible.value = true;
-    };
     const onFormSubmit = () => {
       addList();
     };
@@ -70332,7 +70446,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_Button = script$6;
       const _component_Toolbar = script$7;
-      const _component_Tree = script$f;
+      const _component_Tree = script$g;
       const _component_ContextMenu = script$8;
       const _component_el_input = ElInput;
       const _component_Dialog = script;
@@ -70373,14 +70487,6 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                     onClick: refreshList
                   }, null, 512), [
                     [_directive_tooltip, "refresh"]
-                  ]),
-                  withDirectives(createVNode(_component_Button, {
-                    text: "",
-                    icon: "pi pi-plus",
-                    class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: addProject
-                  }, null, 512), [
-                    [_directive_tooltip, "add"]
                   ])
                 ])
               ]),
@@ -70515,7 +70621,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-ad6d6394"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-c18ce0d6"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -70747,7 +70853,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$h), {
+        createVNode(unref(script$i), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -70757,7 +70863,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$g), {
+            createVNode(unref(script$h), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -70771,11 +70877,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$g), {
+            createVNode(unref(script$h), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$h), {
+                createVNode(unref(script$i), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -70788,7 +70894,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$g), {
+                    createVNode(unref(script$h), {
                       class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70,
@@ -70811,7 +70917,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$g), {
+                    createVNode(unref(script$h), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -70938,9 +71044,9 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       });
     };
     return (_ctx, _cache) => {
-      const _component_SelectButton = script$j;
+      const _component_SelectButton = script$k;
       const _component_ScrollPanel = script$2;
-      const _component_ConfirmPopup = script$i;
+      const _component_ConfirmPopup = script$j;
       return openBlock(), createElementBlock("div", _hoisted_1$4, [
         createVNode(_component_ScrollPanel, {
           class: "overflow-hidden no-drag bg-transparent",
@@ -71083,7 +71189,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       workSpaceStore.getlists();
     };
     return (_ctx, _cache) => {
-      const _component_Menubar = script$k;
+      const _component_Menubar = script$l;
       const _component_el_input = ElInput;
       const _component_Button = script$6;
       const _component_Dialog = script;
@@ -71241,8 +71347,8 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
     });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$l;
-      const _component_Message = script$a;
+      const _component_Textarea = script$m;
+      const _component_Message = script$b;
       const _component_Button = script$6;
       const _component_Dialog = script;
       return openBlock(), createBlock(_component_Dialog, {
@@ -71254,7 +71360,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
       }, {
         default: withCtx(() => [
-          createVNode(unref(script$b), {
+          createVNode(unref(script$c), {
             resolver: resolver.value,
             initialValues: initialValues.value,
             onSubmit: onFormSubmit,
@@ -71314,8 +71420,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     const workSpaceStore = useWorkSpaceStore();
     const showAdd = ref$3(false);
     const getList = async () => {
-      console.log("getList");
-      workSpaceStore.getlists();
+      workSpaceStore.getlists(true);
     };
     provide("getList", getList);
     const textNodeAddRef = ref$3();
@@ -71328,7 +71433,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       }
     });
     const changeAddStatus = () => {
-      console.log("changeAddStatus", "弹窗影藏了");
       showAdd.value = false;
     };
     onMounted(() => {
@@ -71357,7 +71461,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b689b312"]]);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-86bc622b"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
