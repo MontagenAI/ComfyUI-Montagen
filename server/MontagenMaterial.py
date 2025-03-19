@@ -187,7 +187,14 @@ class MontagenMaterial:
         """
         materials = self.get_material_list()
         return [
-            {key: value for key, value in material.items() if key not in "inner"}
+            (
+                {key: value for key, value in material.items() if key not in "inner"}
+                | (
+                    {"parent": material["inner"]["parent"]}
+                    if "inner" in material and "parent" in material["inner"]
+                    else {"parent": None}
+                )
+            )
             for material in materials
             if material["file_type"] == file_type
         ]
@@ -195,7 +202,14 @@ class MontagenMaterial:
     def get_materials_by_location(self, isRef: bool) -> List[Dict[str, Any]]:
         materials = self.get_material_list()
         return [
-            {key: value for key, value in material.items() if key not in "inner"}
+            (
+                {key: value for key, value in material.items() if key not in "inner"}
+                | (
+                    {"parent": material["inner"]["parent"]}
+                    if "inner" in material and "parent" in material["inner"]
+                    else {"parent": None}
+                )
+            )
             for material in materials
             if material["is_ref"] == isRef
         ]
@@ -238,15 +252,66 @@ class MontagenMaterial:
             os.remove(full_ref_path)
         self.cache_manager.delete(self.key)
 
-    def add_material(self, file_path: str):
+    def rename_material(self, file_name: str, new_file_name: str):
         """
-        Add a material to the appropriate directory.
+        Rename a material and update the cache.
 
-        :param file_path: Path to the file to be added.
+        :param file_name: Name of the file to be renamed.
+        :param new_file_name: New name for the file.
         """
+        material = self.get_material(file_name)
+        if not material:
+            return
+
+        is_ref = material.get("is_ref")
+        file_type = material.get("file_type")
+        if not is_ref:
+            # Handle local assets
+            asset_dir = self._get_asset_dir(file_type)
+            old_file_path = os.path.join(asset_dir, file_name)
+            # Ensure the new file name is unique
+            new_file_name = self.get_unique_file_name(new_file_name)
+            new_file_path = os.path.abspath(os.path.join(asset_dir, new_file_name))
+            old_meta_path = old_file_path + ".meta"
+            new_meta_path = new_file_path + ".meta"
+            # Rename the file
+            os.rename(old_file_path, new_file_path)
+            os.rename(old_meta_path, new_meta_path)
+
+        else:
+            # Handle reference files
+            ref_dir = self._get_ref_dir(file_type)
+            old_ref_path = os.path.abspath(
+                os.path.join(
+                    self.project.project_path, self.refs_dir, material.get("ref_path")
+                )
+            )
+            new_file_name = self.get_unique_file_name(new_file_name)
+            ref_file_name = f"{os.path.splitext(new_file_name)[0]}.txt"
+            new_ref_path = os.path.join(ref_dir, ref_file_name)
+            relative_ref_path = os.path.relpath(
+                new_ref_path,
+                os.path.join(self.project.project_path, self.refs_dir),
+            )
+
+            # Update the ref file content
+            with open(old_ref_path, "r") as ref_file:
+                ref_info = json.load(ref_file)
+                ref_info["file_name"] = new_file_name
+                ref_info["ref_path"] = relative_ref_path
+
+            with open(new_ref_path, "w") as ref_file:
+                json.dump(ref_info, ref_file)
+
+            os.remove(old_ref_path)
+
+        self.cache_manager.delete(self.key)
+        return new_file_name
+
+    def add_material(self, file_path: str, file_name: str = None):
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"File {file_path} does not exist.")
-        file_name = os.path.basename(file_path)
+        file_name = file_name or os.path.basename(file_path)
         file_type = self._get_file_type(file_name)
         if not file_type:
             raise ValueError(f"Unsupported file type: {file_name}")
