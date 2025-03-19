@@ -232,9 +232,15 @@ class LGraphNode:
         self.data["properties"]["clipId"] = value
 
     @property
+    def clips(self):
+        if "properties" not in self.data:
+            self.data["properties"] = {}
+        return self.data["properties"]["outputs"]
+
+    @property
     def type(self):
         return LGraphNode.GraphNodeClassMap[self.data["type"]]
-    
+
     @property
     def isMontagenNode(self):
         return self.data["type"] in LGraphNode.GraphNodeClassMap
@@ -278,3 +284,6 @@ class LGraphNode:
         lGraphNode.clipId = clipId
         lGraphNode.tag = tag
         return lGraphNode
+
+    def to_clip():
+        pass

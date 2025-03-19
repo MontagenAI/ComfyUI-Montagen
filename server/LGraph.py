@@ -1,6 +1,7 @@
 from .LLink import LLink
 from .LGraphNode import LGraphNode
 from .Utils import to_base36_random, MONTAGENPROJ
+from datetime import datetime
 
 
 class LGraph:
@@ -41,6 +42,7 @@ class LGraph:
                     "projectId": project_id,
                     "workflowId": workflow_id,
                     "workflowName": workflow_name,
+                    "modifyTime": datetime.now().isoformat(),
                 },
             },
             "version": 0.4,
@@ -54,7 +56,7 @@ class LGraph:
 
     @property
     def montagenInfo(self):
-        return self.extra.get(MONTAGENPROJ, {})
+        return self.extra.get(MONTAGENPROJ, None)
 
     @montagenInfo.setter
     def montagenInfo(self, value):
@@ -65,6 +67,10 @@ class LGraph:
         if "nodes" not in self.data:
             self.data["nodes"] = []
         return self.data.get("nodes", [])
+
+    @property
+    def graphNodes(self):
+        return [LGraphNode(node) for node in self.data.get("nodes", [])]
 
     @property
     def links(self):
@@ -84,6 +90,16 @@ class LGraph:
     @property
     def montagenWorkflowId(self):
         return self.montagenInfo.get("workflowId")
+
+    @property
+    def montagenModifyTime(self):
+        return datetime.fromisoformat(
+            self.montagenInfo.get("modifyTime", datetime.now().isoformat())
+        )
+
+    @montagenModifyTime.setter
+    def montagenModifyTime(self, value):
+        self.montagenInfo["modifyTime"] = value.isoformat()
 
     def addEmptyNode(self, clipId, name, type, tag=None):
         state = self.state

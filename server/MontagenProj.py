@@ -94,7 +94,7 @@ class MontagenProj:
         workflows = []
         for workflow_name in os.listdir(workflows_path):
             workflow_path = os.path.join(workflows_path, workflow_name)
-            if os.path.isdir(workflow_path):
+            if os.path.isfile(workflow_path):
                 workflow = MontagenWorkflow.create_from_path(workflow_path, self)
                 if workflow:
                     workflows.append(workflow)
@@ -121,6 +121,7 @@ class MontagenProj:
             "workflows": [workflow.to_json() for workflow in self.workflows],
             "assets": self.montagen_material.get_materials_by_location(False),
             "refs": self.montagen_material.get_materials_by_location(True),
+            "timelines": [],
         }
 
     def to_simple_json(self):
@@ -250,11 +251,13 @@ class MontagenProj:
         workflow = self.get_workflow(workflow_id)
         if workflow:
             workflow.delete()
-            self.montagen_cache_manager.delete(self.cache_key)
+            self.workflows.remove(workflow)
 
     def project_add_workflow(self, workflow_id, workflow_name: str):
         workflow_name = workflow_name or DEFAULTWORKFLOWNAME
         workflow_id = workflow_id or to_base36_random()
-        MontagenWorkflow.create_new_workflow(workflow_id, workflow_name, self)
-        self.montagen_cache_manager.delete(self.cache_key)
+        workflow = MontagenWorkflow.create_new_workflow(
+            workflow_id, workflow_name, self
+        )
+        self.workflows.append(workflow)
         return workflow_id
