@@ -293,9 +293,9 @@ class MontagenProjManager:
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
                 raise Exception("Workflow not found")
-            workflow.syn_workflow_clip(req_data)
+            version = workflow.syn_workflow_clip(req_data)
             proj.project_change_time()
-            return web.json_response({"code": 0})
+            return web.json_response({"code": 0, "data": version})
 
         # @server.routes.post("/Montagen/Proj/{id}/Workflow/New")
         # @error_handling_decorator

@@ -7,8 +7,6 @@ from .Utils import localfile_video_audio_info, FILEADDR
 from .remotefile.RemoteFileHandler import RemoteFileHandler
 import asyncio
 import threading
-from collections import deque
-import time
 from queue import Queue
 
 
@@ -207,7 +205,7 @@ class MontagenMaterial:
                 | (
                     {"parent": material["inner"]["parent"]}
                     if "inner" in material and "parent" in material["inner"]
-                    else {"parent": None}
+                    else {}
                 )
             )
             for material in materials
@@ -308,7 +306,7 @@ class MontagenMaterial:
         self.cache_manager.delete(self.key)
         return new_file_name
 
-    def add_material(self, file_path: str, file_name: str = None):
+    def add_material(self, file_path: str, file_name: str = None, parent=None):
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"File {file_path} does not exist.")
         file_name = file_name or os.path.basename(file_path)
@@ -333,6 +331,10 @@ class MontagenMaterial:
         if file_type in ["video", "audio", "image", "gif"]:
             metadata = localfile_video_audio_info(target_path, total_size, file_type)
 
+        if parent:
+            metadata["parent"] = parent
+        else:
+            metadata["parent"] = None
         # Write metadata to a metadata file
         metadata_file_path = f"{target_path}.meta"
         with open(metadata_file_path, "w") as meta_file:
@@ -382,6 +384,30 @@ class MontagenMaterial:
         """
         file_type = self._get_file_type(file_name)
         materials = self.get_material_list()
+        for material in materials:
+            if (
+                material["file_type"] == file_type
+                and material["file_name"] == file_name
+            ):
+                return material
+        return None
+
+    def get_material_output(self, file_name: str) -> Optional[Dict[str, Any]]:
+        """
+        Get a material by file name from both files and reference files.
+
+        :param file_name: Name of the file.
+        :return: Dictionary containing material information or None if not found.
+        """
+        file_type = self._get_file_type(file_name)
+        materials = self.get_materials_by_location(False)
+        for material in materials:
+            if (
+                material["file_type"] == file_type
+                and material["file_name"] == file_name
+            ):
+                return material
+        materials = self.get_materials_by_location(True)
         for material in materials:
             if (
                 material["file_type"] == file_type

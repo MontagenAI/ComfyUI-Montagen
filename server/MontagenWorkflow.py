@@ -137,13 +137,16 @@ class MontagenWorkflow:
             self.workflow_json_path, self.workflow_data.serialize()
         )
 
+    def save(self):
+        self._save_workflow()
+
     def to_json(self):
         return {
             "workflow": self.workflow_data.serialize(),
             "workflowId": self.workflow_id,
             "workflowName": self.workflow_name,
             "clips": self.clips,
-            "modifyTime": self.modify_time,
+            "modifyTime": self.modify_time.isoformat(),
         }
 
     # def workflow_add_clip(self, name, type):
@@ -215,26 +218,53 @@ class MontagenWorkflow:
         if old_filename:
             self.project.montagen_material.delete_material(old_filename)
         file_name = os.path.basename(file_full_path)
-        file_name = f"{clip_name}_{index}_{file_name}"
+        ext = os.path.splitext(file_name)[1]
+        file_name = f"{clip_name}_{index}{ext}"
         file_name = self.project.montagen_material.add_material(
-            file_full_path, file_name
+            file_full_path, file_name, clip_name
         )
         src = "/" + FILEADDR.format(id=self.project_id, filename=file_name)
-        return (file_name, src)
+        return (self.project.montagen_material.get_material_output(file_name), src)
 
-    def syn_workflow_clip(self, workflow: dict):
+    def syn_workflow_clip(
+        self, workflow: dict, check_version=True, node_id=None, name=None, type=None
+    ):
+        properties = None
+        node = None
+        if node_id:
+            node = self.workflow_data.getNodeById(node_id)
+            properties = node.properties
+        new_workflow = LGraph(workflow)
+        if check_version:
+            if self.workflow_data.version > new_workflow.version:
+                raise ValueError(
+                    "workflow version is larger than your provided workflow"
+                )
+            version = new_workflow.version + 1
+        else:
+            version = self.workflow_data.version + 1
         montagen_info = self.workflow_data.montagenInfo
-        self.workflow_data = LGraph(workflow)
+        self.workflow_data = new_workflow
         self.workflow_data.montagenInfo = montagen_info
+        self.workflow_data.version = version
         self.modify_time = datetime.now()
+        if properties:
+            node = self.workflow_data.getNodeById(node_id)
+            node.properties = properties
+            node.clipName = name
+            node.type = type
         self._save_workflow()
         if os.path.exists(self.workflow_tmp_path):
             for clip_id in os.listdir(self.workflow_tmp_path):
                 clip_path = os.path.join(self.workflow_tmp_path, clip_id)
                 if os.path.isdir(clip_path):
-                    node = self._get_node_by_clip_id(clip_id)
-                    if not node:
+                    node_1 = self._get_node_by_clip_id(clip_id)
+                    if not node_1:
                         shutil.rmtree(clip_path)
+
+        if node:
+            return node
+        return version
 
     def _get_node_by_clip_id(self, clip_id):
         for node in self.workflow_data.graphNodes:

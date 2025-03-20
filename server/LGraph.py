@@ -42,6 +42,7 @@ class LGraph:
                     "projectId": project_id,
                     "workflowId": workflow_id,
                     "workflowName": workflow_name,
+                    "version": 0,
                     "modifyTime": datetime.now().isoformat(),
                 },
             },
@@ -56,7 +57,7 @@ class LGraph:
 
     @property
     def montagenInfo(self):
-        return self.extra.get(MONTAGENPROJ, None)
+        return self.extra.get(MONTAGENPROJ, {})
 
     @montagenInfo.setter
     def montagenInfo(self, value):
@@ -70,7 +71,7 @@ class LGraph:
 
     @property
     def graphNodes(self):
-        return [LGraphNode(node) for node in self.data.get("nodes", [])]
+        return [LGraphNode(self, node) for node in self.data.get("nodes", [])]
 
     @property
     def links(self):
@@ -88,6 +89,14 @@ class LGraph:
             self.montagenInfo["workflowName"] = value
 
     @property
+    def version(self):
+        return self.montagenInfo.get("version")
+
+    @version.setter
+    def version(self, value):
+        self.montagenInfo["version"] = value
+
+    @property
     def montagenWorkflowId(self):
         return self.montagenInfo.get("workflowId")
 
@@ -101,14 +110,17 @@ class LGraph:
     def montagenModifyTime(self, value):
         self.montagenInfo["modifyTime"] = value.isoformat()
 
-    def addEmptyNode(self, clipId, name, type, tag=None):
-        state = self.state
-        node = LGraphNode.CreateNode(self, clipId, name, type, tag)
-        node.id = state["lastNodeId"] + 1
-        if state["lastNodeId"] < node.id:
-            state["lastNodeId"] = node.id
-        self.nodes.append(node.serialize())
-        self.serialize()
+    def increace_version(self):
+        self.version += 1
+
+    # def addEmptyNode(self, clipId, name, type, tag=None):
+    #     state = self.state
+    #     node = LGraphNode.CreateNode(self, clipId, name, type, tag)
+    #     node.id = state["lastNodeId"] + 1
+    #     if state["lastNodeId"] < node.id:
+    #         state["lastNodeId"] = node.id
+    #     self.nodes.append(node.serialize())
+    #     self.serialize()
 
     def setWorkflowInfo(self, user_id, project_id, workflow_id, workflow_name):
         montagen_workflow_info = {
@@ -184,11 +196,11 @@ class LGraph:
                 return True
         return False
 
-    def getClipIdFromId(self, nodeId):
+    def getNodeById(self, nodeId):
         for node in self.nodes:
             lGraphNode = LGraphNode(self, node)
             if str(lGraphNode.id) == str(nodeId):
-                return lGraphNode.clipId
+                return lGraphNode
         return None
 
     def isOldStyleClipId(self, clipId):
