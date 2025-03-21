@@ -71207,6 +71207,7 @@ maskpage.id = "comfyui-maskpage";
 maskpage.style.cssText = `
   position: relative;
   z-index: 1100;
+  width: 0;
 `;
 document.body.append(maskpage);
 const app = createApp(_sfc_main);
