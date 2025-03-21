@@ -36,12 +36,13 @@ class ImageClipAdapter(BaseClipAdapter):
         extra_pnginfo=None,
     ):
         oriImage = images[0]
-        oriAlpha = alpha[0]
+        oriAlpha = alpha
         format = "png"
         (userId, projectId, proj, workflowId, workflow, clip_id, node) = self.get_info(
             name, unique_id, prompt, extra_pnginfo
         )
         if oriAlpha != None:
+            oriAlpha = oriAlpha[0]
             alpha = 1.0 - oriAlpha
             oriImage = torch.cat((oriImage[:, :, :3], alpha.unsqueeze(2)), dim=2)
 
