@@ -26,8 +26,8 @@ class GifClipAdapter(VideoClipAdapter):
         prompt: dict = None,
         extra_pnginfo=None,
     ):
-        imageLen = len(image)
-        oriImage = image
+        imageLen = len(images)
+        oriImage = images
         oriAlpha = alpha
         format = "gif"
         (
@@ -41,18 +41,18 @@ class GifClipAdapter(VideoClipAdapter):
         ) = self.get_info(name, unique_id, prompt, extra_pnginfo)
         out_images = []
         if alpha != None:
-            alpha = 1.0 - nodes_compositing.resize_mask(alpha, image.shape[1:])
+            alpha = 1.0 - nodes_compositing.resize_mask(alpha, images.shape[1:])
             for i in range(imageLen):
                 out_images.append(
-                    torch.cat((image[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2)
+                    torch.cat((images[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2)
                 )
         else:
             for i in range(imageLen):
-                out_images.append(image[i])
-        image = torch.stack(out_images)
+                out_images.append(images[i])
+        images = torch.stack(out_images)
         images = [
             Image.fromarray(np.clip(255 * img.cpu().numpy(), 0, 255).astype(np.uint8))
-            for img in image
+            for img in images
         ]
         duration = 1 / preview_fps * 1000
         (fileFullName, tmpFullName) = self.get_output_path(workflow, clip_id, 0, format)
