@@ -2,39 +2,26 @@ from ..server.MontagenProjManager import MontagenProjManager
 import io
 import torchaudio
 from .BaseClipAdapter import BaseClipAdapter
+import os
 
 
 class AudioClipAdapter(BaseClipAdapter):
 
     def __init__(self):
         super().__init__()
+        self.type = "audio"
 
     @classmethod
-    def INPUT_TYPES(s):
+    def ClIP_INPUT_TYPES(s):
         return {
             "required": {
                 "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
-                "name": ("STRING", {"default": DEFAULTCLIPNAME}),
-            },
-            "optional": {
-                "tag": ("STRING", {"tooltip": "The tag."}),
-            },
-            "hidden": {
-                "prompt": "PROMPT",
-                "extra_pnginfo": "EXTRA_PNGINFO",
-                "unique_id": "UNIQUE_ID",
-            },
+            }
         }
 
-    RETURN_TYPES = ("AUDIO",)
-    FUNCTION = "save_audio"
+    DESCRIPTION = "Audio Clip Adapter"
 
-    OUTPUT_NODE = True
-
-    CATEGORY = "Montagen"
-    DESCRIPTION = "Montagen Audio Preview"
-
-    def save_audio(
+    def save_func(
         self,
         audio,
         name,
@@ -48,45 +35,37 @@ class AudioClipAdapter(BaseClipAdapter):
             projectId,
             proj,
             workflowId,
-            clip_id,
-            old_clip_id,
-            fileFullName,
-            tmpFullName,
             workflow,
-        ) = self.get_info("mp3", name, unique_id, tag, prompt, extra_pnginfo)
+            clip_id,
+            node,
+        ) = self.get_info(name, unique_id, prompt, extra_pnginfo)
         buff = io.BytesIO()
         wavform = audio["waveform"].cpu()[0]
         torchaudio.save(buff, wavform, audio["sample_rate"], format="MP3")
+        (fileFullName, tmpFullName) = self.get_output_path(workflow, clip_id, 0, "mp3")
         with open(tmpFullName, "wb") as f:
             f.write(buff.getbuffer())
         if os.path.exists(tmpFullName):
-            workflow.output_copy(clip_id or old_clip_id, tmpFullName, fileFullName)
+            src = self.copy_clip_output(tmpFullName, fileFullName, workflow, node)
 
-        duration = wavform.size(1) / audio["sample_rate"]
-
-        MontagenProjManager.instance.modify_clip(
-            workflow,
-            clip_id,
-            old_clip_id,
-            fileFullName,
-            "audio",
-            duration,
-        )
         MontagenProjManager.instance.onProcessEnd(
             {
+                "userId": userId,
                 "projectId": projectId,
                 "workflowId": workflowId,
-                "clipId": clip_id or old_clip_id,
+                "clipId": clip_id,
+                "src": src,
             }
         )
         return {
             "ui": {
-                "videos": [
+                "audios": [
                     {
                         "userId": userId,
                         "projectId": projectId,
                         "workflowId": workflowId,
-                        "clipId": clip_id or old_clip_id,
+                        "clipId": clip_id,
+                        "src": src,
                     }
                 ]
             },

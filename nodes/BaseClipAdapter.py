@@ -22,7 +22,6 @@ class BaseClipAdapter:
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
-                "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
                 **clips_types.get("optional", {}),
             },
             "hidden": {

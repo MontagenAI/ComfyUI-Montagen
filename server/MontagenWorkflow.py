@@ -229,11 +229,11 @@ class MontagenWorkflow:
     def syn_workflow_clip(
         self, workflow: dict, check_version=True, node_id=None, name=None, type=None
     ):
-        properties = None
         node = None
-        if node_id:
-            node = self.workflow_data.getNodeById(node_id)
-            properties = node.properties
+        property_cache = {}
+        for node_item in self.workflow_data.graphNodes:
+            if node_item.isMontagenNode:
+                property_cache[node_item.id] = node_item.properties
         new_workflow = LGraph(workflow)
         if check_version:
             if self.workflow_data.version > new_workflow.version:
@@ -248,9 +248,13 @@ class MontagenWorkflow:
         self.workflow_data.montagenInfo = montagen_info
         self.workflow_data.version = version
         self.modify_time = datetime.now()
-        if properties:
+        for node_item_id in property_cache:
+            properties = property_cache[node_item_id]
+            node_item = self.workflow_data.getNodeById(node_item_id)
+            if node_item:
+                node_item.properties = properties
+        if node_id:
             node = self.workflow_data.getNodeById(node_id)
-            node.properties = properties
             node.clipName = name
             node.type = type
         self._save_workflow()

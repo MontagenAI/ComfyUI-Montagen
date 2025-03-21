@@ -5,26 +5,30 @@ from ..server.MontagenProjManager import MontagenProjManager
 from comfy.utils import ProgressBar
 from comfy_extras import nodes_compositing
 import torch
-from .BaseClipAdapter import BaseClipAdapter
-import shutil
+from .ImageClipAdapter import ImageClipAdapter
 
 
-class VideoClipAdapter(BaseClipAdapter):
+class VideoClipAdapter(ImageClipAdapter):
     def __init__(self):
+        super().__init__()
         self.type = "video"
 
     @classmethod
     def ClIP_INPUT_TYPES(s):
+        base = super().ClIP_INPUT_TYPES()
         return {
             "required": {
-                "images": ("IMAGE", {"tooltip": "The images to preview."}),
+                **base.get("required"),
                 "preview_fps": (
                     "INT",
                     {
                         "default": 25,
                     },
                 ),
-            }
+            },
+            "optional": {
+                **base.get("optional"),
+            },
         }
 
     DESCRIPTION = "Video Clip Adapter"

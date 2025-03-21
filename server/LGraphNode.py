@@ -220,7 +220,7 @@ class LGraphNode:
 
     @property
     def clipId(self):
-        return self.data.get("properties", {}).get("clipId") or (
+        return self.properties.get("clipId") or (
             f"{self.id}_{self.graph.montagenWorkflowId}"
             if self.graph.montagenWorkflowId
             else self.id
@@ -235,7 +235,7 @@ class LGraphNode:
     @property
     def properties(self):
         if "properties" not in self.data:
-            self.data["properties"] = {}
+            self.properties = {}
         return self.data.get("properties", {})
 
     @properties.setter
@@ -249,13 +249,13 @@ class LGraphNode:
     @property
     def clip_file_name(self):
         if self.clip_asset:
-            return self.clip_asset["file_name"]
+            return self.clip_asset.get("file_name")
         return None
 
     @property
     def clip_asset(self):
         if self.assets:
-            resource = next(self.assets.__iter__(), None)
+            resource = next(iter(self.assets), None)
             if resource:
                 return resource
         return None
