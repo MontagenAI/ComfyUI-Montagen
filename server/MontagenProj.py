@@ -309,3 +309,10 @@ class MontagenProj:
         self.timelines.append(timeline)
         self.project_change_time()
         return timeline_name
+
+    def get_timelines_by_clip_id(self, clip_id):
+        timelines = []
+        for timeline in self.timelines:
+            if timeline.has_clip_id(clip_id):
+                timelines.append(timeline)
+        return timelines

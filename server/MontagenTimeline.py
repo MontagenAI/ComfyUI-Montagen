@@ -194,6 +194,10 @@ class MontagenTimeline:
 
         return changed_clips_by_workflow
 
+    def has_clip_id(self, clip_id):
+        clip_exist = next(self._getNodes(fn=lambda x: x.clip_id == clip_id), None)
+        return clip_exist is not None
+
     def _getNodes(self, parent=None, fn=None, iterator=None):
         if not parent:
             parent = self.timeline_data
