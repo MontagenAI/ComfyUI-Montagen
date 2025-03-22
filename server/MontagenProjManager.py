@@ -86,16 +86,6 @@ class MontagenProjManager:
                 raise Exception("Project not found")
             return web.json_response({"code": 0, "data": proj.to_json()})
 
-        # @server.routes.get("/Montagen/Proj/{id}/clips")
-        # @error_handling_decorator
-        # async def get_project_clips(request, register_action):
-        #     return web.json_response({"code": 0, "data": []})
-
-        # @server.routes.delete("/Montagen/Proj/{id}/Clip/{refId}")
-        # @error_handling_decorator
-        # async def delete_project_clip(request, register_action):
-        #     return web.json_response({"code": 0})
-
         @server.routes.post("/Montagen/Proj/New")
         @error_handling_decorator
         async def add_project(request, register_action):
@@ -204,16 +194,6 @@ class MontagenProjManager:
             proj.project_change_time()
             return web.json_response({"code": 0, "data": newname})
 
-        # @server.routes.post("/Montagen/Proj/{id}/New/{type}")
-        # @error_handling_decorator
-        # async def add_project_clip(request, register_action):
-        #     return web.json_response({"code": 0})
-
-        # @server.routes.post("/Montagen/Proj/{id}/Text/New")
-        # @error_handling_decorator
-        # async def add_project_text_clip(request, register_action):
-        #     return web.json_response({"code": 0})
-
         @server.routes.post("/Montagen/Proj/{id}/Name")
         @error_handling_decorator
         async def update_project_name(request, register_action):
@@ -250,11 +230,6 @@ class MontagenProjManager:
                 raise Exception("Project not found")
             proj.project_change_description(description)
             return web.json_response({"code": 0})
-
-        # @server.routes.post("/Montagen/Proj/{id}/Timeline")
-        # @error_handling_decorator
-        # async def update_project_timeline(request, register_action):
-        #     return web.json_response({"code": 0})
 
         @server.routes.delete("/Montagen/Proj/{id}")
         @error_handling_decorator
@@ -297,20 +272,6 @@ class MontagenProjManager:
             proj.project_change_time()
             return web.json_response({"code": 0, "data": version})
 
-        # @server.routes.post("/Montagen/Proj/{id}/Workflow/New")
-        # @error_handling_decorator
-        # async def add_workflow(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     project_id = request.match_info.get("id", None)
-        #     req_data = await request.json()
-        #     name = req_data.get("name", None)
-        #     proj = self.get_project(user_id, project_id)
-        #     if not proj:
-        #         raise Exception("Project not found")
-        #     workflow_id = proj.project_add_workflow(None, name)
-        #     proj.project_change_time()
-        #     return web.json_response({"code": 0, "data": workflow_id})
-
         @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Rename")
         @error_handling_decorator
         async def rename_workflow(request, register_action):
@@ -339,82 +300,54 @@ class MontagenProjManager:
             if not proj:
                 raise Exception("Project not found")
             proj.project_delete_workflow(workflow_id)
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Timeline/{timelineName}/Rename")
+        @error_handling_decorator
+        async def rename_timeline(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            timeline_name = request.match_info.get("timelineName", None)
+            req_data = await request.json()
+            name = req_data.get("name", None)
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            timeline = proj.get_timeline(timeline_name)
+            if not timeline:
+                raise Exception("timeline not found")
+            timeline.rename_timeline(name)
             proj.project_change_time()
             return web.json_response({"code": 0})
 
-        # @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/New")
-        # @error_handling_decorator
-        # async def add_workflow_clip(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     project_id = request.match_info.get("id", None)
-        #     workflow_id = request.match_info.get("workflowId", None)
-        #     req_data = await request.json()
-        #     type = req_data.get("type", None)
-        #     name = req_data.get("name", None)
-        #     proj = self.get_project(user_id, project_id)
-        #     if not proj:
-        #         raise Exception("Project not found")
-        #     workflow = proj.get_workflow(workflow_id)
-        #     if not workflow:
-        #         raise Exception("Workflow not found")
-        #     clip_id = workflow.workflow_add_clip(name, type)
-        #     proj.project_change_time()
-        #     return web.json_response({"code": 0, "data": clip_id})
+        @server.routes.delete("/Montagen/Proj/{id}/Timeline/{timelineName}")
+        @error_handling_decorator
+        async def delete_timeline(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            timeline_name = request.match_info.get("timelineName", None)
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            proj.project_delete_timeline(timeline_name)
+            return web.json_response({"code": 0})
 
-        # @server.routes.post(
-        #     "/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{clipId}/Rename"
-        # )
-        # @error_handling_decorator
-        # async def rename_workflow_clip(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     project_id = request.match_info.get("id", None)
-        #     workflow_id = request.match_info.get("workflowId", None)
-        #     clip_id = request.match_info.get("clipId", None)
-        #     req_data = await request.json()
-        #     name = req_data.get("name", None)
-        #     proj = self.get_project(user_id, project_id)
-        #     if not proj:
-        #         raise Exception("Project not found")
-        #     workflow = proj.get_workflow(workflow_id)
-        #     if not workflow:
-        #         raise Exception("Workflow not found")
-        #     workflow.workflow_rename_clip(clip_id, name)
-        #     proj.project_change_time()
-        #     return web.json_response({"code": 0})
-
-        # @server.routes.delete("/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{clipId}")
-        # @error_handling_decorator
-        # async def delete_workflow_clip(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     project_id = request.match_info.get("id", None)
-        #     workflow_id = request.match_info.get("workflowId", None)
-        #     clip_id = request.match_info.get("clipId", None)
-        #     proj = self.get_project(user_id, project_id)
-        #     if not proj:
-        #         raise Exception("Project not found")
-        #     workflow = proj.get_workflow(workflow_id)
-        #     if not workflow:
-        #         raise Exception("Workflow not found")
-        #     workflow.workflow_delete_clip(clip_id)
-        #     proj.project_change_time()
-        #     return web.json_response({"code": 0})
-
-        # @server.routes.post(
-        #     "/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{clipId}/Copy"
-        # )
-        # @error_handling_decorator
-        # async def copy_clip_to_other_project(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     project_id = request.match_info.get("id", None)
-        #     workflow_id = request.match_info.get("workflowId", None)
-        #     clip_id = request.match_info.get("clipId", None)
-        #     req_data = await request.json()
-        #     project_id_to = req_data.get("project_id_to", None)
-        #     workflow_id_to = req_data.get("workflow_id_to", None)
-        #     self.copy_clip_to_other_project(
-        #         user_id, project_id, workflow_id, clip_id, project_id_to, workflow_id_to
-        #     )
-        #     return web.json_response({"code": 0})
+        @server.routes.post("/Montagen/Proj/{id}/Timeline/{timelineName}/Edit")
+        @error_handling_decorator
+        async def update_timeline(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            req_data = await request.json()
+            timeline_name = request.match_info.get("timelineName", None)
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            timeline = proj.get_timeline(timeline_name)
+            if not timeline:
+                raise Exception("timeline not found")
+            result = timeline.syn_timeline(req_data)
+            proj.project_change_time()
+            return web.json_response({"code": 0, "data": result})
 
         @server.routes.get(FILEADDR)
         @error_handling_decorator
@@ -595,9 +528,9 @@ class MontagenProjManager:
     #         dst_workflow.syn_workflow_clip(dst_workflow.workflow)
     #         dst_project.project_change_time()
 
-    def onProcessEnd(self, data):
+    def onProcessEnd(self, data, event=MONTAGENPROCESSEND):
         PromptServer.instance.send_sync(
-            MONTAGENPROCESSEND,
+            event,
             data,
             PromptServer.instance.client_id,
         )

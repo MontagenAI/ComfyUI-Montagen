@@ -207,7 +207,7 @@ class MontagenWorkflow:
             self.modify_time = datetime.now()
             self.workflow_name = name
             new_filename = generate_unique_filename(
-                self.workflow_json_dir_name, self.workflow_json_file_name
+                self.workflow_json_dir_name, name + ".json"
             )
             new_fullname = os.path.join(self.workflow_json_dir_name, new_filename)
             os.rename(self.workflow_json_path, new_fullname)
@@ -275,3 +275,13 @@ class MontagenWorkflow:
             if node.isMontagenNode and node.clipId == clip_id:
                 return node
         return None
+
+    def syn_clip(self, clip):
+        clip_id = clip.clip_id
+        node = self._get_node_by_clip_id(clip_id)
+        if not node:
+            return False
+        result = node.syn_clip(clip)
+        if result:
+            self.save()
+        return result

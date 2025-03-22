@@ -6,6 +6,7 @@ from .Utils import (
     to_base36_random,
     INFOFILE,
     WORKFLOWBASEPATH,
+    TIMELINEBASEPATH,
     VERSIONINFO,
     create_path,
     rename_path,
@@ -16,6 +17,7 @@ from .Utils import (
 from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
 from .MontagenMaterial import MontagenMaterial
+from .MontagenTimeline import MontagenTimeline
 
 
 class MontagenProj:
@@ -26,6 +28,7 @@ class MontagenProj:
         self.montagen_cache_manager = MontagenCacheManager()
         self.montagen_material = MontagenMaterial(ASSETSDIR, REfSDIR, self)
         self.cache_key = f"{self.project_id}_montagen_workflows"
+        self.timeline_cache_key = f"{self.project_id}_montagen_timelines"
 
     @property
     def project_path_name(self):
@@ -102,6 +105,31 @@ class MontagenProj:
         self.montagen_cache_manager.add(self.cache_key, workflows)
         return workflows
 
+    @property
+    def timelines(self):
+        cached_timelines = self.montagen_cache_manager.get(self.timeline_cache_key)
+        if cached_timelines is not None:
+            cached_timelines.sort(
+                key=lambda x: (x.timeline_name, -x.modify_time.timestamp())
+            )
+            return cached_timelines
+
+        timelines_path = os.path.join(self.project_path, TIMELINEBASEPATH)
+        if not os.path.exists(timelines_path):
+            os.makedirs(timelines_path)
+            return []
+
+        timelines = []
+        for timeline_name in os.listdir(timelines_path):
+            timeline_path = os.path.join(timelines_path, timeline_name)
+            if os.path.isfile(timeline_path):
+                timeline = MontagenTimeline.create_from_path(timeline_path, self)
+                if timeline:
+                    timelines.append(timeline)
+        timelines.sort(key=lambda x: (x.timeline_name, -x.modify_time.timestamp()))
+        self.montagen_cache_manager.add(self.timeline_cache_key, timelines)
+        return timelines
+
     def _load_project(self):
         project_json = os.path.join(self.project_path, INFOFILE)
         if not os.path.exists(project_json):
@@ -113,6 +141,7 @@ class MontagenProj:
         raise ValueError(f"Invalid {project_json} file")
 
     def _save_project(self):
+        self.modify_time = datetime.now()
         self.save_project(self.project_path, self.project_data)
 
     def to_json(self):
@@ -121,7 +150,7 @@ class MontagenProj:
             "workflows": [workflow.to_json() for workflow in self.workflows],
             "assets": self.montagen_material.get_materials_by_location(False),
             "refs": self.montagen_material.get_materials_by_location(True),
-            "timelines": [],
+            "timelines": [timline.to_json() for timline in self.timelines],
         }
 
     def to_simple_json(self):
@@ -219,29 +248,33 @@ class MontagenProj:
                 return workflow
         return None
 
+    def get_timeline(self, timeline_name: str):
+        for timeline in self.timelines:
+            if timeline.timeline_name == timeline_name:
+                return timeline
+        return None
+
+    def project_change_time(self):
+        self._save_project()
+
     def project_rename(self, name: str):
         if not name:
             raise Exception("name is empty")
         if name != self.project_name:
-            self.modify_time = datetime.now()
             self.project_name = name
             new_name = rename_path(self.project_base_name, self.project_path_name, name)
             self.project_path = os.path.join(self.project_base_name, new_name)
             self._save_project()
             self.montagen_cache_manager.delete(self.cache_key)
+            self.montagen_cache_manager.delete(self.timeline_cache_key)
             self.montagen_material.clear_cache()
 
     def project_change_description(self, description: str):
         if not description:
             raise Exception("description is empty")
         if description != self.description:
-            self.modify_time = datetime.now()
             self.description = description
             self._save_project()
-
-    def project_change_time(self):
-        self.modify_time = datetime.now()
-        self._save_project()
 
     def delete(self):
         if self.project_path:
@@ -252,6 +285,7 @@ class MontagenProj:
         if workflow:
             workflow.delete()
             self.workflows.remove(workflow)
+            self.project_change_time()
 
     def project_add_workflow(self, workflow_id, workflow_name: str):
         workflow_name = workflow_name or DEFAULTWORKFLOWNAME
@@ -260,4 +294,18 @@ class MontagenProj:
             workflow_id, workflow_name, self
         )
         self.workflows.append(workflow)
+        self.project_change_time()
         return workflow_id
+
+    def project_delete_timeline(self, timeline_name: str):
+        timeline = self.get_timeline(timeline_name)
+        if timeline:
+            timeline.delete()
+            self.timelines.remove(timeline)
+            self.project_change_time()
+
+    def project_add_timeline(self, timeline_name: str):
+        timeline = MontagenTimeline.create_new_timeline(timeline_name, self)
+        self.timelines.append(timeline)
+        self.project_change_time()
+        return timeline_name

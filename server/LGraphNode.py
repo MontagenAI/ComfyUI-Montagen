@@ -52,58 +52,209 @@ class LGraphNodeOutput:
 
 
 class LGraphNode:
-    # positions = [
-    #     [415, 200],
-    #     [420, 205],
-    #     [425, 210],
-    #     [430, 215],
-    #     [435, 220],
-    #     [440, 225],
-    #     [445, 230],
-    #     [450, 235],
-    #     [455, 240],
-    #     [460, 245],
-    #     [315, 200],
-    #     [320, 205],
-    #     [325, 210],
-    #     [330, 215],
-    #     [335, 220],
-    #     [340, 225],
-    #     [345, 230],
-    #     [350, 235],
-    #     [355, 240],
-    #     [360, 245],
-    #     [415, 300],
-    #     [420, 305],
-    #     [425, 310],
-    #     [430, 315],
-    #     [435, 320],
-    #     [440, 325],
-    #     [445, 330],
-    #     [450, 335],
-    #     [455, 340],
-    #     [460, 345],
-    #     [315, 300],
-    #     [320, 405],
-    #     [325, 410],
-    #     [330, 415],
-    #     [335, 420],
-    #     [340, 425],
-    #     [345, 430],
-    #     [350, 435],
-    #     [355, 440],
-    #     [360, 445],
-    # ]
 
-    # widgetsNameIndex = {"video": 0, "audio": 0, "image": 0, "gif": 0}
+    image_fields = [
+        "active",
+        "x",
+        "y",
+        "width",
+        "height",
+        "rotation",
+        "opacity",
+        "anchor",
+        "flipX",
+        "flipY",
+        "zIndex",
+        "object-fit",
+        "volume",
+        "ss",
+        "to",
+        "start",
+        "end",
+        "duration",
+        "blur",
+        "loop",
+        "audio",
+        "mute",
+        "speed",
+        "preload",
+    ]
 
-    # widgetsTagIndex = {"video": 2, "audio": 1, "image": 2, "gif": 2}
+    image_fields_dict = {}
+    for index, field in enumerate(image_fields):
+        image_fields_dict[field] = index
 
-    # GraphNodeClassMap = {
-    #     "MontagenVideoClipAdapter": "video",
-    #     "MontagenAudioClipAdapter": "audio",
-    #     "MontagenImageClipAdapter": "image",
-    # }
+    image_option = {
+        "active": (
+            "BOOLEAN",
+            {"default": True, "tooltip": "Activate the clip."},
+        ),
+        "x": (
+            "STRING",
+            {"default": "50vw", "tooltip": "X position of the clip."},
+        ),
+        "y": (
+            "STRING",
+            {"default": "50vh", "tooltip": "Y position of the clip."},
+        ),
+        "width": ("STRING", {"default": "50vw", "tooltip": "Width of the clip."}),
+        "height": ("STRING", {"default": "50vh", "tooltip": "Height of the clip."}),
+        "rotation": (
+            "FLOAT",
+            {"default": 0.0, "tooltip": "Rotation angle of the clip."},
+        ),
+        "opacity": (
+            "FLOAT",
+            {"default": 1.0, "tooltip": "Opacity of the clip."},
+        ),
+        "anchor": (
+            "FLOAT",
+            {"default": "0.5", "tooltip": "Anchor point of the clip."},
+        ),
+        "flipX": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Flip the clip horizontally."},
+        ),
+        "flipY": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Flip the clip vertically."},
+        ),
+        "zIndex": ("INT", {"default": 0, "tooltip": "Z-index for layering."}),
+        "object-fit": (
+            ["cover", "contain", "scale-down", "fill", "none"],
+            {"default": "contain", "tooltip": "Object fit mode of the clip."},
+        ),
+        "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the clip."}),
+        "ss": (
+            "FLOAT",
+            {"default": 0, "tooltip": "Start time for trimming.", "defaultDelte": True},
+        ),
+        "to": (
+            "FLOAT",
+            {"default": 0, "tooltip": "End time for trimming.", "defaultDelte": True},
+        ),
+        "start": (
+            "FLOAT",
+            {
+                "default": 0.0,
+                "tooltip": "Start time of the clip.",
+                "defaultDelte": True,
+            },
+        ),
+        "end": (
+            "FLOAT",
+            {"default": 0, "tooltip": "End time of the clip.", "defaultDelte": True},
+        ),
+        "duration": (
+            "FLOAT",
+            {"default": 0, "tooltip": "Duration of the clip.", "defaultDelte": True},
+        ),
+        "blur": (
+            "FLOAT",
+            {"default": 0, "tooltip": "Blur level of the clip."},
+        ),
+        "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the clip."}),
+        "audio": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Audio file for the clip."},
+        ),
+        "mute": (
+            "BOOLEAN",
+            {"default": True, "tooltip": "Mute audio for the clip."},
+        ),
+        "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the clip."}),
+        "preload": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Preload the clip."},
+        ),
+    }
+
+    audio_fields = [
+        "active",
+        "audio",
+        "start",
+        "end",
+        "duration",
+        "loop",
+        "pitch",
+        "speed",
+        "volume",
+        "fadeIn",
+        "fadeOut",
+        "ss",
+        "to",
+    ]
+
+    audio_fields_dict = {}
+    for index, field in enumerate(audio_fields):
+        audio_fields_dict[field] = index
+
+    audio_option = {
+        "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the audio."}),
+        "audio": (
+            "BOOLEAN",
+            {"default": True, "tooltip": "Audio file for the clip."},
+        ),
+        "start": (
+            "FLOAT",
+            {
+                "default": 0.0,
+                "tooltip": "Start time of the audio.",
+                "defaultDelte": True,
+            },
+        ),
+        "end": (
+            "FLOAT",
+            {"default": 0, "tooltip": "End time of the audio.", "defaultDelte": True},
+        ),
+        "duration": (
+            "FLOAT",
+            {"default": 0, "tooltip": "Duration of the audio.", "defaultDelte": True},
+        ),
+        "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the audio."}),
+        "pitch": ("FLOAT", {"default": 1.0, "tooltip": "Pitch of the audio."}),
+        "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the audio."}),
+        "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the audio."}),
+        "fadeIn": (
+            "FLOAT",
+            {
+                "default": 0.0,
+                "tooltip": "Fade-in duration of the audio.",
+                "defaultDelte": True,
+            },
+        ),
+        "fadeOut": (
+            "FLOAT",
+            {
+                "default": 0.0,
+                "tooltip": "Fade-out duration of the audio.",
+                "defaultDelte": True,
+            },
+        ),
+        "ss": (
+            "FLOAT",
+            {
+                "default": 0.0,
+                "tooltip": "Start time for trimming the audio.",
+                "defaultDelte": True,
+            },
+        ),
+        "to": (
+            "FLOAT",
+            {
+                "default": 10.0,
+                "tooltip": "End time for trimming the audio.",
+                "defaultDelte": True,
+            },
+        ),
+    }
+
+    supported_config_type = {
+        "image": (3, image_fields, image_fields_dict, image_option),
+        "video": (4, image_fields, image_fields_dict, image_option),
+        "gif": (4, image_fields, image_fields_dict, image_option),
+        "audio": (3, audio_fields, audio_fields_dict, audio_option),
+    }
 
     def __init__(self, graph, data):
         self.graph = graph
@@ -115,108 +266,13 @@ class LGraphNode:
     def clone(self):
         return copy.deepcopy(self.data)
 
-    # @staticmethod
-    # def createTemplage():
-    #     position = random.choice(LGraphNode.positions)
-    #     return {
-    #         "video": {
-    #             "id": 1,
-    #             "type": "MontagenVideoClipAdapter",
-    #             "pos": position,
-    #             "size": [210, 130],
-    #             "flags": {},
-    #             "order": 0,
-    #             "mode": 0,
-    #             "inputs": [
-    #                 {"name": "images", "type": "IMAGE", "link": None},
-    #                 {
-    #                     "name": "alpha",
-    #                     "type": "MASK",
-    #                     "shape": 7,
-    #                     "link": None,
-    #                 },
-    #             ],
-    #             "outputs": [
-    #                 {"name": "IMAGE", "type": "IMAGE", "links": None},
-    #                 {"name": "MASK", "type": "MASK", "links": None},
-    #             ],
-    #             "properties": {"Node name for S&R": "MontagenVideoClipAdapter"},
-    #             "widgets_values": ["", 25, "", "image"],
-    #         },
-    #         "audio": {
-    #             "id": 1,
-    #             "type": "MontagenAudioClipAdapter",
-    #             "pos": position,
-    #             "size": [315, 82],
-    #             "flags": {},
-    #             "order": 0,
-    #             "mode": 0,
-    #             "inputs": [{"name": "audio", "type": "AUDIO", "link": None}],
-    #             "outputs": [{"name": "AUDIO", "type": "AUDIO", "links": None}],
-    #             "properties": {"Node name for S&R": "MontagenAudioClipAdapter"},
-    #             "widgets_values": ["", ""],
-    #         },
-    #         "image": {
-    #             "id": 1,
-    #             "type": "MontagenImageClipAdapter",
-    #             "pos": position,
-    #             "size": [315, 82],
-    #             "flags": {},
-    #             "order": 0,
-    #             "mode": 0,
-    #             "inputs": [
-    #                 {"name": "image", "type": "IMAGE", "link": None},
-    #                 {
-    #                     "name": "alpha",
-    #                     "type": "MASK",
-    #                     "shape": 7,
-    #                     "link": None,
-    #                 },
-    #             ],
-    #             "outputs": [
-    #                 {"name": "IMAGE", "type": "IMAGE", "links": None},
-    #                 {"name": "MASK", "type": "MASK", "links": None},
-    #             ],
-    #             "properties": {"Node name for S&R": "MontagenImageClipAdapter"},
-    #             "widgets_values": ["", 6, "", "image"],
-    #         },
-    #         "gif": {
-    #             "id": 1,
-    #             "type": "MontagenImageClipAdapter",
-    #             "pos": position,
-    #             "size": [315, 82],
-    #             "flags": {},
-    #             "order": 0,
-    #             "mode": 0,
-    #             "inputs": [
-    #                 {"name": "image", "type": "IMAGE", "link": None},
-    #                 {
-    #                     "name": "alpha",
-    #                     "type": "MASK",
-    #                     "shape": 7,
-    #                     "link": None,
-    #                 },
-    #             ],
-    #             "outputs": [
-    #                 {"name": "IMAGE", "type": "IMAGE", "links": None},
-    #                 {"name": "MASK", "type": "MASK", "links": None},
-    #             ],
-    #             "properties": {"Node name for S&R": "MontagenImageClipAdapter"},
-    #             "widgets_values": ["", 6, "", "image"],
-    #         },
-    #     }
-
-    # @property
-    # def widgets(self):
-    #     return self.data.get("widgets_values")
+    @property
+    def widgets(self):
+        return self.data.get("widgets_values")
 
     @property
     def id(self):
         return self.data["id"]
-
-    # @id.setter
-    # def id(self, value):
-    #     self.data["id"] = value
 
     @property
     def clipId(self):
@@ -225,12 +281,6 @@ class LGraphNode:
             if self.graph.montagenWorkflowId
             else self.id
         )
-
-    # @clipId.setter
-    # def clipId(self, value):
-    #     if "properties" not in self.data:
-    #         self.data["properties"] = {}
-    #     self.data["properties"]["clipId"] = value
 
     @property
     def properties(self):
@@ -270,6 +320,16 @@ class LGraphNode:
         self.assets.append(value)
 
     @property
+    def clip(self):
+        return self.properties.get("outputs", {}).get("clip", None)
+
+    @clip.setter
+    def clip(self, value):
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        self.properties["outputs"]["clip"] = value
+
+    @property
     def type(self):
         return self.properties.get("montagen_type", None)
 
@@ -301,18 +361,6 @@ class LGraphNode:
             self.data["outputs"] = []
         return [LGraphNodeOutput(output) for output in self.data["outputs"]]
 
-    # @staticmethod
-    # def CreateNode(graph, clipId, name, type, tag=None):
-    #     graphNodeTemplate = LGraphNode.createTemplage()
-    #     if type not in graphNodeTemplate:
-    #         raise Exception("Node type not found")
-    #     node_data = graphNodeTemplate[type]
-    #     lGraphNode = LGraphNode(graph, node_data)
-    #     lGraphNode.clipName = name
-    #     lGraphNode.clipId = clipId
-    #     lGraphNode.tag = tag
-    #     return lGraphNode
-
     def to_clip(self):
         return {
             "clipId": self.clipId,
@@ -320,3 +368,47 @@ class LGraphNode:
             "type": self.type,
             "assets": self.assets,
         }
+
+    def syn_clip(self, clip):
+        if clip:
+            clip = clip.to_json()
+            changed = False
+            offset, field, index_map, opt = self.supported_config_type[self.type]
+            for key in field:
+                if key in clip:
+                    if key in self.clip:
+                        if self.clip[key] != clip[key]:
+                            changed = True
+                            self.widgets[index_map[key] + offset] = clip[key]
+                    else:
+                        changed = True
+                        self.widgets[index_map[key] + offset] = clip[key]
+            if changed:
+                self.clip = clip
+            return changed
+
+    def set_input_meta(self, enable, index, meta):
+        self.widgets[index] = enable
+        offset, field, index_map, opt = self.supported_config_type[self.type]
+        for key in field:
+            if key in meta:
+                self.widgets[index_map[key] + offset] = meta[key]
+
+    def set_clip(self, clip):
+        key_to_delete = []
+        for key in clip:
+            if key in self.image_option:
+                opt = self.image_option[key]
+                if opt:
+                    if len(opt) == 2 and opt[1].get("default") == clip[key]:
+                        if opt[1].get("defaultDelte"):
+                            key_to_delete.append(key)
+
+        for key in key_to_delete:
+            del clip[key]
+        if self.clip:
+            if "refId" in self.clip:
+                del clip["refId"]
+            self.clip.update(clip)
+        else:
+            self.clip = clip

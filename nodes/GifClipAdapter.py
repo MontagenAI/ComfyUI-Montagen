@@ -1,6 +1,5 @@
 import os
 import numpy as np
-from ..server.MontagenProjManager import MontagenProjManager
 from PIL import Image
 from comfy_extras import nodes_compositing
 import torch
@@ -19,22 +18,23 @@ class GifClipAdapter(VideoClipAdapter):
         self,
         images,
         name,
+        inputMeta,
         preview_fps,
+        meta=None,
         alpha=None,
         unique_id=None,
         tag=None,
         prompt: dict = None,
         extra_pnginfo=None,
+        **config
     ):
-        imageLen = len(images)
-        oriImage = images
-        oriAlpha = alpha
+        image_len = len(images)
         format = "gif"
         (
-            userId,
-            projectId,
+            user_id,
+            project_id,
             proj,
-            workflowId,
+            workflow_id,
             workflow,
             clip_id,
             node,
@@ -42,12 +42,12 @@ class GifClipAdapter(VideoClipAdapter):
         out_images = []
         if alpha != None:
             alpha = 1.0 - nodes_compositing.resize_mask(alpha, images.shape[1:])
-            for i in range(imageLen):
+            for i in range(image_len):
                 out_images.append(
                     torch.cat((images[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2)
                 )
         else:
-            for i in range(imageLen):
+            for i in range(image_len):
                 out_images.append(images[i])
         images = torch.stack(out_images)
         images = [
@@ -55,40 +55,32 @@ class GifClipAdapter(VideoClipAdapter):
             for img in images
         ]
         duration = 1 / preview_fps * 1000
-        (fileFullName, tmpFullName) = self.get_output_path(workflow, clip_id, 0, format)
+        (file_fullName, tmp_fullName) = self.get_output_path(
+            workflow, clip_id, 0, format
+        )
         images[0].save(
-            tmpFullName,
+            tmp_fullName,
             save_all=True,
             append_images=images[1:],
             duration=duration,
             loop=0,
             disposal=2,
         )
-        if os.path.exists(tmpFullName):
-            src = self.copy_clip_output(tmpFullName, fileFullName, workflow, node)
-        duration = 10
-
-        MontagenProjManager.instance.onProcessEnd(
-            {
-                "projectId": projectId,
-                "workflowId": workflowId,
-                "clipId": clip_id,
-                "src": src,
-                "duration": duration,
-            }
+        if os.path.exists(tmp_fullName):
+            src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
+        duration = image_len / preview_fps
+        if inputMeta and meta:
+            meta_result = meta
+            node.set_input_meta(False, 1, meta)
+            workflow.save()
+        return self.return_result(
+            src,
+            duration,
+            clip_id,
+            workflow_id,
+            workflow,
+            project_id,
+            user_id,
+            meta_result,
+            node,
         )
-        return {
-            "ui": {
-                "videos": [
-                    {
-                        "userId": userId,
-                        "projectId": projectId,
-                        "workflowId": workflowId,
-                        "clipId": clip_id,
-                        "src": src,
-                        "duration": duration,
-                    }
-                ]
-            },
-            "result": (oriImage, oriAlpha),
-        }

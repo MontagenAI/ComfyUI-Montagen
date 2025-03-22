@@ -1,7 +1,6 @@
 import os
 import numpy as np
 from . import videosave
-from ..server.MontagenProjManager import MontagenProjManager
 from comfy.utils import ProgressBar
 from comfy_extras import nodes_compositing
 import torch
@@ -9,6 +8,7 @@ from .ImageClipAdapter import ImageClipAdapter
 
 
 class VideoClipAdapter(ImageClipAdapter):
+
     def __init__(self):
         super().__init__()
         self.type = "video"
@@ -37,36 +37,37 @@ class VideoClipAdapter(ImageClipAdapter):
         self,
         images,
         name,
+        inputMeta,
         preview_fps=25,
+        meta=None,
         alpha=None,
         unique_id=None,
         tag=None,
         prompt: dict = None,
         extra_pnginfo=None,
+        **config
     ):
         pbar = ProgressBar(100)
-        imageLen = len(images)
-        oriImages = images
-        oriAlpha = alpha
+        image_len = len(images)
         out_images = []
         if alpha != None:
             alpha = 1.0 - nodes_compositing.resize_mask(alpha, images.shape[1:])
-            for i in range(imageLen):
+            for i in range(image_len):
                 out_images.append(
                     torch.cat((images[i][:, :, :3], alpha[i].unsqueeze(2)), dim=2)
                 )
         else:
-            for i in range(imageLen):
+            for i in range(image_len):
                 out_images.append(images[i])
         images = torch.stack(out_images)
         hasAlpha = False
         if images.dim() == 4 and images.shape[-1] == 4:
             hasAlpha = True
         (
-            userId,
-            projectId,
+            user_id,
+            project_id,
             proj,
-            workflowId,
+            workflow_id,
             workflow,
             clip_id,
             node,
@@ -77,48 +78,35 @@ class VideoClipAdapter(ImageClipAdapter):
             extra_pnginfo,
         )
         frames = []
-        currentProgress = 0
-        loadImageProgressItem = 100 / imageLen
+        current_progress = 0
+        load_image_progress_item = 100 / image_len
         for image in images:
             frame = np.clip(255 * image.cpu().numpy(), 0, 255).astype(np.uint8)
             frames.append(frame)
-            currentProgress = currentProgress + loadImageProgressItem
-            pbar.update_absolute(currentProgress * 0.5)
-        (fileFullName, tmpFullName) = self.get_output_path(
+            current_progress = current_progress + load_image_progress_item
+            pbar.update_absolute(current_progress * 0.5)
+        (file_fullName, tmp_fullName) = self.get_output_path(
             workflow, clip_id, 0, "mp4" if not hasAlpha else "webm"
         )
-        videosave.save_video(tmpFullName, frames, preview_fps, pbar, hasAlpha)
+        videosave.save_video(tmp_fullName, frames, preview_fps, pbar, hasAlpha)
         pbar.update_absolute(100)
-        if os.path.exists(tmpFullName):
-            src = self.copy_clip_output(tmpFullName, fileFullName, workflow, node)
+        if os.path.exists(tmp_fullName):
+            src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
 
-        duration = imageLen / preview_fps
-
-        MontagenProjManager.instance.onProcessEnd(
-            {
-                "projectId": projectId,
-                "workflowId": workflowId,
-                "clipId": clip_id,
-                "src": src,
-                "duration": duration,
-            }
+        duration = image_len / preview_fps
+        meta_result = config
+        if inputMeta and meta:
+            meta_result = meta
+            node.set_input_meta(False, 1, meta)
+            workflow.save()
+        return self.return_result(
+            src,
+            duration,
+            clip_id,
+            workflow_id,
+            workflow,
+            project_id,
+            user_id,
+            meta_result,
+            node,
         )
-        return {
-            "ui": {
-                "videos": [
-                    {
-                        "fps": preview_fps,
-                        "width": frames[0].shape[1],
-                        "height": frames[0].shape[0],
-                        "imageLen": imageLen,
-                        "userId": userId,
-                        "projectId": projectId,
-                        "workflowId": workflowId,
-                        "clipId": clip_id,
-                        "src": src,
-                        "duration": duration,
-                    }
-                ]
-            },
-            "result": (oriImages, oriAlpha),
-        }

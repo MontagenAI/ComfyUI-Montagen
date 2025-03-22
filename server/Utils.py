@@ -50,6 +50,7 @@ def generate_unique_filename(directory: str, filename: str) -> str:
     :param filename: The base filename to use.
     :return: A unique filename.
     """
+    filename = re.sub(illegal_chars_pattern, "", filename)
     base_name, ext = os.path.splitext(filename)
     counter = 0
     unique_filename = filename
@@ -222,6 +223,7 @@ DEFAULTCLIPNAME = "Untitled Clip"
 DEFAULTWORKFLOWNAME = "Untitled Workflow"
 SUPPORTEDTYPES = ["video", "image", "gif", "audio"]
 WORKFLOWBASEPATH = "workflows"
+TIMELINEBASEPATH = "timelines"
 TMPPAHT = "tmp"
 illegal_chars_pattern = r'[\\/:*?"<>|]'
 INFOFILE = "montagenproject.Mont"
