@@ -56,10 +56,8 @@ class Material {
     this.conf = conf;
     this.type = conf.type;
     this.path = conf.cachedSrc || conf.src || conf.path || conf.image || conf.url;
-    if (isBrowser) {
-      if (this.path?.startsWith('//')) {
-        this.path = window.location.origin + this.path.substring(1);
-      }
+    if (this.path?.startsWith('//')) {
+      this.path = window.location.origin + this.path.substring(1);
     }
     this.parseTimeConf(conf);
   }

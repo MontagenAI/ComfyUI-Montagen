@@ -17,32 +17,29 @@ const InkPaint = require('../../inkpaint/lib/index');
 const FFNode = require('./node');
 
 class FFExtras extends FFNode {
-  constructor(conf = { animations: [] }) {
+  constructor(conf = {}) {
     super({ type: 'extras', ...conf });
   }
 
-  /**
-   * Create display object.
-   * @private
-   */
   createDisplay() {
     this.display = new InkPaint.Container();
     this.container = this.display;
   }
 
-  /**
-   * Start rendering
-   * @private
-   */
-  start() {
-    super.start();
-    this.drawing = this.drawing.bind(this);
-    TimelineUpdate.addFrameCallback(this.drawing);
-    this.init && this.init(InkPaint);
-    this.emit('init');
+  enable() {
+    super.enable();
+    this.enableFn && this.enableFn(InkPaint);
+    this.emit('enable');
+  }
+
+  disable() {
+    super.disable();
+    this.disableFn && this.disableFn(InkPaint);
+    this.emit('disable');
   }
 
   drawing(time, delta) {
+    super.drawing(time, delta);
     this.update && this.update(InkPaint, time, delta);
     this.emit('update');
   }
@@ -57,13 +54,13 @@ class FFExtras extends FFNode {
   destroy() {
     super.destroy();
     this.destroyContainer();
-    TimelineUpdate.removeFrameCallback(this.drawing);
 
     this.destroyed && this.destroyed(InkPaint);
     this.emit('destroy');
 
+    this.enableFn = null;
+    this.disableFn = null;
     this.update = null;
-    this.drawing = null;
     this.container = null;
   }
 }

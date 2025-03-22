@@ -2,14 +2,14 @@
 
 const FFClip = require('../core/clip');
 const XML = require('../utils/xml');
-const { getRemote } = require("../utils/xhr");
+const { getRemote } = require('../utils/xhr');
 
 class FFFilter extends FFClip {
   constructor(conf = {}) {
     super({ type: 'filter', ...conf });
   }
 
-  createDisplay() { }
+  createDisplay() {}
 
   addDisplayChild(display) {
     // filter不接受除mask以外的子节点
@@ -49,26 +49,29 @@ class FFFilter extends FFClip {
 
   async preProcessing(onprogress) {
     for (const key of ['vert', 'frag', 'render']) {
-      if (typeof(this[key]) !== 'string' || !this[key].startsWith('http')) continue;
+      if (typeof this[key] !== 'string' || !this[key].startsWith('http')) continue;
       // todo: progress dup
-      const res = await getRemote(this[key], this.creator().uuid, (p) => {
+      const res = await getRemote(this[key], this.creator().uuid, p => {
         const { total, loaded } = p;
         total && onprogress && onprogress(loaded / total);
       });
       this[`${key}Shader`] = await res.data.text();
     }
-
-    this.filter = this.addFilterTo(this.parent.display);
-    this.filter.enabled = false;
+    if (this.parent.display) {
+      this.filter = this.addFilterTo(this.parent.display);
+      this.filter.enabled = false;
+    }
   }
 
   addFilterTo(display) {
-    return display.addFilter({ 
-      key: this.id, vars: this.vars, 
+    return display.addFilter({
+      key: this.id,
+      vars: this.vars,
       // shader code: render
-      render: this.render, 
+      render: this.render,
       // shaders
-      vert: this.vert, frag: this.frag, 
+      vert: this.vert,
+      frag: this.frag,
     });
   }
 
@@ -90,7 +93,7 @@ class FFFilter extends FFClip {
 
   async drawing(timeInMs, nextDeltaInMS) {
     let texture = await super.drawing(timeInMs, nextDeltaInMS);
-    const start = (timeInMs / 1000) - this.absStartTime;
+    const start = timeInMs / 1000 - this.absStartTime;
     this.filter.setTime(start, this.duration);
     return texture;
   }

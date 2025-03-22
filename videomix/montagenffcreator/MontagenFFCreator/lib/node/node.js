@@ -16,7 +16,7 @@ const { BLEND_MODES } = require('../../inkpaint/lib/index');
 const KeyFrames = require('../animate/keyFrame');
 
 class FFNode extends FFClip {
-  static D_LIST = ['scale', 'opacity'];
+  static D_LIST = ['scale'];
 
   /**
    * FFNode constructor
@@ -33,12 +33,14 @@ class FFNode extends FFClip {
   constructor(conf = {}) {
     super({ type: 'node', ...conf });
     this.preload = !!conf.preload;
-    this.setScale(this.confAttr.scale || 1);
+    this.initScaleX = 1;
+    this.initScaleY = 1;
     this.updateAttr();
     // 初始化宽高为相对值
     if (conf.width) this.conf.width = this.vu(conf.width);
     if (conf.height) this.conf.height = this.vu(conf.height);
-    if (conf.keyframes) this.keyFrame = new KeyFrames(conf.keyframes);
+    if (conf.keyframes)
+      this.keyFrame = new KeyFrames(conf.keyframes, value => value && this.px(value));
   }
 
   updateMaterialTime() {
@@ -46,16 +48,15 @@ class FFNode extends FFClip {
   }
 
   get confAttr() {
-    const _conf = {...this.conf};
+    const _conf = { ...this.conf };
     _conf.width = this.px(_conf.width);
     _conf.height = this.px(_conf.height);
     _conf.x = this.px(_conf.x);
     _conf.y = this.px(_conf.y);
-    _conf.scale = this.initScale || 1;
-    _conf.rotation = (_conf.rotation !== undefined) ? Number(_conf.rotation) : 0;
-    _conf.opacity = (_conf.opacity !== undefined) ? Number(_conf.opacity) : 1;
-    _conf.speed = (_conf.speed !== undefined) ? Number(_conf.speed) : 1;
-    return _conf
+    _conf.rotation = _conf.rotation !== undefined ? Number(_conf.rotation) : 0;
+    _conf.opacity = _conf.opacity !== undefined ? Number(_conf.opacity) : 1;
+    _conf.speed = _conf.speed !== undefined ? Number(_conf.speed) : 1;
+    return _conf;
   }
 
   set audio(audio) {
@@ -71,14 +72,14 @@ class FFNode extends FFClip {
   }
 
   keyFrameAttr(t, node) {
-    return this.keyFrame.renderAttr(t, node)
+    return this.keyFrame.renderAttr(t, node);
   }
 
   parseAudioMotion() {
-    if (!this.confAttr.amotion) return
+    if (!this.confAttr.amotion) return;
     const attr = {};
     const audioData = this.creator().audioData;
-    const aMotion = {...this.confAttr.amotion};
+    const aMotion = { ...this.confAttr.amotion };
     for (let [key, value] of Object.entries(aMotion)) {
       const results = value.match(/(?<={)(.*?)(?=})/g);
       if (results) {
@@ -88,7 +89,7 @@ class FFNode extends FFClip {
         attr[key] = eval(value);
       }
     }
-    return attr
+    return attr;
   }
 
   /**
@@ -98,53 +99,77 @@ class FFNode extends FFClip {
    * @param _attr 作为相对基准的attr
    * @returns {{value: number, key: string, relative: boolean}}
    */
-  toAbs(key, newValue, _attr=null) {
-    let oriValue = (_attr && _attr[key] !== undefined) ? _attr[key]: this.confAttr[key];
-    let result, relative = false;
+  toAbs(key, newValue, _attr = null) {
+    let oriValue = _attr && _attr[key] !== undefined ? _attr[key] : this.confAttr[key];
+    let result,
+      relative = false;
     if (key.includes('d-')) {
       key = key.replace('d-', '');
-      let oriValue = (_attr && _attr[key] !== undefined) ? _attr[key]: this.confAttr[key];
+      let oriValue = _attr && _attr[key] !== undefined ? _attr[key] : this.confAttr[key];
       // relative用来标识是否为相对值，处理相对值和绝对值同时存在的情况
       relative = true;
-      if (FFNode.D_LIST.includes(key)) {
+      if (key == 'scale') {
         // 透明度和scale一直是相对值
-        result = oriValue * newValue;
+        let oriValueX = _attr && _attr['scaleX'] !== undefined ? _attr['scaleX'] : this.initScaleX;
+        let oriValueY = _attr && _attr['scaleY'] !== undefined ? _attr['scaleY'] : this.initScaleY;
+        return [
+          { relative, key: 'scaleX', value: oriValueX * newValue },
+          { relative, key: 'scaleY', value: oriValueY * newValue },
+        ];
       } else {
         result = oriValue + newValue;
       }
     } else {
-      if (FFNode.D_LIST.includes(key)) {
-        result = oriValue * newValue;
+      if (key == 'scale') {
+        let oriValueX = _attr && _attr['scaleX'] !== undefined ? _attr['scaleX'] : this.initScaleX;
+        let oriValueY = _attr && _attr['scaleY'] !== undefined ? _attr['scaleY'] : this.initScaleY;
+        return [
+          { relative, key: 'scaleX', value: oriValueX * newValue },
+          { relative, key: 'scaleY', value: oriValueY * newValue },
+        ];
       } else {
         result = newValue;
       }
     }
-    return {relative, key, value: result}
+    return { relative, key, value: result };
   }
 
   async drawing(timeInMs, nextDeltaInMS) {
     const texture = await super.drawing(timeInMs, nextDeltaInMS);
     const attr = {};
     if (texture && this.keyFrame) {
-      const relTime = (timeInMs / 1000) - this.absStartTime;
+      const relTime = timeInMs / 1000 - this.absStartTime;
       const keyFrameAttr = this.keyFrameAttr(relTime, this);
-      Object.assign(attr, keyFrameAttr)
+      Object.assign(attr, keyFrameAttr);
     }
     if (texture && this.confAttr?.amotion) {
-      const audioAttr = this.parseAudioMotion()
+      const audioAttr = this.parseAudioMotion();
       for (const [key, value] of Object.entries(audioAttr)) {
-        const {relative, key: newKey, value: result} = this.toAbs(key, value, attr)
-        if (attr[newKey] !== undefined && relative) continue
+        const { relative, key: newKey, value: result } = this.toAbs(key, value, attr);
+        if (attr[newKey] !== undefined && relative) continue;
         attr[newKey] = result;
       }
     }
-    if (Object.keys(attr).length > 0) {
+    let scale = null;
+    if (attr.scaleX !== undefined && attr.scaleY !== undefined) {
+      scale = { x: attr.scaleX, y: attr.scaleY };
+      delete attr.scaleX;
+      delete attr.scaleY;
+    }
+    if (Object.keys(attr).length > 0 || scale) {
       this.display && this.display.attr(attr);
-      this.animationAttr = attr;
+      if (scale) {
+        this.display.scale = scale;
+        attr.scale = scale;
+      }
+      if (this.animationAttr == null) {
+        this.animationAttr = {};
+      }
+      this.animationAttr = { ...this.animationAttr, ...attr };
     } else {
       this.animationAttr = null;
     }
-    return texture
+    return texture;
   }
 
   refresh() {
@@ -152,7 +177,16 @@ class FFNode extends FFClip {
   }
 
   updateAttr() {
-    const { x = 0, y = 0, rotate = 0, opacity = 1, anchor = 0.5, blend, flipX = false, flipY = false } = this.confAttr;
+    const {
+      x = 0,
+      y = 0,
+      rotate = 0,
+      opacity = 1,
+      anchor = 0.5,
+      blend,
+      flipX = false,
+      flipY = false,
+    } = this.confAttr;
     this.setXY(x, y);
     this.setRotate(rotate);
     this.setAnchor(anchor);
@@ -160,7 +194,7 @@ class FFNode extends FFClip {
     this.setChromaKey();
     this.setColor();
     this.setOpacity(opacity);
-    this.setFlip({flipX, flipY});
+    this.setFlip({ flipX, flipY });
     // todo: 啥时候需要??
     // this.setScale(this.scale);
   }
@@ -195,11 +229,16 @@ class FFNode extends FFClip {
    * @param {number} scale
    * @public
    */
-  setScale(scale = 1) {
-    if (isNaN(scale) || !this.display) return;
-    this.scale = scale;
-    this.display.scale.set(scale, scale);
-    this.initScale = this.display.scale.x;
+  setScale() {
+    if (this.animationAttr?.scale) {
+      this.initScaleX = this.display.scale.x / this.animationAttr?.scale.x;
+      this.initScaleY = this.display.scale.y / this.animationAttr?.scale.y;
+    }
+    else
+    {
+      this.initScaleX =this.display.scale.x;
+      this.initScaleY =this.display.scale.y;
+    }
   }
 
   /**
@@ -285,7 +324,7 @@ class FFNode extends FFClip {
     this.opacity = opacity;
   }
 
-  setFlip({flipX, flipY}) {
+  setFlip({ flipX, flipY }) {
     this.display?.setFlip(flipX, flipY);
   }
 
@@ -303,7 +342,8 @@ class FFNode extends FFClip {
   }
 
   setChromaKey() {
-    const { chromaKey, chromaSimilarity, chromaSmoothness, chromaSaturation, chromaShadowness } = this;
+    const { chromaKey, chromaSimilarity, chromaSmoothness, chromaSaturation, chromaShadowness } =
+      this;
     if (!chromaKey || !this.display) {
       if (this.display) this.display.chroma = null;
       return;
@@ -318,11 +358,21 @@ class FFNode extends FFClip {
     };
   }
 
-  get chromaKey() { return this.confAttr.chromaKey; }
-  get chromaSimilarity() { return this.confAttr.chromaSimilarity || 0.2; }
-  get chromaSmoothness() { return this.confAttr.chromaSmoothness || 0.1; }
-  get chromaSaturation() { return this.confAttr.chromaSaturation || 0.1; }
-  get chromaShadowness() { return this.confAttr.chromaShadowness || 0.1; }
+  get chromaKey() {
+    return this.confAttr.chromaKey;
+  }
+  get chromaSimilarity() {
+    return this.confAttr.chromaSimilarity || 0.2;
+  }
+  get chromaSmoothness() {
+    return this.confAttr.chromaSmoothness || 0.1;
+  }
+  get chromaSaturation() {
+    return this.confAttr.chromaSaturation || 0.1;
+  }
+  get chromaShadowness() {
+    return this.confAttr.chromaShadowness || 0.1;
+  }
 
   get rotate() {
     return this.getRotation();
@@ -392,12 +442,7 @@ class FFNode extends FFClip {
    * @public
    */
   getWH() {
-    const { width = 0, height = 0 } = this.confAttr;
-    if (width && height) {
-      return [width, height];
-    } else {
-      return [this.display.width, this.display.height];
-    }
+    return [this.display.width, this.display.height];
   }
 
   getWidth() {
@@ -417,9 +462,7 @@ class FFNode extends FFClip {
     this.display && this.display.attr({ width, height });
   }
 
-  fitTexture() {
-
-  }
+  fitTexture() {}
 
   /**
    * Destroy the component

@@ -1,31 +1,38 @@
-const functions = require("js-easing-functions");
+const functions = require('js-easing-functions');
 
 class KeyFrame {
-  constructor({startTime, endTime, from, to, key, func}) {
-    this.startTime = (startTime !== undefined)? startTime : 0;
+  constructor({ startTime, endTime, from, to, key, func }) {
+    this.startTime = startTime !== undefined ? startTime : 0;
     this.endTime = endTime;
-    this.from = (from !== undefined)? from : to;
+    this.from = from !== undefined ? from : to;
     this.to = to;
     this.key = key;
     this.func = (func && functions[func]) || this.default;
   }
 
   default(t, from, delta, duration) {
-    return from + delta * (t / duration)
+    return from + delta * (t / duration);
   }
 
   get(t, speed) {
     const duration = (this.endTime - this.startTime) / speed;
-    return this.func((t - this.startTime / speed) * 1000, this.from, (this.to - this.from), duration * 1000)
+    return this.func(
+      (t - this.startTime / speed) * 1000,
+      this.from,
+      this.to - this.from,
+      duration * 1000,
+    );
   }
 }
 
 const D_LIST = ['scale', 'opacity'];
 
 class KeyFrames {
-  constructor(conf) {
+  constructor(conf, convert) {
     this.conf = conf;
     this.keyFrames = {};
+    this.keyFramesEntry = {};
+    this.convert = convert;
     this.parse();
   }
 
@@ -38,24 +45,57 @@ class KeyFrames {
    * @param func 关键帧动画func的名字
    * @returns {KeyFrame}
    */
-  keyFrame(key, value, index, time, func) {
-    const from = this.conf[index - 1] && this.conf[index - 1][key];
-    const conf = {startTime: this.conf[index - 1]?.time, endTime: time, to: value, key, from, func};
-    return new KeyFrame(conf)
+  keyFrame(key, value, index, time, func, keyFramesEntry) {
+    value = this.convert(value);
+    let from = keyFramesEntry[index - 1] && keyFramesEntry[index - 1].value;
+    from = this.convert(from);
+    const conf = {
+      startTime: keyFramesEntry[index - 1]?.time,
+      endTime: time,
+      to: value,
+      key,
+      from,
+      func,
+    };
+    return new KeyFrame(conf);
   }
 
   parse() {
-    return this.conf.sort((a, b) => a.time - b.time).map((item, index) => {
-      Object.entries(item).forEach(entry => {
-        const [key, value] = entry;
-        if (key === 'time' || key === 'innerHTML') return
-        const keyFrame = this.keyFrame(key, value, index, item.time, item.easing);
+    this.conf
+      .sort((a, b) => a.time - b.time)
+      .map((item, index) => {
+        Object.entries(item).forEach(entry => {
+          const [key, value] = entry;
+          if (key === 'time' || key === 'innerHTML') return;
+          if (!this.keyFramesEntry[key]) {
+            this.keyFramesEntry[key] = [];
+          }
+          const keyFrameEntry = {
+            key,
+            value,
+            index: this.keyFramesEntry[key].length,
+            time: item.time,
+            easing: item.easing,
+          };
+          this.keyFramesEntry[key].push(keyFrameEntry);
+        });
+      });
+    for (let [key, keyFramesEntry] of Object.entries(this.keyFramesEntry)) {
+      for (const keyFrameEntry of keyFramesEntry) {
+        const keyFrame = this.keyFrame(
+          keyFrameEntry.key,
+          keyFrameEntry.value,
+          keyFrameEntry.index,
+          keyFrameEntry.time,
+          keyFrameEntry.easing,
+          keyFramesEntry,
+        );
         if (!this.keyFrames[key]) {
           this.keyFrames[key] = [];
         }
         this.keyFrames[key].push(keyFrame);
-      })
-    })
+      }
+    }
   }
 
   update(conf) {
@@ -71,7 +111,7 @@ class KeyFrames {
       for (const keyFrame of keyFrames) {
         if (t >= keyFrame.startTime / speed && t <= keyFrame.endTime / speed) {
           newValue = keyFrame.get(t, speed);
-          break
+          break;
         }
       }
 
@@ -80,19 +120,28 @@ class KeyFrames {
         if (t < keyFrames[0].startTime / speed) {
           newValue = keyFrames[0].from;
         } else {
-          newValue = keyFrames[keyFrames.length -1].to;
+          newValue = keyFrames[keyFrames.length - 1].to;
         }
       }
 
       if (newValue !== undefined) {
-        const {relative, key: newKey, value} = node.toAbs(key, newValue)
-        if (attr[newKey] !== undefined && relative) continue // 如果有绝对坐标的话，以绝对坐标为准
-        attr[newKey] = value;
+        const result = node.toAbs(key, newValue);
+        if (Array.isArray(result)) {
+          for (const newResult of result) {
+            const { relative, key: newKey, value } = newResult;
+            if (attr[newKey] !== undefined && relative) continue; // 如果有绝对坐标的话，以绝对坐标为准
+            attr[newKey] = value;
+          }
+        } else {
+          const { relative, key: newKey, value } = node.toAbs(key, newValue);
+          if (attr[newKey] !== undefined && relative) continue; // 如果有绝对坐标的话，以绝对坐标为准
+          attr[newKey] = value;
+        }
       }
     }
 
     // console.log('attr', attr)
-    return attr
+    return attr;
   }
 }
 

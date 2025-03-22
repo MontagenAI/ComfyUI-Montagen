@@ -7,28 +7,10 @@ const lockfile = require("proper-lockfile");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-function extractParamsFromUrl(url) {
-  const parts = url.split("/");
-  const id = parts[3];
-  const workflowId = parts[4];
-  const type = parts[5];
-  let filename = null;
-  let clipId = null;
-  if (type == "file") {
-    filename = parts[6];
-  } else {
-    filename = parts[7];
-    clipId = parts[6];
-  }
-  return { id, workflowId, clipId, filename };
-}
-
 const CacheUtil = {
   cacheDir: null,
-  baseUrl: null,
-  localPath: null,
   metadataPath: null,
-  projectbase: null,
+  port: null,
   metadata: {},
   retries: {
     retries: 1800, // 等待半个小时
@@ -37,12 +19,10 @@ const CacheUtil = {
     maxTimeout: 1000, // 最大重试间隔，单位为毫秒
   },
 
-  async init(cacheDir, baseUrl, localPath, projectbase) {
+  async init(cacheDir, port) {
     this.cacheDir = cacheDir;
-    this.baseUrl = baseUrl;
-    this.localPath = localPath;
+    this.port = port;
     this.metadataPath = path.join(cacheDir, "metadata.json");
-    this.projectbase = projectbase;
     await this.loadMetadata();
   },
 
@@ -88,36 +68,11 @@ const CacheUtil = {
 
   async cachedResource(src, progress) {
     if (!src) return src;
-    if (src.startsWith("//") && this.projectbase) {
+    if (src.startsWith("//")) {
       src = src.substring(1);
-      const { id, workflowId, clipId, filename } = extractParamsFromUrl(src);
-      if (clipId) {
-        const dstPath = path.join(
-          this.projectbase,
-          id,
-          "output",
-          workflowId,
-          clipId,
-          filename
-        );
-        return dstPath;
-      }
-      const dstPath = path.join(
-        this.projectbase,
-        id,
-        "output",
-        workflowId,
-        filename
-      );
-      return dstPath;
+      src = `http://127.0.0.1:${this.port}${src}`;
     }
     if (!src.startsWith("http")) return src;
-    if (this.baseUrl && this.localPath) {
-      if (src.startsWith(this.baseUrl)) {
-        src = src.replace(this.baseUrl, "");
-        return path.normalize(path.join(this.localPath, src));
-      }
-    }
     cacheDir = this.cacheDir;
     await fs.ensureDir(cacheDir);
     const key = md5(`${cacheDir}_${src}`);

@@ -10,9 +10,7 @@ try {
   program
     .requiredOption("-i, --input <path>", "Input project json path")
     .requiredOption("-o, --output <path>", "Output video file path")
-    .option("-b, --baseUrl <path>", "baseUrl map local path")
-    .option("-l, --local <path>", "localpath map local path")
-    .requiredOption("-p, --projectbase <path>", "project root path")
+    .requiredOption("-p, --port <port>", "project port")
     .parse();
 } catch (ex) {
   console.log(ex);
@@ -48,12 +46,7 @@ console.log(`Input project json file: ${input}`);
 console.log(`Output video file: ${output}`);
 
 async function run() {
-  await runCache.init(
-    cacheDir,
-    options.baseUrl,
-    options.local,
-    options.projectbase
-  );
+  await runCache.init(cacheDir, options.port);
   await burn({
     value: creatorOpt,
     ext: outputExt,
