@@ -51,5 +51,7 @@ class TimelineNode:
         if not timeline:
             raise ValueError("timeline is required.")
         timeline.add_or_update_clip(clip)
-        MontagenProjManager.instance.onProcessEnd({"timelineName": name})
+        MontagenProjManager.instance.onProcessEnd(
+            {"timelineName": name}, "TimelineProcessEnd"
+        )
         return ()

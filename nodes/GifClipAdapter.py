@@ -69,6 +69,7 @@ class GifClipAdapter(VideoClipAdapter):
         if os.path.exists(tmp_fullName):
             src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
         duration = image_len / preview_fps
+        meta_result = config
         if inputMeta and meta:
             meta_result = meta
             node.set_input_meta(False, 1, meta)
