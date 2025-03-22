@@ -235,7 +235,7 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-8cfc7b48] {
+}.explorer-container[data-v-903db588] {
   background-color: #fff;
 }[data-v-1d09b861] .split-container {
   border: none;
@@ -263,7 +263,7 @@
   width: 100%;
   height: 100%;
 }
-.new-imagen-box[data-v-87eb4667] {\r
+.new-imagen-box[data-v-b2abefb5] {\r
   position: fixed;\r
   width: 100%;\r
   height: 100vh;\r
@@ -273,16 +273,26 @@
   background: #262626;\r
   color: #fff;
 }
-.new-imagen-box .image-box-container[data-v-87eb4667] {\r
+.new-imagen-box .image-box-container[data-v-b2abefb5] {\r
   width: 100%;\r
   height: 100%;\r
   display: flex;\r
   overflow: hidden;
 }
-.close-icon[data-v-87eb4667] {\r
+.close-icon[data-v-b2abefb5] {\r
   position: absolute;\r
   right: 10px;\r
-  top: 10px;
+  top: 10px;\r
+  /* opacity: 0.9; */
+}
+.close-icon .close[data-v-b2abefb5] {\r
+  transform: rotate(0);\r
+  transition: 0.2s;
+}
+.close-icon .close[data-v-b2abefb5]:hover {\r
+  transform: rotate(90deg);\r
+\r
+  /* opacity: 1; */
 }\r
 .hideBox {
   opacity: 0;
@@ -68215,6 +68225,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       });
     },
     async saveTimeLine() {
+      var _a2, _b2;
       if (!this.activeProject.baseInfo.projectId) {
         return;
       }
@@ -68229,7 +68240,16 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       });
       const json = await response.json();
       console.log("保存成功", json);
-      this.getProjectDetail(data.projectId);
+      let newData = await this.getProjectDetail(data.projectId);
+      let worflowID = (_b2 = (_a2 = app$1.graph.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId;
+      if (worflowID) {
+        let workFlows = newData.workflows;
+        for (let i2 = 0; i2 < workFlows.length; i2++) {
+          if (workFlows[i2].workflowId === worflowID) {
+            workflowUtils.openTabByWorkFlowData(workFlows[i2].workflow, app$1.extensionManager.workflow.activeWorkflow);
+          }
+        }
+      }
     },
     async createNewClip(type2) {
       if (!this.activeProject.projectId) {
@@ -69991,6 +70011,7 @@ const _hoisted_13 = { class: "flex justify-center" };
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "newExplorer",
   setup(__props) {
+    const confirm = useConfirm();
     const dialogStore = useDialogStore();
     const workSpaceStore = useWorkSpaceStore();
     const { list, activeProject } = storeToRefs(workSpaceStore);
@@ -70071,7 +70092,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         // icon: 'fontello icon-montagen',
         children: (((_d2 = activeProject.value) == null ? void 0 : _d2.timelines) || []).map((timeline2) => {
           return Object.assign({}, timeline2, {
-            key: timeline2.montagenName,
+            key: timeline2.refId,
             label: timeline2.montagenName,
             type: "folder",
             icon: "pi pi-file",
@@ -70103,7 +70124,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         return map2;
       }, /* @__PURE__ */ new Map());
       let tempObj = Object.fromEntries(grouped);
-      console.log(Object.entries(tempObj), "tempObj");
       let groupedArr = [];
       for (const [key2, value2] of Object.entries(tempObj)) {
         let obj = {
@@ -70177,6 +70197,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         case "clip":
         case "workflows":
         case "folder_ref":
+        case "timeline":
           menu.value.show(event2);
           break;
       }
@@ -70227,6 +70248,67 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               label: "Rename Workflow",
               icon: "pi pi-file-edit",
               command: (e) => renameCommand(menuTargetNode.value)
+            },
+            {
+              label: "Delete Workflow",
+              icon: "pi pi-trash",
+              command: (e) => {
+                console.log("Delete Workflow");
+                confirm.require({
+                  group: "dialog",
+                  message: `Are you sure delete ${menuTargetNode.value.label} workflow?`,
+                  header: "Confirmation",
+                  icon: "pi pi-exclamation-triangle",
+                  position: "top",
+                  rejectProps: {
+                    label: "Cancel",
+                    severity: "secondary",
+                    outlined: true
+                  },
+                  acceptProps: {
+                    label: "Delete"
+                  },
+                  accept: () => {
+                    console.log("deleteWorkflow", menuTargetNode.value);
+                    deleteWorkflow(menuTargetNode.value);
+                  }
+                });
+              }
+            }
+          ]);
+          break;
+        case "timeline":
+          temp.push(...[
+            {
+              label: "Rename timeline",
+              icon: "pi pi-file-edit",
+              command: (e) => renameCommand(menuTargetNode.value)
+            },
+            {
+              label: "Delete timeline",
+              icon: "pi pi-trash",
+              command: (e) => {
+                console.log("Delete Workflow");
+                confirm.require({
+                  group: "dialog",
+                  message: `Are you sure delete ${menuTargetNode.value.label} timeline?`,
+                  header: "Confirmation",
+                  icon: "pi pi-exclamation-triangle",
+                  position: "top",
+                  rejectProps: {
+                    label: "Cancel",
+                    severity: "secondary",
+                    outlined: true
+                  },
+                  acceptProps: {
+                    label: "Delete"
+                  },
+                  accept: () => {
+                    console.log("deleteWorkTimeline", menuTargetNode.value);
+                    deleteWorTimeline(menuTargetNode.value);
+                  }
+                });
+              }
             }
           ]);
           break;
@@ -70262,10 +70344,26 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         case "workflows":
           renameWorkflow(newLabel, renameEditingNode.value);
           break;
+        case "timeline":
+          renameTimeline(newLabel, renameEditingNode.value);
+          break;
         default:
           console.log("更改name", renameEditingNode.value);
           renameEditingNode.value = {};
       }
+    };
+    const renameTimeline = async (name, data) => {
+      let node2 = data;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Timeline/${node2.montagenName}/Rename`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name })
+      });
+      await response.json();
+      renameEditingNode.value = {};
+      refreshList();
     };
     const renameClip = async (name, data) => {
       let node2 = data;
@@ -70295,6 +70393,38 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         flag.filename = name;
       }
       renameEditingNode.value = {};
+      refreshList();
+    };
+    const deleteWorkflow = async (data) => {
+      var _a2, _b2, _c2, _d2;
+      let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
+      if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === data.workflowId) {
+        if (app$1.extensionManager.workflow.openWorkflows.length > 1) {
+          const nextWorkflow = app$1.extensionManager.workflow.openedWorkflowIndexShift(1);
+          let changeTracker = activeWorkflow.changeTracker;
+          app$1.extensionManager.workflow.closeWorkflow(activeWorkflow);
+          app$1.extensionManager.workflow.activeWorkflow.changeTracker = changeTracker;
+          if (nextWorkflow) {
+            app$1.loadGraphData(JSON.parse(JSON.stringify(nextWorkflow.activeState)), true, true, nextWorkflow);
+          }
+        }
+      } else {
+        let flag = workflowUtils.checkWorkFlowIsOpenByIds({ projectId: data.projectId, workflowId: data.workflowId });
+        if (flag) {
+          app$1.extensionManager.workflow.closeWorkflow(flag);
+        }
+      }
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Workflow/${data.workflowId}`, {
+        method: "DELETE"
+      });
+      await response.json();
+      refreshList();
+    };
+    const deleteWorTimeline = async (data) => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Timeline/${data.montagenName}`, {
+        method: "DELETE"
+      });
+      await response.json();
       refreshList();
     };
     const onFormSubmit = () => {
@@ -70366,6 +70496,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       const _component_ContextMenu = script$3;
       const _component_el_input = ElInput;
       const _component_Dialog = script;
+      const _component_ConfirmDialog = script$6;
       const _directive_tooltip = Tooltip;
       return openBlock(), createElementBlock(Fragment, null, [
         createBaseVNode("div", _hoisted_1$3, [
@@ -70532,12 +70663,13 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               _: 1
             }, 8, ["visible"])
           ])
-        ]))
+        ])),
+        createVNode(_component_ConfirmDialog, { group: "dialog" })
       ], 64);
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-8cfc7b48"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-903db588"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -70943,7 +71075,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
             onClick: closeImagenBox
           }, _cache[0] || (_cache[0] = [
             createBaseVNode("span", {
-              class: "pi pi-times-circle",
+              class: "pi pi-times-circle close",
               style: { "color": "#fff", "font-size": "2rem" }
             }, null, -1)
           ]))
@@ -70958,7 +71090,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-87eb4667"]]);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b2abefb5"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
