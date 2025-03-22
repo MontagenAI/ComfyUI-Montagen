@@ -217,9 +217,10 @@ class MontagenWorkflow:
     def workflow_add_material(self, clip_name, index, old_filename, file_full_path):
         if old_filename:
             self.project.montagen_material.delete_material(old_filename)
+        current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         file_name = os.path.basename(file_full_path)
         ext = os.path.splitext(file_name)[1]
-        file_name = f"{clip_name}_{index}{ext}"
+        file_name = f"{clip_name}_{index}_{current_time}{ext}"
         file_name = self.project.montagen_material.add_material(
             file_full_path, file_name, clip_name
         )

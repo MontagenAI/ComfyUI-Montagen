@@ -99,7 +99,7 @@ class AudioClipAdapter(BaseClipAdapter):
             "children": [],
             **meta,
         }
-        node.set_img_clip(clip)
+        node.set_clip(clip)
         workflow.save()
         return self.protocol_return(
             clip, src, duration, clip_id, workflow_id, project_id, user_id
