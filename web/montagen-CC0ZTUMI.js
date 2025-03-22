@@ -217,7 +217,7 @@
   background: #f8f9fa;\r
   border-radius: 4px;
 }\r
-.choose-project[data-v-4b73fd74] {
+.choose-project[data-v-9ea48fb3] {
   display: flex;
   height: 70vh;
   width: 60vw;
@@ -235,7 +235,7 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-f3f6541d] {
+}.explorer-container[data-v-8cfc7b48] {
   background-color: #fff;
 }[data-v-1d09b861] .split-container {
   border: none;
@@ -263,7 +263,7 @@
   width: 100%;
   height: 100%;
 }
-.new-imagen-box[data-v-d1ca22e9] {\r
+.new-imagen-box[data-v-87eb4667] {\r
   position: fixed;\r
   width: 100%;\r
   height: 100vh;\r
@@ -273,13 +273,13 @@
   background: #262626;\r
   color: #fff;
 }
-.new-imagen-box .image-box-container[data-v-d1ca22e9] {\r
+.new-imagen-box .image-box-container[data-v-87eb4667] {\r
   width: 100%;\r
   height: 100%;\r
   display: flex;\r
   overflow: hidden;
 }
-.close-icon[data-v-d1ca22e9] {\r
+.close-icon[data-v-87eb4667] {\r
   position: absolute;\r
   right: 10px;\r
   top: 10px;
@@ -428,6 +428,9 @@
 .tw-w-full {\r
     width: 100%
 }\r
+.tw-min-w-44 {\r
+    min-width: 11rem
+}\r
 .tw-bg-\\[\\#ffffff\\] {\r
     --tw-bg-opacity: 1;\r
     background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
@@ -538,7 +541,7 @@
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, k as withModifiers, ab as withKeys, a0 as normalizeStyle, j as renderSlot$1, n as nextTick$1, T as Teleport, q as toRaw, w as watch, a4 as onBeforeUnmount, a2 as provide, X as onUnmounted, ac as createApp } from "./assets/vue-DwcvWNWk.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, t as customAlphabet, v as script$f, w as script$g, z, x as script$h, D as DialogService, C as ConfirmationService, y as createPinia, A as ToastService } from "./assets/vendor-D5X297Wl.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, t as script$f, v as script$g, z, w as script$h, D as DialogService, C as ConfirmationService, x as customAlphabet, y as createPinia, A as ToastService } from "./assets/vendor-D87Sco3d.js";
 import "./assets/lodash-DS8RUn65.js";
 import { u as usePrimeVue, q as script$8, P as PrimeVue, r as index$3 } from "./assets/primevue-2d6Jmt1S.js";
 import { bP as h, bQ as definePreset } from "./assets/primeuix-Bsp0MH35.js";
@@ -607,6 +610,53 @@ let app$1 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? v
 ((_j = (_i = window.comfyAPI) == null ? void 0 : _i.widgets) == null ? void 0 : _j.ComfyWidgets) || null;
 ((_l = (_k = window.comfyAPI) == null ? void 0 : _k.utils) == null ? void 0 : _l.applyTextReplacements) || null;
 ((_n = (_m = window.comfyAPI) == null ? void 0 : _m.groupNode) == null ? void 0 : _n.GroupNodeConfig) || null;
+const workflowUtils = {
+  isWorkFlowOpend(data) {
+    var _a2, _b2, _c2;
+    let temArr = app$1.extensionManager.workflow.openWorkflows;
+    let flag = false;
+    for (let i2 = 0; i2 < temArr.length; i2++) {
+      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
+      if (temp) {
+        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
+          flag = temArr[i2];
+          break;
+        }
+      }
+    }
+    if (flag) {
+      app$1.loadGraphData(JSON.parse(JSON.stringify(flag.activeState)), true, true, flag);
+    }
+    return flag;
+  },
+  openWorkFlowByGrahData(graphData) {
+    app$1.loadGraphData(graphData);
+    let menuStore = useMenuStore();
+    menuStore.changeShow(false);
+  },
+  checkWorkFlowIsOpenByIds(data) {
+    var _a2, _b2, _c2;
+    console.log(data, "data______");
+    let flag = false;
+    let temArr = app$1.extensionManager.workflow.openWorkflows;
+    for (let i2 = 0; i2 < temArr.length; i2++) {
+      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
+      if (temp) {
+        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
+          flag = temArr[i2];
+          break;
+        }
+      }
+    }
+    return flag;
+  },
+  openTabByWorkFlowData(data, name) {
+    return new Promise(async (resolve, reject) => {
+      await app$1.loadGraphData(data, true, true, name);
+      resolve();
+    });
+  }
+};
 const useDialogStore = defineStore("dialog", () => {
   const dialogStack = ref$3([]);
   const genDialogKey = () => `dialog-${Math.random().toString(36).slice(2, 9)}`;
@@ -68012,53 +68062,6 @@ const index = {
     return addControls(e), e;
   }
 };
-const workflowUtils = {
-  isWorkFlowOpend(data) {
-    var _a2, _b2, _c2;
-    let temArr = app$1.extensionManager.workflow.openWorkflows;
-    let flag = false;
-    for (let i2 = 0; i2 < temArr.length; i2++) {
-      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
-      if (temp) {
-        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
-          flag = temArr[i2];
-          break;
-        }
-      }
-    }
-    if (flag) {
-      app$1.loadGraphData(JSON.parse(JSON.stringify(flag.activeState)), true, true, flag);
-    }
-    return flag;
-  },
-  openWorkFlowByGrahData(graphData) {
-    app$1.loadGraphData(graphData);
-    let menuStore = useMenuStore();
-    menuStore.changeShow(false);
-  },
-  checkWorkFlowIsOpenByIds(data) {
-    var _a2, _b2, _c2;
-    console.log(data, "data______");
-    let flag = false;
-    let temArr = app$1.extensionManager.workflow.openWorkflows;
-    for (let i2 = 0; i2 < temArr.length; i2++) {
-      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
-      if (temp) {
-        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
-          flag = temArr[i2];
-          break;
-        }
-      }
-    }
-    return flag;
-  },
-  openTabByWorkFlowData(data, name) {
-    return new Promise(async (resolve, reject) => {
-      await app$1.loadGraphData(data, true, true, name);
-      resolve();
-    });
-  }
-};
 const useWorkSpaceStore = defineStore("workSpaceStore", {
   state: (_) => ({
     list: [],
@@ -68141,6 +68144,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`);
       const json = await response.json();
       this.activeProject = json.data;
+      return Promise.resolve(json.data);
     },
     /**
      * @property {Function} createWorkFlow 创建工作流
@@ -68201,47 +68205,31 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     },
     async reloadPlayer(options) {
       await this.playerInstance.load(options);
-      this.saveTimeLine();
     },
     createPlayer(options) {
       this.playerInstance = index.create(options);
-      this.saveTimeLine();
       window.myPlayer = this.playerInstance;
-      this.playerInstance.on("editWorkFlow", (data) => {
-        let workflowId = data.target.workflowId;
-        let workflows = this.playerInstance.creator.toJson().workflows;
-        let workflowData = (workflows.value || workflows).find((workflow) => workflow.id == workflowId);
-        console.log("workflowData", JSON.parse(JSON.stringify(workflowData.workflow)));
-        let rawData = JSON.parse(JSON.stringify(workflowData.workflow));
-        if (workflowUtils.isWorkFlowOpend(rawData.extra.MontagenProj)) {
-          let menuStore = useMenuStore();
-          menuStore.changeShow(false);
-          return;
-        }
-        this.openWorkFlowByGrahData(JSON.parse(JSON.stringify(workflowData.workflow)));
-      });
-      this.playerInstance.on("createClip", (data) => {
-        this.createNewClip(data.cstype);
-      });
       this.playerInstance.on("changed", (changed) => {
+        console.log("editor数据发生了变化", changed);
         this.saveTimeLine();
       });
     },
     async saveTimeLine() {
-      if (!this.activeProject.projectId) {
+      if (!this.activeProject.baseInfo.projectId) {
         return;
       }
       let data = this.playerInstance.creator.toJson();
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${this.activeProject.projectId}/Timeline`, {
+      console.log("当前timeline数据发生了变化", data);
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Timeline/${data.montagenName}/Edit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ timeline: data })
+        body: JSON.stringify(data)
       });
       const json = await response.json();
-      this.timeLine = json.data;
-      this.getlists();
+      console.log("保存成功", json);
+      this.getProjectDetail(data.projectId);
     },
     async createNewClip(type2) {
       if (!this.activeProject.projectId) {
@@ -68896,7 +68884,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render], ["__scopeId", "data-v-6e569096"]]);
 const _hoisted_1$8 = { class: "choose-project flex h-96" };
-const _hoisted_2$4 = { class: "list-box" };
+const _hoisted_2$4 = { class: "list-box tw-min-w-44" };
 const _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "chooseProject",
   setup(__props) {
@@ -68916,7 +68904,6 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     });
     let lastSelected = null;
     const handleChange = (event2) => {
-      console.log("event", event2);
       if (!event2.value) {
         nextTick$1(() => {
           selectedProject.value = lastSelected;
@@ -69026,7 +69013,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-4b73fd74"]]);
+const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-9ea48fb3"]]);
 const _hoisted_1$7 = { class: "folder-project" };
 const _hoisted_2$3 = { class: "form-wrapper w-full tw-px-4" };
 const _hoisted_3$3 = { class: "form-item" };
@@ -70007,7 +69994,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const dialogStore = useDialogStore();
     const workSpaceStore = useWorkSpaceStore();
     const { list, activeProject } = storeToRefs(workSpaceStore);
-    const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
     const panelConfig = computed(() => {
       var _a2, _b2;
       return [
@@ -70016,7 +70002,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       ];
     });
     const treeNodes = computed(() => {
-      var _a2, _b2, _c2;
+      var _a2, _b2, _c2, _d2;
       let assetObj = {
         key: "0",
         label: "assets",
@@ -70024,15 +70010,16 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         fileType: "folder_assets",
         leaf: false,
         // icon: 'fontello icon-montagen',
-        children: (((_a2 = activeProject.value) == null ? void 0 : _a2.assets) || []).map((asset) => {
-          return Object.assign({}, asset, {
-            key: "asset_" + cusWorkflowID(),
-            label: asset.file_name,
-            type: "file",
-            icon: "pi pi-file",
-            fileType: "assets"
-          });
-        })
+        children: groupByParent(((_a2 = activeProject.value) == null ? void 0 : _a2.assets) || [])
+        // children: (activeProject.value?.assets || []).map((asset) => {
+        //   return Object.assign({}, asset, {
+        //     key: 'asset_' + cusWorkflowID(),
+        //     label: asset.file_name,
+        //     type: 'file',
+        //     icon: 'pi pi-file',
+        //     fileType: 'assets'
+        //   })
+        // })
       };
       let workflowObj = {
         key: "1",
@@ -70068,14 +70055,35 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       };
       const refObj = {
         key: "2",
-        label: "refs",
+        label: "assets-refs",
         type: "folder",
         fileType: "folder_refs",
         leaf: false,
         // icon: 'fontello icon-montagen',
         children: groupByParent(((_c2 = activeProject.value) == null ? void 0 : _c2.refs) || [])
       };
-      return [assetObj, workflowObj, refObj];
+      const timeLineObj = {
+        key: "3",
+        label: "timeLine",
+        type: "folder",
+        fileType: "folder_timeline",
+        leaf: false,
+        // icon: 'fontello icon-montagen',
+        children: (((_d2 = activeProject.value) == null ? void 0 : _d2.timelines) || []).map((timeline2) => {
+          return Object.assign({}, timeline2, {
+            key: timeline2.montagenName,
+            label: timeline2.montagenName,
+            type: "folder",
+            icon: "pi pi-file",
+            fileType: "timeline",
+            projectId: timeline2.projectId,
+            timelineData: timeline2,
+            // leaf: true,
+            children: []
+          });
+        })
+      };
+      return [assetObj, workflowObj, refObj, timeLineObj];
     });
     function groupByParent(list2) {
       const topLevel = list2.filter((item) => item.parent === null);
@@ -70127,6 +70135,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         case "folder_workflow":
         case "folder_refs":
         case "folder_ref":
+        case "folder_timeline":
           if (selectedKeys.value[node2.key]) {
             expandedKeys.value[node2.key] = true;
           } else {
@@ -70138,6 +70147,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           if (selectedKeys.value[node2.key]) {
             workSpaceStore.setActiveNode(node2);
             checkWorkflowIsOpen(node2);
+            if (menuStore.showPage) {
+              menuStore.changeShow(false);
+            }
           }
           break;
         case "assets":
@@ -70147,6 +70159,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
             previewWithPlayer(node2);
           } else {
             menuStore.changeShow(false);
+          }
+          break;
+        case "timeline":
+          if (selectedKeys.value[node2.key]) {
+            workSpaceStore.openWorkFlow({ projectId: "", timeLine: node2.timelineData });
+            if (!menuStore.showPage) {
+              menuStore.changeShow(true);
+            }
           }
       }
     };
@@ -70333,6 +70353,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       setProxyWorkFlow();
       app$1.api.addEventListener("MontagenProcessEnd", function(e) {
         var _a2, _b2, _c2;
+        console.log("MontagenProcessEnd_蒙太奇节点执行完成", e);
         if (((_a2 = e.detail) == null ? void 0 : _a2.projectId) && ((_b2 = e.detail) == null ? void 0 : _b2.projectId) == ((_c2 = workSpaceStore.activeProject) == null ? void 0 : _c2.baseInfo.projectId)) {
           workSpaceStore.getProjectDetail(e.detail.projectId);
         }
@@ -70516,7 +70537,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f3f6541d"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-8cfc7b48"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -70895,7 +70916,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       mutationObserver.value = new MutationObserver((mutationsList) => {
         let tempWrapper = app$1.canvasContainer.querySelector(".p-splitterpanel-nested");
         if (tempWrapper) {
-          console.log("tempWrapper", "监听到了canvasContainer变化", tempWrapper.offsetHeight, tempWrapper.offsetWidth);
           wrapperHeight.value = tempWrapper.offsetHeight;
           wrapperWidth.value = tempWrapper.offsetWidth;
         }
@@ -70938,7 +70958,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-d1ca22e9"]]);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-87eb4667"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
@@ -70970,58 +70990,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const addUploadWidget = function(nodeType, nodeData, type2, icon) {
       chainCallback(nodeType.prototype, "onNodeCreated", function(...arg) {
         checkWorkflow();
-        this.addWidget("button", "preview", "image", (e) => {
-          var _a2, _b2, _c2, _d2;
+        console.log("onNodeCreated蒙太奇节点创建", this);
+        this.addWidget("button", "preview", "", (e) => {
           console.log("preview", this);
-          if (!workSpaceStore.activeProject.baseInfo) {
-            app$1.extensionManager.toast.add({
-              severity: "info",
-              summary: "tips!",
-              detail: "please choose a project first!",
-              life: 3e3
-            });
-          }
-          let workflowId = (_b2 = (_a2 = app$1.extensionManager.workflow.activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId;
-          let clipId = null;
-          if ((_c2 = this.properties) == null ? void 0 : _c2.clipId) {
-            clipId = (_d2 = this.properties) == null ? void 0 : _d2.clipId;
-          } else {
-            if (workflowId) {
-              clipId = `${this.id}_${workflowId}`;
-            }
-          }
-          if (clipId) {
-            let sourceData = workSpaceStore.activeProject.workflows;
-            let tempClip = null;
-            for (let i2 = 0; i2 < sourceData.length; i2++) {
-              for (let j = 0; j < sourceData[i2].clips.length; j++) {
-                if (sourceData[i2].clips[j].clipId == clipId) {
-                  console.log("preview", sourceData[i2].clips[j]);
-                  tempClip = sourceData[i2].clips[j];
-                  break;
-                }
-              }
-            }
-            if (tempClip) {
-              workSpaceStore.openWorkFlow({ projectId: workSpaceStore.activeProject.baseInfo.projectId, timeLine: tempClip.timeline });
-              menuStore.changeShow(true);
-            } else {
-              app$1.extensionManager.toast.add({
-                severity: "info",
-                summary: "tips!",
-                detail: "no timeline,please run first!",
-                life: 3e3
-              });
-            }
-          }
+          return;
         });
       });
-    };
-    const updateProjectTimeLine = async (data) => {
-      console.log("updateProjectTimeLine", data);
-      if (data.projectId == workSpaceStore.activeProject.projectId) {
-        workSpaceStore.openWorkFlow({ projectId: data.projectId, timeLine: data.timeline });
-      }
     };
     const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
     const checkWorkflow = () => {
@@ -71133,10 +71107,21 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             if ((nodeData == null ? void 0 : nodeData.category) == "Montagen") {
               addUploadWidget(nodeType);
               chainCallback(nodeType.prototype, "onExecuted", async function(message) {
+                var _a2, _b2;
                 console.log("onExecuted 函数执行成功后返回的数据", message);
-                if (message == null ? void 0 : message.videos) {
-                  sessionStorage.setItem("Montagen-output", JSON.stringify(message.videos[0]));
-                  updateProjectTimeLine(message.videos[0]);
+                if (message == null ? void 0 : message.assets) {
+                  let tempData = message.assets[0];
+                  let data = await workSpaceStore.getProjectDetail(tempData.projectId);
+                  console.log("刷新后的data_获取到的数据", data);
+                  let worflowID = (_b2 = (_a2 = app2.graph.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.workflowId;
+                  if (worflowID) {
+                    let workFlows = data.workflows;
+                    for (let i2 = 0; i2 < workFlows.length; i2++) {
+                      if (workFlows[i2].workflowId === worflowID) {
+                        workflowUtils.openTabByWorkFlowData(workFlows[i2].workflow, app2.extensionManager.workflow.activeWorkflow);
+                      }
+                    }
+                  }
                 }
               });
             }
