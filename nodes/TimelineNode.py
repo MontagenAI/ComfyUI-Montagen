@@ -47,8 +47,16 @@ class TimelineNode(BaseWorkflow):
             timeline = proj.get_timeline(name)
             if not timeline:
                 raise ValueError("timeline is required.")
-            timeline.add_or_update_clip(clip)
-        MontagenProjManager.instance.onProcessEnd(
-            {"timelineName": name}, "TimelineProcessEnd"
-        )
-        return ()
+        timeline.add_or_update_clip(clip)
+        # MontagenProjManager.instance.onProcessEnd({"timelineName": name})
+        return {
+            "ui": {
+                "assets": [
+                    {
+                        "timelineName": name,
+                        "projectId": project_id,
+                    }
+                ]
+            },
+            "result": (),
+        }

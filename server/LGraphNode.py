@@ -59,7 +59,7 @@ class LGraphNode:
         "y",
         "width",
         "height",
-        "rotation",
+        "rotate",
         "opacity",
         "anchor",
         "flipX",
@@ -99,7 +99,7 @@ class LGraphNode:
         ),
         "width": ("STRING", {"default": "50vw", "tooltip": "Width of the clip."}),
         "height": ("STRING", {"default": "50vh", "tooltip": "Height of the clip."}),
-        "rotation": (
+        "rotate": (
             "FLOAT",
             {"default": 0.0, "tooltip": "Rotation angle of the clip."},
         ),

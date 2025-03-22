@@ -82,17 +82,17 @@ class BaseClipAdapter(BaseWorkflow):
     def protocol_return(
         self, clip, src, duration, clip_id, workflow_id, project_id, user_id
     ):
-        MontagenProjManager.instance.onProcessEnd(
-            {
-                "userId": user_id,
-                "projectId": project_id,
-                "workflowId": workflow_id,
-                "clipId": clip_id,
-                "src": src,
-                "duration": duration,
-                "type": self.type,
-            }
-        )
+        # MontagenProjManager.instance.onProcessEnd(
+        #     {
+        #         "userId": user_id,
+        #         "projectId": project_id,
+        #         "workflowId": workflow_id,
+        #         "clipId": clip_id,
+        #         "src": src,
+        #         "duration": duration,
+        #         "type": self.type,
+        #     }
+        # )
         return {
             "ui": {
                 "assets": [
