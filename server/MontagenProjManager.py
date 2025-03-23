@@ -160,7 +160,7 @@ class MontagenProjManager:
             proj.project_change_time()
             return web.json_response({"code": 0})
 
-        @server.routes.delete("/Montagen/Proj/{id}/Assets/Delete/{filename}")
+        @server.routes.post("/Montagen/Proj/{id}/Assets/Delete")
         @error_handling_decorator
         async def delete_project_asset(request, register_action):
             user_id = server.user_manager.get_request_user_id(request)
@@ -170,8 +170,8 @@ class MontagenProjManager:
             proj = self.get_project(user_id, project_id)
             if not proj:
                 raise Exception("Project not found")
-            filename = request.match_info.get("filename", None)
-            proj.montagen_material.delete_material(filename)
+            request_data = await request.json()
+            proj.montagen_material.delete_material_batch(request_data)
             proj.project_change_time()
             return web.json_response({"code": 0})
 

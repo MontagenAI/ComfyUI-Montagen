@@ -133,6 +133,7 @@ class MontagenWorkflow:
         """
         Save the workflow data to the workflow.json file.
         """
+        self.modify_time = datetime.now()
         MontagenWorkflow.save_workflow(
             self.workflow_json_path, self.workflow_data.serialize()
         )
@@ -148,41 +149,6 @@ class MontagenWorkflow:
             "clips": self.clips,
             "modifyTime": self.modify_time.isoformat(),
         }
-
-    # def workflow_add_clip(self, name, type):
-    #     name = name or DEFAULTCLIPNAME
-    #     self.modify_time = datetime.now()
-    #     type = type or "video"
-    #     if type not in SUPPORTEDTYPES:
-    #         raise ValueError(f"type {type} is not supported")
-    #     clip_id = to_base36_random()
-    #     self.workflow.addEmptyNode(clip_id, name, type)
-    #     self._addEmptyClip(clip_id, name, type)
-    #     self._save_workflow()
-    #     return clip_id
-
-    # def workflow_rename_clip(self, clip_id, name):
-    #     name = name or DEFAULTCLIPNAME
-    #     clip = self._get_clip_by_id(clip_id)
-    #     if clip:
-    #         if clip["clipName"] != name:
-    #             self.modify_time = datetime.now()
-    #             self.workflow.renameNode(clip_id, name)
-    #             clip["clipName"] = name
-    #             new_path = self._rename_clip_path(clip["path"], name)
-    #             clip["path"] = new_path
-    #             self._save_workflow()
-
-    # def workflow_delete_clip(self, clipId):
-    #     self.modify_time = datetime.now()
-    #     self.workflow.deleteNode(clipId)
-    #     clip = self._get_clip_by_id(clipId)
-    #     if clip:
-    #         self.clips.remove(clip)
-    #         path = os.path.join(self.workflow_path, clip.get("path"))
-    #         if os.path.exists(path):
-    #             shutil.rmtree(path)
-    #     self._save_workflow()
 
     def get_output_path(self, clip_id, index, ext):
         path = os.path.join(self.workflow_tmp_path, clip_id)
@@ -204,7 +170,6 @@ class MontagenWorkflow:
     def rename_workflow(self, name):
         name = name or DEFAULTWORKFLOWNAME
         if name != self.workflow_name:
-            self.modify_time = datetime.now()
             self.workflow_name = name
             new_filename = generate_unique_filename(
                 self.workflow_json_dir_name, name + ".json"
@@ -248,7 +213,6 @@ class MontagenWorkflow:
         self.workflow_data = new_workflow
         self.workflow_data.montagenInfo = montagen_info
         self.workflow_data.version = version
-        self.modify_time = datetime.now()
         for node_item_id in property_cache:
             properties = property_cache[node_item_id]
             node_item = self.workflow_data.getNodeById(node_item_id)
@@ -286,3 +250,9 @@ class MontagenWorkflow:
         if result:
             self.save()
         return result
+
+    def is_in_clip(self, file_name):
+        for node in self.workflow_data.graphNodes:
+            if node.isMontagenNode and node.clip_file_name == file_name:
+                return True
+        return False

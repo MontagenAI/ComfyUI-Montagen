@@ -17,7 +17,7 @@ class AudioClipAdapter(BaseClipAdapter):
     def ClIP_INPUT_TYPES(s):
         return {
             "required": {
-                "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
+                "audioInput": ("AUDIO", {"tooltip": "The audio to preview."}),
                 "inputMeta": (
                     "BOOLEAN",
                     {"default": True, "tooltip": "The input meta data."},
@@ -30,7 +30,7 @@ class AudioClipAdapter(BaseClipAdapter):
 
     def save_func(
         self,
-        audio,
+        audioInput,
         name,
         inputMeta,
         meta=None,
@@ -50,8 +50,8 @@ class AudioClipAdapter(BaseClipAdapter):
             node,
         ) = self.get_info(name, unique_id, prompt, extra_pnginfo)
         buff = io.BytesIO()
-        wavform = audio["waveform"].cpu()[0]
-        torchaudio.save(buff, wavform, audio["sample_rate"], format="MP3")
+        wavform = audioInput["waveform"].cpu()[0]
+        torchaudio.save(buff, wavform, audioInput["sample_rate"], format="MP3")
         (file_fullName, tmp_fullName) = self.get_output_path(
             workflow, clip_id, 0, "mp3"
         )
@@ -59,7 +59,7 @@ class AudioClipAdapter(BaseClipAdapter):
             f.write(buff.getbuffer())
         if os.path.exists(tmp_fullName):
             src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
-        duration = wavform.size(1) / audio["sample_rate"]
+        duration = wavform.size(1) / audioInput["sample_rate"]
         meta_result = config
         if inputMeta and meta:
             meta_result = meta
@@ -99,7 +99,7 @@ class AudioClipAdapter(BaseClipAdapter):
             "children": [],
             **meta,
         }
-        node.set_clip(clip)
+        clip = node.set_clip(clip)
         workflow.save()
         return self.protocol_return(
             clip, src, duration, clip_id, workflow_id, project_id, user_id

@@ -198,6 +198,11 @@ class MontagenTimeline:
         clip_exist = next(self._getNodes(fn=lambda x: x.clip_id == clip_id), None)
         return clip_exist is not None
 
+    def is_in_clip(self, file_name):
+        for clip in self._getNodes():
+            if clip.src:
+                return file_name in clip.src
+
     def _getNodes(self, parent=None, fn=None, iterator=None):
         if not parent:
             parent = self.timeline_data
@@ -229,10 +234,15 @@ class MontagenClip:
         return self.clip_data.get("type", None)
 
     @property
+    def src(self):
+        return self.clip_data.get("src", None)
+
+    @property
     def children(self):
         return self.clip_data.get("children", [])
 
     def import_data(self, clip_data):
+        self.clip_data.clear()
         self.clip_data.update(clip_data)
 
     def to_json(self):

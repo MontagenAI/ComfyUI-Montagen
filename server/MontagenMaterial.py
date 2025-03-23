@@ -212,14 +212,30 @@ class MontagenMaterial:
             if material["is_ref"] == isRef
         ]
 
-    def delete_material(self, file_name: str):
-        """
-        Delete a material and update the cache.
+    def delete_material_batch(self, request_data):
+        to_be_delete = []
+        if "dirs" in request_data:
+            dirs = request_data["dirs"]
+            for material in self.get_material_list():
+                if (
+                    material.get("parent") in dirs
+                    or material.get("inner", {}).get("parent") in dirs
+                ):
+                    to_be_delete.append(material["file_name"])
+        if "file_names" in request_data:
+            file_names = request_data["file_names"]
+            to_be_delete.extend(file_names)
 
-        :param file_name: Name to the file to be deleted.
-        """
+        to_be_delete = list(set(to_be_delete))
+        for file_name in to_be_delete:
+            self.delete_material(file_name, False, False)
+        self.cache_manager.delete(self.key)
+
+    def delete_material(self, file_name, not_check=True, kill_cache=True):
         material = self.get_material(file_name)
         if not material:
+            return
+        if not not_check and self.project.is_in_clip(file_name):
             return
         file_path = material.get("file_path")
         ref_path = material.get("ref_path")
@@ -229,7 +245,6 @@ class MontagenMaterial:
         full_ref_path = ref_path and os.path.abspath(
             os.path.join(self.project.project_path, self.refs_dir, ref_path)
         )
-
         if (
             material
             and full_file_path
@@ -240,7 +255,6 @@ class MontagenMaterial:
             metadata_file_path = f"{full_file_path}.meta"
             if os.path.exists(metadata_file_path):
                 os.remove(metadata_file_path)
-
         if (
             material
             and full_ref_path
@@ -248,7 +262,8 @@ class MontagenMaterial:
             and os.path.exists(full_ref_path)
         ):
             os.remove(full_ref_path)
-        self.cache_manager.delete(self.key)
+        if kill_cache:
+            self.cache_manager.delete(self.key)
 
     def rename_material(self, file_name: str, new_file_name: str):
         """
@@ -260,7 +275,8 @@ class MontagenMaterial:
         material = self.get_material(file_name)
         if not material:
             return
-
+        if self.project.is_in_clip(file_name):
+            return
         is_ref = material.get("is_ref")
         file_type = material.get("file_type")
         if not is_ref:

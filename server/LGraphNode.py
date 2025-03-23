@@ -61,11 +61,14 @@ class LGraphNode:
         "height",
         "rotate",
         "opacity",
-        "anchor",
+        "anchorX",
+        "anchorY",
         "flipX",
         "flipY",
         "zIndex",
         "object-fit",
+        "object-positionX",
+        "object-positionY",
         "volume",
         "ss",
         "to",
@@ -107,9 +110,21 @@ class LGraphNode:
             "FLOAT",
             {"default": 1.0, "tooltip": "Opacity of the clip."},
         ),
-        "anchor": (
+        "anchorX": (
             "FLOAT",
-            {"default": "0.5", "tooltip": "Anchor point of the clip."},
+            {
+                "default": "0.5",
+                "parent": {"name": "anchor", "isArray": True, "index": 0},
+                "tooltip": "Anchor point of the clip.",
+            },
+        ),
+        "anchorY": (
+            "FLOAT",
+            {
+                "default": "0.5",
+                "parent": {"name": "anchor", "isArray": True, "index": 1},
+                "tooltip": "Anchor point of the clip.",
+            },
         ),
         "flipX": (
             "BOOLEAN",
@@ -123,6 +138,20 @@ class LGraphNode:
         "object-fit": (
             ["cover", "contain", "scale-down", "fill", "none"],
             {"default": "contain", "tooltip": "Object fit mode of the clip."},
+        ),
+        "object-positionX": (
+            "FLOAT",
+            {
+                "default": "0.5",
+                "parent": {"name": "object-position", "isArray": True, "index": 0},
+            },
+        ),
+        "object-positionY": (
+            "FLOAT",
+            {
+                "default": "0.5",
+                "parent": {"name": "object-position", "isArray": True, "index": 1},
+            },
         ),
         "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the clip."}),
         "ss": (
@@ -374,6 +403,7 @@ class LGraphNode:
             clip = clip.to_json()
             changed = False
             offset, field, index_map, opt = self.supported_config_type[self.type]
+            clip = self.flatten_tree(clip, opt)
             for key in field:
                 if key in clip:
                     if key in self.clip:
@@ -383,6 +413,8 @@ class LGraphNode:
                     else:
                         changed = True
                         self.widgets[index_map[key] + offset] = clip[key]
+                else:
+                    self.widgets[index_map[key] + offset] = opt[key][1].get("default")
             if changed:
                 self.clip = clip
             return changed
@@ -393,6 +425,8 @@ class LGraphNode:
         for key in field:
             if key in meta:
                 self.widgets[index_map[key] + offset] = meta[key]
+            else:
+                self.widgets[index_map[key] + offset] = opt[key][1].get("default")
 
     def set_clip(self, clip):
         key_to_delete = []
@@ -408,7 +442,154 @@ class LGraphNode:
             del clip[key]
         if self.clip:
             if "refId" in self.clip:
-                del clip["refId"]
-            self.clip.update(clip)
+                clip["refId"] = self.clip.get("refId")
+            self.clip = clip
         else:
             self.clip = clip
+        offset, field, index_map, opt = self.supported_config_type[self.type]
+        return self.build_tree(self.clip, opt)
+
+    def build_tree(self, flat_dict, image_option):
+        nodes = {}
+        used_nodes = {}
+        for key, value in image_option.items():
+            parent_info = value[1].get("parent")
+            index = 0
+            if parent_info:
+                is_array = parent_info.get("isArray", False)
+                index = parent_info.get("index", 0)
+            else:
+                is_array = False
+            if key in flat_dict:
+                nodes[key] = {
+                    "name": key,
+                    "value": flat_dict.get(key),
+                    "parent": parent_info,
+                    "is_array": is_array,
+                    "index": index,
+                }
+        for key in flat_dict:
+            if key not in nodes:
+                nodes[key] = {
+                    "name": key,
+                    "value": flat_dict.get(key),
+                    "parent": None,
+                    "is_array": False,
+                    "index": 0,
+                }
+        parent_dict = {}
+        root = parent_dict
+        for key, node in nodes.items():
+            parent_dict = root
+            parent_info = node["parent"]
+            parent_path = []
+            while parent_info:
+                parent_path.append(
+                    (
+                        parent_info["name"],
+                        parent_info.get("isArray", False),
+                        parent_info.get("index", 0),
+                    )
+                )
+                parent_info = parent_info.get("parent")
+            parent_path.reverse()
+            current_node = node
+            pre_isarray = False
+            pre_index = 0
+            for parent_name, is_array, index in parent_path:
+                if is_array:
+                    if pre_isarray:
+                        if not parent_name in used_nodes:
+                            len_v = len(parent_dict)
+                            count = pre_index + 1
+                            if count > len_v:
+                                while len(parent_dict) < count:
+                                    parent_dict.append([])
+                            tmp = parent_dict[pre_index]
+                            used_nodes[parent_name] = tmp
+                        parent_dict = used_nodes[parent_name]
+                    else:
+                        if parent_name not in parent_dict:
+                            parent_dict[parent_name] = []
+                        parent_dict = parent_dict[parent_name]
+                else:
+                    if pre_isarray:
+                        if not parent_name in used_nodes:
+                            len_v = len(parent_dict)
+                            count = pre_index + 1
+                            if count > len_v:
+                                while len(parent_dict) < count:
+                                    parent_dict.append([])
+                            tmp = {}
+                            parent_dict[pre_index] = tmp
+                            used_nodes[parent_name] = tmp
+                        parent_dict = used_nodes[parent_name]
+                    else:
+                        if parent_name not in parent_dict:
+                            parent_dict[parent_name] = {}
+                        parent_dict = parent_dict[parent_name]
+                pre_isarray = is_array
+                pre_index = index
+            if pre_isarray:
+                len_v = len(parent_dict)
+                count = pre_index + 1
+                if count > len_v:
+                    while len(parent_dict) < count:
+                        parent_dict.append(None)
+                parent_dict[pre_index] = current_node["value"]
+            else:
+                parent_dict[current_node["name"]] = current_node["value"]
+
+        return root
+
+    def flatten_tree(self, tree_dict, image_option):
+        flat_dict = {}
+        used_parents = {}
+
+        def process_value(key):
+            meta_info = image_option.get(key, None)[1]
+            parent_info = meta_info.get("parent")
+            parent_path = []
+            while parent_info:
+                parent_path.append(
+                    (
+                        parent_info["name"],
+                        parent_info.get("isArray", False),
+                        parent_info.get("index", 0),
+                    )
+                )
+                parent_info = parent_info.get("parent")
+            parent_path.reverse()
+            current = tree_dict
+            current_is_array = False
+            current_index = 0
+            for path in parent_path:
+                path_key = path[0]
+                if path_key not in used_parents:
+                    used_parents[path_key] = True
+                path_is_array = path[1]
+                path_index = path[2]
+                if current_is_array:
+                    if len(current) <= current_index:
+                        return
+                    current = current[current_index]
+                else:
+                    if path_key not in current:
+                        return
+                    current = current[path_key]
+                current_is_array = path_is_array
+                current_index = path_index
+                if not current:
+                    return
+            if current_is_array:
+                flat_dict[key] = current[current_index]
+            else:
+                if key in current:
+                    flat_dict[key] = current[key]
+
+        for key in image_option:
+            process_value(key)
+        for key in tree_dict:
+            if key not in flat_dict and key not in used_parents:
+                flat_dict[key] = tree_dict[key]
+        return flat_dict

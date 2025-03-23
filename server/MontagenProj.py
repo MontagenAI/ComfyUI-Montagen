@@ -316,3 +316,12 @@ class MontagenProj:
             if timeline.has_clip_id(clip_id):
                 timelines.append(timeline)
         return timelines
+
+    def is_in_clip(self, file_name):
+        for workflow in self.workflows:
+            if workflow.is_in_clip(file_name):
+                return True
+        for timeline in self.timelines:
+            if timeline.is_in_clip(file_name):
+                return True
+        return False
