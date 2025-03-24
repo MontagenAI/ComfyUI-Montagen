@@ -7,6 +7,7 @@ from typing import Callable
 import subprocess
 import sys
 import json
+import logging
 
 
 def to_base36_random() -> str:
@@ -111,7 +112,7 @@ def stream_probe(data_source: Callable[[Callable[[bytes], None]], None], cmd):
     return_code = process.returncode
 
     if return_code != 0:
-        print(f"Error: {stderr}", file=sys.stderr)
+        logging.error(f"Error: {stderr}")
         raise subprocess.CalledProcessError(
             return_code, ffmpeg_cmd, output=stdout, stderr=stderr
         )
@@ -155,7 +156,7 @@ def extract_video_audio_metadata(data_source, total_size, type):
             }
         )
     except Exception as e:
-        print(f"Error extracting video metadata: {e}", file=sys.stderr)
+        logging.error(f"Error extracting video metadata: {e}")
     if type not in ["video", "audio"]:
         return metadata
     # Extract audio metadata
@@ -201,7 +202,7 @@ def extract_video_audio_metadata(data_source, total_size, type):
         else:
             metadata["duration"] = duration
     except Exception as e:
-        print(f"Error extracting audio metadata: {e}", file=sys.stderr)
+        logging.error(f"Error extracting audio metadata: {e}")
     return metadata
 
 

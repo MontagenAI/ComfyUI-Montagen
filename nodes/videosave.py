@@ -3,6 +3,7 @@ import os
 import folder_paths
 import uuid
 import re
+import logging
 
 
 def save_video(filename, frames, fps, pbar, hasAlpha):
@@ -74,7 +75,6 @@ def save_video(filename, frames, fps, pbar, hasAlpha):
     # Regular expression to parse ffmpeg progress
     progress_regex = re.compile(r"frame=\s*(\d+)\s+.+speed=\s*([\d.]+)x")
 
-    # Read the output and print progress information
     while True:
         output = process.stdout.readline()
         if output == "" and process.poll() is not None:
@@ -84,7 +84,7 @@ def save_video(filename, frames, fps, pbar, hasAlpha):
             if match:
                 frame = int(match.group(1))
                 pbar.update_absolute(50 + frame / totalFrames * 50)
-            print(output.strip(), flush=True)
+            logging.info(output.strip())
 
     try:
         process.wait()
