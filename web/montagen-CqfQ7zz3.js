@@ -271,7 +271,7 @@ li[data-v-9c5bc6e9] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-016f0035] {
+}.explorer-container[data-v-3848fab1] {
   background-color: #fff;
 }[data-v-1d09b861] .split-container {
   border: none;
@@ -68326,7 +68326,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     },
     async saveTimeLine() {
       var _a2, _b2;
-      if (!this.activeProject.baseInfo.projectId) {
+      if (!this.activeProject.baseInfo.projectId || this.activeNode.fileType != "timeline") {
         return;
       }
       let data = this.playerInstance.creator.toJson();
@@ -70449,6 +70449,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           break;
         case "timeline":
           if (selectedKeys.value[node2.key]) {
+            workSpaceStore.setActiveNode(node2);
             workSpaceStore.openWorkFlow({ projectId: "", timeLine: node2.timelineData });
             if (!menuStore.showPage) {
               menuStore.changeShow(true);
@@ -71080,7 +71081,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-016f0035"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-3848fab1"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
