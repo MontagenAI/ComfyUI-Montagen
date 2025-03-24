@@ -274,9 +274,9 @@ class MontagenMaterial:
         """
         material = self.get_material(file_name)
         if not material:
-            return
+            raise FileNotFoundError(f"File {file_name} not found.")
         if self.project.is_in_clip(file_name):
-            return
+            raise ValueError("Cannot rename a material that is in use.")
         is_ref = material.get("is_ref")
         file_type = material.get("file_type")
         if not is_ref:
