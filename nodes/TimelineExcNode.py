@@ -1,6 +1,3 @@
-from ..server.LGraph import LGraph
-from ..server.Utils import DEFAULTUSERID, defualt_user_info
-from ..server.MontagenProjManager import MontagenProjManager
 import os
 import folder_paths
 import json
@@ -8,7 +5,9 @@ import uuid
 import subprocess
 from comfy.cli_args import args
 from .BaseWorkflow import BaseWorkflow
-
+import re
+from comfy.utils import ProgressBar
+import logging
 
 class TimelineExcNode(BaseWorkflow):
 
@@ -55,6 +54,7 @@ class TimelineExcNode(BaseWorkflow):
         tempJson = os.path.join(
             folder_paths.get_temp_directory(), f"{uuid.uuid4()}.json"
         )
+        pbar = ProgressBar(100)
         try:
             with open(tempJson, "w") as f:
                 json.dump(timeline, f)
@@ -73,6 +73,28 @@ class TimelineExcNode(BaseWorkflow):
                 str(args.port),
             ]
             # Run the ffmpeg command
-            subprocess.run(cmd, check=True, stdout=None, stderr=None, cwd=nodeBasePath)
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                cwd=nodeBasePath,
+                text=True,
+            )
+            for line in process.stdout:
+                logging.info(line.strip())
+                match = re.search(r"Burn progress: (\d+)%", line)
+                if match:
+                    progress = int(match.group(1))
+                    pbar.update_absolute(progress)
+
+            process.wait()
+            if process.returncode != 0:
+                raise subprocess.CalledProcessError(
+                    process.returncode,
+                    cmd,
+                    output=process.stdout,
+                    stderr=process.stderr,
+                )
+            pbar.update_absolute(100)
         finally:
             os.remove(tempJson)

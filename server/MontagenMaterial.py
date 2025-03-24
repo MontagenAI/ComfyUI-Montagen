@@ -8,6 +8,7 @@ from .remotefile.RemoteFileHandler import RemoteFileHandler
 import asyncio
 import threading
 from queue import Queue
+import logging
 
 
 class MontagenMaterial:
@@ -95,7 +96,7 @@ class MontagenMaterial:
                     return None
 
         except Exception as e:
-            print(f"Error reading reference file {ref_path}: {e}")
+            logging.error(f"Error reading reference file {ref_path}: {e}")
             return None
         src = "/" + FILEADDR.format(
             id=self.project.project_id, filename=ref_info["file_name"]
