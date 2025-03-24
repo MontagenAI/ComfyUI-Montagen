@@ -229,7 +229,7 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.wrapper-ref[data-v-0108ad8a] {
+}.wrapper-ref[data-v-e5271e54] {
   display: flex;
   height: 70vh;
   width: 60vw;
@@ -271,7 +271,7 @@ li[data-v-dc077f5f] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-38620eb0] {
+}.explorer-container[data-v-016f0035] {
   background-color: #fff;
 }[data-v-1d09b861] .split-container {
   border: none;
@@ -69915,7 +69915,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                               _cache[8] || (_cache[8] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
                               createBaseVNode("div", _hoisted_14, [
                                 createVNode(_component_InputText, {
-                                  name: "username",
+                                  name: "password",
                                   type: "text",
                                   placeholder: "password",
                                   fluid: ""
@@ -70041,7 +70041,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                               _cache[12] || (_cache[12] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
                               createBaseVNode("div", _hoisted_23, [
                                 createVNode(_component_InputText, {
-                                  name: "username",
+                                  name: "password",
                                   type: "text",
                                   placeholder: "password",
                                   fluid: ""
@@ -70113,7 +70113,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-0108ad8a"]]);
+const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-e5271e54"]]);
 const _hoisted_1$4 = { class: "wrapper-ref" };
 const _hoisted_2$1 = { class: "card tw-w-full" };
 const _hoisted_3$1 = { class: "custom-header" };
@@ -70826,8 +70826,17 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         method: "POST",
         body: JSON.stringify({ "dirs": [data.label] })
       });
-      await response.json();
-      refreshList();
+      const json = await response.json();
+      if (json.code == 0) {
+        refreshList();
+      } else {
+        app$1.extensionManager.toast.add({
+          severity: "warn",
+          summary: "Warning!",
+          detail: json.msg,
+          life: 3e3
+        });
+      }
     };
     const onFormSubmit = () => {
       addList();
@@ -71071,7 +71080,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-38620eb0"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-016f0035"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
