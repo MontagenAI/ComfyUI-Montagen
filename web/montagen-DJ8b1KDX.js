@@ -69333,7 +69333,9 @@ const previewUtils = {
               "duration": 1,
               "x": "50vw",
               "y": "50vh",
-              "object-fit": "contain"
+              "object-fit": "contain",
+              "width": "100vw",
+              "height": "100vh"
             }
           ]
         }
@@ -69358,7 +69360,9 @@ const previewUtils = {
               "y": "50vh",
               "duration": node2.audio_duration,
               "loop": false,
-              "object-fit": "contain"
+              "object-fit": "contain",
+              "width": "100vw",
+              "height": "100vh"
             }
           ]
         }
