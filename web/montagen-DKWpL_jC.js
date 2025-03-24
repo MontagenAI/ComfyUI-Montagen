@@ -271,7 +271,7 @@ li[data-v-9c5bc6e9] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-3848fab1] {
+}.explorer-container[data-v-bf0870ce] {
   background-color: #fff;
 }[data-v-1d09b861] .split-container {
   border: none;
@@ -70823,8 +70823,17 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         method: "POST",
         body: JSON.stringify({ "file_names": [data.file_name] })
       });
-      await response.json();
-      refreshList();
+      const json = await response.json();
+      if (json.code == 0) {
+        refreshList();
+      } else {
+        app$1.extensionManager.toast.add({
+          severity: "warn",
+          summary: "Warning!",
+          detail: json.msg,
+          life: 3e3
+        });
+      }
     };
     const deleteFolder = async (data) => {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Assets/Delete`, {
@@ -71085,7 +71094,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-3848fab1"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-bf0870ce"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
