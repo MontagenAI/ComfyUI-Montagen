@@ -235,38 +235,38 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.wrapper-ref[data-v-dc077f5f] {
+}.wrapper-ref[data-v-9c5bc6e9] {
   display: flex;
   height: 70vh;
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
 }
-.card[data-v-dc077f5f] {
+.card[data-v-9c5bc6e9] {
   padding: 1rem;
 }
-ul[data-v-dc077f5f] {
+ul[data-v-9c5bc6e9] {
   list-style: none;
   padding: 0;
 }
-li[data-v-dc077f5f] {
+li[data-v-9c5bc6e9] {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
-[data-v-dc077f5f] .p-fileupload {
+[data-v-9c5bc6e9] .p-fileupload {
   width: 100%;
 }
-[data-v-dc077f5f] .my-upload {
+[data-v-9c5bc6e9] .my-upload {
   display: flex;
   flex-direction: column;
 }
-[data-v-dc077f5f] .my-upload .p-fileupload-content {
+[data-v-9c5bc6e9] .my-upload .p-fileupload-content {
   flex: 1;
   overflow: hidden;
 }
-[data-v-dc077f5f] .my-upload .p-fileupload-content .empty {
+[data-v-9c5bc6e9] .my-upload .p-fileupload-content .empty {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -70259,7 +70259,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const uploadAssetDialog = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-dc077f5f"]]);
+const uploadAssetDialog = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-9c5bc6e9"]]);
 const _hoisted_1$3 = { class: "h-full tw-bg-[#ffffff] flex flex-col" };
 const _hoisted_2 = { class: "comfy-vue-side-bar-header" };
 const _hoisted_3 = { class: "flex flex-row" };
