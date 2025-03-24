@@ -180,7 +180,7 @@ class LGraphNode:
         ),
         "blur": (
             "FLOAT",
-            {"default": 0, "tooltip": "Blur level of the clip."},
+            {"default": 0, "tooltip": "Blur level of the clip.", "defaultDelte": True},
         ),
         "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the clip."}),
         "audio": (
@@ -278,11 +278,236 @@ class LGraphNode:
         ),
     }
 
+    text_fields = [
+        "active",
+        "x",
+        "y",
+        "width",
+        "height",
+        "rotate",
+        "opacity",
+        "anchorX",
+        "anchorY",
+        "flipX",
+        "flipY",
+        "zIndex",
+        "text",
+        "fontSize",
+        "letterSpacing",
+        "lineHeight",
+        "fontFamily",
+        "color",
+        "backgroundColor",
+        "wrap",
+        "align",
+        "valign",
+        "padding",
+        "stroke-color",
+        "stroke-size",
+        "shadow-color",
+        "shadow-alpha",
+        "shadow-blur",
+        "shadow-offset",
+        "shadow-angle",
+        "start",
+        "end",
+        "duration",
+        "preload",
+    ]
+
+    text_fields_dict = {}
+    for index, field in enumerate(text_fields):
+        text_fields_dict[field] = index
+
+    text_option = {
+        "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the text clip."}),
+        "x": ("STRING", {"default": "50vw", "tooltip": "X position of the text clip."}),
+        "y": ("STRING", {"default": "50vh", "tooltip": "Y position of the text clip."}),
+        "width": ("STRING", {"default": "50vw", "tooltip": "Width of the text clip."}),
+        "height": (
+            "STRING",
+            {"default": "50vh", "tooltip": "Height of the text clip."},
+        ),
+        "rotate": (
+            "FLOAT",
+            {"default": 0.0, "tooltip": "Rotation angle of the text clip."},
+        ),
+        "opacity": ("FLOAT", {"default": 1.0, "tooltip": "Opacity of the text clip."}),
+        "anchorX": (
+            "FLOAT",
+            {
+                "default": "0.5",
+                "parent": {"name": "anchor", "isArray": True, "index": 0},
+                "tooltip": "Anchor point of the text clip.",
+            },
+        ),
+        "anchorY": (
+            "FLOAT",
+            {
+                "default": "0.5",
+                "parent": {"name": "anchor", "isArray": True, "index": 1},
+                "tooltip": "Anchor point of the text clip.",
+            },
+        ),
+        "flipX": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Flip the text clip horizontally."},
+        ),
+        "flipY": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Flip the text clip vertically."},
+        ),
+        "zIndex": ("INT", {"default": 0, "tooltip": "Z-index for layering."}),
+        "text": ("STRING", {"default": "", "tooltip": "Text content."}),
+        "fontSize": ("STRING", {"default": "40", "tooltip": "Font size of the text."}),
+        "letterSpacing": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Letter spacing of the text.",
+                "defaultDelte": True,
+            },
+        ),
+        "lineHeight": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Line height of the text.",
+                "defaultDelte": True,
+            },
+        ),
+        "fontFamily": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Font family of the text.",
+                "defaultDelte": True,
+            },
+        ),
+        "color": ("STRING", {"default": "#000000", "tooltip": "Text color."}),
+        "backgroundColor": (
+            "STRING",
+            {"default": "transparent", "tooltip": "Background color of the text."},
+        ),
+        "wrap": (
+            "BOOLEAN",
+            {"default": False, "tooltip": "Wrap text within the width."},
+        ),
+        "align": (
+            ["left", "center", "right"],
+            {"default": "center", "tooltip": "Text alignment (left, center, right)."},
+        ),
+        "valign": (
+            ["top", "center", "bottom"],
+            {
+                "default": "center",
+                "tooltip": "Vertical text alignment (top, middle, bottom).",
+            },
+        ),
+        "padding": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Padding around the text.",
+                "defaultDelte": True,
+            },
+        ),
+        "stroke-color": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Stroke color of the text.",
+                "parent": {"name": "stroke", "property": "color"},
+                "defaultDelte": True,
+            },
+        ),
+        "stroke-size": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Stroke size of the text.",
+                "parent": {"name": "stroke", "property": "size"},
+                "defaultDelte": True,
+            },
+        ),
+        "shadow-color": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Shadow color of the text.",
+                "parent": {"name": "shadow", "property": "color"},
+                "defaultDelte": True,
+            },
+        ),
+        "shadow-alpha": (
+            "FLOAT",
+            {
+                "default": 0,
+                "tooltip": "Shadow alpha of the text.",
+                "parent": {"name": "shadow", "property": "alpha"},
+                "defaultDelte": True,
+            },
+        ),
+        "shadow-blur": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Shadow blur of the text.",
+                "parent": {"name": "shadow", "property": "blur"},
+                "defaultDelte": True,
+            },
+        ),
+        "shadow-offset": (
+            "STRING",
+            {
+                "default": "",
+                "tooltip": "Shadow offset of the text.",
+                "parent": {"name": "shadow", "property": "offset"},
+                "defaultDelte": True,
+            },
+        ),
+        "shadow-angle": (
+            "INT",
+            {
+                "default": 0,
+                "tooltip": "Shadow angle of the text.",
+                "parent": {"name": "shadow", "property": "angle"},
+                "defaultDelte": True,
+            },
+        ),
+        "start": (
+            "FLOAT",
+            {
+                "default": 0.0,
+                "tooltip": "Start time of the text clip.",
+                "defaultDelte": True,
+            },
+        ),
+        "end": (
+            "FLOAT",
+            {
+                "default": 0,
+                "tooltip": "End time of the text clip.",
+                "defaultDelte": True,
+            },
+        ),
+        "duration": (
+            "FLOAT",
+            {
+                "default": 0,
+                "tooltip": "Duration of the text clip.",
+                "defaultDelte": True,
+            },
+        ),
+        "preload": ("BOOLEAN", {"default": False, "tooltip": "Preload the text clip."}),
+    }
+
     supported_config_type = {
         "image": (3, image_fields, image_fields_dict, image_option),
         "video": (4, image_fields, image_fields_dict, image_option),
         "gif": (4, image_fields, image_fields_dict, image_option),
         "audio": (3, audio_fields, audio_fields_dict, audio_option),
+        "text": (4, text_fields, text_fields_dict, text_option),
     }
 
     def __init__(self, graph, data):
@@ -414,6 +639,8 @@ class LGraphNode:
                         changed = True
                         self.widgets[index_map[key] + offset] = clip[key]
                 else:
+                    if key in self.clip:
+                        changed = True
                     self.widgets[index_map[key] + offset] = opt[key][1].get("default")
             if changed:
                 self.clip = clip
@@ -429,10 +656,11 @@ class LGraphNode:
                 self.widgets[index_map[key] + offset] = opt[key][1].get("default")
 
     def set_clip(self, clip):
+        offset, field, index_map, opts = self.supported_config_type[self.type]
         key_to_delete = []
         for key in clip:
-            if key in self.image_option:
-                opt = self.image_option[key]
+            if key in opts:
+                opt = opts[key]
                 if opt:
                     if len(opt) == 2 and opt[1].get("default") == clip[key]:
                         if opt[1].get("defaultDelte"):
@@ -449,24 +677,16 @@ class LGraphNode:
         offset, field, index_map, opt = self.supported_config_type[self.type]
         return self.build_tree(self.clip, opt)
 
-    def build_tree(self, flat_dict, image_option):
+    def build_tree(self, flat_dict, option):
         nodes = {}
         used_nodes = {}
-        for key, value in image_option.items():
+        for key, value in option.items():
             parent_info = value[1].get("parent")
-            index = 0
-            if parent_info:
-                is_array = parent_info.get("isArray", False)
-                index = parent_info.get("index", 0)
-            else:
-                is_array = False
             if key in flat_dict:
                 nodes[key] = {
                     "name": key,
                     "value": flat_dict.get(key),
                     "parent": parent_info,
-                    "is_array": is_array,
-                    "index": index,
                 }
         for key in flat_dict:
             if key not in nodes:
@@ -474,8 +694,6 @@ class LGraphNode:
                     "name": key,
                     "value": flat_dict.get(key),
                     "parent": None,
-                    "is_array": False,
-                    "index": 0,
                 }
         parent_dict = {}
         root = parent_dict
@@ -489,6 +707,7 @@ class LGraphNode:
                         parent_info["name"],
                         parent_info.get("isArray", False),
                         parent_info.get("index", 0),
+                        parent_info.get("property", None),
                     )
                 )
                 parent_info = parent_info.get("parent")
@@ -496,7 +715,8 @@ class LGraphNode:
             current_node = node
             pre_isarray = False
             pre_index = 0
-            for parent_name, is_array, index in parent_path:
+            pre_property = None
+            for parent_name, is_array, index, property in parent_path:
                 if is_array:
                     if pre_isarray:
                         if not parent_name in used_nodes:
@@ -530,6 +750,7 @@ class LGraphNode:
                         parent_dict = parent_dict[parent_name]
                 pre_isarray = is_array
                 pre_index = index
+                pre_property = property
             if pre_isarray:
                 len_v = len(parent_dict)
                 count = pre_index + 1
@@ -538,16 +759,19 @@ class LGraphNode:
                         parent_dict.append(None)
                 parent_dict[pre_index] = current_node["value"]
             else:
-                parent_dict[current_node["name"]] = current_node["value"]
+                key = current_node["name"]
+                if pre_property:
+                    key = pre_property
+                parent_dict[key] = current_node["value"]
 
         return root
 
-    def flatten_tree(self, tree_dict, image_option):
+    def flatten_tree(self, tree_dict, option):
         flat_dict = {}
         used_parents = {}
 
         def process_value(key):
-            meta_info = image_option.get(key, None)[1]
+            meta_info = option.get(key, None)[1]
             parent_info = meta_info.get("parent")
             parent_path = []
             while parent_info:
@@ -556,6 +780,7 @@ class LGraphNode:
                         parent_info["name"],
                         parent_info.get("isArray", False),
                         parent_info.get("index", 0),
+                        parent_info.get("property", None),
                     )
                 )
                 parent_info = parent_info.get("parent")
@@ -563,12 +788,14 @@ class LGraphNode:
             current = tree_dict
             current_is_array = False
             current_index = 0
+            path_property = None
             for path in parent_path:
                 path_key = path[0]
                 if path_key not in used_parents:
                     used_parents[path_key] = True
                 path_is_array = path[1]
                 path_index = path[2]
+                path_property = path[3]
                 if current_is_array:
                     if len(current) <= current_index:
                         return
@@ -581,13 +808,14 @@ class LGraphNode:
                 current_index = path_index
                 if not current:
                     return
+            path_property = path_property or key
             if current_is_array:
                 flat_dict[key] = current[current_index]
             else:
-                if key in current:
-                    flat_dict[key] = current[key]
+                if path_property in current:
+                    flat_dict[key] = current[path_property]
 
-        for key in image_option:
+        for key in option:
             process_value(key)
         for key in tree_dict:
             if key not in flat_dict and key not in used_parents:

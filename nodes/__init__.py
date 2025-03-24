@@ -4,6 +4,7 @@ from .GifClipAdapter import GifClipAdapter
 from .AudioClipAdapter import AudioClipAdapter
 from .TimelineNode import TimelineNode
 from .TimelineExcNode import TimelineExcNode
+from .TextClipNode import TextClipNode
 
 NODE_CLASS_MAPPINGS = {
     "MontagenVideoClipAdapter": VideoClipAdapter,
@@ -12,6 +13,7 @@ NODE_CLASS_MAPPINGS = {
     "MontagenGifClipAdapter": GifClipAdapter,
     "MontagenTimelineNode": TimelineNode,
     "MontagenTimelineExecutionNode": TimelineExcNode,
+    "MontagenTextClipNode": TextClipNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -21,6 +23,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MontagenGifClipAdapter": GifClipAdapter.DESCRIPTION,
     "MontagenTimelineNode": TimelineNode.DESCRIPTION,
     "MontagenTimelineExecutionNode": TimelineExcNode.DESCRIPTION,
+    "MontagenTextClipNode": TextClipNode.DESCRIPTION,
 }
 
 __all__ = [NODE_DISPLAY_NAME_MAPPINGS, NODE_CLASS_MAPPINGS]

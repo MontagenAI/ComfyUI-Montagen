@@ -243,34 +243,34 @@ class MontagenProjManager:
             self.delete_project(user_id, project_id)
             return web.json_response({"code": 0})
 
-        @server.routes.get("/Montagen/Proj/{id}/Workflow/{workflowId}")
-        @error_handling_decorator
-        async def get_workflow(request, register_action):
-            user_id = server.user_manager.get_request_user_id(request)
-            workflow_id = request.match_info.get("workflowId", None)
-            project_id = request.match_info.get("id", None)
-            proj = self.get_project(user_id, project_id)
-            if not proj:
-                raise Exception("Project not found")
-            workflow = proj.get_workflow(workflow_id)
-            return web.json_response({"code": 0, "data": workflow.to_json()})
+        # @server.routes.get("/Montagen/Proj/{id}/Workflow/{workflowId}")
+        # @error_handling_decorator
+        # async def get_workflow(request, register_action):
+        #     user_id = server.user_manager.get_request_user_id(request)
+        #     workflow_id = request.match_info.get("workflowId", None)
+        #     project_id = request.match_info.get("id", None)
+        #     proj = self.get_project(user_id, project_id)
+        #     if not proj:
+        #         raise Exception("Project not found")
+        #     workflow = proj.get_workflow(workflow_id)
+        #     return web.json_response({"code": 0, "data": workflow.to_json()})
 
-        @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Edit")
-        @error_handling_decorator
-        async def update_workflow(request, register_action):
-            user_id = server.user_manager.get_request_user_id(request)
-            project_id = request.match_info.get("id", None)
-            req_data = await request.json()
-            workflow_id = request.match_info.get("workflowId", None)
-            proj = self.get_project(user_id, project_id)
-            if not proj:
-                raise Exception("Project not found")
-            workflow = proj.get_workflow(workflow_id)
-            if not workflow:
-                raise Exception("Workflow not found")
-            version = workflow.syn_workflow_clip(req_data)
-            proj.project_change_time()
-            return web.json_response({"code": 0, "data": version})
+        # @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Edit")
+        # @error_handling_decorator
+        # async def update_workflow(request, register_action):
+        #     user_id = server.user_manager.get_request_user_id(request)
+        #     project_id = request.match_info.get("id", None)
+        #     req_data = await request.json()
+        #     workflow_id = request.match_info.get("workflowId", None)
+        #     proj = self.get_project(user_id, project_id)
+        #     if not proj:
+        #         raise Exception("Project not found")
+        #     workflow = proj.get_workflow(workflow_id)
+        #     if not workflow:
+        #         raise Exception("Workflow not found")
+        #     version = workflow.syn_workflow_clip(req_data)
+        #     proj.project_change_time()
+        #     return web.json_response({"code": 0, "data": version})
 
         @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Rename")
         @error_handling_decorator

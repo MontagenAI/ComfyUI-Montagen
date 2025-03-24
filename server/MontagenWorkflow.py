@@ -154,6 +154,14 @@ class MontagenWorkflow:
         path = os.path.join(self.workflow_tmp_path, clip_id)
         if not os.path.exists(path):
             os.makedirs(path)
+
+        files = os.listdir(path)
+        files = [f for f in files if f.startswith(str(index))]
+        files = sorted(files, key=lambda x: x.split("_")[1])
+        if len(files) >= 10:
+            for file in files[: len(files) - 10]:
+                os.remove(os.path.join(path, file))
+
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         fileName = f"{index}_{current_time}.{ext}"
         fileFullName = os.path.join(path, fileName)

@@ -228,6 +228,9 @@ class MontagenMaterial:
 
         to_be_delete = list(set(to_be_delete))
         for file_name in to_be_delete:
+            if self.project.is_in_clip(file_name):
+                raise ValueError(f"Cannot delete a material that is in use.")
+        for file_name in to_be_delete:
             self.delete_material(file_name, False, False)
         self.cache_manager.delete(self.key)
 
@@ -236,7 +239,7 @@ class MontagenMaterial:
         if not material:
             return
         if not not_check and self.project.is_in_clip(file_name):
-            return
+            raise ValueError(f"Cannot delete {file_name} that is in use.")
         file_path = material.get("file_path")
         ref_path = material.get("ref_path")
         full_file_path = file_path and os.path.abspath(
