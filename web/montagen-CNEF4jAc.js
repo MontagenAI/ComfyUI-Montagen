@@ -93,10 +93,10 @@
     padding-right: 0.25rem
 }\r
 
-.editable-text[data-v-5404c5f4] {\r
+.editable-text[data-v-5cf00c0d] {\r
   display: inline;
 }
-.editable-text input[data-v-5404c5f4] {\r
+.editable-text input[data-v-5cf00c0d] {\r
   width: 100%;\r
   box-sizing: border-box;
 }\r
@@ -217,7 +217,7 @@
   background: #f8f9fa;\r
   border-radius: 4px;
 }\r
-.choose-project[data-v-9ea48fb3] {
+.choose-project[data-v-2b2d58c0] {
   display: flex;
   height: 70vh;
   width: 60vw;
@@ -235,7 +235,7 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-903db588] {
+}.explorer-container[data-v-1bee021e] {
   background-color: #fff;
 }[data-v-1d09b861] .split-container {
   border: none;
@@ -550,7 +550,7 @@
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, k as withModifiers, ab as withKeys, a0 as normalizeStyle, j as renderSlot$1, n as nextTick$1, T as Teleport, q as toRaw, w as watch, a4 as onBeforeUnmount, a2 as provide, X as onUnmounted, ac as createApp } from "./assets/vue-DwcvWNWk.js";
+import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, ab as withKeys, n as nextTick$1, a0 as normalizeStyle, j as renderSlot$1, T as Teleport, q as toRaw, a4 as onBeforeUnmount, a2 as provide, X as onUnmounted, ac as createApp } from "./assets/vue-DwcvWNWk.js";
 import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, t as script$f, v as script$g, z, w as script$h, D as DialogService, C as ConfirmationService, x as customAlphabet, y as createPinia, A as ToastService } from "./assets/vendor-D87Sco3d.js";
 import "./assets/lodash-DS8RUn65.js";
 import { u as usePrimeVue, q as script$8, P as PrimeVue, r as index$3 } from "./assets/primevue-2d6Jmt1S.js";
@@ -43648,64 +43648,64 @@ function requireDate() {
 var material, hasRequiredMaterial;
 function requireMaterial() {
   if (hasRequiredMaterial) return material;
-  hasRequiredMaterial = 1;
-  const { isBrowser: a2 } = requireLib$5(), e = requireMin(), t = requirePathBrowserify(), r = requireDate();
+  hasRequiredMaterial = 1, requireLib$5();
+  const a2 = requireMin(), e = requirePathBrowserify(), t = requireDate();
   requireUtils(), requireLib$2();
-  const { nodeRequire: s } = requireUtils(), o = s("../utils/fs"), u = -1;
-  class h2 {
-    constructor(p) {
-      this.creator = null, this.info = {}, this.path = "", this.forceTrim = false, this.start = u, this.end = u, this.length = NaN, this.fps = 30, this.duration = NaN, this.setSpeed(Number(p.speed) || 1), this.parseConf(p);
+  const { nodeRequire: r } = requireUtils(), s = r("../utils/fs"), o = -1;
+  class u {
+    constructor(f) {
+      this.creator = null, this.info = {}, this.path = "", this.forceTrim = false, this.start = o, this.end = o, this.length = NaN, this.fps = 30, this.duration = NaN, this.setSpeed(Number(f.speed) || 1), this.parseConf(f);
     }
-    static playing(p) {
-      return p.currentTime > 0 && !p.paused && !p.ended && p.readyState > 2;
+    static playing(f) {
+      return f.currentTime > 0 && !f.paused && !f.ended && f.readyState > 2;
     }
-    setSpeed(p) {
-      this.speed = Math.round(p * 100) / 100;
+    setSpeed(f) {
+      this.speed = Math.round(f * 100) / 100;
     }
-    seekTime(p, d = {}) {
-      const m = p * this.speed + this.getStartOffset(), g = this.forceTrim ? this.getStartOffset() : 0.01, y = this.forceTrim ? this.getEndOffset() : this.length;
-      return (m < g || m > y) && (d.overflow = true), Math.min(y, Math.max(g, m));
+    seekTime(f, p = {}) {
+      const d = f * this.speed + this.getStartOffset(), m = this.forceTrim ? this.getStartOffset() : 0.01, g = this.forceTrim ? this.getEndOffset() : this.length;
+      return (d < m || d > g) && (p.overflow = true), Math.min(g, Math.max(m, d));
     }
-    parseConf(p) {
-      var d;
-      this.conf = p, this.type = p.type, this.path = p.cachedSrc || p.src || p.path || p.image || p.url, a2 && (d = this.path) != null && d.startsWith("//") && (this.path = window.location.origin + this.path.substring(1)), this.parseTimeConf(p);
+    parseConf(f) {
+      var p;
+      this.conf = f, this.type = f.type, this.path = f.cachedSrc || f.src || f.path || f.image || f.url, (p = this.path) != null && p.startsWith("//") && (this.path = window.location.origin + this.path.substring(1)), this.parseTimeConf(f);
     }
-    parseTimeConf(p) {
-      this.start = this.parseTimeNumber(p.ss), this.end = this.parseTimeNumber(p.to);
+    parseTimeConf(f) {
+      this.start = this.parseTimeNumber(f.ss), this.end = this.parseTimeNumber(f.to);
     }
-    parseTimeNumber(p) {
-      return typeof p == "string" && p.includes(":") ? r.hmsToSeconds(p) : (p = Number(p), isNaN(p) ? u : p);
+    parseTimeNumber(f) {
+      return typeof f == "string" && f.includes(":") ? t.hmsToSeconds(f) : (f = Number(f), isNaN(f) ? o : f);
     }
     getStartOffset() {
-      return this.start == u ? 0 : this.start;
+      return this.start == o ? 0 : this.start;
     }
-    getEndOffset(p = false) {
-      const d = [], m = this.getStartOffset() + this.duration * this.speed;
-      return p && !isNaN(m) && d.push(m), isNaN(this.length) || d.push(this.length), this.end !== u && d.push(this.end), d.length > 0 ? e(d) : NaN;
+    getEndOffset(f = false) {
+      const p = [], d = this.getStartOffset() + this.duration * this.speed;
+      return f && !isNaN(d) && p.push(d), isNaN(this.length) || p.push(this.length), this.end !== o && p.push(this.end), p.length > 0 ? a2(p) : NaN;
     }
     getStartHms() {
-      return r.secondsToHms(this.getStartOffset());
+      return t.secondsToHms(this.getStartOffset());
     }
     getEndHms() {
-      return r.secondsToHms(this.getEndOffset(true));
+      return t.secondsToHms(this.getEndOffset(true));
     }
-    getSliceOpts(p = true) {
-      let d = [];
-      return this.getStartOffset() > 0 && (d = d.concat(["-ss", this.getStartHms()])), this.getEndOffset(true) < this.length && p && (d = d.concat(["-to", this.getEndHms()])), d;
+    getSliceOpts(f = true) {
+      let p = [];
+      return this.getStartOffset() > 0 && (p = p.concat(["-ss", this.getStartHms()])), this.getEndOffset(true) < this.length && f && (p = p.concat(["-to", this.getEndHms()])), p;
     }
-    getOutputPath(p, d) {
-      return o.ensureDir(p), t.join(p, d);
+    getOutputPath(f, p) {
+      return s.ensureDir(f), e.join(f, p);
     }
     /**
      * Obtain duration based on movie information
      * @return {number} movie information duration
      * @public
      */
-    getDuration(p = false) {
-      return Math.max(0, this.getSourceDuration(p) / this.speed);
+    getDuration(f = false) {
+      return Math.max(0, this.getSourceDuration(f) / this.speed);
     }
-    getSourceDuration(p) {
-      return this.getEndOffset(p) - this.getStartOffset();
+    getSourceDuration(f) {
+      return this.getEndOffset(f) - this.getStartOffset();
     }
     toString() {
       return `${this.type}:${this.path}-length:${this.length}`;
@@ -43714,7 +43714,7 @@ function requireMaterial() {
       this.creator = null, this.info = null, this.path = "", this.length = 0;
     }
   }
-  return material = h2, material;
+  return material = u, material;
 }
 var xhr, hasRequiredXhr;
 function requireXhr() {
@@ -51343,12 +51343,17 @@ function requireKeyFrame() {
     }
     get(s, o) {
       const u = (this.endTime - this.startTime) / o;
-      return this.func((s - this.startTime / o) * 1e3, this.from, this.to - this.from, u * 1e3);
+      return this.func(
+        (s - this.startTime / o) * 1e3,
+        this.from,
+        this.to - this.from,
+        u * 1e3
+      );
     }
   }
   class t {
-    constructor(s) {
-      this.conf = s, this.keyFrames = {}, this.parse();
+    constructor(s, o) {
+      this.conf = s, this.keyFrames = {}, this.keyFramesEntry = {}, this.convert = o, this.parse();
     }
     /**
      *
@@ -51359,20 +51364,49 @@ function requireKeyFrame() {
      * @param func 关键帧动画func的名字
      * @returns {KeyFrame}
      */
-    keyFrame(s, o, u, h2, f) {
-      var p;
-      const d = this.conf[u - 1] && this.conf[u - 1][s], m = { startTime: (p = this.conf[u - 1]) == null ? void 0 : p.time, endTime: h2, to: o, key: s, from: d, func: f };
-      return new e(m);
+    keyFrame(s, o, u, h2, f, p) {
+      var d;
+      o = this.convert(o);
+      let m = p[u - 1] && p[u - 1].value;
+      m = this.convert(m);
+      const g = {
+        startTime: (d = p[u - 1]) == null ? void 0 : d.time,
+        endTime: h2,
+        to: o,
+        key: s,
+        from: m,
+        func: f
+      };
+      return new e(g);
     }
     parse() {
-      return this.conf.sort((s, o) => s.time - o.time).map((s, o) => {
+      this.conf.sort((s, o) => s.time - o.time).map((s, o) => {
         Object.entries(s).forEach((u) => {
           const [h2, f] = u;
           if (h2 === "time" || h2 === "innerHTML") return;
-          const p = this.keyFrame(h2, f, o, s.time, s.easing);
-          this.keyFrames[h2] || (this.keyFrames[h2] = []), this.keyFrames[h2].push(p);
+          this.keyFramesEntry[h2] || (this.keyFramesEntry[h2] = []);
+          const p = {
+            key: h2,
+            value: f,
+            index: this.keyFramesEntry[h2].length,
+            time: s.time,
+            easing: s.easing
+          };
+          this.keyFramesEntry[h2].push(p);
         });
       });
+      for (let [s, o] of Object.entries(this.keyFramesEntry))
+        for (const u of o) {
+          const h2 = this.keyFrame(
+            u.key,
+            u.value,
+            u.index,
+            u.time,
+            u.easing,
+            o
+          );
+          this.keyFrames[s] || (this.keyFrames[s] = []), this.keyFrames[s].push(h2);
+        }
     }
     update(s) {
       this.conf = s, this.parse();
@@ -51387,9 +51421,17 @@ function requireKeyFrame() {
             break;
           }
         if (d === void 0 && p.length > 0 && (s < p[0].startTime / h2 ? d = p[0].from : d = p[p.length - 1].to), d !== void 0) {
-          const { relative: m, key: g, value: y } = o.toAbs(f, d);
-          if (u[g] !== void 0 && m) continue;
-          u[g] = y;
+          const m = o.toAbs(f, d);
+          if (Array.isArray(m))
+            for (const g of m) {
+              const { relative: y, key: w, value: b } = g;
+              u[w] !== void 0 && y || (u[w] = b);
+            }
+          else {
+            const { relative: g, key: y, value: w } = o.toAbs(f, d);
+            if (u[y] !== void 0 && g) continue;
+            u[y] = w;
+          }
         }
       }
       return u;
@@ -51401,7 +51443,8 @@ var node, hasRequiredNode;
 function requireNode() {
   if (hasRequiredNode) return node;
   hasRequiredNode = 1;
-  const FFClip = requireClip(), { BLEND_MODES } = requireLib$2(), KeyFrames = requireKeyFrame(), _FFNode = class ____FFNode extends FFClip {
+  const FFClip = requireClip(), { BLEND_MODES } = requireLib$2(), KeyFrames = requireKeyFrame();
+  class FFNode extends FFClip {
     /**
      * FFNode constructor
      *
@@ -51415,13 +51458,13 @@ function requireNode() {
      * @param {object} conf.keyframes - keyframes of FFNode
      */
     constructor(a2 = {}) {
-      super({ type: "node", ...a2 }), this.preload = !!a2.preload, this.setScale(this.confAttr.scale || 1), this.updateAttr(), a2.width && (this.conf.width = this.vu(a2.width)), a2.height && (this.conf.height = this.vu(a2.height)), a2.keyframes && (this.keyFrame = new KeyFrames(a2.keyframes));
+      super({ type: "node", ...a2 }), this.preload = !!a2.preload, this.initScaleX = 1, this.initScaleY = 1, this.updateAttr(), a2.width && (this.conf.width = this.vu(a2.width)), a2.height && (this.conf.height = this.vu(a2.height)), a2.keyframes && (this.keyFrame = new KeyFrames(a2.keyframes, (e) => e && this.px(e)));
     }
     updateMaterialTime() {
     }
     get confAttr() {
       const a2 = { ...this.conf };
-      return a2.width = this.px(a2.width), a2.height = this.px(a2.height), a2.x = this.px(a2.x), a2.y = this.px(a2.y), a2.scale = this.initScale || 1, a2.rotation = a2.rotation !== void 0 ? Number(a2.rotation) : 0, a2.opacity = a2.opacity !== void 0 ? Number(a2.opacity) : 1, a2.speed = a2.speed !== void 0 ? Number(a2.speed) : 1, a2;
+      return a2.width = this.px(a2.width), a2.height = this.px(a2.height), a2.x = this.px(a2.x), a2.y = this.px(a2.y), a2.rotation = a2.rotation !== void 0 ? Number(a2.rotation) : 0, a2.opacity = a2.opacity !== void 0 ? Number(a2.opacity) : 1, a2.speed = a2.speed !== void 0 ? Number(a2.speed) : 1, a2;
     }
     set audio(a2) {
     }
@@ -51457,36 +51500,60 @@ function requireNode() {
      * @returns {{value: number, key: string, relative: boolean}}
      */
     toAbs(a2, e, t = null) {
-      let r = t && t[a2] !== void 0 ? t[a2] : this.confAttr[a2], s, o = false;
+      t && t[a2] !== void 0 ? t[a2] : this.confAttr[a2];
+      let r, s = false;
       if (a2.includes("d-")) {
         a2 = a2.replace("d-", "");
-        let u = t && t[a2] !== void 0 ? t[a2] : this.confAttr[a2];
-        o = true, ____FFNode.D_LIST.includes(a2) ? s = u * e : s = u + e;
+        let o = t && t[a2] !== void 0 ? t[a2] : this.confAttr[a2];
+        if (s = true, a2 == "scale") {
+          let u = t && t.scaleX !== void 0 ? t.scaleX : this.initScaleX, h2 = t && t.scaleY !== void 0 ? t.scaleY : this.initScaleY;
+          return [
+            { relative: s, key: "scaleX", value: u * e },
+            { relative: s, key: "scaleY", value: h2 * e }
+          ];
+        } else
+          r = o + e;
+      } else if (a2 == "scale") {
+        let o = t && t.scaleX !== void 0 ? t.scaleX : this.initScaleX, u = t && t.scaleY !== void 0 ? t.scaleY : this.initScaleY;
+        return [
+          { relative: s, key: "scaleX", value: o * e },
+          { relative: s, key: "scaleY", value: u * e }
+        ];
       } else
-        ____FFNode.D_LIST.includes(a2) ? s = r * e : s = e;
-      return { relative: o, key: a2, value: s };
+        r = e;
+      return { relative: s, key: a2, value: r };
     }
     async drawing(a2, e) {
       var t;
       const r = await super.drawing(a2, e), s = {};
       if (r && this.keyFrame) {
-        const o = a2 / 1e3 - this.absStartTime, u = this.keyFrameAttr(o, this);
-        Object.assign(s, u);
+        const u = a2 / 1e3 - this.absStartTime, h2 = this.keyFrameAttr(u, this);
+        Object.assign(s, h2);
       }
       if (r && (t = this.confAttr) != null && t.amotion) {
-        const o = this.parseAudioMotion();
-        for (const [u, h2] of Object.entries(o)) {
-          const { relative: f, key: p, value: d } = this.toAbs(u, h2, s);
-          s[p] !== void 0 && f || (s[p] = d);
+        const u = this.parseAudioMotion();
+        for (const [h2, f] of Object.entries(u)) {
+          const { relative: p, key: d, value: m } = this.toAbs(h2, f, s);
+          s[d] !== void 0 && p || (s[d] = m);
         }
       }
-      return Object.keys(s).length > 0 ? (this.display && this.display.attr(s), this.animationAttr = s) : this.animationAttr = null, r;
+      let o = null;
+      return s.scaleX !== void 0 && s.scaleY !== void 0 && (o = { x: s.scaleX, y: s.scaleY }, delete s.scaleX, delete s.scaleY), Object.keys(s).length > 0 || o ? (this.display && this.display.attr(s), o && (this.display.scale = o, s.scale = o), this.animationAttr == null && (this.animationAttr = {}), this.animationAttr = { ...this.animationAttr, ...s }) : this.animationAttr = null, r;
     }
     refresh() {
       this.updateAttr();
     }
     updateAttr() {
-      const { x: a2 = 0, y: e = 0, rotate: t = 0, opacity: r = 1, anchor: s = 0.5, blend: o, flipX: u = false, flipY: h2 = false } = this.confAttr;
+      const {
+        x: a2 = 0,
+        y: e = 0,
+        rotate: t = 0,
+        opacity: r = 1,
+        anchor: s = 0.5,
+        blend: o,
+        flipX: u = false,
+        flipY: h2 = false
+      } = this.confAttr;
       this.setXY(a2, e), this.setRotate(t), this.setAnchor(s), this.addBlend(o), this.setChromaKey(), this.setColor(), this.setOpacity(r), this.setFlip({ flipX: u, flipY: h2 });
     }
     show() {
@@ -51509,8 +51576,9 @@ function requireNode() {
      * @param {number} scale
      * @public
      */
-    setScale(a2 = 1) {
-      isNaN(a2) || !this.display || (this.scale = a2, this.display.scale.set(a2, a2), this.initScale = this.display.scale.x);
+    setScale() {
+      var a2, e, t;
+      (a2 = this.animationAttr) != null && a2.scale ? (this.initScaleX = this.display.scale.x / ((e = this.animationAttr) == null ? void 0 : e.scale.x), this.initScaleY = this.display.scale.y / ((t = this.animationAttr) == null ? void 0 : t.scale.y)) : (this.initScaleX = this.display.scale.x, this.initScaleY = this.display.scale.y);
     }
     /**
      * Set display object rotation
@@ -51672,8 +51740,7 @@ function requireNode() {
      * @public
      */
     getWH() {
-      const { width: a2 = 0, height: e = 0 } = this.confAttr;
-      return a2 && e ? [a2, e] : [this.display.width, this.display.height];
+      return [this.display.width, this.display.height];
     }
     getWidth() {
       return this.getWH()[0];
@@ -51697,10 +51764,8 @@ function requireNode() {
     destroy() {
       super.destroy(), this.display = null, this.parent = null;
     }
-  };
-  dv(_FFNode, "D_LIST", ["scale", "opacity"]);
-  let FFNode = _FFNode;
-  return node = FFNode, node;
+  }
+  return dv(FFNode, "D_LIST", ["scale"]), node = FFNode, node;
 }
 function _typeof(a2) {
   "@babel/helpers - typeof";
@@ -52409,14 +52474,41 @@ function requireImage() {
       typeof p == "object" && p.x !== void 0 ? this.frame = p : this.frame = { x: p, y: d, w: m, h: g };
     }
     getFrame() {
-      if (this.frame) return this.frame;
-      let [p, d, m, g] = [0, 0, this.material.width(), this.material.height()];
-      const { "object-fit": y, "object-position": w } = this.conf;
-      if (!y || y === "cover") {
-        const [b, x] = this.getObjectPosition(), [C, T] = this.getWH(), _ = Math.min(m / C, g / T), S = C * _, E = T * _;
-        p += (m - S) * b, d += (g - E) * x, m = S, g = E;
+      let { width: p, height: d } = this.confAttr, m = this.material.width(), g = this.material.height(), y = 0, w = 0;
+      this.frame && (y = this.frame.x, w = this.frame.y, m = this.frame.w, g = this.frame.h);
+      let b = { x: 0, y: 0, width: m, height: g };
+      if (!p || !d)
+        return { x: y, y: w, w: m, h: g, trim: b };
+      const { "object-fit": x } = this.conf, [C, T] = this.getObjectPosition();
+      if (!x || x === "cover") {
+        const [_, S] = [p, d], E = Math.min(m / _, g / S), M = _ * E, R = S * E;
+        y += (m - M) * C, w += (g - R) * T, m = M, g = R, b.width = m, b.height = g;
+      } else if (x === "contain") {
+        let _ = p / m, S = d / g;
+        if (_ < S) {
+          let E = _ * g / S, M = (g - E) * T;
+          b.y = M, b.height = E;
+        } else {
+          let E = S * m / _, M = (m - E) * C;
+          b.x = M, b.width = E;
+        }
+      } else if (x !== "scale-down" && x !== "fill" && x == "none") {
+        if (m >= p) {
+          let _ = p;
+          y += (m - _) * C, m = _, b.x = 0, b.width = _;
+        } else {
+          let _ = p / m, S = m / _, E = (m - S) * C;
+          b.x = E, b.width = S;
+        }
+        if (g >= d) {
+          let _ = d;
+          w += (g - _) * T, g = _, b.y = 0, b.height = _;
+        } else {
+          let _ = d / g, S = g / _, E = (g - S) * T;
+          b.y = E, b.height = S;
+        }
       }
-      return { x: p, y: d, w: m, h: g };
+      return { x: y, y: w, w: m, h: g, trim: b };
     }
     materialTime(p, d = false) {
       return { time: 0, loops: 0 };
@@ -52474,7 +52566,7 @@ function requireImage() {
     async preProcessing() {
       this.material && this.material.destroy(), this.material = this.createMaterial(this.conf), this.material.holderId = this.id, this.material.duration = this.duration, this.material.creator = this.root();
       const p = this.rootConf("fps");
-      await this.material.init({ fps: p }), await this.fitSize(), this.display.texture.destroy(true), this.display.attr({ texture: r.fromCanvas(this.material.canvas) }), await this.fitTexture(), await this.setMotion();
+      await this.material.init({ fps: p }), this.refresh(), await this.fitSize(), this.display.texture.destroy(true), this.display.attr({ texture: r.fromCanvas(this.material.canvas) }), await this.fitTexture(), await this.setMotion();
     }
     async setMotion(p) {
       if (!this.conf.motion) {
@@ -52491,35 +52583,12 @@ function requireImage() {
       let g = this.material.width(), y = this.material.height();
       if (this.frame && (g = this.frame.w, y = this.frame.h), !g || !y) return;
       let w;
-      if (!p || !d)
-        p ? (w = p / g, d = w * y) : d ? (w = d / y, p = w * g) : (w = this.scale || 1, p = g * w, d = y * w);
-      else {
-        const b = this.conf["object-fit"];
-        if (!b || b === "cover") w = Math.max(p / g, d / y);
-        else if (b === "contain") w = Math.min(p / g, d / y);
-        else if (b === "none") w = 1;
-        else if (b === "scale-down") w = Math.min(1, Math.min(p / g, d / y));
-        else if (b === "fill") return m.attr({ width: p, height: d });
-        p = g * w, d = y * w;
-      }
-      m.attr({ width: p, height: d }), this.setScale(w);
+      (!p || !d) && (p ? (w = p / g, d = w * y) : d ? (w = d / y, p = w * g) : (w = 1, p = g * w, d = y * w)), m.attr({ width: p, height: d }), this.setScale();
     }
     fitTexture(p) {
-      let { "object-fit": d } = this.conf;
-      this.frame && this.setScale(this.scale);
-      let { width: m, height: g } = this.confAttr;
-      if (p = p || this.display, p.scale.x <= 0 || p.scale.y <= 0) return;
-      p.texture.baseTexture.update();
-      let y = this.material.width(), w = this.material.height(), b = 0, x = 0;
-      if (this.frame && (b = this.frame.x, x = this.frame.y, y = this.frame.w, w = this.frame.h), m /= p.scale.x, g /= p.scale.y, !m || !g)
-        return p.texture.frame = new s(b, x, y, w);
-      const [C, T] = this.getObjectPosition();
-      if (d === "fill")
-        p.texture.frame = new s(b, x, y, w), p.width = m, p.height = g;
-      else {
-        const _ = Math.min(m, y), S = Math.min(g, w);
-        b += (y - _) * C, x += (w - S) * T, p.texture.frame = new s(b, x, _, S);
-      }
+      p = p || this.display, p.texture.baseTexture.update();
+      let { x: d, y: m, w: g, h: y, trim: w } = this.getFrame();
+      p.texture.frame = { x: d, y: m, width: g, height: y }, p.texture.orig = p.texture.frame, p.texture.trim = w, this.fitSize();
     }
     /**
      * Functions for drawing images
@@ -56904,25 +56973,20 @@ function requireExtras() {
   hasRequiredExtras = 1;
   const a2 = requireLib$2(), e = requireNode();
   class t extends e {
-    constructor(s = { animations: [] }) {
+    constructor(s = {}) {
       super({ type: "extras", ...s });
     }
-    /**
-     * Create display object.
-     * @private
-     */
     createDisplay() {
       this.display = new a2.Container(), this.container = this.display;
     }
-    /**
-     * Start rendering
-     * @private
-     */
-    start() {
-      super.start(), this.drawing = this.drawing.bind(this), TimelineUpdate.addFrameCallback(this.drawing), this.init && this.init(a2), this.emit("init");
+    enable() {
+      super.enable(), this.enableFn && this.enableFn(a2), this.emit("enable");
+    }
+    disable() {
+      super.disable(), this.disableFn && this.disableFn(a2), this.emit("disable");
     }
     drawing(s, o) {
-      this.update && this.update(a2, s, o), this.emit("update");
+      super.drawing(s, o), this.update && this.update(a2, s, o), this.emit("update");
     }
     destroyContainer() {
       try {
@@ -56931,7 +56995,7 @@ function requireExtras() {
       }
     }
     destroy() {
-      super.destroy(), this.destroyContainer(), TimelineUpdate.removeFrameCallback(this.drawing), this.destroyed && this.destroyed(a2), this.emit("destroy"), this.update = null, this.drawing = null, this.container = null;
+      super.destroy(), this.destroyContainer(), this.destroyed && this.destroyed(a2), this.emit("destroy"), this.enableFn = null, this.disableFn = null, this.update = null, this.container = null;
     }
   }
   return extras = t, extras;
@@ -60755,7 +60819,7 @@ function requireFilter() {
         });
         this[`${u}Shader`] = await h2.data.text();
       }
-      this.filter = this.addFilterTo(this.parent.display), this.filter.enabled = false;
+      this.parent.display && (this.filter = this.addFilterTo(this.parent.display), this.filter.enabled = false);
     }
     addFilterTo(o) {
       return o.addFilter({
@@ -68693,6 +68757,24 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     const finishEditing = () => {
       emit("edit", inputValue.value);
     };
+    watch(
+      () => props2.isEditing,
+      (newVal) => {
+        if (newVal) {
+          inputValue.value = props2.modelValue;
+          nextTick$1(() => {
+            var _a2;
+            if (!inputRef.value) return;
+            const fileName = inputValue.value.includes(".") ? inputValue.value.split(".").slice(0, -1).join(".") : inputValue.value;
+            const start = 0;
+            const end = fileName.length;
+            const inputElement = inputRef.value.$el;
+            (_a2 = inputElement.setSelectionRange) == null ? void 0 : _a2.call(inputElement, start, end);
+          });
+        }
+      },
+      { immediate: true }
+    );
     const vFocus = {
       mounted: (el) => el.focus()
     };
@@ -68723,7 +68805,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-5404c5f4"]]);
+const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-5cf00c0d"]]);
 const _sfc_main$b = {
   props: {
     // 面板配置数组
@@ -68922,15 +69004,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     const projectSelection = computed(() => {
       return workSpaceStore.activeProject.baseInfo.projectId;
     });
-    let lastSelected = null;
     const handleChange = (event2) => {
-      if (!event2.value) {
-        nextTick$1(() => {
-          selectedProject.value = lastSelected;
-        });
-      } else {
-        lastSelected = event2.value;
-      }
     };
     const handleTabSelection = (val) => {
       if (!val) return;
@@ -68950,6 +69024,15 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       }
     };
     const deleteProject = async (data) => {
+      console.log("当前选中的项目", projectSelection.value, data);
+      if (projectSelection.value === data) {
+        return app$1.extensionManager.toast.add({
+          severity: "info",
+          summary: "tips!",
+          detail: "Please switch items before deleting!",
+          life: 3e3
+        });
+      }
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
         method: "DELETE"
       });
@@ -68963,7 +69046,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         command: () => {
           console.log("删除项目");
           confirm.require({
-            group: "dialog",
+            group: "dialog2",
             message: `Are you sure delete ${menuTargetNode.value.baseInfo.name} project?`,
             header: "Confirmation",
             icon: "pi pi-exclamation-triangle",
@@ -68984,7 +69067,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       }
     ];
     onMounted(() => {
-      lastSelected = projectSelection.value;
+      projectSelection.value;
     });
     return (_ctx, _cache) => {
       const _component_Listbox = script$5;
@@ -69028,12 +69111,12 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
             }
           }
         }, null, 512),
-        createVNode(_component_ConfirmDialog, { group: "dialog" })
+        createVNode(_component_ConfirmDialog, { group: "dialog2" })
       ], 64);
     };
   }
 });
-const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-9ea48fb3"]]);
+const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-2b2d58c0"]]);
 const _hoisted_1$7 = { class: "folder-project" };
 const _hoisted_2$3 = { class: "form-wrapper w-full tw-px-4" };
 const _hoisted_3$3 = { class: "form-item" };
@@ -70196,8 +70279,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       switch (node2.fileType) {
         case "clip":
         case "workflows":
-        case "folder_ref":
+        case "folder_refs":
         case "timeline":
+        case "ref":
           menu.value.show(event2);
           break;
       }
@@ -70237,6 +70321,15 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           temp.push(...[
             {
               label: "Rename Clip",
+              icon: "pi pi-file-edit",
+              command: (e) => renameCommand(menuTargetNode.value)
+            }
+          ]);
+          break;
+        case "ref":
+          temp.push(...[
+            {
+              label: "Rename",
               icon: "pi pi-file-edit",
               command: (e) => renameCommand(menuTargetNode.value)
             }
@@ -70312,13 +70405,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
             }
           ]);
           break;
-        case "folder_ref":
+        case "folder_refs":
           temp.push(...[
             {
               label: "Add ref",
               icon: "pi pi-plus",
               command: (e) => {
-                console.log(menuTargetNode.value, "Add ref");
                 dialogStore.showDialog({
                   key: "global-addref-mongaton",
                   title: "Add ref",
@@ -70347,9 +70439,34 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         case "timeline":
           renameTimeline(newLabel, renameEditingNode.value);
           break;
+        case "ref":
+          renameAsset(newLabel, renameEditingNode.value);
+          break;
         default:
           console.log("更改name", renameEditingNode.value);
           renameEditingNode.value = {};
+      }
+    };
+    const renameAsset = async (name, data) => {
+      let node2 = data;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${node2.projectId}/Assets/Rename/${node2.file_name}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ newname: name })
+      });
+      const json = await response.json();
+      renameEditingNode.value = {};
+      if (json.code == 0) {
+        refreshList();
+      } else {
+        app$1.extensionManager.toast.add({
+          severity: "warn",
+          summary: "Warning!",
+          detail: json.msg,
+          life: 3e3
+        });
       }
     };
     const renameTimeline = async (name, data) => {
@@ -70413,6 +70530,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         if (flag) {
           app$1.extensionManager.workflow.closeWorkflow(flag);
         }
+      }
+      if (data.workflowId == workSpaceStore.activeNode.workflowId) {
+        workSpaceStore.setActiveNode({});
       }
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Workflow/${data.workflowId}`, {
         method: "DELETE"
@@ -70669,7 +70789,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-903db588"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-1bee021e"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -71142,26 +71262,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         }
       }
     };
-    const watchWorkFlowTabClosed = () => {
-      let closeworkflow = app$1.extensionManager.workflow.closeWorkflow;
-      app$1.extensionManager.workflow.closeWorkflow = async function() {
-        var _a2, _b2;
-        let data = JSON.parse(JSON.stringify((_a2 = arguments[0]) == null ? void 0 : _a2.activeState));
-        closeworkflow.apply(this, arguments);
-        let extra = (_b2 = data == null ? void 0 : data.extra) == null ? void 0 : _b2.MontagenProj;
-        if (extra && (extra == null ? void 0 : extra.projectId) && (extra == null ? void 0 : extra.workflowId)) {
-          let response = await app$1.api.fetchApi(`/Montagen/Proj/${extra == null ? void 0 : extra.projectId}/Workflow/${extra == null ? void 0 : extra.workflowId}/Edit`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-          await response.json();
-          workSpaceStore.getlists();
-        }
-      };
-    };
     const mutationObserver = ref$3(null);
     const init2 = () => {
       app$1.extensionManager.registerSidebarTab({
@@ -71205,7 +71305,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         app$1.registerExtension({
           name: "Montagen",
           setup(ui) {
-            watchWorkFlowTabClosed();
             setTimeout(() => {
               let comfyuiLogo = ui.bodyTop.querySelector(".comfyui-menu .comfyui-logo");
               if (comfyuiLogo) {
