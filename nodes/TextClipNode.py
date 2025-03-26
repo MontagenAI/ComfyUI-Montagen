@@ -1,9 +1,8 @@
 from .BaseClipAdapter import BaseClipAdapter
-from ..server.LGraphNode import LGraphNode
-from ..server.Utils import to_base36_random
+from .TextTrackNode import TextTrackNode
 
 
-class TextClipNode(BaseClipAdapter):
+class TextClipNode(BaseClipAdapter, TextTrackNode):
 
     def __init__(self):
         super().__init__()
@@ -11,69 +10,31 @@ class TextClipNode(BaseClipAdapter):
 
     DESCRIPTION = "Text Clip Node"
 
-    @classmethod
-    def ClIP_INPUT_TYPES(s):
-        return {
-            "required": {
-                "inputMeta": (
-                    "BOOLEAN",
-                    {"default": True, "tooltip": "The input meta data."},
-                ),
-            },
-            "optional": {
-                "inputText": (
-                    "STRING",
-                    {"tooltip": "The input text.", "forceInput": True},
-                ),
-                **LGraphNode.text_option,
-            },
-        }
+    def workflow_syn_material(self, workflow, node, resoureces):
+        return resoureces
 
-    def save_func(
+    def save_func_inner(
         self,
-        inputText=None,
-        name=None,
-        inputMeta=True,
-        meta=None,
-        unique_id=None,
-        tag=None,
-        prompt: dict = None,
-        extra_pnginfo=None,
-        **config
+        name,
+        user_id,
+        project_id,
+        workflow_id,
+        workflow,
+        clip_id,
+        node,
+        tag,
+        prompt,
+        extra_pnginfo,
+        unique_id,
+        **keywords
     ):
-        (
-            user_id,
-            project_id,
-            proj,
+        return self.return_result(
+            "",
+            10,
+            clip_id,
             workflow_id,
             workflow,
-            clip_id,
-            node,
-        ) = self.get_info(name, unique_id, prompt, extra_pnginfo)
-
-        meta_result = config
-        if inputMeta and meta:
-            meta_result = meta
-            node.set_input_meta(False, 1, meta)
-            workflow.save()
-        if inputText:
-            meta_result["text"] = inputText
-        clip = {
-            "type": self.type,
-            "clipId": clip_id,
-            "workflowId": workflow_id,
-            "refId": to_base36_random(),
-            "children": [],
-            **meta_result,
-        }
-        clip = node.set_clip(clip)
-        workflow.save()
-        return self.protocol_return(
-            clip,
-            None,
-            0,
-            clip_id,
-            workflow_id,
             project_id,
             user_id,
+            node,
         )

@@ -100,6 +100,10 @@ class LGraph:
     def montagenWorkflowId(self):
         return self.montagenInfo.get("workflowId")
 
+    @montagenWorkflowId.setter
+    def montagenWorkflowId(self, value):
+        self.montagenInfo["workflowId"] = value
+
     @property
     def montagenModifyTime(self):
         return datetime.fromisoformat(
@@ -375,3 +379,9 @@ class LGraph:
                     self.state["lastNodeId"] = state["lastNodeId"]
                 if "lastRerouteId" in state:
                     self.state["lastRerouteId"] = state["lastRerouteId"]
+
+    def reset(self, clear_id):
+        if clear_id:
+            self.montagenWorkflowId = None
+        for node in self.graphNodes:
+            node.reset()

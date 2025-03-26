@@ -36,6 +36,11 @@ class BaseWorkflow:
         if not proj:
             raise ValueError("proj is required.")
         else:
+            workflows = proj.get_workflows(workflow_id)
+            workflows_len = len(workflows)
+            if workflows_len > 1 or workflows_len == 0:
+                lgraph.reset(workflows_len > 1)
+            workflow_id = lgraph.montagenInfo.get("workflowId", None)
             if not workflow_id:
                 workflow_id = to_base36_random()
             workflow = proj.get_workflow(workflow_id)

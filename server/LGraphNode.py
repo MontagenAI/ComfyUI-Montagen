@@ -53,40 +53,6 @@ class LGraphNodeOutput:
 
 class LGraphNode:
 
-    image_fields = [
-        "active",
-        "x",
-        "y",
-        "width",
-        "height",
-        "rotate",
-        "opacity",
-        "anchorX",
-        "anchorY",
-        "flipX",
-        "flipY",
-        "zIndex",
-        "object-fit",
-        "object-positionX",
-        "object-positionY",
-        "volume",
-        "ss",
-        "to",
-        "start",
-        "end",
-        "duration",
-        "blur",
-        "loop",
-        "audio",
-        "mute",
-        "speed",
-        "preload",
-    ]
-
-    image_fields_dict = {}
-    for index, field in enumerate(image_fields):
-        image_fields_dict[field] = index
-
     image_option = {
         "active": (
             "BOOLEAN",
@@ -198,26 +164,6 @@ class LGraphNode:
         ),
     }
 
-    audio_fields = [
-        "active",
-        "audio",
-        "start",
-        "end",
-        "duration",
-        "loop",
-        "pitch",
-        "speed",
-        "volume",
-        "fadeIn",
-        "fadeOut",
-        "ss",
-        "to",
-    ]
-
-    audio_fields_dict = {}
-    for index, field in enumerate(audio_fields):
-        audio_fields_dict[field] = index
-
     audio_option = {
         "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the audio."}),
         "audio": (
@@ -277,47 +223,6 @@ class LGraphNode:
             },
         ),
     }
-
-    text_fields = [
-        "active",
-        "x",
-        "y",
-        "width",
-        "height",
-        "rotate",
-        "opacity",
-        "anchorX",
-        "anchorY",
-        "flipX",
-        "flipY",
-        "zIndex",
-        "text",
-        "fontSize",
-        "letterSpacing",
-        "lineHeight",
-        "fontFamily",
-        "color",
-        "backgroundColor",
-        "wrap",
-        "align",
-        "valign",
-        "padding",
-        "stroke-color",
-        "stroke-size",
-        "shadow-color",
-        "shadow-alpha",
-        "shadow-blur",
-        "shadow-offset",
-        "shadow-angle",
-        "start",
-        "end",
-        "duration",
-        "preload",
-    ]
-
-    text_fields_dict = {}
-    for index, field in enumerate(text_fields):
-        text_fields_dict[field] = index
 
     text_option = {
         "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the text clip."}),
@@ -503,11 +408,11 @@ class LGraphNode:
     }
 
     supported_config_type = {
-        "image": (3, image_fields, image_fields_dict, image_option),
-        "video": (4, image_fields, image_fields_dict, image_option),
-        "gif": (4, image_fields, image_fields_dict, image_option),
-        "audio": (3, audio_fields, audio_fields_dict, audio_option),
-        "text": (4, text_fields, text_fields_dict, text_option),
+        "image": image_option,
+        "video": image_option,
+        "gif": image_option,
+        "audio": audio_option,
+        "text": text_option,
     }
 
     def __init__(self, graph, data):
@@ -535,6 +440,14 @@ class LGraphNode:
             if self.graph.montagenWorkflowId
             else self.id
         )
+
+    @property
+    def trackId(self):
+        return self.clipId
+
+    @property
+    def clip_or_track_id(self):
+        return self.clipId
 
     @property
     def properties(self):
@@ -574,14 +487,38 @@ class LGraphNode:
         self.assets.append(value)
 
     @property
-    def clip(self):
-        return self.properties.get("outputs", {}).get("clip", None)
+    def timeline_clip(self):
+        if self.timeline_clips:
+            timeline_clip = next(iter(self.timeline_clips), None)
+            if timeline_clip:
+                return timeline_clip
+        return None
 
-    @clip.setter
-    def clip(self, value):
+    @timeline_clip.setter
+    def timeline_clip(self, value):
         if "outputs" not in self.properties:
             self.properties["outputs"] = {}
-        self.properties["outputs"]["clip"] = value
+        self.properties["outputs"]["timeline_clips"] = [value]
+
+    @property
+    def timeline_clips(self):
+        return self.properties.get("outputs", {}).get("timeline_clips", [])
+
+    @timeline_clips.setter
+    def timeline_clips(self, value):
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        self.properties["outputs"]["timeline_clips"] = value
+
+    @property
+    def track_assets(self):
+        return self.assets
+
+    @track_assets.setter
+    def track_assets(self, value):
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        self.properties["outputs"]["assets"] = value
 
     @property
     def type(self):
@@ -592,15 +529,31 @@ class LGraphNode:
         self.properties["montagen_type"] = value
 
     @property
+    def node_type(self):
+        return self.properties.get("montagen_node_type", None)
+
+    @node_type.setter
+    def node_type(self, value):
+        self.properties["montagen_node_type"] = value
+
+    @property
     def isMontagenNode(self):
         return self.type is not None
 
     @property
     def clipName(self):
+        return self.node_name
+
+    @property
+    def trackName(self):
+        return self.node_name
+
+    @property
+    def node_name(self):
         return self.properties.get("montagen_name", None)
 
-    @clipName.setter
-    def clipName(self, value):
+    @node_name.setter
+    def node_name(self, value):
         self.properties["montagen_name"] = value
 
     @property
@@ -615,48 +568,87 @@ class LGraphNode:
             self.data["outputs"] = []
         return [LGraphNodeOutput(output) for output in self.data["outputs"]]
 
-    def to_clip(self):
-        return {
-            "clipId": self.clipId,
-            "clipName": self.clipName,
-            "type": self.type,
-            "assets": self.assets,
-        }
+    def reset(self):
+        if self.isMontagenNode:
+            self.track_assets = []
+            self.timeline_clips = []
 
-    def syn_clip(self, clip):
-        if clip:
-            clip = clip.to_json()
-            changed = False
-            offset, field, index_map, opt = self.supported_config_type[self.type]
-            clip = self.flatten_tree(clip, opt)
-            for key in field:
-                if key in clip:
-                    if key in self.clip:
-                        if self.clip[key] != clip[key]:
-                            changed = True
-                            self.widgets[index_map[key] + offset] = clip[key]
-                    else:
-                        changed = True
-                        self.widgets[index_map[key] + offset] = clip[key]
-                else:
-                    if key in self.clip:
-                        changed = True
-                    self.widgets[index_map[key] + offset] = opt[key][1].get("default")
-            if changed:
-                self.clip = clip
-            return changed
+    def to_clip_or_track(self):
+        return (
+            {
+                "id": self.clipId,
+                "name": self.clipName,
+                "type": self.type,
+                "nodeType": self.node_type,
+                "assets": self.assets,
+                "timelineClips": self.get_timeline_clips(self.timeline_clips),
+                "configInfo": self.supported_config_type[self.type],
+            }
+            if self.node_type == "clip"
+            else {
+                "id": self.trackId,
+                "name": self.trackName,
+                "type": self.type,
+                "nodeType": self.node_type,
+                "assets": self.assets,
+                "timelineClips": self.get_timeline_clips(self.timeline_clips),
+                "configInfo": self.supported_config_type[self.type],
+            }
+        )
 
-    def set_input_meta(self, enable, index, meta):
+    def get_timeline_clips(self, clips):
+        timeline_clips = []
+        for i, clip in enumerate(iter(clips)):
+            clip_name = self.node_name + "_" + str(i)
+            clip_id = clip["clipId"]
+            timeline_clips.append(
+                {
+                    "id": clip_id,
+                    "name": clip_name,
+                    **{
+                        key: clip.get(key, value[1].get("default"))
+                        for key, value in self.supported_config_type[self.type].items()
+                    },
+                }
+            )
+        return timeline_clips
+
+    def syn_clip(self, timeline_clip):
+        if timeline_clip:
+            timeline_clip = timeline_clip.to_json()
+            opt = self.supported_config_type[self.type]
+            timeline_clip = self.flatten_tree(timeline_clip, opt)
+            for wk_timeline_clip in self.timeline_clips:
+                if wk_timeline_clip["clipId"] == timeline_clip["clipId"]:
+                    wk_timeline_clip.clear()
+                    wk_timeline_clip.update(timeline_clip)
+                    break
+
+    def set_clip_config(self, clip_id, meta):
+        if meta:
+            for wk_timeline_clip in self.timeline_clips:
+                if wk_timeline_clip["clipId"] == clip_id:
+                    self.pre_change_clip(meta)
+                    wk_timeline_clip.update(meta)
+                    break
+
+    def has_timeline_clip(self, timeline_clip_id):
+        for wk_timeline_clip in self.timeline_clips:
+            if wk_timeline_clip["clipId"] == timeline_clip_id:
+                return True
+        return False
+
+    def has_filename(self, file_name):
+        for asset in self.assets:
+            if asset["file_name"] == file_name:
+                return True
+        return False
+
+    def set_input_enbale(self, enable, index):
         self.widgets[index] = enable
-        offset, field, index_map, opt = self.supported_config_type[self.type]
-        for key in field:
-            if key in meta:
-                self.widgets[index_map[key] + offset] = meta[key]
-            else:
-                self.widgets[index_map[key] + offset] = opt[key][1].get("default")
 
-    def set_clip(self, clip):
-        offset, field, index_map, opts = self.supported_config_type[self.type]
+    def pre_change_clip(self, clip):
+        opts = self.supported_config_type[self.type]
         key_to_delete = []
         for key in clip:
             if key in opts:
@@ -668,14 +660,40 @@ class LGraphNode:
 
         for key in key_to_delete:
             del clip[key]
-        if self.clip:
-            if "refId" in self.clip:
-                clip["refId"] = self.clip.get("refId")
-            self.clip = clip
+
+    def set_timeline_clip(self, timeline_clip, timeline_max_clip):
+        self.pre_change_clip(timeline_clip)
+        self.pre_change_clip(timeline_max_clip)
+        if self.timeline_clip:
+            self.timeline_clip.update(timeline_clip)
         else:
-            self.clip = clip
-        offset, field, index_map, opt = self.supported_config_type[self.type]
-        return self.build_tree(self.clip, opt)
+            self.timeline_clip = timeline_max_clip
+        opt = self.supported_config_type[self.type]
+        return self.build_tree(self.timeline_clip, opt)
+
+    def set_timeline_clips(self, timeline_clips, timeline_max_clip):
+        if timeline_clips:
+            for clip in timeline_clips:
+                self.pre_change_clip(clip)
+            for clip in timeline_max_clip:
+                self.pre_change_clip(clip)
+            current_length = len(self.timeline_clips)
+            new_length = len(timeline_clips)
+            current_timeline_clips = self.timeline_clips
+            self.timeline_clips = []
+            for i in range(new_length):
+                if i < current_length:
+                    self.timeline_clips.append(
+                        current_timeline_clips[i].update(timeline_clips[i])
+                    )
+                else:
+                    self.timeline_clips.append(timeline_max_clip[i])
+
+        convert_clips = []
+        opt = self.supported_config_type[self.type]
+        for clip in self.timeline_clips:
+            convert_clips.append(self.build_tree(clip, opt))
+        return convert_clips
 
     def build_tree(self, flat_dict, option):
         nodes = {}

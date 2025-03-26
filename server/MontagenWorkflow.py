@@ -68,12 +68,12 @@ class MontagenWorkflow:
         return self.project.user_id
 
     @property
-    def clips(self):
-        clips = []
+    def clips_or_tracks(self):
+        clips_or_tracks = []
         for node in self.workflow_data.graphNodes:
             if node.isMontagenNode:
-                clips.append(node.to_clip())
-        return clips
+                clips_or_tracks.append(node.to_clip_or_track())
+        return clips_or_tracks
 
     @staticmethod
     def create_from_path(workflow_json_path: str, project):
@@ -146,7 +146,7 @@ class MontagenWorkflow:
             "workflow": self.workflow_data.serialize(),
             "workflowId": self.workflow_id,
             "workflowName": self.workflow_name,
-            "clips": self.clips,
+            "clips": self.clips_or_tracks,
             "modifyTime": self.modify_time.isoformat(),
         }
 
@@ -261,18 +261,29 @@ class MontagenWorkflow:
                 return node
         return None
 
-    def syn_clip(self, clip):
-        clip_id = clip.clip_id
-        node = self._get_node_by_clip_id(clip_id)
+    def _get_node_by_timeline_clip_id(self, timeline_clip_id):
+        for node in self.workflow_data.graphNodes:
+            if node.isMontagenNode and node.has_timeline_clip(timeline_clip_id):
+                return node
+        return None
+
+    def set_clip_config(self, timeline_clip_id, meta):
+        node = self._get_node_by_timeline_clip_id(timeline_clip_id)
         if not node:
-            return False
-        result = node.syn_clip(clip)
-        if result:
-            self.save()
-        return result
+            return
+        node.set_clip_config(timeline_clip_id, meta)
+        self.save()
+
+    def syn_clip(self, timline_clip):
+        timeline_clip_id = timline_clip.clip_id
+        node = self._get_node_by_timeline_clip_id(timeline_clip_id)
+        if not node:
+            return
+        node.syn_clip(timline_clip)
+        self.save()
 
     def is_in_clip(self, file_name):
         for node in self.workflow_data.graphNodes:
-            if node.isMontagenNode and node.clip_file_name == file_name:
+            if node.isMontagenNode and node.has_filename(file_name):
                 return True
         return False

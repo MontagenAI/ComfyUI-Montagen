@@ -173,26 +173,11 @@ class MontagenTimeline:
     def syn_timeline(self, timeline_data):
         self.timeline_data = timeline_data
         self.save()
-        changed_clips_by_workflow = {}
         for clip in self._getNodes():
             if clip.clip_id and clip.workflow_id:
                 workflow = self.project.get_workflow(clip.workflow_id)
                 if workflow:
-                    if workflow.syn_clip(clip):
-                        change_info = {
-                            "clientId": clip.clip_id,
-                            "workflowId": clip.workflow_id,
-                            "meta": {
-                                key: value
-                                for key, value in clip.to_json().items()
-                                if key is not "children"
-                            },
-                        }
-                        if clip.workflow_id not in changed_clips_by_workflow:
-                            changed_clips_by_workflow[clip.workflow_id] = []
-                        changed_clips_by_workflow[clip.workflow_id].append(change_info)
-
-        return changed_clips_by_workflow
+                    workflow.syn_clip(clip)
 
     def has_clip_id(self, clip_id):
         clip_exist = next(self._getNodes(fn=lambda x: x.clip_id == clip_id), None)

@@ -246,35 +246,6 @@ class MontagenProjManager:
             self.delete_project(user_id, project_id)
             return web.json_response({"code": 0})
 
-        # @server.routes.get("/Montagen/Proj/{id}/Workflow/{workflowId}")
-        # @error_handling_decorator
-        # async def get_workflow(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     workflow_id = request.match_info.get("workflowId", None)
-        #     project_id = request.match_info.get("id", None)
-        #     proj = self.get_project(user_id, project_id)
-        #     if not proj:
-        #         raise Exception("Project not found")
-        #     workflow = proj.get_workflow(workflow_id)
-        #     return web.json_response({"code": 0, "data": workflow.to_json()})
-
-        # @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Edit")
-        # @error_handling_decorator
-        # async def update_workflow(request, register_action):
-        #     user_id = server.user_manager.get_request_user_id(request)
-        #     project_id = request.match_info.get("id", None)
-        #     req_data = await request.json()
-        #     workflow_id = request.match_info.get("workflowId", None)
-        #     proj = self.get_project(user_id, project_id)
-        #     if not proj:
-        #         raise Exception("Project not found")
-        #     workflow = proj.get_workflow(workflow_id)
-        #     if not workflow:
-        #         raise Exception("Workflow not found")
-        #     version = workflow.syn_workflow_clip(req_data)
-        #     proj.project_change_time()
-        #     return web.json_response({"code": 0, "data": version})
-
         @server.routes.post("/Montagen/Proj/{id}/Workflow/{workflowId}/Rename")
         @error_handling_decorator
         async def rename_workflow(request, register_action):
@@ -303,6 +274,25 @@ class MontagenProjManager:
             if not proj:
                 raise Exception("Project not found")
             proj.project_delete_workflow(workflow_id)
+            return web.json_response({"code": 0})
+
+        @server.routes.post(
+            "/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{timeline_clip_id}/ChangeConfig"
+        )
+        @error_handling_decorator
+        async def change_clip_config(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            timeline_clip_id = request.match_info.get("timeline_clip_id", None)
+            req_data = await request.json()
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            workflow = proj.get_workflow(workflow_id)
+            if not workflow:
+                raise Exception("Workflow not found")
+            workflow.set_clip_config(timeline_clip_id, req_data)
             return web.json_response({"code": 0})
 
         @server.routes.post("/Montagen/Proj/{id}/Timeline/{timelineName}/Rename")
@@ -503,33 +493,6 @@ class MontagenProjManager:
         proj = ExternMontagenProj.create_from_path(ref_path)
         self.montagen_cache_manager.delete(self.cache_key.format(user_id))
         return proj
-
-    # def copy_clip_to_other_project(
-    #     self,
-    #     user_id,
-    #     source_proj_id,
-    #     source_workflow_id,
-    #     source_clip_id,
-    #     new_proj_id,
-    #     new_workflow_id,
-    # ):
-    #     proj = self.get_project(user_id, source_proj_id)
-    #     if not proj:
-    #         raise Exception("Source project not found")
-    #     workflow = proj.get_workflow(source_workflow_id)
-    #     if not workflow:
-    #         raise Exception("Source workflow not found")
-    #     exports = workflow.workflow.exportNode(source_clip_id)
-    #     if exports:
-    #         dst_project = self.get_project(user_id, new_proj_id)
-    #         if not dst_project:
-    #             raise Exception("Dst project not found")
-    #         dst_workflow = dst_project.get_workflow(new_workflow_id)
-    #         if not dst_workflow:
-    #             raise Exception("Dst workflow not found")
-    #         dst_workflow.workflow.importNode(exports)
-    #         dst_workflow.syn_workflow_clip(dst_workflow.workflow)
-    #         dst_project.project_change_time()
 
     def onProcessEnd(self, data, event=MONTAGENPROCESSEND):
         PromptServer.instance.send_sync(

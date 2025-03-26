@@ -5,9 +5,10 @@ from comfy.utils import ProgressBar
 from comfy_extras import nodes_compositing
 import torch
 from .ImageClipAdapter import ImageClipAdapter
+from .VideoTrackAdapter import VideoTrackAdapter
 
 
-class VideoClipAdapter(ImageClipAdapter):
+class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
 
     def __init__(self):
         super().__init__()
@@ -17,8 +18,8 @@ class VideoClipAdapter(ImageClipAdapter):
     def ClIP_INPUT_TYPES(s):
         base = super().ClIP_INPUT_TYPES()
         return {
-            "required": {
-                **base.get("required"),
+            "optional": {
+                **base.get("optional"),
                 "preview_fps": (
                     "INT",
                     {
@@ -26,27 +27,30 @@ class VideoClipAdapter(ImageClipAdapter):
                     },
                 ),
             },
-            "optional": {
-                **base.get("optional"),
-            },
         }
 
     DESCRIPTION = "Video Clip Adapter"
 
-    def save_func(
+    def save_func_inner(
         self,
-        images,
         name,
-        inputMeta,
-        preview_fps=25,
-        meta=None,
-        alpha=None,
-        unique_id=None,
-        tag=None,
-        prompt: dict = None,
-        extra_pnginfo=None,
-        **config
+        user_id,
+        project_id,
+        workflow_id,
+        workflow,
+        clip_id,
+        node,
+        tag,
+        prompt,
+        extra_pnginfo,
+        unique_id,
+        **keywords
     ):
+        images = keywords.get("images", None)
+        alpha = keywords.get("alpha", None)
+        preview_fps = keywords.get("preview_fps", 25)
+        if images == None:
+            raise Exception("images is required.")
         pbar = ProgressBar(100)
         image_len = len(images)
         out_images = []
@@ -63,20 +67,6 @@ class VideoClipAdapter(ImageClipAdapter):
         hasAlpha = False
         if images.dim() == 4 and images.shape[-1] == 4:
             hasAlpha = True
-        (
-            user_id,
-            project_id,
-            proj,
-            workflow_id,
-            workflow,
-            clip_id,
-            node,
-        ) = self.get_info(
-            name,
-            unique_id,
-            prompt,
-            extra_pnginfo,
-        )
         frames = []
         current_progress = 0
         load_image_progress_item = 100 / image_len
@@ -94,11 +84,6 @@ class VideoClipAdapter(ImageClipAdapter):
             src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
 
         duration = image_len / preview_fps
-        meta_result = config
-        if inputMeta and meta:
-            meta_result = meta
-            node.set_input_meta(False, 1, meta)
-            workflow.save()
         return self.return_result(
             src,
             duration,
@@ -107,6 +92,5 @@ class VideoClipAdapter(ImageClipAdapter):
             workflow,
             project_id,
             user_id,
-            meta_result,
             node,
         )

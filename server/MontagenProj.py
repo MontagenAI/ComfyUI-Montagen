@@ -248,6 +248,13 @@ class MontagenProj:
                 return workflow
         return None
 
+    def get_workflows(self, workflow_id: str):
+        result = []
+        for workflow in self.workflows:
+            if workflow.workflow_id == workflow_id:
+                result.append(workflow)
+        return result
+
     def get_timeline(self, timeline_name: str):
         for timeline in self.timelines:
             if timeline.timeline_name == timeline_name:
@@ -310,10 +317,10 @@ class MontagenProj:
         self.project_change_time()
         return timeline_name
 
-    def get_timelines_by_clip_id(self, clip_id):
+    def get_timelines_by_timeline_clip_id(self, timeline_clip_id):
         timelines = []
         for timeline in self.timelines:
-            if timeline.has_clip_id(clip_id):
+            if timeline.has_clip_id(timeline_clip_id):
                 timelines.append(timeline)
         return timelines
 
