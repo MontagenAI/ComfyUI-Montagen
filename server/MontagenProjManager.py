@@ -17,6 +17,7 @@ from .MontagenProj import MontagenProj
 from .MontagenCacheManager import MontagenCacheManager
 from .ExternMontagenProj import ExternMontagenProj
 from contextlib import contextmanager
+import logging
 
 
 def error_handling_decorator(func):
@@ -54,8 +55,10 @@ def error_handling_decorator(func):
             response = await run_task
             return response
         except web.HTTPException as http_err:
+            logging.error(f"Error: {http_err}")
             return http_err
         except Exception as err:
+            logging.error(f"Error: {err}")
             return web.json_response({"code": -1, "msg": str(err)}, status=500)
 
     return wrapper

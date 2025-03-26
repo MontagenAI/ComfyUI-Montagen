@@ -1,17 +1,14 @@
-from ..server.MontagenProjManager import MontagenProjManager
-from ..server.LGraph import LGraph
 from ..server.Utils import (
-    defualt_user_info,
     DEFAULTCLIPNAME,
-    DEFAULTUSERID,
-    DEFAULTWORKFLOWNAME,
-    to_base36_random,
 )
 import shutil
 from .BaseWorkflow import BaseWorkflow
 
 
 class BaseClipAdapter(BaseWorkflow):
+    def __init__(self):
+        super().__init__()
+        self.node_type = "clip"
 
     @classmethod
     def INPUT_TYPES(s):
@@ -55,7 +52,7 @@ class BaseClipAdapter(BaseWorkflow):
             self.get_base_info(unique_id, prompt, extra_pnginfo)
         )
         node = workflow.syn_workflow_clip(
-            workflow_node, False, unique_id, name, self.type
+            workflow_node, False, unique_id, name, self.type, self.node_type
         )
         clip_id = node.clipId
         return (user_id, project_id, proj, workflow_id, workflow, clip_id, node)

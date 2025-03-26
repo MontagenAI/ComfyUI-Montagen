@@ -187,21 +187,32 @@ class MontagenWorkflow:
             self.workflow_json_path = new_fullname
             self._save_workflow()
 
-    def workflow_add_material(self, clip_name, index, old_filename, file_full_path):
+    def workflow_add_material(
+        self, clip_or_tack_name, index, old_filename, file_full_path
+    ):
         if old_filename:
             self.project.montagen_material.delete_material(old_filename)
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         file_name = os.path.basename(file_full_path)
         ext = os.path.splitext(file_name)[1]
-        file_name = f"{clip_name}_{index}_{current_time}{ext}"
+        file_name = f"{clip_or_tack_name}_{index}_{current_time}{ext}"
         file_name = self.project.montagen_material.add_material(
-            file_full_path, file_name, clip_name
+            file_full_path, file_name, clip_or_tack_name
         )
         src = "/" + FILEADDR.format(id=self.project_id, filename=file_name)
         return (self.project.montagen_material.get_material_output(file_name), src)
 
+    def workflow_del_material(self, file_name):
+        self.project.montagen_material.delete_material(file_name)
+
     def syn_workflow_clip(
-        self, workflow: dict, check_version=True, node_id=None, name=None, type=None
+        self,
+        workflow: dict,
+        check_version=True,
+        node_id=None,
+        name=None,
+        type=None,
+        node_type=None,
     ):
         node = None
         property_cache = {}
@@ -228,8 +239,9 @@ class MontagenWorkflow:
                 node_item.properties = properties
         if node_id:
             node = self.workflow_data.getNodeById(node_id)
-            node.clipName = name
+            node.node_name = name
             node.type = type
+            node.node_type = node_type
         self._save_workflow()
         if os.path.exists(self.workflow_tmp_path):
             for clip_id in os.listdir(self.workflow_tmp_path):

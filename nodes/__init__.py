@@ -5,6 +5,11 @@ from .AudioClipAdapter import AudioClipAdapter
 from .TimelineNode import TimelineNode
 from .TimelineExcNode import TimelineExcNode
 from .TextClipNode import TextClipNode
+from .VideoTrackAdapter import VideoTrackAdapter
+from .ImageTrackAdapter import ImageTrackAdapter
+from .GifTrackAdapter import GifTrackAdapter
+from .AudioTrackAdapter import AudioTrackAdapter
+from .TextTrackNode import TextTrackNode
 
 NODE_CLASS_MAPPINGS = {
     "MontagenVideoClipAdapter": VideoClipAdapter,
@@ -14,6 +19,11 @@ NODE_CLASS_MAPPINGS = {
     "MontagenTimelineNode": TimelineNode,
     "MontagenTimelineExecutionNode": TimelineExcNode,
     "MontagenTextClipNode": TextClipNode,
+    "MontagenVideoTrackAdapter": VideoTrackAdapter,
+    "MontagenImageTrackAdapter": ImageTrackAdapter,
+    "MontagenGifTrackAdapter": GifTrackAdapter,
+    "MontagenAudioTrackAdapter": AudioTrackAdapter,
+    "MontagenTextTrackNode": TextTrackNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -24,6 +34,11 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MontagenTimelineNode": TimelineNode.DESCRIPTION,
     "MontagenTimelineExecutionNode": TimelineExcNode.DESCRIPTION,
     "MontagenTextClipNode": TextClipNode.DESCRIPTION,
+    "MontagenVideoTrackAdapter": VideoTrackAdapter.DESCRIPTION,
+    "MontagenImageTrackAdapter": ImageTrackAdapter.DESCRIPTION,
+    "MontagenGifTrackAdapter": GifTrackAdapter.DESCRIPTION,
+    "MontagenAudioTrackAdapter": AudioTrackAdapter.DESCRIPTION,
+    "MontagenTextTrackNode": TextTrackNode.DESCRIPTION,
 }
 
 __all__ = [NODE_DISPLAY_NAME_MAPPINGS, NODE_CLASS_MAPPINGS]
