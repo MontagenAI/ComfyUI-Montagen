@@ -332,3 +332,9 @@ class MontagenProj:
             if timeline.is_in_clip(file_name):
                 return True
         return False
+
+    def get_workflow_timeline_clip(self, workflow_id, timeline_clip_id):
+        workflow = self.get_workflow(workflow_id)
+        if workflow:
+            return workflow.get_timeline_clip(timeline_clip_id)
+        return None

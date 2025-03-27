@@ -137,7 +137,19 @@ class MontagenTimeline:
         self._save_timeline()
 
     def to_json(self):
-        return self.timeline_data
+        return {
+            "timelineData": self.timeline_data,
+            "timelineName": self.timeline_name,
+            "modifyTime": self.modify_time.isoformat(),
+            "timelineClips": [
+                item
+                for clip in self._getNodes()
+                for item in [
+                    self.get_workflow_timeline_clip(clip.workflow_id, clip.clip_id)
+                ]
+                if item
+            ],
+        }
 
     def delete(self):
         if os.path.exists(self.timeline_json_path):
@@ -189,6 +201,12 @@ class MontagenTimeline:
         for clip in self._getNodes():
             if clip.src:
                 return file_name in clip.src
+
+    def get_workflow_timeline_clip(self, workflow_id, timeline_clip_id):
+        item = self.project.get_workflow_timeline_clip(workflow_id, timeline_clip_id)
+        if item:
+            item["timelineName"] = self.timeline_name
+        return item
 
     def _getNodes(self, parent=None, fn=None, iterator=None):
         if not parent:

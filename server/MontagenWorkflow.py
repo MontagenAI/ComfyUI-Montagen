@@ -72,7 +72,20 @@ class MontagenWorkflow:
         clips_or_tracks = []
         for node in self.workflow_data.graphNodes:
             if node.isMontagenNode:
-                clips_or_tracks.append(node.to_clip_or_track())
+                clip_or_track = node.to_clip_or_track()
+                if "timelineClips" in clip_or_track:
+                    for timeline_clip in clip_or_track.get("timelineClips", []):
+                        timeline_clip_id = timeline_clip.get("id", "")
+                        timelines = self.project.get_timelines_by_timeline_clip_id(
+                            timeline_clip_id
+                        )
+                        if timelines:
+                            timeline_clip["timelineName"] = timelines[
+                                0
+                            ].timeline_name
+                        else:
+                            timeline_clip["timelineName"] = None
+                clips_or_tracks.append(clip_or_track)
         return clips_or_tracks
 
     @staticmethod
@@ -267,6 +280,12 @@ class MontagenWorkflow:
         for node in self.workflow_data.graphNodes:
             if node.isMontagenNode and node.has_timeline_clip(timeline_clip_id):
                 return node
+        return None
+
+    def get_timeline_clip(self, timeline_clip_id):
+        for node in self.workflow_data.graphNodes:
+            if node.isMontagenNode and node.has_timeline_clip(timeline_clip_id):
+                return node.get_timeline_clip(timeline_clip_id)
         return None
 
     def set_clip_config(self, timeline_clip_id, meta):

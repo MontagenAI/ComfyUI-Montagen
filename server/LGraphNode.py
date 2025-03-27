@@ -638,6 +638,20 @@ class LGraphNode:
                 return True
         return False
 
+    def get_timeline_clip(self, timeline_clip_id):
+        for i, wk_timeline_clip in enumerate(iter(self.timeline_clips)):
+            clip_name = self.node_name + "_" + str(i)
+            if wk_timeline_clip["clipId"] == timeline_clip_id:
+                return {
+                    "id": timeline_clip_id,
+                    "name": clip_name,
+                    **{
+                        key: wk_timeline_clip.get(key, value[1].get("default"))
+                        for key, value in self.supported_config_type[self.type].items()
+                    },
+                }
+        return None
+
     def has_filename(self, file_name):
         for asset in self.assets:
             if asset["file_name"] == file_name:
