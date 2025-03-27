@@ -10,6 +10,7 @@ from .ImageTrackAdapter import ImageTrackAdapter
 from .GifTrackAdapter import GifTrackAdapter
 from .AudioTrackAdapter import AudioTrackAdapter
 from .TextTrackNode import TextTrackNode
+from .test import test
 
 NODE_CLASS_MAPPINGS = {
     "MontagenVideoClipAdapter": VideoClipAdapter,
@@ -24,6 +25,7 @@ NODE_CLASS_MAPPINGS = {
     "MontagenGifTrackAdapter": GifTrackAdapter,
     "MontagenAudioTrackAdapter": AudioTrackAdapter,
     "MontagenTextTrackNode": TextTrackNode,
+    "test": test,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -39,6 +41,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MontagenGifTrackAdapter": GifTrackAdapter.DESCRIPTION,
     "MontagenAudioTrackAdapter": AudioTrackAdapter.DESCRIPTION,
     "MontagenTextTrackNode": TextTrackNode.DESCRIPTION,
+    "test": "test",
 }
 
 __all__ = [NODE_DISPLAY_NAME_MAPPINGS, NODE_CLASS_MAPPINGS]

@@ -100,7 +100,9 @@ class MontagenTimeline:
             "montagenModifyTime": datetime.now().isoformat(),
             "userId": user_id,
             "projectId": project_id,
-            "children": [],
+            "children": [
+                {"type": "spine", "refId": to_base36_random(), "children": []}
+            ],
         }
         timeline_base = os.path.join(basePath, TIMELINEBASEPATH)
         if not os.path.exists(timeline_base):

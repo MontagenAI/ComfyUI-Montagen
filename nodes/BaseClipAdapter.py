@@ -124,7 +124,7 @@ class BaseClipAdapter(BaseTrackAdapter):
     def return_result(
         self,
         src,
-        duraiton,
+        duration,
         clip_id,
         workflow_id,
         workflow,
@@ -141,7 +141,7 @@ class BaseClipAdapter(BaseTrackAdapter):
             0,
             src,
             {
-                "duraiton": duraiton,
+                "duration": duration,
             },
         )
         clip = self.create_timeline_clip(

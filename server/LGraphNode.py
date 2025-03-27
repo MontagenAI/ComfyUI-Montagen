@@ -683,9 +683,8 @@ class LGraphNode:
             self.timeline_clips = []
             for i in range(new_length):
                 if i < current_length:
-                    self.timeline_clips.append(
-                        current_timeline_clips[i].update(timeline_clips[i])
-                    )
+                    current_timeline_clips[i].update(timeline_clips[i])
+                    self.timeline_clips.append(current_timeline_clips[i])
                 else:
                     self.timeline_clips.append(timeline_max_clip[i])
 
