@@ -50,7 +50,7 @@ class BaseClipAdapter(BaseTrackAdapter):
     def copy_clip_output(self, tmpFullName, fileFullName, workflow, node):
         shutil.move(tmpFullName, fileFullName)
         material, src = workflow.workflow_add_material(
-            node.clipName, 0, node.clip_file_name, fileFullName
+            node.clipName, 0, node.clip_file_name, fileFullName, self.type
         )
         node.clip_asset = material
         return src
@@ -61,7 +61,9 @@ class BaseClipAdapter(BaseTrackAdapter):
         _material = None
         srcs = []
         for i, res in enumerate(iter(resoureces)):
-            material, src = workflow.workflow_add_material(node.clipName, i, None, res)
+            material, src = workflow.workflow_add_material(
+                node.clipName, i, None, res, self.type
+            )
             _material = material
             srcs.append(src)
             break

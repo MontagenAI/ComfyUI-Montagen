@@ -39,6 +39,12 @@ class MontagenMaterial:
             "srt": [".srt"],
         }
 
+    def support_file(self, file_name, type):
+        if file_name.endswith((*self.supported_types[type],)):
+            return True
+        else:
+            return False
+
     def _get_file_info(self, file_path: str) -> Dict[str, Any]:
         """
         Get file information.

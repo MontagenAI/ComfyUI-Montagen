@@ -188,13 +188,15 @@ class MontagenWorkflow:
             self._save_workflow()
 
     def workflow_add_material(
-        self, clip_or_tack_name, index, old_filename, file_full_path
+        self, clip_or_tack_name, index, old_filename, file_full_path, type
     ):
         if old_filename:
             self.project.montagen_material.delete_material(old_filename)
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         file_name = os.path.basename(file_full_path)
         ext = os.path.splitext(file_name)[1]
+        if not self.project.montagen_material.support_file(file_name, type):
+            raise ValueError("unsupported file type")
         file_name = f"{clip_or_tack_name}_{index}_{current_time}{ext}"
         file_name = self.project.montagen_material.add_material(
             file_full_path, file_name, clip_or_tack_name

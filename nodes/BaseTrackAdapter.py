@@ -99,7 +99,9 @@ class BaseTrackAdapter(BaseWorkflow):
         materials = []
         srcs = []
         for i, res in enumerate(iter(resoureces)):
-            material, src = workflow.workflow_add_material(node.trackName, i, None, res)
+            material, src = workflow.workflow_add_material(
+                node.trackName, i, None, res, self.type
+            )
             materials.append(material)
             srcs.append(src)
         node.track_assets = materials
