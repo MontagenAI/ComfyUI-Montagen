@@ -556,7 +556,8 @@ class LGraphNode:
         return {
             "id": clip.get("clipId"),
             "name": clip_name,
-            **{
+            "type": clip.get("type"),
+            "meta": {
                 key: clip.get(key, value[1].get("default"))
                 for key, value in self.supported_config_type[self.type].items()
             },
