@@ -62,10 +62,10 @@ class test:
     ):
         resource = [name1, name2, name3, name4, name5]
         timeline = [
-            {"start": time1.split(",")[0], "end": time1.split(",")[1]},
-            {"start": time2.split(",")[0], "end": time2.split(",")[1]},
-            {"start": time3.split(",")[0], "end": time3.split(",")[1]},
-            {"start": time4.split(",")[0], "end": time4.split(",")[1]},
-            {"start": time5.split(",")[0], "end": time5.split(",")[1]},
+            {"start": float(time1.split(",")[0]), "end": float(time1.split(",")[1])},
+            {"start": float(time2.split(",")[0]), "end": float(time2.split(",")[1])},
+            {"start": float(time3.split(",")[0]), "end": float(time3.split(",")[1])},
+            {"start": float(time4.split(",")[0]), "end": float(time4.split(",")[1])},
+            {"start": float(time5.split(",")[0]), "end": float(time5.split(",")[1])},
         ]
         return (resource, timeline)
