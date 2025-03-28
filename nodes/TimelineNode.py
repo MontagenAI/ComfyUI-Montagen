@@ -37,7 +37,7 @@ class TimelineNode(BaseWorkflow):
         )
         workflow.syn_workflow_clip(workflow_node, False)
         for clip in clips:
-            another_timelines = proj.get_timelines_by_timeline_clip_id(clip["clipId"])
+            another_timelines = proj.get_timelines_by_clip_id(clip["clipId"])
             for another_timeline in another_timelines:
                 another_timeline.add_or_update_clip(clip)
             timeline = proj.get_timeline(name)

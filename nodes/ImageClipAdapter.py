@@ -29,7 +29,7 @@ class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
         project_id,
         workflow_id,
         workflow,
-        clip_id,
+        node_id,
         node,
         tag,
         prompt,
@@ -53,16 +53,16 @@ class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
             np.clip(255 * ori_image.cpu().numpy(), 0, 255).astype(np.uint8)
         )
         (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, clip_id, 0, format
+            workflow, node_id, 0, format
         )
         img.save(tmp_fullName)
         if os.path.exists(tmp_fullName):
-            src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
+            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
 
         return self.return_result(
             src,
             10,
-            clip_id,
+            node_id,
             workflow_id,
             workflow,
             project_id,

@@ -26,9 +26,9 @@ class BaseWorkflow:
             raise ValueError("workflow is required.")
         workflow_node = extra_pnginfo["workflow"]
         lgraph = LGraph(workflow_node)
-        user_id = lgraph.montagenInfo.get("userId", DEFAULTUSERID)
-        project_id_context = lgraph.montagenInfo.get("projectId", None)
-        workflow_id = lgraph.montagenInfo.get("workflowId", None)
+        user_id = lgraph.montagen_info.get("userId", DEFAULTUSERID)
+        project_id_context = lgraph.montagen_info.get("projectId", None)
+        workflow_id = lgraph.montagen_info.get("workflowId", None)
         project_id = defualt_user_info["default_project_id"]
         if project_id_context:
             project_id = project_id_context
@@ -40,7 +40,7 @@ class BaseWorkflow:
             workflows_len = len(workflows)
             if workflows_len > 1 or workflows_len == 0:
                 lgraph.reset(workflows_len > 1)
-            workflow_id = lgraph.montagenInfo.get("workflowId", None)
+            workflow_id = lgraph.montagen_info.get("workflowId", None)
             if not workflow_id:
                 workflow_id = to_base36_random()
             workflow = proj.get_workflow(workflow_id)

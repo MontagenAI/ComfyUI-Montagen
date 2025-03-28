@@ -434,20 +434,12 @@ class LGraphNode:
         return self.data["id"]
 
     @property
-    def clipId(self):
-        return self.properties.get("clipId") or (
-            f"{self.id}_{self.graph.montagenWorkflowId}"
-            if self.graph.montagenWorkflowId
+    def node_id(self):
+        return (
+            f"{self.id}_{self.graph.montagen_workflow_id}"
+            if self.graph.montagen_workflow_id
             else self.id
         )
-
-    @property
-    def trackId(self):
-        return self.clipId
-
-    @property
-    def clip_or_track_id(self):
-        return self.clipId
 
     @property
     def properties(self):
@@ -463,62 +455,47 @@ class LGraphNode:
     def assets(self):
         return self.properties.get("outputs", {}).get("assets", [])
 
-    @property
-    def clip_file_name(self):
-        if self.clip_asset:
-            return self.clip_asset.get("file_name")
-        return None
-
-    @property
-    def clip_asset(self):
-        if self.assets:
-            resource = next(iter(self.assets), None)
-            if resource:
-                return resource
-        return None
-
-    @clip_asset.setter
-    def clip_asset(self, value):
-        if "outputs" not in self.properties:
-            self.properties["outputs"] = {}
-        if "assets" not in self.properties["outputs"]:
-            self.properties["outputs"]["assets"] = []
-        self.assets.clear()
-        self.assets.append(value)
-
-    @property
-    def timeline_clip(self):
-        if self.timeline_clips:
-            timeline_clip = next(iter(self.timeline_clips), None)
-            if timeline_clip:
-                return timeline_clip
-        return None
-
-    @timeline_clip.setter
-    def timeline_clip(self, value):
-        if "outputs" not in self.properties:
-            self.properties["outputs"] = {}
-        self.properties["outputs"]["timeline_clips"] = [value]
-
-    @property
-    def timeline_clips(self):
-        return self.properties.get("outputs", {}).get("timeline_clips", [])
-
-    @timeline_clips.setter
-    def timeline_clips(self, value):
-        if "outputs" not in self.properties:
-            self.properties["outputs"] = {}
-        self.properties["outputs"]["timeline_clips"] = value
-
-    @property
-    def track_assets(self):
-        return self.assets
-
-    @track_assets.setter
-    def track_assets(self, value):
+    @assets.setter
+    def assets(self, value):
         if "outputs" not in self.properties:
             self.properties["outputs"] = {}
         self.properties["outputs"]["assets"] = value
+
+    @property
+    def clips(self):
+        return self.properties.get("outputs", {}).get("clips", [])
+
+    @clips.setter
+    def clips(self, value):
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        self.properties["outputs"]["clips"] = value
+
+    @property
+    def single_file_name(self):
+        if self.single_asset:
+            return self.single_asset.get("file_name")
+        return None
+
+    @property
+    def single_asset(self):
+        if self.assets:
+            return self.assets[0]
+        return None
+
+    @single_asset.setter
+    def single_asset(self, value):
+        self.assets = [value]
+
+    @property
+    def single_clip(self):
+        if self.clips:
+            return self.clips[0]
+        return None
+
+    @single_clip.setter
+    def single_clip(self, value):
+        self.clips = [value]
 
     @property
     def type(self):
@@ -537,16 +514,8 @@ class LGraphNode:
         self.properties["montagen_node_type"] = value
 
     @property
-    def isMontagenNode(self):
+    def is_montagen_node(self):
         return self.type is not None
-
-    @property
-    def clipName(self):
-        return self.node_name
-
-    @property
-    def trackName(self):
-        return self.node_name
 
     @property
     def node_name(self):
@@ -569,87 +538,67 @@ class LGraphNode:
         return [LGraphNodeOutput(output) for output in self.data["outputs"]]
 
     def reset(self):
-        if self.isMontagenNode:
-            self.track_assets = []
-            self.timeline_clips = []
+        if self.is_montagen_node:
+            self.assets = []
+            self.clips = []
 
-    def to_clip_or_track(self):
-        return (
-            {
-                "id": self.clipId,
-                "name": self.clipName,
-                "type": self.type,
-                "nodeType": self.node_type,
-                "assets": self.assets,
-                "timelineClips": self.get_timeline_clips(self.timeline_clips),
-                "configInfo": self.supported_config_type[self.type],
-            }
-            if self.node_type == "clip"
-            else {
-                "id": self.trackId,
-                "name": self.trackName,
-                "type": self.type,
-                "nodeType": self.node_type,
-                "assets": self.assets,
-                "timelineClips": self.get_timeline_clips(self.timeline_clips),
-                "configInfo": self.supported_config_type[self.type],
-            }
-        )
+    def to_json(self):
+        return {
+            "id": self.node_id,
+            "name": self.node_name,
+            "type": self.type,
+            "nodeType": self.node_type,
+            "assets": self.assets,
+            "clips": self.get_clips_json(),
+        }
 
-    def get_timeline_clips(self, clips):
-        timeline_clips = []
-        for i, clip in enumerate(iter(clips)):
+    def create_clip_json(self, clip_name, clip):
+        return {
+            "id": clip.get("clipId"),
+            "name": clip_name,
+            **{
+                key: clip.get(key, value[1].get("default"))
+                for key, value in self.supported_config_type[self.type].items()
+            },
+        }
+
+    def get_clips_json(self):
+        clip_list = []
+        for i, wk_clip in enumerate(iter(self.clips)):
             clip_name = self.node_name + "_" + str(i)
-            clip_id = clip["clipId"]
-            timeline_clips.append(
-                {
-                    "id": clip_id,
-                    "name": clip_name,
-                    **{
-                        key: clip.get(key, value[1].get("default"))
-                        for key, value in self.supported_config_type[self.type].items()
-                    },
-                }
-            )
-        return timeline_clips
+            clip_list.append(self.create_clip_json(clip_name, wk_clip))
+        return clip_list
 
-    def syn_clip(self, timeline_clip):
-        if timeline_clip:
-            timeline_clip = timeline_clip.to_json()
+    def syn_clip(self, clip):
+        if clip:
+            clip = clip.to_json()
             opt = self.supported_config_type[self.type]
-            timeline_clip = self.flatten_tree(timeline_clip, opt)
-            for wk_timeline_clip in self.timeline_clips:
-                if wk_timeline_clip["clipId"] == timeline_clip["clipId"]:
-                    wk_timeline_clip.clear()
-                    wk_timeline_clip.update(timeline_clip)
-                    break
+            wk_clip = self.get_clip_by_id(clip.get("clipId"))
+            if wk_clip:
+                clip = self.flatten_tree(clip, opt)
+                wk_clip.clear()
+                wk_clip.update(clip)
 
-    def set_clip_config(self, clip_id, meta):
+    def get_clip_by_id(self, clip_id):
+        for wk_clip in self.clips:
+            if wk_clip["clipId"] == clip_id:
+                return wk_clip
+
+    def set_clip_meta(self, clip_id, meta):
         if meta:
-            for wk_timeline_clip in self.timeline_clips:
-                if wk_timeline_clip["clipId"] == clip_id:
-                    self.pre_change_clip(meta)
-                    wk_timeline_clip.update(meta)
-                    break
+            wk_clip = self.get_clip_by_id(clip_id)
+            if wk_clip:
+                self.pre_change_clip(meta)
+                wk_clip.update(meta)
 
-    def has_timeline_clip(self, timeline_clip_id):
-        for wk_timeline_clip in self.timeline_clips:
-            if wk_timeline_clip["clipId"] == timeline_clip_id:
-                return True
-        return False
+    def has_clip(self, clip_id):
+        return self.get_clip_by_id(clip_id) != None
 
-    def get_timeline_clip(self, timeline_clip_id):
-        for i, wk_timeline_clip in enumerate(iter(self.timeline_clips)):
+    def get_clip_json(self, clip_id):
+        for i, wk_clip in enumerate(iter(self.clips)):
             clip_name = self.node_name + "_" + str(i)
-            if wk_timeline_clip["clipId"] == timeline_clip_id:
-                return {
-                    "id": timeline_clip_id,
-                    "name": clip_name,
-                    **{
-                        key: wk_timeline_clip.get(key, value[1].get("default"))
-                        for key, value in self.supported_config_type[self.type].items()
-                    },
-                }
+            if wk_clip["clipId"] == clip_id:
+                return self.create_clip_json(clip_name, wk_clip)
         return None
 
     def has_filename(self, file_name):
@@ -675,36 +624,37 @@ class LGraphNode:
         for key in key_to_delete:
             del clip[key]
 
-    def set_timeline_clip(self, timeline_clip, timeline_max_clip):
-        self.pre_change_clip(timeline_clip)
-        self.pre_change_clip(timeline_max_clip)
-        if self.timeline_clip:
-            self.timeline_clip.update(timeline_clip)
-        else:
-            self.timeline_clip = timeline_max_clip
+    def set_clip(self, clip, max_clip):
+        if clip:
+            self.pre_change_clip(clip)
+            self.pre_change_clip(max_clip)
+            if self.single_clip:
+                self.single_clip.update(clip)
+            else:
+                self.single_clip = max_clip
         opt = self.supported_config_type[self.type]
-        return self.build_tree(self.timeline_clip, opt)
+        return self.build_tree(self.single_clip, opt)
 
-    def set_timeline_clips(self, timeline_clips, timeline_max_clip):
-        if timeline_clips:
-            for clip in timeline_clips:
+    def set_clips(self, clips, max_clips):
+        if clips:
+            for clip in clips:
                 self.pre_change_clip(clip)
-            for clip in timeline_max_clip:
+            for clip in max_clips:
                 self.pre_change_clip(clip)
-            current_length = len(self.timeline_clips)
-            new_length = len(timeline_clips)
-            current_timeline_clips = self.timeline_clips
-            self.timeline_clips = []
+            current_length = len(self.clips)
+            new_length = len(clips)
+            current_clips = self.clips
+            self.clips = []
             for i in range(new_length):
                 if i < current_length:
-                    current_timeline_clips[i].update(timeline_clips[i])
-                    self.timeline_clips.append(current_timeline_clips[i])
+                    current_clips[i].update(clips[i])
+                    self.clips.append(current_clips[i])
                 else:
-                    self.timeline_clips.append(timeline_max_clip[i])
+                    self.clips.append(max_clips[i])
 
         convert_clips = []
         opt = self.supported_config_type[self.type]
-        for clip in self.timeline_clips:
+        for clip in self.clips:
             convert_clips.append(self.build_tree(clip, opt))
         return convert_clips
 

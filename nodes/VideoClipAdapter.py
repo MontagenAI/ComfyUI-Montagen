@@ -38,7 +38,7 @@ class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
         project_id,
         workflow_id,
         workflow,
-        clip_id,
+        node_id,
         node,
         tag,
         prompt,
@@ -76,18 +76,18 @@ class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
             current_progress = current_progress + load_image_progress_item
             pbar.update_absolute(current_progress * 0.5)
         (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, clip_id, 0, "mp4" if not hasAlpha else "webm"
+            workflow, node_id, 0, "mp4" if not hasAlpha else "webm"
         )
         videosave.save_video(tmp_fullName, frames, preview_fps, pbar, hasAlpha)
         pbar.update_absolute(100)
         if os.path.exists(tmp_fullName):
-            src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
+            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
 
         duration = image_len / preview_fps
         return self.return_result(
             src,
             duration,
-            clip_id,
+            node_id,
             workflow_id,
             workflow,
             project_id,

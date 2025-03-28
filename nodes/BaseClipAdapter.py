@@ -44,50 +44,50 @@ class BaseClipAdapter(BaseTrackAdapter):
     def ClIP_INPUT_TYPES(s):
         return {}
 
-    def get_output_path(self, workflow, clip_id, index, ext):
-        return workflow.get_output_path(clip_id, index, ext)
+    def get_output_path(self, workflow, node_id, index, ext):
+        return workflow.get_output_path(node_id, index, ext)
 
-    def copy_clip_output(self, tmpFullName, fileFullName, workflow, node):
+    def copy_output(self, tmpFullName, fileFullName, workflow, node):
         shutil.move(tmpFullName, fileFullName)
         material, src = workflow.workflow_add_material(
-            node.clipName, 0, node.clip_file_name, fileFullName, self.type
+            node.node_name, 0, node.single_file_name, fileFullName, self.type
         )
-        node.clip_asset = material
+        node.single_asset = material
         return src
 
     def workflow_syn_material(self, workflow, node, resoureces):
-        if node.clip_file_name:
-            workflow.workflow_del_material(node.clip_file_name)
+        if node.single_file_name:
+            workflow.workflow_del_material(node.single_file_name)
         _material = None
         srcs = []
         for i, res in enumerate(iter(resoureces)):
             material, src = workflow.workflow_add_material(
-                node.clipName, i, None, res, self.type
+                node.node_name, i, None, res, self.type
             )
             _material = material
             srcs.append(src)
             break
-        node.clip_asset = _material
+        node.single_asset = _material
         return srcs
 
-    def create_timeline_clips(self, node, timelines, clip_id, workflow_id, metas, srcs):
+    def create_clips(self, node, timelines, node_id, workflow_id, metas, srcs):
         clips = []
         clip = None
         clip_max = None
         for i, timeline in enumerate(iter(timelines)):
-            ref_id = to_base36_random()
-            clip_max = self.create_max_timeline_clip(
-                ref_id,
+            clip_id = to_base36_random()
+            clip_max = self.create_max_clip(
                 clip_id,
+                node_id,
                 workflow_id,
                 timeline["start"],
                 timeline["end"],
                 srcs[i],
                 None if metas == None else metas[i],
             )
-            clip = self.create_timeline_clip(
-                ref_id,
+            clip = self.create_clip(
                 clip_id,
+                node_id,
                 workflow_id,
                 timeline["start"],
                 timeline["end"],
@@ -95,31 +95,29 @@ class BaseClipAdapter(BaseTrackAdapter):
                 None if metas == None else metas[i],
             )
             break
-        clip = node.set_timeline_clip(clip, clip_max)
+        clip = node.set_clip(clip, clip_max)
         clips.append(clip)
         return clips
 
-    def create_timeline_clip(self, ref_id, clip_id, workflow_id, start, end, src, meta):
+    def create_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
         return {
             "start": start,
             "end": end,
-            **self.set_timeline_clip_property(src, False),
+            **self.set_clip_property(src, False),
             **({} if meta == None else meta),
         }
 
-    def create_max_timeline_clip(
-        self, ref_id, clip_id, workflow_id, start, end, src, meta
-    ):
+    def create_max_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
         return {
             "type": self.type,
-            "clipId": ref_id,
-            "ownerId": clip_id,
+            "clipId": clip_id,
+            "nodeId": node_id,
             "workflowId": workflow_id,
-            "refId": ref_id,
+            "refId": clip_id,
             "children": [],
             "start": start,
             "end": end,
-            **self.set_timeline_clip_property(src, True),
+            **self.set_clip_property(src, True),
             **({} if meta == None else meta),
         }
 
@@ -127,17 +125,17 @@ class BaseClipAdapter(BaseTrackAdapter):
         self,
         src,
         duration,
-        clip_id,
+        node_id,
         workflow_id,
         workflow,
         project_id,
         user_id,
         node,
     ):
-        ref_id = to_base36_random()
-        clip_max = self.create_max_timeline_clip(
-            ref_id,
+        clip_id = to_base36_random()
+        clip_max = self.create_max_clip(
             clip_id,
+            node_id,
             workflow_id,
             0,
             0,
@@ -146,15 +144,15 @@ class BaseClipAdapter(BaseTrackAdapter):
                 "duration": duration,
             },
         )
-        clip = self.create_timeline_clip(
-            ref_id,
+        clip = self.create_clip(
             clip_id,
+            node_id,
             workflow_id,
             0,
             0,
             src,
             None,
         )
-        clip = node.set_timeline_clip(clip, clip_max)
+        clip = node.set_clip(clip, clip_max)
         workflow.save()
         return [clip]

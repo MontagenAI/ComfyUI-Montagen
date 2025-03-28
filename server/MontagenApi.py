@@ -1,8 +1,6 @@
 from server import PromptServer
-from ..utils import get_mp4_files_tree
 from aiohttp import web
 import folder_paths
-from .VideoMetadataCache import VideoMetadataCache
 import os
 import subprocess
 import uuid
@@ -14,23 +12,6 @@ from .MontagenProjManager import MontagenProjManager
 class MontagenApi:
     def __init__(self, server: PromptServer):
         taskCache = {}
-
-        @server.routes.get("/Montagen/outputs")
-        def getOuputs(request):
-            trees = get_mp4_files_tree()
-            return web.json_response(trees)
-
-        @server.routes.get("/Montagen/outputs/json")
-        def getOuputsJson(request):
-            filename: str = request.query.get("filename")
-            if not filename:
-                return web.json_response({"error": "No filename specified"}, status=400)
-            video_file = folder_paths.get_annotated_filepath(
-                filename.strip("/"), folder_paths.get_output_directory()
-            )
-            return web.json_response(
-                VideoMetadataCache.instance.getMetadata(video_file)
-            )
 
         @server.routes.post("/Montagen/outputs")
         async def combineVideos(request):

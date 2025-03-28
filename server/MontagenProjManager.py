@@ -277,14 +277,14 @@ class MontagenProjManager:
             return web.json_response({"code": 0})
 
         @server.routes.post(
-            "/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{timeline_clip_id}/ChangeConfig"
+            "/Montagen/Proj/{id}/Workflow/{workflowId}/Clip/{clip_id}/ChangeConfig"
         )
         @error_handling_decorator
         async def change_clip_config(request, register_action):
             user_id = server.user_manager.get_request_user_id(request)
             project_id = request.match_info.get("id", None)
             workflow_id = request.match_info.get("workflowId", None)
-            timeline_clip_id = request.match_info.get("timeline_clip_id", None)
+            clip_id = request.match_info.get("clip_id", None)
             req_data = await request.json()
             proj = self.get_project(user_id, project_id)
             if not proj:
@@ -292,7 +292,7 @@ class MontagenProjManager:
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
                 raise Exception("Workflow not found")
-            workflow.set_clip_config(timeline_clip_id, req_data)
+            workflow.set_clip_meta(clip_id, req_data)
             return web.json_response({"code": 0})
 
         @server.routes.post("/Montagen/Proj/{id}/Timeline/{timelineName}/Rename")

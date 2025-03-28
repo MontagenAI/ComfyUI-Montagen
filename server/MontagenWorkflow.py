@@ -33,23 +33,23 @@ class MontagenWorkflow:
 
     @property
     def workflow_id(self):
-        return self.workflow_data.montagenWorkflowId
+        return self.workflow_data.montagen_workflow_id
 
     @property
     def workflow_name(self):
-        return self.workflow_data.montagenName
+        return self.workflow_data.montagen_name
 
     @workflow_name.setter
     def workflow_name(self, value):
-        self.workflow_data.montagenName = value
+        self.workflow_data.montagen_name = value
 
     @property
     def modify_time(self):
-        return self.workflow_data.montagenModifyTime
+        return self.workflow_data.montagen_modify_time
 
     @modify_time.setter
     def modify_time(self, value):
-        self.workflow_data.montagenModifyTime = value
+        self.workflow_data.montagen_modify_time = value
 
     @property
     def project_width(self):
@@ -68,25 +68,21 @@ class MontagenWorkflow:
         return self.project.user_id
 
     @property
-    def clips_or_tracks(self):
-        clips_or_tracks = []
-        for node in self.workflow_data.graphNodes:
-            if node.isMontagenNode:
-                clip_or_track = node.to_clip_or_track()
-                if "timelineClips" in clip_or_track:
-                    for timeline_clip in clip_or_track.get("timelineClips", []):
-                        timeline_clip_id = timeline_clip.get("id", "")
-                        timelines = self.project.get_timelines_by_timeline_clip_id(
-                            timeline_clip_id
-                        )
+    def nodes(self):
+        nodes = []
+        for node in self.workflow_data.graph_nodes:
+            if node.is_montagen_node:
+                node_json = node.to_json()
+                if "clips" in node_json:
+                    for clip in node_json.get("clips", []):
+                        clip_id = clip.get("id", "")
+                        timelines = self.project.get_timelines_by_clip_id(clip_id)
                         if timelines:
-                            timeline_clip["timelineName"] = timelines[
-                                0
-                            ].timeline_name
+                            clip["timelineName"] = timelines[0].timeline_name
                         else:
-                            timeline_clip["timelineName"] = None
-                clips_or_tracks.append(clip_or_track)
-        return clips_or_tracks
+                            clip["timelineName"] = None
+                nodes.append(node_json)
+        return nodes
 
     @staticmethod
     def create_from_path(workflow_json_path: str, project):
@@ -138,7 +134,7 @@ class MontagenWorkflow:
             and "version" in workflow_json
         ):
             result = LGraph(workflow_json)
-            if result.montagenInfo and result.montagenWorkflowId:
+            if result.montagen_info and result.montagen_workflow_id:
                 return result
         raise ValueError(f"Invalid {workflow_json} file")
 
@@ -159,12 +155,12 @@ class MontagenWorkflow:
             "workflow": self.workflow_data.serialize(),
             "workflowId": self.workflow_id,
             "workflowName": self.workflow_name,
-            "clips": self.clips_or_tracks,
+            "nodes": self.nodes,
             "modifyTime": self.modify_time.isoformat(),
         }
 
-    def get_output_path(self, clip_id, index, ext):
-        path = os.path.join(self.workflow_tmp_path, clip_id)
+    def get_output_path(self, node_id, index, ext):
+        path = os.path.join(self.workflow_tmp_path, node_id)
         if not os.path.exists(path):
             os.makedirs(path)
 
@@ -198,10 +194,10 @@ class MontagenWorkflow:
             new_fullname = os.path.join(self.workflow_json_dir_name, new_filename)
             os.rename(self.workflow_json_path, new_fullname)
             self.workflow_json_path = new_fullname
-            self._save_workflow()
+            self.save()
 
     def workflow_add_material(
-        self, clip_or_tack_name, index, old_filename, file_full_path, type
+        self, node_name, index, old_filename, file_full_path, type
     ):
         if old_filename:
             self.project.montagen_material.delete_material(old_filename)
@@ -210,9 +206,9 @@ class MontagenWorkflow:
         ext = os.path.splitext(file_name)[1]
         if not self.project.montagen_material.support_file(file_name, type):
             raise ValueError("unsupported file type")
-        file_name = f"{clip_or_tack_name}_{index}_{current_time}{ext}"
+        file_name = f"{node_name}_{index}_{current_time}{ext}"
         file_name = self.project.montagen_material.add_material(
-            file_full_path, file_name, clip_or_tack_name
+            file_full_path, file_name, node_name
         )
         src = "/" + FILEADDR.format(id=self.project_id, filename=file_name)
         return (self.project.montagen_material.get_material_output(file_name), src)
@@ -224,15 +220,15 @@ class MontagenWorkflow:
         self,
         workflow: dict,
         check_version=True,
-        node_id=None,
+        unique_id=None,
         name=None,
         type=None,
         node_type=None,
     ):
         node = None
         property_cache = {}
-        for node_item in self.workflow_data.graphNodes:
-            if node_item.isMontagenNode:
+        for node_item in self.workflow_data.graph_nodes:
+            if node_item.is_montagen_node:
                 property_cache[node_item.id] = node_item.properties
         new_workflow = LGraph(workflow)
         if check_version:
@@ -243,68 +239,56 @@ class MontagenWorkflow:
             version = new_workflow.version + 1
         else:
             version = self.workflow_data.version + 1
-        montagen_info = self.workflow_data.montagenInfo
+        montagen_info = self.workflow_data.montagen_info
         self.workflow_data = new_workflow
-        self.workflow_data.montagenInfo = montagen_info
+        self.workflow_data.montagen_info = montagen_info
         self.workflow_data.version = version
-        for node_item_id in property_cache:
-            properties = property_cache[node_item_id]
-            node_item = self.workflow_data.getNodeById(node_item_id)
+        for node_unique_id in property_cache:
+            properties = property_cache[node_unique_id]
+            node_item = self.workflow_data.get_node_by_unique_id(node_unique_id)
             if node_item:
                 node_item.properties = properties
-        if node_id:
-            node = self.workflow_data.getNodeById(node_id)
+        if unique_id:
+            node = self.workflow_data.get_node_by_unique_id(unique_id)
             node.node_name = name
             node.type = type
             node.node_type = node_type
-        self._save_workflow()
+        self.save()
         if os.path.exists(self.workflow_tmp_path):
-            for clip_id in os.listdir(self.workflow_tmp_path):
-                clip_path = os.path.join(self.workflow_tmp_path, clip_id)
-                if os.path.isdir(clip_path):
-                    node_1 = self._get_node_by_clip_id(clip_id)
+            for node_id in os.listdir(self.workflow_tmp_path):
+                node_path = os.path.join(self.workflow_tmp_path, node_id)
+                if os.path.isdir(node_path):
+                    node_1 = self.workflow_data.get_node_by_node_id(node_id)
                     if not node_1:
-                        shutil.rmtree(clip_path)
+                        shutil.rmtree(node_path)
 
         if node:
             return node
         return version
 
-    def _get_node_by_clip_id(self, clip_id):
-        for node in self.workflow_data.graphNodes:
-            if node.isMontagenNode and node.clipId == clip_id:
-                return node
+    def get_clip_json(self, clip_id):
+        node = self.workflow_data.get_node_by_clip_id(clip_id)
+        if node and node.is_montagen_node:
+            return node.get_clip_json(clip_id)
         return None
 
-    def _get_node_by_timeline_clip_id(self, timeline_clip_id):
-        for node in self.workflow_data.graphNodes:
-            if node.isMontagenNode and node.has_timeline_clip(timeline_clip_id):
-                return node
-        return None
-
-    def get_timeline_clip(self, timeline_clip_id):
-        for node in self.workflow_data.graphNodes:
-            if node.isMontagenNode and node.has_timeline_clip(timeline_clip_id):
-                return node.get_timeline_clip(timeline_clip_id)
-        return None
-
-    def set_clip_config(self, timeline_clip_id, meta):
-        node = self._get_node_by_timeline_clip_id(timeline_clip_id)
+    def set_clip_meta(self, clip_id, meta):
+        node = self.workflow_data.get_node_by_clip_id(clip_id)
         if not node:
             return
-        node.set_clip_config(timeline_clip_id, meta)
+        node.set_clip_meta(clip_id, meta)
         self.save()
 
-    def syn_clip(self, timline_clip):
-        timeline_clip_id = timline_clip.clip_id
-        node = self._get_node_by_timeline_clip_id(timeline_clip_id)
+    def syn_clip(self, clip):
+        clip_id = clip.clip_id
+        node = self.workflow_data.get_node_by_clip_id(clip_id)
         if not node:
             return
-        node.syn_clip(timline_clip)
+        node.syn_clip(clip)
         self.save()
 
-    def is_in_clip(self, file_name):
-        for node in self.workflow_data.graphNodes:
-            if node.isMontagenNode and node.has_filename(file_name):
+    def is_in_use(self, file_name):
+        for node in self.workflow_data.graph_nodes:
+            if node.is_montagen_node and node.has_filename(file_name):
                 return True
         return False

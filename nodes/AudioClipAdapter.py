@@ -28,7 +28,7 @@ class AudioClipAdapter(BaseClipAdapter, AudioTrackAdapter):
         project_id,
         workflow_id,
         workflow,
-        clip_id,
+        node_id,
         node,
         tag,
         prompt,
@@ -43,17 +43,17 @@ class AudioClipAdapter(BaseClipAdapter, AudioTrackAdapter):
         wavform = audioInput["waveform"].cpu()[0]
         torchaudio.save(buff, wavform, audioInput["sample_rate"], format="MP3")
         (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, clip_id, 0, "mp3"
+            workflow, node_id, 0, "mp3"
         )
         with open(tmp_fullName, "wb") as f:
             f.write(buff.getbuffer())
         if os.path.exists(tmp_fullName):
-            src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
+            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
         duration = wavform.size(1) / audioInput["sample_rate"]
         return self.return_result(
             src,
             duration,
-            clip_id,
+            node_id,
             workflow_id,
             workflow,
             project_id,

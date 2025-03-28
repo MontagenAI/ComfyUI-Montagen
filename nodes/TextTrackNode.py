@@ -8,18 +8,22 @@ class TextTrackNode(BaseTrackAdapter):
 
     DESCRIPTION = "Text Track Node"
 
-    def set_timeline_clip_property(self, src, max):
+    def set_clip_property(self, src, max):
         return (
             {
-                "text": src,
+                "text": src or "text",
                 "x": "50vw",
                 "y": "50vh",
                 "fontSize": "20rpx",
             }
             if max
-            else {
-                "text": src,
-            }
+            else (
+                {
+                    "text": src,
+                }
+                if src
+                else {}
+            )
         )
 
     def workflow_syn_material(self, workflow, node, resoureces):

@@ -74,8 +74,8 @@ class BaseTrackAdapter(BaseWorkflow):
         node = workflow.syn_workflow_clip(
             workflow_node, False, unique_id, name, self.type, self.node_type
         )
-        track_id = node.trackId
-        return (user_id, project_id, proj, workflow_id, workflow, track_id, node)
+        node_id = node.node_id
+        return (user_id, project_id, proj, workflow_id, workflow, node_id, node)
 
     def validate_input(self, resoureces, timelines, metas):
         len_res = len(resoureces)
@@ -93,39 +93,39 @@ class BaseTrackAdapter(BaseWorkflow):
     def workflow_syn_material(
         self, workflow: MontagenWorkflow, node: LGraphNode, resoureces
     ):
-        if node.track_assets:
-            for asset in node.track_assets:
+        if node.assets:
+            for asset in node.assets:
                 workflow.workflow_del_material(asset["file_name"])
         materials = []
         srcs = []
         for i, res in enumerate(iter(resoureces)):
             material, src = workflow.workflow_add_material(
-                node.trackName, i, None, res, self.type
+                node.node_name, i, None, res, self.type
             )
             materials.append(material)
             srcs.append(src)
-        node.track_assets = materials
+        node.assets = materials
         return srcs
 
-    def create_timeline_clips(
-        self, node, timelines, track_id, workflow_id, metas, srcs
+    def create_clips(
+        self, node: LGraphNode, timelines, node_id, workflow_id, metas, srcs
     ):
         clips = []
         clips_max = []
         for i, timeline in enumerate(iter(timelines)):
             clip_id = to_base36_random()
-            clip_max = self.create_max_timeline_clip(
+            clip_max = self.create_max_clip(
                 clip_id,
-                track_id,
+                node_id,
                 workflow_id,
                 timeline["start"],
                 timeline["end"],
                 srcs[i],
                 None if metas == None else metas[i],
             )
-            clip = self.create_timeline_clip(
+            clip = self.create_clip(
                 clip_id,
-                track_id,
+                node_id,
                 workflow_id,
                 timeline["start"],
                 timeline["end"],
@@ -134,10 +134,10 @@ class BaseTrackAdapter(BaseWorkflow):
             )
             clips.append(clip)
             clips_max.append(clip_max)
-        clips = node.set_timeline_clips(clips, clips_max)
+        clips = node.set_clips(clips, clips_max)
         return clips
 
-    def set_timeline_clip_property(self, src, max):
+    def set_clip_property(self, src, max):
         return (
             {
                 "src": src,
@@ -154,29 +154,25 @@ class BaseTrackAdapter(BaseWorkflow):
             else {"src": src}
         )
 
-    def create_timeline_clip(
-        self, clip_id, track_id, workflow_id, start, end, src, meta
-    ):
+    def create_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
         return {
             "start": start,
             "end": end,
-            **self.set_timeline_clip_property(src, False),
+            **self.set_clip_property(src, False),
             **({} if meta == None else meta),
         }
 
-    def create_max_timeline_clip(
-        self, clip_id, track_id, workflow_id, start, end, src, meta
-    ):
+    def create_max_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
         return {
             "type": self.type,
             "clipId": clip_id,
-            "trackId": track_id,
+            "nodeId": node_id,
             "workflowId": workflow_id,
             "refId": clip_id,
             "children": [],
             "start": start,
             "end": end,
-            **self.set_timeline_clip_property(src, True),
+            **self.set_clip_property(src, True),
             **({} if meta == None else meta),
         }
 
@@ -189,7 +185,7 @@ class BaseTrackAdapter(BaseWorkflow):
             proj,
             workflow_id,
             workflow,
-            track_id,
+            node_id,
             node,
         ) = self.get_info(name, unique_id, prompt, extra_pnginfo)
         if enableInput:
@@ -200,8 +196,8 @@ class BaseTrackAdapter(BaseWorkflow):
                 raise ValueError("resoureces and timelines is required.")
             self.validate_input(resoureces, timelines, metas)
             srcs = self.workflow_syn_material(workflow, node, resoureces)
-            clips = self.create_timeline_clips(
-                node, timelines, track_id, workflow_id, metas, srcs
+            clips = self.create_clips(
+                node, timelines, node_id, workflow_id, metas, srcs
             )
             node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
             workflow.save()
@@ -212,7 +208,7 @@ class BaseTrackAdapter(BaseWorkflow):
                 project_id,
                 workflow_id,
                 workflow,
-                track_id,
+                node_id,
                 node,
                 tag,
                 prompt,
@@ -229,7 +225,7 @@ class BaseTrackAdapter(BaseWorkflow):
         project_id,
         workflow_id,
         workflow,
-        track_id,
+        node_id,
         node,
         tag,
         prompt,
@@ -237,7 +233,7 @@ class BaseTrackAdapter(BaseWorkflow):
         unique_id,
         **keywords
     ):
-        return node.set_timeline_clips(None, None)
+        return node.set_clips(None, None)
 
     def protocol_return(self, clips, workflow_id, project_id, user_id):
         # MontagenProjManager.instance.onProcessEnd(

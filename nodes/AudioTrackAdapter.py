@@ -8,7 +8,7 @@ class AudioTrackAdapter(BaseTrackAdapter):
 
     DESCRIPTION = "Audio Track Adapter"
 
-    def set_timeline_clip_property(self, src, max):
+    def set_clip_property(self, src, max):
         return (
             {"src": src, "loop": True}
             if max

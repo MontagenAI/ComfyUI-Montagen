@@ -9,6 +9,7 @@ import re
 from comfy.utils import ProgressBar
 import logging
 
+
 class TimelineExcNode(BaseWorkflow):
 
     @classmethod
@@ -46,7 +47,7 @@ class TimelineExcNode(BaseWorkflow):
         timeline = proj.get_timeline(name)
         if not timeline:
             raise ValueError("timeline is required.")
-        self.combineMix(outputName, timeline.to_json())
+        self.combineMix(outputName, timeline.to_timeline_json())
         return ()
 
     def combineMix(self, output_path: str, timeline):

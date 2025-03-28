@@ -235,7 +235,7 @@ class MontagenMaterial:
 
         to_be_delete = list(set(to_be_delete))
         for file_name in to_be_delete:
-            if self.project.is_in_clip(file_name):
+            if self.project.is_in_use(file_name):
                 raise ValueError(f"Cannot delete a material that is in use.")
         for file_name in to_be_delete:
             self.delete_material(file_name, False, False)
@@ -245,7 +245,7 @@ class MontagenMaterial:
         material = self.get_material(file_name)
         if not material:
             return
-        if not not_check and self.project.is_in_clip(file_name):
+        if not not_check and self.project.is_in_use(file_name):
             raise ValueError(f"Cannot delete {file_name} that is in use.")
         file_path = material.get("file_path")
         ref_path = material.get("ref_path")
@@ -285,7 +285,7 @@ class MontagenMaterial:
         material = self.get_material(file_name)
         if not material:
             raise FileNotFoundError(f"File {file_name} not found.")
-        if self.project.is_in_clip(file_name):
+        if self.project.is_in_use(file_name):
             raise ValueError("Cannot rename a material that is in use.")
         is_ref = material.get("is_ref")
         file_type = material.get("file_type")

@@ -56,11 +56,11 @@ class LGraph:
         return self.data.get("extra")
 
     @property
-    def montagenInfo(self):
+    def montagen_info(self):
         return self.extra.get(MONTAGENPROJ, {})
 
-    @montagenInfo.setter
-    def montagenInfo(self, value):
+    @montagen_info.setter
+    def montagen_info(self, value):
         self.extra[MONTAGENPROJ] = value
 
     @property
@@ -70,7 +70,7 @@ class LGraph:
         return self.data.get("nodes", [])
 
     @property
-    def graphNodes(self):
+    def graph_nodes(self):
         return [LGraphNode(self, node) for node in self.data.get("nodes", [])]
 
     @property
@@ -80,42 +80,39 @@ class LGraph:
         return self.data.get("links", [])
 
     @property
-    def montagenName(self):
-        return self.montagenInfo.get("workflowName")
+    def montagen_name(self):
+        return self.montagen_info.get("workflowName")
 
-    @montagenName.setter
-    def montagenName(self, value):
+    @montagen_name.setter
+    def montagen_name(self, value):
         if value:
-            self.montagenInfo["workflowName"] = value
+            self.montagen_info["workflowName"] = value
 
     @property
     def version(self):
-        return self.montagenInfo.get("version")
+        return self.montagen_info.get("version")
 
     @version.setter
     def version(self, value):
-        self.montagenInfo["version"] = value
+        self.montagen_info["version"] = value
 
     @property
-    def montagenWorkflowId(self):
-        return self.montagenInfo.get("workflowId")
+    def montagen_workflow_id(self):
+        return self.montagen_info.get("workflowId")
 
-    @montagenWorkflowId.setter
-    def montagenWorkflowId(self, value):
-        self.montagenInfo["workflowId"] = value
+    @montagen_workflow_id.setter
+    def montagen_workflow_id(self, value):
+        self.montagen_info["workflowId"] = value
 
     @property
-    def montagenModifyTime(self):
+    def montagen_modify_time(self):
         return datetime.fromisoformat(
-            self.montagenInfo.get("modifyTime", datetime.now().isoformat())
+            self.montagen_info.get("modifyTime", datetime.now().isoformat())
         )
 
-    @montagenModifyTime.setter
-    def montagenModifyTime(self, value):
-        self.montagenInfo["modifyTime"] = value.isoformat()
-
-    def increace_version(self):
-        self.version += 1
+    @montagen_modify_time.setter
+    def montagen_modify_time(self, value):
+        self.montagen_info["modifyTime"] = value.isoformat()
 
     # def addEmptyNode(self, clipId, name, type, tag=None):
     #     state = self.state
@@ -126,42 +123,33 @@ class LGraph:
     #     self.nodes.append(node.serialize())
     #     self.serialize()
 
-    def setWorkflowInfo(self, user_id, project_id, workflow_id, workflow_name):
-        montagen_workflow_info = {
-            "userId": user_id,
-            "projectId": project_id,
-            "workflowId": workflow_id,
-            "workflowName": workflow_name or self.montagenName,
-        }
-        self.extra[MONTAGENPROJ] = montagen_workflow_info
-
-    def deleteNode(self, clipId):
+    def delete_node(self, node_id):
         for i, node in enumerate(self.nodes):
             lGraphNode = LGraphNode(self, node)
-            if lGraphNode.clipId == clipId:
+            if lGraphNode.node_id == node_id:
                 if hasattr(lGraphNode, "inputs"):
                     for j, slot in enumerate(lGraphNode.inputs):
                         if slot.link is not None:
-                            self.disconnectInput(lGraphNode, slot.link)
+                            self.disconnect_input(lGraphNode, slot.link)
 
                 if hasattr(lGraphNode, "outputs"):
                     for k, slot in enumerate(lGraphNode.outputs):
                         if slot.links and len(slot.links):
-                            self.disconnectOutput(lGraphNode, slot.links)
+                            self.disconnect_output(lGraphNode, slot.links)
                 self.nodes.pop(i)
                 break
 
-    def renameNode(self, clipId, name):
+    def rename_node(self, node_id, name):
         for i, node in enumerate(self.nodes):
             lGraphNode = LGraphNode(self, node)
-            if lGraphNode.clipId == clipId:
-                lGraphNode.clipName = name
+            if lGraphNode.node_id == node_id:
+                lGraphNode.node_name = name
                 break
 
-    def disconnectInput(self, nodeInput: LGraphNode, linkId):
+    def disconnect_input(self, nodeInput: LGraphNode, link_id):
         for i, link in enumerate(self.links):
             lLink = LLink.create_from_array(link)
-            if lLink.id == linkId:
+            if lLink.id == link_id:
                 self.links.pop(i)
                 if lLink.origin_id:
                     for j, node in enumerate(self.nodes):
@@ -170,14 +158,14 @@ class LGraph:
                             for k, lslot in enumerate(lGraphNode.outputs):
                                 if lslot.links:
                                     for l, llink in enumerate(lslot.links):
-                                        if llink == linkId:
+                                        if llink == link_id:
                                             lslot.links.pop(l)
                                     if len(lslot.links) == 0:
                                         lslot.links = None
                             break
                 break
 
-    def disconnectOutput(self, nodeOutput: LGraphNode, links):
+    def disconnect_output(self, nodeOutput: LGraphNode, links):
         for i, linkId in enumerate(links):
             for j, link in enumerate(self.links):
                 lLink = LLink.create_from_array(link)
@@ -193,24 +181,27 @@ class LGraph:
                                 break
                     break
 
-    def hasNode(self, clipId):
+    def get_node_by_unique_id(self, id):
         for node in self.nodes:
             lGraphNode = LGraphNode(self, node)
-            if lGraphNode.clipId == clipId:
-                return True
-        return False
-
-    def getNodeById(self, nodeId):
-        for node in self.nodes:
-            lGraphNode = LGraphNode(self, node)
-            if str(lGraphNode.id) == str(nodeId):
+            if str(lGraphNode.id) == str(id):
                 return lGraphNode
         return None
 
-    def isOldStyleClipId(self, clipId):
-        return "_" in clipId
+    def get_node_by_node_id(self, node_id):
+        for node in self.nodes:
+            lGraphNode = LGraphNode(self, node)
+            if lGraphNode.node_id == node_id:
+                return lGraphNode
+        return None
 
-    def exportNode(self, clipId):
+    def get_node_by_clip_id(self, clip_id):
+        for node in self.nodes:
+            lGraphNode = LGraphNode(self, node)
+            if lGraphNode.has_clip(clip_id):
+                return lGraphNode
+
+    def export_node(self, clipId):
         nodes_to_copy = []
         links_to_copy = []
 
@@ -282,7 +273,7 @@ class LGraph:
 
         return {"nodes": exported_nodes, "links": exported_links}
 
-    def importNode(self, imported_data):
+    def import_node(self, imported_data):
         """Import nodes and links from another graph while handling ID mapping"""
         if (
             not imported_data
@@ -305,7 +296,7 @@ class LGraph:
             node["id"] = new_id
             imported_nodes.append(node)
             lNode = LGraphNode(self, node)
-            if lNode.isMontagenNode:
+            if lNode.is_montagen_node:
                 lNode.clipId = to_base36_random()
 
         # Process links
@@ -382,6 +373,6 @@ class LGraph:
 
     def reset(self, clear_id):
         if clear_id:
-            self.montagenWorkflowId = None
-        for node in self.graphNodes:
+            self.montagen_workflow_id = None
+        for node in self.graph_nodes:
             node.reset()

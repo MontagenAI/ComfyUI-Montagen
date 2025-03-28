@@ -24,7 +24,6 @@ class ExternMontagenProj(MontagenProj):
         if not name:
             raise Exception("name is empty")
         if name != self.project_name:
-            self.modify_time = datetime.now()
             self.project_name = name
             self._save_project()
 

@@ -20,7 +20,7 @@ class TextClipNode(BaseClipAdapter, TextTrackNode):
         project_id,
         workflow_id,
         workflow,
-        clip_id,
+        node_id,
         node,
         tag,
         prompt,
@@ -31,7 +31,7 @@ class TextClipNode(BaseClipAdapter, TextTrackNode):
         return self.return_result(
             "",
             10,
-            clip_id,
+            node_id,
             workflow_id,
             workflow,
             project_id,

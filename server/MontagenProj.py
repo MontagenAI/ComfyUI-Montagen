@@ -18,7 +18,7 @@ from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
 from .MontagenMaterial import MontagenMaterial
 from .MontagenTimeline import MontagenTimeline
-
+from .LGraphNode import LGraphNode
 
 class MontagenProj:
 
@@ -151,6 +151,7 @@ class MontagenProj:
             "assets": self.montagen_material.get_materials_by_location(False),
             "refs": self.montagen_material.get_materials_by_location(True),
             "timelines": [timline.to_json() for timline in self.timelines],
+            "configInfo":LGraphNode.supported_config_type
         }
 
     def to_simple_json(self):
@@ -317,24 +318,24 @@ class MontagenProj:
         self.project_change_time()
         return timeline_name
 
-    def get_timelines_by_timeline_clip_id(self, timeline_clip_id):
+    def get_timelines_by_clip_id(self, clip_id):
         timelines = []
         for timeline in self.timelines:
-            if timeline.has_clip_id(timeline_clip_id):
+            if timeline.has_clip_id(clip_id):
                 timelines.append(timeline)
         return timelines
 
-    def is_in_clip(self, file_name):
+    def is_in_use(self, file_name):
         for workflow in self.workflows:
-            if workflow.is_in_clip(file_name):
+            if workflow.is_in_use(file_name):
                 return True
         for timeline in self.timelines:
-            if timeline.is_in_clip(file_name):
+            if timeline.is_in_use(file_name):
                 return True
         return False
 
-    def get_workflow_timeline_clip(self, workflow_id, timeline_clip_id):
+    def get_clip_json(self, workflow_id, clip_id):
         workflow = self.get_workflow(workflow_id)
         if workflow:
-            return workflow.get_timeline_clip(timeline_clip_id)
+            return workflow.get_clip_json(clip_id)
         return None

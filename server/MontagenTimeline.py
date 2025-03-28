@@ -36,6 +36,12 @@ class MontagenTimeline:
             self.timeline_data.get("montagenModifyTime", None)
         )
 
+    @property
+    def children(self):
+        if "children" not in self.timeline_data:
+            self.timeline_data["children"] = []
+        return self.timeline_data["children"]
+
     @modify_time.setter
     def modify_time(self, value):
         self.timeline_data["montagenModifyTime"] = value.isoformat()
@@ -141,15 +147,16 @@ class MontagenTimeline:
             "timelineData": self.timeline_data,
             "timelineName": self.timeline_name,
             "modifyTime": self.modify_time.isoformat(),
-            "timelineClips": [
+            "clips": [
                 item
                 for clip in self._getNodes()
-                for item in [
-                    self.get_workflow_timeline_clip(clip.workflow_id, clip.clip_id)
-                ]
+                for item in [self.get_clip_json(clip.workflow_id, clip.clip_id)]
                 if item
             ],
         }
+
+    def to_timeline_json(self):
+        return self.timeline_data
 
     def delete(self):
         if os.path.exists(self.timeline_json_path):
@@ -169,10 +176,10 @@ class MontagenTimeline:
             new_fullname = os.path.join(self.timeline_json_dir_name, new_filename)
             os.rename(self.timeline_json_path, new_fullname)
             self.timeline_json_path = new_fullname
-            self._save_timeline()
+            self.save()
 
-    def add_or_update_clip(self, clip_data):
-        clip_data = MontagenClip(clip_data)
+    def add_or_update_clip(self, clip):
+        clip_data = MontagenClip(clip)
         if not clip_data.clip_id:
             return
         clip_exist = next(
@@ -181,7 +188,7 @@ class MontagenTimeline:
         if clip_exist:
             clip_exist.import_data(clip_data.to_json())
         else:
-            self.timeline_data["children"].append(clip_data.to_json())
+            self.children.append({**clip_data.to_json()})
         self.save()
 
     def syn_timeline(self, timeline_data):
@@ -197,16 +204,16 @@ class MontagenTimeline:
         clip_exist = next(self._getNodes(fn=lambda x: x.clip_id == clip_id), None)
         return clip_exist is not None
 
-    def is_in_clip(self, file_name):
+    def is_in_use(self, file_name):
         for clip in self._getNodes():
             if clip.src:
                 return file_name in clip.src
 
-    def get_workflow_timeline_clip(self, workflow_id, timeline_clip_id):
-        item = self.project.get_workflow_timeline_clip(workflow_id, timeline_clip_id)
-        if item:
-            item["timelineName"] = self.timeline_name
-        return item
+    def get_clip_json(self, workflow_id, clip_id):
+        clip_json = self.project.get_clip_json(workflow_id, clip_id)
+        if clip_json:
+            clip_json["timelineName"] = self.timeline_name
+        return clip_json
 
     def _getNodes(self, parent=None, fn=None, iterator=None):
         if not parent:

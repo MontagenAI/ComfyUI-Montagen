@@ -22,7 +22,7 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
         project_id,
         workflow_id,
         workflow,
-        clip_id,
+        node_id,
         node,
         tag,
         prompt,
@@ -55,7 +55,7 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
         ]
         duration = 1 / preview_fps * 1000
         (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, clip_id, 0, format
+            workflow, node_id, 0, format
         )
         images[0].save(
             tmp_fullName,
@@ -66,12 +66,12 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
             disposal=2,
         )
         if os.path.exists(tmp_fullName):
-            src = self.copy_clip_output(tmp_fullName, file_fullName, workflow, node)
+            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
         duration = image_len / preview_fps
         return self.return_result(
             src,
             duration,
-            clip_id,
+            node_id,
             workflow_id,
             workflow,
             project_id,

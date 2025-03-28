@@ -236,13 +236,6 @@ INFOFILE = "montagenproject.Mont"
 ASSETSDIR = "assets"
 REfSDIR = "refs"
 VERSIONINFO = {"version": "1.0.0", "type": MONTAGENPROJ}
-CLIPCONTENT = {
-    "video": "src",
-    "image": "src",
-    "gif": "src",
-    "audio": "src",
-    "text": "text",
-}
 defualt_user_info = {
     "default_project_id": "1",
     "default_project_name": "default",
