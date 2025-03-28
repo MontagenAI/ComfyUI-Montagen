@@ -2008,6 +2008,7 @@ const POSITION_KEYS = ["start", "duration", "end", "ss", "to"], SIZE_KEYS = ["wi
   "blend",
   "outerKey"
 ], ALL_KEYS = [
+  "active",
   "type",
   "changed",
   "name",
@@ -43212,7 +43213,13 @@ function requireClip() {
   const a2 = requireBase(), { DisplayObject: e, createCanvas: t } = requireLib$2(), { dmap: r } = requireUtils(), { isBrowser: s } = requireLib$5();
   class o extends a2 {
     constructor(h2 = {}) {
-      super({ type: "clip", ...h2 }), this.visible = false, this.zIndex = 0, this.children = [], this.active = h2.active !== void 0 ? !!h2.active : true, this.onTime = () => false, this.createDisplay();
+      super({ type: "clip", ...h2 }), this.visible = false, this.zIndex = 0, this.children = [], this.onTime = () => false, this.createDisplay();
+    }
+    get active() {
+      return this.conf.active !== void 0 ? !!this.conf.active : true;
+    }
+    set active(h2) {
+      this.conf.active = h2;
     }
     get muted() {
       for (const h2 of this.parents)
@@ -43286,10 +43293,10 @@ function requireClip() {
       this.display && (this.display.mask = null);
     }
     disable() {
-      this.active = this.conf.active = false, this.parent && (this.hide(), this.removeTimelineCallback());
+      this.active = false, this.parent && (this.hide(), this.removeTimelineCallback());
     }
     enable() {
-      this.active = this.conf.active = true, this.parent && (this.touch(), this.addTimelineCallback());
+      this.active = true, this.parent && (this.touch(), this.addTimelineCallback());
     }
     touch() {
       var h2;
