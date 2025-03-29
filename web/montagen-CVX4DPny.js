@@ -208,17 +208,17 @@
   max-width: 1024px;
   overflow: hidden;
 }
-.parent-container[data-v-993ef904] {\r
+.parent-container[data-v-3e810801] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-993ef904] {\r
+.layout-grid[data-v-3e810801] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-993ef904] {\r
+.layout-grid[data-v-3e810801] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -69723,7 +69723,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-993ef904"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-3e810801"]]);
 const _hoisted_1$6 = { class: "property-collection" };
 const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "propertyCollection",
