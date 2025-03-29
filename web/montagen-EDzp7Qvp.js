@@ -107,19 +107,19 @@
   background: #fff;
   border-radius: none;
 }
-.panels-container[data-v-ac10029b] {\r
+.panels-container[data-v-95f9c909] {\r
   height: 100%;\r
   width: 100%;\r
   position: relative;\r
   background: #fff;
 }
-.resizable-panel[data-v-ac10029b] {\r
+.resizable-panel[data-v-95f9c909] {\r
   background: white;\r
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
   overflow: hidden;\r
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.panel-header[data-v-ac10029b] {\r
+.panel-header[data-v-95f9c909] {\r
   background: #f8f9fa;\r
   cursor: pointer;\r
   border-bottom: 1px solid #eee;\r
@@ -134,36 +134,36 @@
   top: 0;\r
   z-index: 2;
 }
-.toggle-icon[data-v-ac10029b] {\r
+.toggle-icon[data-v-95f9c909] {\r
   font-size: 0.8em;\r
   opacity: 0.6;
 }
-.gutter[data-v-ac10029b] {\r
+.gutter[data-v-95f9c909] {\r
   background: #ddd;\r
   position: relative;\r
   transition: all 0.3s;
 }
-.gutter.gutter-active[data-v-ac10029b] {\r
+.gutter.gutter-active[data-v-95f9c909] {\r
   background: #ccc;\r
   cursor: row-resize;
 }
-.gutter[data-v-ac10029b]:not(.gutter-active) {\r
+.gutter[data-v-95f9c909]:not(.gutter-active) {\r
   pointer-events: none;\r
   opacity: 0;
 }\r
 \r
 /* 垂直布局分隔条 */
-.gutter[data-direction="vertical"][data-v-ac10029b] {\r
+.gutter[data-direction="vertical"][data-v-95f9c909] {\r
   height: 10px;\r
   cursor: row-resize;
 }\r
 \r
 /* 水平布局分隔条 */
-.gutter[data-direction="horizontal"][data-v-ac10029b] {\r
+.gutter[data-direction="horizontal"][data-v-95f9c909] {\r
   width: 5px;\r
   cursor: col-resize;
 }
-[data-v-ac10029b] .gutter-vertical {\r
+[data-v-95f9c909] .gutter-vertical {\r
   /* opacity: 0; */\r
   background-color: #fff;
 &:hover {\r
@@ -171,10 +171,10 @@
     cursor: row-resize;
 }
 }
-.panel[data-v-ac10029b] {\r
+.panel[data-v-95f9c909] {\r
   overflow: hidden;
 }
-.panel.expand[data-v-ac10029b] {\r
+.panel.expand[data-v-95f9c909] {\r
   overflow-y: auto;
 }\r
 
@@ -69023,6 +69023,14 @@ const _sfc_main$e = {
             break;
           }
         }
+        if (j == null) {
+          for (let i2 = index2; i2 < this.panels.length; i2++) {
+            if (this.panels[i2].expanded) {
+              j = i2;
+              break;
+            }
+          }
+        }
         if (j != null) {
           let temp = this.splitInstance.getSizes();
           temp[index2] = this.panels[index2].size;
@@ -69095,7 +69103,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render], ["__scopeId", "data-v-ac10029b"]]);
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render], ["__scopeId", "data-v-95f9c909"]]);
 const _hoisted_1$a = { class: "choose-project flex h-96" };
 const _hoisted_2$6 = { class: "list-box tw-min-w-44" };
 const _sfc_main$d = /* @__PURE__ */ defineComponent({
