@@ -2006,11 +2006,14 @@ const POSITION_KEYS = ["start", "duration", "end", "ss", "to"], SIZE_KEYS = ["wi
   "src",
   "cachedSrc",
   "blend",
-  "outerKey"
-], ALL_KEYS = [
-  "active",
+  "outerKey",
   "flipX",
   "flipY",
+  "zIndex",
+  "mute",
+  "blur"
+], ALL_KEYS = [
+  "active",
   "type",
   "changed",
   "name",
@@ -2082,7 +2085,9 @@ class ComponentBase extends ExtendedEventEmitter {
         let v = t[m], y = e[m];
         return (isNaN(Number(v)) ? y : Number(v)) - y;
       }
-    }, h2 = {
+    };
+    "rotate" in t && (t.rotation = t.rotate, delete t.rotate);
+    const h2 = {
       position: ["x", "y"],
       size: ["width", "height"],
       rotation: "rotation",
