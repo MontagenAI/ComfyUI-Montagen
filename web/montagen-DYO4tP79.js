@@ -208,17 +208,17 @@
   max-width: 1024px;
   overflow: hidden;
 }
-.parent-container[data-v-53738fbf] {\r
+.parent-container[data-v-993ef904] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-53738fbf] {\r
+.layout-grid[data-v-993ef904] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-53738fbf] {\r
+.layout-grid[data-v-993ef904] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -69630,14 +69630,17 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     const { propertyConfig } = storeToRefs(workSpaceStore);
     const props2 = __props;
     const options = reactive(props2.data.meta ? { ...props2.data.meta } : {});
+    let isUpdatingFromProps = false;
     watch(
       () => props2.data.meta,
       (newMeta) => {
+        isUpdatingFromProps = true;
         Object.keys(options).forEach((key2) => {
           if (!(key2 in newMeta)) delete options[key2];
         });
         Object.assign(options, newMeta);
         Promise.resolve().then(() => {
+          isUpdatingFromProps = false;
         });
       },
       { deep: true }
@@ -69647,10 +69650,10 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       return props2.data.type;
     });
     watch(() => options, (newVal) => {
-      debouncedHandler(newVal, props2.data.meta);
+      debouncedHandler(newVal, isUpdatingFromProps);
     }, { deep: true });
     const debouncedHandler = debounce((newValue, isUpdatingFromProps2) => {
-      processData(newValue);
+      processData(newValue, isUpdatingFromProps2);
     }, 500);
     const processData = (newValue, flag) => {
       console.log("变化检测", newValue);
@@ -69666,6 +69669,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
         }
       });
       console.log("processData____", temp);
+      if (flag) return;
       workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], temp);
     };
     function debounce(fn, delay) {
@@ -69719,7 +69723,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-53738fbf"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-993ef904"]]);
 const _hoisted_1$6 = { class: "property-collection" };
 const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "propertyCollection",
