@@ -208,17 +208,17 @@
   max-width: 1024px;
   overflow: hidden;
 }
-.parent-container[data-v-a39e6e6d] {\r
+.parent-container[data-v-53738fbf] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-a39e6e6d] {\r
+.layout-grid[data-v-53738fbf] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-a39e6e6d] {\r
+.layout-grid[data-v-53738fbf] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -688,7 +688,6 @@ const workflowUtils = {
   },
   checkWorkFlowIsOpenByIds(data) {
     var _a2, _b2, _c2;
-    console.log(data, "data______");
     let flag = false;
     let temArr = app$1.extensionManager.workflow.openWorkflows;
     for (let i2 = 0; i2 < temArr.length; i2++) {
@@ -2011,7 +2010,10 @@ const POSITION_KEYS = ["start", "duration", "end", "ss", "to"], SIZE_KEYS = ["wi
   "flipY",
   "zIndex",
   "mute",
-  "blur"
+  "blur",
+  "preload",
+  "object-position",
+  "loop"
 ], ALL_KEYS = [
   "active",
   "type",
@@ -2039,6 +2041,7 @@ const POSITION_KEYS = ["start", "duration", "end", "ss", "to"], SIZE_KEYS = ["wi
   "letterSpacing",
   "stroke",
   "shadow",
+  "padding",
   ...MATERIAL_KEYS
 ];
 class ComponentBase extends ExtendedEventEmitter {
@@ -2107,7 +2110,7 @@ class ComponentBase extends ExtendedEventEmitter {
     return Object.keys(f).length > 0 && (o.to = f), (p = o.to) != null && p.src && ((d = o.to) == null ? void 0 : d.cachedSrc) === void 0 && (o.to.cachedSrc = "NULL"), t["object-positionX"] !== void 0 && t["object-positionY"] !== void 0 && (o.to["object-position"] = [
       t["object-positionX"],
       t["object-positionY"]
-    ]), new Promise((m, v) => {
+    ]), (t["stroke-color"] !== void 0 || t["stroke-size"] !== void 0) && (o.to.stroke = {}, t["stroke-color"] !== void 0 && (o.to.stroke.color = t["stroke-color"]), t["stroke-size"] !== void 0 && (o.to.stroke.size = t["stroke-size"])), (t["shadow-color"] !== void 0 || t["shadow-blur"] !== void 0 || t["shadow-offset"] !== void 0 || t["shadow-alpha"] !== void 0 || t["shadow-angle"] !== void 0) && (o.to.shadow = {}, t["shadow-color"] !== void 0 && (o.to.shadow.color = t["shadow-color"]), t["shadow-blur"] !== void 0 && (o.to.shadow.blur = t["shadow-blur"]), t["shadow-offset"] !== void 0 && (o.to.shadow.offset = t["shadow-offset"]), t["shadow-alpha"] !== void 0 && (o.to.shadow.alpha = t["shadow-alpha"]), t["shadow-angle"] !== void 0 && (o.to.shadow.angle = t["shadow-angle"])), new Promise((m, v) => {
       try {
         this.apply(e, o, r, {
           callback: (y) => {
@@ -2172,7 +2175,7 @@ class ComponentBase extends ExtendedEventEmitter {
         );
     if (t.anchor) {
       let { x: q, y: W } = e.getAnchor();
-      q += t.anchor.x ? t.anchor.x : t.anchor.anchorX, W += t.anchor.y ? t.anchor.y : t.anchor.anchory, e.setAnchor(q, W);
+      q += t.anchor.anchorX, W += t.anchor.anchorY, e.setAnchor(q, W);
     }
     if (t.position) {
       const q = e.getX() + t.position.x, W = e.getY() + t.position.y;
@@ -69634,6 +69637,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
           if (!(key2 in newMeta)) delete options[key2];
         });
         Object.assign(options, newMeta);
+        Promise.resolve().then(() => {
+        });
       },
       { deep: true }
       // 深度监听源数据变化
@@ -69644,10 +69649,10 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     watch(() => options, (newVal) => {
       debouncedHandler(newVal, props2.data.meta);
     }, { deep: true });
-    const debouncedHandler = debounce((newValue) => {
+    const debouncedHandler = debounce((newValue, isUpdatingFromProps2) => {
       processData(newValue);
     }, 500);
-    const processData = (newValue) => {
+    const processData = (newValue, flag) => {
       console.log("变化检测", newValue);
       let temp = Object.assign({}, newValue);
       let config2 = propertyConfig.value[type2.value];
@@ -69714,7 +69719,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a39e6e6d"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-53738fbf"]]);
 const _hoisted_1$6 = { class: "property-collection" };
 const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "propertyCollection",
