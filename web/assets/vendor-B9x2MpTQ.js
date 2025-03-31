@@ -7923,6 +7923,9 @@ var script$1$e = {
         case "NumpadEnter":
           this.onEnterKey(event);
           break;
+        default:
+          event.preventDefault();
+          break;
       }
     },
     onArrowDown: function onArrowDown(event) {
