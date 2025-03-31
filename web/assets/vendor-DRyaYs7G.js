@@ -7921,7 +7921,6 @@ var script$1$e = {
           break;
         case "Enter":
         case "NumpadEnter":
-        case "Space":
           this.onEnterKey(event);
           break;
       }

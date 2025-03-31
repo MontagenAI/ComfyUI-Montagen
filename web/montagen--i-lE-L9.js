@@ -208,17 +208,17 @@
   max-width: 1024px;
   overflow: hidden;
 }
-.parent-container[data-v-e40c51d0] {\r
+.parent-container[data-v-c827ecf4] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-e40c51d0] {\r
+.layout-grid[data-v-c827ecf4] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-e40c51d0] {\r
+.layout-grid[data-v-c827ecf4] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -265,7 +265,7 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-c0780961] {
+}.explorer-container[data-v-a335bca2] {
   background-color: #fff;
 }[data-v-6ffd394b] .split-container {
   border: none;
@@ -593,7 +593,7 @@ li[data-v-f93fdfa7] {
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, aa as withKeys, n as nextTick$1, a0 as normalizeStyle, j as renderSlot$1, X as onUnmounted, T as Teleport, q as toRaw, a4 as onBeforeUnmount, a2 as provide, ac as createApp } from "./assets/vue-BAieETWZ.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, t as script$f, v as script$g, w as useToast, x as script$h, y as script$i, z as script$j, A as script$k, B as z, C as script$l, D as DialogService, F as ConfirmationService, G as customAlphabet, H as createPinia, I as ToastService } from "./assets/vendor-IufnRmpN.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, t as script$f, v as script$g, w as useToast, x as script$h, y as script$i, z as script$j, A as script$k, B as z, C as script$l, D as DialogService, F as ConfirmationService, G as customAlphabet, H as createPinia, I as ToastService } from "./assets/vendor-DRyaYs7G.js";
 import "./assets/lodash-DS8RUn65.js";
 import { w as usePrimeVue, x as script$8, P as PrimeVue, y as index$3 } from "./assets/primevue-KsPbR6Ok.js";
 import { bY as h, bZ as definePreset } from "./assets/primeuix-BdlXq87L.js";
@@ -69686,7 +69686,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
       console.log("processData____", temp, props2);
       let selectClip = workSpaceStore.playerInstance.selected[0];
       if (flag || ((_a2 = selectClip == null ? void 0 : selectClip.conf) == null ? void 0 : _a2.clipId) != props2.data.id) return;
-      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], temp);
+      workSpaceStore.playerInstance.applyChange(workSpaceStore.playerInstance.selected[0], JSON.parse(JSON.stringify(temp)));
     };
     function debounce(fn, delay) {
       let timeout;
@@ -69739,7 +69739,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-e40c51d0"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-c827ecf4"]]);
 const _hoisted_1$7 = { class: "px-2 tw-mb-2" };
 const _hoisted_2$3 = { class: "content" };
 const _hoisted_3$3 = { class: "px-2 tw-mb-2" };
@@ -71255,7 +71255,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     label: "Delete"
                   },
                   accept: () => {
-                    console.log("deleteWorkTimeline", menuTargetNode.value);
                     deleteWorTimeline(menuTargetNode.value);
                   }
                 });
@@ -71399,7 +71398,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const deleteWorTimeline = async (data) => {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Timeline/${data.montagenName}`, {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Timeline/${data.timelineName}`, {
         method: "DELETE"
       });
       await response.json();
@@ -71492,13 +71491,15 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       });
     };
     const onNodeSelect = (e) => {
+      console.log("onNodeSelect_node节点选中_??????", e, event);
       nextTick$1(() => {
-        onNodeContentClick(null, e);
+        onNodeContentClick(event, e);
       });
     };
     const onNodeUnselect = (e) => {
+      console.log("onNodeUnselect_node节点选中取消", e, event);
       nextTick$1(() => {
-        onNodeContentClick(null, e);
+        onNodeContentClick(event, e);
       });
     };
     onMounted(() => {
@@ -71699,7 +71700,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-c0780961"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-a335bca2"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
