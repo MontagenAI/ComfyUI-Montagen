@@ -8,7 +8,7 @@ import subprocess
 import sys
 import json
 import logging
-
+import ffmpeg
 
 def to_base36_random() -> str:
     timestamp = int(time.time() * 10000000)
@@ -125,7 +125,7 @@ def extract_video_audio_metadata(data_source, total_size, type):
 
     # Extract video metadata
     video_cmd = [
-        "ffprobe",
+        FFPROBE,
         "-v",
         "error",
         "-select_streams",
@@ -161,7 +161,7 @@ def extract_video_audio_metadata(data_source, total_size, type):
         return metadata
     # Extract audio metadata
     audio_cmd = [
-        "ffprobe",
+        FFPROBE,
         "-v",
         "error",
         "-select_streams",
@@ -236,6 +236,8 @@ INFOFILE = "montagenproject.Mont"
 ASSETSDIR = "assets"
 REfSDIR = "refs"
 VERSIONINFO = {"version": "1.0.0", "type": MONTAGENPROJ}
+FFMPEG=str(ffmpeg.FFMPEG_PATH)
+FFPROBE=str(ffmpeg.FFPROBE_PATH)
 defualt_user_info = {
     "default_project_id": "1",
     "default_project_name": "default",

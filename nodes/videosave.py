@@ -4,7 +4,7 @@ import folder_paths
 import uuid
 import re
 import logging
-
+from ..server.Utils import FFMPEG
 
 def save_video(filename, frames, fps, pbar, hasAlpha):
     # Get the width and height of the first frame
@@ -17,10 +17,9 @@ def save_video(filename, frames, fps, pbar, hasAlpha):
     with open(temp_file, "wb") as f:
         for frame in frames:
             f.write(frame.tobytes())
-
     # Use ffmpeg command line tool to convert yuv file to mp4 file
     command = [
-        "ffmpeg",
+        FFMPEG,
         "-y",
         "-f",
         "rawvideo",
@@ -42,7 +41,7 @@ def save_video(filename, frames, fps, pbar, hasAlpha):
 
     if hasAlpha:
         command = [
-            "ffmpeg",
+            FFMPEG,
             "-y",
             "-f",
             "rawvideo",
