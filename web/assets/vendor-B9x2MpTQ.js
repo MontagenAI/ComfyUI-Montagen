@@ -7921,8 +7921,10 @@ var script$1$e = {
           break;
         case "Enter":
         case "NumpadEnter":
-        case "Space":
           this.onEnterKey(event);
+          break;
+        default:
+          event.preventDefault();
           break;
       }
     },
