@@ -267,29 +267,29 @@ li[data-v-f93fdfa7] {
   align-items: center;
 }.explorer-container[data-v-124a2939] {
   background-color: #fff;
-}[data-v-d6f93e5b] .split-container {
+}[data-v-6ffd394b] .split-container {
   border: none;
   border-radius: 0;
   width: 100%;
   height: 100%;
 }
-[data-v-d6f93e5b] .split-container .split-gutter {
+[data-v-6ffd394b] .split-container .split-gutter {
   background: #181818;
 }
-[data-v-d6f93e5b] .split-container.left-hidden .split-panel-left {
+[data-v-6ffd394b] .split-container.left-hidden .split-panel-left {
   display: none;
 }
-[data-v-d6f93e5b] .split-container.left-hidden > .split-gutter {
+[data-v-6ffd394b] .split-container.left-hidden > .split-gutter {
   display: none;
 }
-[data-v-d6f93e5b] .split-gutter-main:hover {
+[data-v-6ffd394b] .split-gutter-main:hover {
   transition: background-color 0.2sease 300ms;
   background-color: var(--p-primary-color);
 }
-[data-v-d6f93e5b] .split-gutter-main.split-gutter-hidden {
+[data-v-6ffd394b] .split-gutter-main.split-gutter-hidden {
   display: none;
 }
-.player[data-v-d6f93e5b] {
+.player[data-v-6ffd394b] {
   width: 100%;
   height: 100%;
 }
@@ -71788,7 +71788,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
-                      pt: { root: { style: { overflow: "visible" } } }
+                      pt: { root: { style: { overflow: "hidden", "box-sizing": "border-box" } } }
                     }, {
                       default: withCtx(() => [
                         createBaseVNode("div", {
@@ -71813,7 +71813,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-d6f93e5b"]]);
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-6ffd394b"]]);
 const _hoisted_1$1 = { class: "flex flex-col gap-1" };
 const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "textNodeAdd",
