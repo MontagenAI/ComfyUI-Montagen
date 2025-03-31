@@ -52519,6 +52519,8 @@ function requireImage() {
     }
     get audio() {
     }
+    set audio(p) {
+    }
     get frame() {
       var p, d;
       if (this.conf.pframe) {
