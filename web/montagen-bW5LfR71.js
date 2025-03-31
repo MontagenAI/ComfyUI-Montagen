@@ -70568,7 +70568,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
               type: node2.sourceType,
               meta: temp.meta
             };
-            fineTimeLine(node2.timelineName);
+            fineTimeLine(node2.timelineName, node2.id);
             workSpaceStore.setActiveNode(tempNode);
             setEiditorSelect(node2.id);
             if (!menuStore.showPage) {
@@ -70588,7 +70588,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         menuStore.changeShow(true);
       }
     };
-    const fineTimeLine = (name) => {
+    const fineTimeLine = (name, id) => {
       var _a2;
       let timelines = ((_a2 = activeProject.value) == null ? void 0 : _a2.timelines) || [];
       let temp = timelines.find((item) => {
@@ -70598,8 +70598,21 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       if (workSpaceStore.playerInstance) {
         let data = workSpaceStore.playerInstance.creator.toJson();
         if ((data == null ? void 0 : data.montagenName) === name) ;
+        else {
+          workSpaceStore.openWorkFlow({ projectId: "", timeLine: temp.timelineData });
+          if (id) {
+            setTimeout(() => {
+              setEiditorSelect(id);
+            }, 500);
+          }
+        }
       } else {
         workSpaceStore.openWorkFlow({ projectId: "", timeLine: temp.timelineData });
+        if (id) {
+          setTimeout(() => {
+            setEiditorSelect(id);
+          }, 500);
+        }
       }
     };
     const seletNode = (node2) => {
