@@ -3,7 +3,7 @@ name = "comfyui-montagen"
 description = "A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation."
 version = "0.1.2"
 license = {file = "LICENSE"}
-dependencies = ["smbprotocol"]
+dependencies = ["smbprotocol","ffmpeg-binaries"]
 
 [project.urls]
 Repository = "https://github.com/MontagenAI/ComfyUI-Montagen"
