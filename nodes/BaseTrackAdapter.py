@@ -157,7 +157,7 @@ class BaseTrackAdapter(BaseWorkflow):
     def create_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
         return {
             "start": start,
-            "end": end,
+            "duration": end - start,
             **self.set_clip_property(src, False),
             **({} if meta == None else meta),
         }
@@ -171,7 +171,7 @@ class BaseTrackAdapter(BaseWorkflow):
             "refId": clip_id,
             "children": [],
             "start": start,
-            "end": end,
+            "duration": end - start,
             **self.set_clip_property(src, True),
             **({} if meta == None else meta),
         }

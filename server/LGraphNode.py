@@ -136,10 +136,10 @@ class LGraphNode:
                 "defaultDelte": True,
             },
         ),
-        "end": (
-            "FLOAT",
-            {"default": 0, "tooltip": "End time of the clip.", "defaultDelte": True},
-        ),
+        # "end": (
+        #     "FLOAT",
+        #     {"default": 0, "tooltip": "End time of the clip.", "defaultDelte": True},
+        # ),
         "duration": (
             "FLOAT",
             {"default": 0, "tooltip": "Duration of the clip.", "defaultDelte": True},
@@ -178,10 +178,10 @@ class LGraphNode:
                 "defaultDelte": True,
             },
         ),
-        "end": (
-            "FLOAT",
-            {"default": 0, "tooltip": "End time of the audio.", "defaultDelte": True},
-        ),
+        # "end": (
+        #     "FLOAT",
+        #     {"default": 0, "tooltip": "End time of the audio.", "defaultDelte": True},
+        # ),
         "duration": (
             "FLOAT",
             {"default": 0, "tooltip": "Duration of the audio.", "defaultDelte": True},
