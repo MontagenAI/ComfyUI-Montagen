@@ -122,19 +122,15 @@ class LGraphNode:
         "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the clip."}),
         "ss": (
             "FLOAT",
-            {"default": 0, "tooltip": "Start time for trimming.", "defaultDelte": True},
+            {"default": 0, "tooltip": "Start time for trimming."},
         ),
         "to": (
             "FLOAT",
-            {"default": 0, "tooltip": "End time for trimming.", "defaultDelte": True},
+            {"default": 0, "tooltip": "End time for trimming."},
         ),
         "start": (
             "FLOAT",
-            {
-                "default": 0.0,
-                "tooltip": "Start time of the clip.",
-                "defaultDelte": True,
-            },
+            {"default": 0.0, "tooltip": "Start time of the clip."},
         ),
         # "end": (
         #     "FLOAT",
@@ -142,11 +138,11 @@ class LGraphNode:
         # ),
         "duration": (
             "FLOAT",
-            {"default": 0, "tooltip": "Duration of the clip.", "defaultDelte": True},
+            {"default": 0, "tooltip": "Duration of the clip."},
         ),
         "blur": (
             "FLOAT",
-            {"default": 0, "tooltip": "Blur level of the clip.", "defaultDelte": True},
+            {"default": 0, "tooltip": "Blur level of the clip."},
         ),
         "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the clip."}),
         "audio": (
@@ -175,7 +171,6 @@ class LGraphNode:
             {
                 "default": 0.0,
                 "tooltip": "Start time of the audio.",
-                "defaultDelte": True,
             },
         ),
         # "end": (
@@ -184,7 +179,7 @@ class LGraphNode:
         # ),
         "duration": (
             "FLOAT",
-            {"default": 0, "tooltip": "Duration of the audio.", "defaultDelte": True},
+            {"default": 0, "tooltip": "Duration of the audio."},
         ),
         "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the audio."}),
         "pitch": ("FLOAT", {"default": 1.0, "tooltip": "Pitch of the audio."}),
@@ -195,7 +190,6 @@ class LGraphNode:
             {
                 "default": 0.0,
                 "tooltip": "Fade-in duration of the audio.",
-                "defaultDelte": True,
             },
         ),
         "fadeOut": (
@@ -203,7 +197,6 @@ class LGraphNode:
             {
                 "default": 0.0,
                 "tooltip": "Fade-out duration of the audio.",
-                "defaultDelte": True,
             },
         ),
         "ss": (
@@ -211,7 +204,6 @@ class LGraphNode:
             {
                 "default": 0.0,
                 "tooltip": "Start time for trimming the audio.",
-                "defaultDelte": True,
             },
         ),
         "to": (
@@ -219,7 +211,6 @@ class LGraphNode:
             {
                 "default": 10.0,
                 "tooltip": "End time for trimming the audio.",
-                "defaultDelte": True,
             },
         ),
     }
@@ -238,22 +229,22 @@ class LGraphNode:
             {"default": 0.0, "tooltip": "Rotation angle of the text clip."},
         ),
         "opacity": ("FLOAT", {"default": 1.0, "tooltip": "Opacity of the text clip."}),
-        "anchorX": (
-            "FLOAT",
-            {
-                "default": "0.5",
-                "parent": {"name": "anchor", "isArray": True, "index": 0},
-                "tooltip": "Anchor point of the text clip.",
-            },
-        ),
-        "anchorY": (
-            "FLOAT",
-            {
-                "default": "0.5",
-                "parent": {"name": "anchor", "isArray": True, "index": 1},
-                "tooltip": "Anchor point of the text clip.",
-            },
-        ),
+        # "anchorX": (
+        #     "FLOAT",
+        #     {
+        #         "default": "0.5",
+        #         "parent": {"name": "anchor", "isArray": True, "index": 0},
+        #         "tooltip": "Anchor point of the text clip.",
+        #     },
+        # ),
+        # "anchorY": (
+        #     "FLOAT",
+        #     {
+        #         "default": "0.5",
+        #         "parent": {"name": "anchor", "isArray": True, "index": 1},
+        #         "tooltip": "Anchor point of the text clip.",
+        #     },
+        # ),
         "flipX": (
             "BOOLEAN",
             {"default": False, "tooltip": "Flip the text clip horizontally."},
@@ -270,7 +261,6 @@ class LGraphNode:
             {
                 "default": "",
                 "tooltip": "Letter spacing of the text.",
-                "defaultDelte": True,
             },
         ),
         "lineHeight": (
@@ -278,7 +268,6 @@ class LGraphNode:
             {
                 "default": "",
                 "tooltip": "Line height of the text.",
-                "defaultDelte": True,
             },
         ),
         "fontFamily": (
@@ -286,7 +275,6 @@ class LGraphNode:
             {
                 "default": "",
                 "tooltip": "Font family of the text.",
-                "defaultDelte": True,
             },
         ),
         "color": ("STRING", {"default": "#000000", "tooltip": "Text color."}),
@@ -314,7 +302,6 @@ class LGraphNode:
             {
                 "default": "",
                 "tooltip": "Padding around the text.",
-                "defaultDelte": True,
             },
         ),
         "stroke-color": (
@@ -323,7 +310,6 @@ class LGraphNode:
                 "default": "",
                 "tooltip": "Stroke color of the text.",
                 "parent": {"name": "stroke", "property": "color"},
-                "defaultDelte": True,
             },
         ),
         "stroke-size": (
@@ -332,7 +318,6 @@ class LGraphNode:
                 "default": "",
                 "tooltip": "Stroke size of the text.",
                 "parent": {"name": "stroke", "property": "size"},
-                "defaultDelte": True,
             },
         ),
         "shadow-color": (
@@ -341,7 +326,6 @@ class LGraphNode:
                 "default": "",
                 "tooltip": "Shadow color of the text.",
                 "parent": {"name": "shadow", "property": "color"},
-                "defaultDelte": True,
             },
         ),
         "shadow-alpha": (
@@ -350,7 +334,6 @@ class LGraphNode:
                 "default": 0,
                 "tooltip": "Shadow alpha of the text.",
                 "parent": {"name": "shadow", "property": "alpha"},
-                "defaultDelte": True,
             },
         ),
         "shadow-blur": (
@@ -359,7 +342,6 @@ class LGraphNode:
                 "default": "",
                 "tooltip": "Shadow blur of the text.",
                 "parent": {"name": "shadow", "property": "blur"},
-                "defaultDelte": True,
             },
         ),
         "shadow-offset": (
@@ -368,7 +350,6 @@ class LGraphNode:
                 "default": "",
                 "tooltip": "Shadow offset of the text.",
                 "parent": {"name": "shadow", "property": "offset"},
-                "defaultDelte": True,
             },
         ),
         "shadow-angle": (
@@ -377,7 +358,6 @@ class LGraphNode:
                 "default": 0,
                 "tooltip": "Shadow angle of the text.",
                 "parent": {"name": "shadow", "property": "angle"},
-                "defaultDelte": True,
             },
         ),
         "start": (
@@ -385,23 +365,20 @@ class LGraphNode:
             {
                 "default": 0.0,
                 "tooltip": "Start time of the text clip.",
-                "defaultDelte": True,
             },
         ),
-        "end": (
-            "FLOAT",
-            {
-                "default": 0,
-                "tooltip": "End time of the text clip.",
-                "defaultDelte": True,
-            },
-        ),
+        # "end": (
+        #     "FLOAT",
+        #     {
+        #         "default": 0,
+        #         "tooltip": "End time of the text clip.",
+        #     },
+        # ),
         "duration": (
             "FLOAT",
             {
                 "default": 0,
                 "tooltip": "Duration of the text clip.",
-                "defaultDelte": True,
             },
         ),
         "preload": ("BOOLEAN", {"default": False, "tooltip": "Preload the text clip."}),
