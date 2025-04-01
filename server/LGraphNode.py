@@ -122,11 +122,11 @@ class LGraphNode:
         "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the clip."}),
         "ss": (
             "FLOAT",
-            {"default": 0, "tooltip": "Start time for trimming."},
+            {"default": -1, "tooltip": "Start time for trimming."},
         ),
         "to": (
             "FLOAT",
-            {"default": 0, "tooltip": "End time for trimming."},
+            {"default": -1, "tooltip": "End time for trimming."},
         ),
         "start": (
             "FLOAT",
@@ -202,14 +202,14 @@ class LGraphNode:
         "ss": (
             "FLOAT",
             {
-                "default": 0.0,
+                "default": -1,
                 "tooltip": "Start time for trimming the audio.",
             },
         ),
         "to": (
             "FLOAT",
             {
-                "default": 10.0,
+                "default": -1,
                 "tooltip": "End time for trimming the audio.",
             },
         ),
