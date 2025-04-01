@@ -265,7 +265,7 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-7816d800] {
+}.explorer-container[data-v-d4d38104] {
   background-color: #fff;
 }[data-v-6ffd394b] .split-container {
   border: none;
@@ -70647,8 +70647,12 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
               type: node2.sourceType,
               meta: temp.meta
             };
-            fineTimeLine(node2.timelineName, node2.id);
             workSpaceStore.setActiveNode(tempNode);
+            if (!node2.timelineName) {
+              menuStore.changeShow(false);
+              return;
+            }
+            fineTimeLine(node2.timelineName, node2.id);
             setEiditorSelect(node2.id);
             if (!menuStore.showPage) {
               menuStore.changeShow(true);
@@ -71351,7 +71355,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       refreshList();
     };
     const deleteWorkflow = async (data) => {
-      var _a2, _b2, _c2, _d2;
+      var _a2, _b2, _c2, _d2, _e2, _f2;
       let activeWorkflow = app$1.extensionManager.workflow.activeWorkflow;
       if (((_b2 = (_a2 = activeWorkflow.activeState.extra) == null ? void 0 : _a2.MontagenProj) == null ? void 0 : _b2.projectId) === data.projectId && ((_d2 = (_c2 = activeWorkflow.activeState.extra) == null ? void 0 : _c2.MontagenProj) == null ? void 0 : _d2.workflowId) === data.workflowId) {
         if (app$1.extensionManager.workflow.openWorkflows.length > 1) {
@@ -71377,6 +71381,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       });
       await response.json();
       refreshList();
+      if (((_e2 = workSpaceStore.workflowCips) == null ? void 0 : _e2.fileType) == "workflows" && ((_f2 = workSpaceStore.workflowCips) == null ? void 0 : _f2.workflowId) == data.workflowId) {
+        workSpaceStore.setWorkflowCips({});
+      }
     };
     const deleteWorTimeline = async (data) => {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Timeline/${data.timelineName}`, {
@@ -71681,7 +71688,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-7816d800"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-d4d38104"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
