@@ -8,7 +8,12 @@ class TimelineNode(BaseWorkflow):
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": {"name": ("STRING",)},
+            "required": {
+                "name": ("STRING",),
+                "width": ("INT", {"default": 1280}),
+                "height": ("INT", {"default": 720}),
+                "fps": ("INT", {"default": 25}),
+            },
             "hidden": {
                 "prompt": "PROMPT",
                 "extra_pnginfo": "EXTRA_PNGINFO",
@@ -32,6 +37,9 @@ class TimelineNode(BaseWorkflow):
     def save_func(
         self,
         name,
+        width,
+        height,
+        fps,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
@@ -46,6 +54,7 @@ class TimelineNode(BaseWorkflow):
             timeline = proj.get_timeline(name)
             if not timeline:
                 raise ValueError("timeline is required.")
+        timeline.set_timeline_config(width, height, fps)
         return {
             "ui": {
                 "assets": [
