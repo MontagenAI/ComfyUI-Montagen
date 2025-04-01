@@ -181,7 +181,7 @@ class LGraphNode:
             "FLOAT",
             {"default": 0, "tooltip": "Duration of the audio."},
         ),
-        "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the audio."}),
+        # "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the audio."}),
         "pitch": ("FLOAT", {"default": 1.0, "tooltip": "Pitch of the audio."}),
         "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the audio."}),
         "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the audio."}),
