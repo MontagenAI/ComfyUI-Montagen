@@ -10,7 +10,7 @@ class AudioTrackAdapter(BaseTrackAdapter):
 
     def set_clip_property(self, src, max):
         return (
-            {"src": src, "loop": True}
+            {"src": src, "loop": False}
             if max
             else {
                 "src": src,
