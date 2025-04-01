@@ -1,5 +1,6 @@
-from ..server.Utils import MONTAGENCLIPSTYPE
+from ..server.Utils import MONTAGENTIMELINETYPE
 from .BaseWorkflow import BaseWorkflow
+from datetime import datetime
 
 
 class TimelineNode(BaseWorkflow):
@@ -7,7 +8,7 @@ class TimelineNode(BaseWorkflow):
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": {"name": ("STRING",), "clips": (MONTAGENCLIPSTYPE,)},
+            "required": {"name": ("STRING",)},
             "hidden": {
                 "prompt": "PROMPT",
                 "extra_pnginfo": "EXTRA_PNGINFO",
@@ -17,16 +18,19 @@ class TimelineNode(BaseWorkflow):
 
     DESCRIPTION = "Timeline Creation Node"
 
-    RETURN_TYPES = ()
+    RETURN_TYPES = (MONTAGENTIMELINETYPE,)
     FUNCTION = "save_func"
 
     OUTPUT_NODE = True
 
     CATEGORY = "Montagen"
 
+    @classmethod
+    def IS_CHANGED(s, **keywords):
+        return datetime.now().timestamp()
+
     def save_func(
         self,
-        clips,
         name,
         unique_id=None,
         prompt: dict = None,
@@ -36,18 +40,24 @@ class TimelineNode(BaseWorkflow):
             self.get_base_info(unique_id, prompt, extra_pnginfo)
         )
         workflow.syn_workflow_clip(workflow_node, False)
-        for clip in clips:
-            another_timelines = proj.get_timelines_by_clip_id(clip["clipId"])
-            for another_timeline in another_timelines:
-                another_timeline.add_or_update_clip(clip)
+        timeline = proj.get_timeline(name)
+        if not timeline:
+            proj.project_add_timeline(name)
             timeline = proj.get_timeline(name)
             if not timeline:
-                proj.project_add_timeline(name)
-                timeline = proj.get_timeline(name)
-                if not timeline:
-                    raise ValueError("timeline is required.")
-            timeline.add_or_update_clip(clip)
-            # MontagenProjManager.instance.onProcessEnd({"timelineName": name})
+                raise ValueError("timeline is required.")
+        # for clip in clips:
+        #     another_timelines = proj.get_timelines_by_clip_id(clip["clipId"])
+        #     for another_timeline in another_timelines:
+        #         another_timeline.add_or_update_clip(clip)
+        #     timeline = proj.get_timeline(name)
+        #     if not timeline:
+        #         proj.project_add_timeline(name)
+        #         timeline = proj.get_timeline(name)
+        #         if not timeline:
+        #             raise ValueError("timeline is required.")
+        #     timeline.add_or_update_clip(clip)
+        #     # MontagenProjManager.instance.onProcessEnd({"timelineName": name})
         return {
             "ui": {
                 "assets": [
@@ -57,5 +67,5 @@ class TimelineNode(BaseWorkflow):
                     }
                 ]
             },
-            "result": (),
+            "result": (name,),
         }

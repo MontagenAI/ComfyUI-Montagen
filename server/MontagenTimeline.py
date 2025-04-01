@@ -191,6 +191,17 @@ class MontagenTimeline:
             self.children.append({**clip_data.to_json()})
         self.save()
 
+    def remove_clip(self, clip):
+        clip_data = MontagenClip(clip)
+        if not clip_data.clip_id:
+            return
+        (parent_exsit, clip_exist) = next(
+            self._getNodes2(fn=lambda x: x.clip_id == clip_data.clip_id), (None, None)
+        )
+        if parent_exsit and clip_exist:
+            parent_exsit.children.remove(clip_exist.to_json())
+            self.save()
+
     def syn_timeline(self, timeline_data):
         self.timeline_data = timeline_data
         self.save()
@@ -226,6 +237,19 @@ class MontagenTimeline:
 
         children = parent.children
         for child in children:
+            yield from self._getNodes(child, fn, iterator)
+
+    def _getNodes2(self, parent=None, fn=None, iterator=None):
+        if not parent:
+            parent = self.timeline_data
+        parent = MontagenClip(parent)
+        children = parent.children
+        for child in children:
+            child_1 = MontagenClip(child)
+            if iterator:
+                iterator(child_1)
+            if not fn or fn(child_1):
+                yield (parent, child_1)
             yield from self._getNodes(child, fn, iterator)
 
 

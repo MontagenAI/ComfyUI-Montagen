@@ -2,9 +2,10 @@ from ..server.Utils import (
     to_base36_random,
     DEFAULTTRACKNAME,
     MONTAGENRESOURCESTYPE,
-    MONTAGENTIMELINESTYPE,
+    MONTAGENTIMERANGETYPE,
     MONTAGENMETASTYPE,
     MONTAGENCLIPSTYPE,
+    MONTAGENTIMELINETYPE,
 )
 from .BaseWorkflow import BaseWorkflow
 from ..server.LGraphNode import LGraphNode
@@ -25,15 +26,16 @@ class BaseTrackAdapter(BaseWorkflow):
                 "name": ("STRING", {"default": DEFAULTTRACKNAME}),
                 "enableInput": (
                     "BOOLEAN",
-                    {"default": True, "tooltip": "Enable input resources."},
+                    {"default": False, "tooltip": "Enable input resources."},
                 ),
                 "resoureces": (MONTAGENRESOURCESTYPE, {"tooltip": "The resoureces."}),
-                "timelines": (MONTAGENTIMELINESTYPE, {"tooltip": "The timelines."}),
+                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
                 **clips_types.get("required", {}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
                 "metas": (MONTAGENMETASTYPE, {"tooltip": "The metas."}),
+                "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
                 **clips_types.get("optional", {}),
             },
             "hidden": {
@@ -77,15 +79,15 @@ class BaseTrackAdapter(BaseWorkflow):
         node_id = node.node_id
         return (user_id, project_id, proj, workflow_id, workflow, node_id, node)
 
-    def validate_input(self, resoureces, timelines, metas):
+    def validate_input(self, resoureces, time_range, metas):
         len_res = len(resoureces)
         if len_res == 0:
             raise ValueError("resoureces is required.")
-        len_timelines = len(timelines)
+        len_timelines = len(time_range)
         if len_timelines == 0:
-            raise ValueError("timelines is required.")
+            raise ValueError("time_range is required.")
         if len_res != len_timelines:
-            raise ValueError("resoureces length must be equal to timelines length")
+            raise ValueError("resoureces length must be equal to time_range length")
         if metas:
             if len(metas) != len_res:
                 raise ValueError("metas length must be equal to resoureces length")
@@ -108,11 +110,11 @@ class BaseTrackAdapter(BaseWorkflow):
         return srcs
 
     def create_clips(
-        self, node: LGraphNode, timelines, node_id, workflow_id, metas, srcs
+        self, node: LGraphNode, time_range, node_id, workflow_id, metas, srcs
     ):
         clips = []
         clips_max = []
-        for i, timeline in enumerate(iter(timelines)):
+        for i, timeline in enumerate(iter(time_range)):
             clip_id = to_base36_random()
             clip_max = self.create_max_clip(
                 clip_id,
@@ -176,6 +178,15 @@ class BaseTrackAdapter(BaseWorkflow):
             **({} if meta == None else meta),
         }
 
+    def syn_timeline_clips(self, timeline, proj, clips):
+        for clip in clips:
+            another_timelines = proj.get_timelines_by_clip_id(clip["clipId"])
+            for another_timeline in another_timelines:
+                if another_timeline != timeline:
+                    another_timeline.remove_clip(clip)
+            if timeline:
+                timeline.add_or_update_clip(clip)
+
     def save_func(
         self, name, enableInput, tag, prompt, extra_pnginfo, unique_id, **keywords
     ):
@@ -188,16 +199,21 @@ class BaseTrackAdapter(BaseWorkflow):
             node_id,
             node,
         ) = self.get_info(name, unique_id, prompt, extra_pnginfo)
+        timeline = keywords.get("timeline", None)
+        if timeline:
+            timeline = proj.get_timeline(timeline)
+            if not timeline:
+                raise ValueError("timeline is not found.")
         if enableInput:
             resoureces = keywords.get("resoureces", None)
-            timelines = keywords.get("timelines", None)
+            time_range = keywords.get("timeRange", None)
             metas = keywords.get("metas", None)
-            if not resoureces or not timelines:
-                raise ValueError("resoureces and timelines is required.")
-            self.validate_input(resoureces, timelines, metas)
+            if not resoureces or not time_range:
+                raise ValueError("resoureces and time_range is required.")
+            self.validate_input(resoureces, time_range, metas)
             srcs = self.workflow_syn_material(workflow, node, resoureces)
             clips = self.create_clips(
-                node, timelines, node_id, workflow_id, metas, srcs
+                node, time_range, node_id, workflow_id, metas, srcs
             )
             node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
             workflow.save()
@@ -216,7 +232,9 @@ class BaseTrackAdapter(BaseWorkflow):
                 unique_id,
                 **keywords,
             )
-        return self.protocol_return(clips, workflow_id, project_id, user_id)
+        return self.protocol_return(
+            timeline, proj, clips, workflow_id, project_id, user_id
+        )
 
     def save_func_inner(
         self,
@@ -235,7 +253,7 @@ class BaseTrackAdapter(BaseWorkflow):
     ):
         return node.set_clips(None, None)
 
-    def protocol_return(self, clips, workflow_id, project_id, user_id):
+    def protocol_return(self, timeline, proj, clips, workflow_id, project_id, user_id):
         # MontagenProjManager.instance.onProcessEnd(
         #     {
         #         "userId": user_id,
@@ -247,6 +265,8 @@ class BaseTrackAdapter(BaseWorkflow):
         #         "type": self.type,
         #     }
         # )
+
+        self.syn_timeline_clips(timeline, proj, clips)
         return {
             "ui": {
                 "assets": [

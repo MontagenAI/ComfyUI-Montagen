@@ -8,7 +8,7 @@ from .BaseWorkflow import BaseWorkflow
 import re
 from comfy.utils import ProgressBar
 import logging
-from ..server.Utils import MONTAGENRESOURCESTYPE, MONTAGENTIMELINESTYPE
+from ..server.Utils import MONTAGENRESOURCESTYPE, MONTAGENTIMERANGETYPE
 
 
 class test:
@@ -37,7 +37,7 @@ class test:
 
     DESCRIPTION = "test Node"
 
-    RETURN_TYPES = (MONTAGENRESOURCESTYPE, MONTAGENTIMELINESTYPE)
+    RETURN_TYPES = (MONTAGENRESOURCESTYPE, MONTAGENTIMERANGETYPE)
     FUNCTION = "save_func"
 
     OUTPUT_NODE = True

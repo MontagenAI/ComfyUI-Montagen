@@ -607,7 +607,10 @@ class LGraphNode:
             self.pre_change_clip(clip)
             self.pre_change_clip(max_clip)
             if self.single_clip:
+                duration = self.single_clip.get("duration", 0)
                 self.single_clip.update(clip)
+                if duration > 0:
+                    self.single_clip["duration"] = duration
             else:
                 self.single_clip = max_clip
         opt = self.supported_config_type[self.type]
