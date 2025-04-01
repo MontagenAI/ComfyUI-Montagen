@@ -3,8 +3,9 @@ from .BaseTrackAdapter import BaseTrackAdapter
 from ..server.Utils import (
     DEFAULTCLIPNAME,
     MONTAGENRESOURCESTYPE,
-    MONTAGENTIMELINESTYPE,
+    MONTAGENTIMERANGETYPE,
     MONTAGENMETASTYPE,
+    MONTAGENTIMELINETYPE,
     to_base36_random,
 )
 
@@ -22,15 +23,16 @@ class BaseClipAdapter(BaseTrackAdapter):
                 "name": ("STRING", {"default": DEFAULTCLIPNAME}),
                 "enableInput": (
                     "BOOLEAN",
-                    {"default": True, "tooltip": "Enable input resources."},
+                    {"default": False, "tooltip": "Enable input resources."},
                 ),
                 **clips_types.get("required", {}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
                 "resoureces": (MONTAGENRESOURCESTYPE, {"tooltip": "The resoureces."}),
-                "timelines": (MONTAGENTIMELINESTYPE, {"tooltip": "The timelines."}),
+                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
                 "metas": (MONTAGENMETASTYPE, {"tooltip": "The metas."}),
+                "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
                 **clips_types.get("optional", {}),
             },
             "hidden": {
@@ -70,11 +72,11 @@ class BaseClipAdapter(BaseTrackAdapter):
         node.single_asset = _material
         return srcs
 
-    def create_clips(self, node, timelines, node_id, workflow_id, metas, srcs):
+    def create_clips(self, node, time_range, node_id, workflow_id, metas, srcs):
         clips = []
         clip = None
         clip_max = None
-        for i, timeline in enumerate(iter(timelines)):
+        for i, timeline in enumerate(iter(time_range)):
             clip_id = to_base36_random()
             clip_max = self.create_max_clip(
                 clip_id,
@@ -132,6 +134,8 @@ class BaseClipAdapter(BaseTrackAdapter):
         user_id,
         node,
     ):
+        if duration < 1:
+            duration = 3
         clip_id = to_base36_random()
         clip_max = self.create_max_clip(
             clip_id,
@@ -151,7 +155,9 @@ class BaseClipAdapter(BaseTrackAdapter):
             0,
             0,
             src,
-            None,
+            {
+                "duration": duration,
+            },
         )
         clip = node.set_clip(clip, clip_max)
         workflow.save()
