@@ -68372,7 +68372,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     },
     async saveTimeLine() {
       var _a2, _b2, _c2, _d2, _e2, _f2;
-      if (!this.activeProject.baseInfo.projectId || this.activeNode.fileType != "timeline") {
+      if (!this.activeProject.baseInfo.projectId) {
         return;
       }
       let data = this.playerInstance.creator.toJson();
