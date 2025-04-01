@@ -265,7 +265,7 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-d4d38104] {
+}.explorer-container[data-v-5ffb3ffd] {
   background-color: #fff;
 }[data-v-6ffd394b] .split-container {
   border: none;
@@ -70853,7 +70853,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       return [
         { title: (_b2 = (_a2 = activeProject.value) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.name, expanded: true },
-        { title: "clips", expanded: false },
+        { title: "nodes", expanded: false },
         { title: "property", expanded: false }
       ];
     });
@@ -70940,7 +70940,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           });
         })
       };
-      return [assetObj, workflowObj, refObj, timeLineObj];
+      return [assetObj, refObj, workflowObj, timeLineObj];
     });
     function groupByParent(list2) {
       const topLevel = list2.filter((item) => item.parent === null);
@@ -71688,7 +71688,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-d4d38104"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-5ffb3ffd"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
