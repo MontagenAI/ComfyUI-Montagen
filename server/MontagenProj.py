@@ -18,7 +18,9 @@ from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
 from .MontagenMaterial import MontagenMaterial
 from .MontagenTimeline import MontagenTimeline
+from .MontagenBuild import MontagenBuild
 from .LGraphNode import LGraphNode
+
 
 class MontagenProj:
 
@@ -27,6 +29,7 @@ class MontagenProj:
         self.project_data = self._load_project()
         self.montagen_cache_manager = MontagenCacheManager()
         self.montagen_material = MontagenMaterial(ASSETSDIR, REfSDIR, self)
+        self.montagen_build = MontagenBuild(self)
         self.cache_key = f"{self.project_id}_montagen_workflows"
         self.timeline_cache_key = f"{self.project_id}_montagen_timelines"
 
@@ -151,7 +154,8 @@ class MontagenProj:
             "assets": self.montagen_material.get_materials_by_location(False),
             "refs": self.montagen_material.get_materials_by_location(True),
             "timelines": [timline.to_json() for timline in self.timelines],
-            "configInfo":LGraphNode.supported_config_type
+            "configInfo": LGraphNode.supported_config_type,
+            "builds": self.montagen_build.get_build_list(),
         }
 
     def to_simple_json(self):
@@ -276,6 +280,7 @@ class MontagenProj:
             self.montagen_cache_manager.delete(self.cache_key)
             self.montagen_cache_manager.delete(self.timeline_cache_key)
             self.montagen_material.clear_cache()
+            self.montagen_build.clear_cache()
 
     def project_change_description(self, description: str):
         if not description:
