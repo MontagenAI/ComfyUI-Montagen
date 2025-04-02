@@ -265,33 +265,36 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-995c2411] {
+}.explorer-container[data-v-22618b27] {
   background-color: #fff;
-}[data-v-7d85cf79] .split-container {
+}[data-v-624028f7] .split-container {
   border: none;
   border-radius: 0;
   width: 100%;
   height: 100%;
 }
-[data-v-7d85cf79] .split-container .split-gutter {
+[data-v-624028f7] .split-container .split-gutter {
   background: #181818;
 }
-[data-v-7d85cf79] .split-container.left-hidden .split-panel-left {
+[data-v-624028f7] .split-container.left-hidden .split-panel-left {
   display: none;
 }
-[data-v-7d85cf79] .split-container.left-hidden > .split-gutter {
+[data-v-624028f7] .split-container.left-hidden > .split-gutter {
   display: none;
 }
-[data-v-7d85cf79] .split-gutter-main:hover {
+[data-v-624028f7] .split-gutter-main:hover {
   transition: background-color 0.2sease 300ms;
   background-color: var(--p-primary-color);
 }
-[data-v-7d85cf79] .split-gutter-main.split-gutter-hidden {
+[data-v-624028f7] .split-gutter-main.split-gutter-hidden {
   display: none;
 }
-.player[data-v-7d85cf79] {
+.player[data-v-624028f7] {
   width: 100%;
   height: 100%;
+}
+[data-v-624028f7] .my-track-pannel {
+  max-height: calc(30% - 4px);
 }
 .new-imagen-box[data-v-f4da74f0] {\r
   position: fixed;\r
@@ -68278,6 +68281,13 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       }
     },
     setActiveProject(project) {
+      var _a2, _b2;
+      if (((_b2 = (_a2 = this.activeProject) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.projectId) != project.baseInfo.projectId) {
+        this.workflowCips = {};
+        this.activeNode = {};
+        localStorage.setItem("activeProjectId", project.baseInfo.projectId);
+      }
+      console.log("setActiveProject_设置当前激活项目", project);
       this.activeProject = project;
     },
     initProjectMapWorkFlow(timeLine) {
@@ -68294,6 +68304,9 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         this.list = json.data;
         if (flag) {
           let id = this.list[0].baseInfo.projectId;
+          if (localStorage.getItem("activeProjectId")) {
+            id = localStorage.getItem("activeProjectId");
+          }
           this.getProjectDetail(id);
         }
       } catch (err) {
@@ -68303,7 +68316,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     async getProjectDetail(projectId) {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`);
       const json = await response.json();
-      this.activeProject = json.data;
+      this.setActiveProject(json.data);
       this.propertyConfig = json.data.configInfo;
       return Promise.resolve(json.data);
     },
@@ -70599,7 +70612,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
               })
             }, {
               key: item.id + "_timeline",
-              label: "timelineClips",
+              label: "timelineclips",
               icon: "pi pi-file",
               fileType: "track_timeline",
               children: (item.clips || []).map((clip2) => {
@@ -70929,7 +70942,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       };
       const refObj = {
         key: "3",
-        label: "assets-refs",
+        label: "assets-ref",
         type: "folder",
         fileType: "folder_refs",
         leaf: false,
@@ -70938,7 +70951,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       };
       const timeLineObj = {
         key: "4",
-        label: "timeLine",
+        label: "timelines",
         type: "folder",
         fileType: "folder_timeline",
         leaf: false,
@@ -70948,7 +70961,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
             key: timeline2.timelineData.refId,
             label: timeline2.timelineName,
             type: "folder",
-            icon: "pi pi-file",
+            icon: "fontello icon-montagen",
             fileType: "timeline",
             projectId: timeline2.timelineData.projectId,
             timelineData: timeline2.timelineData,
@@ -70958,7 +70971,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           });
         })
       };
-      return [buildObj, assetObj, refObj, workflowObj, timeLineObj];
+      return [assetObj, refObj, buildObj, workflowObj, timeLineObj];
     });
     function groupByParent(list2, fileType) {
       const topLevel = list2.filter((item) => item.parent === null);
@@ -71064,6 +71077,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         case "ref":
         case "folder_assets":
         case "folder_ref":
+        case "ref_build":
           menu.value.show(event2);
           break;
       }
@@ -71105,6 +71119,49 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               label: "Rename Clip",
               icon: "pi pi-file-edit",
               command: (e) => renameCommand(menuTargetNode.value)
+            }
+          ]);
+          break;
+        case "ref_build":
+          temp.push(...[
+            {
+              label: "Download File",
+              icon: "pi pi-download",
+              command: (e) => {
+                console.log("Download File", menuTargetNode.value);
+                let url2 = window.location.origin + menuTargetNode.value.src.slice(1);
+                console.log("Download File", menuTargetNode.value, url2);
+                downloadFile(url2);
+              }
+            },
+            {
+              separator: true
+            },
+            {
+              label: "Delete File",
+              icon: "pi pi-trash",
+              command: (e) => {
+                console.log("Delete Folder");
+                confirm.require({
+                  group: "dialog",
+                  message: `Are you sure delete ${menuTargetNode.value.label} File?`,
+                  header: "Confirmation",
+                  icon: "pi pi-exclamation-triangle",
+                  position: "top",
+                  rejectProps: {
+                    label: "Cancel",
+                    severity: "secondary",
+                    outlined: true
+                  },
+                  acceptProps: {
+                    label: "Delete"
+                  },
+                  accept: () => {
+                    console.log("deleteFile", menuTargetNode.value);
+                    deleteBuildFile(menuTargetNode.value);
+                  }
+                });
+              }
             }
           ]);
           break;
@@ -71412,6 +71469,23 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       await response.json();
       refreshList();
     };
+    const deleteBuildFile = async (data) => {
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Builds/Delete`, {
+        method: "POST",
+        body: JSON.stringify({ "file_names": [data.file_name] })
+      });
+      const json = await response.json();
+      if (json.code == 0) {
+        refreshList();
+      } else {
+        app$1.extensionManager.toast.add({
+          severity: "warn",
+          summary: "Warning!",
+          detail: json.msg,
+          life: 3e3
+        });
+      }
+    };
     const deleteFile = async (data) => {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Assets/Delete`, {
         method: "POST",
@@ -71510,6 +71584,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         onNodeContentClick(event, e);
       });
     };
+    const downloadFile = (url2) => {
+      const link = document.createElement("a");
+      link.href = url2;
+      link.download = url2.substring(url2.lastIndexOf("/") + 1);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
     onMounted(() => {
       setProxyWorkFlow();
       app$1.api.addEventListener("MontagenProcessEnd", function(e) {
@@ -71537,7 +71619,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               style: { "min-height": "37px" }
             }, {
               start: withCtx(() => _cache[7] || (_cache[7] = [
-                createBaseVNode("span", { class: "text-sm truncate" }, "PROJECTS", -1)
+                createBaseVNode("span", { class: "text-sm truncate" }, "MONTAGEN", -1)
               ])),
               center: withCtx(() => _cache[8] || (_cache[8] = [])),
               end: withCtx(() => [
@@ -71708,7 +71790,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-995c2411"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-22618b27"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -71900,7 +71982,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
-                      pt: { root: { style: { "box-sizing": "border-box", "flex-shrink": 0 } } }
+                      pt: { root: { style: { "box-sizing": "border-box", "flex-shrink": 0, "overflow": "visible" }, class: "my-track-pannel" } }
                     }, {
                       default: withCtx(() => [
                         createBaseVNode("div", {
@@ -71925,7 +72007,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-7d85cf79"]]);
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-624028f7"]]);
 const _hoisted_1$1 = { class: "flex flex-col gap-1" };
 const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "textNodeAdd",
