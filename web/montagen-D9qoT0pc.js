@@ -68382,6 +68382,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       }
       let data = this.playerInstance.creator.toJson();
       console.log("当前timeline数据发生了变化", data);
+      if (!data.projectId || !data.montagenName) return;
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data.projectId}/Timeline/${data.montagenName}/Edit`, {
         method: "POST",
         headers: {
