@@ -3,7 +3,7 @@ import shutil
 from typing import Any, Dict, List, Optional
 import json
 from .MontagenCacheManager import MontagenCacheManager
-from .Utils import localfile_video_audio_info, FILEADDR
+from .Utils import localfile_video_audio_info, FILEADDR, supported_types, get_file_type
 from .remotefile.RemoteFileHandler import RemoteFileHandler
 import asyncio
 import threading
@@ -17,7 +17,6 @@ class MontagenMaterial:
         assets_dir: str,
         refs_dir: str,
         project: str,
-        supported_types: Optional[Dict[str, List[str]]] = None,
     ):
         """
         Initialize the MontagenMaterial manager.
@@ -31,13 +30,7 @@ class MontagenMaterial:
         self.project = project
         self.key = f"{self.project.project_id}_montagen_materials"
         self.cache_manager = MontagenCacheManager()
-        self.supported_types = supported_types or {
-            "video": [".mp4", ".webm"],
-            "audio": [".mp3", ".wav", ".aac"],
-            "image": [".jpg", ".jpeg", ".png"],
-            "gif": [".gif"],
-            "srt": [".srt"],
-        }
+        self.supported_types = supported_types
 
     def support_file(self, file_name, type):
         if file_name.endswith((*self.supported_types[type],)):
@@ -111,17 +104,7 @@ class MontagenMaterial:
         return ref_info
 
     def _get_file_type(self, file_name: str) -> Optional[str]:
-        """
-        Determine the file type based on the file extension.
-
-        :param file_name: Name of the file.
-        :return: File type or None if not supported.
-        """
-        _, ext = os.path.splitext(file_name)
-        for file_type, extensions in self.supported_types.items():
-            if ext in extensions:
-                return file_type
-        return None
+        return get_file_type(file_name)
 
     def _get_asset_dir(self, file_type: str) -> str:
         """

@@ -10,6 +10,7 @@ import json
 import logging
 import ffmpeg
 
+
 def to_base36_random() -> str:
     timestamp = int(time.time() * 10000000)
     random_number = random.randint(0, 999999)
@@ -237,8 +238,8 @@ INFOFILE = "montagenproject.Mont"
 ASSETSDIR = "assets"
 REfSDIR = "refs"
 VERSIONINFO = {"version": "1.0.0", "type": MONTAGENPROJ}
-FFMPEG=str(ffmpeg.FFMPEG_PATH)
-FFPROBE=str(ffmpeg.FFPROBE_PATH)
+FFMPEG = str(ffmpeg.FFMPEG_PATH)
+FFPROBE = str(ffmpeg.FFPROBE_PATH)
 defualt_user_info = {
     "default_project_id": "1",
     "default_project_name": "default",
@@ -251,3 +252,17 @@ DEFAULTPROJNAME = "default"
 DEFAULTUSERID = "default"
 FILEADDR = "/Montagen/Proj/{id}/File/{filename}"
 BUILDFILEADDR = "/Montagen/Proj/{id}/Build/{filename}"
+supported_types = {
+    "video": [".mp4", ".webm"],
+    "audio": [".mp3", ".wav", ".aac"],
+    "image": [".jpg", ".jpeg", ".png"],
+    "gif": [".gif"],
+}
+
+
+def get_file_type(file_name: str):
+    _, ext = os.path.splitext(file_name)
+    for file_type, extensions in supported_types.items():
+        if ext in extensions:
+            return file_type
+    return None

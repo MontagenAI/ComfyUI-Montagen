@@ -127,6 +127,7 @@ class MontagenProjManager:
 
             ramdom = to_base36_random()
             reader = await request.multipart()
+            files = []
             while True:
                 part = await reader.next()
                 if part is None:
@@ -143,9 +144,9 @@ class MontagenProjManager:
                             if not chunk:
                                 break
                             f.write(chunk)
-                    proj.montagen_material.add_material(file_path)
+                    files.append(proj.montagen_material.add_material(file_path))
             proj.project_change_time()
-            return web.json_response({"code": 0})
+            return web.json_response({"code": 0, "data": files})
 
         @server.routes.post("/Montagen/Proj/{id}/Assets/Refs")
         @error_handling_decorator
