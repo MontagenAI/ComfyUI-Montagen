@@ -265,7 +265,7 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-5ffb3ffd] {
+}.explorer-container[data-v-995c2411] {
   background-color: #fff;
 }[data-v-7d85cf79] .split-container {
   border: none;
@@ -69831,7 +69831,8 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       "workflows": markRaw(_sfc_main$b),
       "timeline": markRaw(propertyTimelineClip),
       "video": markRaw(_sfc_main$9),
-      "ref": markRaw(_sfc_main$c)
+      "ref": markRaw(_sfc_main$c),
+      "ref_build": markRaw(_sfc_main$c)
     };
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1$6, [
@@ -70864,15 +70865,24 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       ];
     });
     const treeNodes = computed(() => {
-      var _a2, _b2, _c2, _d2;
-      let assetObj = {
+      var _a2, _b2, _c2, _d2, _e2;
+      let buildObj = {
         key: "0",
+        label: "builds",
+        type: "folder",
+        fileType: "folder_builds",
+        leaf: false,
+        // icon: 'fontello icon-montagen',
+        children: groupByParent(((_a2 = activeProject.value) == null ? void 0 : _a2.builds) || [], "ref_build")
+      };
+      let assetObj = {
+        key: "1",
         label: "assets",
         type: "folder",
         fileType: "folder_assets",
         leaf: false,
         // icon: 'fontello icon-montagen',
-        children: groupByParent(((_a2 = activeProject.value) == null ? void 0 : _a2.assets) || [])
+        children: groupByParent(((_b2 = activeProject.value) == null ? void 0 : _b2.assets) || [])
         // children: (activeProject.value?.assets || []).map((asset) => {
         //   return Object.assign({}, asset, {
         //     key: 'asset_' + cusWorkflowID(),
@@ -70884,13 +70894,13 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         // })
       };
       let workflowObj = {
-        key: "1",
+        key: "2",
         label: "workflows",
         type: "folder",
         fileType: "folder_workflow",
         leaf: false,
         // icon: 'fontello icon-montagen',
-        children: (((_b2 = activeProject.value) == null ? void 0 : _b2.workflows) || []).map((workflow) => {
+        children: (((_c2 = activeProject.value) == null ? void 0 : _c2.workflows) || []).map((workflow) => {
           return Object.assign({}, workflow, {
             key: workflow.workflowId,
             label: workflow.workflowName || workflow.workflowId,
@@ -70916,22 +70926,22 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         })
       };
       const refObj = {
-        key: "2",
+        key: "3",
         label: "assets-refs",
         type: "folder",
         fileType: "folder_refs",
         leaf: false,
         // icon: 'fontello icon-montagen',
-        children: groupByParent(((_c2 = activeProject.value) == null ? void 0 : _c2.refs) || [])
+        children: groupByParent(((_d2 = activeProject.value) == null ? void 0 : _d2.refs) || [])
       };
       const timeLineObj = {
-        key: "3",
+        key: "4",
         label: "timeLine",
         type: "folder",
         fileType: "folder_timeline",
         leaf: false,
         // icon: 'fontello icon-montagen',
-        children: (((_d2 = activeProject.value) == null ? void 0 : _d2.timelines) || []).map((timeline2) => {
+        children: (((_e2 = activeProject.value) == null ? void 0 : _e2.timelines) || []).map((timeline2) => {
           return Object.assign({}, timeline2, {
             key: timeline2.timelineData.refId,
             label: timeline2.timelineName,
@@ -70946,16 +70956,16 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           });
         })
       };
-      return [assetObj, refObj, workflowObj, timeLineObj];
+      return [buildObj, assetObj, refObj, workflowObj, timeLineObj];
     });
-    function groupByParent(list2) {
+    function groupByParent(list2, fileType) {
       const topLevel = list2.filter((item) => item.parent === null);
       topLevel.forEach((item) => {
         item.key = item.file_name;
         item.label = item.file_name;
         item.type = "folder";
         item.icon = "pi pi-file";
-        item.fileType = "ref";
+        item.fileType = fileType || "ref";
         item.sourceType = item.file_type;
         item.projectId = activeProject.value.baseInfo.projectId;
       });
@@ -70981,7 +70991,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
             item.label = item.file_name;
             item.type = "folder";
             item.icon = "pi pi-file";
-            item.fileType = "ref";
+            item.fileType = fileType || "ref";
             item.sourceType = item.file_type;
             item.projectId = activeProject.value.baseInfo.projectId;
             return item;
@@ -70996,6 +71006,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const onNodeContentClick = async (e, node2) => {
       console.log(node2, "当前点击的node 是assets", expandedKeys.value, "当前展开的node", selectedKeys.value, "当前选中的node");
       switch (node2.fileType) {
+        case "folder_builds":
         case "folder_assets":
         case "folder_workflow":
         case "folder_refs":
@@ -71020,6 +71031,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           break;
         case "assets":
         case "ref":
+        case "ref_build":
           if (selectedKeys.value[node2.key]) {
             workSpaceStore.setActiveNode(node2);
             workSpaceStore.setWorkflowCips([]);
@@ -71694,7 +71706,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-5ffb3ffd"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-995c2411"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
