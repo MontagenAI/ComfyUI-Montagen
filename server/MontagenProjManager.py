@@ -10,6 +10,7 @@ from .Utils import (
     defualt_user_info,
     MONTAGENPROCESSEND,
     FILEADDR,
+    BUILDFILEADDR,
     generate_unique_filename,
     to_base36_random,
 )
@@ -175,6 +176,21 @@ class MontagenProjManager:
                 raise Exception("Project not found")
             request_data = await request.json()
             proj.montagen_material.delete_material_batch(request_data)
+            proj.project_change_time()
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Builds/Delete")
+        @error_handling_decorator
+        async def delete_project_build(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            if not project_id:
+                raise Exception("project_id is empty")
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            request_data = await request.json()
+            proj.montagen_build.delete_build_batch(request_data)
             proj.project_change_time()
             return web.json_response({"code": 0})
 
@@ -380,6 +396,50 @@ class MontagenProjManager:
 
             await response.prepare(request)
             async for chunk in proj.montagen_material.get_material_content(
+                filename, start, end, register_action
+            ):
+                await response.write(chunk)
+
+            return response
+
+        @server.routes.get(BUILDFILEADDR)
+        @error_handling_decorator
+        async def file_server_2(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            filename = request.match_info.get("filename", None)
+            if not project_id or not filename:
+                raise Exception("project_id or filename is not found")
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+
+            file_size = proj.montagen_build.get_build_size(filename)
+
+            range_header = request.headers.get("Range", None)
+            if range_header:
+                byte_range = range_header.split("=")[1]
+                start, end = byte_range.split("-")
+                start = int(start)
+                end = int(end) + 1 if end else file_size
+            else:
+                start = 0
+                end = file_size
+
+            content_type = (
+                mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            )
+            file_extension = os.path.splitext(filename)[1].lower()
+            if file_extension in {".html", ".htm", ".js", ".css"}:
+                content_type = "application/octet-stream"
+            response = web.StreamResponse(status=206, reason="Partial Content")
+            response.headers["Content-Type"] = content_type
+            response.headers["Content-Disposition"] = f'filename="{filename}"'
+            response.headers["Content-Range"] = f"bytes {start}-{end-1}/{file_size}"
+            response.headers["Content-Length"] = str(end - start)
+
+            await response.prepare(request)
+            async for chunk in proj.montagen_build.get_build_content(
                 filename, start, end, register_action
             ):
                 await response.write(chunk)

@@ -7,6 +7,7 @@ from comfy.cli_args import args
 from .BaseWorkflow import BaseWorkflow
 import re
 from comfy.utils import ProgressBar
+from ..server.Utils import MONTAGENTIMELINETYPE
 import logging
 
 
@@ -15,7 +16,15 @@ class TimelineExcNode(BaseWorkflow):
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": {"name": ("STRING",), "outputName": ("STRING",)},
+            "required": {
+                "name": (
+                    MONTAGENTIMELINETYPE,
+                    {
+                        "tooltip": "The name of the timeline to export.",
+                    },
+                ),
+                "outputName": ("STRING", {"tooltip": "The name of the output file."}),
+            },
             "hidden": {
                 "prompt": "PROMPT",
                 "extra_pnginfo": "EXTRA_PNGINFO",
@@ -47,11 +56,13 @@ class TimelineExcNode(BaseWorkflow):
         timeline = proj.get_timeline(name)
         if not timeline:
             raise ValueError("timeline is required.")
-        self.combineMix(outputName, timeline.to_timeline_json())
+        self.combineMix(proj, outputName, timeline.to_timeline_json())
         return ()
 
-    def combineMix(self, output_path: str, timeline):
-        output_path = os.path.join(folder_paths.get_output_directory(), output_path)
+    def combineMix(self, proj, output_name: str, timeline):
+        output_path = os.path.join(
+            folder_paths.get_temp_directory(), f"{uuid.uuid4()}.mp4"
+        )
         tempJson = os.path.join(
             folder_paths.get_temp_directory(), f"{uuid.uuid4()}.json"
         )
@@ -97,5 +108,8 @@ class TimelineExcNode(BaseWorkflow):
                     stderr=process.stderr,
                 )
             pbar.update_absolute(100)
+            proj.montagen_build.add_build(output_path, f"{output_name}.mp4")
+            proj.project_change_time()
         finally:
             os.remove(tempJson)
+            os.remove(output_path)

@@ -144,9 +144,7 @@ class BaseClipAdapter(BaseTrackAdapter):
             0,
             0,
             src,
-            {
-                "duration": duration,
-            },
+            {"duration": duration},
         )
         clip = self.create_clip(
             clip_id,
@@ -155,9 +153,7 @@ class BaseClipAdapter(BaseTrackAdapter):
             0,
             0,
             src,
-            {
-                "duration": duration,
-            },
+            {"duration": duration},
         )
         clip = node.set_clip(clip, clip_max)
         workflow.save()

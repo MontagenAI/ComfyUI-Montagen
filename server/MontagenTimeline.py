@@ -55,6 +55,14 @@ class MontagenTimeline:
         self.timeline_data["width"] = value
 
     @property
+    def fps(self):
+        return self.timeline_data.get("fps", 25)
+
+    @fps.setter
+    def fps(self, value):
+        self.timeline_data["fps"] = value
+
+    @property
     def height(self):
         return self.timeline_data.get("height", 720)
 
@@ -101,6 +109,7 @@ class MontagenTimeline:
             "type": "canvas",
             "width": project.width,
             "height": project.height,
+            "fps": 25,
             "refId": to_base36_random(),
             "montagenName": timeline_name,
             "montagenModifyTime": datetime.now().isoformat(),
@@ -153,10 +162,19 @@ class MontagenTimeline:
                 for item in [self.get_clip_json(clip.workflow_id, clip.clip_id)]
                 if item
             ],
+            "width": self.width,
+            "height": self.height,
+            "fps": self.fps,
         }
 
     def to_timeline_json(self):
         return self.timeline_data
+
+    def set_timeline_config(self, width, height, fps):
+        self.width = width
+        self.height = height
+        self.fps = fps
+        self.save()
 
     def delete(self):
         if os.path.exists(self.timeline_json_path):
