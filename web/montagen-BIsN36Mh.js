@@ -293,7 +293,7 @@ li[data-v-f93fdfa7] {
   width: 100%;
   height: 100%;
 }
-.new-imagen-box[data-v-b2abefb5] {\r
+.new-imagen-box[data-v-f4da74f0] {\r
   position: fixed;\r
   width: 100%;\r
   height: 100vh;\r
@@ -303,23 +303,23 @@ li[data-v-f93fdfa7] {
   background: #262626;\r
   color: #fff;
 }
-.new-imagen-box .image-box-container[data-v-b2abefb5] {\r
+.new-imagen-box .image-box-container[data-v-f4da74f0] {\r
   width: 100%;\r
   height: 100%;\r
   display: flex;\r
   overflow: hidden;
 }
-.close-icon[data-v-b2abefb5] {\r
+.close-icon[data-v-f4da74f0] {\r
   position: absolute;\r
   right: 10px;\r
   top: 10px;\r
   /* opacity: 0.9; */
 }
-.close-icon .close[data-v-b2abefb5] {\r
+.close-icon .close[data-v-f4da74f0] {\r
   transform: rotate(0);\r
   transition: 0.2s;
 }
-.close-icon .close[data-v-b2abefb5]:hover {\r
+.close-icon .close[data-v-f4da74f0]:hover {\r
   transform: rotate(90deg);\r
 \r
   /* opacity: 1; */
@@ -2219,7 +2219,7 @@ class ComponentBase extends ExtendedEventEmitter {
         }
       }), h2 && h2(t);
     };
-    return ((V = t.to) == null ? void 0 : V.src) !== void 0 ? (async () => {
+    return ((V = t.to) == null ? void 0 : V.src) !== void 0 || e.type == "image" ? (async () => {
       try {
         await e.preProcessing(f), e.annotate(), await e.prepareMaterial();
       } catch (q) {
@@ -72026,7 +72026,10 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1 = { class: "image-box-container" };
+const _hoisted_1 = {
+  key: 0,
+  class: "image-box-container"
+};
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "index",
   setup(__props) {
@@ -72055,11 +72058,13 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     const mutationObserver = ref$3(null);
     const wrapperHeight = ref$3(600);
     const wrapperWidth = ref$3(700);
+    const isShow = ref$3(false);
     onMounted(() => {
       getList();
       mutationObserver.value = new MutationObserver((mutationsList) => {
         let tempWrapper = app$1.canvasContainer.querySelector(".p-splitterpanel-nested");
         if (tempWrapper) {
+          isShow.value = true;
           wrapperHeight.value = tempWrapper.offsetHeight;
           wrapperWidth.value = tempWrapper.offsetWidth;
         }
@@ -72079,9 +72084,9 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           class: "new-imagen-box grid",
           style: normalizeStyle({ height: wrapperHeight.value + "px", width: wrapperWidth.value + "px" })
         }, [
-          createBaseVNode("div", _hoisted_1, [
+          isShow.value ? (openBlock(), createElementBlock("div", _hoisted_1, [
             createVNode(boxContainer)
-          ]),
+          ])) : createCommentVNode("", true),
           createBaseVNode("div", {
             class: "close-icon cursor-pointer",
             onClick: closeImagenBox
@@ -72102,7 +72107,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b2abefb5"]]);
+const newImagenBox = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-f4da74f0"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
