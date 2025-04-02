@@ -378,9 +378,17 @@ class MontagenProjManager:
                 start, end = byte_range.split("-")
                 start = int(start)
                 end = int(end) + 1 if end else file_size
+                status = 206
+                reason = "Partial Content"
+                content_range = f"bytes {start}-{end-1}/{file_size}"
+                content_length = str(end - start)
             else:
                 start = 0
                 end = file_size
+                status = 200
+                reason = "OK"
+                content_range = None
+                content_length = str(file_size)
 
             content_type = (
                 mimetypes.guess_type(filename)[0] or "application/octet-stream"
@@ -388,12 +396,13 @@ class MontagenProjManager:
             file_extension = os.path.splitext(filename)[1].lower()
             if file_extension in {".html", ".htm", ".js", ".css"}:
                 content_type = "application/octet-stream"
-            response = web.StreamResponse(status=206, reason="Partial Content")
+            response = web.StreamResponse(status=status, reason=reason)
             response.headers["Content-Type"] = content_type
             response.headers["Content-Disposition"] = f'filename="{filename}"'
-            response.headers["Content-Range"] = f"bytes {start}-{end-1}/{file_size}"
-            response.headers["Content-Length"] = str(end - start)
-
+            if content_range:
+                response.headers["Content-Range"] = content_range
+            response.headers["Content-Length"] = content_length
+            response.headers["Accept-Ranges"] = "bytes"
             await response.prepare(request)
             async for chunk in proj.montagen_material.get_material_content(
                 filename, start, end, register_action
