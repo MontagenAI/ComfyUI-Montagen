@@ -2,6 +2,49 @@
 
 Objective: Build a ComfyUI-based video editing framework.
 
+## [0.2.0] - 2025-04-02
+
+*Empowered Release: Comprehensive Video Editing Suite with Full Control in ComfyUI.*
+
+### Added
+
+- [Core] Project System:
+  - Standlone Project Directory: Build and import from standlone directory. With different sub directory.
+  - `assets`: All assets within Montagen Adapter nodes.
+  - `assets-ref`: Directory can be add to the project as a ref file.
+  - `builds`: Timeline burning to the files will located here.
+  - `workflows`:
+- [Core] Explorer System:
+  - ComfyUI Activity Bar: Put all control panel in one Explorer System. All part is connected. With different sub item.
+  - `project`:
+  - `nodes`:
+  - `properties`:
+- [UI] Timeline Preview: Selected timeline file will directly show in `ComfyUI`, instead of in the `Montagen` page.
+- [UI] Assets Preview: Selected item will preview in timeline and Player.
+- [Node] Timeline Node In Montagen Suite:
+  - `Timeline Creation Node`: Create a timeline with `name`, `width`, `height`, `fps`.
+  - `Timeline Execution Node`: Burn file with timeline with `outputName`. For example "test1.mp4".
+
+### Changed
+
+- [Core] Project Structural Between Workflow and Timeline:
+  - Once A Project: One time can only open one project.
+  - Multi Timelines In One Project: 
+- [UI] `project` Panel:
+
+- [UI] `nodes` Panel:
+
+- [UI] `properties` Panel:
+
+- [Node] Adapter Node In Montagen Suite:
+  - `Adapter`:
+  - `Timeline`
+
+### Removed
+
+- [UI] Standlone `Montagen` Page: All function is in `ComfyUI` page.
+
+
 ## [0.1.2] - 2025-03-08
 
 *Feature Update: Better Project Manipulation With New Directory Hierarchy.*
