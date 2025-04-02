@@ -2,7 +2,7 @@ import { app } from "../../../scripts/app.js";
 import { api } from "../../../scripts/api.js";
 
 (function (globalObj) {
-  let list = ["Untitled Clip_0_20250401094527.gif", "1.mp4"];
+  let list = [];
   let listCallBack = [];
   let supportedTypes = {
     video: [".mp4", ".webm"],
@@ -20,13 +20,17 @@ import { api } from "../../../scripts/api.js";
   let supportedMimeTypes =
     "video/mp4,video/webm,audio/mpeg,audio/wav,audio/aac,image/jpeg,image/png,image/gif";
   function getFileType(fileName) {
-    const ext = fileName.split(".").pop().toLowerCase();
-    for (const [fileType, extensions] of Object.entries(supportedTypes)) {
-      if (extensions.includes(`.${ext}`)) {
-        return fileType;
+    try {
+      const ext = fileName.split(".").pop().toLowerCase();
+      for (const [fileType, extensions] of Object.entries(supportedTypes)) {
+        if (extensions.includes(`.${ext}`)) {
+          return fileType;
+        }
       }
+      return null;
+    } catch {
+      return null;
     }
-    return null;
   }
   globalObj.setMontagenAssetsList = function (listAssets) {
     list = listAssets;
@@ -174,6 +178,14 @@ import { api } from "../../../scripts/api.js";
         };
 
         previewWidget.updateSource = function (src, type) {
+          if (src) {
+            this.src = src;
+          }
+          if (type) {
+            this.type = type;
+          }
+          src = this.src;
+          type = this.type;
           if (type == "video" || type == "audio") {
             this.videoEl.autoplay = !this.value.paused && !this.value.hidden;
             let target_width = 256;
@@ -194,6 +206,7 @@ import { api } from "../../../scripts/api.js";
       }
       new_widgets.push(this.previewWidget);
       this.widgets = new_widgets;
+      this.previewWidget.updateSource();
     }
   }
 
@@ -235,14 +248,16 @@ import { api } from "../../../scripts/api.js";
                 app2.graph.setDirtyCanvas(true);
               };
               img.src = src;
-              node3.setSizeForImage?.();
               node3.previewWidget.updateSource(src, type);
+              fitHeight(node3);
+              node3.setSizeForImage?.();
             } else {
               node3.imgs = null;
               node3.previewWidget.updateSource(src, type);
             }
           }
           const default_value = imageWidget.value;
+          imageWidget.montagen_type = getFileType(default_value);
           Object.defineProperty(imageWidget, "value", {
             set: function (value4) {
               this._real_value = value4;

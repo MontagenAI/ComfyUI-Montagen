@@ -93,6 +93,7 @@ class FileClipAdapter(BaseWorkflow):
 
     def create_clip(self, clip_id, node_id, workflow_id, src):
         return {
+            "type": self.type,
             **self.set_clip_property(src, False),
         }
 
