@@ -78,7 +78,7 @@ class BaseClipAdapter(BaseTrackAdapter):
         clip_max = None
         for i, timeline in enumerate(iter(time_range)):
             clip_id = to_base36_random()
-            clip_max = self.create_max_clip(
+            clip_max = super().create_max_clip(
                 clip_id,
                 node_id,
                 workflow_id,
@@ -87,7 +87,7 @@ class BaseClipAdapter(BaseTrackAdapter):
                 srcs[i],
                 None if metas == None else metas[i],
             )
-            clip = self.create_clip(
+            clip = super().create_clip(
                 clip_id,
                 node_id,
                 workflow_id,
@@ -101,15 +101,12 @@ class BaseClipAdapter(BaseTrackAdapter):
         clips.append(clip)
         return clips
 
-    def create_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
+    def create_clip(self, clip_id, node_id, workflow_id, src):
         return {
-            "start": start,
-            "duration": end - start,
             **self.set_clip_property(src, False),
-            **({} if meta == None else meta),
         }
 
-    def create_max_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
+    def create_max_clip(self, clip_id, node_id, workflow_id, src):
         return {
             "type": self.type,
             "clipId": clip_id,
@@ -117,10 +114,9 @@ class BaseClipAdapter(BaseTrackAdapter):
             "workflowId": workflow_id,
             "refId": clip_id,
             "children": [],
-            "start": start,
-            "duration": end - start,
             **self.set_clip_property(src, True),
-            **({} if meta == None else meta),
+            "duration": -1,
+            "start": -1,
         }
 
     def return_result(
@@ -141,19 +137,13 @@ class BaseClipAdapter(BaseTrackAdapter):
             clip_id,
             node_id,
             workflow_id,
-            0,
-            0,
             src,
-            {"duration": duration},
         )
         clip = self.create_clip(
             clip_id,
             node_id,
             workflow_id,
-            0,
-            0,
             src,
-            {"duration": duration},
         )
         clip = node.set_clip(clip, clip_max)
         workflow.save()
