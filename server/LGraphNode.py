@@ -130,7 +130,7 @@ class LGraphNode:
         ),
         "start": (
             "FLOAT",
-            {"default": 0.0, "tooltip": "Start time of the clip."},
+            {"default": -1, "tooltip": "Start time of the clip."},
         ),
         # "end": (
         #     "FLOAT",
@@ -138,7 +138,7 @@ class LGraphNode:
         # ),
         "duration": (
             "FLOAT",
-            {"default": 0, "tooltip": "Duration of the clip."},
+            {"default": -1, "tooltip": "Duration of the clip."},
         ),
         "blur": (
             "FLOAT",
@@ -169,7 +169,7 @@ class LGraphNode:
         "start": (
             "FLOAT",
             {
-                "default": 0.0,
+                "default": -1,
                 "tooltip": "Start time of the audio.",
             },
         ),
@@ -179,7 +179,7 @@ class LGraphNode:
         # ),
         "duration": (
             "FLOAT",
-            {"default": 0, "tooltip": "Duration of the audio."},
+            {"default": -1, "tooltip": "Duration of the audio."},
         ),
         # "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the audio."}),
         "pitch": ("FLOAT", {"default": 1.0, "tooltip": "Pitch of the audio."}),
@@ -363,7 +363,7 @@ class LGraphNode:
         "start": (
             "FLOAT",
             {
-                "default": 0.0,
+                "default": -1,
                 "tooltip": "Start time of the text clip.",
             },
         ),
@@ -377,7 +377,7 @@ class LGraphNode:
         "duration": (
             "FLOAT",
             {
-                "default": 0,
+                "default": -1,
                 "tooltip": "Duration of the text clip.",
             },
         ),
@@ -529,14 +529,20 @@ class LGraphNode:
             "clips": self.get_clips_json(),
         }
 
-    def create_clip_json(self, clip_name, clip):
+    @staticmethod
+    def create_clip_json(clip_name, clip):
+        type = clip.get("type")
+        if type not in LGraphNode.supported_config_type:
+            return None
         return {
             "id": clip.get("clipId"),
             "name": clip_name,
             "type": clip.get("type"),
             "meta": {
                 key: clip.get(key, value[1].get("default"))
-                for key, value in self.supported_config_type[self.type].items()
+                for key, value in LGraphNode.supported_config_type[
+                    clip.get("type")
+                ].items()
             },
         }
 
@@ -607,10 +613,7 @@ class LGraphNode:
             self.pre_change_clip(clip)
             self.pre_change_clip(max_clip)
             if self.single_clip:
-                duration = self.single_clip.get("duration", 0)
                 self.single_clip.update(clip)
-                if duration > 0:
-                    self.single_clip["duration"] = duration
             else:
                 self.single_clip = max_clip
         opt = self.supported_config_type[self.type]

@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 from .Utils import TIMELINEBASEPATH, generate_unique_filename, to_base36_random
 from threading import RLock
+from .LGraphNode import LGraphNode
 
 
 class MontagenTimeline:
@@ -159,13 +160,22 @@ class MontagenTimeline:
             "clips": [
                 item
                 for clip in self._getNodes()
-                for item in [self.get_clip_json(clip.workflow_id, clip.clip_id)]
+                for item in [
+                    self.get_clip_json(clip.workflow_id, clip.clip_id)
+                    or (self.get_none_clip_json(clip))
+                ]
                 if item
             ],
             "width": self.width,
             "height": self.height,
             "fps": self.fps,
         }
+
+    def get_none_clip_json(self, clip):
+        clip = LGraphNode.create_clip_json(self.timeline_name, clip.to_json())
+        if clip:
+            clip["timelineName"] = self.timeline_name
+        return clip
 
     def to_timeline_json(self):
         return self.timeline_data

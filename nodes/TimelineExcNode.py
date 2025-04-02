@@ -57,7 +57,16 @@ class TimelineExcNode(BaseWorkflow):
         if not timeline:
             raise ValueError("timeline is required.")
         self.combineMix(proj, outputName, timeline.to_timeline_json())
-        return ()
+        return {
+            "ui": {
+                "assets": [
+                    {
+                        "timelineName": name,
+                        "projectId": project_id,
+                    }
+                ]
+            }
+        }
 
     def combineMix(self, proj, output_name: str, timeline):
         output_path = os.path.join(
