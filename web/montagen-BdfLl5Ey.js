@@ -267,29 +267,29 @@ li[data-v-f93fdfa7] {
   align-items: center;
 }.explorer-container[data-v-5ffb3ffd] {
   background-color: #fff;
-}[data-v-6ffd394b] .split-container {
+}[data-v-7d85cf79] .split-container {
   border: none;
   border-radius: 0;
   width: 100%;
   height: 100%;
 }
-[data-v-6ffd394b] .split-container .split-gutter {
+[data-v-7d85cf79] .split-container .split-gutter {
   background: #181818;
 }
-[data-v-6ffd394b] .split-container.left-hidden .split-panel-left {
+[data-v-7d85cf79] .split-container.left-hidden .split-panel-left {
   display: none;
 }
-[data-v-6ffd394b] .split-container.left-hidden > .split-gutter {
+[data-v-7d85cf79] .split-container.left-hidden > .split-gutter {
   display: none;
 }
-[data-v-6ffd394b] .split-gutter-main:hover {
+[data-v-7d85cf79] .split-gutter-main:hover {
   transition: background-color 0.2sease 300ms;
   background-color: var(--p-primary-color);
 }
-[data-v-6ffd394b] .split-gutter-main.split-gutter-hidden {
+[data-v-7d85cf79] .split-gutter-main.split-gutter-hidden {
   display: none;
 }
-.player[data-v-6ffd394b] {
+.player[data-v-7d85cf79] {
   width: 100%;
   height: 100%;
 }
@@ -473,6 +473,9 @@ li[data-v-f93fdfa7] {
 }\r
 .tw-min-w-44 {\r
     min-width: 11rem
+}\r
+.tw-flex-1 {\r
+    flex: 1 1 0%
 }\r
 .tw-flex-col {\r
     flex-direction: column
@@ -43412,7 +43415,7 @@ function requireClip() {
       var h2, f;
       return {
         startTime: (((h2 = this.parent) == null ? void 0 : h2.type) === "spine" ? ((f = this.prevSibling) == null ? void 0 : f.endTime) ?? 0 : 0) || 0,
-        endTime: "100%"
+        duration: 3
       };
     }
     get startTime() {
@@ -43434,7 +43437,7 @@ function requireClip() {
       if (!isNaN(h2) && h2 > this.startTime)
         return h2;
       let f = this.time(this.conf.duration);
-      if (f = isNaN(f) ? this.time(this.default.duration) : f, !isNaN(f)) return this.startTime + f;
+      if (f = isNaN(f) ? this.time(this.default.duration) : f, f > 0) return this.startTime + f;
       const p = this.time(this.default.endTime);
       return p > this.startTime ? p : this.startTime + 3;
     }
@@ -43447,7 +43450,7 @@ function requireClip() {
     rt(h2) {
       return Math.round(h2 * 1e3) / 1e3;
     }
-    time(h2) {
+    _time(h2) {
       const f = this.parent ? this.parent.duration : NaN;
       if (typeof h2 == "string" && h2.endsWith("%") && !isNaN(h2.replace("%", "")))
         return f * Number(h2.replace("%", "")) * 0.01;
@@ -43461,6 +43464,9 @@ function requireClip() {
         }
       }
       return Number(h2);
+    }
+    time(h2) {
+      this._time(h2);
     }
     px(h2) {
       const f = Number(h2);
@@ -56632,11 +56638,9 @@ function requireGif() {
       super({ type: "gif", ...o }), this.currentTime = 0, this.loops = 0, this.loop = o.loop === void 0 ? true : o.loop;
     }
     get default() {
-      const o = super.default;
       return {
-        startTime: o.startTime,
-        endTime: this.loop ? o.endTime : void 0,
-        duration: this.loop ? void 0 : this.material.getDuration()
+        startTime: super.default.startTime,
+        duration: this.material.getDuration()
       };
     }
     get speed() {
@@ -71794,16 +71798,6 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
       observer2.observe(container.value);
       let width = 1280;
       let height = 720;
-      if (playerWrapper.value) {
-        let scale = 1280 / 720;
-        if (playerWrapper.value.offsetHeight > 720) {
-          height = 720;
-          width = 1280;
-        } else {
-          height = playerWrapper.value.offsetHeight;
-          width = playerWrapper.value.offsetHeight * scale;
-        }
-      }
       workSpaceStore.setPlayerContainerInstance(playerRef.value);
       workSpaceStore.setTrackContainerInstance(tracksRef.value);
       workSpaceStore.setPlayerContainerWidth(width);
@@ -71892,14 +71886,14 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
-                      pt: { root: { style: { overflow: "hidden", "box-sizing": "border-box" } } }
+                      pt: { root: { style: { "box-sizing": "border-box", "flex-shrink": 0 } } }
                     }, {
                       default: withCtx(() => [
                         createBaseVNode("div", {
                           ref_key: "tracksRef",
                           ref: tracksRef,
                           class: "tracks w-full h-full",
-                          style: { "max-height": "320px" }
+                          style: { "height": "100%" }
                         }, null, 512)
                       ]),
                       _: 1
@@ -71917,7 +71911,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-6ffd394b"]]);
+const boxContainer = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-7d85cf79"]]);
 const _hoisted_1$1 = { class: "flex flex-col gap-1" };
 const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "textNodeAdd",
