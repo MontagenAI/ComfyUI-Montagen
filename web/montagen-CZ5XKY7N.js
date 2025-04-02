@@ -43466,7 +43466,8 @@ function requireClip() {
       return Number(h2);
     }
     time(h2) {
-      this._time(h2);
+      let f = this._time(h2);
+      return f < 0 && (f = NaN), f;
     }
     px(h2) {
       const f = Number(h2);
