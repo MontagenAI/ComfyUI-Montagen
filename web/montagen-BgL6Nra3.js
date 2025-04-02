@@ -68282,10 +68282,11 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     },
     setActiveProject(project) {
       var _a2, _b2;
-      if (((_b2 = (_a2 = this.activeProject) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.projectId) == project.baseInfo.projectId) return;
-      localStorage.setItem("activeProjectId", project.baseInfo.projectId);
-      this.workflowCips = {};
-      this.activeNode = {};
+      if (((_b2 = (_a2 = this.activeProject) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.projectId) != project.baseInfo.projectId) {
+        this.workflowCips = {};
+        this.activeNode = {};
+        localStorage.setItem("activeProjectId", project.baseInfo.projectId);
+      }
       console.log("setActiveProject_设置当前激活项目", project);
       this.activeProject = project;
     },
