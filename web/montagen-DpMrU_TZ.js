@@ -265,7 +265,7 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-af7959ae] {
+}.explorer-container[data-v-22618b27] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -68281,6 +68281,12 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       }
     },
     setActiveProject(project) {
+      var _a2, _b2;
+      if (((_b2 = (_a2 = this.activeProject) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.projectId) == project.baseInfo.projectId) return;
+      localStorage.setItem("activeProjectId", project.baseInfo.projectId);
+      this.workflowCips = {};
+      this.activeNode = {};
+      console.log("setActiveProject_设置当前激活项目", project);
       this.activeProject = project;
     },
     initProjectMapWorkFlow(timeLine) {
@@ -68297,6 +68303,9 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         this.list = json.data;
         if (flag) {
           let id = this.list[0].baseInfo.projectId;
+          if (localStorage.getItem("activeProjectId")) {
+            id = localStorage.getItem("activeProjectId");
+          }
           this.getProjectDetail(id);
         }
       } catch (err) {
@@ -68306,7 +68315,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     async getProjectDetail(projectId) {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`);
       const json = await response.json();
-      this.activeProject = json.data;
+      this.setActiveProject(json.data);
       this.propertyConfig = json.data.configInfo;
       return Promise.resolve(json.data);
     },
@@ -70602,7 +70611,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
               })
             }, {
               key: item.id + "_timeline",
-              label: "timelineClips",
+              label: "timelineclips",
               icon: "pi pi-file",
               fileType: "track_timeline",
               children: (item.clips || []).map((clip2) => {
@@ -70932,7 +70941,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       };
       const refObj = {
         key: "3",
-        label: "assets-refs",
+        label: "assets-ref",
         type: "folder",
         fileType: "folder_refs",
         leaf: false,
@@ -70941,7 +70950,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       };
       const timeLineObj = {
         key: "4",
-        label: "timeLine",
+        label: "timelines",
         type: "folder",
         fileType: "folder_timeline",
         leaf: false,
@@ -70951,7 +70960,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
             key: timeline2.timelineData.refId,
             label: timeline2.timelineName,
             type: "folder",
-            icon: "pi pi-file",
+            icon: "fontello icon-montagen",
             fileType: "timeline",
             projectId: timeline2.timelineData.projectId,
             timelineData: timeline2.timelineData,
@@ -70961,7 +70970,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           });
         })
       };
-      return [buildObj, assetObj, refObj, workflowObj, timeLineObj];
+      return [assetObj, refObj, buildObj, workflowObj, timeLineObj];
     });
     function groupByParent(list2, fileType) {
       const topLevel = list2.filter((item) => item.parent === null);
@@ -71609,7 +71618,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               style: { "min-height": "37px" }
             }, {
               start: withCtx(() => _cache[7] || (_cache[7] = [
-                createBaseVNode("span", { class: "text-sm truncate" }, "PROJECTS", -1)
+                createBaseVNode("span", { class: "text-sm truncate" }, "MONTAGEN", -1)
               ])),
               center: withCtx(() => _cache[8] || (_cache[8] = [])),
               end: withCtx(() => [
@@ -71780,7 +71789,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-af7959ae"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-22618b27"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
