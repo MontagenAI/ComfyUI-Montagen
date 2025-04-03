@@ -8,7 +8,7 @@ class TextClipNode(BaseClipAdapter, TextTrackNode):
         super().__init__()
         self.type = "text"
 
-    DESCRIPTION = "Text Clip Node"
+    DESCRIPTION = "Text Clip Adapter"
 
     file_output_index = -1
 

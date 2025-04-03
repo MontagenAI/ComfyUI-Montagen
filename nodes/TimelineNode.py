@@ -21,7 +21,7 @@ class TimelineNode(BaseWorkflow):
             },
         }
 
-    DESCRIPTION = "Timeline Creation Node"
+    DESCRIPTION = "Create Timeline"
 
     RETURN_TYPES = (MONTAGENTIMELINETYPE,)
     FUNCTION = "save_func"

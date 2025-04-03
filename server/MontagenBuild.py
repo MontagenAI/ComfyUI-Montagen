@@ -15,7 +15,7 @@ class MontagenBuild:
         self,
         project: str,
     ):
-        self.assets_dir = "build"
+        self.assets_dir = "builds"
         self.project = project
         self.key = f"{self.project.project_id}_montagen_build"
         self.cache_manager = MontagenCacheManager()
