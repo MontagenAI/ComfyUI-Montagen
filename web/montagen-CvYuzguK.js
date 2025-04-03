@@ -72262,7 +72262,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const addUploadWidget = function(nodeType, nodeData, type2, icon) {
       chainCallback(nodeType.prototype, "onNodeCreated", function(...arg) {
         checkWorkflow();
-        console.log("onNodeCreated蒙太奇节点创建", this);
       });
     };
     const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
@@ -72293,7 +72292,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         id: "mentegen-explorer",
         icon: "fontello icon-montagen",
         title: "explorer",
-        tooltip: "PROJECTS",
+        tooltip: "MONTAGEN",
         type: "custom1",
         render: (el) => {
           if (el.__vue_app__) {
