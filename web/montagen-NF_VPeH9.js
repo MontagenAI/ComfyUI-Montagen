@@ -68315,10 +68315,29 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`);
       const json = await response.json();
       this.setActiveProject(json.data);
+      this.setUPloadAsset(json.data || []);
       this.propertyConfig = json.data.configInfo;
-      setMontagenAssetsList((json.data.assets || []).map((item) => item.file_name));
-      console.log("getProjectDetail____获取详情", setMontagenAssetsList);
       return Promise.resolve(json.data);
+    },
+    // 
+    setUPloadAsset(data) {
+      let assets = data.assets || [];
+      let refs = data.refs || [];
+      let source = [...assets, ...refs];
+      let types = ["video", "audio", "image", "gif"];
+      let files = {
+        video: [],
+        audio: [],
+        image: [],
+        gif: []
+      };
+      source.forEach((item) => {
+        if (types.includes(item.file_type)) {
+          files[item.file_type].push(item.file_name);
+        }
+      });
+      console.log("setUPloadAsset____组装好的files", files);
+      setMontagenAssetsList(files);
     },
     /**
      * @property {Function} createWorkFlow 创建工作流
@@ -72398,14 +72417,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   }
 });
 (function(globalObj) {
-  let list = ["Untitled Clip_0_20250401094527.gif", "1.mp4"];
-  let listCallBack = [];
-  let supportedTypes = {
-    video: [".mp4", ".webm"],
-    audio: [".mp3", ".wav", ".aac"],
-    image: [".jpg", ".jpeg", ".png"],
-    gif: [".gif"]
+  let list = {
+    video: [],
+    audio: [],
+    image: [],
+    gif: []
   };
+  let listCallBack = [];
   function fitHeight(node2) {
     var _a2;
     node2.setSize([
@@ -72414,16 +72432,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     ]);
     (_a2 = node2 == null ? void 0 : node2.graph) == null ? void 0 : _a2.setDirtyCanvas(true);
   }
-  let supportedMimeTypes = "video/mp4,video/webm,audio/mpeg,audio/wav,audio/aac,image/jpeg,image/png,image/gif";
-  function getFileType(fileName) {
-    const ext = fileName.split(".").pop().toLowerCase();
-    for (const [fileType, extensions2] of Object.entries(supportedTypes)) {
-      if (extensions2.includes(`.${ext}`)) {
-        return fileType;
-      }
-    }
-    return null;
-  }
+  let supportedMimeTypes = {
+    video: "video/mp4,video/webm",
+    audio: "audio/mp3,audio/wav,audio/aac",
+    image: "image/jpeg,image/png",
+    gif: "image/gif"
+  };
   globalObj.setMontagenAssetsList = function(listAssets) {
     list = listAssets;
     for (const cb of listCallBack) {
@@ -72464,7 +72478,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         if ((_a2 = config2[1]) == null ? void 0 : _a2.montagen_upload) {
           let comboValue = w.value;
           let new_widget = app$1.widgets.COMBO(this, w.name, [
-            list,
+            list[this.constructor.montagenType],
             config2[1]
           ]).widget;
           new_widget.value = comboValue;
@@ -72564,26 +72578,50 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         previewWidget.videoEl.onmouseleave = () => {
           previewWidget.videoEl.muted = true;
         };
+        previewWidget.imgEl = document.createElement("img");
+        previewWidget.imgEl.style["width"] = "100%";
+        previewWidget.imgEl.hidden = true;
+        previewWidget.imgEl.onload = () => {
+          previewWidget.aspectRatio = previewWidget.imgEl.naturalWidth / previewWidget.imgEl.naturalHeight;
+          fitHeight(previewNode);
+        };
         previewWidget.updateSource = function(src2, type2) {
           var _a3;
+          if (src2) {
+            this.src = src2;
+          }
+          if (type2) {
+            this.type = type2;
+          }
+          src2 = this.src;
+          type2 = this.type;
           if (type2 == "video" || type2 == "audio") {
             this.videoEl.autoplay = !this.value.paused && !this.value.hidden;
             if ((_a3 = element.style) == null ? void 0 : _a3.width) {
               element.style.width.slice(0, -2) * 2;
             }
             previewWidget.videoEl.src = src2;
-            this.videoEl.hidden = false;
             this.parentEl.hidden = false;
-          } else {
+            this.videoEl.hidden = false;
+            this.imgEl.hidden = true;
+          } else if (type2 == "gif" || type2 == "image") {
+            previewWidget.imgEl.src = src2;
+            this.parentEl.hidden = false;
             this.videoEl.hidden = true;
+            this.imgEl.hidden = false;
+          } else {
             this.parentEl.hidden = true;
+            this.imgEl.hidden = true;
+            this.videoEl.hidden = true;
           }
         };
         previewWidget.parentEl.appendChild(previewWidget.videoEl);
+        previewWidget.parentEl.appendChild(previewWidget.imgEl);
         this.previewWidget = previewWidget;
       }
       new_widgets.push(this.previewWidget);
       this.widgets = new_widgets;
+      this.previewWidget.updateSource();
     }
   }
   app$1.registerExtension({
@@ -72592,10 +72630,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       const fileInputSpec = (_b2 = (_a2 = nodeData == null ? void 0 : nodeData.input) == null ? void 0 : _a2.required) == null ? void 0 : _b2.file;
       const config2 = (fileInputSpec == null ? void 0 : fileInputSpec[1]) ?? {};
-      const { montagen_upload = false } = config2;
+      const { montagen_upload = false, type: type2 = "image" } = config2;
       if (montagen_upload) {
         nodeData.input.optional.upload = ["MONTAGENFILEUPLOAD"];
         nodeType.isMontagenUpload = true;
+        nodeType.montagenType = type2;
+        nodeType.supportedMedia = supportedMimeTypes[type2];
       }
       chainCallback(nodeType.prototype, "onNodeCreated", function() {
         if (this.constructor.isMontagenUpload) {
@@ -72617,30 +72657,17 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }
           );
           function showImage(name2, type2) {
-            var _a3, _b2;
+            var _a3;
             let projId = ((_a3 = app2.graph.extra.MontagenProj) == null ? void 0 : _a3.projectId) ?? "1";
             let src2 = api.apiURL(
               `/Montagen/Proj/${projId}/File/${encodeURIComponent(name2)}`
             );
-            if (type2 == "image" || type2 == "gif") {
-              const img = new Image();
-              img.onload = () => {
-                node3.imgs = [img];
-                app2.graph.setDirtyCanvas(true);
-              };
-              img.src = src2;
-              (_b2 = node3.setSizeForImage) == null ? void 0 : _b2.call(node3);
-              node3.previewWidget.updateSource(src2, type2);
-            } else {
-              node3.imgs = null;
-              node3.previewWidget.updateSource(src2, type2);
-            }
+            node3.previewWidget.updateSource(src2, type2);
           }
           const default_value = imageWidget.value;
           Object.defineProperty(imageWidget, "value", {
             set: function(value4) {
               this._real_value = value4;
-              this.montagen_type = getFileType(value4);
             },
             get: function() {
               if (!this._real_value) {
@@ -72651,19 +72678,22 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           });
           const cb = node3.callback;
           imageWidget.callback = function(...args) {
-            showImage(imageWidget.value, imageWidget.montagen_type);
+            showImage(imageWidget.value, node3.constructor.montagenType);
             if (cb) {
               return cb.apply(this, args);
             }
           };
           requestAnimationFrame(() => {
             if (imageWidget.value) {
-              showImage(imageWidget.value, imageWidget.montagen_type);
+              showImage(imageWidget.value, node3.constructor.montagenType);
             }
           });
           async function uploadFile2(file, updateNode) {
             var _a3;
             try {
+              if (!node3.constructor.supportedMedia.includes(file.type)) {
+                throw new Error("Unsupported file type");
+              }
               const body = new FormData();
               body.append("f", file);
               let projId = ((_a3 = app2.graph.extra.MontagenProj) == null ? void 0 : _a3.projectId) ?? "1";
@@ -72685,21 +72715,32 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   imageWidget.options.values.push(path);
                 }
                 setTimeout(() => {
-                  setMontagenAssetsList(imageWidget.options.values);
+                  list[node3.constructor.montagenType] = imageWidget.options.values;
+                  setMontagenAssetsList(list);
                 }, 1e3);
                 imageWidget.value = path;
-                showImage(path, imageWidget.montagen_type);
+                showImage(path, node3.constructor.montagenType);
               } else {
-                useToastStore().addAlert(resp.status + " - " + resp.statusText);
+                app$1.extensionManager.toast.add({
+                  severity: "warn",
+                  summary: "Warning!",
+                  detail: resp.status + " - " + resp.statusText,
+                  life: 3e3
+                });
               }
             } catch (error2) {
-              useToastStore().addAlert(String(error2));
+              app$1.extensionManager.toast.add({
+                severity: "warn",
+                summary: "Warning!",
+                detail: String(error2),
+                life: 3e3
+              });
             }
           }
           const fileInput2 = document.createElement("input");
           Object.assign(fileInput2, {
             type: "file",
-            accept: supportedMimeTypes,
+            accept: node3.constructor.supportedMedia,
             style: "display: none",
             onchange: async () => {
               if (fileInput2.files && fileInput2.files.length) {
@@ -72733,7 +72774,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             let handled = false;
             if ((_a3 = e2.dataTransfer) == null ? void 0 : _a3.files) {
               for (const file of e2.dataTransfer.files) {
-                if (supportedMimeTypes.includes(file.type)) {
+                if (node3.constructor.supportedMedia.includes(file.type)) {
                   uploadFile2(file);
                   handled = true;
                 }
@@ -72742,7 +72783,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             return handled;
           };
           node3.pasteFile = function(file) {
-            if (supportedMimeTypes.includes(file.type)) {
+            if (node3.constructor.supportedMedia.includes(file.type)) {
               uploadFile2(file);
               return true;
             }
