@@ -53,7 +53,7 @@ const burn = async opts => {
       });
     })
     .on('error', event => {
-      console.error('creator error', event);
+      console.log('creator error',{ type: event.type, pos: event.pos, error: event.error });
       onMessage({
         task_id,
         step: 'error',

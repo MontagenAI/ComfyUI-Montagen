@@ -7,7 +7,7 @@ from comfy.cli_args import args
 from .BaseWorkflow import BaseWorkflow
 import re
 from comfy.utils import ProgressBar
-from ..server.Utils import MONTAGENTIMELINETYPE
+from ..server.Utils import MONTAGENTIMELINETYPE, FFMPEG, FFPROBE
 import logging
 
 
@@ -93,12 +93,16 @@ class TimelineExcNode(BaseWorkflow):
                 "-p",
                 str(args.port),
             ]
+            env = os.environ.copy()
+            env["FFMPEG_PATH"] = FFMPEG
+            env["FFPROBE_PATH"] = FFPROBE
             # Run the ffmpeg command
             process = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 cwd=nodeBasePath,
+                env=env,
                 text=True,
             )
             for line in process.stdout:
