@@ -2,7 +2,6 @@ from ..server.Utils import (
     to_base36_random,
     DEFAULTTRACKNAME,
     MONTAGENCLIPSTYPE,
-    get_file_type,
     MONTAGENTIMELINETYPE,
 )
 from .BaseWorkflow import BaseWorkflow
@@ -15,24 +14,6 @@ class FileClipAdapter(BaseWorkflow):
     def __init__(self):
         super().__init__()
         self.node_type = "clip"
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "name": ("STRING", {"default": DEFAULTTRACKNAME}),
-                "file": ("STRING", {"montagen_upload": True}),
-            },
-            "optional": {
-                "tag": ("STRING", {"tooltip": "The tag."}),
-                "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
-            },
-            "hidden": {
-                "prompt": "PROMPT",
-                "extra_pnginfo": "EXTRA_PNGINFO",
-                "unique_id": "UNIQUE_ID",
-            },
-        }
 
     @classmethod
     def IS_CHANGED(s, **keywords):
@@ -93,7 +74,6 @@ class FileClipAdapter(BaseWorkflow):
 
     def create_clip(self, clip_id, node_id, workflow_id, src):
         return {
-            "type": self.type,
             **self.set_clip_property(src, False),
         }
 
@@ -122,10 +102,6 @@ class FileClipAdapter(BaseWorkflow):
     def save_func(self, name, file, tag, prompt, extra_pnginfo, unique_id, **keywords):
         if not file:
             raise ValueError("No file provided")
-        type = get_file_type(file)
-        if not type:
-            raise ValueError("Unsupported file type")
-        self.type = type
         (
             user_id,
             project_id,
