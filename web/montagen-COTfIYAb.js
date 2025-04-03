@@ -72631,7 +72631,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       const fileInputSpec = (_b2 = (_a2 = nodeData == null ? void 0 : nodeData.input) == null ? void 0 : _a2.required) == null ? void 0 : _b2.file;
       const config2 = (fileInputSpec == null ? void 0 : fileInputSpec[1]) ?? {};
-      const { montagen_upload = false, type: type2 = "image" } = config2;
+      const { montagen_upload = false, montagen_type: type2 = "image" } = config2;
       if (montagen_upload) {
         nodeData.input.optional.upload = ["MONTAGENFILEUPLOAD"];
         nodeType.isMontagenUpload = true;
