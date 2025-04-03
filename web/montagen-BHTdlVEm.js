@@ -201,7 +201,7 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.folder-project[data-v-4bf87573] {
+}.folder-project[data-v-68de2634] {
   display: flex;
   height: 40vh;
   width: 60vw;
@@ -265,7 +265,7 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-a40c94c6] {
+}.explorer-container[data-v-1fa71a35] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -69350,7 +69350,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
               var _a2;
               return [
                 createBaseVNode("div", _hoisted_3$5, [
-                  _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "请输入项目文件夹路径地址:", -1)),
+                  _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "Please enter the project folder path:", -1)),
                   createBaseVNode("div", _hoisted_4$5, [
                     createVNode(_component_InputText, {
                       name: "path",
@@ -69392,7 +69392,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-4bf87573"]]);
+const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-68de2634"]]);
 const _hoisted_1$9 = { class: "label tw-py-2" };
 const _hoisted_2$5 = { class: "content" };
 const _sfc_main$c = /* @__PURE__ */ defineComponent({
@@ -70895,8 +70895,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       return [
         { title: (_b2 = (_a2 = activeProject.value) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.name, expanded: true },
-        { title: "nodes", expanded: false },
-        { title: "property", expanded: false }
+        { title: "Nodes", expanded: false },
+        { title: "Properties", expanded: false }
       ];
     });
     const treeNodes = computed(() => {
@@ -71563,14 +71563,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const chooseProject = () => {
       dialogStore.showDialog({
         key: "global-chooseproject-mongaton",
-        title: "Choose Project",
+        title: "Open project",
         component: ChooseProjectVue
       });
     };
     const chooseProjectFolder = () => {
       dialogStore.showDialog({
         key: "global-chooseprojectfolder-mongaton",
-        title: "Choose Project",
+        title: "Browse project",
         component: chooseFolderProjectVue
       });
     };
@@ -71650,7 +71650,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     class: "p-button-secondary py-1 2xl:py-2",
                     onClick: chooseProject
                   }, null, 512), [
-                    [_directive_tooltip, "Browse project"]
+                    [_directive_tooltip, "Open project"]
                   ]),
                   withDirectives(createVNode(_component_Button, {
                     text: "",
@@ -71658,7 +71658,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     class: "p-button-secondary py-1 2xl:py-2",
                     onClick: chooseProjectFolder
                   }, null, 512), [
-                    [_directive_tooltip, "Open project in local file system"]
+                    [_directive_tooltip, "Browse project"]
                   ]),
                   withDirectives(createVNode(_component_Button, {
                     text: "",
@@ -71666,7 +71666,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     class: "p-button-secondary py-1 2xl:py-2",
                     onClick: refreshList
                   }, null, 512), [
-                    [_directive_tooltip, "refresh"]
+                    [_directive_tooltip, "Refresh project"]
                   ])
                 ])
               ]),
@@ -71810,7 +71810,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-a40c94c6"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-1fa71a35"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -72763,7 +72763,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             type: "file",
             accept: node3.constructor.supportedMedia,
             style: "display: none",
-            onchange: async () => {
+            onchange: async (event2) => {
+              console.log("onchange called", event2);
               if (fileInput2.files && fileInput2.files.length) {
                 await uploadFile2(fileInput2.files[0]);
               }
