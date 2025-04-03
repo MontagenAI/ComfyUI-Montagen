@@ -196,8 +196,6 @@ class BaseClipAdapter(BaseTrackAdapter):
                     timeline = proj.get_timeline(timeline)
                     if not timeline:
                         raise ValueError("timeline is not found.")
-                if node.single_file_name and not node.reserver_file:
-                    workflow.workflow_del_material(node.single_file_name)
                 src = file_meta.get("src")
                 clips = self.return_result(
                     src,
@@ -209,7 +207,10 @@ class BaseClipAdapter(BaseTrackAdapter):
                     user_id,
                     node,
                 )
+                old_name = node.single_file_name
                 node.single_asset = file_meta
+                if old_name != node.single_file_name and not node.reserver_file:
+                    workflow.workflow_del_material(old_name)
                 node.reserver_file = True
                 node.set_file_output(self.file_output_index)
                 workflow.save()

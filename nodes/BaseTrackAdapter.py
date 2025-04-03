@@ -140,20 +140,26 @@ class BaseTrackAdapter(BaseWorkflow):
         return clips
 
     def set_clip_property(self, src, max):
+        addition = {}
+        if src.endswith(".webm"):
+            addition = {"codec": "libvpx-vp9", "voImageExtra": "png"}
         return (
-            {
-                "src": src,
-                "object-fit": "contain",
-                "x": "50vw",
-                "y": "50vh",
-                "width": "50vw",
-                "height": "50vh",
-                "loop": True,
-                "audio": False,
-                "mute": False,
-            }
+            (
+                {
+                    "src": src,
+                    "object-fit": "contain",
+                    "x": "50vw",
+                    "y": "50vh",
+                    "width": "50vw",
+                    "height": "50vh",
+                    "loop": True,
+                    "audio": False,
+                    "mute": False,
+                }
+                | addition
+            )
             if max
-            else {"src": src}
+            else ({"src": src} | addition)
         )
 
     def create_clip(self, clip_id, node_id, workflow_id, start, end, src, meta):
