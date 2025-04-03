@@ -68339,7 +68339,7 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
         this.propertyConfig = json.data.configInfo;
         return json.data;
       };
-      const debouncedFetch = debounceFetch(fetchProject, 500);
+      const debouncedFetch = debounceFetch(fetchProject, 2e3);
       return debouncedFetch(projectId);
     },
     // 
