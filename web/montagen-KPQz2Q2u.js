@@ -68312,13 +68312,35 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       } finally {
       }
     },
+    // async getProjectDetail(projectId) {
+    //   let response = await app.api.fetchApi(`/Montagen/Proj/${projectId}`);
+    //   const json = await response.json();
+    //   this.setActiveProject(json.data);
+    //   this.setUPloadAsset(json.data || []);
+    //   // this.activeProject = json.data;
+    //   this.propertyConfig = json.data.configInfo;
+    //   return Promise.resolve(json.data);
+    // },
     async getProjectDetail(projectId) {
-      let response = await app$1.api.fetchApi(`/Montagen/Proj/${projectId}`);
-      const json = await response.json();
-      this.setActiveProject(json.data);
-      this.setUPloadAsset(json.data || []);
-      this.propertyConfig = json.data.configInfo;
-      return Promise.resolve(json.data);
+      const debounceFetch = (fn, delay = 300) => {
+        let timeoutId;
+        return function(...args) {
+          clearTimeout(timeoutId);
+          return new Promise((resolve) => {
+            timeoutId = setTimeout(() => resolve(fn.apply(this, args)), delay);
+          });
+        };
+      };
+      const fetchProject = async (id) => {
+        let response = await app$1.api.fetchApi(`/Montagen/Proj/${id}`);
+        const json = await response.json();
+        this.setActiveProject(json.data);
+        this.setUPloadAsset(json.data || []);
+        this.propertyConfig = json.data.configInfo;
+        return json.data;
+      };
+      const debouncedFetch = debounceFetch(fetchProject, 500);
+      return debouncedFetch(projectId);
     },
     // 
     setUPloadAsset(data) {
