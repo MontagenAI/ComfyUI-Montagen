@@ -32,7 +32,7 @@ class TimelineExcNode(BaseWorkflow):
             },
         }
 
-    DESCRIPTION = "Timeline Execution Node"
+    DESCRIPTION = "Execute Timeline"
 
     RETURN_TYPES = ()
     FUNCTION = "save_func"

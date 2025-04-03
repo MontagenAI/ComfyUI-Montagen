@@ -13,7 +13,7 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
         super().__init__()
         self.type = "gif"
 
-    DESCRIPTION = "Gif Clip Adapter"
+    DESCRIPTION = "Sticker Clip Adapter"
     
     file_output_index = 4
 

@@ -14,13 +14,13 @@ from .test import test
 
 
 NODE_CLASS_MAPPINGS = {
-    "MontagenVideoClipAdapter": VideoClipAdapter,
-    "MontagenAudioClipAdapter": AudioClipAdapter,
-    "MontagenImageClipAdapter": ImageClipAdapter,
-    "MontagenGifClipAdapter": GifClipAdapter,
-    "MontagenTextClipNode": TextClipNode,
     "MontagenTimelineNode": TimelineNode,
     "MontagenTimelineExecutionNode": TimelineExcNode,
+    "MontagenImageClipAdapter": ImageClipAdapter,
+    "MontagenVideoClipAdapter": VideoClipAdapter,
+    "MontagenStickerClipAdapter": GifClipAdapter,
+    "MontagenAudioClipAdapter": AudioClipAdapter,
+    "MontagenTextClipAdapter": TextClipNode,
     # "MontagenVideoTrackAdapter": VideoTrackAdapter,
     # "MontagenImageTrackAdapter": ImageTrackAdapter,
     # "MontagenGifTrackAdapter": GifTrackAdapter,
@@ -30,13 +30,13 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MontagenVideoClipAdapter": VideoClipAdapter.DESCRIPTION,
-    "MontagenAudioClipAdapter": AudioClipAdapter.DESCRIPTION,
-    "MontagenImageClipAdapter": ImageClipAdapter.DESCRIPTION,
-    "MontagenGifClipAdapter": GifClipAdapter.DESCRIPTION,
-    "MontagenTextClipNode": TextClipNode.DESCRIPTION,
     "MontagenTimelineNode": TimelineNode.DESCRIPTION,
     "MontagenTimelineExecutionNode": TimelineExcNode.DESCRIPTION,
+    "MontagenImageClipAdapter": ImageClipAdapter.DESCRIPTION,
+    "MontagenVideoClipAdapter": VideoClipAdapter.DESCRIPTION,
+    "MontagenStickerClipAdapter": GifClipAdapter.DESCRIPTION,
+    "MontagenAudioClipAdapter": AudioClipAdapter.DESCRIPTION,
+    "MontagenTextClipAdapter": TextClipNode.DESCRIPTION,
     # "MontagenVideoTrackAdapter": VideoTrackAdapter.DESCRIPTION,
     # "MontagenImageTrackAdapter": ImageTrackAdapter.DESCRIPTION,
     # "MontagenGifTrackAdapter": GifTrackAdapter.DESCRIPTION,
