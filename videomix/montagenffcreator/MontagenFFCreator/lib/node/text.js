@@ -380,7 +380,9 @@ class FFText extends FFNode {
 
   queuedFitSize(info) {
     return this.queue.enqueue(async () => {
-      if (this.font?.fontFamily != this.useFontFamily) {
+      if (!this.useFontFamily) {
+        this.font = null;
+      } else if (this.font?.fontFamily != this.useFontFamily) {
         if (!FONTS[this.useFontFamily]) {
           await this.setFont(this.useFontFamily);
           const fontFace = new FontFace(this.font.fontFamily, `url("${this.font.font}")`);

@@ -42,7 +42,12 @@ class ImageMaterial extends Material {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
     let blur = this.conf.blur && this.creator ? this.creator.px(this.conf.blur) : 0;
-    if (blur > 0 && isBrowser) ctx.filter = `blur(${blur}px)`;
+    if (isBrowser) {
+      ctx.filter = 'none';
+      if (blur > 0) {
+        ctx.filter = `blur(${blur}px)`;
+      }
+    }
     ctx.drawImage(this.getImage(img), 0, 0, width, height);
     if (blur > 0 && !isBrowser) canvasRGBA(canvas, 0, 0, width, height, blur);
     return canvas;

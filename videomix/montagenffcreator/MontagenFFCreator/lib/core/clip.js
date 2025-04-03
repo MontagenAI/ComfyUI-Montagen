@@ -9,9 +9,17 @@ class FFClip extends FFBase {
     this.visible = false;
     this.zIndex = 0;
     this.children = [];
-    this.active = conf.active !== undefined ? !!conf.active : true;
+    // this.active = conf.active !== undefined ? !!conf.active : true;
     this.onTime = () => false;
     this.createDisplay();
+  }
+
+  get active() {
+    return this.conf.active !== undefined ? !!this.conf.active : true;
+  }
+
+  set active(active) {
+    this.conf.active = active;
   }
 
   get muted() {
@@ -146,14 +154,14 @@ class FFClip extends FFBase {
   }
 
   disable() {
-    this.active = this.conf.active = false;
+    this.active = false;
     if (!this.parent) return;
     this.hide();
     this.removeTimelineCallback();
   }
 
   enable() {
-    this.active = this.conf.active = true;
+    this.active = true;
     if (!this.parent) return;
     this.touch();
     this.addTimelineCallback();
@@ -314,7 +322,7 @@ class FFClip extends FFBase {
   get default() {
     return {
       startTime: (this.parent?.type === 'spine' ? this.prevSibling?.endTime ?? 0 : 0) || 0,
-      endTime: '100%',
+      duration: 3,
     };
   }
 
@@ -345,7 +353,7 @@ class FFClip extends FFBase {
     }
     let duration = this.time(this.conf.duration);
     duration = !isNaN(duration) ? duration : this.time(this.default.duration);
-    if (!isNaN(duration)) return this.startTime + duration;
+    if (duration > 0) return this.startTime + duration;
     const defaultEnd = this.time(this.default.endTime);
     if (defaultEnd > this.startTime) return defaultEnd;
     return this.startTime + 3; // 默认3秒
@@ -369,7 +377,7 @@ class FFClip extends FFBase {
     return Math.round(time * 1000) / 1000;
   }
 
-  time(time) {
+  _time(time) {
     const parentDuration = this.parent ? this.parent.duration : NaN;
     if (typeof time === 'string' && time.endsWith('%') && !isNaN(time.replace('%', ''))) {
       return parentDuration * Number(time.replace('%', '')) * 0.01;
@@ -385,6 +393,14 @@ class FFClip extends FFBase {
       }
     }
     return Number(time);
+  }
+
+  time(time) {
+    let value = this._time(time);
+    if (value < 0) {
+      value = NaN;
+    }
+    return value;
   }
 
   px(data) {

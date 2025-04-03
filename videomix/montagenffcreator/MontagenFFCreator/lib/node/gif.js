@@ -29,8 +29,7 @@ class FFGifImage extends FFImage {
     const _default = super.default;
     return {
       startTime: _default.startTime,
-      endTime: this.loop ? _default.endTime : undefined,
-      duration: this.loop ? undefined : this.material.getDuration(),
+      duration: this.material.getDuration(),
     };
   }
 

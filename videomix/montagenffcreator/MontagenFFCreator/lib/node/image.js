@@ -25,6 +25,8 @@ class FFImage extends FFNode {
     return undefined;
   }
 
+  set audio(value) {}
+
   get frame() {
     if (this.conf.pframe) {
       const [mw, mh] = [this.material.width(), this.material.height()];
