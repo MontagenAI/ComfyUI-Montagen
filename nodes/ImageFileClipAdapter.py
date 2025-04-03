@@ -15,7 +15,7 @@ class ImageFileClipAdapter(FileClipAdapter):
         return {
             "required": {
                 "name": ("STRING", {"default": DEFAULTTRACKNAME}),
-                "file": ("STRING", {"montagen_upload": True, "type": "image"}),
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "image"}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),

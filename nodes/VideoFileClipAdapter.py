@@ -15,7 +15,7 @@ class VideoFileClipAdapter(FileClipAdapter):
         return {
             "required": {
                 "name": ("STRING", {"default": DEFAULTTRACKNAME}),
-                "file": ("STRING", {"montagen_upload": True, "type": "video"}),
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "video"}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),

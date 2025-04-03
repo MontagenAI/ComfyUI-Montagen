@@ -15,7 +15,7 @@ class GifFileClipAdapter(FileClipAdapter):
         return {
             "required": {
                 "name": ("STRING", {"default": DEFAULTTRACKNAME}),
-                "file": ("STRING", {"montagen_upload": True, "type": "gif"}),
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "gif"}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),

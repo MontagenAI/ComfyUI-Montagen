@@ -15,7 +15,7 @@ class AudioFileClipAdapter(FileClipAdapter):
         return {
             "required": {
                 "name": ("STRING", {"default": DEFAULTTRACKNAME}),
-                "file": ("STRING", {"montagen_upload": True, "type": "audio"}),
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "audio"}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
