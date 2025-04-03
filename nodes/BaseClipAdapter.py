@@ -51,14 +51,15 @@ class BaseClipAdapter(BaseTrackAdapter):
 
     def copy_output(self, tmpFullName, fileFullName, workflow, node):
         shutil.move(tmpFullName, fileFullName)
+        old_file = None if node.reserver_file else node.single_file_name
         material, src = workflow.workflow_add_material(
-            node.node_name, 0, node.single_file_name, fileFullName, self.type
+            node.node_name, 0, old_file, fileFullName, self.type
         )
         node.single_asset = material
         return src
 
     def workflow_syn_material(self, workflow, node, resoureces):
-        if node.single_file_name:
+        if node.single_file_name and not node.reserver_file:
             workflow.workflow_del_material(node.single_file_name)
         _material = None
         srcs = []
@@ -148,3 +149,68 @@ class BaseClipAdapter(BaseTrackAdapter):
         clip = node.set_clip(clip, clip_max)
         workflow.save()
         return [clip]
+
+    def save_func_inner(
+        self,
+        name,
+        user_id,
+        project_id,
+        proj,
+        workflow_id,
+        workflow,
+        node_id,
+        node,
+        tag,
+        prompt,
+        extra_pnginfo,
+        unique_id,
+        **keywords
+    ):
+        try:
+            clips = self.save_func_inner_input(
+                name,
+                user_id,
+                project_id,
+                workflow_id,
+                workflow,
+                node_id,
+                node,
+                tag,
+                prompt,
+                extra_pnginfo,
+                unique_id,
+                **keywords
+            )
+            node.reserver_file = False
+            workflow.save()
+            return clips
+        except:
+            if "file" in keywords:
+                file_name = keywords.get("file")
+                file_meta = proj.montagen_material.get_material_output(file_name)
+                if not file_meta:
+                    raise ValueError("file not found")
+                timeline = keywords.get("timeline", None)
+                if timeline:
+                    timeline = proj.get_timeline(timeline)
+                    if not timeline:
+                        raise ValueError("timeline is not found.")
+                if node.single_file_name and not node.reserver_file:
+                    workflow.workflow_del_material(node.single_file_name)
+                src = file_meta.get("src")
+                clips = self.return_result(
+                    src,
+                    0,
+                    node_id,
+                    workflow_id,
+                    workflow,
+                    project_id,
+                    user_id,
+                    node,
+                )
+                node.single_asset = file_meta
+                node.reserver_file = True
+                workflow.save()
+                return clips
+            else:
+                raise ValueError("valid input is not found.")

@@ -17,12 +17,13 @@ class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
             "optional": {
                 "images": ("IMAGE", {"tooltip": "The images to preview."}),
                 "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "image"}),
             },
         }
 
     DESCRIPTION = "Image Clip Adapter"
 
-    def save_func_inner(
+    def save_func_inner_input(
         self,
         name,
         user_id,

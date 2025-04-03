@@ -15,7 +15,19 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
 
     DESCRIPTION = "Gif Clip Adapter"
 
-    def save_func_inner(
+    @classmethod
+    def ClIP_INPUT_TYPES(s):
+        base = super().ClIP_INPUT_TYPES()
+        optional = base.get("optional")
+        del optional["file"]
+        return {
+            "optional": {
+                **optional,
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "gif"}),
+            },
+        }
+
+    def save_func_inner_input(
         self,
         name,
         user_id,

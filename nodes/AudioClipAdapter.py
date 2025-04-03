@@ -16,12 +16,13 @@ class AudioClipAdapter(BaseClipAdapter, AudioTrackAdapter):
         return {
             "optional": {
                 "audioInput": ("AUDIO", {"tooltip": "The audio to preview."}),
+                "file": ("STRING", {"montagen_upload": True, "montagen_type": "audio"}),
             }
         }
 
     DESCRIPTION = "Audio Clip Adapter"
 
-    def save_func_inner(
+    def save_func_inner_input(
         self,
         name,
         user_id,
