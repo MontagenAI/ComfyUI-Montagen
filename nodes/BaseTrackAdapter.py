@@ -95,7 +95,7 @@ class BaseTrackAdapter(BaseWorkflow):
     def workflow_syn_material(
         self, workflow: MontagenWorkflow, node: LGraphNode, resoureces
     ):
-        if node.assets:
+        if node.assets and not node.reserver_file:
             for asset in node.assets:
                 workflow.workflow_del_material(asset["file_name"])
         materials = []
@@ -222,6 +222,7 @@ class BaseTrackAdapter(BaseWorkflow):
                 name,
                 user_id,
                 project_id,
+                proj,
                 workflow_id,
                 workflow,
                 node_id,
@@ -241,6 +242,7 @@ class BaseTrackAdapter(BaseWorkflow):
         name,
         user_id,
         project_id,
+        proj,
         workflow_id,
         workflow,
         node_id,

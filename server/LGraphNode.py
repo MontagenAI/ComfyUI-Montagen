@@ -76,22 +76,22 @@ class LGraphNode:
             "FLOAT",
             {"default": 1.0, "tooltip": "Opacity of the clip."},
         ),
-        "anchorX": (
-            "FLOAT",
-            {
-                "default": "0.5",
-                "parent": {"name": "anchor", "isArray": True, "index": 0},
-                "tooltip": "Anchor point of the clip.",
-            },
-        ),
-        "anchorY": (
-            "FLOAT",
-            {
-                "default": "0.5",
-                "parent": {"name": "anchor", "isArray": True, "index": 1},
-                "tooltip": "Anchor point of the clip.",
-            },
-        ),
+        # "anchorX": (
+        #     "FLOAT",
+        #     {
+        #         "default": "0.5",
+        #         "parent": {"name": "anchor", "isArray": True, "index": 0},
+        #         "tooltip": "Anchor point of the clip.",
+        #     },
+        # ),
+        # "anchorY": (
+        #     "FLOAT",
+        #     {
+        #         "default": "0.5",
+        #         "parent": {"name": "anchor", "isArray": True, "index": 1},
+        #         "tooltip": "Anchor point of the clip.",
+        #     },
+        # ),
         "flipX": (
             "BOOLEAN",
             {"default": False, "tooltip": "Flip the clip horizontally."},
@@ -149,10 +149,10 @@ class LGraphNode:
             "BOOLEAN",
             {"default": False, "tooltip": "Audio file for the clip."},
         ),
-        "mute": (
-            "BOOLEAN",
-            {"default": True, "tooltip": "Mute audio for the clip."},
-        ),
+        # "mute": (
+        #     "BOOLEAN",
+        #     {"default": True, "tooltip": "Mute audio for the clip."},
+        # ),
         "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the clip."}),
         "preload": (
             "BOOLEAN",
@@ -162,10 +162,10 @@ class LGraphNode:
 
     audio_option = {
         "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the audio."}),
-        "audio": (
-            "BOOLEAN",
-            {"default": True, "tooltip": "Audio file for the clip."},
-        ),
+        # "audio": (
+        #     "BOOLEAN",
+        #     {"default": True, "tooltip": "Audio file for the clip."},
+        # ),
         "start": (
             "FLOAT",
             {
@@ -489,6 +489,14 @@ class LGraphNode:
     @node_type.setter
     def node_type(self, value):
         self.properties["montagen_node_type"] = value
+
+    @property
+    def reserver_file(self):
+        return self.properties.get("reserver_file", False)
+
+    @reserver_file.setter
+    def reserver_file(self, value):
+        self.properties["reserver_file"] = value
 
     @property
     def is_montagen_node(self):

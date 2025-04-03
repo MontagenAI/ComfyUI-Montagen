@@ -13,7 +13,7 @@ class TextClipNode(BaseClipAdapter, TextTrackNode):
     def workflow_syn_material(self, workflow, node, resoureces):
         return resoureces
 
-    def save_func_inner(
+    def save_func_inner_input(
         self,
         name,
         user_id,
