@@ -72517,13 +72517,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }
         );
         previewWidget.computeSize = function(width) {
-          if (this.aspectRatio && !this.parentEl.hidden) {
-            let height = (previewNode.size[0] - 20) / this.aspectRatio + 10;
-            if (!(height > 0)) {
-              height = 0;
+          if (!this.parentEl.hidden) {
+            if (this.aspectRatio) {
+              let height = (previewNode.size[0] - 20) / this.aspectRatio + 10;
+              if (!(height > 0)) {
+                height = 0;
+              }
+              this.computedHeight = height + 10;
+              return [width, height];
             }
-            this.computedHeight = height + 10;
-            return [width, height];
           }
           return [width, -4];
         };
@@ -72586,6 +72588,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           previewWidget.aspectRatio = previewWidget.imgEl.naturalWidth / previewWidget.imgEl.naturalHeight;
           fitHeight(previewNode);
         };
+        previewWidget.audioEl = document.createElement("audio");
+        previewWidget.audioEl.style["width"] = "100%";
+        previewWidget.audioEl.style["height"] = "50px";
+        previewWidget.audioEl.hidden = true;
+        previewWidget.audioEl.controls = true;
+        previewWidget.audioEl.addEventListener("loadedmetadata", () => {
+          fitHeight(previewNode);
+        });
         previewWidget.updateSource = function(src2, type2) {
           var _a3;
           if (src2) {
@@ -72596,7 +72606,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }
           src2 = this.src;
           type2 = this.type;
-          if (type2 == "video" || type2 == "audio") {
+          if (type2 == "video") {
             this.videoEl.autoplay = !this.value.paused && !this.value.hidden;
             if ((_a3 = element.style) == null ? void 0 : _a3.width) {
               element.style.width.slice(0, -2) * 2;
@@ -72605,19 +72615,29 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             this.parentEl.hidden = false;
             this.videoEl.hidden = false;
             this.imgEl.hidden = true;
+            this.audioEl.hidden = true;
+          } else if (type2 == "audio") {
+            previewWidget.audioEl.src = src2;
+            this.parentEl.hidden = false;
+            this.videoEl.hidden = true;
+            this.imgEl.hidden = true;
+            this.audioEl.hidden = false;
           } else if (type2 == "gif" || type2 == "image") {
             previewWidget.imgEl.src = src2;
             this.parentEl.hidden = false;
             this.videoEl.hidden = true;
             this.imgEl.hidden = false;
+            this.audioEl.hidden = true;
           } else {
             this.parentEl.hidden = true;
             this.imgEl.hidden = true;
             this.videoEl.hidden = true;
+            this.audioEl.hidden = true;
           }
         };
         previewWidget.parentEl.appendChild(previewWidget.videoEl);
         previewWidget.parentEl.appendChild(previewWidget.imgEl);
+        previewWidget.parentEl.appendChild(previewWidget.audioEl);
         this.previewWidget = previewWidget;
       }
       new_widgets.push(this.previewWidget);
@@ -72628,8 +72648,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   app$1.registerExtension({
     name: "Comfy.Montagen.UploadFile",
     beforeRegisterNodeDef(nodeType, nodeData) {
-      var _a2, _b2;
-      const fileInputSpec = (_b2 = (_a2 = nodeData == null ? void 0 : nodeData.input) == null ? void 0 : _a2.required) == null ? void 0 : _b2.file;
+      var _a2, _b2, _c2, _d2;
+      const fileInputSpec = ((_b2 = (_a2 = nodeData == null ? void 0 : nodeData.input) == null ? void 0 : _a2.required) == null ? void 0 : _b2.file) ?? ((_d2 = (_c2 = nodeData == null ? void 0 : nodeData.input) == null ? void 0 : _c2.optional) == null ? void 0 : _d2.file);
       const config2 = (fileInputSpec == null ? void 0 : fileInputSpec[1]) ?? {};
       const { montagen_upload = false, montagen_type: type2 = "image" } = config2;
       if (montagen_upload) {
