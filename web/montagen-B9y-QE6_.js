@@ -68300,7 +68300,6 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       try {
         let response = await app$1.api.fetchApi("/Montagen/Proj/List");
         const json = await response.json();
-        console.log(json);
         this.list = json.data;
         if (flag) {
           let id = this.list[0].baseInfo.projectId;
@@ -68359,7 +68358,6 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
           files[item.file_type].push(item.file_name);
         }
       });
-      console.log("setUPloadAsset____组装好的files", files);
       setMontagenAssetsList(files);
     },
     /**
@@ -72461,15 +72459,21 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     image: "image/jpeg,image/png",
     gif: "image/gif"
   };
+  let timerId = null;
   globalObj.setMontagenAssetsList = function(listAssets) {
-    list = listAssets;
-    for (const cb of listCallBack) {
-      try {
-        cb();
-      } catch (e) {
-        console.log(e);
-      }
+    if (timerId) {
+      clearTimeout(timerId);
     }
+    timerId = globalObj.setTimeout(() => {
+      list = listAssets;
+      for (const cb of listCallBack) {
+        try {
+          cb();
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, 3e3);
   };
   function chainCallback(object, property, callback) {
     if (object == void 0) {
@@ -72501,7 +72505,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         if ((_a2 = config2[1]) == null ? void 0 : _a2.montagen_upload) {
           let comboValue = w.value;
           let new_widget = app$1.widgets.COMBO(this, w.name, [
-            list[this.constructor.montagenType],
+            ["", ...list[this.constructor.montagenType]],
             config2[1]
           ]).widget;
           new_widget.value = comboValue;
@@ -72612,7 +72616,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         };
         previewWidget.audioEl = document.createElement("audio");
         previewWidget.audioEl.style["width"] = "100%";
-        previewWidget.audioEl.style["height"] = "50px";
+        previewWidget.audioEl.style["height"] = "25px";
         previewWidget.audioEl.hidden = true;
         previewWidget.audioEl.controls = true;
         previewWidget.audioEl.addEventListener("loadedmetadata", () => {
@@ -72628,7 +72632,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }
           src2 = this.src;
           type2 = this.type;
-          if (type2 == "video") {
+          if (src2 && type2 == "video") {
             this.videoEl.autoplay = !this.value.paused && !this.value.hidden;
             if ((_a3 = element.style) == null ? void 0 : _a3.width) {
               element.style.width.slice(0, -2) * 2;
@@ -72638,13 +72642,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             this.videoEl.hidden = false;
             this.imgEl.hidden = true;
             this.audioEl.hidden = true;
-          } else if (type2 == "audio") {
+          } else if (src2 && type2 == "audio") {
             previewWidget.audioEl.src = src2;
             this.parentEl.hidden = false;
             this.videoEl.hidden = true;
             this.imgEl.hidden = true;
             this.audioEl.hidden = false;
-          } else if (type2 == "gif" || type2 == "image") {
+          } else if (src2 && (type2 == "gif" || type2 == "image")) {
             previewWidget.imgEl.src = src2;
             this.parentEl.hidden = false;
             this.videoEl.hidden = true;
@@ -72713,7 +72717,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               this._real_value = value4;
             },
             get: function() {
-              if (!this._real_value) {
+              if (this._real_value === void 0) {
                 return default_value;
               }
               return this._real_value;
@@ -72786,7 +72790,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             accept: node3.constructor.supportedMedia,
             style: "display: none",
             onchange: async (event2) => {
-              console.log("onchange called", event2);
               if (fileInput2.files && fileInput2.files.length) {
                 await uploadFile2(fileInput2.files[0]);
               }
