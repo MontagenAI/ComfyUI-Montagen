@@ -22,6 +22,8 @@ class AudioClipAdapter(BaseClipAdapter, AudioTrackAdapter):
 
     DESCRIPTION = "Audio Clip Adapter"
 
+    file_output_index = 3
+
     def save_func_inner_input(
         self,
         name,

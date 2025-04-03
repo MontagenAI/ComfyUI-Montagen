@@ -182,6 +182,7 @@ class BaseClipAdapter(BaseTrackAdapter):
                 **keywords
             )
             node.reserver_file = False
+            node.set_file_output(self.file_output_index)
             workflow.save()
             return clips
         except:
@@ -210,6 +211,7 @@ class BaseClipAdapter(BaseTrackAdapter):
                 )
                 node.single_asset = file_meta
                 node.reserver_file = True
+                node.set_file_output(self.file_output_index)
                 workflow.save()
                 return clips
             else:

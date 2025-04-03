@@ -602,6 +602,10 @@ class LGraphNode:
     def set_input_enbale(self, enable, index):
         self.widgets[index] = enable
 
+    def set_file_output(self, file_output_index):
+        if file_output_index >= 0:
+            self.widgets[file_output_index] = self.single_file_name
+
     def pre_change_clip(self, clip):
         opts = self.supported_config_type[self.type]
         key_to_delete = []
@@ -617,7 +621,7 @@ class LGraphNode:
             del clip[key]
 
     def set_clip(self, clip, max_clip):
-        if clip:
+        if clip or max_clip:
             self.pre_change_clip(clip)
             self.pre_change_clip(max_clip)
             if self.single_clip:

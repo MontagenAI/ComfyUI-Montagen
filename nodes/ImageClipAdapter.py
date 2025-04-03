@@ -23,6 +23,8 @@ class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
 
     DESCRIPTION = "Image Clip Adapter"
 
+    file_output_index = 3
+    
     def save_func_inner_input(
         self,
         name,
