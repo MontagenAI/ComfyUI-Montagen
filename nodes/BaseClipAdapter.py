@@ -209,7 +209,7 @@ class BaseClipAdapter(BaseTrackAdapter):
                 )
                 old_name = node.single_file_name
                 node.single_asset = file_meta
-                if old_name != node.single_file_name and not node.reserver_file:
+                if old_name != node.single_file_name and not node.reserver_file and old_name:
                     workflow.workflow_del_material(old_name)
                 node.reserver_file = True
                 node.set_file_output(self.file_output_index)
