@@ -1,48 +1,72 @@
 # ComfyUI-Montagen Changelog
 
-Objective: Build a ComfyUI-based video editing framework.
+## [0.2.0] - 2025-04-03
 
-## [0.2.0] - 2025-04-02
-
-*Empowered Release: Comprehensive Video Editing Suite with Full Control in ComfyUI.*
+*Architected Release: Project-Structured Video Production Framework with Node-Controlled Timelines for ComfyUI.*
 
 ### Added
 
 - [Core] Project System:
-  - Standlone Project Directory: Build and import from standlone directory. With different sub directory.
-  - `assets`: All assets within Montagen Adapter nodes.
-  - `assets-ref`: Directory can be add to the project as a ref file.
-  - `builds`: Timeline burning to the files will located here.
-  - `workflows`:
+  - Standalone Project Directory: Create/import projects with dedicated subdirectories.
+  - Consolidated Resource Management: Unified storage for workflows, timelines, and assets.
+  - Task-oriented Pipeline: Sequential video editing task processing within project scope.
+  - `assets/`: Local asset storage.
+  - `assets-ref/`: Virtual file system for remote assets (Supports: HTTP/SMB/FTP/Local).
+  - `builds/`: Timeline rendering outputs.
+  - `workflows/`: Montagen-enhanced ComfyUI workflows.
+  - `timelines/`: Video output configurations (1 timeline = 1 video).
+  - `tmp/`: System cache (UI hidden).
+  - `project.montagen`: Project manifest (UI hidden).
 - [Core] Explorer System:
-  - ComfyUI Activity Bar: Put all control panel in one Explorer System. All part is connected. With different sub item.
-  - `project`:
-  - `nodes`:
-  - `properties`:
-- [UI] Timeline Preview: Selected timeline file will directly show in `ComfyUI`, instead of in the `Montagen` page.
-- [UI] Assets Preview: Selected item will preview in timeline and Player.
-- [Node] Timeline Node In Montagen Suite:
-  - `Timeline Creation Node`: Create a timeline with `name`, `width`, `height`, `fps`.
-  - `Timeline Execution Node`: Burn file with timeline with `outputName`. For example "test1.mp4".
+  - Project Selection: Open recent/custom projects, browse project directories, and refresh project structure.
+  - Unified Activity Bar: Integrated control panels with contextual binding.
+  - `project` Panel: Visualizes directory hierarchy.
+  - `nodes` Panel: Displays workflow/timeline items.
+  - `properties` Panel: Metadata inspector with two-way data binding.
+- [UI] Unified Preview:
+  - Unified Asset Preview: Asset preview through `Editor` and `Player` component.
+  - Inline Timeline Preview: Timeline visualization embedded in ComfyUI interface.
+- [Node] Montagen Timeline Nodes:
+  - `Create Timeline`: Initialize with `name`, `width`, `height`, `fps` parameters.
+  - `Execute Timeline`: Render timeline to file with custom output name (e.g. "final.mp4").
 
 ### Changed
 
-- [Core] Project Structural Between Workflow and Timeline:
-  - Once A Project: One time can only open one project.
-  - Multi Timelines In One Project: 
-- [UI] `project` Panel:
-
+- [Core] Project System:
+  - Exclusive Project Focus: Only one project can be actively edited at any time.
+  - Multi Workflows: Node-based blueprinting, each workflow defines specific editing processes.
+  - Multi Timelines: Each timeline produces one video. Multiple timelines allow sequential generation of multiple videos.
+- [UI] `project` Panel: 
+  - `assets\`: Upload assets to the project directory.
+  - `assets-ref\`: Add remote assets as a native file (Supports: local path, HTTP, SMB, FTP).
 - [UI] `nodes` Panel:
-
+  - Workflow Items: Display Montagen nodes of the selected workflow.
+  - Timeline Items: Display Montagen clips of the selected timeline.
 - [UI] `properties` Panel:
-
-- [Node] Adapter Node In Montagen Suite:
-  - `Adapter`:
-  - `Timeline`
+  - Asset Metadata: Technical specifications and origin data.
+  - Clip Properties: Timeline parameters with two-way binding to `Editor` and `Player`.
+- [Node] Adapter Node Paramters Overview:
+  - `resources`: Optional input. (In Development) 
+  - `timeRange`: Optional input. (In Development) 
+  - `metas`: Optional input. (In Development)
+  - `MONTAGENCLIPS`: Optional output. (In Development)
+  - `name`: Required, clip id.
+  - `enableInput`: Default fasle. Set true when optional input is used.
+  - `tag`: Optional input. (In Development)
+  - `file`: [`file` | `mediaInput`]. Choose file to upload instead of media input.
+  - `mediaInput`: [`file` | `mediaInput`]. Use media input instead of choose file to upload.
+- [Node] Adapter Node Type:
+  - `Image Clip Adapter`: Default clip duration is 3s.
+  - `Video Clip Adapter`: With `preview_fps`.
+  - `Sticker Clip Adapter`: With `preview_fps` like `Video Clip Adapter`, display in specify timeline track.
+  - `Audio Clip Adapter`: No specify paramters.
+  - `Text Clip Adapter`: With no `mediaInput`, the clip content can be updated through `Properties` panel.
 
 ### Removed
 
-- [UI] Standlone `Montagen` Page: All function is in `ComfyUI` page.
+- [UI] `Montagen` Page:
+  - Deprecated Components: Legacy Navigation System, and sandalone Tab for `Editor` and `player`.
+  - Feature Migration: Full integration into ComfyUI interface. And Explorer System replaces legacy Navigation System.
 
 
 ## [0.1.2] - 2025-03-08
@@ -88,7 +112,7 @@ Objective: Build a ComfyUI-based video editing framework.
 
 ## [0.1.0] - 2025-02-22
 
-*Initial Release: Core Video Editing Features for ComfyUI.*
+*Initial Release: Core Video Editing Framework with Node-to-Clip Adapter for ComfyUI.*
 
 ### Added
 
