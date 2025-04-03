@@ -2221,7 +2221,7 @@ class ComponentBase extends ExtendedEventEmitter {
         }
       }), h2 && h2(t);
     };
-    return w.src || e.type == "image" && w.blur ? (async () => {
+    return w.src || (e.type == "image" || e.type == "gif") && w.blur ? (async () => {
       try {
         await e.preProcessing(f), e.annotate(), await e.prepareMaterial();
       } catch (q) {
