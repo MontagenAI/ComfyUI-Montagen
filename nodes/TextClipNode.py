@@ -10,6 +10,8 @@ class TextClipNode(BaseClipAdapter, TextTrackNode):
 
     DESCRIPTION = "Text Clip Node"
 
+    file_output_index = -1
+
     def workflow_syn_material(self, workflow, node, resoureces):
         return resoureces
 

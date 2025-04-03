@@ -14,6 +14,8 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
         self.type = "gif"
 
     DESCRIPTION = "Gif Clip Adapter"
+    
+    file_output_index = 4
 
     @classmethod
     def ClIP_INPUT_TYPES(s):

@@ -234,7 +234,7 @@ class BaseTrackAdapter(BaseWorkflow):
                 **keywords,
             )
         return self.protocol_return(
-            timeline, proj, clips, workflow_id, project_id, user_id
+            timeline, proj, clips, workflow_id, project_id, user_id, node
         )
 
     def save_func_inner(
@@ -255,7 +255,9 @@ class BaseTrackAdapter(BaseWorkflow):
     ):
         return node.set_clips(None, None)
 
-    def protocol_return(self, timeline, proj, clips, workflow_id, project_id, user_id):
+    def protocol_return(
+        self, timeline, proj, clips, workflow_id, project_id, user_id, node
+    ):
         # MontagenProjManager.instance.onProcessEnd(
         #     {
         #         "userId": user_id,
@@ -267,7 +269,6 @@ class BaseTrackAdapter(BaseWorkflow):
         #         "type": self.type,
         #     }
         # )
-
         self.syn_timeline_clips(timeline, proj, clips)
         return {
             "ui": {
@@ -278,6 +279,7 @@ class BaseTrackAdapter(BaseWorkflow):
                         "workflowId": workflow_id,
                         "type": self.type,
                         "nodeType": self.node_type,
+                        "src": node.single_file_name,
                     }
                 ]
             },

@@ -32,6 +32,8 @@ class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
             },
         }
 
+    file_output_index = 4
+
     DESCRIPTION = "Video Clip Adapter"
 
     def save_func_inner_input(
