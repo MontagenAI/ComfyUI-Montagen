@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-montagen"
-description = "A built-in video editor for ComfyUI, integrating media clips with custom nodes, and enabling AI-driven video generation and automation."
-version = "0.1.2"
+description = "ComfyUI Video Studio with Node-Controlled Timelines for Multi-Task Production."
+version = "0.2.0"
 license = {file = "LICENSE"}
 dependencies = ["smbprotocol","ffmpeg-binaries"]
 
