@@ -282,7 +282,7 @@ class FFAudio extends FFClip {
     const dur = this.material.getEndOffset(true) - this.material.getStartOffset();
     const sr = this.sampleRate;
     const r = sr * pitch;
-    return `,asetrate=${r},aresample=${sr},aloop=${loop ? '-1' : '0'}:size=${dur * sr}`;
+    return `,asetrate=${r},aresample=${sr}:ochl=stereo,aloop=${loop ? '-1' : '0'}:size=${dur * sr}`;
   }
 
   toDelayFilter() {
