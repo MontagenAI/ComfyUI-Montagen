@@ -64469,7 +64469,7 @@ styleList$5.push([
   .no-head[mira-editor-el] .track-btn {
     display: none !important;
   }
-  .mirae-track[mira-editor-el] {
+  .montagen-track[mira-editor-el] {
     display: block;
     position: relative;
     height: 50px;
@@ -64482,17 +64482,17 @@ styleList$5.push([
     left: var(--trackHeadWidth);
     pointer-events: auto;
   }
-  .mirae-track[mira-editor-el] ::before {
+  .montagen-track[mira-editor-el] ::before {
     border: 0;
     margin: 0;
     padding: 0;
   }
-  .mirae-track[mira-editor-el] ::after {
+  .montagen-track[mira-editor-el] ::after {
     border: 0;
     margin: 0;
     padding: 0;
   }
-  .mirae-track[mira-editor-el] .head {
+  .montagen-track[mira-editor-el] .head {
     pointer-events: none;
     position: absolute;
     left: -150px;
@@ -64501,7 +64501,7 @@ styleList$5.push([
     z-index: 10;
     background-color: rgba(32, 32, 45, 0.8);
   }
-  .mirae-track[mira-editor-el] .head:before {
+  .montagen-track[mira-editor-el] .head:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -64509,7 +64509,7 @@ styleList$5.push([
     top: -3px;
     background: transparent;
   }
-  .mirae-track[mira-editor-el] .track-icon-btn {
+  .montagen-track[mira-editor-el] .track-icon-btn {
     pointer-events: auto;
     cursor: pointer;
     background-color: rgba(54, 54, 91, 0.8);
@@ -64526,13 +64526,13 @@ styleList$5.push([
     border-radius: 5px;
     background-color: transparent;
   }
-  .mirae-track[mira-editor-el] .track-icon-btn:hover {
+  .montagen-track[mira-editor-el] .track-icon-btn:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-icon-btn:hover {
+  .montagen-track[mira-editor-el] .track-icon-btn:hover {
     z-index: 999;
   }
-  .mirae-track[mira-editor-el] .track-icon-btn:hover:after {
+  .montagen-track[mira-editor-el] .track-icon-btn:hover:after {
     content: attr(data-tint);
     display: inline-block;
     position: absolute;
@@ -64548,7 +64548,7 @@ styleList$5.push([
     border-radius: 3px;
     transform: translateY(-50%);
   }
-  .mirae-track[mira-editor-el] .track-audio-btn {
+  .montagen-track[mira-editor-el] .track-audio-btn {
     pointer-events: auto;
     cursor: pointer;
     background-color: rgba(54, 54, 91, 0.8);
@@ -64566,23 +64566,23 @@ styleList$5.push([
     background-image: url(${svgDataURL1});
     left: -87px;
   }
-  .mirae-track[mira-editor-el] .track-audio-btn:hover {
+  .montagen-track[mira-editor-el] .track-audio-btn:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-audio-btn:hover {
+  .montagen-track[mira-editor-el] .track-audio-btn:hover {
     background-color: #004d52;
   }
-  .mirae-track[mira-editor-el] .track-audio-btn.track-audio-off {
+  .montagen-track[mira-editor-el] .track-audio-btn.track-audio-off {
     background-color: rgba(54, 54, 91, 0.8);
     background-position: center;
     background-size: 13px 13px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL2});
   }
-  .mirae-track[mira-editor-el] .track-audio-btn.track-audio-off:hover {
+  .montagen-track[mira-editor-el] .track-audio-btn.track-audio-off:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-visible-btn {
+  .montagen-track[mira-editor-el] .track-visible-btn {
     pointer-events: auto;
     cursor: pointer;
     background-color: rgba(54, 54, 91, 0.8);
@@ -64600,23 +64600,23 @@ styleList$5.push([
     background-image: url(${svgDataURL3});
     left: -59px;
   }
-  .mirae-track[mira-editor-el] .track-visible-btn:hover {
+  .montagen-track[mira-editor-el] .track-visible-btn:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-visible-btn:hover {
+  .montagen-track[mira-editor-el] .track-visible-btn:hover {
     background-color: #004d52;
   }
-  .mirae-track[mira-editor-el] .track-visible-btn.track-visible-off {
+  .montagen-track[mira-editor-el] .track-visible-btn.track-visible-off {
     background-color: rgba(54, 54, 91, 0.8);
     background-position: center;
     background-size: 16px 16px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL4});
   }
-  .mirae-track[mira-editor-el] .track-visible-btn.track-visible-off:hover {
+  .montagen-track[mira-editor-el] .track-visible-btn.track-visible-off:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-arrange-btn {
+  .montagen-track[mira-editor-el] .track-arrange-btn {
     pointer-events: auto;
     cursor: pointer;
     position: absolute;
@@ -64633,16 +64633,16 @@ styleList$5.push([
     background-image: url(${svgDataURL5});
     left: -31px;
   }
-  .mirae-track[mira-editor-el] .track-arrange-btn:hover {
+  .montagen-track[mira-editor-el] .track-arrange-btn:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-arrange-btn:hover {
+  .montagen-track[mira-editor-el] .track-arrange-btn:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .track-arrange-btn:hover {
+  .montagen-track[mira-editor-el] .track-arrange-btn:hover {
     z-index: 999;
   }
-  .mirae-track[mira-editor-el] .track-arrange-btn:hover:after {
+  .montagen-track[mira-editor-el] .track-arrange-btn:hover:after {
     content: attr(data-tint);
     display: inline-block;
     position: absolute;
@@ -64658,7 +64658,7 @@ styleList$5.push([
     border-radius: 3px;
     transform: translateY(-50%);
   }
-  .mirae-track[mira-editor-el] .go-back-btn {
+  .montagen-track[mira-editor-el] .go-back-btn {
     pointer-events: auto;
     cursor: pointer;
     background-color: rgba(54, 54, 91, 0.8);
@@ -64679,10 +64679,10 @@ styleList$5.push([
     left: -70px;
     width: 62px;
   }
-  .mirae-track[mira-editor-el] .go-back-btn:hover {
+  .montagen-track[mira-editor-el] .go-back-btn:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
-  .mirae-track[mira-editor-el] .go-back-btn:after {
+  .montagen-track[mira-editor-el] .go-back-btn:after {
     content: "返回";
     color: #FFF;
     font-size: 12px;
@@ -64690,17 +64690,17 @@ styleList$5.push([
     position: absolute;
     left: 20px;
   }
-  .mirae-track[mira-editor-el]:hover {
+  .montagen-track[mira-editor-el]:hover {
     background-color: #292933 !important;
   }
-  .mirae-track[mira-editor-el]:hover .head {
+  .montagen-track[mira-editor-el]:hover .head {
     background-color: rgba(41, 41, 51, 0.8) !important;
   }
-  .mirae-track[mira-editor-el].hide {
+  .montagen-track[mira-editor-el].hide {
     border: 0!important;
     height: 0!important;
   }
-  .mirae-track[mira-editor-el]:after {
+  .montagen-track[mira-editor-el]:after {
     content: attr(data-name);
     position: absolute;
     width: 100%;
@@ -64711,7 +64711,7 @@ styleList$5.push([
     font-size: 12px;
     background: transparent;
   }
-  .mirae-track[mira-editor-el]:before {
+  .montagen-track[mira-editor-el]:before {
     content: "";
     position: absolute;
     width: var(--maxWidth);
@@ -64719,7 +64719,7 @@ styleList$5.push([
     top: -3px;
     background: transparent;
   }
-  .mirae-track[mira-editor-el].ruler {
+  .montagen-track[mira-editor-el].ruler {
     z-index: 100;
     position: sticky;
     top: 0px;
@@ -64730,101 +64730,101 @@ styleList$5.push([
     background: rgba(23, 23, 29, 0.9);
     margin-bottom: 18px;
   }
-  .mirae-track[mira-editor-el].ruler .head {
+  .montagen-track[mira-editor-el].ruler .head {
     background-color: transparent;
   }
-  .mirae-track[mira-editor-el].ruler:hover {
+  .montagen-track[mira-editor-el].ruler:hover {
     background: rgba(23, 23, 29, 0.9) !important;
   }
-  .mirae-track[mira-editor-el].ruler:hover .head {
+  .montagen-track[mira-editor-el].ruler:hover .head {
     background-color: transparent !important;
   }
-  .mirae-track[mira-editor-el].ruler:hover .mark:after {
+  .montagen-track[mira-editor-el].ruler:hover .mark:after {
     opacity: 1;
   }
-  .mirae-track[mira-editor-el].ruler:hover .cursor:after {
+  .montagen-track[mira-editor-el].ruler:hover .cursor:after {
     opacity: 1;
   }
-  .mirae-track[mira-editor-el].mirae-track-spine {
+  .montagen-track[mira-editor-el].montagen-track-spine {
     background: #313147;
     height: 65px;
     margin-top: 0px;
     border-top-width: 0px;
   }
-  .mirae-track[mira-editor-el].mirae-track-spine .track-icon-btn {
+  .montagen-track[mira-editor-el].montagen-track-spine .track-icon-btn {
     background-position: center;
     background-size: 13px 13px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL7});
   }
-  .mirae-track[mira-editor-el].mirae-track-spine .head {
+  .montagen-track[mira-editor-el].montagen-track-spine .head {
     background: #313147;
   }
-  .mirae-track[mira-editor-el].mirae-track-video {
+  .montagen-track[mira-editor-el].montagen-track-video {
     height: 69px;
   }
-  .mirae-track[mira-editor-el].mirae-track-video .track-icon-btn {
+  .montagen-track[mira-editor-el].montagen-track-video .track-icon-btn {
     background-position: center;
     background-size: 13px 13px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL7});
   }
-  .mirae-track[mira-editor-el].mirae-track-text {
+  .montagen-track[mira-editor-el].montagen-track-text {
     height: 36px;
   }
-  .mirae-track[mira-editor-el].mirae-track-text .track-icon-btn {
+  .montagen-track[mira-editor-el].montagen-track-text .track-icon-btn {
     background-position: center;
     background-size: 13px 13px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL8});
   }
-  .mirae-track[mira-editor-el].mirae-track-sticker {
+  .montagen-track[mira-editor-el].montagen-track-sticker {
     height: 36px;
   }
-  .mirae-track[mira-editor-el].mirae-track-sticker .track-icon-btn {
+  .montagen-track[mira-editor-el].montagen-track-sticker .track-icon-btn {
     background-position: center;
     background-size: 13px 13px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL9});
   }
-  .mirae-track[mira-editor-el].mirae-track-audio {
+  .montagen-track[mira-editor-el].montagen-track-audio {
     height: 50px;
   }
-  .mirae-track[mira-editor-el].mirae-track-audio .track-icon-btn {
+  .montagen-track[mira-editor-el].montagen-track-audio .track-icon-btn {
     background-position: center;
     background-size: 13px 13px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL10});
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder {
+  .montagen-track[mira-editor-el].montagen-track-placeholder {
     background: transparent;
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder .track-icon-btn {
+  .montagen-track[mira-editor-el].montagen-track-placeholder .track-icon-btn {
     display: none;
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder:after {
+  .montagen-track[mira-editor-el].montagen-track-placeholder:after {
     content: "";
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder.mirae-track-placeholder-bottom {
+  .montagen-track[mira-editor-el].montagen-track-placeholder.montagen-track-placeholder-bottom {
     height: 30px;
     border-color:#17171D;
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder.mirae-track-placeholder-top {
+  .montagen-track[mira-editor-el].montagen-track-placeholder.montagen-track-placeholder-top {
     height: 0px;
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder .head {
+  .montagen-track[mira-editor-el].montagen-track-placeholder .head {
     background-color: transparent;
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder:hover {
+  .montagen-track[mira-editor-el].montagen-track-placeholder:hover {
     background: transparent !important;
   }
-  .mirae-track[mira-editor-el].mirae-track-placeholder:hover .head {
+  .montagen-track[mira-editor-el].montagen-track-placeholder:hover .head {
     background: transparent !important;
   }
-  .mirae-track[mira-editor-el].top-insert:before {
+  .montagen-track[mira-editor-el].top-insert:before {
     background-color: var(--miraeSelBorderColor);
   }
-  .mirae-track[mira-editor-el].top-insert .head:before {
+  .montagen-track[mira-editor-el].top-insert .head:before {
     background-color: var(--miraeSelBorderColor);
   }
   `,
@@ -64834,7 +64834,7 @@ createStyleManager$1(styleList$5, createStyleOption$1());
 styleList$5.locals && styleList$5.locals;
 class EditorTrackElement extends CustomHtmlElementBase {
   init() {
-    return this.addClass("mirae-track"), this.head = document.createElement("div"), this.head.classList.add("head"), this.append(this.head), super.init();
+    return this.addClass("montagen-track"), this.head = document.createElement("div"), this.head.classList.add("head"), this.append(this.head), super.init();
   }
   clear() {
     this.innerHTML = "";
@@ -64895,7 +64895,7 @@ class EditorTrackElement extends CustomHtmlElementBase {
       this.childNodes.forEach((o) => {
         o.node && o.apply && o.node.active !== t && (r.push(o.node), s[o.node.id] = { to: { active: t } });
       }), r.length > 0 && (this.applyChange(r, s), this.refresh());
-    }), this.canArrange, this.setName(e).addClass(`mirae-track-${e}`);
+    }), this.canArrange, this.setName(e).addClass(`montagen-track-${e}`);
   }
   setName(e) {
     return this;
@@ -64909,7 +64909,7 @@ EditorTrackElement.register();
 class EditorTrackComponent extends ViewComponentBase {
   constructor(e, t) {
     var r;
-    super(t), this.type = this.determineType(e), [(r = e == null ? void 0 : e.parent) == null ? void 0 : r.type, e == null ? void 0 : e.type].includes(TYPE_SPINE) ? (this.type = TYPE_SPINE, this.id = `sp-${uuid().substring(0, 3)}`) : this.id = `tk-${uuid().substring(0, 3)}`, this.clips = [], this.view = EditorTrackElement.create().setType(this.type), this.view.applyChange = (s, o) => this.applyChange(s, o), this.type === TYPE_PLACEHOLDER && (this.view.addClass(`mirae-track-placeholder-${e}`), this.id = `ph-${e}`), this.view.set("data-id", this.id).setName(`${this.type}.${this.id}`);
+    super(t), this.type = this.determineType(e), [(r = e == null ? void 0 : e.parent) == null ? void 0 : r.type, e == null ? void 0 : e.type].includes(TYPE_SPINE) ? (this.type = TYPE_SPINE, this.id = `sp-${uuid().substring(0, 3)}`) : this.id = `tk-${uuid().substring(0, 3)}`, this.clips = [], this.view = EditorTrackElement.create().setType(this.type), this.view.applyChange = (s, o) => this.applyChange(s, o), this.type === TYPE_PLACEHOLDER && (this.view.addClass(`montagen-track-placeholder-${e}`), this.id = `ph-${e}`), this.view.set("data-id", this.id).setName(`${this.type}.${this.id}`);
   }
   selectAll() {
     const e = [];
@@ -65282,7 +65282,7 @@ class EditorBoardElement extends CustomHtmlElementBase {
   }
   updateClipScroll() {
     for (const e of this.childNodes)
-      if (e.classList.contains("mirae-track"))
+      if (e.classList.contains("montagen-track"))
         for (const t of e.childNodes)
           t.onScroll && t.onScroll({
             x: this.scrollLeft - this.trackHeadWidth,
@@ -65309,14 +65309,14 @@ class EditorBoardElement extends CustomHtmlElementBase {
       return;
     }
     const r = bounds([e, t]), s = this.rebase(r);
-    this.selectionBox || (this.selectionBox = document.createElement("div"), this.selectionBox.classList.add("mirae-board-selection"), this.append(this.selectionBox), this.selected = {});
+    this.selectionBox || (this.selectionBox = document.createElement("div"), this.selectionBox.classList.add("montagen-board-selection"), this.append(this.selectionBox), this.selected = {});
     for (const o of ["top", "left", "width", "height"])
       this.selectionBox.style[o] = `${s[o]}px`;
     this.rendering || (this.rendering = true, requestAnimationFrame(() => {
       var h2;
       const o = {};
       for (const f of this.childNodes)
-        if (f.classList.contains("mirae-track"))
+        if (f.classList.contains("montagen-track"))
           for (const p of f.childNodes)
             (h2 = p.node) != null && h2.id && p.node.type !== "placeholder" && intersect(s, this.relativeRect(p)) && (o[p.node.id] = p.node);
       const u = [];
@@ -69723,8 +69723,8 @@ const previewUtils = {
   "gif": function(url2, node2) {
     return {
       "type": "canvas",
-      "width": 1280,
-      "height": 720,
+      "width": node2.width,
+      "height": node2.height,
       "name": "montagen",
       "children": [
         {
