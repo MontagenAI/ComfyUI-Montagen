@@ -546,6 +546,9 @@ img[data-v-c280557e] {
 .tw-p-0 {\r
     padding: 0px
 }\r
+.\\!tw-p-0 {\r
+    padding: 0px !important
+}\r
 .\\!tw-px-0 {\r
     padding-left: 0px !important;\r
     padding-right: 0px !important
@@ -68826,13 +68829,13 @@ const _sfc_main$n = /* @__PURE__ */ defineComponent({
 });
 const _hoisted_1$i = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
 const _hoisted_2$e = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$7 = { class: "text-sm truncate" };
-const _hoisted_4$7 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$5 = {
+const _hoisted_3$8 = { class: "text-sm truncate" };
+const _hoisted_4$8 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_5$6 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$3 = ["onClick", "onContextmenu"];
+const _hoisted_6$4 = ["onClick", "onContextmenu"];
 const _hoisted_7$3 = {
   key: 0,
   class: "w-full flex items-center"
@@ -68909,11 +68912,11 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
         createBaseVNode("div", _hoisted_2$e, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
-              createBaseVNode("span", _hoisted_3$7, toDisplayString(title.value), 1)
+              createBaseVNode("span", _hoisted_3$8, toDisplayString(title.value), 1)
             ]),
             center: withCtx(() => _cache[0] || (_cache[0] = [])),
             end: withCtx(() => [
-              createBaseVNode("div", _hoisted_4$7, [
+              createBaseVNode("div", _hoisted_4$8, [
                 withDirectives(createVNode(_component_Button, {
                   text: "",
                   icon: "pi pi-refresh",
@@ -68929,7 +68932,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
           })
         ]),
         createBaseVNode("div", null, [
-          createBaseVNode("ul", _hoisted_5$5, [
+          createBaseVNode("ul", _hoisted_5$6, [
             (openBlock(true), createElementBlock(Fragment, null, renderList$1(clips2.value, (item) => {
               return openBlock(), createElementBlock("li", {
                 onClick: ($event) => goWorkFlow(item),
@@ -68982,7 +68985,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$3);
+              ], 40, _hoisted_6$4);
             }), 128))
           ])
         ]),
@@ -69241,8 +69244,8 @@ const _hoisted_1$g = {
   ref: "container"
 };
 const _hoisted_2$c = { class: "tw-h-full tw-flex tw-flex-col" };
-const _hoisted_3$6 = ["onClick"];
-const _hoisted_4$6 = { class: "tw-ps-1" };
+const _hoisted_3$7 = ["onClick"];
+const _hoisted_4$7 = { class: "tw-ps-1" };
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", _hoisted_1$g, [
     (openBlock(true), createElementBlock(Fragment, null, renderList$1($data.panels, (panel, index2) => {
@@ -69263,9 +69266,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                 class: normalizeClass(["pi", panel.expanded ? "pi-chevron-down" : "pi-chevron-right"]),
                 style: { "font-size": "1rem" }
               }, null, 2),
-              createBaseVNode("span", _hoisted_4$6, toDisplayString(panel.title), 1)
+              createBaseVNode("span", _hoisted_4$7, toDisplayString(panel.title), 1)
             ])
-          ], 12, _hoisted_3$6),
+          ], 12, _hoisted_3$7),
           createBaseVNode("div", {
             class: normalizeClass(["panel-content flex-1", [panel.expanded ? "tw-overflow-auto" : "tw-overflow-hidden"]])
           }, [
@@ -69862,9 +69865,9 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
 });
 const _hoisted_1$d = { class: "parent-container" };
 const _hoisted_2$9 = { class: "layout-grid" };
-const _hoisted_3$5 = { class: "px-2 tw-mb-2" };
-const _hoisted_4$5 = { class: "label tw-py-2" };
-const _hoisted_5$4 = { class: "content" };
+const _hoisted_3$6 = { class: "px-2 tw-mb-2" };
+const _hoisted_4$6 = { class: "label tw-py-2" };
+const _hoisted_5$5 = { class: "content" };
 const _sfc_main$g = /* @__PURE__ */ defineComponent({
   __name: "propertyTimelineClip",
   props: {
@@ -69933,9 +69936,9 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("div", _hoisted_1$d, [
         createBaseVNode("div", _hoisted_2$9, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(options, (value2, key2) => {
-            return openBlock(), createElementBlock("div", _hoisted_3$5, [
-              createBaseVNode("div", _hoisted_4$5, toDisplayString(key2) + ":", 1),
-              createBaseVNode("div", _hoisted_5$4, [
+            return openBlock(), createElementBlock("div", _hoisted_3$6, [
+              createBaseVNode("div", _hoisted_4$6, toDisplayString(key2) + ":", 1),
+              createBaseVNode("div", _hoisted_5$5, [
                 unref(propertyConfig)[type2.value][key2] && !Array.isArray(unref(propertyConfig)[type2.value][key2][0]) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                   ["FLOAT", "STRING", "INT"].includes(unref(propertyConfig)[type2.value][key2][0]) ? (openBlock(), createBlock(_component_InputText, {
                     key: 0,
@@ -69973,10 +69976,10 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
 const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-d2dd7d20"]]);
 const _hoisted_1$c = { class: "px-2 tw-mb-2" };
 const _hoisted_2$8 = { class: "content" };
-const _hoisted_3$4 = { class: "px-2 tw-mb-2" };
-const _hoisted_4$4 = { class: "content" };
-const _hoisted_5$3 = { class: "px-2 tw-mb-2" };
-const _hoisted_6$2 = { class: "content" };
+const _hoisted_3$5 = { class: "px-2 tw-mb-2" };
+const _hoisted_4$5 = { class: "content" };
+const _hoisted_5$4 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$3 = { class: "content" };
 const _hoisted_7$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_8$2 = { class: "content" };
 const _hoisted_9$2 = { class: "px-2 tw-mb-2" };
@@ -70003,9 +70006,9 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_3$4, [
+        createBaseVNode("div", _hoisted_3$5, [
           _cache[7] || (_cache[7] = createBaseVNode("div", { class: "label tw-py-2" }, "width:", -1)),
-          createBaseVNode("div", _hoisted_4$4, [
+          createBaseVNode("div", _hoisted_4$5, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.width,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.data.width = $event),
@@ -70014,9 +70017,9 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_5$3, [
+        createBaseVNode("div", _hoisted_5$4, [
           _cache[8] || (_cache[8] = createBaseVNode("div", { class: "label tw-py-2" }, "height:", -1)),
-          createBaseVNode("div", _hoisted_6$2, [
+          createBaseVNode("div", _hoisted_6$3, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.height,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
@@ -70088,10 +70091,10 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
 });
 const _hoisted_1$a = { class: "wrapper-ref" };
 const _hoisted_2$7 = { class: "card tw-w-full" };
-const _hoisted_3$3 = { class: "form-item tw-my-2" };
-const _hoisted_4$3 = { class: "form-item-content" };
-const _hoisted_5$2 = { class: "flex justify-center" };
-const _hoisted_6$1 = { class: "form-item tw-my-2" };
+const _hoisted_3$4 = { class: "form-item tw-my-2" };
+const _hoisted_4$4 = { class: "form-item-content" };
+const _hoisted_5$3 = { class: "flex justify-center" };
+const _hoisted_6$2 = { class: "form-item tw-my-2" };
 const _hoisted_7$1 = { class: "form-item-content" };
 const _hoisted_8$1 = { class: "flex justify-center" };
 const _hoisted_9$1 = { class: "form-item tw-my-2" };
@@ -70287,9 +70290,9 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form3) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_3$3, [
+                            createBaseVNode("div", _hoisted_3$4, [
                               _cache[4] || (_cache[4] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
-                              createBaseVNode("div", _hoisted_4$3, [
+                              createBaseVNode("div", _hoisted_4$4, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -70312,7 +70315,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_5$2, [
+                            createBaseVNode("div", _hoisted_5$3, [
                               createVNode(_component_Button, {
                                 class: "tw-w-full",
                                 type: "submit",
@@ -70338,7 +70341,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_6$1, [
+                            createBaseVNode("div", _hoisted_6$2, [
                               _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
                               createBaseVNode("div", _hoisted_7$1, [
                                 createVNode(_component_InputText, {
@@ -70644,8 +70647,8 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
 const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-e5a5e115"]]);
 const _hoisted_1$9 = { class: "wrapper-ref" };
 const _hoisted_2$6 = { class: "card tw-w-full" };
-const _hoisted_3$2 = { class: "custom-header" };
-const _hoisted_4$2 = { key: 0 };
+const _hoisted_3$3 = { class: "custom-header" };
+const _hoisted_4$3 = { key: 0 };
 const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "uploadAssetDialog",
   setup(__props) {
@@ -70734,7 +70737,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
             fileLimit: 5
           }, {
             header: withCtx(({ chooseCallback }) => [
-              createBaseVNode("div", _hoisted_3$2, [
+              createBaseVNode("div", _hoisted_3$3, [
                 createVNode(_component_Button, {
                   label: "选择文件",
                   icon: "pi pi-plus",
@@ -70743,7 +70746,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
               ])
             ]),
             content: withCtx(({ files }) => [
-              files.length > 0 ? (openBlock(), createElementBlock("div", _hoisted_4$2, [
+              files.length > 0 ? (openBlock(), createElementBlock("div", _hoisted_4$3, [
                 createBaseVNode("h5", null, "待上传文件 (" + toDisplayString(files.length) + ")", 1),
                 createBaseVNode("ul", null, [
                   (openBlock(true), createElementBlock(Fragment, null, renderList$1(files, (file) => {
@@ -71144,10 +71147,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_Listbox = script$5;
       const _component_ScrollPanel = script$j;
-      return openBlock(), createBlock(_component_ScrollPanel, {
-        class: "w-80",
-        style: { "height": "calc(83vh - 48px)" }
-      }, {
+      return openBlock(), createBlock(_component_ScrollPanel, { class: "w-80 tw-flex-1" }, {
         default: withCtx(() => [
           createVNode(_component_Listbox, {
             "model-value": _ctx.selectedTab,
@@ -71257,6 +71257,10 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
 });
 const _hoisted_1$5 = { class: "flex items-center justify-center" };
 const _hoisted_2$2 = { class: "relative overflow-hidden rounded-t-lg" };
+const _hoisted_3$2 = { class: "flex items-center px-4 py-3" };
+const _hoisted_4$2 = { class: "flex-1" };
+const _hoisted_5$2 = { class: "line-clamp-1 text-lg font-normal text-surface-900 dark:text-surface-100" };
+const _hoisted_6$1 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
 const UPSCALE_ZOOM_SCALE = 16;
 const DEFAULT_ZOOM_SCALE = 5;
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
@@ -71282,25 +71286,25 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
           createBaseVNode("div", _hoisted_1$5, [
             createBaseVNode("div", _hoisted_2$2, [
               createVNode(_sfc_main$7, {
-                src: "https://img1.baidu.com/it/u=1829798189,3731452821&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
+                src: _ctx.sourceModule.src,
                 alt: _ctx.sourceModule.title,
                 "is-hovered": unref(isHovered),
                 "hover-zoom": _ctx.sourceModule.thumbnailVariant === "zoomHover" ? UPSCALE_ZOOM_SCALE : DEFAULT_ZOOM_SCALE
-              }, null, 8, ["alt", "is-hovered", "hover-zoom"])
+              }, null, 8, ["src", "alt", "is-hovered", "hover-zoom"])
             ])
           ])
         ]),
-        content: withCtx(() => _cache[1] || (_cache[1] = [
-          createBaseVNode("div", { class: "flex items-center px-4 py-3" }, [
-            createBaseVNode("div", { class: "flex-1" }, [
-              createBaseVNode("h3", { class: "line-clamp-1 text-lg font-normal text-surface-900 dark:text-surface-100" }, " 121131 "),
-              createBaseVNode("p", { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" }, " 56456 ")
+        content: withCtx(() => [
+          createBaseVNode("div", _hoisted_3$2, [
+            createBaseVNode("div", _hoisted_4$2, [
+              createBaseVNode("h3", _hoisted_5$2, toDisplayString(_ctx.sourceModule.title), 1),
+              createBaseVNode("p", _hoisted_6$1, toDisplayString(_ctx.sourceModule.description), 1)
             ]),
-            createBaseVNode("div", { class: "tw-flex xl:flex tw-items-center tw-justify-center ml-4 tw-w-10 tw-h-10 tw-rounded-full tw-bg-surface-100" }, [
+            _cache[1] || (_cache[1] = createBaseVNode("div", { class: "tw-flex xl:flex tw-items-center tw-justify-center ml-4 tw-w-10 tw-h-10 tw-rounded-full tw-bg-surface-100" }, [
               createBaseVNode("i", { class: "pi pi-angle-right tw-text-2xl" })
-            ])
-          ], -1)
-        ])),
+            ], -1))
+          ])
+        ]),
         _: 1
       }, 512);
     };
@@ -71310,7 +71314,7 @@ const _hoisted_1$4 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-re
 const _hoisted_2$1 = { class: "tw-flex tw-flex-1 tw-relative tw-overflow-hidden" };
 const _hoisted_3$1 = {
   key: 0,
-  class: "tw-absolute tw-translate-x-0 tw-top-0 tw-left-0 tw-h-full tw-w-80 tw-shadow-md tw-z-5 tw-transition-transform tw-duration-300 tw-ease-in-out"
+  class: "tw-absolute tw-translate-x-0 tw-top-0 tw-left-0 tw-h-full tw-w-80 tw-shadow-md tw-z-5 tw-transition-transform tw-duration-300 tw-ease-in-out tw-flex tw-flex-col"
 };
 const _hoisted_4$1 = {
   key: 0,
@@ -71345,13 +71349,13 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       console.log(tab, "tab");
       selectedTab.value = tab;
     };
-    const workFlows = ref$3([
+    const workFlows = ref$3(
       {
         src: "https://img1.baidu.com/it/u=1829798189,3731452821&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
         title: "测试数据",
         description: "测试数据"
       }
-    ]);
+    );
     onMounted(() => {
       selectedTab.value = workSpaceStore.activeProject.baseInfo.projectId;
     });
@@ -71373,7 +71377,14 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
               tabs: tabs.value,
               "selected-tab": selectedTab.value,
               "onUpdate:selectedTab": handleTabSelection
-            }, null, 8, ["tabs", "selected-tab"])
+            }, null, 8, ["tabs", "selected-tab"]),
+            createBaseVNode("div", null, [
+              createVNode(_component_Button, {
+                label: "Open Local Project",
+                class: "tw-w-full",
+                severity: "secondary"
+              })
+            ])
           ])) : createCommentVNode("", true),
           createBaseVNode("div", {
             class: normalizeClass(["flex-1 overflow-auto transition-all duration-300", {
@@ -73587,7 +73598,8 @@ console.log("mixpanel", mixpanel);
 mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
   debug: true,
   track_pageview: true,
-  persistence: "localStorage"
+  persistence: "localStorage",
+  ignore_dnt: true
 });
 mixpanel.track("User Registered", {
   "Registration Source": "Facebook-2024",
