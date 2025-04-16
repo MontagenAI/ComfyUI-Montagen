@@ -5480,7 +5480,7 @@ lodash.exports;
     }
   }).call(commonjsGlobal);
 })(lodash, lodash.exports);
-lodash.exports;
+var lodashExports = lodash.exports;
 var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
 var freeSelf = typeof self == "object" && self && self.Object === Object && self;
 var root = freeGlobal || freeSelf || Function("return this")();
@@ -6531,6 +6531,7 @@ export {
   fromPairs as f,
   get as g,
   isNil as i,
+  lodashExports as l,
   pick as p,
   set as s
 };

@@ -201,12 +201,6 @@
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.folder-project[data-v-68de2634] {
-  display: flex;
-  height: 40vh;
-  width: 60vw;
-  max-width: 1024px;
-  overflow: hidden;
 }
 .parent-container[data-v-d2dd7d20] {\r
   container-type: inline-size;\r
@@ -265,7 +259,17 @@ li[data-v-f93fdfa7] {
   display: flex;
   justify-content: center;
   align-items: center;
-}.explorer-container[data-v-9fe60490] {
+}
+img[data-v-c280557e] {
+  transition: transform 1s cubic-bezier(0.2, 0, 0.4, 1);
+}
+.folder-project[data-v-68de2634] {
+  display: flex;
+  height: 40vh;
+  width: 60vw;
+  max-width: 1024px;
+  overflow: hidden;
+}.explorer-container[data-v-77cb929b] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -446,6 +450,9 @@ li[data-v-f93fdfa7] {
 .tw-absolute {\r
     position: absolute
 }\r
+.tw-relative {\r
+    position: relative
+}\r
 .tw-left-0 {\r
     left: 0px
 }\r
@@ -465,11 +472,29 @@ li[data-v-f93fdfa7] {
 .tw-flex {\r
     display: flex
 }\r
+.tw-grid {\r
+    display: grid
+}\r
+.tw-h-10 {\r
+    height: 2.5rem
+}\r
 .tw-h-100 {\r
     height: 28rem
 }\r
+.tw-h-\\[83vh\\] {\r
+    height: 83vh
+}\r
 .tw-h-full {\r
     height: 100%
+}\r
+.tw-w-10 {\r
+    width: 2.5rem
+}\r
+.tw-w-80 {\r
+    width: 20rem
+}\r
+.tw-w-\\[90vw\\] {\r
+    width: 90vw
 }\r
 .tw-w-full {\r
     width: 100%
@@ -480,14 +505,39 @@ li[data-v-f93fdfa7] {
 .tw-flex-1 {\r
     flex: 1 1 0%
 }\r
+.tw-translate-x-0 {\r
+    --tw-translate-x: 0px;\r
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}\r
+.tw-grid-cols-\\[repeat\\(auto-fill\\,minmax\\(16rem\\,1fr\\)\\)\\] {\r
+    grid-template-columns: repeat(auto-fill,minmax(16rem,1fr))
+}\r
 .tw-flex-col {\r
     flex-direction: column
+}\r
+.tw-items-center {\r
+    align-items: center
+}\r
+.tw-justify-center {\r
+    justify-content: center
+}\r
+.tw-justify-items-center {\r
+    justify-items: center
+}\r
+.tw-gap-8 {\r
+    gap: 2rem
 }\r
 .tw-overflow-auto {\r
     overflow: auto
 }\r
 .tw-overflow-hidden {\r
     overflow: hidden
+}\r
+.tw-overflow-y-hidden {\r
+    overflow-y: hidden
+}\r
+.tw-rounded-full {\r
+    border-radius: 9999px
 }\r
 .tw-bg-\\[\\#ffffff\\] {\r
     --tw-bg-opacity: 1;\r
@@ -496,8 +546,19 @@ li[data-v-f93fdfa7] {
 .tw-bg-transparent {\r
     background-color: transparent
 }\r
+.tw-p-0 {\r
+    padding: 0px
+}\r
 .tw-p-2 {\r
     padding: 0.5rem
+}\r
+.\\!tw-px-0 {\r
+    padding-left: 0px !important;\r
+    padding-right: 0px !important
+}\r
+.tw-px-12 {\r
+    padding-left: 3rem;\r
+    padding-right: 3rem
 }\r
 .tw-px-4 {\r
     padding-left: 1rem;\r
@@ -507,11 +568,46 @@ li[data-v-f93fdfa7] {
     padding-top: 0.5rem;\r
     padding-bottom: 0.5rem
 }\r
+.tw-py-3 {\r
+    padding-top: 0.75rem;\r
+    padding-bottom: 0.75rem
+}\r
 .tw-pb-1 {\r
     padding-bottom: 0.25rem
 }\r
+.tw-pb-6 {\r
+    padding-bottom: 1.5rem
+}\r
 .tw-ps-1 {\r
     padding-inline-start: 0.25rem
+}\r
+.tw-text-left {\r
+    text-align: left
+}\r
+.tw-text-2xl {\r
+    font-size: 1.5rem
+}\r
+.tw-text-lg {\r
+    font-size: 1.125rem
+}\r
+.tw-text-inherit {\r
+    color: inherit
+}\r
+.tw-shadow-md {\r
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);\r
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);\r
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}\r
+.tw-transition-transform {\r
+    transition-property: transform;\r
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\r
+    transition-duration: 150ms
+}\r
+.tw-duration-300 {\r
+    transition-duration: 300ms
+}\r
+.tw-ease-in-out {\r
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 }\r
 .tw-content-\\[\\'\\'\\] {\r
     --tw-content: '';\r
@@ -540,6 +636,10 @@ li[data-v-f93fdfa7] {
     .\\32xl\\:tw-p-\\[var\\(--p-dialog-header-padding\\)\\] {\r
         padding: var(--p-dialog-header-padding)
     }
+}\r
+\r
+.\\[\\&\\:\\:before\\]\\:tw-border-t-2::before {\r
+    border-top-width: 2px
 }\r
 \r
 @font-face {\r
@@ -598,13 +698,13 @@ li[data-v-f93fdfa7] {
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, aa as withKeys, n as nextTick$1, a0 as normalizeStyle, j as renderSlot$1, q as toRaw, X as onUnmounted, T as Teleport, a4 as onBeforeUnmount, a2 as provide, ac as createApp } from "./assets/vue-BAieETWZ.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$9, n as script$a, o as script$b, p as script$c, q as script$d, r as script$e, t as script$f, v as script$g, w as useToast, x as script$h, y as script$i, z as script$j, A as script$k, B as z, C as script$l, D as DialogService, F as ConfirmationService, G as customAlphabet, H as createPinia, I as ToastService } from "./assets/vendor-B9x2MpTQ.js";
-import "./assets/lodash-DS8RUn65.js";
-import { w as usePrimeVue, x as script$8, P as PrimeVue, y as index$3 } from "./assets/primevue-KsPbR6Ok.js";
-import { bY as h, bZ as definePreset } from "./assets/primeuix-BdlXq87L.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-B9KEgELa.js";
-import "./assets/vueuse-DYHOnQZG.js";
+import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, ab as withKeys, n as nextTick$1, a1 as normalizeStyle, j as renderSlot$1, q as toRaw, Z as onUnmounted, T as Teleport, a5 as onBeforeUnmount, a3 as provide, ac as createApp } from "./assets/vue-ChYyLYeB.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, u as useConfirm, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$c, r as script$d, t as script$f, v as script$g, w as useToast, x as script$h, y as script$i, z as script$j, A as script$k, B as script$l, C as script$m, D as script$n, F as z, G as script$o, H as DialogService, I as ConfirmationService, J as customAlphabet, K as mixpanel, L as createPinia, M as ToastService } from "./assets/vendor-DJgML8wS.js";
+import { l as lodashExports } from "./assets/lodash-CNwZySND.js";
+import { w as usePrimeVue, x as script$e, P as PrimeVue, y as index$3 } from "./assets/primevue-wi4tYdVt.js";
+import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-dK-pIQ5W.js";
+import { b$ as h, c0 as definePreset } from "./assets/primeuix-C0BR6dg8.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-Bq6ymYKz.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
@@ -738,6 +838,7 @@ const useDialogStore = defineStore("dialog", () => {
     dialogStack.value.splice(index2, 1);
   }
   function createDialog(options) {
+    var _a2;
     if (dialogStack.value.length >= 10) {
       dialogStack.value.shift();
     }
@@ -763,17 +864,24 @@ const useDialogStore = defineStore("dialog", () => {
           dialog.dialogComponentProps.maximized = false;
         },
         onAfterHide: () => {
-          var _a2, _b2;
-          (_b2 = (_a2 = options.dialogComponentProps) == null ? void 0 : _a2.onClose) == null ? void 0 : _b2.call(_a2);
+          var _a3, _b2;
+          (_b2 = (_a3 = options.dialogComponentProps) == null ? void 0 : _a3.onClose) == null ? void 0 : _b2.call(_a3);
           closeDialog(dialog);
         },
-        pt: {
+        pt: lodashExports.merge(((_a2 = options.dialogComponentProps) == null ? void 0 : _a2.pt) || {}, {
           root: {
             onMousedown: () => {
               riseDialog(dialog);
             }
           }
-        }
+        })
+        // pt: {
+        //   root: {
+        //     onMousedown: () => {
+        //       riseDialog(dialog)
+        //     }
+        //   }
+        // }
       }
     };
     dialogStack.value.push(dialog);
@@ -797,8 +905,8 @@ const useDialogStore = defineStore("dialog", () => {
     closeDialog
   };
 });
-const _hoisted_1$g = ["id"];
-const _sfc_main$j = /* @__PURE__ */ defineComponent({
+const _hoisted_1$l = ["id"];
+const _sfc_main$p = /* @__PURE__ */ defineComponent({
   __name: "GlobalDialog",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -830,7 +938,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
             }, null, 8, ["id"])) : (openBlock(), createElementBlock("h3", {
               key: 1,
               id: item.key
-            }, toDisplayString(item.title || " "), 9, _hoisted_1$g))
+            }, toDisplayString(item.title || " "), 9, _hoisted_1$l))
           ]),
           default: withCtx(() => [
             (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({ ref_for: true }, item.contentProps, {
@@ -1364,35 +1472,35 @@ styleList$c.push([
     transition-property: opacity, width, height;
     transition-duration: 0.3s;
   }
-  .mira-editor[mira-editor-el] {
+  .montagen-editor[mira-editor-el] {
     position: relative;
     user-select: none;
   }
-  .mirae-debug-box[mira-editor-el] {
+  .montagen-debug-box[mira-editor-el] {
     border: 1px dotted #C00 !important;
   }
-  .mirae-center-cross[mira-editor-el] {
+  .montagen-center-cross[mira-editor-el] {
     margin: 0;
   }
-  .mirae-center-cross[mira-editor-el]:before {
+  .montagen-center-cross[mira-editor-el]:before {
     left: 50%;
     top: 0;
     bottom: 0;
     width: 1px;
   }
-  .mirae-center-cross[mira-editor-el]:after {
+  .montagen-center-cross[mira-editor-el]:after {
     top: 50%;
     left: 0;
     right: 0;
     height: 1px;
   }
-  .mirae-center-cross[mira-editor-el]:before,
-  .mirae-center-cross[mira-editor-el]:after {
+  .montagen-center-cross[mira-editor-el]:before,
+  .montagen-center-cross[mira-editor-el]:after {
     content: '';
     position: absolute;
     background: red;
   }
-  .mirae-box[mira-editor-el] {
+  .montagen-box[mira-editor-el] {
     border: 2px solid var(--miraeBorderColor);
     display: flex;
     align-items: center;
@@ -1401,39 +1509,39 @@ styleList$c.push([
     /* <- order matters!! */
     transition-duration: 0;
   }
-  .mirae-box[mira-editor-el].mirae-box-none[mira-editor-el] {
+  .montagen-box[mira-editor-el].montagen-box-none[mira-editor-el] {
     border: 0px;
   }
-  .mirae-box[mira-editor-el].editMode {
+  .montagen-box[mira-editor-el].editMode {
     border: 2px dashed var(--miraeBorderColor) !important;
   }
-  .mirae-box[mira-editor-el] .mira-editor-group[mira-editor-el] {
+  .montagen-box[mira-editor-el] .montagen-editor-group[mira-editor-el] {
     width: 0px;
     height: 0px;
     border-radius: 0px;
     transform-origin: 50% 50%;
   }
-  .mirae-box[mira-editor-el].group {
+  .montagen-box[mira-editor-el].group {
     border-style: dashed!important;
   }
-  .mirae-box[mira-editor-el].copy {
+  .montagen-box[mira-editor-el].copy {
     background-color: rgba(0, 0, 0, 0.5);
   }
-  .mirae-box[mira-editor-el].ani {
+  .montagen-box[mira-editor-el].ani {
     transition-duration: 0.3s;
     transition-property: width, height, transform;
   }
-  .mirae-box[mira-editor-el] * {
+  .montagen-box[mira-editor-el] * {
     pointer-events: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  .mirae-box[mira-editor-el].mirae-selected {
+  .montagen-box[mira-editor-el].montagen-selected {
     border-color: var(--miraeSelBorderColor);
     z-index: 2!important;
   }
-  .mirae-box[mira-editor-el] .mirae-box-handles[mira-editor-el] {
+  .montagen-box[mira-editor-el] .montagen-box-handles[mira-editor-el] {
     border: 0;
     position: relative;
     /*background: #000;*/
@@ -1444,23 +1552,23 @@ styleList$c.push([
     justify-content: center;
     pointer-events: none;
   }
-  .mirae-box[mira-editor-el] .side {
+  .montagen-box[mira-editor-el] .side {
     transform: rotate(90deg);
   }
-  .mirae-box[mira-editor-el] .mirae-box-handles.top {
+  .montagen-box[mira-editor-el] .montagen-box-handles.top {
     top: -50%;
     margin-top: -48px;
   }
-  .mirae-box[mira-editor-el] .mirae-box-handles.bottom {
+  .montagen-box[mira-editor-el] .montagen-box-handles.bottom {
     bottom: -50%;
     margin-bottom: -48px;
   }
-  .mirae-box[mira-editor-el] .mirae-box-handles.left {
+  .montagen-box[mira-editor-el] .montagen-box-handles.left {
     left: -50%;
     margin-left: -48px;
     transform: rotate(90deg);
   }
-  .mirae-box[mira-editor-el] .mirae-box-handles.right {
+  .montagen-box[mira-editor-el] .montagen-box-handles.right {
     right: -50%;
     margin-right: -48px;
     transform: rotate(90deg);
@@ -1555,30 +1663,30 @@ styleList$b.push([
       transition-property: opacity, width, height;
       transition-duration: 0.3s;
     }
-    .mira-editor[mira-editor-el] {
+    .montagen-editor[mira-editor-el] {
       position: relative;
       user-select: none;
     }
-    .mirae-debug-box[mira-editor-el] {
+    .montagen-debug-box[mira-editor-el] {
       border: 1px dotted #C00 !important;
     }
-    .mirae-center-cross[mira-editor-el] {
+    .montagen-center-cross[mira-editor-el] {
       margin: 0;
     }
-    .mirae-center-cross[mira-editor-el]:before {
+    .montagen-center-cross[mira-editor-el]:before {
       left: 50%;
       top: 0;
       bottom: 0;
       width: 1px;
     }
-    .mirae-center-cross[mira-editor-el]:after {
+    .montagen-center-cross[mira-editor-el]:after {
       top: 50%;
       left: 0;
       right: 0;
       height: 1px;
     }
-    .mirae-center-cross[mira-editor-el]:before,
-    .mirae-center-cross[mira-editor-el]:after {
+    .montagen-center-cross[mira-editor-el]:before,
+    .montagen-center-cross[mira-editor-el]:after {
       content: '';
       position: absolute;
       background: red;
@@ -1792,10 +1900,10 @@ class CustomHtmlElementBase extends HTMLElement {
 At(CustomHtmlElementBase, "TAG", "div");
 class EditorBoxElement extends CustomHtmlElementBase {
   init() {
-    return this.addClass("mirae-box"), this.scale = 1, super.init();
+    return this.addClass("montagen-box"), this.scale = 1, super.init();
   }
   bind(e) {
-    return this.node = e, e.cropMode && this.addClass("mirae-box-none"), this;
+    return this.node = e, e.cropMode && this.addClass("montagen-box-none"), this;
   }
   setAnchor(e) {
     const { x: t, y: r } = e || this.node.getAnchor();
@@ -1841,7 +1949,7 @@ class EditorBoxElement extends CustomHtmlElementBase {
   }
   select(e) {
     e && this.addHandleBox();
-    const t = "mirae-selected";
+    const t = "montagen-selected";
     return e ? this.addClass(t) : this.removeClass(t);
   }
   points() {
@@ -1859,11 +1967,11 @@ class EditorBoxElement extends CustomHtmlElementBase {
     return PositionUtils.bounds(this.points());
   }
   addHandleBox() {
-    this.handleBox || (this.handleBox = document.createElement("div"), this.handleBox.setAttribute("mira-editor-el", ""), this.handleBox.classList.add("mirae-box-handles", "left"), this.append(this.handleBox));
+    this.handleBox || (this.handleBox = document.createElement("div"), this.handleBox.setAttribute("mira-editor-el", ""), this.handleBox.classList.add("montagen-box-handles", "left"), this.append(this.handleBox));
   }
   refreshHandle() {
     const e = this.parentNode;
-    if (!this.handleBox || !e || !e.classList.contains("mira-editor"))
+    if (!this.handleBox || !e || !e.classList.contains("montagen-editor"))
       return this;
     const t = e.getBoundingClientRect(), s = this.getBoundingClientRect().center.rebase(t.center);
     let o = "left";
@@ -2654,7 +2762,7 @@ let EditorMoveComponent = Za;
 const svgDataURL1$3 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27scale%28-1 1%29 rotate%2845 -8.536 -13.435%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL2$3 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27scale%28-1 1%29 rotate%2830 -11.83 -25.954%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL3$3 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27scale%28-1 1%29 rotate%2815, -21.49, -62.66%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL4$3 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27matrix%28-1 0 0 1 19 5%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL5$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27scale%28-1 1%29 rotate%28-15, 16.49, 81.66%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL6$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27scale%28-1 1%29 rotate%28-30, 6.83, 44.954%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL7$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27scale%28-1 1%29 rotate%28-45, 3.536, 32.435%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL8$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27rotate%28-30 18.83 .17%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL9$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27rotate%28-15 28.49 -9.49%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL10$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27translate%285 5%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL11$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27rotate%2815 -9.49 28.49%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL12$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27150%25%27 height=%27150%25%27 x=%27-25%25%27 y=%27-17.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 0h24v24H0z%27/%3E%3Cg filter=%27url%28%23a%29%27 transform=%27rotate%2830 .17 18.83%29%27%3E%3Cpath fill=%27%23FFF%27 d=%27M4.257 7.087l4.072 4.068L5.5 13.983l8.473-.013.013-8.47-2.841 2.842L7.07 4.274 5.656 2.859 8.5.017H.014v8.484l2.829-2.827z%27/%3E%3Cpath fill=%27%23000%27 d=%27M5.317 6.733l4.427 4.424-1.828 1.828 5.056-.016.014-5.054-1.842 1.841-4.428-4.422-2.474-2.475 1.844-1.843H1.013v5.071l1.83-1.828z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', styleList$9 = createStyleList$1();
 styleList$9.push([
   66,
-  `.mirae-resize[mira-editor-el] {
+  `.montagen-resize[mira-editor-el] {
     width: 32px;
     height: 32px;
     display: flex;
@@ -2662,10 +2770,10 @@ styleList$9.push([
     justify-content: center;
     pointer-events: auto;
   }
-  .mirae-resize[mira-editor-el].hide {
+  .montagen-resize[mira-editor-el].hide {
     pointer-events: none;
   }
-  .mirae-resize[mira-editor-el].dot:after {
+  .montagen-resize[mira-editor-el].dot:after {
     width: 12px;
     height: 12px;
     content: "";
@@ -2679,11 +2787,11 @@ styleList$9.push([
     background-size: 16px;
     z-index: 9;
   }
-  .mirae-resize[mira-editor-el].hor {
+  .montagen-resize[mira-editor-el].hor {
     width: 100%;
     height: 32px;
   }
-  .mirae-resize[mira-editor-el].hor:after {
+  .montagen-resize[mira-editor-el].hor:after {
     width: 16px;
     height: 4px;
     content: "";
@@ -2697,11 +2805,11 @@ styleList$9.push([
     background-size: 16px;
     z-index: 9;
   }
-  .mirae-resize[mira-editor-el].ver {
+  .montagen-resize[mira-editor-el].ver {
     width: 32px;
     height: 100%;
   }
-  .mirae-resize[mira-editor-el].ver:after {
+  .montagen-resize[mira-editor-el].ver:after {
     width: 4px;
     height: 16px;
     content: "";
@@ -2715,68 +2823,68 @@ styleList$9.push([
     background-size: 16px;
     z-index: 9;
   }
-  .mirae-resize[mira-editor-el].top {
+  .montagen-resize[mira-editor-el].top {
     top: 0;
     margin-top: -16px;
   }
-  .mirae-resize[mira-editor-el].top:after {
+  .montagen-resize[mira-editor-el].top:after {
     margin-top: -2px;
   }
-  .mirae-resize[mira-editor-el].bottom {
+  .montagen-resize[mira-editor-el].bottom {
     bottom: 0;
     margin-bottom: -16px;
   }
-  .mirae-resize[mira-editor-el].bottom:after {
+  .montagen-resize[mira-editor-el].bottom:after {
     margin-bottom: -2px;
   }
-  .mirae-resize[mira-editor-el].left {
+  .montagen-resize[mira-editor-el].left {
     left: 0;
     margin-left: -16px;
   }
-  .mirae-resize[mira-editor-el].left:after {
+  .montagen-resize[mira-editor-el].left:after {
     margin-left: -2px;
   }
-  .mirae-resize[mira-editor-el].right {
+  .montagen-resize[mira-editor-el].right {
     right: 0;
     margin-right: -16px;
   }
-  .mirae-resize[mira-editor-el].right:after {
+  .montagen-resize[mira-editor-el].right:after {
     margin-right: -2px;
   }
-  .mirae-rze-cursor[r="0"] {
+  .montagen-rze-cursor[r="0"] {
     cursor: url(${svgDataURL1$3}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="1"] {
+  .montagen-rze-cursor[r="1"] {
     cursor: url(${svgDataURL2$3}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="2"] {
+  .montagen-rze-cursor[r="2"] {
     cursor: url(${svgDataURL3$3}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="3"] {
+  .montagen-rze-cursor[r="3"] {
     cursor: url(${svgDataURL4$3}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="4"] {
+  .montagen-rze-cursor[r="4"] {
     cursor: url(${svgDataURL5$2}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="5"] {
+  .montagen-rze-cursor[r="5"] {
     cursor: url(${svgDataURL6$2}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="6"] {
+  .montagen-rze-cursor[r="6"] {
     cursor: url(${svgDataURL7$2}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="7"] {
+  .montagen-rze-cursor[r="7"] {
     cursor: url(${svgDataURL8$2}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="8"] {
+  .montagen-rze-cursor[r="8"] {
     cursor: url(${svgDataURL9$2}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="9"] {
+  .montagen-rze-cursor[r="9"] {
     cursor: url(${svgDataURL10$2}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="10"] {
+  .montagen-rze-cursor[r="10"] {
     cursor: url(${svgDataURL11$1}) 12 12, auto;
   }
-  .mirae-rze-cursor[r="11"] {
+  .montagen-rze-cursor[r="11"] {
     cursor: url(${svgDataURL12$1}) 12 12, auto;
   }
   `,
@@ -2787,7 +2895,7 @@ styleList$9.locals && styleList$9.locals;
 const svgDataURL1$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27%3E%3Cpath fill=%27currentColor%27 d=%27M15.25 18.48V15a.75.75 0 1 0-1.5 0v4c0 .97.78 1.75 1.75 1.75h4a.75.75 0 1 0 0-1.5h-2.6a8.75 8.75 0 0 0-2.07-15.53.75.75 0 1 0-.49 1.42 7.25 7.25 0 0 1 .91 13.34zM8.75 5.52V9a.75.75 0 0 0 1.5 0V5c0-.97-.78-1.75-1.75-1.75h-4a.75.75 0 0 0 0 1.5h2.6a8.75 8.75 0 0 0 2.18 15.57.75.75 0 0 0 .47-1.43 7.25 7.25 0 0 1-1-13.37z%27/%3E%3C/svg%3E"', svgDataURL2$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-90 9.25 5.25%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL3$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-75 9.972 3.863%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL4$2 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-60 10.84 1.756%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL5$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-45 11.972 -1.716%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL6$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-30 14.508 -7.572%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL7$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-15 21.933 -22.997%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL8$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27translate%289.5 3.5%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL9$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%2815 -7.985 46.77%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL10$1 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%2830 -.415 27.57%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL11 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%2845 2.32 21.713%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL12 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%2860 3.916 18.243%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL13 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%2875 4.762 16.135%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL14 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%2890 5.25 14.75%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL15 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28105 5.84 13.617%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL16 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28120 6.084 12.666%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL17 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28135 6.317 12.01%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL18 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28150 6.754 11.325%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL19 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28165 7.06 10.653%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL20 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-180 7.25 10%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL21 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-165 7.597 9.43%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL23 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-135 7.974 7.99%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL24 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-120 8.393 7.332%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', svgDataURL25 = '"data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 width=%2724%27 height=%2724%27%3E%3Cdefs%3E%3Cfilter id=%27a%27 width=%27266.7%25%27 height=%27156.2%25%27 x=%27-75%25%27 y=%27-21.9%25%27 filterUnits=%27objectBoundingBox%27%3E%3CfeOffset dy=%271%27 in=%27SourceAlpha%27 result=%27shadowOffsetOuter1%27/%3E%3CfeGaussianBlur in=%27shadowOffsetOuter1%27 result=%27shadowBlurOuter1%27 stdDeviation=%271%27/%3E%3CfeColorMatrix in=%27shadowBlurOuter1%27 result=%27shadowMatrixOuter1%27 values=%270 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0%27/%3E%3CfeMerge%3E%3CfeMergeNode in=%27shadowMatrixOuter1%27/%3E%3CfeMergeNode in=%27SourceGraphic%27/%3E%3C/feMerge%3E%3C/filter%3E%3Cpath id=%27b%27 d=%27M1.67 12.67a7.7 7.7 0 0 0 0-9.34L0 5V0h5L3.24 1.76a9.9 9.9 0 0 1 0 12.48L5 16H0v-5l1.67 1.67z%27/%3E%3C/defs%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cpath d=%27M0 24V0h24v24z%27/%3E%3Cg fill-rule=%27nonzero%27 filter=%27url%28%23a%29%27 transform=%27rotate%28-105 8.83 6.441%29%27%3E%3Cuse fill=%27%23000%27 fill-rule=%27evenodd%27 xlink:href=%27%23b%27/%3E%3Cpath stroke=%27%23FFF%27 d=%27M1.6 11.9a7.21 7.21 0 0 0 0-7.8L-.5 6.2V-.5h6.7L3.9 1.8a10.4 10.4 0 0 1 0 12.4l2.3 2.3H-.5V9.8l2.1 2.1z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"', styleList$8 = createStyleList$1();
 styleList$8.push([
   37,
-  `.mirae-rotate.handle[mira-editor-el] {
+  `.montagen-rotate.handle[mira-editor-el] {
   width: 32px;
   height: 32px;
   display: flex;
@@ -2797,7 +2905,7 @@ styleList$8.push([
   position: relative;
   z-index: 3;
 }
-.mirae-rotate.handle[mira-editor-el]:after {
+.montagen-rotate.handle[mira-editor-el]:after {
   width: 20px;
   height: 20px;
   content: "";
@@ -2812,76 +2920,76 @@ styleList$8.push([
   z-index: 9;
   background-image: url(` + svgDataURL1$2 + `);
 }
-.mirae-rot-cursor[rr="0"] {
+.montagen-rot-cursor[rr="0"] {
   cursor: url(` + svgDataURL2$2 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="1"] {
+.montagen-rot-cursor[rr="1"] {
   cursor: url(` + svgDataURL3$2 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="2"] {
+.montagen-rot-cursor[rr="2"] {
   cursor: url(` + svgDataURL4$2 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="3"] {
+.montagen-rot-cursor[rr="3"] {
   cursor: url(` + svgDataURL5$1 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="4"] {
+.montagen-rot-cursor[rr="4"] {
   cursor: url(` + svgDataURL6$1 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="5"] {
+.montagen-rot-cursor[rr="5"] {
   cursor: url(` + svgDataURL7$1 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="6"] {
+.montagen-rot-cursor[rr="6"] {
   cursor: url(` + svgDataURL8$1 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="7"] {
+.montagen-rot-cursor[rr="7"] {
   cursor: url(` + svgDataURL9$1 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="8"] {
+.montagen-rot-cursor[rr="8"] {
   cursor: url(` + svgDataURL10$1 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="9"] {
+.montagen-rot-cursor[rr="9"] {
   cursor: url(` + svgDataURL11 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="10"] {
+.montagen-rot-cursor[rr="10"] {
   cursor: url(` + svgDataURL12 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="11"] {
+.montagen-rot-cursor[rr="11"] {
   cursor: url(` + svgDataURL13 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="12"] {
+.montagen-rot-cursor[rr="12"] {
   cursor: url(` + svgDataURL14 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="13"] {
+.montagen-rot-cursor[rr="13"] {
   cursor: url(` + svgDataURL15 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="14"] {
+.montagen-rot-cursor[rr="14"] {
   cursor: url(` + svgDataURL16 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="15"] {
+.montagen-rot-cursor[rr="15"] {
   cursor: url(` + svgDataURL17 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="16"] {
+.montagen-rot-cursor[rr="16"] {
   cursor: url(` + svgDataURL18 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="17"] {
+.montagen-rot-cursor[rr="17"] {
   cursor: url(` + svgDataURL19 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="18"] {
+.montagen-rot-cursor[rr="18"] {
   cursor: url(` + svgDataURL20 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="19"] {
+.montagen-rot-cursor[rr="19"] {
   cursor: url(` + svgDataURL21 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="20"] {
+.montagen-rot-cursor[rr="20"] {
   cursor: url(` + svgDataURL23 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="21"] {
+.montagen-rot-cursor[rr="21"] {
   cursor: url(` + svgDataURL23 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="22"] {
+.montagen-rot-cursor[rr="22"] {
   cursor: url(` + svgDataURL24 + `) 12 12, auto;
 }
-.mirae-rot-cursor[rr="23"] {
+.montagen-rot-cursor[rr="23"] {
   cursor: url(` + svgDataURL25 + `) 12 12, auto;
 }
 `,
@@ -2922,7 +3030,7 @@ class EditorRotateElement extends EditorMoveElement {
     super.bindBodyEvents(e, t), e ? (document.body.setAttribute("r", this.getAttribute("r") || "0"), document.body.setAttribute("rr", this.getAttribute("rr") || "0"), document.body.classList.add(this.constructor.CURSOR_CLASS)) : document.body.classList.remove(this.constructor.CURSOR_CLASS);
   }
 }
-At(EditorRotateElement, "TAG", "montagen-editor-rotate"), At(EditorRotateElement, "STYLE_CLASS", "mirae-rotate"), At(EditorRotateElement, "CURSOR_CLASS", "mirae-rot-cursor"), At(EditorRotateElement, "RA_NUM", 24);
+At(EditorRotateElement, "TAG", "montagen-editor-rotate"), At(EditorRotateElement, "STYLE_CLASS", "montagen-rotate"), At(EditorRotateElement, "CURSOR_CLASS", "montagen-rot-cursor"), At(EditorRotateElement, "RA_NUM", 24);
 EditorRotateElement.register();
 class EditorResizeElement extends EditorRotateElement {
   init() {
@@ -3015,7 +3123,7 @@ class EditorResizeElement extends EditorRotateElement {
     return this.raIdx = (t.length > 1 ? sum(t) >> 1 : t[0]) % 4 * 3, super.setOpts(e);
   }
 }
-At(EditorResizeElement, "TAG", "montagen-editor-resize"), At(EditorResizeElement, "STYLE_CLASS", "mirae-resize"), At(EditorResizeElement, "CURSOR_CLASS", "mirae-rze-cursor"), At(EditorResizeElement, "RA_NUM", 12), At(EditorResizeElement, "LEFT", 8), At(EditorResizeElement, "TOP", 4), At(EditorResizeElement, "RIGHT", 2), At(EditorResizeElement, "BOTTOM", 1);
+At(EditorResizeElement, "TAG", "montagen-editor-resize"), At(EditorResizeElement, "STYLE_CLASS", "montagen-resize"), At(EditorResizeElement, "CURSOR_CLASS", "montagen-rze-cursor"), At(EditorResizeElement, "RA_NUM", 12), At(EditorResizeElement, "LEFT", 8), At(EditorResizeElement, "TOP", 4), At(EditorResizeElement, "RIGHT", 2), At(EditorResizeElement, "BOTTOM", 1);
 EditorResizeElement.register();
 var { LEFT, TOP, RIGHT, BOTTOM } = EditorResizeElement;
 const _u = class _u2 extends EditorMoveComponent {
@@ -3077,7 +3185,7 @@ class EditorGroup extends VNode$1 {
     return Object.values(this.nodes)[0].creator();
   }
   initContainer() {
-    this.container = document.createElement("div"), this.container.setAttribute("mira-editor-el", ""), this.container.classList.add("mira-editor-group");
+    this.container = document.createElement("div"), this.container.setAttribute("mira-editor-el", ""), this.container.classList.add("montagen-editor-group");
   }
   appendTo(e) {
     e.classList.add("group"), e.append(this.container), this.fit(e.scale);
@@ -12606,7 +12714,7 @@ const svgDataURL1$1 = '"data:image/svg+xml,%3Csvg width=%2720%27 height=%2720%27
 styleList$7.push([
   104,
   `
-  .mirae-clip[mira-editor-el] {
+  .montagen-clip[mira-editor-el] {
     display: flex;
     position: absolute;
     pointer-events: auto;
@@ -12615,7 +12723,7 @@ styleList$7.push([
     margin: 0;
     padding: 0;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-handle {
+  .montagen-clip[mira-editor-el] .montagen-clip-handle {
     display: block;
     position: absolute;
     z-index: 6;
@@ -12626,7 +12734,7 @@ styleList$7.push([
     pointer-events: auto;
     cursor: col-resize;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-handle:before {
+  .montagen-clip[mira-editor-el] .montagen-clip-handle:before {
     position: absolute;
     content: "";
     background: #FFF;
@@ -12636,19 +12744,19 @@ styleList$7.push([
     border-radius: 2px;
     top: calc(50% - (16px/2));
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-handle.mirae-clip-handle-start {
+  .montagen-clip[mira-editor-el] .montagen-clip-handle.montagen-clip-handle-start {
     left: 0;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-handle.mirae-clip-handle-start:before {
+  .montagen-clip[mira-editor-el] .montagen-clip-handle.montagen-clip-handle-start:before {
     left: 1px;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-handle.mirae-clip-handle-end {
+  .montagen-clip[mira-editor-el] .montagen-clip-handle.montagen-clip-handle-end {
     right: 0;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-handle.mirae-clip-handle-end:before {
+  .montagen-clip[mira-editor-el] .montagen-clip-handle.montagen-clip-handle-end:before {
     right: 1px;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-pline[mira-editor-el] {
+  .montagen-clip[mira-editor-el] .montagen-clip-pline[mira-editor-el] {
     pointer-events: none;
     display: block;
     position: absolute;
@@ -12663,10 +12771,10 @@ styleList$7.push([
     transition-property: opacity;
     transition-duration: 0.3s;
   }
-  .mirae-clip[mira-editor-el] .mirae-clip-pline[mira-editor-el].show {
+  .montagen-clip[mira-editor-el] .montagen-clip-pline[mira-editor-el].show {
     opacity: 0.5 !important;
   }
-  .mirae-clip[mira-editor-el] .unlink-btn {
+  .montagen-clip[mira-editor-el] .unlink-btn {
     pointer-events: auto;
     display: none;
     cursor: pointer;
@@ -12685,11 +12793,11 @@ styleList$7.push([
     background-repeat: no-repeat;
     background-image: url(${svgDataURL1$1});
   }
-  .mirae-clip[mira-editor-el] .unlink-btn:hover {
+  .montagen-clip[mira-editor-el] .unlink-btn:hover {
     opacity: 1;
     z-index: 999;
   }
-  .mirae-clip[mira-editor-el] .unlink-btn:hover:after {
+  .montagen-clip[mira-editor-el] .unlink-btn:hover:after {
     content: '取消跟随';
     display: inline-block;
     position: absolute;
@@ -12705,14 +12813,14 @@ styleList$7.push([
     border-radius: 3px;
     transform: translateY(-50%);
   }
-  .mirae-clip[mira-editor-el]:hover .unlink-btn {
+  .montagen-clip[mira-editor-el]:hover .unlink-btn {
     display: block;
   }
-  .mirae-clip[mira-editor-el][vtype] {
+  .montagen-clip[mira-editor-el][vtype] {
     background-color: #000 !important;
     overflow: hidden;
   }
-  .mirae-clip[mira-editor-el][vtype]:after {
+  .montagen-clip[mira-editor-el][vtype]:after {
     position: absolute;
     content: attr(data-vtitle);
     font-size: 12px;
@@ -12726,22 +12834,22 @@ styleList$7.push([
     left: 0px;
     padding: 2px 3px;
   }
-  .mirae-clip[mira-editor-el][vtype="trans"] {
+  .montagen-clip[mira-editor-el][vtype="trans"] {
     height: 32px !important;
   }
-  .mirae-clip[mira-editor-el][vtype="video"] {
+  .montagen-clip[mira-editor-el][vtype="video"] {
     height: 65px !important;
   }
-  .mirae-clip[mira-editor-el][vtype="audio"] {
+  .montagen-clip[mira-editor-el][vtype="audio"] {
     height: 50px !important;
   }
-  .mirae-clip[mira-editor-el][vtype="sticker"] {
+  .montagen-clip[mira-editor-el][vtype="sticker"] {
     height: 36px !important;
   }
-  .mirae-clip[mira-editor-el][vtype="text"] {
+  .montagen-clip[mira-editor-el][vtype="text"] {
     height: 36px !important;
   }
-  .mirae-clip[mira-editor-el].shadow {
+  .montagen-clip[mira-editor-el].shadow {
     height: calc(100% - 4px);
     border: 2px dashed var(--miraeBorderColor);
     border-radius: 3px;
@@ -12749,14 +12857,14 @@ styleList$7.push([
     opacity: 0.7;
     z-index: 6;
   }
-  .mirae-clip[mira-editor-el].shadow.conflict {
+  .montagen-clip[mira-editor-el].shadow.conflict {
     border-color: rgba(255, 255, 0, 0.1);
     background: rgba(255, 255, 255, 0.1);
   }
-  .mirae-clip[mira-editor-el].shadow.conflict:before {
+  .montagen-clip[mira-editor-el].shadow.conflict:before {
     content: "";
   }
-  .mirae-clip[mira-editor-el].node {
+  .montagen-clip[mira-editor-el].node {
     height: calc(100% - 4px);
     align-items: center;
     justify-content: center;
@@ -12768,10 +12876,10 @@ styleList$7.push([
     z-index: 1;
     --leftOffset: 0px;
   }
-  .mirae-clip[mira-editor-el].node.hover-parent {
+  .montagen-clip[mira-editor-el].node.hover-parent {
     border: 2px dashed var(--miraeHighlightColor);
   }
-  .mirae-clip[mira-editor-el].node:before {
+  .montagen-clip[mira-editor-el].node:before {
     pointer-events: none;
     white-space: nowrap;
     display: block;
@@ -12792,23 +12900,23 @@ styleList$7.push([
     transition-property: opacity, top;
     transition-duration: 0.3s;
   }
-  .mirae-clip[mira-editor-el].node.disable {
+  .montagen-clip[mira-editor-el].node.disable {
     opacity: 0.35;
   }
-  .mirae-clip[mira-editor-el].node:hover:before {
+  .montagen-clip[mira-editor-el].node:hover:before {
     opacity: 1;
     top: -23px;
   }
-  .mirae-clip[mira-editor-el].node.no-info:before {
+  .montagen-clip[mira-editor-el].node.no-info:before {
     display: none !important;
   }
-  .mirae-clip[mira-editor-el].node.crop {
+  .montagen-clip[mira-editor-el].node.crop {
     background-color: transparent;
     height: calc(100% + 4px);
     pointer-events: auto;
     cursor: pointer;
   }
-  .mirae-clip[mira-editor-el].node.crop .crop-info-label {
+  .montagen-clip[mira-editor-el].node.crop .crop-info-label {
     pointer-events: none;
     white-space: nowrap;
     display: block;
@@ -12824,7 +12932,7 @@ styleList$7.push([
     height: 15px;
     top: -20px;
   }
-  .mirae-clip[mira-editor-el].node.crop:before {
+  .montagen-clip[mira-editor-el].node.crop:before {
     content: "";
     opacity: 1;
     margin: 0;
@@ -12840,7 +12948,7 @@ styleList$7.push([
     transform: translateX(-100%);
     width: var(--leftShadow);
   }
-  .mirae-clip[mira-editor-el].node.crop:after {
+  .montagen-clip[mira-editor-el].node.crop:after {
     content: "";
     opacity: 1;
     margin: 0;
@@ -12856,37 +12964,37 @@ styleList$7.push([
     transform: translateX(100%);
     width: var(--rightShadow);
   }
-  .mirae-clip[mira-editor-el].node.placeholder {
+  .montagen-clip[mira-editor-el].node.placeholder {
     border: 1px dotted #999;
     color: #FFF;
     font-size: 12px;
     white-space: nowrap;
     min-width: 500px;
   }
-  .mirae-clip[mira-editor-el].node.placeholder:before {
+  .montagen-clip[mira-editor-el].node.placeholder:before {
     display: none;
   }
-  .mirae-clip[mira-editor-el].node.video .preview-canvas {
+  .montagen-clip[mira-editor-el].node.video .preview-canvas {
     background-color: #000;
   }
-  .mirae-clip[mira-editor-el].node.audio {
+  .montagen-clip[mira-editor-el].node.audio {
     color: #FFF;
     font-size: 12px;
   }
-  .mirae-clip[mira-editor-el].node.audio .preview-canvas {
+  .montagen-clip[mira-editor-el].node.audio .preview-canvas {
     background-color: #006D4C;
   }
-  .mirae-clip[mira-editor-el].node.text {
+  .montagen-clip[mira-editor-el].node.text {
     background: #1A2451;
     justify-content: flex-start;
   }
-  .mirae-clip[mira-editor-el].node.text .preview-canvas {
+  .montagen-clip[mira-editor-el].node.text .preview-canvas {
     background: #1A2451;
     height: 100%;
     bottom: 0;
     z-index: 1;
   }
-  .mirae-clip[mira-editor-el].node.text .text-view {
+  .montagen-clip[mira-editor-el].node.text .text-view {
     pointer-events: none;
     margin-left: 5px;
     font-size: 12px;
@@ -12896,59 +13004,59 @@ styleList$7.push([
     overflow: hidden;
     z-index: 2;
   }
-  .mirae-clip[mira-editor-el].node.text.has-speech .text-view {
+  .montagen-clip[mira-editor-el].node.text.has-speech .text-view {
     margin-left: 25px;
   }
-  .mirae-clip[mira-editor-el].node.text .audio-btn {
+  .montagen-clip[mira-editor-el].node.text .audio-btn {
     display: none;
   }
-  .mirae-clip[mira-editor-el].node.text.hover {
+  .montagen-clip[mira-editor-el].node.text.hover {
     background: #1A2451;
   }
-  .mirae-clip[mira-editor-el].node.constraint-related {
+  .montagen-clip[mira-editor-el].node.constraint-related {
     border: 2px dashed var(--miraeRefLineColor);
     transition-duration: 0s;
     z-index: 5;
   }
-  .mirae-clip[mira-editor-el].node.moving {
+  .montagen-clip[mira-editor-el].node.moving {
     z-index: 8 !important;
   }
-  .mirae-clip[mira-editor-el].node.moving:before {
+  .montagen-clip[mira-editor-el].node.moving:before {
     opacity: 0;
     top: 0;
   }
-  .mirae-clip[mira-editor-el].node.move-parent {
+  .montagen-clip[mira-editor-el].node.move-parent {
     border: 2px dashed var(--miraeHighlightColor);
   }
-  .mirae-clip[mira-editor-el].node.move-parent:before {
+  .montagen-clip[mira-editor-el].node.move-parent:before {
     opacity: 1;
     top: -23px;
     content: "跟随绑定";
     background: var(--miraeSelBorderColor);
   }
-  .mirae-clip[mira-editor-el].node.hover {
+  .montagen-clip[mira-editor-el].node.hover {
     z-index: 3;
     border: 2px solid var(--miraeHighlightColor) !important;
   }
-  .mirae-clip[mira-editor-el].node.hover.disable {
+  .montagen-clip[mira-editor-el].node.hover.disable {
     opacity: 0.75;
   }
-  .mirae-clip[mira-editor-el].node.auto-hover {
+  .montagen-clip[mira-editor-el].node.auto-hover {
     z-index: 3;
     border: 2px solid var(--miraeHighlightColor) !important;
   }
-  .mirae-clip[mira-editor-el].node.auto-hover .mirae-clip-pline {
+  .montagen-clip[mira-editor-el].node.auto-hover .montagen-clip-pline {
     opacity: 0.3;
   }
-  .mirae-clip[mira-editor-el].node.animate {
+  .montagen-clip[mira-editor-el].node.animate {
     transition-property: top, left;
     transition-duration: 0.3s;
   }
-  .mirae-clip[mira-editor-el].node.selected {
+  .montagen-clip[mira-editor-el].node.selected {
     z-index: 5;
     border: 2px solid var(--miraeSelBorderColor) !important;
   }
-  .mirae-clip[mira-editor-el].node.trans {
+  .montagen-clip[mira-editor-el].node.trans {
     z-index: 6;
     background-color: rgba(0, 0, 0, 0.8);
     border-width: 2px;
@@ -12959,15 +13067,15 @@ styleList$7.push([
     background-repeat: no-repeat;
     background-image: url(${svgDataURL2$1});
   }
-  .mirae-clip[mira-editor-el].node.cut {
+  .montagen-clip[mira-editor-el].node.cut {
     opacity: 0.3;
     border: 2px dashed var(--miraeBorderColor) !important;
   }
-  .mirae-clip[mira-editor-el].node.copy {
+  .montagen-clip[mira-editor-el].node.copy {
     opacity: 0.3;
     border: 2px solid var(--miraeBorderColor) !important;
   }
-  .mirae-clip[mira-editor-el].node .canvas-ctr {
+  .montagen-clip[mira-editor-el].node .canvas-ctr {
     pointer-events: none;
     position: absolute;
     height: 100%;
@@ -12978,13 +13086,13 @@ styleList$7.push([
     align-items: center;
     justify-content: center;
   }
-  .mirae-clip[mira-editor-el].node .preview-canvas {
+  .montagen-clip[mira-editor-el].node .preview-canvas {
     pointer-events: none;
     position: absolute;
     left: 0;
     background: transparent;
   }
-  .mirae-clip[mira-editor-el].node .audio-btn {
+  .montagen-clip[mira-editor-el].node .audio-btn {
     pointer-events: auto;
     cursor: pointer;
     background-color: #004d52;
@@ -13001,17 +13109,17 @@ styleList$7.push([
     background-repeat: no-repeat;
     background-image: url(${svgDataURL3$1});
   }
-  .mirae-clip[mira-editor-el].node .audio-btn:hover {
+  .montagen-clip[mira-editor-el].node .audio-btn:hover {
     background-color: #004d52;
   }
-  .mirae-clip[mira-editor-el].node .audio-btn.audio-btn-off {
+  .montagen-clip[mira-editor-el].node .audio-btn.audio-btn-off {
     background-color: rgba(54, 54, 91, 0.8);
     background-position: center;
     background-size: 15px 15px;
     background-repeat: no-repeat;
     background-image: url(${svgDataURL4$1});
   }
-  .mirae-clip[mira-editor-el].node .audio-btn.audio-btn-off:hover {
+  .montagen-clip[mira-editor-el].node .audio-btn.audio-btn-off:hover {
     background-color: rgba(88, 88, 100, 0.8);
   }
   `,
@@ -13084,14 +13192,14 @@ let EditorButtonComponent = Su;
 EditorButtonComponent.register();
 class EditorClipHandleElement extends CustomHtmlElementBase {
   init() {
-    return this.addClass("mirae-clip-handle"), super.init();
+    return this.addClass("montagen-clip-handle"), super.init();
   }
 }
 At(EditorClipHandleElement, "TAG", "montagen-editor-clip-handle");
 EditorClipHandleElement.register();
 class EditorClipPlineElement extends CustomHtmlElementBase {
   init() {
-    return this.addClass("mirae-clip-pline"), super.init();
+    return this.addClass("montagen-clip-pline"), super.init();
   }
   update(e, t, r) {
     this.setStyle({
@@ -62646,7 +62754,7 @@ function insert(a2, e) {
 }
 function createStyleOption(a2 = {}) {
   const e = {
-    attributes: { mira: "player" },
+    attributes: { montagen: "player" },
     ...a2
   };
   return e.styleTagTransform = styleTagTransform, e.setAttributes = setAttributes, e.insert = insert.bind(null, "head"), e.domAPI = domAPI, e.insertStyleElement = insertStyleElement, e;
@@ -63717,7 +63825,7 @@ const index$2 = {
 };
 class EditorClipElement extends CustomHtmlElementBase {
   init() {
-    return super.addClass("mirae-clip"), this.videoQueue = new TaskQueue(), this.audioQueue = new TaskQueue(), super.init();
+    return super.addClass("montagen-clip"), this.videoQueue = new TaskQueue(), this.audioQueue = new TaskQueue(), super.init();
   }
   addClass(e, t) {
     return super.addClass(e, t), this.classChanged(), this;
@@ -63795,7 +63903,7 @@ class EditorClipElement extends CustomHtmlElementBase {
         Object.values(this.handles).map((t) => t.hide());
   }
   createHandle(e) {
-    return EditorClipHandleElement.create(this).set("data-type", e).addClass(`mirae-clip-handle-${e}`).addMoveListener(this);
+    return EditorClipHandleElement.create(this).set("data-type", e).addClass(`montagen-clip-handle-${e}`).addMoveListener(this);
   }
   clear() {
     this.cropView && this.cropView.clear(), this.handles.start && this.handles.start.clear(), this.handles.end && this.handles.end.clear(), super.clear();
@@ -63872,7 +63980,7 @@ class EditorClipElement extends CustomHtmlElementBase {
   }
   setOpts(e) {
     const { node: t, root: r } = e;
-    return this.node = t, this.root = r, e.shadow ? (this.isShadow = true, this.addClass("shadow")) : (t.id && this.set("id", `mirae-clip-${t.id}`), this.addClass("node"), this.refresh()), this;
+    return this.node = t, this.root = r, e.shadow ? (this.isShadow = true, this.addClass("shadow")) : (t.id && this.set("id", `montagen-clip-${t.id}`), this.addClass("node"), this.refresh()), this;
   }
   setScale(e) {
     if (this.node && this.root)
@@ -66528,7 +66636,7 @@ const styleList$2 = createStyleList$1();
 styleList$2.push([
   139,
   `
-  .mirae-crop.origin[mira-editor-el] {
+  .montagen-crop.origin[mira-editor-el] {
     border: 1px dotted var(--miraeBorderColor);
     box-sizing: content-box;
     margin: 0;
@@ -66542,13 +66650,13 @@ styleList$2.push([
     pointer-events: auto;
     transform: translate(var(--x), var(--y));
   }
-  .mirae-crop.origin[mira-editor-el] img[mira-editor-el] {
+  .montagen-crop.origin[mira-editor-el] img[mira-editor-el] {
     opacity: 0.3;
     width: 100%;
     height: 100%;
     pointer-events: none;
   }
-  .mirae-crop.origin[mira-editor-el] .cropped[mira-editor-el] {
+  .montagen-crop.origin[mira-editor-el] .cropped[mira-editor-el] {
     border: 2px solid var(--miraeCropBorderColor);
     position: static;
     display: flex;
@@ -66560,7 +66668,7 @@ styleList$2.push([
     height: var(--height);
     transform: translate(var(--x), var(--y));
   }
-  .mirae-crop.origin[mira-editor-el] .mirae-grid-row[mira-editor-el] {
+  .montagen-crop.origin[mira-editor-el] .montagen-grid-row[mira-editor-el] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66568,7 +66676,7 @@ styleList$2.push([
     width: 100%;
     height: 100%;
   }
-  .mirae-crop.origin[mira-editor-el] .mirae-grid-row[mira-editor-el] .mirae-grid[mira-editor-el] {
+  .montagen-crop.origin[mira-editor-el] .montagen-grid-row[mira-editor-el] .montagen-grid[mira-editor-el] {
     position: static;
     border: 0.5px solid rgba(255, 255, 255, 0.5);
     width: 100%;
@@ -66595,9 +66703,9 @@ class EditorCropElement extends EditorMoveElement {
       return s.setAttribute("mira-editor-el", ""), s.classList.add(t), r.appendChild(s), s;
     };
     for (let t = 0; t < 3; t++) {
-      const r = e("mirae-grid-row", this);
+      const r = e("montagen-grid-row", this);
       for (let s = 0; s < 3; s++)
-        e("mirae-grid", r);
+        e("montagen-grid", r);
     }
   }
   fit() {
@@ -66635,7 +66743,7 @@ class EditorCropElement extends EditorMoveElement {
     this.canvas = null, this.image = null, super.remove();
   }
 }
-At(EditorCropElement, "TAG", "montagen-editor-crop"), At(EditorCropElement, "STYLE_CLASS", "mirae-crop");
+At(EditorCropElement, "TAG", "montagen-editor-crop"), At(EditorCropElement, "STYLE_CLASS", "montagen-crop");
 EditorCropElement.register();
 const {
   LEFT: leftBoundary,
@@ -66903,7 +67011,7 @@ const styleList$1 = createStyleList$1();
 styleList$1.push([
   143,
   `
-  .mirae-fit.crop[mira-editor-el] {
+  .montagen-fit.crop[mira-editor-el] {
     width: 32px;
     height: 32px;
     display: flex;
@@ -66914,12 +67022,12 @@ styleList$1.push([
     cursor: pointer;
     position: relative;
   }
-  .mirae-fit.crop[mira-editor-el].hide {
+  .montagen-fit.crop[mira-editor-el].hide {
     width: 0px;
     height: 0px;
     pointer-events: none;
   }
-  .mirae-fit.crop[mira-editor-el]:after {
+  .montagen-fit.crop[mira-editor-el]:after {
     width: 20px;
     height: 20px;
     content: "";
@@ -66935,7 +67043,7 @@ styleList$1.push([
     transform: rotate(var(--revert-rot));
     background-image: url(${cropIcon});
   }
-  .mirae-fit.fit[mira-editor-el] {
+  .montagen-fit.fit[mira-editor-el] {
     width: 32px;
     height: 32px;
     display: flex;
@@ -66946,12 +67054,12 @@ styleList$1.push([
     cursor: pointer;
     position: relative;
   }
-  .mirae-fit.fit[mira-editor-el].hide {
+  .montagen-fit.fit[mira-editor-el].hide {
     width: 0px;
     height: 0px;
     pointer-events: none;
   }
-  .mirae-fit.fit[mira-editor-el]:after {
+  .montagen-fit.fit[mira-editor-el]:after {
     width: 20px;
     height: 20px;
     content: "";
@@ -66966,8 +67074,8 @@ styleList$1.push([
     z-index: 9;
     background-image: url(${fitIcon});
   }
-  .left[mira-editor-el] .mirae-fit.fit[mira-editor-el],
-  .right[mira-editor-el] .mirae-fit.fit[mira-editor-el] {
+  .left[mira-editor-el] .montagen-fit.fit[mira-editor-el],
+  .right[mira-editor-el] .montagen-fit.fit[mira-editor-el] {
     transform: rotate(-90deg);
   }
   `,
@@ -66977,7 +67085,7 @@ createStyleManager$1(styleList$1, createStyleOption$1());
 styleList$1.locals && styleList$1.locals;
 class EditorFitElement extends EditorMoveElement {
 }
-At(EditorFitElement, "TAG", "montagen-editor-fit"), At(EditorFitElement, "STYLE_CLASS", "mirae-fit");
+At(EditorFitElement, "TAG", "montagen-editor-fit"), At(EditorFitElement, "STYLE_CLASS", "montagen-fit");
 EditorFitElement.register();
 const rs = class rs2 extends EditorMoveComponent {
   show(e = true) {
@@ -67018,7 +67126,7 @@ const styleList = createStyleList$1();
 styleList.push([
   149,
   `
-  .mirae-constraint[mira-editor-el] {
+  .montagen-constraint[mira-editor-el] {
       width: 100%;
       height: 100%;
       pointer-events: none;
@@ -67026,7 +67134,7 @@ styleList.push([
       z-index: 9;
       text-align: center;
     }
-    .mirae-line[mira-editor-el] {
+    .montagen-line[mira-editor-el] {
       pointer-events: none;
       box-sizing: border-box;
       width: 0px;
@@ -67036,23 +67144,23 @@ styleList.push([
       transform-origin: center;
       transform: translate(var(--x), var(--y));
     }
-    .mirae-line[mira-editor-el].mirae-line-x {
+    .montagen-line[mira-editor-el].montagen-line-x {
       width: 1px;
       height: var(--len);
       border-left: 1px dashed var(--miraeRefLineColor);
     }
-    .mirae-line[mira-editor-el].mirae-line-x.mirae-line-solid {
+    .montagen-line[mira-editor-el].montagen-line-x.montagen-line-solid {
       border-left: 1px solid var(--miraeRefLineColor);
     }
-    .mirae-line[mira-editor-el].mirae-line-y {
+    .montagen-line[mira-editor-el].montagen-line-y {
       height: 1px;
       width: var(--len);
       border-top: 1px dashed var(--miraeRefLineColor);
     }
-    .mirae-line[mira-editor-el].mirae-line-y.mirae-line-solid {
+    .montagen-line[mira-editor-el].montagen-line-y.montagen-line-solid {
       border-top: 1px solid var(--miraeRefLineColor);
     }
-    .mirae-line[mira-editor-el].mirae-line-canvas {
+    .montagen-line[mira-editor-el].montagen-line-canvas {
       width: var(--width);
       height: var(--height);
       border: 1px solid var(--miraeRefLineColor);
@@ -67102,7 +67210,7 @@ class EditorLineElement extends CustomHtmlElementBase {
     return super.create(t).addClass(s).setOpts(e);
   }
 }
-At(EditorLineElement, "TAG", "montagen-editor-line"), At(EditorLineElement, "STYLE_CLASS", "mirae-line");
+At(EditorLineElement, "TAG", "montagen-editor-line"), At(EditorLineElement, "STYLE_CLASS", "montagen-line");
 EditorLineElement.register();
 const drawingCanvas = "canvas", shiftKeys = ["Shift"];
 class yControlState extends ComponentBase {
@@ -67145,7 +67253,7 @@ class yControlState extends ComponentBase {
     };
   }
   initContainer() {
-    for (this.container || (this.container = document.createElement("div"), this.container.classList.add("mirae-constraint"), this.container.setAttribute("mira-editor-el", "")), this.container.parentNode !== this.selector.container && (this.container.remove(), this.selector.container.append(this.container)); this.container.firstChild; )
+    for (this.container || (this.container = document.createElement("div"), this.container.classList.add("montagen-constraint"), this.container.setAttribute("mira-editor-el", "")), this.container.parentNode !== this.selector.container && (this.container.remove(), this.selector.container.append(this.container)); this.container.firstChild; )
       this.container.removeChild(this.container.firstChild);
     this.refBounds = {}, this.scale = this.editor.scale;
   }
@@ -67172,7 +67280,7 @@ class yControlState extends ComponentBase {
         node: this.selected,
         container: t,
         scale: r
-      }).addClass("mirae-debug-box"), this.selected.on(CHANGING, () => this.debug_box.fit(r));
+      }).addClass("montagen-debug-box"), this.selected.on(CHANGING, () => this.debug_box.fit(r));
     }
   }
   updateConstraint() {
@@ -67386,6 +67494,7 @@ const controlClasses = [EditorSelectComponent, EditorMoveComponent, EditorResize
   highlightColor: "#FFFFFF",
   cropColor: "#E33",
   refLineColor: "#F8DD0B",
+  // #F8DD0B
   textSelectionColor: "#7FD4FF",
   textCursorColor: "#EFEFEF",
   playerBgColor: "#20202d",
@@ -67507,11 +67616,11 @@ class Editor extends ExtendedEventEmitter {
   }
   initContainer(e) {
     for (const t of e.querySelectorAll(
-      ".mira-editor"
+      ".montagen-editor"
     ))
       t !== this.container && e.removeChild(t);
     if (!this.container || this.container.parentElement !== e) {
-      this.container && (this.parents = null, this.container.remove()), this.container = document.createElement("div"), this.container.classList.add("mira-editor"), this.container.setAttribute("mira-editor-el", "");
+      this.container && (this.parents = null, this.container.remove()), this.container = document.createElement("div"), this.container.classList.add("montagen-editor"), this.container.setAttribute("mira-editor-el", "");
       for (const [t, r] of Object.entries(this.colors))
         this.container.style.setProperty(t, r);
       for (e.append(this.container), this.onCtrClick = this.onCanvasClick(), e.addEventListener("click", this.onCtrClick), this.parents = [e]; e = e.parentElement; )
@@ -68515,8 +68624,8 @@ const _export_sfc = (sfc, props2) => {
   }
   return target2;
 };
-const _hoisted_1$f = { class: "w-full p-2" };
-const _sfc_main$i = /* @__PURE__ */ defineComponent({
+const _hoisted_1$k = { class: "w-full p-2" };
+const _sfc_main$o = /* @__PURE__ */ defineComponent({
   __name: "outPutForm",
   setup(__props, { expose: __expose }) {
     const fileStore = useFileStore();
@@ -68657,7 +68766,7 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
       const _component_el_form_item = ElFormItem;
       const _component_el_button = ElButton;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$f, [
+      return openBlock(), createElementBlock("div", _hoisted_1$k, [
         createBaseVNode("div", null, [
           createVNode(_component_el_form, {
             "label-position": "top",
@@ -68721,15 +68830,15 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$e = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
-const _hoisted_2$a = { class: "comfy-vue-side-bar-header" };
-const _hoisted_3$7 = { class: "text-sm truncate" };
-const _hoisted_4$7 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
-const _hoisted_5$5 = {
+const _hoisted_1$j = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _hoisted_2$f = { class: "comfy-vue-side-bar-header" };
+const _hoisted_3$a = { class: "text-sm truncate" };
+const _hoisted_4$9 = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
+const _hoisted_5$7 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$3 = ["onClick", "onContextmenu"];
+const _hoisted_6$4 = ["onClick", "onContextmenu"];
 const _hoisted_7$3 = {
   key: 0,
   class: "w-full flex items-center"
@@ -68755,7 +68864,7 @@ const _hoisted_15$1 = {
   class: "w-full flex items-center"
 };
 const _hoisted_16$1 = { class: "truncate w-full text-center name" };
-const _sfc_main$h = /* @__PURE__ */ defineComponent({
+const _sfc_main$n = /* @__PURE__ */ defineComponent({
   __name: "clips",
   setup(__props) {
     useMenuStore();
@@ -68802,15 +68911,15 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
       const _component_Toolbar = script$2;
       const _component_ContextMenu = script$3;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$e, [
-        createBaseVNode("div", _hoisted_2$a, [
+      return openBlock(), createElementBlock("div", _hoisted_1$j, [
+        createBaseVNode("div", _hoisted_2$f, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
-              createBaseVNode("span", _hoisted_3$7, toDisplayString(title.value), 1)
+              createBaseVNode("span", _hoisted_3$a, toDisplayString(title.value), 1)
             ]),
             center: withCtx(() => _cache[0] || (_cache[0] = [])),
             end: withCtx(() => [
-              createBaseVNode("div", _hoisted_4$7, [
+              createBaseVNode("div", _hoisted_4$9, [
                 withDirectives(createVNode(_component_Button, {
                   text: "",
                   icon: "pi pi-refresh",
@@ -68826,7 +68935,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
           })
         ]),
         createBaseVNode("div", null, [
-          createBaseVNode("ul", _hoisted_5$5, [
+          createBaseVNode("ul", _hoisted_5$7, [
             (openBlock(true), createElementBlock(Fragment, null, renderList$1(clips2.value, (item) => {
               return openBlock(), createElementBlock("li", {
                 onClick: ($event) => goWorkFlow(item),
@@ -68879,7 +68988,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$3);
+              ], 40, _hoisted_6$4);
             }), 128))
           ])
         ]),
@@ -68900,10 +69009,10 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-f4c79b70"]]);
-const _hoisted_1$d = { class: "editable-text" };
-const _hoisted_2$9 = { key: 0 };
-const _sfc_main$g = /* @__PURE__ */ defineComponent({
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-f4c79b70"]]);
+const _hoisted_1$i = { class: "editable-text" };
+const _hoisted_2$e = { key: 0 };
+const _sfc_main$m = /* @__PURE__ */ defineComponent({
   __name: "EditableText",
   props: {
     modelValue: {},
@@ -68945,8 +69054,8 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
-      return openBlock(), createElementBlock("div", _hoisted_1$d, [
-        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$9, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
+      return openBlock(), createElementBlock("div", _hoisted_1$i, [
+        !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$e, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
           key: 1,
           type: "text",
           size: "small",
@@ -68970,8 +69079,8 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-5cf00c0d"]]);
-const _sfc_main$f = {
+const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-5cf00c0d"]]);
+const _sfc_main$l = {
   props: {
     // 面板配置数组
     sourcePanels: {
@@ -69133,15 +69242,15 @@ const _sfc_main$f = {
     if (this.splitInstance) this.splitInstance.destroy();
   }
 };
-const _hoisted_1$c = {
+const _hoisted_1$h = {
   class: "panels-container tw-h-100",
   ref: "container"
 };
-const _hoisted_2$8 = { class: "tw-h-full tw-flex tw-flex-col" };
-const _hoisted_3$6 = ["onClick"];
-const _hoisted_4$6 = { class: "tw-ps-1" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$c, [
+const _hoisted_2$d = { class: "tw-h-full tw-flex tw-flex-col" };
+const _hoisted_3$9 = ["onClick"];
+const _hoisted_4$8 = { class: "tw-ps-1" };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", _hoisted_1$h, [
     (openBlock(true), createElementBlock(Fragment, null, renderList$1($data.panels, (panel, index2) => {
       return openBlock(), createElementBlock("div", {
         key: index2,
@@ -69149,7 +69258,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ref_for: true,
         ref: (el) => $data.panelElements[index2] = el
       }, [
-        createBaseVNode("div", _hoisted_2$8, [
+        createBaseVNode("div", _hoisted_2$d, [
           createBaseVNode("div", {
             class: "panel-header py-1 px-2",
             onClick: ($event) => $options.togglePanel(index2),
@@ -69160,9 +69269,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 class: normalizeClass(["pi", panel.expanded ? "pi-chevron-down" : "pi-chevron-right"]),
                 style: { "font-size": "1rem" }
               }, null, 2),
-              createBaseVNode("span", _hoisted_4$6, toDisplayString(panel.title), 1)
+              createBaseVNode("span", _hoisted_4$8, toDisplayString(panel.title), 1)
             ])
-          ], 12, _hoisted_3$6),
+          ], 12, _hoisted_3$9),
           createBaseVNode("div", {
             class: normalizeClass(["panel-content flex-1", [panel.expanded ? "tw-overflow-auto" : "tw-overflow-hidden"]])
           }, [
@@ -69173,7 +69282,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render], ["__scopeId", "data-v-95f9c909"]]);
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$1], ["__scopeId", "data-v-95f9c909"]]);
 const defaultGraph = {
   last_node_id: 9,
   last_link_id: 9,
@@ -69358,9 +69467,9 @@ const useWorkflowService = () => {
     closeWorkflow
   };
 };
-const _hoisted_1$b = { class: "choose-project flex h-96" };
-const _hoisted_2$7 = { class: "list-box tw-min-w-44" };
-const _sfc_main$e = /* @__PURE__ */ defineComponent({
+const _hoisted_1$g = { class: "choose-project flex h-96" };
+const _hoisted_2$c = { class: "list-box tw-min-w-44" };
+const _sfc_main$k = /* @__PURE__ */ defineComponent({
   __name: "chooseProject",
   setup(__props) {
     const confirm = useConfirm();
@@ -69457,8 +69566,8 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
       const _component_ContextMenu = script$3;
       const _component_ConfirmDialog = script$6;
       return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", _hoisted_1$b, [
-          createBaseVNode("div", _hoisted_2$7, [
+        createBaseVNode("div", _hoisted_1$g, [
+          createBaseVNode("div", _hoisted_2$c, [
             createVNode(_component_Listbox, {
               modelValue: selectedProject.value,
               "onUpdate:modelValue": [
@@ -69499,123 +69608,10 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-f6030871"]]);
-const _hoisted_1$a = { class: "folder-project" };
-const _hoisted_2$6 = { class: "form-wrapper w-full tw-px-4" };
-const _hoisted_3$5 = { class: "form-item" };
-const _hoisted_4$5 = { class: "form-item-content" };
-const _hoisted_5$4 = { class: "flex justify-center" };
-const _sfc_main$d = /* @__PURE__ */ defineComponent({
-  __name: "chooseFolderProject",
-  setup(__props) {
-    const dialogStore = useDialogStore();
-    const workSpaceStore = useWorkSpaceStore();
-    const initialValues = reactive({
-      path: ""
-    });
-    const resolver = ({ values }) => {
-      const errors = {};
-      if (!values.path) {
-        errors.path = [{ message: "path is required." }];
-      }
-      return {
-        values,
-        // (Optional) Used to pass current form values to submit event.
-        errors
-      };
-    };
-    const isLoading = ref$3(false);
-    const onFormSubmit = async ({ values, valid }) => {
-      if (valid) {
-        isLoading.value = true;
-        let response = await app$1.api.fetchApi(`/Montagen/Proj/Open`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            path: values.path
-          })
-        });
-        isLoading.value = false;
-        const json = await response.json();
-        if (json.code == 0) {
-          workSpaceStore.setActiveProject(json.data);
-          dialogStore.closeDialog();
-          workSpaceStore.getlists();
-        } else {
-          app$1.extensionManager.toast.add({
-            severity: "info",
-            summary: "tips!",
-            detail: json.msg,
-            life: 3e3
-          });
-        }
-      }
-    };
-    return (_ctx, _cache) => {
-      const _component_InputText = script$4;
-      const _component_Message = script$7;
-      const _component_Button = script$1;
-      const _component_Form = script$8;
-      return openBlock(), createElementBlock("div", _hoisted_1$a, [
-        createBaseVNode("div", _hoisted_2$6, [
-          createVNode(_component_Form, {
-            initialValues,
-            resolver,
-            onSubmit: onFormSubmit,
-            class: "flex flex-col gap-4 w-full"
-          }, {
-            default: withCtx(($form) => {
-              var _a2;
-              return [
-                createBaseVNode("div", _hoisted_3$5, [
-                  _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "Please enter the project folder path:", -1)),
-                  createBaseVNode("div", _hoisted_4$5, [
-                    createVNode(_component_InputText, {
-                      name: "path",
-                      type: "text",
-                      placeholder: "path",
-                      fluid: ""
-                    }),
-                    ((_a2 = $form.path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
-                      key: 0,
-                      severity: "error",
-                      size: "small",
-                      variant: "simple"
-                    }, {
-                      default: withCtx(() => {
-                        var _a3;
-                        return [
-                          createTextVNode$1(toDisplayString((_a3 = $form.path.error) == null ? void 0 : _a3.message), 1)
-                        ];
-                      }),
-                      _: 2
-                    }, 1024)) : createCommentVNode("", true)
-                  ])
-                ]),
-                createBaseVNode("div", _hoisted_5$4, [
-                  createVNode(_component_Button, {
-                    class: "tw-w-full",
-                    type: "submit",
-                    loading: isLoading.value,
-                    severity: "secondary",
-                    label: "Submit"
-                  }, null, 8, ["loading"])
-                ])
-              ];
-            }),
-            _: 1
-          }, 8, ["initialValues"])
-        ])
-      ]);
-    };
-  }
-});
-const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-68de2634"]]);
-const _hoisted_1$9 = { class: "label tw-py-2" };
-const _hoisted_2$5 = { class: "content" };
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
+const ChooseProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-f6030871"]]);
+const _hoisted_1$f = { class: "label tw-py-2" };
+const _hoisted_2$b = { class: "content" };
+const _sfc_main$j = /* @__PURE__ */ defineComponent({
   __name: "propertyAsset",
   props: {
     data: {}
@@ -69629,8 +69625,8 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
             class: "px-2 tw-mb-2",
             key: key2
           }, [
-            createBaseVNode("div", _hoisted_1$9, toDisplayString(key2) + ":", 1),
-            createBaseVNode("div", _hoisted_2$5, [
+            createBaseVNode("div", _hoisted_1$f, toDisplayString(key2) + ":", 1),
+            createBaseVNode("div", _hoisted_2$b, [
               createVNode(_component_InputText, {
                 value: _ctx.data[key2],
                 disabled: "",
@@ -69747,7 +69743,7 @@ const previewUtils = {
     };
   }
 };
-const _sfc_main$b = /* @__PURE__ */ defineComponent({
+const _sfc_main$i = /* @__PURE__ */ defineComponent({
   __name: "propertyClip",
   props: {
     data: {}
@@ -69843,7 +69839,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       graph.setDirtyCanvas(true, true);
     }
     return (_ctx, _cache) => {
-      const _component_Tree = script$9;
+      const _component_Tree = script$7;
       return openBlock(), createElementBlock("div", null, [
         createVNode(_component_Tree, {
           class: "tree-explorer py-0 px-2 2xl:px-4",
@@ -69870,12 +69866,12 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$8 = { class: "parent-container" };
-const _hoisted_2$4 = { class: "layout-grid" };
-const _hoisted_3$4 = { class: "px-2 tw-mb-2" };
-const _hoisted_4$4 = { class: "label tw-py-2" };
-const _hoisted_5$3 = { class: "content" };
-const _sfc_main$a = /* @__PURE__ */ defineComponent({
+const _hoisted_1$e = { class: "parent-container" };
+const _hoisted_2$a = { class: "layout-grid" };
+const _hoisted_3$8 = { class: "px-2 tw-mb-2" };
+const _hoisted_4$7 = { class: "label tw-py-2" };
+const _hoisted_5$6 = { class: "content" };
+const _sfc_main$h = /* @__PURE__ */ defineComponent({
   __name: "propertyTimelineClip",
   props: {
     data: {}
@@ -69938,14 +69934,14 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     }
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
-      const _component_ToggleButton = script$a;
-      const _component_Select = script$b;
-      return openBlock(), createElementBlock("div", _hoisted_1$8, [
-        createBaseVNode("div", _hoisted_2$4, [
+      const _component_ToggleButton = script$8;
+      const _component_Select = script$9;
+      return openBlock(), createElementBlock("div", _hoisted_1$e, [
+        createBaseVNode("div", _hoisted_2$a, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(options, (value2, key2) => {
-            return openBlock(), createElementBlock("div", _hoisted_3$4, [
-              createBaseVNode("div", _hoisted_4$4, toDisplayString(key2) + ":", 1),
-              createBaseVNode("div", _hoisted_5$3, [
+            return openBlock(), createElementBlock("div", _hoisted_3$8, [
+              createBaseVNode("div", _hoisted_4$7, toDisplayString(key2) + ":", 1),
+              createBaseVNode("div", _hoisted_5$6, [
                 unref(propertyConfig)[type2.value][key2] && !Array.isArray(unref(propertyConfig)[type2.value][key2][0]) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                   ["FLOAT", "STRING", "INT"].includes(unref(propertyConfig)[type2.value][key2][0]) ? (openBlock(), createBlock(_component_InputText, {
                     key: 0,
@@ -69980,20 +69976,20 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-d2dd7d20"]]);
-const _hoisted_1$7 = { class: "px-2 tw-mb-2" };
-const _hoisted_2$3 = { class: "content" };
-const _hoisted_3$3 = { class: "px-2 tw-mb-2" };
-const _hoisted_4$3 = { class: "content" };
-const _hoisted_5$2 = { class: "px-2 tw-mb-2" };
-const _hoisted_6$2 = { class: "content" };
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-d2dd7d20"]]);
+const _hoisted_1$d = { class: "px-2 tw-mb-2" };
+const _hoisted_2$9 = { class: "content" };
+const _hoisted_3$7 = { class: "px-2 tw-mb-2" };
+const _hoisted_4$6 = { class: "content" };
+const _hoisted_5$5 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$3 = { class: "content" };
 const _hoisted_7$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_8$2 = { class: "content" };
 const _hoisted_9$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_10$2 = { class: "content" };
 const _hoisted_11$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_12$2 = { class: "content" };
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+const _sfc_main$g = /* @__PURE__ */ defineComponent({
   __name: "propertyVideo",
   props: {
     data: {}
@@ -70002,9 +69998,9 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
       return openBlock(), createElementBlock("div", null, [
-        createBaseVNode("div", _hoisted_1$7, [
+        createBaseVNode("div", _hoisted_1$d, [
           _cache[6] || (_cache[6] = createBaseVNode("div", { class: "label tw-py-2" }, "file_name:", -1)),
-          createBaseVNode("div", _hoisted_2$3, [
+          createBaseVNode("div", _hoisted_2$9, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.file_name,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.data.file_name = $event),
@@ -70013,9 +70009,9 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_3$3, [
+        createBaseVNode("div", _hoisted_3$7, [
           _cache[7] || (_cache[7] = createBaseVNode("div", { class: "label tw-py-2" }, "width:", -1)),
-          createBaseVNode("div", _hoisted_4$3, [
+          createBaseVNode("div", _hoisted_4$6, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.width,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.data.width = $event),
@@ -70024,9 +70020,9 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_5$2, [
+        createBaseVNode("div", _hoisted_5$5, [
           _cache[8] || (_cache[8] = createBaseVNode("div", { class: "label tw-py-2" }, "height:", -1)),
-          createBaseVNode("div", _hoisted_6$2, [
+          createBaseVNode("div", _hoisted_6$3, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.height,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
@@ -70072,8 +70068,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$6 = { class: "property-collection" };
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+const _hoisted_1$c = { class: "property-collection" };
+const _sfc_main$f = /* @__PURE__ */ defineComponent({
   __name: "propertyCollection",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -70082,26 +70078,26 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       return activeNode.value.fileType;
     });
     const components = {
-      "assets": markRaw(_sfc_main$c),
-      "workflows": markRaw(_sfc_main$b),
+      "assets": markRaw(_sfc_main$j),
+      "workflows": markRaw(_sfc_main$i),
       "timeline": markRaw(propertyTimelineClip),
-      "video": markRaw(_sfc_main$9),
-      "ref": markRaw(_sfc_main$c),
-      "ref_build": markRaw(_sfc_main$c)
+      "video": markRaw(_sfc_main$g),
+      "ref": markRaw(_sfc_main$j),
+      "ref_build": markRaw(_sfc_main$j)
     };
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$6, [
+      return openBlock(), createElementBlock("div", _hoisted_1$c, [
         (openBlock(), createBlock(resolveDynamicComponent(components[fileType.value]), { data: unref(activeNode) }, null, 8, ["data"]))
       ]);
     };
   }
 });
-const _hoisted_1$5 = { class: "wrapper-ref" };
-const _hoisted_2$2 = { class: "card tw-w-full" };
-const _hoisted_3$2 = { class: "form-item tw-my-2" };
-const _hoisted_4$2 = { class: "form-item-content" };
-const _hoisted_5$1 = { class: "flex justify-center" };
-const _hoisted_6$1 = { class: "form-item tw-my-2" };
+const _hoisted_1$b = { class: "wrapper-ref" };
+const _hoisted_2$8 = { class: "card tw-w-full" };
+const _hoisted_3$6 = { class: "form-item tw-my-2" };
+const _hoisted_4$5 = { class: "form-item-content" };
+const _hoisted_5$4 = { class: "flex justify-center" };
+const _hoisted_6$2 = { class: "form-item tw-my-2" };
 const _hoisted_7$1 = { class: "form-item-content" };
 const _hoisted_8$1 = { class: "flex justify-center" };
 const _hoisted_9$1 = { class: "form-item tw-my-2" };
@@ -70122,7 +70118,7 @@ const _hoisted_23 = { class: "form-item-content" };
 const _hoisted_24 = { class: "form-item tw-my-2" };
 const _hoisted_25 = { class: "form-item-content" };
 const _hoisted_26 = { class: "flex justify-center" };
-const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+const _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "addRefDialog",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -70239,17 +70235,17 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
       }
     };
     return (_ctx, _cache) => {
-      const _component_Tab = script$d;
-      const _component_TabList = script$c;
+      const _component_Tab = script$b;
+      const _component_TabList = script$a;
       const _component_InputText = script$4;
-      const _component_Message = script$7;
+      const _component_Message = script$f;
       const _component_Button = script$1;
-      const _component_Form = script$8;
-      const _component_TabPanel = script$f;
-      const _component_TabPanels = script$e;
+      const _component_Form = script$e;
+      const _component_TabPanel = script$d;
+      const _component_TabPanels = script$c;
       const _component_Tabs = script$g;
-      return openBlock(), createElementBlock("div", _hoisted_1$5, [
-        createBaseVNode("div", _hoisted_2$2, [
+      return openBlock(), createElementBlock("div", _hoisted_1$b, [
+        createBaseVNode("div", _hoisted_2$8, [
           createVNode(_component_Tabs, {
             value: protocolType.value,
             "onUpdate:value": tabChange
@@ -70297,9 +70293,9 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form3) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_3$2, [
+                            createBaseVNode("div", _hoisted_3$6, [
                               _cache[4] || (_cache[4] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
-                              createBaseVNode("div", _hoisted_4$2, [
+                              createBaseVNode("div", _hoisted_4$5, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -70322,7 +70318,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                                 }, 1024)) : createCommentVNode("", true)
                               ])
                             ]),
-                            createBaseVNode("div", _hoisted_5$1, [
+                            createBaseVNode("div", _hoisted_5$4, [
                               createVNode(_component_Button, {
                                 class: "tw-w-full",
                                 type: "submit",
@@ -70348,7 +70344,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_6$1, [
+                            createBaseVNode("div", _hoisted_6$2, [
                               _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
                               createBaseVNode("div", _hoisted_7$1, [
                                 createVNode(_component_InputText, {
@@ -70651,12 +70647,12 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-e5a5e115"]]);
-const _hoisted_1$4 = { class: "wrapper-ref" };
-const _hoisted_2$1 = { class: "card tw-w-full" };
-const _hoisted_3$1 = { class: "custom-header" };
-const _hoisted_4$1 = { key: 0 };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-e5a5e115"]]);
+const _hoisted_1$a = { class: "wrapper-ref" };
+const _hoisted_2$7 = { class: "card tw-w-full" };
+const _hoisted_3$5 = { class: "custom-header" };
+const _hoisted_4$4 = { key: 0 };
+const _sfc_main$d = /* @__PURE__ */ defineComponent({
   __name: "uploadAssetDialog",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -70724,8 +70720,8 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       const _component_Button = script$1;
       const _component_FileUpload = script$h;
       const _component_Toast = script$i;
-      return openBlock(), createElementBlock("div", _hoisted_1$4, [
-        createBaseVNode("div", _hoisted_2$1, [
+      return openBlock(), createElementBlock("div", _hoisted_1$a, [
+        createBaseVNode("div", _hoisted_2$7, [
           createVNode(_component_FileUpload, {
             ref_key: "fileUpload",
             ref: fileUpload,
@@ -70744,7 +70740,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
             fileLimit: 5
           }, {
             header: withCtx(({ chooseCallback }) => [
-              createBaseVNode("div", _hoisted_3$1, [
+              createBaseVNode("div", _hoisted_3$5, [
                 createVNode(_component_Button, {
                   label: "选择文件",
                   icon: "pi pi-plus",
@@ -70753,7 +70749,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
               ])
             ]),
             content: withCtx(({ files }) => [
-              files.length > 0 ? (openBlock(), createElementBlock("div", _hoisted_4$1, [
+              files.length > 0 ? (openBlock(), createElementBlock("div", _hoisted_4$4, [
                 createBaseVNode("h5", null, "待上传文件 (" + toDisplayString(files.length) + ")", 1),
                 createBaseVNode("ul", null, [
                   (openBlock(true), createElementBlock(Fragment, null, renderList$1(files, (file) => {
@@ -70795,8 +70791,8 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const uploadAssetDialog = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-f93fdfa7"]]);
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const uploadAssetDialog = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-f93fdfa7"]]);
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "workflowClips",
   props: {
     data: {}
@@ -71075,7 +71071,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       workSpaceStore.playerInstance && workSpaceStore.playerInstance.off("select", handleSelect);
     });
     return (_ctx, _cache) => {
-      const _component_Tree = script$9;
+      const _component_Tree = script$7;
       return openBlock(), createElementBlock("div", null, [
         createVNode(_component_Tree, {
           class: "tree-explorer py-0 px-2 2xl:px-4",
@@ -71098,6 +71094,548 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
             })
           }
         }, null, 8, ["value", "expandedKeys", "selectionKeys", "pt"])
+      ]);
+    };
+  }
+});
+const _sfc_main$b = {};
+function _sfc_render(_ctx, _cache) {
+  return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createBaseVNode("h3", { class: "tw-px-4" }, [
+      createBaseVNode("span", null, "项目模板")
+    ], -1)
+  ]));
+}
+const templateDialogHeader = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render]]);
+const useResponsiveCollapse = (breakpointThreshold = "lg") => {
+  const breakpoints = useBreakpoints(breakpointsTailwind);
+  const isSmallScreen = breakpoints.smallerOrEqual(breakpointThreshold);
+  const isOpen = ref$3(!isSmallScreen.value);
+  const onIsSmallScreenChange = () => {
+    if (isSmallScreen.value && isOpen.value) {
+      isOpen.value = false;
+    } else if (!isSmallScreen.value && !isOpen.value) {
+      isOpen.value = true;
+    }
+  };
+  watch(isSmallScreen, onIsSmallScreenChange);
+  return {
+    breakpoints,
+    isOpen,
+    isSmallScreen,
+    open: () => isOpen.value = true,
+    close: () => isOpen.value = false,
+    toggle: () => isOpen.value = !isOpen.value
+  };
+};
+const _hoisted_1$9 = { class: "tw-text-left tw-py-3 tw-px-12" };
+const _hoisted_2$6 = { class: "tw-text-lg" };
+const _hoisted_3$4 = ["data-id"];
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
+  __name: "TemplateSideNav",
+  props: {
+    tabs: {},
+    selectedTab: {}
+  },
+  emits: ["update:selectedTab"],
+  setup(__props, { emit: __emit }) {
+    const confirm = useConfirm();
+    const workSpaceStore = useWorkSpaceStore();
+    const props2 = __props;
+    const emit = __emit;
+    const handleTabSelection = (tab) => {
+      if (tab === null && props2.selectedTab !== null) {
+        return;
+      }
+      console.log("handleTabSelection_props", props2);
+      emit("update:selectedTab", tab);
+    };
+    const menuTargetNode = ref$3();
+    const menu = ref$3();
+    const onRightClick = (event2) => {
+      const target2 = event2.target.closest(".p-listbox-option");
+      if (!target2) return;
+      const itemId = target2.querySelector(".full-height-item").dataset.id;
+      let option = findItemById(itemId);
+      if (!option) return;
+      menuTargetNode.value = option;
+      menu.value.show(event2);
+    };
+    const findItemById = (id) => {
+      for (const group of props2.tabs) {
+        const item = group.items.find((item2) => item2.projectId === id);
+        if (item) return item;
+      }
+      return null;
+    };
+    const menuItems = [
+      {
+        label: "删除",
+        icon: "pi pi-fw pi-trash",
+        command: () => {
+          console.log("删除项目");
+          confirm.require({
+            group: "dialog2",
+            message: `Are you sure delete ${menuTargetNode.value.baseInfo.name} project?`,
+            header: "Confirmation",
+            icon: "pi pi-exclamation-triangle",
+            position: "top",
+            rejectProps: {
+              label: "Cancel",
+              severity: "secondary",
+              outlined: true
+            },
+            acceptProps: {
+              label: "Delete"
+            },
+            accept: () => {
+              deleteProject(menuTargetNode.value.baseInfo.projectId);
+            }
+          });
+        }
+      }
+    ];
+    const deleteProject = async (data) => {
+      console.log("当前选中的项目", props2.selectedTab, data);
+      if (props2.selectedTab === data) {
+        return app$1.extensionManager.toast.add({
+          severity: "info",
+          summary: "tips!",
+          detail: "Please switch items before deleting!",
+          life: 3e3
+        });
+      }
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
+        method: "DELETE"
+      });
+      await response.json();
+      workSpaceStore.getlists();
+    };
+    return (_ctx, _cache) => {
+      const _component_Listbox = script$5;
+      const _component_ScrollPanel = script$j;
+      const _component_ContextMenu = script$3;
+      const _component_ConfirmDialog = script$6;
+      return openBlock(), createElementBlock(Fragment, null, [
+        createVNode(_component_ScrollPanel, { class: "w-80 tw-flex-1" }, {
+          default: withCtx(() => [
+            createVNode(_component_Listbox, {
+              "model-value": _ctx.selectedTab,
+              "onUpdate:modelValue": handleTabSelection,
+              options: _ctx.tabs,
+              "option-group-label": "label",
+              "option-label": "name",
+              "option-value": "projectId",
+              "option-group-children": "items",
+              onContextmenu: _cache[0] || (_cache[0] = withModifiers(($event) => onRightClick($event), ["prevent"])),
+              class: "w-full border-0 bg-transparent shadow-none",
+              pt: {
+                list: { class: "tw-p-0" },
+                option: { class: "tw-px-12 tw-py-3 tw-text-lg" },
+                optionGroup: { class: "tw-p-0 tw-text-left tw-text-inherit" }
+              },
+              listStyle: "tw-max-height:unset"
+            }, {
+              optiongroup: withCtx((slotProps) => [
+                createBaseVNode("div", _hoisted_1$9, [
+                  createBaseVNode("h2", _hoisted_2$6, toDisplayString(slotProps.option.label), 1)
+                ])
+              ]),
+              option: withCtx(({ option }) => [
+                createBaseVNode("div", {
+                  class: "full-height-item",
+                  "data-id": option.projectId
+                }, toDisplayString(option.name), 9, _hoisted_3$4)
+              ]),
+              _: 1
+            }, 8, ["model-value", "options"])
+          ]),
+          _: 1
+        }),
+        createVNode(_component_ContextMenu, {
+          ref_key: "menu",
+          ref: menu,
+          model: menuItems,
+          pt: {
+            root: { style: { zIndex: 2022 } },
+            overlay: {
+              "aria-hidden": false,
+              "aria-modal": true,
+              role: "menu"
+            }
+          }
+        }, null, 512),
+        createVNode(_component_ConfirmDialog, { group: "dialog2" })
+      ], 64);
+    };
+  }
+});
+const _hoisted_1$8 = { class: "relative w-64 h-64 rounded-t-lg overflow-hidden select-none" };
+const _hoisted_2$5 = {
+  key: 1,
+  class: "w-full h-full flex items-center justify-center bg-surface-card"
+};
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+  __name: "BaseThumbnail",
+  props: {
+    hoverZoom: { default: 4 },
+    isHovered: { type: Boolean }
+  },
+  setup(__props) {
+    const error = ref$3(false);
+    const contentRef = ref$3(null);
+    onMounted(() => {
+      var _a2;
+      const images = Array.from(((_a2 = contentRef.value) == null ? void 0 : _a2.getElementsByTagName("img")) ?? []);
+      images.forEach((img) => {
+        useEventListener(img, "error", () => {
+          error.value = true;
+        });
+      });
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", _hoisted_1$8, [
+        !error.value ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          ref_key: "contentRef",
+          ref: contentRef,
+          class: "w-64 h-64 object-cover transform-gpu transition-transform duration-1000 ease-out",
+          style: normalizeStyle(
+            _ctx.isHovered ? { transform: `scale(${1 + _ctx.hoverZoom / 100})` } : void 0
+          )
+        }, [
+          renderSlot$1(_ctx.$slots, "default", {}, void 0, true)
+        ], 4)) : (openBlock(), createElementBlock("div", _hoisted_2$5, _cache[0] || (_cache[0] = [
+          createBaseVNode("i", { class: "pi pi-file text-4xl text-surface-600" }, null, -1)
+        ])))
+      ]);
+    };
+  }
+});
+const BaseThumbnail = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-c280557e"]]);
+const _hoisted_1$7 = { class: "overflow-hidden" };
+const _hoisted_2$4 = ["src", "alt"];
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+  __name: "DefaultThumbnail",
+  props: {
+    src: {},
+    alt: {},
+    hoverZoom: {},
+    isHovered: { type: Boolean }
+  },
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(BaseThumbnail, {
+        "hover-zoom": _ctx.hoverZoom,
+        "is-hovered": _ctx.isHovered
+      }, {
+        default: withCtx(() => [
+          createBaseVNode("div", _hoisted_1$7, [
+            createBaseVNode("img", {
+              src: _ctx.src,
+              alt: _ctx.alt,
+              draggable: "false",
+              class: "w-64 h-64 object-cover transform-gpu transition-transform duration-300 ease-out",
+              style: normalizeStyle(
+                _ctx.isHovered ? { transform: `scale(${1 + _ctx.hoverZoom / 100})` } : void 0
+              )
+            }, null, 12, _hoisted_2$4)
+          ])
+        ]),
+        _: 1
+      }, 8, ["hover-zoom", "is-hovered"]);
+    };
+  }
+});
+const _hoisted_1$6 = { class: "flex items-center justify-center" };
+const _hoisted_2$3 = { class: "relative overflow-hidden rounded-t-lg" };
+const _hoisted_3$3 = { class: "flex items-center px-4 py-3" };
+const _hoisted_4$3 = { class: "flex-1" };
+const _hoisted_5$3 = { class: "line-clamp-1 text-lg font-normal text-surface-900 dark:text-surface-100" };
+const _hoisted_6$1 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
+const UPSCALE_ZOOM_SCALE = 16;
+const DEFAULT_ZOOM_SCALE = 5;
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "TemplateWorkflowCard",
+  props: {
+    sourceModule: {}
+  },
+  emits: ["loadWorkflow"],
+  setup(__props) {
+    const cardRef = ref$3(null);
+    const isHovered = useElementHover(cardRef);
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(script$k), {
+        ref_key: "cardRef",
+        ref: cardRef,
+        class: "w-64 template-card rounded-2xl overflow-hidden cursor-pointer shadow-elevation-2 dark-theme:bg-dark-elevation-1",
+        pt: {
+          body: { class: "p-0" }
+        },
+        onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("loadWorkflow", _ctx.sourceModule))
+      }, {
+        header: withCtx(() => [
+          createBaseVNode("div", _hoisted_1$6, [
+            createBaseVNode("div", _hoisted_2$3, [
+              createVNode(_sfc_main$8, {
+                src: _ctx.sourceModule.src,
+                alt: _ctx.sourceModule.title,
+                "is-hovered": unref(isHovered),
+                "hover-zoom": _ctx.sourceModule.thumbnailVariant === "zoomHover" ? UPSCALE_ZOOM_SCALE : DEFAULT_ZOOM_SCALE
+              }, null, 8, ["src", "alt", "is-hovered", "hover-zoom"])
+            ])
+          ])
+        ]),
+        content: withCtx(() => [
+          createBaseVNode("div", _hoisted_3$3, [
+            createBaseVNode("div", _hoisted_4$3, [
+              createBaseVNode("h3", _hoisted_5$3, toDisplayString(_ctx.sourceModule.title), 1),
+              createBaseVNode("p", _hoisted_6$1, toDisplayString(_ctx.sourceModule.description), 1)
+            ]),
+            _cache[1] || (_cache[1] = createBaseVNode("div", { class: "tw-flex xl:flex tw-items-center tw-justify-center ml-4 tw-w-10 tw-h-10 tw-rounded-full tw-bg-surface-100" }, [
+              createBaseVNode("i", { class: "pi pi-angle-right tw-text-2xl" })
+            ], -1))
+          ])
+        ]),
+        _: 1
+      }, 512);
+    };
+  }
+});
+const _hoisted_1$5 = { class: "folder-project" };
+const _hoisted_2$2 = { class: "form-wrapper w-full tw-px-4" };
+const _hoisted_3$2 = { class: "form-item" };
+const _hoisted_4$2 = { class: "form-item-content" };
+const _hoisted_5$2 = { class: "flex justify-center" };
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  __name: "chooseFolderProject",
+  setup(__props) {
+    const dialogStore = useDialogStore();
+    const workSpaceStore = useWorkSpaceStore();
+    const initialValues = reactive({
+      path: ""
+    });
+    const resolver = ({ values }) => {
+      const errors = {};
+      if (!values.path) {
+        errors.path = [{ message: "path is required." }];
+      }
+      return {
+        values,
+        // (Optional) Used to pass current form values to submit event.
+        errors
+      };
+    };
+    const isLoading = ref$3(false);
+    const onFormSubmit = async ({ values, valid }) => {
+      if (valid) {
+        isLoading.value = true;
+        let response = await app$1.api.fetchApi(`/Montagen/Proj/Open`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            path: values.path
+          })
+        });
+        isLoading.value = false;
+        const json = await response.json();
+        if (json.code == 0) {
+          workSpaceStore.setActiveProject(json.data);
+          dialogStore.closeDialog();
+          workSpaceStore.getlists();
+        } else {
+          app$1.extensionManager.toast.add({
+            severity: "info",
+            summary: "tips!",
+            detail: json.msg,
+            life: 3e3
+          });
+        }
+      }
+    };
+    return (_ctx, _cache) => {
+      const _component_InputText = script$4;
+      const _component_Message = script$f;
+      const _component_Button = script$1;
+      const _component_Form = script$e;
+      return openBlock(), createElementBlock("div", _hoisted_1$5, [
+        createBaseVNode("div", _hoisted_2$2, [
+          createVNode(_component_Form, {
+            initialValues,
+            resolver,
+            onSubmit: onFormSubmit,
+            class: "flex flex-col gap-4 w-full"
+          }, {
+            default: withCtx(($form) => {
+              var _a2;
+              return [
+                createBaseVNode("div", _hoisted_3$2, [
+                  _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "Please enter the project folder path:", -1)),
+                  createBaseVNode("div", _hoisted_4$2, [
+                    createVNode(_component_InputText, {
+                      name: "path",
+                      type: "text",
+                      placeholder: "path",
+                      fluid: ""
+                    }),
+                    ((_a2 = $form.path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
+                      key: 0,
+                      severity: "error",
+                      size: "small",
+                      variant: "simple"
+                    }, {
+                      default: withCtx(() => {
+                        var _a3;
+                        return [
+                          createTextVNode$1(toDisplayString((_a3 = $form.path.error) == null ? void 0 : _a3.message), 1)
+                        ];
+                      }),
+                      _: 2
+                    }, 1024)) : createCommentVNode("", true)
+                  ])
+                ]),
+                createBaseVNode("div", _hoisted_5$2, [
+                  createVNode(_component_Button, {
+                    class: "tw-w-full",
+                    type: "submit",
+                    loading: isLoading.value,
+                    severity: "secondary",
+                    label: "Submit"
+                  }, null, 8, ["loading"])
+                ])
+              ];
+            }),
+            _: 1
+          }, 8, ["initialValues"])
+        ])
+      ]);
+    };
+  }
+});
+const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-68de2634"]]);
+const _hoisted_1$4 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-relative tw-pb-6" };
+const _hoisted_2$1 = { class: "tw-flex tw-flex-1 tw-relative tw-overflow-hidden" };
+const _hoisted_3$1 = {
+  key: 0,
+  class: "tw-absolute tw-translate-x-0 tw-top-0 tw-left-0 tw-h-full tw-w-80 tw-shadow-md tw-z-5 tw-transition-transform tw-duration-300 tw-ease-in-out tw-flex tw-flex-col"
+};
+const _hoisted_4$1 = {
+  key: 0,
+  class: "flex flex-col px-12 pb-4"
+};
+const _hoisted_5$1 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "templateDialogContent",
+  setup(__props) {
+    const workSpaceStore = useWorkSpaceStore();
+    const { list } = storeToRefs(workSpaceStore);
+    const {
+      isSmallScreen,
+      isOpen: isSideNavOpen,
+      toggle: toggleSideNav
+    } = useResponsiveCollapse();
+    const tabs = computed(() => {
+      return [
+        {
+          label: "Local",
+          code: "local",
+          items: list.value.map((item) => {
+            item.name = item.baseInfo.name;
+            item.projectId = item.baseInfo.projectId;
+            return item;
+          })
+        }
+      ];
+    });
+    const selectedTab = ref$3(null);
+    const handleTabSelection = (tab) => {
+      console.log(tab, "tab");
+      if (!tab) return;
+      getOpendWorkFlow(selectedTab.value);
+      selectedTab.value = tab;
+      workSpaceStore.getProjectDetail(tab);
+    };
+    const getOpendWorkFlow = async (projectId) => {
+      let tempOpenedWorkFlow = app$1.extensionManager.workflow.openWorkflows;
+      let openedWorkFlow = tempOpenedWorkFlow.filter((item) => {
+        var _a2, _b2;
+        return ((_b2 = (_a2 = item.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj.projectId) === projectId;
+      });
+      for (let i2 = 0; i2 < openedWorkFlow.length; i2++) {
+        await useWorkflowService().closeWorkflow(openedWorkFlow[i2]);
+      }
+    };
+    const workFlows = ref$3(
+      {
+        src: "https://img1.baidu.com/it/u=1829798189,3731452821&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
+        title: "测试数据",
+        description: "测试数据"
+      }
+    );
+    const dialogStore = useDialogStore();
+    const chooseProjectFolder = () => {
+      dialogStore.showDialog({
+        key: "global-chooseprojectfolder-mongaton",
+        title: "Browse project",
+        component: chooseFolderProjectVue
+      });
+    };
+    onMounted(() => {
+      selectedTab.value = workSpaceStore.activeProject.baseInfo.projectId;
+    });
+    return (_ctx, _cache) => {
+      const _component_Button = script$1;
+      const _component_Divider = script$l;
+      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+        unref(isSmallScreen) ? (openBlock(), createBlock(_component_Button, {
+          key: 0,
+          icon: unref(isSideNavOpen) ? "pi pi-chevron-left" : "pi pi-chevron-right",
+          text: "",
+          class: normalizeClass(["absolute top-1/2 -translate-y-1/2 z-10", unref(isSideNavOpen) ? "left-[19rem]" : "left-2"]),
+          onClick: unref(toggleSideNav)
+        }, null, 8, ["icon", "class", "onClick"])) : createCommentVNode("", true),
+        createVNode(_component_Divider, { class: "m-0 [&::before]:tw-border-surface-border/70 [&::before]:tw-border-t-2" }),
+        createBaseVNode("div", _hoisted_2$1, [
+          unref(isSideNavOpen) ? (openBlock(), createElementBlock("aside", _hoisted_3$1, [
+            createVNode(_sfc_main$a, {
+              tabs: tabs.value,
+              "selected-tab": selectedTab.value,
+              "onUpdate:selectedTab": handleTabSelection
+            }, null, 8, ["tabs", "selected-tab"]),
+            createBaseVNode("div", null, [
+              createVNode(_component_Button, {
+                label: "Open Local Project",
+                class: "tw-w-full",
+                severity: "secondary",
+                onClick: chooseProjectFolder
+              })
+            ])
+          ])) : createCommentVNode("", true),
+          createBaseVNode("div", {
+            class: normalizeClass(["flex-1 overflow-auto transition-all duration-300", {
+              "pl-80": unref(isSideNavOpen) || !unref(isSmallScreen),
+              "pl-8": !unref(isSideNavOpen) && unref(isSmallScreen)
+            }])
+          }, [
+            selectedTab.value ? (openBlock(), createElementBlock("div", _hoisted_4$1, [
+              _cache[1] || (_cache[1] = createBaseVNode("div", { class: "py-3 text-left" }, [
+                createBaseVNode("h2", { class: "text-lg" }, "测试数据")
+              ], -1)),
+              createBaseVNode("div", _hoisted_5$1, [
+                (openBlock(), createElementBlock(Fragment, null, renderList$1(10, (item) => {
+                  return createBaseVNode("div", { key: item }, [
+                    createVNode(_sfc_main$7, {
+                      "source-module": workFlows.value,
+                      onLoadWorkflow: _cache[0] || (_cache[0] = (name) => console.log(name))
+                    }, null, 8, ["source-module"])
+                  ]);
+                }), 64))
+              ])
+            ])) : createCommentVNode("", true)
+          ], 2)
+        ])
       ]);
     };
   }
@@ -71351,7 +71889,47 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       } else {
         let data = flag ? flag.activeState : node2.workflowData;
         await workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
+        centerCurrentWorkFlow();
       }
+    };
+    const centerCurrentWorkFlow = () => {
+      setTimeout(() => {
+        try {
+          const canvas2 = app$1.canvas;
+          if (!canvas2 || !canvas2.ds) {
+            console.error("Canvas or DrawingState not initialized!");
+            return;
+          }
+          let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+          app$1.graph._nodes.forEach((node2) => {
+            const [x, y] = node2.pos;
+            const [width, height] = node2.size;
+            minX = Math.min(minX, x);
+            maxX = Math.max(maxX, x + width);
+            minY = Math.min(minY, y);
+            maxY = Math.max(maxY, y + height);
+          });
+          if (minX === Infinity || maxX === -Infinity) {
+            console.warn("No nodes found in the workflow!");
+            return;
+          }
+          const workflowWidth = maxX - minX;
+          const workflowHeight = maxY - minY;
+          const centerX = minX + workflowWidth / 2;
+          const centerY = minY + workflowHeight / 2;
+          const viewportWidth = canvas2.canvas.width;
+          const viewportHeight = canvas2.canvas.height;
+          const scale = app$1.canvas.ds.scale || 1;
+          const offsetX = viewportWidth / 2 - centerX * scale;
+          const offsetY = viewportHeight / 2 - centerY * scale;
+          canvas2.ds.scale = scale;
+          canvas2.ds.offset = [offsetX, offsetY];
+          canvas2.setDirty(true, true);
+          console.log(`Centered with scale: ${scale.toFixed(2)}, offset: [${offsetX.toFixed(0)}, ${offsetY.toFixed(0)}]`);
+        } catch (error) {
+          console.error("Error centering workflow:", error);
+        }
+      }, 500);
     };
     const visible = ref$3(false);
     const initialValues = ref$3({
@@ -71782,11 +72360,18 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         component: ChooseProjectVue
       });
     };
-    const chooseProjectFolder = () => {
+    const chooseProjectFolder = (props2 = {}) => {
       dialogStore.showDialog({
-        key: "global-chooseprojectfolder-mongaton",
-        title: "Browse project",
-        component: chooseFolderProjectVue
+        key: "global-templateDialog-mongaton",
+        title: "Template project",
+        headerComponent: templateDialogHeader,
+        component: _sfc_main$5,
+        dialogComponentProps: {
+          pt: {
+            content: { class: "!tw-px-0 tw-overflow-y-hidden" }
+          }
+        },
+        props: props2
       });
     };
     const setProxyWorkFlow = () => {
@@ -71840,7 +72425,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_Button = script$1;
       const _component_Toolbar = script$2;
-      const _component_Tree = script$9;
+      const _component_Tree = script$7;
       const _component_ContextMenu = script$3;
       const _component_el_input = ElInput;
       const _component_Dialog = script;
@@ -71937,12 +72522,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               ]),
               "panel-1": withCtx(() => [
                 createBaseVNode("div", _hoisted_6, [
-                  createVNode(_sfc_main$5, { data: [] })
+                  createVNode(_sfc_main$c, { data: [] })
                 ])
               ]),
               "panel-2": withCtx(() => [
                 createBaseVNode("div", _hoisted_7, [
-                  createVNode(_sfc_main$8)
+                  createVNode(_sfc_main$f)
                 ])
               ]),
               _: 1
@@ -72025,7 +72610,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-9fe60490"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-77cb929b"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -72055,7 +72640,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
         tips: "EXPORT",
         selected: false,
         icon: "pi pi-file-export",
-        component: markRaw(_sfc_main$i)
+        component: markRaw(_sfc_main$o)
       }
       // {
       //   name: 'home',
@@ -72149,7 +72734,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$j), {
+        createVNode(unref(script$m), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -72159,7 +72744,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$k), {
+            createVNode(unref(script$n), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -72173,11 +72758,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$k), {
+            createVNode(unref(script$n), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$j), {
+                createVNode(unref(script$m), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -72190,7 +72775,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$k), {
+                    createVNode(unref(script$n), {
                       class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70,
@@ -72213,7 +72798,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$k), {
+                    createVNode(unref(script$n), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -72281,8 +72866,8 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
     });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$l;
-      const _component_Message = script$7;
+      const _component_Textarea = script$o;
+      const _component_Message = script$f;
       const _component_Button = script$1;
       const _component_Dialog = script;
       return openBlock(), createBlock(_component_Dialog, {
@@ -72294,7 +72879,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         onHide: _cache[2] || (_cache[2] = ($event) => eimts("hide"))
       }, {
         default: withCtx(() => [
-          createVNode(unref(script$8), {
+          createVNode(unref(script$e), {
             resolver: resolver.value,
             initialValues: initialValues.value,
             onSubmit: onFormSubmit,
@@ -72640,7 +73225,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         }, null, 512), [
           [_directive_tooltip, "open MontagenEditor"]
         ]),
-        createVNode(_sfc_main$j)
+        createVNode(_sfc_main$p)
       ], 64);
     };
   }
@@ -73053,6 +73638,241 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     }
   });
 })(window);
+(function(global2) {
+  function chainCallback(object, property, callback) {
+    if (object == void 0) {
+      console.error("Tried to add callback to non-existant object");
+      return;
+    }
+    if (property in object && object[property]) {
+      const callback_orig = object[property];
+      object[property] = function() {
+        const r = callback_orig.apply(this, arguments);
+        callback.apply(this, arguments);
+        return r;
+      };
+    } else {
+      object[property] = callback;
+    }
+  }
+  function fitHeight(node2) {
+    var _a2, _b2;
+    const srtEditWidet = node2.widgets.find((w) => w.name === "srtEditWidet");
+    let contentHeight = 0;
+    if ((_a2 = srtEditWidet == null ? void 0 : srtEditWidet.entries) == null ? void 0 : _a2.length) {
+      if (srtEditWidet && srtEditWidet.container.isConnected) {
+        const rect = srtEditWidet.container.getBoundingClientRect();
+        contentHeight = rect.height || srtEditWidet.entries.length * 40 + 20;
+      } else {
+        contentHeight = srtEditWidet ? srtEditWidet.entries.length * 40 + 20 : 0;
+      }
+    } else {
+      contentHeight = 0;
+    }
+    node2.computeSize([node2.size[0], node2.size[1]]);
+    node2.getTitleHeight ? node2.getTitleHeight() : 30;
+    const otherWidgetsHeight = node2.widgets.filter((w) => w !== srtEditWidet).reduce((sum2, w) => sum2 + (w.computeSize ? w.computeSize()[1] : 30), 0);
+    const targetHeight = contentHeight + otherWidgetsHeight;
+    console.log("fitHeight__________", targetHeight, node2);
+    node2.setSize([node2.size[0], targetHeight]);
+    (_b2 = node2 == null ? void 0 : node2.graph) == null ? void 0 : _b2.setDirtyCanvas(true);
+  }
+  function changeWidget() {
+    let new_widgets = [];
+    if (this.widgets) {
+      new_widgets.push(...this.widgets);
+    }
+    new_widgets.push(
+      app$1.widgets.MontagenTextUpload(
+        this,
+        "text",
+        [
+          {
+            name: "text",
+            type: "string",
+            value: "Hello World",
+            default: "Hello World",
+            widget_type: "TextWidget",
+            options: {}
+          }
+        ],
+        app$1
+      ).widget
+    );
+    let element = document.createElement("div");
+    element.style.cssText = `
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 6px 2px;
+      font-size: 12px;
+      display: none; /* 初始隐藏 */
+    `;
+    element.addEventListener(
+      "contextmenu",
+      (e) => {
+        e.preventDefault();
+        return app$1.canvas._mousedown_callback(e);
+      },
+      true
+    );
+    let srtEditWidet = this.addDOMWidget("srtEditWidet", "srtEditWidet", element, {
+      serialize: false,
+      hideOnZoom: false,
+      getValue() {
+        return JSON.stringify(srtEditWidet.entries || []);
+      },
+      setValue(v) {
+        try {
+          console.log("widget value", v, srtEditWidet);
+          if (!v) {
+            srtEditWidet.entries = [];
+            srtEditWidet.updateUI([]);
+            return;
+          }
+          const entries = JSON.parse(v);
+          srtEditWidet.updateUI(entries);
+        } catch (e) {
+          console.error("Error parsing widget value:", e);
+          srtEditWidet.entries = [];
+          srtEditWidet.updateUI([]);
+        }
+      }
+    });
+    srtEditWidet.container = document.createElement("div");
+    srtEditWidet.container.innerHTML = "";
+    const createEntryElement = (entry, index2) => {
+      const div = document.createElement("div");
+      div.style.cssText = `display: flex; margin-bottom: 10px;align-items: flex-start;`;
+      div.innerHTML = `
+            <input type="checkbox" ${entry.selected ? "checked" : ""}></input>
+            <div style="flex: 1; margin-left: 6px;border-bottom: 1px solid #eee;">
+              <span style="margin-bottom:2rpx">${entry.time}</span>
+              <textarea  style="width: 100%;height:16px;border:none;outline:none;resize: none;font-size:10px;line-height: 1.2;" >${entry.text}</textarea>
+            </div>
+        `;
+      const textarea = div.querySelector("textarea");
+      setTimeout(() => {
+        textarea.style.height = textarea.scrollHeight + "px";
+      }, 0);
+      textarea.addEventListener("input", () => {
+        console.log("textarea value", textarea.value);
+        srtEditWidet.entries[index2].text = textarea.value;
+        textarea.style.height = textarea.scrollHeight + "px";
+      });
+      const checkbox = div.querySelector('input[type="checkbox"]');
+      checkbox.addEventListener("change", () => {
+        console.log("checkbox checked", checkbox.checked);
+        srtEditWidet.entries[index2].selected = checkbox.checked;
+        srtEditWidet.updateNodeData();
+      });
+      return div;
+    };
+    srtEditWidet.updateUI = function(entries) {
+      srtEditWidet.entries = entries;
+      srtEditWidet.container.innerHTML = "";
+      if (!entries.length) {
+        element.style.display = "none";
+      } else {
+        element.style.display = "block";
+        entries.forEach((entry, index2) => {
+          srtEditWidet.container.appendChild(createEntryElement(entry, index2));
+        });
+      }
+    };
+    srtEditWidet.updateNodeData = function() {
+      this.node.setDirtyCanvas(true, true);
+      this.adjustNodeSize();
+    };
+    srtEditWidet.adjustNodeSize = function() {
+      fitHeight(this.node);
+    };
+    element.appendChild(srtEditWidet.container);
+    new_widgets.push(srtEditWidet);
+    this.widgets = new_widgets;
+    console.log("changeWidget_当前node 使用的widgets 组件", this.widgets);
+    srtEditWidet.adjustNodeSize();
+  }
+  app$1.registerExtension({
+    name: "Comfy.Montagen.TextEditor",
+    beforeRegisterNodeDef(nodeType, nodeData) {
+      if (nodeData.name == "MontagenTimelineNode") {
+        console.log("找到了这个named 节点", nodeType.prototype, nodeData);
+        chainCallback(nodeType.prototype, "onNodeCreated", function() {
+          changeWidget.call(this);
+        });
+      }
+    },
+    async getCustomWidgets() {
+      return {
+        MontagenTextUpload(node2, inputName, inputData, app2) {
+          const fileInput = document.createElement("input");
+          Object.assign(fileInput, {
+            type: "file",
+            accept: ".json",
+            style: "display: none",
+            onchange: async (event2) => {
+              if (fileInput.files && fileInput.files.length) {
+                let result = await readFile(fileInput.files[0]).catch((err) => {
+                });
+                console.log("result_读取出来的文本信息", node2.widgets);
+                const srtEditWidet = node2.widgets.find((w) => w.name === "srtEditWidet");
+                if (srtEditWidet) {
+                  const entries = result.map((item) => ({
+                    time: item.time || "00:00:00,000 --> 00:00:00,000",
+                    text: item.value || "",
+                    selected: item.selected !== void 0 ? item.selected : true
+                  }));
+                  srtEditWidet.updateUI(entries);
+                  srtEditWidet.updateNodeData();
+                } else {
+                  console.error("srtEditWidet not found in node.widgets");
+                }
+                event2.target.value = "";
+              }
+            }
+          });
+          const readFile = (file) => {
+            return new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = (event2) => {
+                const jsonData = JSON.parse(event2.target.result);
+                resolve(jsonData);
+              };
+              reader.onerror = (event2) => {
+                reject(event2.target.error);
+              };
+              reader.readAsText(file);
+            });
+          };
+          document.body.append(fileInput);
+          const uploadWidget = node2.addWidget(
+            "button",
+            inputName,
+            "image",
+            () => {
+              fileInput.click();
+            }
+          );
+          return { widget: uploadWidget };
+        }
+      };
+    }
+  });
+})();
+console.log("mixpanel", mixpanel);
+mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
+  debug: true,
+  track_pageview: false,
+  autocapture: false,
+  persistence: "localStorage",
+  ignore_dnt: true
+});
+mixpanel.track("User Registered", {
+  "Registration Source": "Facebook-2024",
+  "Referrer": "campaign-source"
+});
 const ComfyUIPreset = definePreset(index$3, {
   semantic: {
     primary: index$3["primitive"].blue
