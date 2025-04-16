@@ -5,7 +5,13 @@ if TYPE_CHECKING:
     from .MontagenProj import MontagenProj
     from .MontagenWorkflow import MontagenWorkflow
 from typing import Optional
-from .Utils import tree_to_flat, supported_group_config_type, TEXTTYPE, to_base36_random
+from .Utils import (
+    tree_to_flat,
+    supported_group_config_type,
+    TEXTTYPE,
+    to_base36_random,
+    flat_to_tree,
+)
 from .MontagenClip import MontagenClip
 
 
@@ -32,11 +38,11 @@ class LGraphNodeItem:
         }
 
     @property
-    def item_id(self):
+    def item_id(self) -> str:
         return self.data.get("item_id")
 
     @item_id.setter
-    def item_id(self, value):
+    def item_id(self, value: str):
         self.data["item_id"] = value
 
     @property
@@ -155,3 +161,7 @@ class LGraphNodeItem:
                 else:
                     clip.src = main_content
             self.timeline.save()
+
+    def syn_meta(self, meta: dict):
+        opt = flat_to_tree(meta, supported_group_config_type[self.type])
+        self.meta.update(opt)

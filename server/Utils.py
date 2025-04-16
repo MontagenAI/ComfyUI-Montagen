@@ -239,6 +239,7 @@ LISTNODETYPE = "list_item"
 WORKFLOWBASEPATH = "workflows"
 TIMELINEBASEPATH = "timelines"
 TMPPAHT = "tmp"
+TEMPLATEPATH = "templates"
 illegal_chars_pattern = r'[\\/:*?"<>|]'
 INFOFILE = "project.montagen"
 ASSETSDIR = "assets"
@@ -595,25 +596,31 @@ text_option = {
 image_group_option = {
     "active": (
         "BOOLEAN",
-        {"default": True, "tooltip": "Activate the clip."},
+        {"default": "", "tooltip": "Activate the clip.", "defaultDelte": True},
     ),
     "x": (
         "STRING",
-        {"default": "50vw", "tooltip": "X position of the clip."},
+        {"default": "", "tooltip": "X position of the clip.", "defaultDelte": True},
     ),
     "y": (
         "STRING",
-        {"default": "50vh", "tooltip": "Y position of the clip."},
+        {"default": "", "tooltip": "Y position of the clip.", "defaultDelte": True},
     ),
-    "width": ("STRING", {"default": "50vw", "tooltip": "Width of the clip."}),
-    "height": ("STRING", {"default": "50vh", "tooltip": "Height of the clip."}),
+    "width": (
+        "STRING",
+        {"default": "", "tooltip": "Width of the clip.", "defaultDelte": True},
+    ),
+    "height": (
+        "STRING",
+        {"default": "", "tooltip": "Height of the clip.", "defaultDelte": True},
+    ),
     "rotate": (
         "FLOAT",
-        {"default": 0.0, "tooltip": "Rotation angle of the clip."},
+        {"default": "", "tooltip": "Rotation angle of the clip.", "defaultDelte": True},
     ),
     "opacity": (
         "FLOAT",
-        {"default": 1.0, "tooltip": "Opacity of the clip."},
+        {"default": "", "tooltip": "Opacity of the clip.", "defaultDelte": True},
     ),
     # "anchorX": (
     #     "FLOAT",
@@ -633,84 +640,144 @@ image_group_option = {
     # ),
     "flipX": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Flip the clip horizontally."},
+        {"default": "", "tooltip": "Flip the clip horizontally.", "defaultDelte": True},
     ),
     "flipY": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Flip the clip vertically."},
+        {"default": "", "tooltip": "Flip the clip vertically.", "defaultDelte": True},
     ),
     "object-fit": (
         ["cover", "contain", "scale-down", "fill", "none"],
-        {"default": "contain", "tooltip": "Object fit mode of the clip."},
+        {
+            "default": "",
+            "tooltip": "Object fit mode of the clip.",
+            "defaultDelte": True,
+        },
     ),
     "object-positionX": (
         "FLOAT",
         {
-            "default": "0.5",
+            "default": "",
             "parent": {"name": "object-position", "isArray": True, "index": 0},
+            "defaultDelte": True,
         },
     ),
     "object-positionY": (
         "FLOAT",
         {
-            "default": "0.5",
+            "default": "",
             "parent": {"name": "object-position", "isArray": True, "index": 1},
+            "defaultDelte": True,
         },
     ),
-    "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the clip."}),
+    "volume": (
+        "FLOAT",
+        {"default": "", "tooltip": "Volume of the clip.", "defaultDelte": True},
+    ),
     "blur": (
         "FLOAT",
-        {"default": 0, "tooltip": "Blur level of the clip."},
+        {"default": "", "tooltip": "Blur level of the clip.", "defaultDelte": True},
     ),
-    "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the clip."}),
+    "loop": (
+        "BOOLEAN",
+        {"default": "", "tooltip": "Loop the clip.", "defaultDelte": True},
+    ),
     "audio": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Audio file for the clip."},
+        {"default": "", "tooltip": "Audio file for the clip.", "defaultDelte": True},
     ),
     # "mute": (
     #     "BOOLEAN",
     #     {"default": True, "tooltip": "Mute audio for the clip."},
     # ),
-    "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the clip."}),
+    "speed": (
+        "FLOAT",
+        {"default": "", "tooltip": "Speed of the clip.", "defaultDelte": True},
+    ),
     "preload": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Preload the clip."},
+        {"default": "", "tooltip": "Preload the clip.", "defaultDelte": True},
     ),
 }
 audio_group_option = {
-    "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the audio."}),
-    "pitch": ("FLOAT", {"default": 1.0, "tooltip": "Pitch of the audio."}),
-    "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the audio."}),
-    "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the audio."}),
+    "active": (
+        "BOOLEAN",
+        {"default": "", "tooltip": "Activate the audio.", "defaultDelte": True},
+    ),
+    "pitch": (
+        "FLOAT",
+        {"default": "", "tooltip": "Pitch of the audio.", "defaultDelte": True},
+    ),
+    "speed": (
+        "FLOAT",
+        {"default": "", "tooltip": "Speed of the audio.", "defaultDelte": True},
+    ),
+    "volume": (
+        "FLOAT",
+        {"default": "", "tooltip": "Volume of the audio.", "defaultDelte": True},
+    ),
     "fadeIn": (
         "FLOAT",
         {
-            "default": 0.0,
+            "default": "",
             "tooltip": "Fade-in duration of the audio.",
+            "defaultDelte": True,
         },
     ),
     "fadeOut": (
         "FLOAT",
         {
-            "default": 0.0,
+            "default": "",
             "tooltip": "Fade-out duration of the audio.",
+            "defaultDelte": True,
         },
     ),
 }
 text_group_option = {
-    "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the text clip."}),
-    "x": ("STRING", {"default": "50vw", "tooltip": "X position of the text clip."}),
-    "y": ("STRING", {"default": "50vh", "tooltip": "Y position of the text clip."}),
-    "width": ("STRING", {"default": "50vw", "tooltip": "Width of the text clip."}),
+    "active": (
+        "BOOLEAN",
+        {"default": "", "tooltip": "Activate the text clip.", "defaultDelte": True},
+    ),
+    "x": (
+        "STRING",
+        {
+            "default": "",
+            "tooltip": "X position of the text clip.",
+            "defaultDelte": True,
+        },
+    ),
+    "y": (
+        "STRING",
+        {
+            "default": "",
+            "tooltip": "Y position of the text clip.",
+            "defaultDelte": True,
+        },
+    ),
+    "width": (
+        "STRING",
+        {"default": "", "tooltip": "Width of the text clip.", "defaultDelte": True},
+    ),
     "height": (
         "STRING",
-        {"default": "50vh", "tooltip": "Height of the text clip."},
+        {
+            "default": "",
+            "tooltip": "Height of the text clip.",
+            "defaultDelte": True,
+        },
     ),
     "rotate": (
         "FLOAT",
-        {"default": 0.0, "tooltip": "Rotation angle of the text clip."},
+        {
+            "default": "",
+            "tooltip": "Rotation angle of the text clip.",
+            "defaultDelte": True,
+        },
     ),
-    "opacity": ("FLOAT", {"default": 1.0, "tooltip": "Opacity of the text clip."}),
+    "opacity": (
+        "FLOAT",
+        {"default": "", "tooltip": "Opacity of the text clip.", "defaultDelte": True},
+    ),
     # "anchorX": (
     #     "FLOAT",
     #     {
@@ -729,62 +796,83 @@ text_group_option = {
     # ),
     "flipX": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Flip the text clip horizontally."},
+        {
+            "default": "",
+            "tooltip": "Flip the text clip horizontally.",
+            "defaultDelte": True,
+        },
     ),
     "flipY": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Flip the text clip vertically."},
-    ),
-    "zIndex": ("INT", {"default": 0, "tooltip": "Z-index for layering."}),
-    "text": ("STRING", {"default": "", "tooltip": "Text content."}),
-    "fontSize": ("STRING", {"default": "40", "tooltip": "Font size of the text."}),
-    "letterSpacing": (
-        "STRING",
         {
             "default": "",
-            "tooltip": "Letter spacing of the text.",
+            "tooltip": "Flip the text clip vertically.",
+            "defaultDelte": True,
         },
+    ),
+    "zIndex": (
+        "INT",
+        {"default": "", "tooltip": "Z-index for layering.", "defaultDelte": True},
+    ),
+    "text": (
+        "STRING",
+        {"default": "", "tooltip": "Text content.", "defaultDelte": True},
+    ),
+    "fontSize": (
+        "STRING",
+        {"default": "", "tooltip": "Font size of the text.", "defaultDelte": True},
+    ),
+    "letterSpacing": (
+        "STRING",
+        {"default": "", "tooltip": "Letter spacing of the text.", "defaultDelte": True},
     ),
     "lineHeight": (
         "STRING",
-        {
-            "default": "",
-            "tooltip": "Line height of the text.",
-        },
+        {"default": "", "tooltip": "Line height of the text.", "defaultDelte": True},
     ),
     "fontFamily": (
         "STRING",
-        {
-            "default": "",
-            "tooltip": "Font family of the text.",
-        },
+        {"default": "", "tooltip": "Font family of the text.", "defaultDelte": True},
     ),
-    "color": ("STRING", {"default": "#000000", "tooltip": "Text color."}),
+    "color": (
+        "STRING",
+        {"default": "", "tooltip": "Text color.", "defaultDelte": True},
+    ),
     "backgroundColor": (
         "STRING",
-        {"default": "transparent", "tooltip": "Background color of the text."},
+        {
+            "default": "",
+            "tooltip": "Background color of the text.",
+            "defaultDelte": True,
+        },
     ),
     "wrap": (
         "BOOLEAN",
-        {"default": False, "tooltip": "Wrap text within the width."},
+        {
+            "default": "",
+            "tooltip": "Wrap text within the width.",
+            "defaultDelte": True,
+        },
     ),
     "align": (
         ["left", "center", "right"],
-        {"default": "center", "tooltip": "Text alignment (left, center, right)."},
+        {
+            "default": "",
+            "tooltip": "Text alignment (left, center, right).",
+            "defaultDelte": True,
+        },
     ),
     "valign": (
         ["top", "center", "bottom"],
         {
-            "default": "center",
+            "default": "",
             "tooltip": "Vertical text alignment (top, middle, bottom).",
+            "defaultDelte": True,
         },
     ),
     "padding": (
         "STRING",
-        {
-            "default": "",
-            "tooltip": "Padding around the text.",
-        },
+        {"default": "", "tooltip": "Padding around the text.", "defaultDelte": True},
     ),
     "stroke-color": (
         "STRING",
@@ -792,6 +880,7 @@ text_group_option = {
             "default": "",
             "tooltip": "Stroke color of the text.",
             "parent": {"name": "stroke", "property": "color"},
+            "defaultDelte": True,
         },
     ),
     "stroke-size": (
@@ -800,6 +889,7 @@ text_group_option = {
             "default": "",
             "tooltip": "Stroke size of the text.",
             "parent": {"name": "stroke", "property": "size"},
+            "defaultDelte": True,
         },
     ),
     "shadow-color": (
@@ -808,6 +898,7 @@ text_group_option = {
             "default": "",
             "tooltip": "Shadow color of the text.",
             "parent": {"name": "shadow", "property": "color"},
+            "defaultDelte": True,
         },
     ),
     "shadow-alpha": (
@@ -816,6 +907,7 @@ text_group_option = {
             "default": 0,
             "tooltip": "Shadow alpha of the text.",
             "parent": {"name": "shadow", "property": "alpha"},
+            "defaultDelte": True,
         },
     ),
     "shadow-blur": (
@@ -824,6 +916,7 @@ text_group_option = {
             "default": "",
             "tooltip": "Shadow blur of the text.",
             "parent": {"name": "shadow", "property": "blur"},
+            "defaultDelte": True,
         },
     ),
     "shadow-offset": (
@@ -832,6 +925,7 @@ text_group_option = {
             "default": "",
             "tooltip": "Shadow offset of the text.",
             "parent": {"name": "shadow", "property": "offset"},
+            "defaultDelte": True,
         },
     ),
     "shadow-angle": (
@@ -840,9 +934,13 @@ text_group_option = {
             "default": 0,
             "tooltip": "Shadow angle of the text.",
             "parent": {"name": "shadow", "property": "angle"},
+            "defaultDelte": True,
         },
     ),
-    "preload": ("BOOLEAN", {"default": False, "tooltip": "Preload the text clip."}),
+    "preload": (
+        "BOOLEAN",
+        {"default": False, "tooltip": "Preload the text clip.", "defaultDelte": True},
+    ),
 }
 
 supported_config_type = {

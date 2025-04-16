@@ -5,9 +5,11 @@ from .videosave import save_video
 from .Utils import to_base36_random, create_default_option, GIFTYPE
 from typing import TYPE_CHECKING
 from .LGraphNodeItem import LGraphNodeItem
+
 if TYPE_CHECKING:
     from .LGraph import LGraph
     from .MontagenTimeRange import MontagenTimeRange
+
 
 class LGraphNodeInput:
     def __init__(self, data):
@@ -108,16 +110,7 @@ class LGraphNode:
 
     @property
     def items(self):
-        if "outputs" not in self.properties:
-            self.properties["outputs"] = {}
-        if "items" not in self.properties["outputs"]:
-            self.properties["outputs"]["items"] = []
-        return [
-            LGraphNodeItem(self, i, item)
-            for i, item in enumerate(
-                self.properties.get("outputs", {}).get("items", [])
-            )
-        ]
+        return [LGraphNodeItem(self, i, item) for i, item in enumerate(self.items_raw)]
 
     @property
     def items_raw(self) -> list[dict[str, any]]:
@@ -250,6 +243,8 @@ class LGraphNode:
     def sync_time_resoureces_range(
         self, time_range: MontagenTimeRange, resoureces: list[str]
     ):
+        action = time_range.action
+        used_item_ids = set()
         for i, time_unit in enumerate(time_range.time_range):
             item_id = time_unit.id
             if not item_id:
@@ -261,15 +256,22 @@ class LGraphNode:
                 None if self.reserve_file else self.get_asset_file_name(item_index)
             )
             material, src = self.workflow.workflow_add_material(
-                self.node_name, item_index, old_file, resoureces[i], self.type
+                self.node_name, item_index, resoureces[i], self.type
             )
             self.set_asset(item_index, material)
+            self.workflow.workflow_del_material(old_file)
             if not item:
                 item = self.create_item(src)
+                item.item_id = item_id
                 self.items_raw.append(item.serialize())
-            item.set_main_content(src, time_unit.start, time_unit.end)
+            item.set_main_content(src, time_unit.start, time_unit.duration)
+            used_item_ids.add(item.item_id)
+        if action == "all":
+            self.items = [item for item in self.items if item.item_id in used_item_ids]
 
     def sync_time_text_range(self, time_range: MontagenTimeRange):
+        action = time_range.action
+        used_item_ids = set()
         for i, time_unit in enumerate(time_range.time_range):
             item_id = time_unit.id
             if not item_id:
@@ -277,10 +279,18 @@ class LGraphNode:
             item, item_index = self.Get_item_and_index(item_id)
             if not item:
                 item = self.create_item(time_unit.content)
+                item.item_id = item_id
                 self.items_raw.append(item.serialize())
-            item.set_main_content(time_unit.content, time_unit.start, time_unit.end)
+            item.set_main_content(
+                time_unit.content, time_unit.start, time_unit.duration
+            )
+            used_item_ids.add(item.item_id)
+        if action == "all":
+            self.items = [item for item in self.items if item.item_id in used_item_ids]
 
     def sync_time_images_range(self, time_range: MontagenTimeRange, images: list):
+        action = time_range.action
+        used_item_ids = set()
         for i, time_unit in enumerate(time_range.time_range):
             item_id = time_unit.id
             if not item_id:
@@ -294,13 +304,18 @@ class LGraphNode:
             (file_fullName, tmp_fullName) = self.get_output_path(item_index, "png")
             images[i].save(file_fullName)
             material, src = self.workflow.workflow_add_material(
-                self.node_name, item_index, old_file, file_fullName, self.type
+                self.node_name, item_index, file_fullName, self.type
             )
             self.set_asset(item_index, material)
+            self.workflow.workflow_del_material(old_file)
             if not item:
                 item = self.create_item(src)
+                item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(src, time_unit.start, time_unit.end)
+            used_item_ids.add(item.item_id)
+        if action == "all":
+            self.items = [item for item in self.items if item.item_id in used_item_ids]
 
     def sync_file_meta(self, file_meta: dict):
         old_name = self.single_file_name
@@ -332,7 +347,8 @@ class LGraphNode:
         else:
             images[0].save(tmp_fullName)
         if os.path.exists(tmp_fullName):
-            src = self.copy_output(tmp_fullName, file_fullName, 0)
+            src, old_file = self.copy_output(tmp_fullName, file_fullName, 0)
+            self.workflow.workflow_del_material(old_file)
             self.create_single_item_if_not_exists(src)
 
     def sync_file_buffer(self, property: dict, buffer: io.BytesIO):
@@ -341,7 +357,8 @@ class LGraphNode:
         with open(tmp_fullName, "wb") as f:
             f.write(buffer.getbuffer())
         if os.path.exists(tmp_fullName):
-            src = self.copy_output(tmp_fullName, file_fullName, 0)
+            src, old_file = self.copy_output(tmp_fullName, file_fullName, 0)
+            self.workflow.workflow_del_material(old_file)
             self.create_single_item_if_not_exists(src)
 
     def sync_file_text(self, text: str):
@@ -356,16 +373,19 @@ class LGraphNode:
         shutil.move(tmpFullName, fileFullName)
         old_file = None if self.reserve_file else self.get_asset_file_name(index)
         material, src = self.workflow.workflow_add_material(
-            self.node_name, index, old_file, fileFullName, self.type
+            self.node_name, index, fileFullName, self.type
         )
         self.set_asset(index, material)
-        return src
+        return src, old_file
 
     def get_asset_file_name(self, index: int) -> str:
         assets_len = len(self.assets)
         if index >= assets_len:
             return None
-        return self.assets[index].get("file_name")
+        asset = self.assets[index]
+        if not asset:
+            return None
+        return asset.get("file_name")
 
     def get_asset(self, index: int) -> dict:
         assets_len = len(self.assets)
@@ -398,4 +418,3 @@ class LGraphNode:
             if item.item_id == item_id:
                 return item, index
         return None, None
-

@@ -14,10 +14,12 @@ from .Utils import (
     BUILDFILEADDR,
     generate_unique_filename,
     to_base36_random,
+    TEMPLATEPATH,
 )
 from .MontagenProj import MontagenProj
 from .MontagenCacheManager import MontagenCacheManager
 from .ExternMontagenProj import ExternMontagenProj
+from .MontagenTemplate import MontagenTemplate
 from contextlib import contextmanager
 import logging
 
@@ -71,6 +73,7 @@ class MontagenProjManager:
         MontagenProjManager.instance = self
         self.montagen_cache_manager = MontagenCacheManager()
         self.cache_key = "{}_montagen_projects"
+        self.templates = {}
 
         @server.routes.get("/Montagen/Proj/List")
         @error_handling_decorator
@@ -79,6 +82,15 @@ class MontagenProjManager:
             projs = self.get_projects(user_id)
             return web.json_response(
                 {"code": 0, "data": [proj.to_simple_json() for proj in projs]}
+            )
+
+        @server.routes.get("/Montagen/Template/List")
+        @error_handling_decorator
+        async def get_template(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            tmps = self.get_templates(user_id)
+            return web.json_response(
+                {"code": 0, "data": [tmp.to_json() for tmp in tmps]}
             )
 
         @server.routes.get("/Montagen/Proj/{id}")
@@ -272,13 +284,14 @@ class MontagenProjManager:
             workflow_id = request.match_info.get("workflowId", None)
             req_data = await request.json()
             name = req_data.get("name", None)
+            description = req_data.get("description", name)
             proj = self.get_project(user_id, project_id)
             if not proj:
                 raise Exception("Project not found")
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
                 raise Exception("Workflow not found")
-            workflow.rename_workflow(name)
+            workflow.rename_workflow(name, description)
             proj.project_change_time()
             return web.json_response({"code": 0})
 
@@ -340,6 +353,30 @@ class MontagenProjManager:
             result = timeline.syn_timeline(req_data)
             proj.project_change_time()
             return web.json_response({"code": 0, "data": result})
+
+        @server.routes.post(
+            "/Montagen/Proj/{id}/Workflow/{workflowId}/node/{nodeId}/item/{itemId}/Edit"
+        )
+        @error_handling_decorator
+        async def update_item_meta(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            workflow_id = request.match_info.get("workflowId", None)
+            node_id = request.match_info.get("nodeId", None)
+            item_id = request.match_info.get("itemId", None)
+            req_data = await request.json()
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            workflow = proj.get_workflow(workflow_id)
+            if not workflow:
+                raise Exception("workflow not found")
+            item = workflow.get_workflow_node_item(None, node_id, item_id)
+            if not item:
+                raise Exception("item not found")
+            item.syn_meta(req_data)
+            proj.project_change_time()
+            return web.json_response({"code": 0})
 
         @server.routes.get(FILEADDR)
         @error_handling_decorator
@@ -447,6 +484,27 @@ class MontagenProjManager:
 
             return response
 
+        @server.routes.get("/Montagen/Template/File/{filename:.+}")
+        @error_handling_decorator
+        async def file_server_template(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            filename = request.match_info.get("filename", None)
+            if not filename:
+                raise Exception("filename is not found")
+            user_projs_root = self.get_user_projects_root(user_id)
+            path = os.path.join(user_projs_root, TEMPLATEPATH, filename)
+            filename = os.path.basename(path)
+            content_type = (
+                mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            )
+            return web.FileResponse(
+                path,
+                headers={
+                    "Content-Disposition": f'filename="{filename}"',
+                    "Content-Type": content_type,
+                },
+            )
+
     def get_user_projects_root(self, user_id: str):
         user_directory = folder_paths.get_user_directory()
         if not user_directory:
@@ -458,7 +516,7 @@ class MontagenProjManager:
         )
         return user_projs_root
 
-    def get_projects(self, user_id: str):
+    def get_projects(self, user_id: str) -> list[MontagenProj]:
         user_projs_root = self.get_user_projects_root(user_id)
         key = self.cache_key.format(user_id)
         cached_projects = self.montagen_cache_manager.get(key)
@@ -497,7 +555,26 @@ class MontagenProjManager:
         self.montagen_cache_manager.add(key, projects)
         return projects
 
-    def get_project(self, user_id: str, project_id: str)->MontagenProj:
+    def get_templates(self, user_id: str) -> list[MontagenTemplate]:
+        if user_id in self.templates:
+            return self.templates[user_id]
+        user_projs_root = self.get_user_projects_root(user_id)
+        template_root = os.path.join(user_projs_root, TEMPLATEPATH)
+        if not os.path.exists(template_root):
+            os.makedirs(template_root)
+            return []
+
+        templates = []
+        for template_base in os.listdir(template_root):
+            template_path = os.path.join(template_root, template_base)
+            if os.path.isdir(template_path):
+                template = MontagenTemplate.create_from_path(template_path)
+                if template:
+                    templates.append(template)
+        self.templates[user_id] = templates
+        return templates
+
+    def get_project(self, user_id: str, project_id: str) -> MontagenProj:
         if not project_id:
             raise Exception("project_id is empty")
         projects = self.get_projects(user_id)

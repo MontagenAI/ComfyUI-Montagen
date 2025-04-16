@@ -5,6 +5,7 @@ import shutil
 from .LGraph import LGraph
 from datetime import datetime
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from .MontagenProj import MontagenProj
 from .Utils import (
@@ -17,7 +18,7 @@ from .Utils import (
 
 
 class MontagenWorkflow:
-    def __init__(self, workflow_json_path: str, project: 'MontagenProj'):
+    def __init__(self, workflow_json_path: str, project: "MontagenProj"):
         self.workflow_json_path = workflow_json_path
         if not project:
             raise ValueError("project cannot be None")
@@ -85,7 +86,7 @@ class MontagenWorkflow:
         return self.workflow_data.graph_nodes
 
     @staticmethod
-    def create_from_path(workflow_json_path: str, project: 'MontagenProj'):
+    def create_from_path(workflow_json_path: str, project: "MontagenProj"):
         """
         Create a MontagenWorkflow instance from a given path.
 
@@ -102,7 +103,7 @@ class MontagenWorkflow:
 
     @staticmethod
     def create_new_workflow(
-        workflow_id: str, workflow_name: str, project: 'MontagenProj'
+        workflow_id: str, workflow_name: str, project: "MontagenProj"
     ):
         basePath = project.project_path
         project_id = project.project_id
@@ -184,8 +185,9 @@ class MontagenWorkflow:
         if os.path.exists(self.workflow_json_path):
             os.remove(self.workflow_json_path)
 
-    def rename_workflow(self, name: str):
+    def rename_workflow(self, name: str, description: str):
         name = name or DEFAULTWORKFLOWNAME
+        self.workflow_desc = description
         if name != self.workflow_name:
             self.workflow_name = name
             new_filename = generate_unique_filename(
@@ -194,18 +196,15 @@ class MontagenWorkflow:
             new_fullname = os.path.join(self.workflow_json_dir_name, new_filename)
             os.rename(self.workflow_json_path, new_fullname)
             self.workflow_json_path = new_fullname
-            self.save()
+        self.save()
 
     def workflow_add_material(
         self,
         node_name: str,
         index: int,
-        old_filename: str,
         file_full_path: str,
         type: str,
     ):
-        if old_filename:
-            self.project.montagen_material.delete_material(old_filename)
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         file_name = os.path.basename(file_full_path)
         ext = os.path.splitext(file_name)[1]
@@ -219,7 +218,13 @@ class MontagenWorkflow:
         return (self.project.montagen_material.get_material_output(file_name), src)
 
     def workflow_del_material(self, file_name):
-        self.project.montagen_material.delete_material(file_name)
+        if file_name:
+            try:
+                self.project.montagen_material.delete_material(
+                    file_name, not_check=False
+                )
+            except:
+                pass
 
     def syn_workflow_node(
         self,
@@ -282,7 +287,9 @@ class MontagenWorkflow:
 
     def get_workflow_node_item(self, timeline_name: str, node_id: str, item_id: str):
         for node in self.nodes:
-            if node.node_id == node_id and node.timeline_name == timeline_name:
+            if node.node_id == node_id and (
+                not timeline_name or node.timeline_name == timeline_name
+            ):
                 for item in node.items:
                     if item.item_id == item_id:
                         return item

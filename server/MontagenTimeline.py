@@ -11,12 +11,13 @@ from .Utils import (
 from threading import RLock
 from .MontagenClip import MontagenClip
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from .MontagenProj import MontagenProj
 
 
 class MontagenTimeline:
-    def __init__(self, timeline_json_path: str, project: 'MontagenProj'):
+    def __init__(self, timeline_json_path: str, project: "MontagenProj"):
         self.timeline_json_path = timeline_json_path
         if not project:
             raise ValueError("project cannot be None")
@@ -109,7 +110,7 @@ class MontagenTimeline:
         return [clip for clip in self.clips if not clip.is_link]
 
     @staticmethod
-    def create_from_path(timeline_json_path: str, project: 'MontagenProj'):
+    def create_from_path(timeline_json_path: str, project: "MontagenProj"):
         try:
             if not os.path.exists(timeline_json_path):
                 return None
@@ -118,7 +119,7 @@ class MontagenTimeline:
             return None
 
     @staticmethod
-    def create_new_timeline(timeline_name: str, project: 'MontagenProj'):
+    def create_new_timeline(timeline_name: str, project: "MontagenProj"):
         if not timeline_name:
             raise ValueError("timeline_name cannot be None")
         timeline = project.get_timeline(timeline_name)
@@ -171,11 +172,13 @@ class MontagenTimeline:
         MontagenTimeline.save_timeline(self.timeline_json_path, self.timeline_data)
 
     def to_json(self):
+        clips = [clip.to_json() for clip in self.clips]
+        clips.sort(key=lambda x: x.get("name"))
         return {
             "timelineData": self.timeline_data,
             "timelineName": self.timeline_name,
             "modifyTime": self.modify_time.isoformat(),
-            "clips": [clip.to_json() for clip in self.clips],
+            "clips": clips,
             "width": self.width,
             "height": self.height,
             "fps": self.fps,
@@ -285,4 +288,3 @@ class MontagenTimeline:
             if clip_.is_equal(clip):
                 return index
         return -1
-
