@@ -1,11 +1,11 @@
+from __future__ import annotations
 import os
-from datetime import datetime
 from .MontagenProj import MontagenProj
 
 
 class ExternMontagenProj(MontagenProj):
 
-    def __init__(self, project_base, ref_path):
+    def __init__(self, project_base: str, ref_path: str):
         super().__init__(project_base)
         self.ref_path = ref_path
 
@@ -25,7 +25,7 @@ class ExternMontagenProj(MontagenProj):
             raise Exception("name is empty")
         if name != self.project_name:
             self.project_name = name
-            self._save_project()
+            self.save()
 
     def delete(self):
         if self.ref_path:

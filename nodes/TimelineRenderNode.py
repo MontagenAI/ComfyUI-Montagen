@@ -11,7 +11,7 @@ from ..server.Utils import MONTAGENTIMELINETYPE, FFMPEG, FFPROBE
 import logging
 
 
-class TimelineExcNode(BaseWorkflow):
+class TimelineRenderNode(BaseWorkflow):
 
     @classmethod
     def INPUT_TYPES(s):
@@ -32,7 +32,7 @@ class TimelineExcNode(BaseWorkflow):
             },
         }
 
-    DESCRIPTION = "Execute Timeline"
+    DESCRIPTION = "Render Timeline"
 
     RETURN_TYPES = ()
     FUNCTION = "save_func"
@@ -52,7 +52,7 @@ class TimelineExcNode(BaseWorkflow):
         user_id, project_id, proj, workflow_id, workflow, workflow_node = (
             self.get_base_info(unique_id, prompt, extra_pnginfo)
         )
-        workflow.syn_workflow_clip(workflow_node, False)
+        workflow.syn_workflow_node(workflow_node, False)
         timeline = proj.get_timeline(name)
         if not timeline:
             raise ValueError("timeline is required.")

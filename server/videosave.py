@@ -4,7 +4,8 @@ import folder_paths
 import uuid
 import re
 import logging
-from ..server.Utils import FFMPEG
+from .Utils import FFMPEG
+
 
 def save_video(filename, frames, fps, pbar, hasAlpha):
     # Get the width and height of the first frame

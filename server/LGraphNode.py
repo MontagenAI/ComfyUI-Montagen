@@ -1,7 +1,13 @@
-import copy
-
-# import random
-
+from __future__ import annotations
+import io, os
+import shutil
+from .videosave import save_video
+from .Utils import to_base36_random, create_default_option, GIFTYPE
+from typing import TYPE_CHECKING
+from .LGraphNodeItem import LGraphNodeItem
+if TYPE_CHECKING:
+    from .LGraph import LGraph
+    from .MontagenTimeRange import MontagenTimeRange
 
 class LGraphNodeInput:
     def __init__(self, data):
@@ -53,357 +59,15 @@ class LGraphNodeOutput:
 
 class LGraphNode:
 
-    image_option = {
-        "active": (
-            "BOOLEAN",
-            {"default": True, "tooltip": "Activate the clip."},
-        ),
-        "x": (
-            "STRING",
-            {"default": "50vw", "tooltip": "X position of the clip."},
-        ),
-        "y": (
-            "STRING",
-            {"default": "50vh", "tooltip": "Y position of the clip."},
-        ),
-        "width": ("STRING", {"default": "50vw", "tooltip": "Width of the clip."}),
-        "height": ("STRING", {"default": "50vh", "tooltip": "Height of the clip."}),
-        "rotate": (
-            "FLOAT",
-            {"default": 0.0, "tooltip": "Rotation angle of the clip."},
-        ),
-        "opacity": (
-            "FLOAT",
-            {"default": 1.0, "tooltip": "Opacity of the clip."},
-        ),
-        # "anchorX": (
-        #     "FLOAT",
-        #     {
-        #         "default": "0.5",
-        #         "parent": {"name": "anchor", "isArray": True, "index": 0},
-        #         "tooltip": "Anchor point of the clip.",
-        #     },
-        # ),
-        # "anchorY": (
-        #     "FLOAT",
-        #     {
-        #         "default": "0.5",
-        #         "parent": {"name": "anchor", "isArray": True, "index": 1},
-        #         "tooltip": "Anchor point of the clip.",
-        #     },
-        # ),
-        "flipX": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Flip the clip horizontally."},
-        ),
-        "flipY": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Flip the clip vertically."},
-        ),
-        "zIndex": ("INT", {"default": 0, "tooltip": "Z-index for layering."}),
-        "object-fit": (
-            ["cover", "contain", "scale-down", "fill", "none"],
-            {"default": "contain", "tooltip": "Object fit mode of the clip."},
-        ),
-        "object-positionX": (
-            "FLOAT",
-            {
-                "default": "0.5",
-                "parent": {"name": "object-position", "isArray": True, "index": 0},
-            },
-        ),
-        "object-positionY": (
-            "FLOAT",
-            {
-                "default": "0.5",
-                "parent": {"name": "object-position", "isArray": True, "index": 1},
-            },
-        ),
-        "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the clip."}),
-        "ss": (
-            "FLOAT",
-            {"default": -1, "tooltip": "Start time for trimming."},
-        ),
-        "to": (
-            "FLOAT",
-            {"default": -1, "tooltip": "End time for trimming."},
-        ),
-        "start": (
-            "FLOAT",
-            {"default": -1, "tooltip": "Start time of the clip."},
-        ),
-        # "end": (
-        #     "FLOAT",
-        #     {"default": 0, "tooltip": "End time of the clip.", "defaultDelte": True},
-        # ),
-        "duration": (
-            "FLOAT",
-            {"default": -1, "tooltip": "Duration of the clip."},
-        ),
-        "blur": (
-            "FLOAT",
-            {"default": 0, "tooltip": "Blur level of the clip."},
-        ),
-        "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the clip."}),
-        "audio": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Audio file for the clip."},
-        ),
-        # "mute": (
-        #     "BOOLEAN",
-        #     {"default": True, "tooltip": "Mute audio for the clip."},
-        # ),
-        "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the clip."}),
-        "preload": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Preload the clip."},
-        ),
-    }
-
-    audio_option = {
-        "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the audio."}),
-        # "audio": (
-        #     "BOOLEAN",
-        #     {"default": True, "tooltip": "Audio file for the clip."},
-        # ),
-        "start": (
-            "FLOAT",
-            {
-                "default": -1,
-                "tooltip": "Start time of the audio.",
-            },
-        ),
-        # "end": (
-        #     "FLOAT",
-        #     {"default": 0, "tooltip": "End time of the audio.", "defaultDelte": True},
-        # ),
-        "duration": (
-            "FLOAT",
-            {"default": -1, "tooltip": "Duration of the audio."},
-        ),
-        # "loop": ("BOOLEAN", {"default": True, "tooltip": "Loop the audio."}),
-        "pitch": ("FLOAT", {"default": 1.0, "tooltip": "Pitch of the audio."}),
-        "speed": ("FLOAT", {"default": 1.0, "tooltip": "Speed of the audio."}),
-        "volume": ("FLOAT", {"default": 1.0, "tooltip": "Volume of the audio."}),
-        "fadeIn": (
-            "FLOAT",
-            {
-                "default": 0.0,
-                "tooltip": "Fade-in duration of the audio.",
-            },
-        ),
-        "fadeOut": (
-            "FLOAT",
-            {
-                "default": 0.0,
-                "tooltip": "Fade-out duration of the audio.",
-            },
-        ),
-        "ss": (
-            "FLOAT",
-            {
-                "default": -1,
-                "tooltip": "Start time for trimming the audio.",
-            },
-        ),
-        "to": (
-            "FLOAT",
-            {
-                "default": -1,
-                "tooltip": "End time for trimming the audio.",
-            },
-        ),
-    }
-
-    text_option = {
-        "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the text clip."}),
-        "x": ("STRING", {"default": "50vw", "tooltip": "X position of the text clip."}),
-        "y": ("STRING", {"default": "50vh", "tooltip": "Y position of the text clip."}),
-        "width": ("STRING", {"default": "50vw", "tooltip": "Width of the text clip."}),
-        "height": (
-            "STRING",
-            {"default": "50vh", "tooltip": "Height of the text clip."},
-        ),
-        "rotate": (
-            "FLOAT",
-            {"default": 0.0, "tooltip": "Rotation angle of the text clip."},
-        ),
-        "opacity": ("FLOAT", {"default": 1.0, "tooltip": "Opacity of the text clip."}),
-        # "anchorX": (
-        #     "FLOAT",
-        #     {
-        #         "default": "0.5",
-        #         "parent": {"name": "anchor", "isArray": True, "index": 0},
-        #         "tooltip": "Anchor point of the text clip.",
-        #     },
-        # ),
-        # "anchorY": (
-        #     "FLOAT",
-        #     {
-        #         "default": "0.5",
-        #         "parent": {"name": "anchor", "isArray": True, "index": 1},
-        #         "tooltip": "Anchor point of the text clip.",
-        #     },
-        # ),
-        "flipX": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Flip the text clip horizontally."},
-        ),
-        "flipY": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Flip the text clip vertically."},
-        ),
-        "zIndex": ("INT", {"default": 0, "tooltip": "Z-index for layering."}),
-        "text": ("STRING", {"default": "", "tooltip": "Text content."}),
-        "fontSize": ("STRING", {"default": "40", "tooltip": "Font size of the text."}),
-        "letterSpacing": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Letter spacing of the text.",
-            },
-        ),
-        "lineHeight": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Line height of the text.",
-            },
-        ),
-        "fontFamily": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Font family of the text.",
-            },
-        ),
-        "color": ("STRING", {"default": "#000000", "tooltip": "Text color."}),
-        "backgroundColor": (
-            "STRING",
-            {"default": "transparent", "tooltip": "Background color of the text."},
-        ),
-        "wrap": (
-            "BOOLEAN",
-            {"default": False, "tooltip": "Wrap text within the width."},
-        ),
-        "align": (
-            ["left", "center", "right"],
-            {"default": "center", "tooltip": "Text alignment (left, center, right)."},
-        ),
-        "valign": (
-            ["top", "center", "bottom"],
-            {
-                "default": "center",
-                "tooltip": "Vertical text alignment (top, middle, bottom).",
-            },
-        ),
-        "padding": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Padding around the text.",
-            },
-        ),
-        "stroke-color": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Stroke color of the text.",
-                "parent": {"name": "stroke", "property": "color"},
-            },
-        ),
-        "stroke-size": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Stroke size of the text.",
-                "parent": {"name": "stroke", "property": "size"},
-            },
-        ),
-        "shadow-color": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Shadow color of the text.",
-                "parent": {"name": "shadow", "property": "color"},
-            },
-        ),
-        "shadow-alpha": (
-            "FLOAT",
-            {
-                "default": 0,
-                "tooltip": "Shadow alpha of the text.",
-                "parent": {"name": "shadow", "property": "alpha"},
-            },
-        ),
-        "shadow-blur": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Shadow blur of the text.",
-                "parent": {"name": "shadow", "property": "blur"},
-            },
-        ),
-        "shadow-offset": (
-            "STRING",
-            {
-                "default": "",
-                "tooltip": "Shadow offset of the text.",
-                "parent": {"name": "shadow", "property": "offset"},
-            },
-        ),
-        "shadow-angle": (
-            "INT",
-            {
-                "default": 0,
-                "tooltip": "Shadow angle of the text.",
-                "parent": {"name": "shadow", "property": "angle"},
-            },
-        ),
-        "start": (
-            "FLOAT",
-            {
-                "default": -1,
-                "tooltip": "Start time of the text clip.",
-            },
-        ),
-        # "end": (
-        #     "FLOAT",
-        #     {
-        #         "default": 0,
-        #         "tooltip": "End time of the text clip.",
-        #     },
-        # ),
-        "duration": (
-            "FLOAT",
-            {
-                "default": -1,
-                "tooltip": "Duration of the text clip.",
-            },
-        ),
-        "preload": ("BOOLEAN", {"default": False, "tooltip": "Preload the text clip."}),
-    }
-
-    supported_config_type = {
-        "image": image_option,
-        "video": image_option,
-        "gif": image_option,
-        "audio": audio_option,
-        "text": text_option,
-    }
-
-    def __init__(self, graph, data):
+    def __init__(self, graph: LGraph, data: dict[str, any]):
         self.graph = graph
         self.data = data
 
     def serialize(self):
         return self.data
 
-    def clone(self):
-        return copy.deepcopy(self.data)
-
     @property
-    def widgets(self):
+    def widgets(self) -> list[any]:
         return self.data.get("widgets_values")
 
     @property
@@ -419,34 +83,55 @@ class LGraphNode:
         )
 
     @property
-    def properties(self):
+    def properties(self) -> dict[str, any]:
         if "properties" not in self.data:
             self.properties = {}
         return self.data.get("properties", {})
 
     @properties.setter
-    def properties(self, value):
+    def properties(self, value: dict[str, any]):
         self.data["properties"] = value
 
     @property
-    def assets(self):
+    def assets(self) -> list:
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        if "assets" not in self.properties["outputs"]:
+            self.properties["outputs"]["assets"] = []
         return self.properties.get("outputs", {}).get("assets", [])
 
     @assets.setter
-    def assets(self, value):
+    def assets(self, value: list):
         if "outputs" not in self.properties:
             self.properties["outputs"] = {}
         self.properties["outputs"]["assets"] = value
 
     @property
-    def clips(self):
-        return self.properties.get("outputs", {}).get("clips", [])
-
-    @clips.setter
-    def clips(self, value):
+    def items(self):
         if "outputs" not in self.properties:
             self.properties["outputs"] = {}
-        self.properties["outputs"]["clips"] = value
+        if "items" not in self.properties["outputs"]:
+            self.properties["outputs"]["items"] = []
+        return [
+            LGraphNodeItem(self, i, item)
+            for i, item in enumerate(
+                self.properties.get("outputs", {}).get("items", [])
+            )
+        ]
+
+    @property
+    def items_raw(self) -> list[dict[str, any]]:
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        if "items" not in self.properties["outputs"]:
+            self.properties["outputs"]["items"] = []
+        return self.properties.get("outputs", {}).get("items", [])
+
+    @items.setter
+    def items(self, value: list[LGraphNodeItem]):
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        self.properties["outputs"]["items"] = [item.serialize() for item in value]
 
     @property
     def single_file_name(self):
@@ -465,49 +150,57 @@ class LGraphNode:
         self.assets = [value]
 
     @property
-    def single_clip(self):
-        if self.clips:
-            return self.clips[0]
+    def single_item(self):
+        if self.items:
+            return self.items[0]
         return None
 
-    @single_clip.setter
-    def single_clip(self, value):
-        self.clips = [value]
+    @single_item.setter
+    def single_item(self, value: LGraphNodeItem):
+        self.items = [value]
 
     @property
-    def type(self):
+    def type(self) -> str:
         return self.properties.get("montagen_type", None)
 
     @type.setter
-    def type(self, value):
+    def type(self, value: str):
         self.properties["montagen_type"] = value
 
     @property
-    def node_type(self):
+    def node_type(self) -> str:
         return self.properties.get("montagen_node_type", None)
 
     @node_type.setter
-    def node_type(self, value):
+    def node_type(self, value: str):
         self.properties["montagen_node_type"] = value
 
     @property
-    def reserver_file(self):
-        return self.properties.get("reserver_file", False)
+    def timeline_name(self) -> str:
+        return self.properties.get("montagen_timeline_name", None)
 
-    @reserver_file.setter
-    def reserver_file(self, value):
-        self.properties["reserver_file"] = value
+    @timeline_name.setter
+    def timeline_name(self, value: str):
+        self.properties["montagen_timeline_name"] = value
+
+    @property
+    def reserve_file(self) -> bool:
+        return self.properties.get("reserve_file", False)
+
+    @reserve_file.setter
+    def reserve_file(self, value: bool):
+        self.properties["reserve_file"] = value
 
     @property
     def is_montagen_node(self):
         return self.type is not None
 
     @property
-    def node_name(self):
+    def node_name(self) -> str:
         return self.properties.get("montagen_name", None)
 
     @node_name.setter
-    def node_name(self, value):
+    def node_name(self, value: str):
         self.properties["montagen_name"] = value
 
     @property
@@ -522,10 +215,14 @@ class LGraphNode:
             self.data["outputs"] = []
         return [LGraphNodeOutput(output) for output in self.data["outputs"]]
 
+    @property
+    def workflow(self):
+        return self.graph.owner_workflow
+
     def reset(self):
         if self.is_montagen_node:
             self.assets = []
-            self.clips = []
+            self.items = []
 
     def to_json(self):
         return {
@@ -534,64 +231,8 @@ class LGraphNode:
             "type": self.type,
             "nodeType": self.node_type,
             "assets": self.assets,
-            "clips": self.get_clips_json(),
+            "items": [item.to_json() for item in self.items],
         }
-
-    @staticmethod
-    def create_clip_json(clip_name, clip):
-        type = clip.get("type")
-        if type not in LGraphNode.supported_config_type:
-            return None
-        return {
-            "id": clip.get("clipId"),
-            "name": clip_name,
-            "type": clip.get("type"),
-            "meta": {
-                key: clip.get(key, value[1].get("default"))
-                for key, value in LGraphNode.supported_config_type[
-                    clip.get("type")
-                ].items()
-            },
-        }
-
-    def get_clips_json(self):
-        clip_list = []
-        for i, wk_clip in enumerate(iter(self.clips)):
-            clip_name = self.node_name + "_" + str(i)
-            clip_list.append(self.create_clip_json(clip_name, wk_clip))
-        return clip_list
-
-    def syn_clip(self, clip):
-        if clip:
-            clip = clip.to_json()
-            opt = self.supported_config_type[self.type]
-            wk_clip = self.get_clip_by_id(clip.get("clipId"))
-            if wk_clip:
-                clip = self.flatten_tree(clip, opt)
-                wk_clip.clear()
-                wk_clip.update(clip)
-
-    def get_clip_by_id(self, clip_id):
-        for wk_clip in self.clips:
-            if wk_clip["clipId"] == clip_id:
-                return wk_clip
-
-    def set_clip_meta(self, clip_id, meta):
-        if meta:
-            wk_clip = self.get_clip_by_id(clip_id)
-            if wk_clip:
-                self.pre_change_clip(meta)
-                wk_clip.update(meta)
-
-    def has_clip(self, clip_id):
-        return self.get_clip_by_id(clip_id) != None
-
-    def get_clip_json(self, clip_id):
-        for i, wk_clip in enumerate(iter(self.clips)):
-            clip_name = self.node_name + "_" + str(i)
-            if wk_clip["clipId"] == clip_id:
-                return self.create_clip_json(clip_name, wk_clip)
-        return None
 
     def has_filename(self, file_name):
         for asset in self.assets:
@@ -606,195 +247,155 @@ class LGraphNode:
         if file_output_index >= 0:
             self.widgets[file_output_index] = self.single_file_name
 
-    def pre_change_clip(self, clip):
-        opts = self.supported_config_type[self.type]
-        key_to_delete = []
-        for key in clip:
-            if key in opts:
-                opt = opts[key]
-                if opt:
-                    if len(opt) == 2 and opt[1].get("default") == clip[key]:
-                        if opt[1].get("defaultDelte"):
-                            key_to_delete.append(key)
+    def sync_time_resoureces_range(
+        self, time_range: MontagenTimeRange, resoureces: list[str]
+    ):
+        for i, time_unit in enumerate(time_range.time_range):
+            item_id = time_unit.id
+            if not item_id:
+                continue
+            item, item_index = self.Get_item_and_index(item_id)
+            if not item:
+                item_index = len(self.items)
+            old_file = (
+                None if self.reserve_file else self.get_asset_file_name(item_index)
+            )
+            material, src = self.workflow.workflow_add_material(
+                self.node_name, item_index, old_file, resoureces[i], self.type
+            )
+            self.set_asset(item_index, material)
+            if not item:
+                item = self.create_item(src)
+                self.items_raw.append(item.serialize())
+            item.set_main_content(src, time_unit.start, time_unit.end)
 
-        for key in key_to_delete:
-            del clip[key]
+    def sync_time_text_range(self, time_range: MontagenTimeRange):
+        for i, time_unit in enumerate(time_range.time_range):
+            item_id = time_unit.id
+            if not item_id:
+                continue
+            item, item_index = self.Get_item_and_index(item_id)
+            if not item:
+                item = self.create_item(time_unit.content)
+                self.items_raw.append(item.serialize())
+            item.set_main_content(time_unit.content, time_unit.start, time_unit.end)
 
-    def set_clip(self, clip, max_clip):
-        if clip or max_clip:
-            self.pre_change_clip(clip)
-            self.pre_change_clip(max_clip)
-            if self.single_clip:
-                self.single_clip.update(clip)
-            else:
-                self.single_clip = max_clip
-        opt = self.supported_config_type[self.type]
-        return self.build_tree(self.single_clip, opt)
+    def sync_time_images_range(self, time_range: MontagenTimeRange, images: list):
+        for i, time_unit in enumerate(time_range.time_range):
+            item_id = time_unit.id
+            if not item_id:
+                continue
+            item, item_index = self.Get_item_and_index(item_id)
+            if not item:
+                item_index = len(self.items)
+            old_file = (
+                None if self.reserve_file else self.get_asset_file_name(item_index)
+            )
+            (file_fullName, tmp_fullName) = self.get_output_path(item_index, "png")
+            images[i].save(file_fullName)
+            material, src = self.workflow.workflow_add_material(
+                self.node_name, item_index, old_file, file_fullName, self.type
+            )
+            self.set_asset(item_index, material)
+            if not item:
+                item = self.create_item(src)
+                self.items_raw.append(item.serialize())
+            item.set_main_content(src, time_unit.start, time_unit.end)
 
-    def set_clips(self, clips, max_clips):
-        if clips:
-            for clip in clips:
-                self.pre_change_clip(clip)
-            for clip in max_clips:
-                self.pre_change_clip(clip)
-            current_length = len(self.clips)
-            new_length = len(clips)
-            current_clips = self.clips
-            self.clips = []
-            for i in range(new_length):
-                if i < current_length:
-                    current_clips[i].update(clips[i])
-                    self.clips.append(current_clips[i])
-                else:
-                    self.clips.append(max_clips[i])
+    def sync_file_meta(self, file_meta: dict):
+        old_name = self.single_file_name
+        self.single_asset = file_meta
+        if old_name != self.single_file_name and not self.reserve_file and old_name:
+            self.workflow.workflow_del_material(old_name)
+        src = file_meta.get("src")
+        self.create_single_item_if_not_exists(src)
 
-        convert_clips = []
-        opt = self.supported_config_type[self.type]
-        for clip in self.clips:
-            convert_clips.append(self.build_tree(clip, opt))
-        return convert_clips
+    def sync_file_images(self, property: dict, images: list):
+        format = property.get("format")
+        pbar = property.get("pbar")
+        fps = property.get("fps")
+        hasAlpha = property.get("hasAlpha")
+        (file_fullName, tmp_fullName) = self.get_output_path(0, format)
+        if pbar:
+            save_video(tmp_fullName, images, fps, pbar, hasAlpha)
+            pbar.update_absolute(100)
+        elif self.type == GIFTYPE:
+            duration = 1 / fps * 1000
+            images[0].save(
+                tmp_fullName,
+                save_all=True,
+                append_images=images[1:],
+                duration=duration,
+                loop=0,
+                disposal=2,
+            )
+        else:
+            images[0].save(tmp_fullName)
+        if os.path.exists(tmp_fullName):
+            src = self.copy_output(tmp_fullName, file_fullName, 0)
+            self.create_single_item_if_not_exists(src)
 
-    def build_tree(self, flat_dict, option):
-        nodes = {}
-        used_nodes = {}
-        for key, value in option.items():
-            parent_info = value[1].get("parent")
-            if key in flat_dict:
-                nodes[key] = {
-                    "name": key,
-                    "value": flat_dict.get(key),
-                    "parent": parent_info,
-                }
-        for key in flat_dict:
-            if key not in nodes:
-                nodes[key] = {
-                    "name": key,
-                    "value": flat_dict.get(key),
-                    "parent": None,
-                }
-        parent_dict = {}
-        root = parent_dict
-        for key, node in nodes.items():
-            parent_dict = root
-            parent_info = node["parent"]
-            parent_path = []
-            while parent_info:
-                parent_path.append(
-                    (
-                        parent_info["name"],
-                        parent_info.get("isArray", False),
-                        parent_info.get("index", 0),
-                        parent_info.get("property", None),
-                    )
-                )
-                parent_info = parent_info.get("parent")
-            parent_path.reverse()
-            current_node = node
-            pre_isarray = False
-            pre_index = 0
-            pre_property = None
-            for parent_name, is_array, index, property in parent_path:
-                if is_array:
-                    if pre_isarray:
-                        if not parent_name in used_nodes:
-                            len_v = len(parent_dict)
-                            count = pre_index + 1
-                            if count > len_v:
-                                while len(parent_dict) < count:
-                                    parent_dict.append([])
-                            tmp = parent_dict[pre_index]
-                            used_nodes[parent_name] = tmp
-                        parent_dict = used_nodes[parent_name]
-                    else:
-                        if parent_name not in parent_dict:
-                            parent_dict[parent_name] = []
-                        parent_dict = parent_dict[parent_name]
-                else:
-                    if pre_isarray:
-                        if not parent_name in used_nodes:
-                            len_v = len(parent_dict)
-                            count = pre_index + 1
-                            if count > len_v:
-                                while len(parent_dict) < count:
-                                    parent_dict.append([])
-                            tmp = {}
-                            parent_dict[pre_index] = tmp
-                            used_nodes[parent_name] = tmp
-                        parent_dict = used_nodes[parent_name]
-                    else:
-                        if parent_name not in parent_dict:
-                            parent_dict[parent_name] = {}
-                        parent_dict = parent_dict[parent_name]
-                pre_isarray = is_array
-                pre_index = index
-                pre_property = property
-            if pre_isarray:
-                len_v = len(parent_dict)
-                count = pre_index + 1
-                if count > len_v:
-                    while len(parent_dict) < count:
-                        parent_dict.append(None)
-                parent_dict[pre_index] = current_node["value"]
-            else:
-                key = current_node["name"]
-                if pre_property:
-                    key = pre_property
-                parent_dict[key] = current_node["value"]
+    def sync_file_buffer(self, property: dict, buffer: io.BytesIO):
+        format = property.get("format")
+        (file_fullName, tmp_fullName) = self.get_output_path(0, format)
+        with open(tmp_fullName, "wb") as f:
+            f.write(buffer.getbuffer())
+        if os.path.exists(tmp_fullName):
+            src = self.copy_output(tmp_fullName, file_fullName, 0)
+            self.create_single_item_if_not_exists(src)
 
-        return root
+    def sync_file_text(self, text: str):
+        self.create_single_item_if_not_exists(text)
 
-    def flatten_tree(self, tree_dict, option):
-        flat_dict = {}
-        used_parents = {}
+    def get_output_path(self, index: int, ext: str):
+        if not self.workflow:
+            raise RuntimeError("No workflow loaded")
+        return self.workflow.get_output_path(self.node_id, index, ext)
 
-        def process_value(key):
-            meta_info = option.get(key, None)[1]
-            parent_info = meta_info.get("parent")
-            parent_path = []
-            while parent_info:
-                parent_path.append(
-                    (
-                        parent_info["name"],
-                        parent_info.get("isArray", False),
-                        parent_info.get("index", 0),
-                        parent_info.get("property", None),
-                    )
-                )
-                parent_info = parent_info.get("parent")
-            parent_path.reverse()
-            current = tree_dict
-            current_is_array = False
-            current_index = 0
-            path_property = None
-            for path in parent_path:
-                path_key = path[0]
-                if path_key not in used_parents:
-                    used_parents[path_key] = True
-                path_is_array = path[1]
-                path_index = path[2]
-                path_property = path[3]
-                if current_is_array:
-                    if len(current) <= current_index:
-                        return
-                    current = current[current_index]
-                else:
-                    if path_key not in current:
-                        return
-                    current = current[path_key]
-                current_is_array = path_is_array
-                current_index = path_index
-                if not current:
-                    return
-            path_property = path_property or key
-            if current_is_array:
-                flat_dict[key] = current[current_index]
-            else:
-                if path_property in current:
-                    flat_dict[key] = current[path_property]
+    def copy_output(self, tmpFullName: str, fileFullName: str, index: int):
+        shutil.move(tmpFullName, fileFullName)
+        old_file = None if self.reserve_file else self.get_asset_file_name(index)
+        material, src = self.workflow.workflow_add_material(
+            self.node_name, index, old_file, fileFullName, self.type
+        )
+        self.set_asset(index, material)
+        return src
 
-        for key in option:
-            process_value(key)
-        for key in tree_dict:
-            if key not in flat_dict and key not in used_parents:
-                flat_dict[key] = tree_dict[key]
-        return flat_dict
+    def get_asset_file_name(self, index: int) -> str:
+        assets_len = len(self.assets)
+        if index >= assets_len:
+            return None
+        return self.assets[index].get("file_name")
+
+    def get_asset(self, index: int) -> dict:
+        assets_len = len(self.assets)
+        if index >= assets_len:
+            return None
+        return self.assets[index]
+
+    def set_asset(self, index: int, file_meta: dict):
+        assets_len = len(self.assets)
+        while index >= assets_len:
+            self.assets.append(None)
+            assets_len = len(self.assets)
+        self.assets[index] = file_meta
+
+    def create_single_item_if_not_exists(self, main_content: str):
+        if not self.single_item:
+            item = self.create_item(main_content)
+            self.single_item = item
+        self.single_item.set_main_content(main_content)
+
+    def create_item(self, main_content: str):
+        item_id = to_base36_random()
+        opt = create_default_option(self.type, main_content)
+        item = LGraphNodeItem(self, 0, {"meta": opt})
+        item.item_id = item_id
+        return item
+
+    def Get_item_and_index(self, item_id: str):
+        for index, item in enumerate(self.items):
+            if item.item_id == item_id:
+                return item, index
+        return None, None
+

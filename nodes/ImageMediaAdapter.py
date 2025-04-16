@@ -1,12 +1,13 @@
-import os
 import numpy as np
 from PIL import Image
 import torch
-from .BaseClipAdapter import BaseClipAdapter
-from .ImageTrackAdapter import ImageTrackAdapter
+from .BaseMediaAdapter import BaseMediaAdapter
+from ..server.LGraphNode import LGraphNode
+from ..server.MontagenWorkflow import MontagenWorkflow
+from ..server.MontagenProj import MontagenProj
 
 
-class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
+class ImageMediaAdapter(BaseMediaAdapter):
     def __init__(self):
         super().__init__()
         self.type = "image"
@@ -21,23 +22,24 @@ class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
             },
         }
 
-    DESCRIPTION = "Image Clip Adapter"
+    DESCRIPTION = "Image Adapter"
 
-    file_output_index = 3
-    
-    def save_func_inner_input(
+    file_output_index = 2
+
+    def save_func_inner(
         self,
-        name,
-        user_id,
-        project_id,
-        workflow_id,
-        workflow,
-        node_id,
-        node,
-        tag,
-        prompt,
-        extra_pnginfo,
-        unique_id,
+        name: str,
+        user_id: str,
+        project_id: str,
+        proj: MontagenProj,
+        workflow_id: str,
+        workflow: MontagenWorkflow,
+        node_id: str,
+        node: LGraphNode,
+        tag: str,
+        prompt: dict,
+        extra_pnginfo: dict,
+        unique_id: int,
         **keywords
     ):
         images = keywords.get("images", None)
@@ -55,20 +57,4 @@ class ImageClipAdapter(BaseClipAdapter, ImageTrackAdapter):
         img = Image.fromarray(
             np.clip(255 * ori_image.cpu().numpy(), 0, 255).astype(np.uint8)
         )
-        (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, node_id, 0, format
-        )
-        img.save(tmp_fullName)
-        if os.path.exists(tmp_fullName):
-            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
-
-        return self.return_result(
-            src,
-            10,
-            node_id,
-            workflow_id,
-            workflow,
-            project_id,
-            user_id,
-            node,
-        )
+        node.sync_file_images({"format": format}, [img])

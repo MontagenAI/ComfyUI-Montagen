@@ -1,25 +1,22 @@
-from .LLink import LLink
+from __future__ import annotations
 from .LGraphNode import LGraphNode
-from .Utils import to_base36_random, MONTAGENPROJ
+from .Utils import MONTAGENPROJ, DEFAULTUSERID
 from datetime import datetime
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from .MontagenWorkflow import MontagenWorkflow
+    from .MontagenProj import MontagenProj
+from typing import Optional
 
 
 class LGraph:
-    def __init__(self, data=None):
-        self.state = {
-            "lastGroupId": 0,
-            "lastNodeId": 0,
-            "lastLinkId": 0,
-            "lastRerouteId": 0,
-        }
-
+    def __init__(self, data: dict[str, any] = None):
         if data:
             if "workflow" in data:
                 data = data["workflow"]
             self.data = data
         else:
             self.data = LGraph.create_empty_workflow()
-        self.configure(data)
 
     @staticmethod
     def create_empty_workflow(
@@ -50,28 +47,44 @@ class LGraph:
         }
 
     @property
-    def extra(self):
+    def owner_workflow(self) -> Optional['MontagenWorkflow']:
+        return self.__workflow
+
+    @owner_workflow.setter
+    def owner_workflow(self, value: 'MontagenWorkflow'):
+        self.__workflow = value
+
+    @property
+    def owner_project(self) -> Optional['MontagenProj']:
+        if self.owner_workflow:
+            return self.owner_workflow.project
+        return None
+
+    @property
+    def extra(self) -> dict[str, any]:
         if "extra" not in self.data:
             self.data["extra"] = {}
         return self.data.get("extra")
 
     @property
-    def montagen_info(self):
+    def montagen_info(self) -> dict[str, any]:
+        if MONTAGENPROJ not in self.extra:
+            self.extra[MONTAGENPROJ] = {}
         return self.extra.get(MONTAGENPROJ, {})
 
     @montagen_info.setter
-    def montagen_info(self, value):
+    def montagen_info(self, value: dict[str, any]):
         self.extra[MONTAGENPROJ] = value
 
     @property
-    def nodes(self):
+    def nodes(self) -> list[dict[str, any]]:
         if "nodes" not in self.data:
             self.data["nodes"] = []
         return self.data.get("nodes", [])
 
     @property
     def graph_nodes(self):
-        return [LGraphNode(self, node) for node in self.data.get("nodes", [])]
+        return [LGraphNode(self, node) for node in self.nodes]
 
     @property
     def links(self):
@@ -80,29 +93,54 @@ class LGraph:
         return self.data.get("links", [])
 
     @property
-    def montagen_name(self):
+    def montagen_name(self) -> str:
         return self.montagen_info.get("workflowName")
 
     @montagen_name.setter
-    def montagen_name(self, value):
+    def montagen_name(self, value: str):
         if value:
             self.montagen_info["workflowName"] = value
 
     @property
-    def version(self):
+    def montagen_desc(self) -> str:
+        return self.montagen_info.get("workflowDesc")
+
+    @montagen_desc.setter
+    def montagen_desc(self, value: str):
+        if value:
+            self.montagen_info["workflowDesc"] = value
+
+    @property
+    def version(self) -> int:
         return self.montagen_info.get("version")
 
     @version.setter
-    def version(self, value):
+    def version(self, value: int):
         self.montagen_info["version"] = value
 
     @property
-    def montagen_workflow_id(self):
+    def montagen_workflow_id(self) -> str:
         return self.montagen_info.get("workflowId")
 
     @montagen_workflow_id.setter
-    def montagen_workflow_id(self, value):
+    def montagen_workflow_id(self, value: str):
         self.montagen_info["workflowId"] = value
+
+    @property
+    def montagen_user_id(self) -> str:
+        return self.montagen_info.get("userId", DEFAULTUSERID)
+
+    @montagen_user_id.setter
+    def montagen_user_id(self, value: str):
+        self.montagen_info["userId"] = value
+
+    @property
+    def montagen_project_id(self) -> str:
+        return self.montagen_info.get("projectId", None)
+
+    @montagen_project_id.setter
+    def montagen_project_id(self, value: str):
+        self.montagen_info["projectId"] = value
 
     @property
     def montagen_modify_time(self):
@@ -111,75 +149,8 @@ class LGraph:
         )
 
     @montagen_modify_time.setter
-    def montagen_modify_time(self, value):
+    def montagen_modify_time(self, value: datetime):
         self.montagen_info["modifyTime"] = value.isoformat()
-
-    # def addEmptyNode(self, clipId, name, type, tag=None):
-    #     state = self.state
-    #     node = LGraphNode.CreateNode(self, clipId, name, type, tag)
-    #     node.id = state["lastNodeId"] + 1
-    #     if state["lastNodeId"] < node.id:
-    #         state["lastNodeId"] = node.id
-    #     self.nodes.append(node.serialize())
-    #     self.serialize()
-
-    def delete_node(self, node_id):
-        for i, node in enumerate(self.nodes):
-            lGraphNode = LGraphNode(self, node)
-            if lGraphNode.node_id == node_id:
-                if hasattr(lGraphNode, "inputs"):
-                    for j, slot in enumerate(lGraphNode.inputs):
-                        if slot.link is not None:
-                            self.disconnect_input(lGraphNode, slot.link)
-
-                if hasattr(lGraphNode, "outputs"):
-                    for k, slot in enumerate(lGraphNode.outputs):
-                        if slot.links and len(slot.links):
-                            self.disconnect_output(lGraphNode, slot.links)
-                self.nodes.pop(i)
-                break
-
-    def rename_node(self, node_id, name):
-        for i, node in enumerate(self.nodes):
-            lGraphNode = LGraphNode(self, node)
-            if lGraphNode.node_id == node_id:
-                lGraphNode.node_name = name
-                break
-
-    def disconnect_input(self, nodeInput: LGraphNode, link_id):
-        for i, link in enumerate(self.links):
-            lLink = LLink.create_from_array(link)
-            if lLink.id == link_id:
-                self.links.pop(i)
-                if lLink.origin_id:
-                    for j, node in enumerate(self.nodes):
-                        lGraphNode = LGraphNode(self, node)
-                        if lGraphNode.id == lLink.origin_id:
-                            for k, lslot in enumerate(lGraphNode.outputs):
-                                if lslot.links:
-                                    for l, llink in enumerate(lslot.links):
-                                        if llink == link_id:
-                                            lslot.links.pop(l)
-                                    if len(lslot.links) == 0:
-                                        lslot.links = None
-                            break
-                break
-
-    def disconnect_output(self, nodeOutput: LGraphNode, links):
-        for i, linkId in enumerate(links):
-            for j, link in enumerate(self.links):
-                lLink = LLink.create_from_array(link)
-                if lLink.id == linkId:
-                    self.links.pop(j)
-                    if lLink.target_id:
-                        for k, node in enumerate(self.nodes):
-                            lGraphNode = LGraphNode(self, node)
-                            if lGraphNode.id == lLink.target_id:
-                                for l, lslot in enumerate(lGraphNode.inputs):
-                                    if linkId == lslot.link:
-                                        lslot.link = None
-                                break
-                    break
 
     def get_node_by_unique_id(self, id):
         for node in self.nodes:
@@ -195,183 +166,10 @@ class LGraph:
                 return lGraphNode
         return None
 
-    def get_node_by_clip_id(self, clip_id):
-        for node in self.nodes:
-            lGraphNode = LGraphNode(self, node)
-            if lGraphNode.has_clip(clip_id):
-                return lGraphNode
-
-    def export_node(self, clipId):
-        nodes_to_copy = []
-        links_to_copy = []
-
-        def collect_connected_nodes(node_id, direction="both"):
-            for link in self.links:
-                llink = LLink.create_from_array(link)
-                if direction in ["both", "input"] and llink.target_id == node_id:
-                    source_node = next(
-                        (
-                            n
-                            for n in self.nodes
-                            if LGraphNode(self, n).id == llink.origin_id
-                        ),
-                        None,
-                    )
-                    if source_node and source_node not in nodes_to_copy:
-                        nodes_to_copy.append(source_node)
-                        collect_connected_nodes(llink.origin_id, "input")
-                    if link not in links_to_copy:
-                        links_to_copy.append(link)
-
-                if direction in ["both", "output"] and llink.origin_id == node_id:
-                    target_node = next(
-                        (
-                            n
-                            for n in self.nodes
-                            if LGraphNode(self, n).id == llink.target_id
-                        ),
-                        None,
-                    )
-                    if target_node and target_node not in nodes_to_copy:
-                        nodes_to_copy.append(target_node)
-                        collect_connected_nodes(llink.target_id, "output")
-                    if link not in links_to_copy:
-                        links_to_copy.append(link)
-
-        # Find the source node and its connected nodes
-        source_node = next(
-            (n for n in self.nodes if LGraphNode(self, n).clipId == clipId), None
-        )
-        if not source_node:
-            return None
-
-        nodes_to_copy.append(source_node)
-        collect_connected_nodes(LGraphNode(self, source_node).id)
-
-        # Prepare exported data
-        exported_nodes = []
-        exported_links = []
-
-        # Create new nodes with sequential IDs
-        for node in nodes_to_copy:
-            original_node = LGraphNode(self, node)
-            new_node = original_node.clone()
-            exported_nodes.append(new_node)
-
-        # Create new links with sequential IDs
-        for link in links_to_copy:
-            original_link = LLink.create_from_array(link)
-            new_link = [
-                original_link.id,
-                original_link.origin_id,
-                original_link.origin_slot,
-                original_link.target_id,
-                original_link.target_slot,
-                original_link.type,
-            ]
-            exported_links.append(new_link)
-
-        return {"nodes": exported_nodes, "links": exported_links}
-
-    def import_node(self, imported_data):
-        """Import nodes and links from another graph while handling ID mapping"""
-        if (
-            not imported_data
-            or "nodes" not in imported_data
-            or "links" not in imported_data
-        ):
-            return None
-
-        # Create new ID mappings
-        old_to_new_ids = {}
-        old_to_new_link_ids = {}
-        imported_nodes = []
-        imported_links = []
-
-        # Process nodes
-        for node in imported_data["nodes"]:
-            new_id = self.state["lastNodeId"] + 1
-            self.state["lastNodeId"] = new_id
-            old_to_new_ids[node["id"]] = new_id
-            node["id"] = new_id
-            imported_nodes.append(node)
-            lNode = LGraphNode(self, node)
-            if lNode.is_montagen_node:
-                lNode.clipId = to_base36_random()
-
-        # Process links
-        for link in imported_data["links"]:
-            new_link_id = self.state["lastLinkId"] + 1
-            self.state["lastLinkId"] = new_link_id
-
-            # Map old IDs to new IDs for the link
-            new_link = [
-                new_link_id,
-                old_to_new_ids[link[1]],  # origin_id
-                link[2],  # origin_slot
-                old_to_new_ids[link[3]],  # target_id
-                link[4],  # target_slot
-                link[5],  # type
-            ]
-            old_to_new_link_ids[link[0]] = new_link_id
-            imported_links.append(new_link)
-
-        for node in imported_nodes:
-            for slot in node["inputs"]:
-                if slot["link"]:
-                    slot["link"] = old_to_new_link_ids.get(slot["link"], None)
-            for slot in node["outputs"]:
-                if slot["links"]:
-                    newlinks = []
-                    for link in slot["links"]:
-                        newlink = old_to_new_link_ids.get(link, None)
-                        if newlink:
-                            newlinks.append(newlink)
-                    slot["links"] = None if len(newlinks) == 0 else newlinks
-
-        # Add imported nodes and links to the graph
-        self.nodes.extend(imported_nodes)
-        self.links.extend(imported_links)
-
-        self.serialize()
-        return {"nodes": imported_nodes, "links": imported_links}
-
     def serialize(self):
-        data = self.data
-        if data.get("version") == 0.4:
-            data["last_node_id"] = self.state["lastNodeId"]
-            data["last_link_id"] = self.state["lastLinkId"]
-        else:
-            if data.get("state"):
-                state = data["state"]
-                state["lastGroupId"] = self.state["lastGroupId"]
-                state["lastLinkId"] = self.state["lastLinkId"]
-                state["lastNodeId"] = self.state["lastNodeId"]
-                state["lastRerouteId"] = self.state["lastRerouteId"]
         return self.data
 
-    def configure(self, data):
-        if not data:
-            return
-
-        if data.get("version") == 0.4:
-            if "last_node_id" in data:
-                self.state["lastNodeId"] = data["last_node_id"]
-            if "last_link_id" in data:
-                self.state["lastLinkId"] = data["last_link_id"]
-        else:
-            if data.get("state"):
-                state = data["state"]
-                if "lastGroupId" in state:
-                    self.state["lastGroupId"] = state["lastGroupId"]
-                if "lastLinkId" in state:
-                    self.state["lastLinkId"] = state["lastLinkId"]
-                if "lastNodeId" in state:
-                    self.state["lastNodeId"] = state["lastNodeId"]
-                if "lastRerouteId" in state:
-                    self.state["lastRerouteId"] = state["lastRerouteId"]
-
-    def reset(self, clear_id):
+    def reset(self, clear_id: bool):
         if clear_id:
             self.montagen_workflow_id = None
         for node in self.graph_nodes:

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import os
 import json
 from datetime import datetime
@@ -13,18 +14,19 @@ from .Utils import (
     DEFAULTWORKFLOWNAME,
     ASSETSDIR,
     REfSDIR,
+    supported_config_type,
+    supported_group_config_type,
 )
 from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
 from .MontagenMaterial import MontagenMaterial
 from .MontagenTimeline import MontagenTimeline
 from .MontagenBuild import MontagenBuild
-from .LGraphNode import LGraphNode
 
 
 class MontagenProj:
 
-    def __init__(self, project_base):
+    def __init__(self, project_base: str):
         self.project_path = project_base
         self.project_data = self._load_project()
         self.montagen_cache_manager = MontagenCacheManager()
@@ -42,27 +44,27 @@ class MontagenProj:
         return os.path.dirname(self.project_path)
 
     @property
-    def width(self):
+    def width(self) -> int:
         return self.project_data.get("width")
 
     @property
-    def height(self):
+    def height(self) -> int:
         return self.project_data.get("height")
 
     @property
-    def user_id(self):
+    def user_id(self) -> str:
         return self.project_data.get("baseInfo", {}).get("userId")
 
     @property
-    def project_id(self):
+    def project_id(self) -> str:
         return self.project_data.get("baseInfo", {}).get("projectId")
 
     @property
-    def project_name(self):
+    def project_name(self) -> str:
         return self.project_data.get("baseInfo", {}).get("name")
 
     @project_name.setter
-    def project_name(self, value):
+    def project_name(self, value: str):
         self.project_data["baseInfo"]["name"] = value
 
     @property
@@ -72,19 +74,19 @@ class MontagenProj:
         )
 
     @modify_time.setter
-    def modify_time(self, value):
+    def modify_time(self, value: datetime):
         self.project_data["baseInfo"]["modifyTime"] = value.isoformat()
 
     @property
-    def description(self):
+    def description(self) -> str:
         return self.project_data.get("baseInfo", {}).get("description")
 
     @description.setter
-    def description(self, value):
+    def description(self, value: str):
         self.project_data["baseInfo"]["description"] = value
 
     @property
-    def workflows(self):
+    def workflows(self) -> list[MontagenWorkflow]:
         cached_workflows = self.montagen_cache_manager.get(self.cache_key)
         if cached_workflows is not None:
             cached_workflows.sort(
@@ -109,7 +111,7 @@ class MontagenProj:
         return workflows
 
     @property
-    def timelines(self):
+    def timelines(self) -> list[MontagenTimeline]:
         cached_timelines = self.montagen_cache_manager.get(self.timeline_cache_key)
         if cached_timelines is not None:
             cached_timelines.sort(
@@ -133,7 +135,7 @@ class MontagenProj:
         self.montagen_cache_manager.add(self.timeline_cache_key, timelines)
         return timelines
 
-    def _load_project(self):
+    def _load_project(self) -> dict[str, any]:
         project_json = os.path.join(self.project_path, INFOFILE)
         if not os.path.exists(project_json):
             raise FileNotFoundError(f"{project_json} file not found")
@@ -143,7 +145,7 @@ class MontagenProj:
             return project_json
         raise ValueError(f"Invalid {project_json} file")
 
-    def _save_project(self):
+    def save(self):
         self.modify_time = datetime.now()
         self.save_project(self.project_path, self.project_data)
 
@@ -154,7 +156,8 @@ class MontagenProj:
             "assets": self.montagen_material.get_materials_by_location(False),
             "refs": self.montagen_material.get_materials_by_location(True),
             "timelines": [timline.to_json() for timline in self.timelines],
-            "configInfo": LGraphNode.supported_config_type,
+            "configInfo": supported_config_type,
+            "groupConfigInfo": supported_group_config_type,
             "builds": self.montagen_build.get_build_list(),
         }
 
@@ -162,7 +165,7 @@ class MontagenProj:
         return {**self.project_data}
 
     @staticmethod
-    def save_project(project_path, project_data):
+    def save_project(project_path: str, project_data: dict[str, any]):
         project_json = os.path.join(project_path, INFOFILE)
         with open(project_json, "w") as file:
             json.dump(project_data, file, indent=4)
@@ -267,7 +270,7 @@ class MontagenProj:
         return None
 
     def project_change_time(self):
-        self._save_project()
+        self.save()
 
     def project_rename(self, name: str):
         if not name:
@@ -276,7 +279,7 @@ class MontagenProj:
             self.project_name = name
             new_name = rename_path(self.project_base_name, self.project_path_name, name)
             self.project_path = os.path.join(self.project_base_name, new_name)
-            self._save_project()
+            self.save()
             self.montagen_cache_manager.delete(self.cache_key)
             self.montagen_cache_manager.delete(self.timeline_cache_key)
             self.montagen_material.clear_cache()
@@ -287,7 +290,7 @@ class MontagenProj:
             raise Exception("description is empty")
         if description != self.description:
             self.description = description
-            self._save_project()
+            self.save()
 
     def delete(self):
         if self.project_path:
@@ -323,13 +326,6 @@ class MontagenProj:
         self.project_change_time()
         return timeline_name
 
-    def get_timelines_by_clip_id(self, clip_id):
-        timelines = []
-        for timeline in self.timelines:
-            if timeline.has_clip_id(clip_id):
-                timelines.append(timeline)
-        return timelines
-
     def is_in_use(self, file_name):
         for workflow in self.workflows:
             if workflow.is_in_use(file_name):
@@ -339,8 +335,18 @@ class MontagenProj:
                 return True
         return False
 
-    def get_clip_json(self, workflow_id, clip_id):
+    def get_timeline_clips(
+        self, workflow_id: str, timeline_name: str, node_id: str, item_id: str
+    ):
+        for timeline in self.timelines:
+            if timeline.timeline_name == timeline_name:
+                return timeline.get_clips(workflow_id, node_id, item_id)
+        return []
+
+    def get_workflow_node_item(
+        self, workflow_id: str, timeline_name: str, node_id: str, item_id: str
+    ):
         workflow = self.get_workflow(workflow_id)
         if workflow:
-            return workflow.get_clip_json(clip_id)
+            return workflow.get_workflow_node_item(timeline_name, node_id, item_id)
         return None

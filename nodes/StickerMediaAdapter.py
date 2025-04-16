@@ -3,19 +3,19 @@ import numpy as np
 from PIL import Image
 from comfy_extras import nodes_compositing
 import torch
-from .VideoClipAdapter import VideoClipAdapter
-from .GifTrackAdapter import GifTrackAdapter
+from .VideoMediaAdapter import VideoMediaAdapter
+from ..server.LGraphNode import LGraphNode
+from ..server.MontagenWorkflow import MontagenWorkflow
+from ..server.MontagenProj import MontagenProj
 
 
-class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
+class StickerMediaAdapter(VideoMediaAdapter):
 
     def __init__(self):
         super().__init__()
         self.type = "gif"
 
-    DESCRIPTION = "Sticker Clip Adapter"
-    
-    file_output_index = 4
+    DESCRIPTION = "Sticker Adapter"
 
     @classmethod
     def ClIP_INPUT_TYPES(s):
@@ -29,19 +29,20 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
             },
         }
 
-    def save_func_inner_input(
+    def save_func_inner(
         self,
-        name,
-        user_id,
-        project_id,
-        workflow_id,
-        workflow,
-        node_id,
-        node,
-        tag,
-        prompt,
-        extra_pnginfo,
-        unique_id,
+        name: str,
+        user_id: str,
+        project_id: str,
+        proj: MontagenProj,
+        workflow_id: str,
+        workflow: MontagenWorkflow,
+        node_id: str,
+        node: LGraphNode,
+        tag: str,
+        prompt: dict,
+        extra_pnginfo: dict,
+        unique_id: int,
         **keywords
     ):
 
@@ -67,28 +68,4 @@ class GifClipAdapter(VideoClipAdapter, GifTrackAdapter):
             Image.fromarray(np.clip(255 * img.cpu().numpy(), 0, 255).astype(np.uint8))
             for img in images
         ]
-        duration = 1 / preview_fps * 1000
-        (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, node_id, 0, format
-        )
-        images[0].save(
-            tmp_fullName,
-            save_all=True,
-            append_images=images[1:],
-            duration=duration,
-            loop=0,
-            disposal=2,
-        )
-        if os.path.exists(tmp_fullName):
-            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
-        duration = image_len / preview_fps
-        return self.return_result(
-            src,
-            duration,
-            node_id,
-            workflow_id,
-            workflow,
-            project_id,
-            user_id,
-            node,
-        )
+        node.sync_file_images({"format": format, "fps": preview_fps}, images)

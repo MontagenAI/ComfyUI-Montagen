@@ -1,14 +1,14 @@
-import os
 import numpy as np
-from . import videosave
 from comfy.utils import ProgressBar
 from comfy_extras import nodes_compositing
 import torch
-from .ImageClipAdapter import ImageClipAdapter
-from .VideoTrackAdapter import VideoTrackAdapter
+from .ImageMediaAdapter import ImageMediaAdapter
+from ..server.LGraphNode import LGraphNode
+from ..server.MontagenWorkflow import MontagenWorkflow
+from ..server.MontagenProj import MontagenProj
 
 
-class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
+class VideoMediaAdapter(ImageMediaAdapter):
 
     def __init__(self):
         super().__init__()
@@ -32,23 +32,24 @@ class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
             },
         }
 
-    file_output_index = 4
+    file_output_index = 3
 
-    DESCRIPTION = "Video Clip Adapter"
+    DESCRIPTION = "Video Adapter"
 
-    def save_func_inner_input(
+    def save_func_inner(
         self,
-        name,
-        user_id,
-        project_id,
-        workflow_id,
-        workflow,
-        node_id,
-        node,
-        tag,
-        prompt,
-        extra_pnginfo,
-        unique_id,
+        name: str,
+        user_id: str,
+        project_id: str,
+        proj: MontagenProj,
+        workflow_id: str,
+        workflow: MontagenWorkflow,
+        node_id: str,
+        node: LGraphNode,
+        tag: str,
+        prompt: dict,
+        extra_pnginfo: dict,
+        unique_id: int,
         **keywords
     ):
         images = keywords.get("images", None)
@@ -80,22 +81,8 @@ class VideoClipAdapter(ImageClipAdapter, VideoTrackAdapter):
             frames.append(frame)
             current_progress = current_progress + load_image_progress_item
             pbar.update_absolute(current_progress * 0.5)
-        (file_fullName, tmp_fullName) = self.get_output_path(
-            workflow, node_id, 0, "mp4" if not hasAlpha else "webm"
-        )
-        videosave.save_video(tmp_fullName, frames, preview_fps, pbar, hasAlpha)
-        pbar.update_absolute(100)
-        if os.path.exists(tmp_fullName):
-            src = self.copy_output(tmp_fullName, file_fullName, workflow, node)
-
-        duration = image_len / preview_fps
-        return self.return_result(
-            src,
-            duration,
-            node_id,
-            workflow_id,
-            workflow,
-            project_id,
-            user_id,
-            node,
+        format = "mp4" if not hasAlpha else "webm"
+        node.sync_file_images(
+            {"format": format, "pbar": pbar, "fps": preview_fps, "hasAlpha": hasAlpha},
+            frames,
         )

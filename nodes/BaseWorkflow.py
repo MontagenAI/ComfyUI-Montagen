@@ -6,6 +6,9 @@ from ..server.Utils import (
     DEFAULTWORKFLOWNAME,
     to_base36_random,
 )
+from ..server.LGraphNode import LGraphNode
+from ..server.MontagenProj import MontagenProj
+from ..server.MontagenTimeline import MontagenTimeline
 
 
 class BaseWorkflow:
@@ -24,11 +27,11 @@ class BaseWorkflow:
         workflow_id = None
         if "workflow" not in extra_pnginfo:
             raise ValueError("workflow is required.")
-        workflow_node = extra_pnginfo["workflow"]
+        workflow_node: dict[str, any] = extra_pnginfo["workflow"]
         lgraph = LGraph(workflow_node)
-        user_id = lgraph.montagen_info.get("userId", DEFAULTUSERID)
-        project_id_context = lgraph.montagen_info.get("projectId", None)
-        workflow_id = lgraph.montagen_info.get("workflowId", None)
+        user_id = lgraph.montagen_user_id
+        project_id_context = lgraph.montagen_project_id
+        workflow_id = lgraph.montagen_workflow_id
         project_id = defualt_user_info["default_project_id"]
         if project_id_context:
             project_id = project_id_context
@@ -40,14 +43,49 @@ class BaseWorkflow:
             workflows_len = len(workflows)
             if workflows_len > 1 or workflows_len == 0:
                 lgraph.reset(workflows_len > 1)
-            workflow_id = lgraph.montagen_info.get("workflowId", None)
+            workflow_id = lgraph.montagen_workflow_id
             if not workflow_id:
                 workflow_id = to_base36_random()
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
                 proj.project_add_workflow(workflow_id, DEFAULTWORKFLOWNAME)
                 workflow = proj.get_workflow(workflow_id)
-                workflow.syn_workflow_clip(workflow_node, False)
+                workflow.syn_workflow_node(workflow_node, False)
             if not workflow:
                 raise ValueError("workflow is required.")
         return (user_id, project_id, proj, workflow_id, workflow, workflow_node)
+
+    def protocol_return(
+        self,
+        timeline: MontagenTimeline,
+        proj: MontagenProj,
+        workflow_id: str,
+        project_id: str,
+        user_id: str,
+        node: LGraphNode,
+    ):
+        # MontagenProjManager.instance.onProcessEnd(
+        #     {
+        #         "userId": user_id,
+        #         "projectId": project_id,
+        #         "workflowId": workflow_id,
+        #         "clipId": clip_id,
+        #         "src": src,
+        #         "duration": duration,
+        #         "type": self.type,
+        #     }
+        # )
+        return {
+            "ui": {
+                "assets": [
+                    {
+                        "userId": user_id,
+                        "projectId": project_id,
+                        "workflowId": workflow_id,
+                        "type": self.type,
+                        "nodeType": self.node_type,
+                        "src": node.single_file_name,
+                    }
+                ]
+            },
+        }
