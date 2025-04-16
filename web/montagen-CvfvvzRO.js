@@ -269,7 +269,7 @@ img[data-v-c280557e] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-f3512672] {
+}.explorer-container[data-v-77cb929b] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -71924,12 +71924,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           const offsetY = viewportHeight / 2 - centerY * scale;
           canvas2.ds.scale = scale;
           canvas2.ds.offset = [offsetX, offsetY];
-          canvas2.setDirty(true);
+          canvas2.setDirty(true, true);
           console.log(`Centered with scale: ${scale.toFixed(2)}, offset: [${offsetX.toFixed(0)}, ${offsetY.toFixed(0)}]`);
         } catch (error) {
           console.error("Error centering workflow:", error);
         }
-      }, 800);
+      }, 500);
     };
     const visible = ref$3(false);
     const initialValues = ref$3({
@@ -72610,7 +72610,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f3512672"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-77cb929b"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
