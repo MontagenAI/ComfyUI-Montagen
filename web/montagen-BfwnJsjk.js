@@ -269,7 +269,7 @@ img[data-v-c280557e] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-eb30740f] {
+}.explorer-container[data-v-30e7e80b] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -475,6 +475,9 @@ img[data-v-c280557e] {
 .tw-grid {\r
     display: grid
 }\r
+.tw-h-10 {\r
+    height: 2.5rem
+}\r
 .tw-h-100 {\r
     height: 28rem
 }\r
@@ -484,8 +487,8 @@ img[data-v-c280557e] {
 .tw-h-full {\r
     height: 100%
 }\r
-.tw-h-10 {\r
-    height: 2.5rem
+.tw-w-10 {\r
+    width: 2.5rem
 }\r
 .tw-w-80 {\r
     width: 20rem
@@ -495,9 +498,6 @@ img[data-v-c280557e] {
 }\r
 .tw-w-full {\r
     width: 100%
-}\r
-.tw-w-10 {\r
-    width: 2.5rem
 }\r
 .tw-min-w-44 {\r
     min-width: 11rem
@@ -546,18 +546,19 @@ img[data-v-c280557e] {
 .tw-bg-transparent {\r
     background-color: transparent
 }\r
-.tw-p-2 {\r
-    padding: 0.5rem
-}\r
 .tw-p-0 {\r
     padding: 0px
 }\r
-.\\!tw-p-0 {\r
-    padding: 0px !important
+.tw-p-2 {\r
+    padding: 0.5rem
 }\r
 .\\!tw-px-0 {\r
     padding-left: 0px !important;\r
     padding-right: 0px !important
+}\r
+.tw-px-12 {\r
+    padding-left: 3rem;\r
+    padding-right: 3rem
 }\r
 .tw-px-4 {\r
     padding-left: 1rem;\r
@@ -566,10 +567,6 @@ img[data-v-c280557e] {
 .tw-py-2 {\r
     padding-top: 0.5rem;\r
     padding-bottom: 0.5rem
-}\r
-.tw-px-12 {\r
-    padding-left: 3rem;\r
-    padding-right: 3rem
 }\r
 .tw-py-3 {\r
     padding-top: 0.75rem;\r
@@ -587,11 +584,11 @@ img[data-v-c280557e] {
 .tw-text-left {\r
     text-align: left
 }\r
-.tw-text-lg {\r
-    font-size: 1.125rem
-}\r
 .tw-text-2xl {\r
     font-size: 1.5rem
+}\r
+.tw-text-lg {\r
+    font-size: 1.125rem
 }\r
 .tw-text-inherit {\r
     color: inherit
@@ -71892,6 +71889,44 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       } else {
         let data = flag ? flag.activeState : node2.workflowData;
         await workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
+        centerCurrentWorkFlow();
+      }
+    };
+    const centerCurrentWorkFlow = () => {
+      try {
+        const canvas2 = app$1.canvas;
+        if (!canvas2 || !canvas2.ds) {
+          console.error("Canvas or DrawingState not initialized!");
+          return;
+        }
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        app$1.graph._nodes.forEach((node2) => {
+          const [x, y] = node2.pos;
+          const [width, height] = node2.size;
+          minX = Math.min(minX, x);
+          maxX = Math.max(maxX, x + width);
+          minY = Math.min(minY, y);
+          maxY = Math.max(maxY, y + height);
+        });
+        if (minX === Infinity || maxX === -Infinity) {
+          console.warn("No nodes found in the workflow!");
+          return;
+        }
+        const workflowWidth = maxX - minX;
+        const workflowHeight = maxY - minY;
+        const centerX = minX + workflowWidth / 2;
+        const centerY = minY + workflowHeight / 2;
+        const viewportWidth = canvas2.canvas.width;
+        const viewportHeight = canvas2.canvas.height;
+        const scale = app$1.canvas.ds.scale || 1;
+        const offsetX = viewportWidth / 2 - centerX * scale;
+        const offsetY = viewportHeight / 2 - centerY * scale;
+        canvas2.ds.scale = scale;
+        canvas2.ds.offset = [offsetX, offsetY];
+        canvas2.setDirty(true);
+        console.log(`Centered with scale: ${scale.toFixed(2)}, offset: [${offsetX.toFixed(0)}, ${offsetY.toFixed(0)}]`);
+      } catch (error) {
+        console.error("Error centering workflow:", error);
       }
     };
     const visible = ref$3(false);
@@ -72573,7 +72608,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-eb30740f"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-30e7e80b"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
