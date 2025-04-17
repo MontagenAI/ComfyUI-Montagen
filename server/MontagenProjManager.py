@@ -15,6 +15,7 @@ from .Utils import (
     generate_unique_filename,
     to_base36_random,
     TEMPLATEPATH,
+    TMPPAHT,
 )
 from .MontagenProj import MontagenProj
 from .MontagenCacheManager import MontagenCacheManager
@@ -493,6 +494,32 @@ class MontagenProjManager:
                 raise Exception("filename is not found")
             user_projs_root = self.get_user_projects_root(user_id)
             path = os.path.join(user_projs_root, TEMPLATEPATH, filename)
+            filename = os.path.basename(path)
+            content_type = (
+                mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            )
+            return web.FileResponse(
+                path,
+                headers={
+                    "Content-Disposition": f'filename="{filename}"',
+                    "Content-Type": content_type,
+                },
+            )
+
+        @server.routes.get("/Montagen/Proj/{id}/Tmp/File/{filename:.+}")
+        @error_handling_decorator
+        async def file_server_tmp(request, register_action):
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            if not project_id:
+                raise Exception("project_id is empty")
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            filename = request.match_info.get("filename", None)
+            if not filename:
+                raise Exception("filename is not found")
+            path = os.path.join(proj.project_path, TMPPAHT, filename)
             filename = os.path.basename(path)
             content_type = (
                 mimetypes.guess_type(filename)[0] or "application/octet-stream"

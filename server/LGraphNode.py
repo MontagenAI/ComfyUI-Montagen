@@ -2,7 +2,16 @@ from __future__ import annotations
 import io, os
 import shutil
 from .videosave import save_video
-from .Utils import to_base36_random, create_default_option, GIFTYPE
+from .Utils import (
+    to_base36_random,
+    create_default_option,
+    GIFTYPE,
+    IMAGETYPE,
+    VIDEOTYPE,
+    extract_middle_frame_thumbnail,
+    extract_gif_middle_frame,
+    extract_image_thumbnail,
+)
 from typing import TYPE_CHECKING
 from .LGraphNodeItem import LGraphNodeItem
 
@@ -418,3 +427,23 @@ class LGraphNode:
             if item.item_id == item_id:
                 return item, index
         return None, None
+
+    def thumb(self):
+        if self.single_file_name:
+            full_path = (
+                self.graph.owner_project.montagen_material.get_material_full_path(
+                    self.single_asset
+                )
+            )
+            out_put = self.graph.owner_workflow.get_thumb_file_path()
+            if self.type == GIFTYPE:
+                extract_gif_middle_frame(full_path, out_put)
+                return
+            elif self.type == VIDEOTYPE:
+                extract_middle_frame_thumbnail(full_path, out_put)
+                return
+            elif self.type == IMAGETYPE:
+                extract_image_thumbnail(full_path, out_put)
+                return
+
+        raise NotImplementedError()

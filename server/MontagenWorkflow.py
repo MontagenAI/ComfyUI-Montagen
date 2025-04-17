@@ -28,6 +28,8 @@ class MontagenWorkflow:
         self.workflow_tmp_path = os.path.join(
             project.project_path, TMPPAHT, WORKFLOWBASEPATH, self.workflow_id
         )
+        if not os.path.exists(self.workflow_tmp_path):
+            os.makedirs(self.workflow_tmp_path)
 
     @property
     def workflow_json_dir_name(self):
@@ -158,6 +160,7 @@ class MontagenWorkflow:
             "workflowDesc": self.workflow_desc,
             "nodes": [node.to_json() for node in self.nodes if node.is_montagen_node],
             "modifyTime": self.modify_time.isoformat(),
+            "thumb":self.get_thumb_file_url()
         }
 
     def get_output_path(self, node_id: str, index: int, ext: str):
@@ -187,8 +190,9 @@ class MontagenWorkflow:
 
     def rename_workflow(self, name: str, description: str):
         name = name or DEFAULTWORKFLOWNAME
-        self.workflow_desc = description
-        if name != self.workflow_name:
+        if description and description != self.workflow_desc:
+            self.workflow_desc = description
+        if name and name != self.workflow_name:
             self.workflow_name = name
             new_filename = generate_unique_filename(
                 self.workflow_json_dir_name, name + ".json"
@@ -278,6 +282,12 @@ class MontagenWorkflow:
         if node:
             return node
         return version
+
+    def get_thumb_file_path(self):
+        return os.path.join(self.workflow_tmp_path, "thumb.png")
+
+    def get_thumb_file_url(self):
+        return f"/Montagen/Proj/{self.project_id}/Tmp/File/{WORKFLOWBASEPATH}/{self.workflow_id}/thumb.png"
 
     def is_in_use(self, file_name):
         for node in self.workflow_data.graph_nodes:

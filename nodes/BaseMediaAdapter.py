@@ -122,7 +122,7 @@ class BaseMediaAdapter(BaseWorkflow):
                 raise ValueError("valid input is not found.")
 
         return self.protocol_return(
-            timeline, proj, workflow_id, project_id, user_id, node
+            timeline, proj, workflow_id, project_id, user_id, node, extra_pnginfo
         )
 
     def save_func_inner(

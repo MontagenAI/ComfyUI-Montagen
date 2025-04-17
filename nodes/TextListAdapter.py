@@ -62,5 +62,5 @@ class TextListAdapter(BaseListAdapter):
             node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
             workflow.save()
         return self.protocol_return(
-            timeline, proj, workflow_id, project_id, user_id, node
+            timeline, proj, workflow_id, project_id, user_id, node, extra_pnginfo
         )

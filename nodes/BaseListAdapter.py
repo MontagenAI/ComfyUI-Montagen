@@ -144,7 +144,7 @@ class BaseListAdapter(BaseWorkflow):
                     **keywords,
                 )
         return self.protocol_return(
-            timeline, proj, workflow_id, project_id, user_id, node
+            timeline, proj, workflow_id, project_id, user_id, node, extra_pnginfo
         )
 
     def save_images_time_range(

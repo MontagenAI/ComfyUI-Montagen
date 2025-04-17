@@ -9,6 +9,7 @@ import sys
 import json
 import logging
 import ffmpeg
+from PIL import Image
 
 
 def to_base36_random() -> str:
@@ -1155,3 +1156,78 @@ def create_default_option(type: str):
             "y": "50vh",
             "fontSize": "20rpx",
         }
+
+
+def extract_image_thumbnail(input_path, output_path, width=256, height=256):
+    with Image.open(input_path) as img:
+        img.thumbnail((width, height))
+        img.save(output_path)
+
+
+def extract_gif_middle_frame(input_path, output_path, width=256, height=256):
+    with Image.open(input_path) as gif:
+        total_frames = 0
+        while True:
+            try:
+                gif.seek(total_frames)
+                total_frames += 1
+            except EOFError:
+                break
+        middle_frame = total_frames // 2
+        gif.seek(middle_frame)
+        thumbnail = gif.copy()
+        thumbnail.thumbnail((width, height))
+        thumbnail.save(output_path)
+
+
+def get_video_duration(input_path):
+    cmd = [
+        FFPROBE,
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration",
+        "-of",
+        "json",
+        input_path,
+    ]
+    result = subprocess.run(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"FFprobe execution failed: {result.stderr}")
+    info = json.loads(result.stdout)
+    return float(info["format"]["duration"])
+
+
+def extract_middle_frame_thumbnail(
+    input_path,
+    output_path,
+    width=256,
+    height=256,
+    quality=2,
+    offset=0.5,
+):
+    duration = get_video_duration(input_path)
+    if duration is None:
+        raise RuntimeError("Failed to get video duration")
+    middle_time = duration * offset
+    cmd = [
+        FFMPEG,
+        "-ss",
+        str(middle_time),
+        "-i",
+        input_path,
+        "-vframes",
+        "1",
+        "-q:v",
+        str(quality),
+        "-y"
+    ]
+    cmd.extend(["-vf", f"scale={width}:{height}:force_original_aspect_ratio=decrease"])
+    cmd.append(output_path)
+    result = subprocess.run(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"FFmpeg execution failed: {result.stderr}")

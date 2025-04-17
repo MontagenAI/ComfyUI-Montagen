@@ -401,6 +401,13 @@ class MontagenMaterial:
                 return material
         return None
 
+    def get_material_full_path(self, material: dict) -> Optional[Dict[str, Any]]:
+        file_path = material.get("file_path")
+        file_path = file_path and os.path.abspath(
+            os.path.join(self.project.project_path, self.assets_dir, file_path)
+        )
+        return file_path
+
     def get_material_output(self, file_name: str) -> Optional[Dict[str, Any]]:
         """
         Get a material by file name from both files and reference files.

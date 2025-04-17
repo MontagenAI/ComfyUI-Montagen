@@ -63,6 +63,7 @@ class BaseWorkflow:
         project_id: str,
         user_id: str,
         node: LGraphNode,
+        extra_pnginfo: dict,
     ):
         # MontagenProjManager.instance.onProcessEnd(
         #     {
@@ -75,6 +76,13 @@ class BaseWorkflow:
         #         "type": self.type,
         #     }
         # )
+        if "thumbnail" not in extra_pnginfo:
+            try:
+                node.thumb()
+                extra_pnginfo["thumbnail"] = True
+            except:
+                pass
+
         return {
             "ui": {
                 "assets": [
