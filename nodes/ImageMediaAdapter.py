@@ -22,7 +22,7 @@ class ImageMediaAdapter(BaseMediaAdapter):
             },
         }
 
-    DESCRIPTION = "Image Adapter"
+    DESCRIPTION = "Montagen Image Media Adapter"
 
     file_output_index = 2
 

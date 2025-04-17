@@ -13,7 +13,7 @@ from .TextListAdapter import TextListAdapter
 
 
 NODE_CLASS_MAPPINGS = {
-    "MontagenTimelineNode": TimelineNode,
+    "MontagenTimelineCreateNode": TimelineNode,
     "MontagenTimelineRenderNode": TimelineRenderNode,
     "MontagenImageMediaAdapter": ImageMediaAdapter,
     "MontagenVideoMediaAdapter": VideoMediaAdapter,
@@ -29,7 +29,7 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MontagenTimelineNode": TimelineNode.DESCRIPTION,
+    "MontagenTimelineCreateNode": TimelineNode.DESCRIPTION,
     "MontagenTimelineRenderNode": TimelineRenderNode.DESCRIPTION,
     "MontagenImageMediaAdapter": ImageMediaAdapter.DESCRIPTION,
     "MontagenVideoMediaAdapter": VideoMediaAdapter.DESCRIPTION,

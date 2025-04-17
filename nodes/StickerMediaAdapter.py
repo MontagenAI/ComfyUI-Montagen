@@ -15,7 +15,7 @@ class StickerMediaAdapter(VideoMediaAdapter):
         super().__init__()
         self.type = "gif"
 
-    DESCRIPTION = "Sticker Adapter"
+    DESCRIPTION = "Montagen Sticker Media Adapter"
 
     @classmethod
     def ClIP_INPUT_TYPES(s):

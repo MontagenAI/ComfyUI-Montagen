@@ -12,7 +12,7 @@ class TextListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "text"
 
-    DESCRIPTION = "Text List Adapter"
+    DESCRIPTION = "Montagen Text List Adapter"
 
     @classmethod
     def INPUT_TYPES(s):

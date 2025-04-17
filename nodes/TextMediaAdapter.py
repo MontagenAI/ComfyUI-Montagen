@@ -10,7 +10,7 @@ class TextMediaAdapter(BaseMediaAdapter):
         super().__init__()
         self.type = "text"
 
-    DESCRIPTION = "Text Adapter"
+    DESCRIPTION = "Montagen Text Media Adapter"
 
     file_output_index = -1
 

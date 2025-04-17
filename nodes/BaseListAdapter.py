@@ -44,6 +44,8 @@ class BaseListAdapter(BaseWorkflow):
             },
         }
 
+    INPUT_IS_LIST = True
+
     @classmethod
     def LIST_INPUT_TYPES(s):
         return {}

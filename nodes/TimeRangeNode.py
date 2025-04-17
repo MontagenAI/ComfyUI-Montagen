@@ -1,18 +1,15 @@
-from ..server.Utils import MONTAGENTIMELINETYPE
+from ..server.Utils import MONTAGENTIMERANGETYPE
 from .BaseWorkflow import BaseWorkflow
 from datetime import datetime
 
 
-class TimelineNode(BaseWorkflow):
+class TimeRangeNode(BaseWorkflow):
 
     @classmethod
     def INPUT_TYPES(s):
         return {
             "required": {
-                "name": ("STRING",),
-                "width": ("INT", {"default": 1280}),
-                "height": ("INT", {"default": 720}),
-                "fps": ("INT", {"default": 25}),
+                "content": ("STRING",),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -21,25 +18,19 @@ class TimelineNode(BaseWorkflow):
             },
         }
 
-    DESCRIPTION = "Montagen Timeline Create"
+    DESCRIPTION = "Create Time Range"
 
-    RETURN_TYPES = (MONTAGENTIMELINETYPE,)
+    RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING")
+
+    OUTPUT_IS_LIST = (True,)
+
     FUNCTION = "save_func"
-
-    OUTPUT_NODE = True
 
     CATEGORY = "Montagen"
 
-    @classmethod
-    def IS_CHANGED(s, **keywords):
-        return datetime.now().timestamp()
-
     def save_func(
         self,
-        name,
-        width,
-        height,
-        fps,
+        content,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
@@ -48,13 +39,7 @@ class TimelineNode(BaseWorkflow):
             self.get_base_info(unique_id, prompt, extra_pnginfo)
         )
         workflow.syn_workflow_node(workflow_node, False)
-        timeline = proj.get_timeline(name)
-        if not timeline:
-            proj.project_add_timeline(name)
-            timeline = proj.get_timeline(name)
-            if not timeline:
-                raise ValueError("timeline is required.")
-        timeline.set_timeline_config(width, height, fps)
+        node = workflow.workflow_data.get_node_by_unique_id(unique_id)
         return {
             "ui": {
                 "assets": [

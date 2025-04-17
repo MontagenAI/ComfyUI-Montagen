@@ -14,7 +14,7 @@ class ImageListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "image"
 
-    DESCRIPTION = "Image List Adapter"
+    DESCRIPTION = "Montagen Image List Adapter"
 
     @classmethod
     def LIST_INPUT_TYPES(s):

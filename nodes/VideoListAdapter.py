@@ -6,4 +6,4 @@ class VideoListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "video"
 
-    DESCRIPTION = "Video List Adapter"
+    DESCRIPTION = "Montagen Video List Adapter"

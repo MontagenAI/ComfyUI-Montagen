@@ -21,7 +21,7 @@ class AudioMediaAdapter(BaseMediaAdapter):
             }
         }
 
-    DESCRIPTION = "Audio Adapter"
+    DESCRIPTION = "Montagen Audio Media Adapter"
 
     file_output_index = 2
 

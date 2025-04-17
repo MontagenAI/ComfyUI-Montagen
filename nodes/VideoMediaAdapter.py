@@ -34,7 +34,7 @@ class VideoMediaAdapter(ImageMediaAdapter):
 
     file_output_index = 3
 
-    DESCRIPTION = "Video Adapter"
+    DESCRIPTION = "Montagen Video Media Adapter"
 
     def save_func_inner(
         self,
