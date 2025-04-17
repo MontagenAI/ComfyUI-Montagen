@@ -129,7 +129,9 @@ class LGraphNodeItem:
                 return index
         return -1
 
-    def set_main_content(self, main_content: str, start=None, duration=None, meta={}):
+    def set_main_content(
+        self, main_content: str, start=None, duration=None, meta={}, flush=False
+    ):
         if self.type == TEXTTYPE:
             self.text = main_content
         else:
@@ -145,9 +147,10 @@ class LGraphNodeItem:
             clip.item_id = self.item_id
             if main_content.endswith(".webm"):
                 clip.serialize().update({"codec": "libvpx-vp9", "voImageExtra": "png"})
+            if self.type == TEXTTYPE:
+                clip.text = main_content
             else:
-                clip.serialize().pop("codec", None)
-                clip.serialize().pop("voImageExtra", None)
+                clip.src = main_content
             if start:
                 clip.start = start
             if duration:
@@ -166,8 +169,18 @@ class LGraphNodeItem:
                     clip.text = main_content
                 else:
                     clip.src = main_content
+                if flush:
+                    if start:
+                        clip.start = start
+                    if duration:
+                        clip.duration = duration
             self.timeline.save()
 
     def syn_meta(self, meta: dict):
         opt = flat_to_tree(meta, supported_group_config_type[self.type])
         self.meta.update(opt)
+
+    def delete(self):
+        for clip in self.clips:
+            clip.timeline.remove_clip(clip)
+        self.timeline.save()

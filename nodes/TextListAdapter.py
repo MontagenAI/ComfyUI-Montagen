@@ -39,8 +39,13 @@ class TextListAdapter(BaseListAdapter):
     def save_func(
         self, name, enableInput, tag, prompt, extra_pnginfo, unique_id, **keywords
     ):
-        timeline = keywords.get("timeline", None)
-
+        timeline = keywords.get("timeline", None)[0]
+        name = name[0]
+        enableInput = enableInput[0]
+        tag = tag[0]
+        prompt = prompt[0]
+        extra_pnginfo = extra_pnginfo[0]
+        unique_id = unique_id[0]
         (
             user_id,
             project_id,
@@ -55,7 +60,9 @@ class TextListAdapter(BaseListAdapter):
         if not timeline:
             raise ValueError("timeline is not found.")
         if enableInput:
-            time_range: MontagenTimeRange = keywords.get("timeRange", None)
+            time_range: MontagenTimeRange = MontagenTimeRange(
+                keywords.get("timeRange", None)[0]
+            )
             if not time_range:
                 raise ValueError("time_range is required.")
             node.sync_time_text_range(time_range)

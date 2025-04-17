@@ -237,8 +237,11 @@ TEXTTYPE = "text"
 SUPPORTEDTYPES = [VIDEOTYPE, IMAGETYPE, AUDIOTYPE, GIFTYPE, TEXTTYPE]
 SINGLENODETYPE = "single_item"
 LISTNODETYPE = "list_item"
+TIMERANGENODETYPE = "timerange"
 WORKFLOWBASEPATH = "workflows"
 TIMELINEBASEPATH = "timelines"
+MODIFYACTION = "modify"
+SYNCACION = "sync"
 TMPPAHT = "tmp"
 TEMPLATEPATH = "templates"
 illegal_chars_pattern = r'[\\/:*?"<>|]'
@@ -1222,7 +1225,7 @@ def extract_middle_frame_thumbnail(
         "1",
         "-q:v",
         str(quality),
-        "-y"
+        "-y",
     ]
     cmd.extend(["-vf", f"scale={width}:{height}:force_original_aspect_ratio=decrease"])
     cmd.append(output_path)

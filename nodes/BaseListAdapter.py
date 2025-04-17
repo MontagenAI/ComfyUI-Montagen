@@ -100,8 +100,13 @@ class BaseListAdapter(BaseWorkflow):
     def save_func(
         self, name, enableInput, tag, prompt, extra_pnginfo, unique_id, **keywords
     ):
-        timeline = keywords.get("timeline", None)
-
+        timeline = keywords.get("timeline", None)[0]
+        name = name[0]
+        enableInput = enableInput[0]
+        tag = tag[0]
+        prompt = prompt[0]
+        extra_pnginfo = extra_pnginfo[0]
+        unique_id = unique_id[0]
         (
             user_id,
             project_id,
@@ -118,7 +123,7 @@ class BaseListAdapter(BaseWorkflow):
         if enableInput:
             resoureces: list[str] = keywords.get("resoureces", None)
             if resoureces:
-                time_range: MontagenTimeRange = keywords.get("timeRange", None)
+                time_range: MontagenTimeRange = keywords.get("timeRange", None)[0]
                 if not time_range:
                     raise ValueError("time_range is required.")
                 self.validate_input(resoureces, time_range)
@@ -126,7 +131,7 @@ class BaseListAdapter(BaseWorkflow):
                 node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
                 workflow.save()
             else:
-                time_range: MontagenTimeRange = keywords.get("timeRange", None)
+                time_range: MontagenTimeRange = keywords.get("timeRange", None)[0]
                 if not time_range:
                     raise ValueError("time_range is required.")
                 self.save_images_time_range(

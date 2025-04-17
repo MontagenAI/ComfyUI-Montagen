@@ -282,7 +282,7 @@ class MontagenTimeline:
         parent = MontagenClip(self, parent)
         children = parent.children
         for child in children:
-            child_1 = MontagenClip(child)
+            child_1 = MontagenClip(self, child)
             if iterator:
                 iterator(child_1)
             if not fn or fn(child_1):

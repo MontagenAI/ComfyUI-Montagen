@@ -45,7 +45,6 @@ class ImageListAdapter(BaseListAdapter):
         images = keywords.get("images", None)
         if not images:
             raise ValueError("images must be provided")
-        alphas = keywords.get("alphas", None)
         image_len = len(images)
         time_rang_len = len(time_range)
         if image_len != time_rang_len:

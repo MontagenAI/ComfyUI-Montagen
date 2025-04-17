@@ -14,13 +14,16 @@ from .Utils import (
     flat_to_tree,
     tree_to_flat,
     supported_group_config_type,
+    TIMERANGENODETYPE,
+    SYNCACION,
+    MODIFYACTION,
 )
 from typing import TYPE_CHECKING
 from .LGraphNodeItem import LGraphNodeItem
+from .MontagenTimeRange import MontagenTimeRange
 
 if TYPE_CHECKING:
     from .LGraph import LGraph
-    from .MontagenTimeRange import MontagenTimeRange
 
 
 class LGraphNodeInput:
@@ -129,12 +132,12 @@ class LGraphNode:
         self.properties["outputs"]["assets"] = value
 
     @property
-    def items(self):
-        return [LGraphNodeItem(self, i, item) for i, item in enumerate(self.items_raw)]
-
-    @property
     def default_opt(self):
         return create_default_option(self.type)
+
+    @property
+    def items(self):
+        return [LGraphNodeItem(self, i, item) for i, item in enumerate(self.items_raw)]
 
     @property
     def items_raw(self) -> list[dict[str, any]]:
@@ -213,6 +216,14 @@ class LGraphNode:
         return self.type is not None
 
     @property
+    def time_range(self) -> MontagenTimeRange:
+        if self.node_type == TIMERANGENODETYPE:
+            if "montagen_time_range" not in self.properties:
+                self.properties["montagen_time_range"] = {}
+            return MontagenTimeRange(self.properties["montagen_time_range"])
+        return None
+
+    @property
     def node_name(self) -> str:
         return self.properties.get("montagen_name", None)
 
@@ -243,6 +254,7 @@ class LGraphNode:
 
     def to_json(self):
         flat_dict = tree_to_flat(self.meta, supported_group_config_type[self.type])
+        self.items.sort(key=lambda x: x.item_id)
         return {
             "id": self.node_id,
             "name": self.node_name,
@@ -284,6 +296,9 @@ class LGraphNode:
         if file_output_index >= 0:
             self.widgets[file_output_index] = self.single_file_name
 
+    def set_time_range_action(self):
+        self.widgets[1] = MODIFYACTION
+
     def sync_time_resoureces_range(
         self, time_range: MontagenTimeRange, resoureces: list[str]
     ):
@@ -309,11 +324,16 @@ class LGraphNode:
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
-                src, time_unit.start, time_unit.duration, meta=self.meta
+                src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
             used_item_ids.add(item.item_id)
-        if action == "all":
+        if action == SYNCACION:
+            delete_items = [
+                item for item in self.items if item.item_id not in used_item_ids
+            ]
             self.items = [item for item in self.items if item.item_id in used_item_ids]
+            for item in delete_items:
+                item.delete()
 
     def sync_time_text_range(self, time_range: MontagenTimeRange):
         action = time_range.action
@@ -328,11 +348,20 @@ class LGraphNode:
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
-                time_unit.content, time_unit.start, time_unit.duration, meta=self.meta
+                time_unit.content,
+                time_unit.start,
+                time_unit.duration,
+                meta=self.meta,
+                flush=True,
             )
             used_item_ids.add(item.item_id)
-        if action == "all":
+        if action == SYNCACION:
+            delete_items = [
+                item for item in self.items if item.item_id not in used_item_ids
+            ]
             self.items = [item for item in self.items if item.item_id in used_item_ids]
+            for item in delete_items:
+                item.delete()
 
     def sync_time_images_range(self, time_range: MontagenTimeRange, images: list):
         action = time_range.action
@@ -358,10 +387,17 @@ class LGraphNode:
                 item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
-            item.set_main_content(src, time_unit.start, time_unit.end, meta=self.meta)
+            item.set_main_content(
+                src, time_unit.start, time_unit.end, meta=self.meta, flush=True
+            )
             used_item_ids.add(item.item_id)
-        if action == "all":
+        if action == SYNCACION:
+            delete_items = [
+                item for item in self.items if item.item_id not in used_item_ids
+            ]
             self.items = [item for item in self.items if item.item_id in used_item_ids]
+            for item in delete_items:
+                item.delete()
 
     def sync_file_meta(self, file_meta: dict):
         old_name = self.single_file_name

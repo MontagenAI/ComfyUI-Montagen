@@ -10,7 +10,7 @@ from .ImageListAdapter import ImageListAdapter
 from .StickerListAdapter import StickerListAdapter
 from .AudioListAdapter import AudioListAdapter
 from .TextListAdapter import TextListAdapter
-
+from .TimeRangeNode import TimeRangeNode
 
 NODE_CLASS_MAPPINGS = {
     "MontagenTimelineCreateNode": TimelineNode,
@@ -25,7 +25,7 @@ NODE_CLASS_MAPPINGS = {
     "MontagenStickerListAdapter": StickerListAdapter,
     "MontagenAudioListAdapter": AudioListAdapter,
     "MontagenTextListAdapter": TextListAdapter,
-    # "test": test,
+    "MontagenTimeRangeCreateNode": TimeRangeNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -41,7 +41,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MontagenStickerListAdapter": StickerListAdapter.DESCRIPTION,
     "MontagenAudioListAdapter": AudioListAdapter.DESCRIPTION,
     "MontagenTextListAdapter": TextListAdapter.DESCRIPTION,
-    # "test": "test",
+    "MontagenTimeRangeCreateNode": TimeRangeNode.DESCRIPTION,
 }
 
 __all__ = [NODE_DISPLAY_NAME_MAPPINGS, NODE_CLASS_MAPPINGS]
