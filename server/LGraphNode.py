@@ -261,7 +261,7 @@ class LGraphNode:
             self.set_asset(item_index, material)
             self.workflow.workflow_del_material(old_file)
             if not item:
-                item = self.create_item(src)
+                item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(src, time_unit.start, time_unit.duration)
@@ -278,7 +278,7 @@ class LGraphNode:
                 continue
             item, item_index = self.Get_item_and_index(item_id)
             if not item:
-                item = self.create_item(time_unit.content)
+                item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
@@ -309,7 +309,7 @@ class LGraphNode:
             self.set_asset(item_index, material)
             self.workflow.workflow_del_material(old_file)
             if not item:
-                item = self.create_item(src)
+                item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(src, time_unit.start, time_unit.end)
@@ -402,14 +402,14 @@ class LGraphNode:
 
     def create_single_item_if_not_exists(self, main_content: str):
         if not self.single_item:
-            item = self.create_item(main_content)
+            item = self.create_item()
             self.single_item = item
         self.single_item.set_main_content(main_content)
 
-    def create_item(self, main_content: str):
+    def create_item(self):
         item_id = to_base36_random()
-        opt = create_default_option(self.type, main_content)
-        item = LGraphNodeItem(self, 0, {"meta": opt})
+        opt = create_default_option(self.type)
+        item = LGraphNodeItem(self, 0, {"meta": {}, "default": opt})
         item.item_id = item_id
         return item
 

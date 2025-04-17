@@ -1122,26 +1122,21 @@ def find_index(list: list, item):
         return -1
 
 
-def create_default_option(type: str, main_content: str):
+def create_default_option(type: str):
     if type == AUDIOTYPE:
         return {
             "type": type,
             "children": [],
             "start": -1,
             "duration": -1,
-            "src": main_content,
             "loop": False,
         }
     elif type == IMAGETYPE or type == GIFTYPE or type == VIDEOTYPE:
-        addition = {}
-        if main_content.endswith(".webm"):
-            addition = {"codec": "libvpx-vp9", "voImageExtra": "png"}
         return {
             "type": type,
             "children": [],
             "start": -1,
             "duration": -1,
-            "src": main_content,
             "object-fit": "contain",
             "x": "50vw",
             "y": "50vh",
@@ -1149,14 +1144,13 @@ def create_default_option(type: str, main_content: str):
             "loop": True,
             "audio": False,
             "mute": False,
-        } | addition
+        }
     elif type == TEXTTYPE:
         return {
             "type": type,
             "children": [],
             "start": -1,
             "duration": -1,
-            "text": main_content,
             "x": "50vw",
             "y": "50vh",
             "fontSize": "20rpx",

@@ -72,6 +72,12 @@ class LGraphNodeItem:
         return self.data["meta"]
 
     @property
+    def default(self):
+        if "default" not in self.data:
+            self.data["default"] = {}
+        return self.data["default"]
+
+    @property
     def node_name(self) -> str:
         return self.node.node_name
 
@@ -124,11 +130,6 @@ class LGraphNodeItem:
         return -1
 
     def set_main_content(self, main_content: str, start=None, duration=None):
-        if main_content.endswith(".webm"):
-            self.meta.update({"codec": "libvpx-vp9", "voImageExtra": "png"})
-        else:
-            self.meta.pop("codec", None)
-            self.meta.pop("voImageExtra", None)
         if self.type == TEXTTYPE:
             self.text = main_content
         else:
@@ -137,11 +138,16 @@ class LGraphNodeItem:
         len_clips = len(clips)
         if len_clips == 0:
             clip_id = to_base36_random()
-            clip = MontagenClip(self.timeline, {**self.meta})
+            clip = MontagenClip(self.timeline, {**self.default, **self.meta})
             clip.clip_id = clip_id
             clip.workflow_id = self.workflow_id
             clip.node_id = self.node_id
             clip.item_id = self.item_id
+            if main_content.endswith(".webm"):
+                clip.serialize().update({"codec": "libvpx-vp9", "voImageExtra": "png"})
+            else:
+                clip.serialize().pop("codec", None)
+                clip.serialize().pop("voImageExtra", None)
             if start:
                 clip.start = start
             if duration:
