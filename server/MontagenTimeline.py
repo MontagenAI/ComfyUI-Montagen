@@ -172,13 +172,32 @@ class MontagenTimeline:
         MontagenTimeline.save_timeline(self.timeline_json_path, self.timeline_data)
 
     def to_json(self):
-        clips = [clip.to_json() for clip in self.clips]
+        grouped_link_clips = {}
+        for clip in self.link_clips:
+            if clip.node_id not in grouped_link_clips:
+                grouped_link_clips[clip.node_id] = clip.workflow_node.to_timeline_json()
+            grouped_link_clips[clip.node_id]["clips"].append(clip.to_json())
+
+        nodes = [*grouped_link_clips.values()]
+        clips = [clip.to_json() for clip in self.un_link_clips]
         clips.sort(key=lambda x: x.get("name"))
+        if clips:
+            unlink_node = {
+                "id": "unlink",
+                "name": "unlink",
+                "type": "video",
+                "nodeType": "list",
+                "assets": [],
+                "meta": {},
+                "clips": clips,
+            }
+            nodes.append(unlink_node)
+
         return {
             "timelineData": self.timeline_data,
             "timelineName": self.timeline_name,
             "modifyTime": self.modify_time.isoformat(),
-            "clips": clips,
+            "nodes": nodes,
             "width": self.width,
             "height": self.height,
             "fps": self.fps,

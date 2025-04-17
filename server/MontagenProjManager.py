@@ -356,7 +356,7 @@ class MontagenProjManager:
             return web.json_response({"code": 0, "data": result})
 
         @server.routes.post(
-            "/Montagen/Proj/{id}/Workflow/{workflowId}/node/{nodeId}/item/{itemId}/Edit"
+            "/Montagen/Proj/{id}/Workflow/{workflowId}/node/{nodeId}/Edit"
         )
         @error_handling_decorator
         async def update_item_meta(request, register_action):
@@ -364,7 +364,6 @@ class MontagenProjManager:
             project_id = request.match_info.get("id", None)
             workflow_id = request.match_info.get("workflowId", None)
             node_id = request.match_info.get("nodeId", None)
-            item_id = request.match_info.get("itemId", None)
             req_data = await request.json()
             proj = self.get_project(user_id, project_id)
             if not proj:
@@ -372,10 +371,10 @@ class MontagenProjManager:
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
                 raise Exception("workflow not found")
-            item = workflow.get_workflow_node_item(None, node_id, item_id)
-            if not item:
-                raise Exception("item not found")
-            item.syn_meta(req_data)
+            node = workflow.get_workflow_node(None, node_id)
+            if not node:
+                raise Exception("node not found")
+            node.syn_meta(req_data)
             proj.project_change_time()
             return web.json_response({"code": 0})
 

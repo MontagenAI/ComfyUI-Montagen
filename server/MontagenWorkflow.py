@@ -160,7 +160,7 @@ class MontagenWorkflow:
             "workflowDesc": self.workflow_desc,
             "nodes": [node.to_json() for node in self.nodes if node.is_montagen_node],
             "modifyTime": self.modify_time.isoformat(),
-            "thumb":self.get_thumb_file_url()
+            "thumb": self.get_thumb_file_url(),
         }
 
     def get_output_path(self, node_id: str, index: int, ext: str):
@@ -303,4 +303,12 @@ class MontagenWorkflow:
                 for item in node.items:
                     if item.item_id == item_id:
                         return item
+        return None
+
+    def get_workflow_node(self, timeline_name: str, node_id: str):
+        for node in self.nodes:
+            if node.node_id == node_id and (
+                not timeline_name or node.timeline_name == timeline_name
+            ):
+                return node
         return None

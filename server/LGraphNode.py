@@ -11,6 +11,9 @@ from .Utils import (
     extract_middle_frame_thumbnail,
     extract_gif_middle_frame,
     extract_image_thumbnail,
+    flat_to_tree,
+    tree_to_flat,
+    supported_group_config_type,
 )
 from typing import TYPE_CHECKING
 from .LGraphNodeItem import LGraphNodeItem
@@ -104,6 +107,14 @@ class LGraphNode:
         self.data["properties"] = value
 
     @property
+    def meta(self):
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        if "meta" not in self.properties["outputs"]:
+            self.properties["outputs"]["meta"] = {}
+        return self.properties.get("outputs", {}).get("meta", {})
+
+    @property
     def assets(self) -> list:
         if "outputs" not in self.properties:
             self.properties["outputs"] = {}
@@ -120,6 +131,10 @@ class LGraphNode:
     @property
     def items(self):
         return [LGraphNodeItem(self, i, item) for i, item in enumerate(self.items_raw)]
+
+    @property
+    def default_opt(self):
+        return create_default_option(self.type)
 
     @property
     def items_raw(self) -> list[dict[str, any]]:
@@ -227,13 +242,33 @@ class LGraphNode:
             self.items = []
 
     def to_json(self):
+        flat_dict = tree_to_flat(self.meta, supported_group_config_type[self.type])
         return {
             "id": self.node_id,
             "name": self.node_name,
             "type": self.type,
             "nodeType": self.node_type,
             "assets": self.assets,
-            "items": [item.to_json() for item in self.items],
+            "clips": [clip.to_json() for item in self.items for clip in item.clips],
+            "meta": {
+                key: flat_dict.get(key, value[1].get("default"))
+                for key, value in supported_group_config_type[self.type].items()
+            },
+        }
+
+    def to_timeline_json(self):
+        flat_dict = tree_to_flat(self.meta, supported_group_config_type[self.type])
+        return {
+            "id": self.node_id,
+            "name": self.node_name,
+            "type": self.type,
+            "nodeType": self.node_type,
+            "assets": self.assets,
+            "meta": {
+                key: flat_dict.get(key, value[1].get("default"))
+                for key, value in supported_group_config_type[self.type].items()
+            },
+            "clips": [],
         }
 
     def has_filename(self, file_name):
@@ -273,7 +308,9 @@ class LGraphNode:
                 item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
-            item.set_main_content(src, time_unit.start, time_unit.duration)
+            item.set_main_content(
+                src, time_unit.start, time_unit.duration, meta=self.meta
+            )
             used_item_ids.add(item.item_id)
         if action == "all":
             self.items = [item for item in self.items if item.item_id in used_item_ids]
@@ -291,7 +328,7 @@ class LGraphNode:
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
-                time_unit.content, time_unit.start, time_unit.duration
+                time_unit.content, time_unit.start, time_unit.duration, meta=self.meta
             )
             used_item_ids.add(item.item_id)
         if action == "all":
@@ -321,7 +358,7 @@ class LGraphNode:
                 item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
-            item.set_main_content(src, time_unit.start, time_unit.end)
+            item.set_main_content(src, time_unit.start, time_unit.end, meta=self.meta)
             used_item_ids.add(item.item_id)
         if action == "all":
             self.items = [item for item in self.items if item.item_id in used_item_ids]
@@ -413,12 +450,11 @@ class LGraphNode:
         if not self.single_item:
             item = self.create_item()
             self.single_item = item
-        self.single_item.set_main_content(main_content)
+        self.single_item.set_main_content(main_content, meta=self.meta)
 
     def create_item(self):
         item_id = to_base36_random()
-        opt = create_default_option(self.type)
-        item = LGraphNodeItem(self, 0, {"meta": {}, "default": opt})
+        item = LGraphNodeItem(self, 0, {"meta": {}, "default": self.default_opt})
         item.item_id = item_id
         return item
 
@@ -447,3 +483,7 @@ class LGraphNode:
                 return
 
         raise NotImplementedError()
+
+    def syn_meta(self, meta: dict):
+        opt = flat_to_tree(meta, supported_group_config_type[self.type])
+        self.meta.update(opt)

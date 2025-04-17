@@ -96,6 +96,12 @@ class MontagenClip:
         return self.project.get_workflow_node_item(
             self.workflow_id, self.timeline_name, self.node_id, self.item_id
         )
+    
+    @property
+    def workflow_node(self):
+        return self.project.get_workflow_node(
+            self.workflow_id, self.timeline_name, self.node_id
+        )
 
     @property
     def children(self):

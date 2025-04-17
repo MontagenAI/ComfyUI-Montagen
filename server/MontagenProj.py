@@ -350,3 +350,9 @@ class MontagenProj:
         if workflow:
             return workflow.get_workflow_node_item(timeline_name, node_id, item_id)
         return None
+
+    def get_workflow_node(self, workflow_id: str, timeline_name: str, node_id: str):
+        workflow = self.get_workflow(workflow_id)
+        if workflow:
+            return workflow.get_workflow_node(timeline_name, node_id)
+        return None
