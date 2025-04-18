@@ -123,7 +123,9 @@ class BaseListAdapter(BaseWorkflow):
         if enableInput:
             resoureces: list[str] = keywords.get("resoureces", None)
             if resoureces:
-                time_range: MontagenTimeRange = keywords.get("timeRange", None)[0]
+                time_range: MontagenTimeRange = MontagenTimeRange(
+                    keywords.get("timeRange", None)[0]
+                )
                 if not time_range:
                     raise ValueError("time_range is required.")
                 self.validate_input(resoureces, time_range)
@@ -131,7 +133,9 @@ class BaseListAdapter(BaseWorkflow):
                 node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
                 workflow.save()
             else:
-                time_range: MontagenTimeRange = keywords.get("timeRange", None)[0]
+                time_range: MontagenTimeRange = MontagenTimeRange(
+                    keywords.get("timeRange", None)[0]
+                )
                 if not time_range:
                     raise ValueError("time_range is required.")
                 self.save_images_time_range(

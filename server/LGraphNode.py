@@ -388,7 +388,7 @@ class LGraphNode:
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
-                src, time_unit.start, time_unit.end, meta=self.meta, flush=True
+                src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
             used_item_ids.add(item.item_id)
         if action == SYNCACION:

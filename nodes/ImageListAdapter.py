@@ -42,24 +42,29 @@ class ImageListAdapter(BaseListAdapter):
         time_range: MontagenTimeRange,
         **keywords
     ):
-        images = keywords.get("images", None)
-        if not images:
+        imagesList = keywords.get("images", None)
+        if not imagesList:
             raise ValueError("images must be provided")
-        image_len = len(images)
+        image_len = len(imagesList)
         time_rang_len = len(time_range)
         if image_len != time_rang_len:
             raise ValueError("images and time_range must be the same length")
         out_images = []
-        alphas = keywords.get("alphas", None)
-        if alphas != None:
-            alphas = 1.0 - nodes_compositing.resize_mask(alphas, images.shape[1:])
-            for i in range(image_len):
-                out_images.append(
-                    torch.cat((images[i][:, :, :3], alphas[i].unsqueeze(2)), dim=2)
-                )
-        else:
-            for i in range(image_len):
-                out_images.append(images[i])
+        alphasList = keywords.get("alphas", None)
+        image_index = 0
+        for images in imagesList:
+            image_len = len(images)
+            alphas = alphasList[image_index] if alphasList else None
+            image_index += 1
+            if alphas != None:
+                alphas = 1.0 - nodes_compositing.resize_mask(alphas, images.shape[1:])
+                for i in range(image_len):
+                    out_images.append(
+                        torch.cat((images[i][:, :, :3], alphas[i].unsqueeze(2)), dim=2)
+                    )
+            else:
+                for i in range(image_len):
+                    out_images.append(images[i])
         images = torch.stack(out_images)
         images = [
             Image.fromarray(np.clip(255 * img.cpu().numpy(), 0, 255).astype(np.uint8))
