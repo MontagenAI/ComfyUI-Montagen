@@ -25,6 +25,10 @@ class MontagenTemplate:
     @property
     def template_name(self) -> str:
         return self.template_data.get("name")
+    
+    @property
+    def category(self)->str:
+        return self.template_data.get("category")
 
     @property
     def modify_time(self):

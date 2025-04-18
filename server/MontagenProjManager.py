@@ -88,10 +88,26 @@ class MontagenProjManager:
         @server.routes.get("/Montagen/Template/List")
         @error_handling_decorator
         async def get_template(request, register_action):
+            category = "default"
+            if "category" in request.rel_url.query:
+                category = request.rel_url.query["category"]
             user_id = server.user_manager.get_request_user_id(request)
             tmps = self.get_templates(user_id)
             return web.json_response(
-                {"code": 0, "data": [tmp.to_json() for tmp in tmps]}
+                {
+                    "code": 0,
+                    "data": [tmp.to_json() for tmp in tmps if tmp.category == category],
+                }
+            )
+
+        @server.routes.get("/Montagen/Template/Category")
+        @error_handling_decorator
+        async def get_template(request, register_action):
+            return web.json_response(
+                {
+                    "code": 0,
+                    "data": ["default","local"],
+                }
             )
 
         @server.routes.get("/Montagen/Proj/{id}")
