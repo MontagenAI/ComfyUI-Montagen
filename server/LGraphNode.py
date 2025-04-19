@@ -257,6 +257,7 @@ class LGraphNode:
         self.items.sort(key=lambda x: x.item_id)
         return {
             "id": self.node_id,
+            "workflowId": self.workflow.workflow_id,
             "name": self.node_name,
             "type": self.type,
             "nodeType": self.node_type,
