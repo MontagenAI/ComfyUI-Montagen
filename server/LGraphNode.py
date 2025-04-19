@@ -272,6 +272,7 @@ class LGraphNode:
         flat_dict = tree_to_flat(self.meta, supported_group_config_type[self.type])
         return {
             "id": self.node_id,
+            "workflowId": self.workflow.workflow_id,
             "name": self.node_name,
             "type": self.type,
             "nodeType": self.node_type,
