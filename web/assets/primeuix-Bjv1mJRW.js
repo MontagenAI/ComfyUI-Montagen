@@ -3414,117 +3414,7 @@ var style$b = ({ dt: r2 }) => `
     height: ${r2("virtualscroller.loader.icon.size")};
 }
 `;
-var style$a = ({ dt: o2 }) => `
-.p-listbox {
-    background: ${o2("listbox.background")};
-    color: ${o2("listbox.color")};
-    border: 1px solid ${o2("listbox.border.color")};
-    border-radius: ${o2("listbox.border.radius")};
-    transition: background ${o2("listbox.transition.duration")}, color ${o2("listbox.transition.duration")}, border-color ${o2("listbox.transition.duration")},
-            box-shadow ${o2("listbox.transition.duration")}, outline-color ${o2("listbox.transition.duration")};
-    outline-color: transparent;
-    box-shadow: ${o2("listbox.shadow")};
-}
-
-.p-listbox.p-disabled {
-    opacity: 1;
-    background: ${o2("listbox.disabled.background")};
-    color: ${o2("listbox.disabled.color")};
-}
-
-.p-listbox.p-disabled .p-listbox-option {
-    color: ${o2("listbox.disabled.color")};
-}
-
-.p-listbox.p-invalid {
-    border-color: ${o2("listbox.invalid.border.color")};
-}
-
-.p-listbox-header {
-    padding: ${o2("listbox.list.header.padding")};
-}
-
-.p-listbox-filter {
-    width: 100%;
-}
-
-.p-listbox-list-container {
-    overflow: auto;
-}
-
-.p-listbox-list {
-    list-style-type: none;
-    margin: 0;
-    padding: ${o2("listbox.list.padding")};
-    outline: 0 none;
-    display: flex;
-    flex-direction: column;
-    gap: ${o2("listbox.list.gap")};
-}
-
-.p-listbox-option {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    padding: ${o2("listbox.option.padding")};
-    border: 0 none;
-    border-radius: ${o2("listbox.option.border.radius")};
-    color: ${o2("listbox.option.color")};
-    transition: background ${o2("listbox.transition.duration")}, color ${o2("listbox.transition.duration")}, border-color ${o2("listbox.transition.duration")},
-            box-shadow ${o2("listbox.transition.duration")}, outline-color ${o2("listbox.transition.duration")};
-}
-
-.p-listbox-striped li:nth-child(even of .p-listbox-option) {
-    background: ${o2("listbox.option.striped.background")};
-}
-
-.p-listbox .p-listbox-list .p-listbox-option.p-listbox-option-selected {
-    background: ${o2("listbox.option.selected.background")};
-    color: ${o2("listbox.option.selected.color")};
-}
-
-.p-listbox:not(.p-disabled) .p-listbox-option.p-listbox-option-selected.p-focus {
-    background: ${o2("listbox.option.selected.focus.background")};
-    color: ${o2("listbox.option.selected.focus.color")};
-}
-
-.p-listbox:not(.p-disabled) .p-listbox-option:not(.p-listbox-option-selected):not(.p-disabled).p-focus {
-    background: ${o2("listbox.option.focus.background")};
-    color: ${o2("listbox.option.focus.color")};
-}
-
-.p-listbox:not(.p-disabled) .p-listbox-option:not(.p-listbox-option-selected):not(.p-disabled):hover {
-    background: ${o2("listbox.option.focus.background")};
-    color: ${o2("listbox.option.focus.color")};
-}
-
-.p-listbox-option-blank-icon {
-    flex-shrink: 0;
-}
-
-.p-listbox-option-check-icon {
-    position: relative;
-    flex-shrink: 0;
-    margin-inline-start: ${o2("listbox.checkmark.gutter.start")};
-    margin-inline-end: ${o2("listbox.checkmark.gutter.end")};
-    color: ${o2("listbox.checkmark.color")};
-}
-
-.p-listbox-option-group {
-    margin: 0;
-    padding: ${o2("listbox.option.group.padding")};
-    color: ${o2("listbox.option.group.color")};
-    background: ${o2("listbox.option.group.background")};
-    font-weight: ${o2("listbox.option.group.font.weight")};
-}
-
-.p-listbox-empty-message {
-    padding: ${o2("listbox.empty.message.padding")};
-}
-`;
-var style$9 = ({ dt: e2 }) => `
+var style$a = ({ dt: e2 }) => `
 .p-select {
     display: inline-flex;
     cursor: pointer;
@@ -3754,7 +3644,7 @@ input.p-select-label {
     height: ${e2("select.lg.font.size")};
 }
 `;
-var style$8 = ({ dt: o2 }) => `
+var style$9 = ({ dt: o2 }) => `
 .p-togglebutton {
     display: inline-flex;
     cursor: pointer;
@@ -3862,7 +3752,7 @@ var style$8 = ({ dt: o2 }) => `
     padding: ${o2("togglebutton.content.lg.padding")};
 }
 `;
-var style$7 = ({ dt: n2 }) => `
+var style$8 = ({ dt: n2 }) => `
 .p-tabs {
     display: flex;
     flex-direction: column;
@@ -4006,7 +3896,7 @@ var style$7 = ({ dt: n2 }) => `
     transition: 250ms cubic-bezier(0.35, 0, 0.25, 1);
 }
 `;
-var style$6 = ({ dt: o2 }) => `
+var style$7 = ({ dt: o2 }) => `
 .p-toast {
     width: ${o2("toast.width")};
     white-space: pre-line;
@@ -4256,7 +4146,7 @@ var style$6 = ({ dt: o2 }) => `
     transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s, margin-bottom 0.3s;
 }
 `;
-var style$5 = ({ dt: n2 }) => `
+var style$6 = ({ dt: n2 }) => `
 .p-progressbar {
     position: relative;
     overflow: hidden;
@@ -4373,7 +4263,7 @@ var style$5 = ({ dt: n2 }) => `
     }
 }
 `;
-var style$4 = ({ dt: n2 }) => `
+var style$5 = ({ dt: n2 }) => `
 .p-fileupload input[type="file"] {
     display: none;
 }
@@ -4457,7 +4347,7 @@ var style$4 = ({ dt: n2 }) => `
     gap: ${n2("fileupload.basic.gap")};
 }
 `;
-var style$3 = ({ dt: n2 }) => `
+var style$4 = ({ dt: n2 }) => `
 .p-divider-horizontal {
     display: flex;
     width: 100%;
@@ -4539,7 +4429,7 @@ var style$3 = ({ dt: n2 }) => `
     flex-direction: row-reverse;
 }
 `;
-var style$2 = ({ dt: n2 }) => `
+var style$3 = ({ dt: n2 }) => `
 .p-scrollpanel-content-container {
     overflow: hidden;
     width: 100%;
@@ -4603,6 +4493,116 @@ var style$2 = ({ dt: n2 }) => `
 
 .p-scrollpanel-grabbed {
     user-select: none;
+}
+`;
+var style$2 = ({ dt: o2 }) => `
+.p-listbox {
+    background: ${o2("listbox.background")};
+    color: ${o2("listbox.color")};
+    border: 1px solid ${o2("listbox.border.color")};
+    border-radius: ${o2("listbox.border.radius")};
+    transition: background ${o2("listbox.transition.duration")}, color ${o2("listbox.transition.duration")}, border-color ${o2("listbox.transition.duration")},
+            box-shadow ${o2("listbox.transition.duration")}, outline-color ${o2("listbox.transition.duration")};
+    outline-color: transparent;
+    box-shadow: ${o2("listbox.shadow")};
+}
+
+.p-listbox.p-disabled {
+    opacity: 1;
+    background: ${o2("listbox.disabled.background")};
+    color: ${o2("listbox.disabled.color")};
+}
+
+.p-listbox.p-disabled .p-listbox-option {
+    color: ${o2("listbox.disabled.color")};
+}
+
+.p-listbox.p-invalid {
+    border-color: ${o2("listbox.invalid.border.color")};
+}
+
+.p-listbox-header {
+    padding: ${o2("listbox.list.header.padding")};
+}
+
+.p-listbox-filter {
+    width: 100%;
+}
+
+.p-listbox-list-container {
+    overflow: auto;
+}
+
+.p-listbox-list {
+    list-style-type: none;
+    margin: 0;
+    padding: ${o2("listbox.list.padding")};
+    outline: 0 none;
+    display: flex;
+    flex-direction: column;
+    gap: ${o2("listbox.list.gap")};
+}
+
+.p-listbox-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding: ${o2("listbox.option.padding")};
+    border: 0 none;
+    border-radius: ${o2("listbox.option.border.radius")};
+    color: ${o2("listbox.option.color")};
+    transition: background ${o2("listbox.transition.duration")}, color ${o2("listbox.transition.duration")}, border-color ${o2("listbox.transition.duration")},
+            box-shadow ${o2("listbox.transition.duration")}, outline-color ${o2("listbox.transition.duration")};
+}
+
+.p-listbox-striped li:nth-child(even of .p-listbox-option) {
+    background: ${o2("listbox.option.striped.background")};
+}
+
+.p-listbox .p-listbox-list .p-listbox-option.p-listbox-option-selected {
+    background: ${o2("listbox.option.selected.background")};
+    color: ${o2("listbox.option.selected.color")};
+}
+
+.p-listbox:not(.p-disabled) .p-listbox-option.p-listbox-option-selected.p-focus {
+    background: ${o2("listbox.option.selected.focus.background")};
+    color: ${o2("listbox.option.selected.focus.color")};
+}
+
+.p-listbox:not(.p-disabled) .p-listbox-option:not(.p-listbox-option-selected):not(.p-disabled).p-focus {
+    background: ${o2("listbox.option.focus.background")};
+    color: ${o2("listbox.option.focus.color")};
+}
+
+.p-listbox:not(.p-disabled) .p-listbox-option:not(.p-listbox-option-selected):not(.p-disabled):hover {
+    background: ${o2("listbox.option.focus.background")};
+    color: ${o2("listbox.option.focus.color")};
+}
+
+.p-listbox-option-blank-icon {
+    flex-shrink: 0;
+}
+
+.p-listbox-option-check-icon {
+    position: relative;
+    flex-shrink: 0;
+    margin-inline-start: ${o2("listbox.checkmark.gutter.start")};
+    margin-inline-end: ${o2("listbox.checkmark.gutter.end")};
+    color: ${o2("listbox.checkmark.color")};
+}
+
+.p-listbox-option-group {
+    margin: 0;
+    padding: ${o2("listbox.option.group.padding")};
+    color: ${o2("listbox.option.group.color")};
+    background: ${o2("listbox.option.group.background")};
+    font-weight: ${o2("listbox.option.group.font.weight")};
+}
+
+.p-listbox-empty-message {
+    padding: ${o2("listbox.empty.message.padding")};
 }
 `;
 var style$1 = ({ dt: n2 }) => `
@@ -4924,11 +4924,11 @@ export {
   style$b as bK,
   isVisible as bL,
   style$a as bM,
-  style$9 as bN,
-  getFocusableElements as bO,
-  relativePosition as bP,
-  absolutePosition as bQ,
-  isAndroid as bR,
+  getFocusableElements as bN,
+  relativePosition as bO,
+  absolutePosition as bP,
+  isAndroid as bQ,
+  style$9 as bR,
   style$8 as bS,
   style$7 as bT,
   style$6 as bU,
