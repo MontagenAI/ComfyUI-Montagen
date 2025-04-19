@@ -196,17 +196,17 @@
   border-radius: 4px;
 }\r
 
-.parent-container[data-v-26da5fd2] {\r
+.parent-container[data-v-0653bce0] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-26da5fd2] {\r
+.layout-grid[data-v-0653bce0] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-26da5fd2] {\r
+.layout-grid[data-v-0653bce0] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -69604,7 +69604,10 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         if (flag || !selectClip.length) return;
         let newTemp = Object.fromEntries(Object.entries(temp).filter(([key2, value2]) => value2 != "" && value2 != 0));
         console.log("newTemp", newTemp);
-        return;
+        editGropClip(newTemp);
+        selectClip.forEach((item) => {
+          workSpaceStore.playerInstance.applyChange(toRaw(item), JSON.parse(JSON.stringify(newTemp)));
+        });
       } else if (workSpaceStore.activeNode.fileType == "timeline") {
         console.log("单选_批处理");
         if (flag || ((_b2 = (_a2 = selectClip[0]) == null ? void 0 : _a2.conf) == null ? void 0 : _b2.refId) != props2.data.id) return;
@@ -69618,6 +69621,18 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         timeout = setTimeout(() => fn.apply(this, args), delay);
       };
     }
+    const editGropClip = async (data) => {
+      let workFlow = workSpaceStore.workflowCips;
+      let node2 = workSpaceStore.activeNode;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${workFlow.projectId}/Workflow/${node2.workflowId}/node/${node2.id}/Edit`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      await response.json();
+    };
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
       const _component_ToggleButton = script$6;
@@ -69662,7 +69677,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-26da5fd2"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-0653bce0"]]);
 const _hoisted_1$f = { class: "px-2 tw-mb-2" };
 const _hoisted_2$a = { class: "content" };
 const _hoisted_3$9 = { class: "px-2 tw-mb-2" };
@@ -70506,13 +70521,14 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
       if ((source == null ? void 0 : source.fileType) == "timeline") {
         let temp = source.nodes || [];
         return temp.map((item) => {
+          var _a2;
           return Object.assign({}, item, {
             label: item.name,
             key: item.id,
             fileType: "track_clip",
             leaf: false,
             configInfo: item.configInfo,
-            timelineName: item.clips[0].timelineName,
+            timelineName: (_a2 = item.clips[0]) == null ? void 0 : _a2.timelineName,
             children: (item.clips || []).map((clip2) => {
               return Object.assign({}, clip2, {
                 key: clip2.id,
@@ -70528,13 +70544,14 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
       } else {
         let temp = source.nodes || [];
         return temp.map((item) => {
+          var _a2;
           return Object.assign({}, item, {
             label: item.name,
             key: item.id,
             fileType: "track_clip",
             leaf: false,
             configInfo: item.configInfo,
-            timelineName: item.clips[0].timelineName,
+            timelineName: (_a2 = item.clips[0]) == null ? void 0 : _a2.timelineName,
             children: (item.clips || []).map((clip2) => {
               return Object.assign({}, clip2, {
                 key: clip2.id,
@@ -70674,6 +70691,7 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
     };
     const fineTimeLine = (name, id) => {
       var _a2;
+      if (!name) return;
       let timelines = ((_a2 = activeProject.value) == null ? void 0 : _a2.timelines) || [];
       let temp = timelines.find((item) => {
         return item.timelineName === name;
