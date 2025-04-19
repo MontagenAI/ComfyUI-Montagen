@@ -196,17 +196,17 @@
   border-radius: 4px;
 }\r
 
-.parent-container[data-v-0653bce0] {\r
+.parent-container[data-v-5546e76a] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-0653bce0] {\r
+.layout-grid[data-v-5546e76a] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-0653bce0] {\r
+.layout-grid[data-v-5546e76a] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -68840,8 +68840,8 @@ const _hoisted_5$8 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$4 = ["onClick", "onContextmenu"];
-const _hoisted_7$3 = {
+const _hoisted_6$5 = ["onClick", "onContextmenu"];
+const _hoisted_7$4 = {
   key: 0,
   class: "w-full flex items-center"
 };
@@ -68945,7 +68945,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$3, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$4, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
@@ -68990,7 +68990,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$4);
+              ], 40, _hoisted_6$5);
             }), 128))
           ])
         ]),
@@ -69592,22 +69592,23 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         if (((_a3 = config2[key2][1]) == null ? void 0 : _a3.defaultDelte) && ((_b3 = config2[key2][1]) == null ? void 0 : _b3.default) == temp[key2]) {
           delete temp[key2];
         }
-        if (["FLOAT"].includes(config2[key2][0]) && typeof temp[key2] == "string") {
-          temp[key2] = +temp[key2];
-        }
       });
       console.log("processData____", temp, props2);
       let selectClip = workSpaceStore.playerInstance.selected;
       console.log("选中的clip", selectClip);
       if (workSpaceStore.activeNode.fileType == "track_clip") {
-        console.log("多选_批处理");
+        console.log("多选_批处理", temp);
         if (flag || !selectClip.length) return;
-        let newTemp = Object.fromEntries(Object.entries(temp).filter(([key2, value2]) => value2 != "" && value2 != 0));
+        let newTemp = Object.fromEntries(Object.entries(temp).filter(([key2, value2]) => value2 !== ""));
         console.log("newTemp", newTemp);
         editGropClip(newTemp);
+        let tempNodes = [];
+        let config22 = {};
         selectClip.forEach((item) => {
-          workSpaceStore.playerInstance.applyChange(toRaw(item), JSON.parse(JSON.stringify(newTemp)));
+          tempNodes.push(toRaw(item));
+          config22[item.id] = newTemp;
         });
+        workSpaceStore.playerInstance.applyChange(tempNodes, config22);
       } else if (workSpaceStore.activeNode.fileType == "timeline") {
         console.log("单选_批处理");
         if (flag || ((_b2 = (_a2 = selectClip[0]) == null ? void 0 : _a2.conf) == null ? void 0 : _b2.refId) != props2.data.id) return;
@@ -69677,14 +69678,14 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-0653bce0"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-5546e76a"]]);
 const _hoisted_1$f = { class: "px-2 tw-mb-2" };
 const _hoisted_2$a = { class: "content" };
 const _hoisted_3$9 = { class: "px-2 tw-mb-2" };
 const _hoisted_4$7 = { class: "content" };
 const _hoisted_5$6 = { class: "px-2 tw-mb-2" };
-const _hoisted_6$3 = { class: "content" };
-const _hoisted_7$2 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$4 = { class: "content" };
+const _hoisted_7$3 = { class: "px-2 tw-mb-2" };
 const _hoisted_8$2 = { class: "content" };
 const _hoisted_9$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_10$2 = { class: "content" };
@@ -69723,7 +69724,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
         ]),
         createBaseVNode("div", _hoisted_5$6, [
           _cache[8] || (_cache[8] = createBaseVNode("div", { class: "label tw-py-2" }, "height:", -1)),
-          createBaseVNode("div", _hoisted_6$3, [
+          createBaseVNode("div", _hoisted_6$4, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.height,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
@@ -69732,7 +69733,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_7$2, [
+        createBaseVNode("div", _hoisted_7$3, [
           _cache[9] || (_cache[9] = createBaseVNode("div", { class: "label tw-py-2" }, "codec_name:", -1)),
           createBaseVNode("div", _hoisted_8$2, [
             createVNode(_component_InputText, {
@@ -69799,8 +69800,8 @@ const _hoisted_2$9 = { class: "card tw-w-full" };
 const _hoisted_3$8 = { class: "form-item tw-my-2" };
 const _hoisted_4$6 = { class: "form-item-content" };
 const _hoisted_5$5 = { class: "flex justify-center" };
-const _hoisted_6$2 = { class: "form-item tw-my-2" };
-const _hoisted_7$1 = { class: "form-item-content" };
+const _hoisted_6$3 = { class: "form-item tw-my-2" };
+const _hoisted_7$2 = { class: "form-item-content" };
 const _hoisted_8$1 = { class: "flex justify-center" };
 const _hoisted_9$1 = { class: "form-item tw-my-2" };
 const _hoisted_10$1 = { class: "form-item-content" };
@@ -70046,9 +70047,9 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_6$2, [
+                            createBaseVNode("div", _hoisted_6$3, [
                               _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
-                              createBaseVNode("div", _hoisted_7$1, [
+                              createBaseVNode("div", _hoisted_7$2, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -71302,7 +71303,7 @@ const _hoisted_2$5 = { class: "relative overflow-hidden rounded-t-lg" };
 const _hoisted_3$5 = { class: "flex items-center px-4 py-3" };
 const _hoisted_4$4 = { class: "flex-1" };
 const _hoisted_5$4 = { class: "line-clamp-1 text-lg font-normal text-surface-900 dark:text-surface-100" };
-const _hoisted_6$1 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
+const _hoisted_6$2 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
 const UPSCALE_ZOOM_SCALE = 16;
 const DEFAULT_ZOOM_SCALE = 5;
 const _sfc_main$a = /* @__PURE__ */ defineComponent({
@@ -71340,7 +71341,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
           createBaseVNode("div", _hoisted_3$5, [
             createBaseVNode("div", _hoisted_4$4, [
               createBaseVNode("h3", _hoisted_5$4, toDisplayString(_ctx.sourceModule.title), 1),
-              createBaseVNode("p", _hoisted_6$1, toDisplayString(_ctx.sourceModule.description), 1)
+              createBaseVNode("p", _hoisted_6$2, toDisplayString(_ctx.sourceModule.description), 1)
             ]),
             _cache[1] || (_cache[1] = createBaseVNode("div", { class: "tw-flex xl:flex tw-items-center tw-justify-center ml-4 tw-w-10 tw-h-10 tw-rounded-full tw-bg-surface-100" }, [
               createBaseVNode("i", { class: "pi pi-angle-right tw-text-2xl" })
@@ -71680,7 +71681,9 @@ const _hoisted_4$1 = {
   key: 0,
   class: "flex flex-col px-12 pb-4"
 };
-const _hoisted_5$1 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
+const _hoisted_5$1 = { class: "py-3 text-left" };
+const _hoisted_6$1 = { class: "text-lg" };
+const _hoisted_7$1 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "templateWorkflowContent",
   setup(__props) {
@@ -71696,20 +71699,32 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         {
           label: "Locals",
           code: "locals",
-          items: [
-            {
-              name: "default",
-              projectId: "local"
-            }
-          ]
+          items: tabLists.value.map((item) => {
+            return {
+              name: item,
+              projectId: item
+            };
+          })
         }
       ];
     });
+    const tabLists = ref$3([]);
+    const getTbaLists = async () => {
+      let response = await app$1.api.fetchApi(`/Montagen/Template/Category`, {
+        method: "GET"
+      });
+      const json = await response.json();
+      console.log(json, "json_data_侧边栏tabs 数据");
+      selectedTab.value = json.data[0];
+      tabLists.value = json.data;
+      getWorkflowList();
+    };
     const selectedTab = ref$3(null);
     const handleTabSelection = (tab) => {
       console.log(tab, "tab");
       if (!tab) return;
       selectedTab.value = tab;
+      getWorkflowList();
     };
     const dialogStore = useDialogStore();
     const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
@@ -71724,7 +71739,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     const workFlows = ref$3([]);
     const severOrigin = window.location.origin;
     const getWorkflowList = async () => {
-      let response = await app$1.api.fetchApi(`/Montagen/Template/List`, {
+      let response = await app$1.api.fetchApi(`/Montagen/Template/List?category=${selectedTab.value}`, {
         method: "GET"
       });
       const json = await response.json();
@@ -71738,8 +71753,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       });
     };
     onMounted(() => {
-      getWorkflowList();
-      selectedTab.value = workSpaceStore.activeProject.baseInfo.projectId;
+      getTbaLists();
     });
     return (_ctx, _cache) => {
       const _component_Button = script$1;
@@ -71768,10 +71782,10 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
             }])
           }, [
             selectedTab.value ? (openBlock(), createElementBlock("div", _hoisted_4$1, [
-              _cache[1] || (_cache[1] = createBaseVNode("div", { class: "py-3 text-left" }, [
-                createBaseVNode("h2", { class: "text-lg" }, "测试数据")
-              ], -1)),
               createBaseVNode("div", _hoisted_5$1, [
+                createBaseVNode("h2", _hoisted_6$1, toDisplayString(selectedTab.value), 1)
+              ]),
+              createBaseVNode("div", _hoisted_7$1, [
                 (openBlock(true), createElementBlock(Fragment, null, renderList$1(workFlows.value, (item) => {
                   return openBlock(), createElementBlock("div", { key: item }, [
                     createVNode(_sfc_main$a, {
