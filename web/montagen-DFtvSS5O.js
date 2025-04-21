@@ -4,26 +4,26 @@
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
       elementStyle.appendChild(document.createTextNode(`@charset "UTF-8";:root{--el-color-white:#ffffff;--el-color-black:#000000;--el-color-primary-rgb:64,158,255;--el-color-success-rgb:103,194,58;--el-color-warning-rgb:230,162,60;--el-color-danger-rgb:245,108,108;--el-color-error-rgb:245,108,108;--el-color-info-rgb:144,147,153;--el-font-size-extra-large:20px;--el-font-size-large:18px;--el-font-size-medium:16px;--el-font-size-base:14px;--el-font-size-small:13px;--el-font-size-extra-small:12px;--el-font-family:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;--el-font-weight-primary:500;--el-font-line-height-primary:24px;--el-index-normal:1;--el-index-top:1000;--el-index-popper:2000;--el-border-radius-base:4px;--el-border-radius-small:2px;--el-border-radius-round:20px;--el-border-radius-circle:100%;--el-transition-duration:0.3s;--el-transition-duration-fast:0.2s;--el-transition-function-ease-in-out-bezier:cubic-bezier(0.645,0.045,0.355,1);--el-transition-function-fast-bezier:cubic-bezier(0.23,1,0.32,1);--el-transition-all:all var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);--el-transition-fade:opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-md-fade:transform var(--el-transition-duration) var(--el-transition-function-fast-bezier),opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);--el-transition-fade-linear:opacity var(--el-transition-duration-fast) linear;--el-transition-border:border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-box-shadow:box-shadow var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-transition-color:color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);--el-component-size-large:40px;--el-component-size:32px;--el-component-size-small:24px;color-scheme:light;--el-color-primary:#409eff;--el-color-primary-light-3:rgb(121.3,187.1,255);--el-color-primary-light-5:rgb(159.5,206.5,255);--el-color-primary-light-7:rgb(197.7,225.9,255);--el-color-primary-light-8:rgb(216.8,235.6,255);--el-color-primary-light-9:rgb(235.9,245.3,255);--el-color-primary-dark-2:rgb(51.2,126.4,204);--el-color-success:#67c23a;--el-color-success-light-3:rgb(148.6,212.3,117.1);--el-color-success-light-5:rgb(179,224.5,156.5);--el-color-success-light-7:rgb(209.4,236.7,195.9);--el-color-success-light-8:rgb(224.6,242.8,215.6);--el-color-success-light-9:rgb(239.8,248.9,235.3);--el-color-success-dark-2:rgb(82.4,155.2,46.4);--el-color-warning:#e6a23c;--el-color-warning-light-3:rgb(237.5,189.9,118.5);--el-color-warning-light-5:rgb(242.5,208.5,157.5);--el-color-warning-light-7:rgb(247.5,227.1,196.5);--el-color-warning-light-8:rgb(250,236.4,216);--el-color-warning-light-9:rgb(252.5,245.7,235.5);--el-color-warning-dark-2:rgb(184,129.6,48);--el-color-danger:#f56c6c;--el-color-danger-light-3:rgb(248,152.1,152.1);--el-color-danger-light-5:rgb(250,181.5,181.5);--el-color-danger-light-7:rgb(252,210.9,210.9);--el-color-danger-light-8:rgb(253,225.6,225.6);--el-color-danger-light-9:rgb(254,240.3,240.3);--el-color-danger-dark-2:rgb(196,86.4,86.4);--el-color-error:#f56c6c;--el-color-error-light-3:rgb(248,152.1,152.1);--el-color-error-light-5:rgb(250,181.5,181.5);--el-color-error-light-7:rgb(252,210.9,210.9);--el-color-error-light-8:rgb(253,225.6,225.6);--el-color-error-light-9:rgb(254,240.3,240.3);--el-color-error-dark-2:rgb(196,86.4,86.4);--el-color-info:#909399;--el-color-info-light-3:rgb(177.3,179.4,183.6);--el-color-info-light-5:rgb(199.5,201,204);--el-color-info-light-7:rgb(221.7,222.6,224.4);--el-color-info-light-8:rgb(232.8,233.4,234.6);--el-color-info-light-9:rgb(243.9,244.2,244.8);--el-color-info-dark-2:rgb(115.2,117.6,122.4);--el-bg-color:#ffffff;--el-bg-color-page:#f2f3f5;--el-bg-color-overlay:#ffffff;--el-text-color-primary:#303133;--el-text-color-regular:#606266;--el-text-color-secondary:#909399;--el-text-color-placeholder:#a8abb2;--el-text-color-disabled:#c0c4cc;--el-border-color:#dcdfe6;--el-border-color-light:#e4e7ed;--el-border-color-lighter:#ebeef5;--el-border-color-extra-light:#f2f6fc;--el-border-color-dark:#d4d7de;--el-border-color-darker:#cdd0d6;--el-fill-color:#f0f2f5;--el-fill-color-light:#f5f7fa;--el-fill-color-lighter:#fafafa;--el-fill-color-extra-light:#fafcff;--el-fill-color-dark:#ebedf0;--el-fill-color-darker:#e6e8eb;--el-fill-color-blank:#ffffff;--el-box-shadow:0px 12px 32px 4px rgba(0,0,0,0.04),0px 8px 20px rgba(0,0,0,0.08);--el-box-shadow-light:0px 0px 12px rgba(0,0,0,0.12);--el-box-shadow-lighter:0px 0px 6px rgba(0,0,0,0.12);--el-box-shadow-dark:0px 16px 48px 16px rgba(0,0,0,0.08),0px 12px 32px rgba(0,0,0,0.12),0px 8px 16px -8px rgba(0,0,0,0.16);--el-disabled-bg-color:var(--el-fill-color-light);--el-disabled-text-color:var(--el-text-color-placeholder);--el-disabled-border-color:var(--el-border-color-light);--el-overlay-color:rgba(0,0,0,0.8);--el-overlay-color-light:rgba(0,0,0,0.7);--el-overlay-color-lighter:rgba(0,0,0,0.5);--el-mask-color:rgba(255,255,255,0.9);--el-mask-color-extra-light:rgba(255,255,255,0.3);--el-border-width:1px;--el-border-style:solid;--el-border-color-hover:var(--el-text-color-disabled);--el-border:var(--el-border-width) var(--el-border-style) var(--el-border-color);--el-svg-monochrome-grey:var(--el-border-color)}.fade-in-linear-enter-active,.fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.fade-in-linear-enter-from,.fade-in-linear-leave-to{opacity:0}.el-fade-in-linear-enter-active,.el-fade-in-linear-leave-active{transition:var(--el-transition-fade-linear)}.el-fade-in-linear-enter-from,.el-fade-in-linear-leave-to{opacity:0}.el-fade-in-enter-active,.el-fade-in-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-fade-in-enter-from,.el-fade-in-leave-active{opacity:0}.el-zoom-in-center-enter-active,.el-zoom-in-center-leave-active{transition:all var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-zoom-in-center-enter-from,.el-zoom-in-center-leave-active{opacity:0;transform:scaleX(0)}.el-zoom-in-top-enter-active,.el-zoom-in-top-leave-active{opacity:1;transform:scaleY(1);transform-origin:center top;transition:var(--el-transition-md-fade)}.el-zoom-in-top-enter-active[data-popper-placement^=top],.el-zoom-in-top-leave-active[data-popper-placement^=top]{transform-origin:center bottom}.el-zoom-in-top-enter-from,.el-zoom-in-top-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-bottom-enter-active,.el-zoom-in-bottom-leave-active{opacity:1;transform:scaleY(1);transform-origin:center bottom;transition:var(--el-transition-md-fade)}.el-zoom-in-bottom-enter-from,.el-zoom-in-bottom-leave-active{opacity:0;transform:scaleY(0)}.el-zoom-in-left-enter-active,.el-zoom-in-left-leave-active{opacity:1;transform:scale(1);transform-origin:top left;transition:var(--el-transition-md-fade)}.el-zoom-in-left-enter-from,.el-zoom-in-left-leave-active{opacity:0;transform:scale(.45)}.collapse-transition{transition:var(--el-transition-duration) height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.el-collapse-transition-enter-active,.el-collapse-transition-leave-active{transition:var(--el-transition-duration) max-height ease-in-out,var(--el-transition-duration) padding-top ease-in-out,var(--el-transition-duration) padding-bottom ease-in-out}.horizontal-collapse-transition{transition:var(--el-transition-duration) width ease-in-out,var(--el-transition-duration) padding-left ease-in-out,var(--el-transition-duration) padding-right ease-in-out}.el-list-enter-active,.el-list-leave-active{transition:all 1s}.el-list-enter-from,.el-list-leave-to{opacity:0;transform:translateY(-30px)}.el-list-leave-active{position:absolute!important}.el-opacity-transition{transition:opacity var(--el-transition-duration) cubic-bezier(.55,0,.1,1)}.el-icon-loading{animation:rotating 2s linear infinite}.el-icon--right{margin-left:5px}.el-icon--left{margin-right:5px}@keyframes rotating{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.el-icon{--color:inherit;align-items:center;display:inline-flex;height:1em;justify-content:center;line-height:1em;position:relative;width:1em;fill:currentColor;color:var(--color);font-size:inherit}.el-icon.is-loading{animation:rotating 2s linear infinite}.el-icon svg{height:1em;width:1em}.el-textarea{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;display:inline-block;font-size:var(--el-font-size-base);position:relative;vertical-align:bottom;width:100%}.el-textarea__inner{-webkit-appearance:none;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));display:block;font-family:inherit;font-size:inherit;line-height:1.5;padding:5px 11px;position:relative;resize:vertical;transition:var(--el-transition-box-shadow);width:100%}.el-textarea__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-textarea__inner:focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset;outline:none}.el-textarea .el-input__count{background:var(--el-fill-color-blank);bottom:5px;color:var(--el-color-info);font-size:12px;line-height:14px;position:absolute;right:10px}.el-textarea.is-disabled .el-textarea__inner{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;color:var(--el-disabled-text-color);cursor:not-allowed}.el-textarea.is-disabled .el-textarea__inner::placeholder{color:var(--el-text-color-placeholder)}.el-textarea.is-exceed .el-textarea__inner{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-textarea.is-exceed .el-input__count{color:var(--el-color-danger)}.el-input{--el-input-text-color:var(--el-text-color-regular);--el-input-border:var(--el-border);--el-input-hover-border:var(--el-border-color-hover);--el-input-focus-border:var(--el-color-primary);--el-input-transparent-border:0 0 0 1px transparent inset;--el-input-border-color:var(--el-border-color);--el-input-border-radius:var(--el-border-radius-base);--el-input-bg-color:var(--el-fill-color-blank);--el-input-icon-color:var(--el-text-color-placeholder);--el-input-placeholder-color:var(--el-text-color-placeholder);--el-input-hover-border-color:var(--el-border-color-hover);--el-input-clear-hover-color:var(--el-text-color-secondary);--el-input-focus-border-color:var(--el-color-primary);--el-input-width:100%;--el-input-height:var(--el-component-size);box-sizing:border-box;display:inline-flex;font-size:var(--el-font-size-base);line-height:var(--el-input-height);position:relative;vertical-align:middle;width:var(--el-input-width)}.el-input::-webkit-scrollbar{width:6px;z-index:11}.el-input::-webkit-scrollbar:horizontal{height:6px}.el-input::-webkit-scrollbar-thumb{background:var(--el-text-color-disabled);border-radius:5px;width:6px}.el-input::-webkit-scrollbar-corner,.el-input::-webkit-scrollbar-track{background:var(--el-fill-color-blank)}.el-input::-webkit-scrollbar-track-piece{background:var(--el-fill-color-blank);width:6px}.el-input .el-input__clear,.el-input .el-input__password{color:var(--el-input-icon-color);cursor:pointer;font-size:14px}.el-input .el-input__clear:hover,.el-input .el-input__password:hover{color:var(--el-input-clear-hover-color)}.el-input .el-input__count{align-items:center;color:var(--el-color-info);display:inline-flex;font-size:12px;height:100%}.el-input .el-input__count .el-input__count-inner{background:var(--el-fill-color-blank);display:inline-block;line-height:normal;padding-left:8px}.el-input__wrapper{align-items:center;background-color:var(--el-input-bg-color,var(--el-fill-color-blank));background-image:none;border-radius:var(--el-input-border-radius,var(--el-border-radius-base));box-shadow:0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;cursor:text;display:inline-flex;flex-grow:1;justify-content:center;padding:1px 11px;transform:translateZ(0);transition:var(--el-transition-box-shadow)}.el-input__wrapper:hover{box-shadow:0 0 0 1px var(--el-input-hover-border-color) inset}.el-input__wrapper.is-focus{box-shadow:0 0 0 1px var(--el-input-focus-border-color) inset}.el-input{--el-input-inner-height:calc(var(--el-input-height, 32px) - 2px)}.el-input__inner{-webkit-appearance:none;background:none;border:none;box-sizing:border-box;color:var(--el-input-text-color,var(--el-text-color-regular));flex-grow:1;font-size:inherit;height:var(--el-input-inner-height);line-height:var(--el-input-inner-height);outline:none;padding:0;width:100%}.el-input__inner:focus{outline:none}.el-input__inner::placeholder{color:var(--el-input-placeholder-color,var(--el-text-color-placeholder))}.el-input__inner[type=password]::-ms-reveal{display:none}.el-input__inner[type=number]{line-height:1}.el-input__prefix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;line-height:var(--el-input-inner-height);pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__prefix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__prefix-inner>:last-child{margin-right:8px}.el-input__prefix-inner>:first-child,.el-input__prefix-inner>:first-child.el-input__icon{margin-left:0}.el-input__suffix{color:var(--el-input-icon-color,var(--el-text-color-placeholder));display:inline-flex;flex-shrink:0;flex-wrap:nowrap;height:100%;line-height:var(--el-input-inner-height);pointer-events:none;text-align:center;transition:all var(--el-transition-duration);white-space:nowrap}.el-input__suffix-inner{align-items:center;display:inline-flex;justify-content:center;pointer-events:all}.el-input__suffix-inner>:first-child{margin-left:8px}.el-input .el-input__icon{align-items:center;display:flex;height:inherit;justify-content:center;line-height:inherit;margin-left:8px;transition:all var(--el-transition-duration)}.el-input__validateIcon{pointer-events:none}.el-input.is-active .el-input__wrapper{box-shadow:0 0 0 1px var(--el-input-focus-color, ) inset}.el-input.is-disabled{cursor:not-allowed}.el-input.is-disabled .el-input__wrapper{background-color:var(--el-disabled-bg-color);box-shadow:0 0 0 1px var(--el-disabled-border-color) inset;cursor:not-allowed;pointer-events:none}.el-input.is-disabled .el-input__inner{color:var(--el-disabled-text-color);-webkit-text-fill-color:var(--el-disabled-text-color);cursor:not-allowed}.el-input.is-disabled .el-input__inner::placeholder{color:var(--el-text-color-placeholder)}.el-input.is-disabled .el-input__icon{cursor:not-allowed}.el-input.is-exceed .el-input__wrapper{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-input.is-exceed .el-input__suffix .el-input__count{color:var(--el-color-danger)}.el-input--large{--el-input-height:var(--el-component-size-large);font-size:14px}.el-input--large .el-input__wrapper{padding:1px 15px}.el-input--large{--el-input-inner-height:calc(var(--el-input-height, 40px) - 2px)}.el-input--small{--el-input-height:var(--el-component-size-small);font-size:12px}.el-input--small .el-input__wrapper{padding:1px 7px}.el-input--small{--el-input-inner-height:calc(var(--el-input-height, 24px) - 2px)}.el-input-group{align-items:stretch;display:inline-flex;width:100%}.el-input-group__append,.el-input-group__prepend{align-items:center;background-color:var(--el-fill-color-light);border-radius:var(--el-input-border-radius);color:var(--el-color-info);display:inline-flex;justify-content:center;min-height:100%;padding:0 20px;position:relative;white-space:nowrap}.el-input-group__append:focus,.el-input-group__prepend:focus{outline:none}.el-input-group__append .el-button,.el-input-group__append .el-select,.el-input-group__prepend .el-button,.el-input-group__prepend .el-select{display:inline-block;margin:0 -20px}.el-input-group__append button.el-button,.el-input-group__append button.el-button:hover,.el-input-group__append div.el-select .el-select__wrapper,.el-input-group__append div.el-select:hover .el-select__wrapper,.el-input-group__prepend button.el-button,.el-input-group__prepend button.el-button:hover,.el-input-group__prepend div.el-select .el-select__wrapper,.el-input-group__prepend div.el-select:hover .el-select__wrapper{background-color:transparent;border-color:transparent;color:inherit}.el-input-group__append .el-button,.el-input-group__append .el-input,.el-input-group__prepend .el-button,.el-input-group__prepend .el-input{font-size:inherit}.el-input-group__prepend{border-bottom-right-radius:0;border-right:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group__append{border-left:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-group--prepend>.el-input__wrapper,.el-input-group__append{border-bottom-left-radius:0;border-top-left-radius:0}.el-input-group--prepend .el-input-group__prepend .el-select .el-select__wrapper{border-bottom-right-radius:0;border-top-right-radius:0;box-shadow:1px 0 0 0 var(--el-input-border-color) inset,0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset}.el-input-group--append>.el-input__wrapper{border-bottom-right-radius:0;border-top-right-radius:0}.el-input-group--append .el-input-group__append .el-select .el-select__wrapper{border-bottom-left-radius:0;border-top-left-radius:0;box-shadow:0 1px 0 0 var(--el-input-border-color) inset,0 -1px 0 0 var(--el-input-border-color) inset,-1px 0 0 0 var(--el-input-border-color) inset}.el-input-hidden{display:none!important}.el-form{--el-form-label-font-size:var(--el-font-size-base);--el-form-inline-content-width:220px}.el-form--inline .el-form-item{display:inline-flex;margin-right:32px;vertical-align:middle}.el-form--inline.el-form--label-top{display:flex;flex-wrap:wrap}.el-form--inline.el-form--label-top .el-form-item{display:block}.el-form-item{display:flex;--font-size:14px;margin-bottom:18px}.el-form-item .el-form-item{margin-bottom:0}.el-form-item .el-input__validateIcon{display:none}.el-form-item--large{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:22px}.el-form-item--large .el-form-item__label{height:40px;line-height:40px}.el-form-item--large .el-form-item__content{line-height:40px}.el-form-item--large .el-form-item__error{padding-top:4px}.el-form-item--default{--font-size:14px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--default .el-form-item__label{height:32px;line-height:32px}.el-form-item--default .el-form-item__content{line-height:32px}.el-form-item--default .el-form-item__error{padding-top:2px}.el-form-item--small{--font-size:12px;--el-form-label-font-size:var(--font-size);margin-bottom:18px}.el-form-item--small .el-form-item__label{height:24px;line-height:24px}.el-form-item--small .el-form-item__content{line-height:24px}.el-form-item--small .el-form-item__error{padding-top:2px}.el-form-item--label-left .el-form-item__label{justify-content:flex-start}.el-form-item--label-top{display:block}.el-form-item--label-top .el-form-item__label{display:inline-block;height:auto;line-height:22px;margin-bottom:8px;text-align:left;vertical-align:middle}.el-form-item__label-wrap{display:flex}.el-form-item__label{align-items:flex-start;box-sizing:border-box;color:var(--el-text-color-regular);display:inline-flex;flex:0 0 auto;font-size:var(--el-form-label-font-size);height:32px;justify-content:flex-end;line-height:32px;padding:0 12px 0 0}.el-form-item__content{align-items:center;display:flex;flex:1;flex-wrap:wrap;font-size:var(--font-size);line-height:32px;min-width:0;position:relative}.el-form-item__content .el-input-group{vertical-align:top}.el-form-item__error{color:var(--el-color-danger);font-size:12px;left:0;line-height:1;padding-top:2px;position:absolute;top:100%}.el-form-item__error--inline{display:inline-block;left:auto;margin-left:10px;position:relative;top:auto}.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label-wrap>.el-form-item__label:before,.el-form-item.is-required:not(.is-no-asterisk).asterisk-left>.el-form-item__label:before{color:var(--el-color-danger);content:"*";margin-right:4px}.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label-wrap>.el-form-item__label:after,.el-form-item.is-required:not(.is-no-asterisk).asterisk-right>.el-form-item__label:after{color:var(--el-color-danger);content:"*";margin-left:4px}.el-form-item.is-error .el-input-tag__wrapper,.el-form-item.is-error .el-input-tag__wrapper.is-focus,.el-form-item.is-error .el-input-tag__wrapper:focus,.el-form-item.is-error .el-input-tag__wrapper:hover,.el-form-item.is-error .el-input__wrapper,.el-form-item.is-error .el-input__wrapper.is-focus,.el-form-item.is-error .el-input__wrapper:focus,.el-form-item.is-error .el-input__wrapper:hover,.el-form-item.is-error .el-select__wrapper,.el-form-item.is-error .el-select__wrapper.is-focus,.el-form-item.is-error .el-select__wrapper:focus,.el-form-item.is-error .el-select__wrapper:hover,.el-form-item.is-error .el-textarea__inner,.el-form-item.is-error .el-textarea__inner.is-focus,.el-form-item.is-error .el-textarea__inner:focus,.el-form-item.is-error .el-textarea__inner:hover{box-shadow:0 0 0 1px var(--el-color-danger) inset}.el-form-item.is-error .el-input-group__append .el-input__wrapper,.el-form-item.is-error .el-input-group__prepend .el-input__wrapper{box-shadow:inset 0 0 0 1px transparent}.el-form-item.is-error .el-input-group__append .el-input__validateIcon,.el-form-item.is-error .el-input-group__prepend .el-input__validateIcon{display:none}.el-form-item.is-error .el-input__validateIcon{color:var(--el-color-danger)}.el-form-item--feedback .el-input__validateIcon{display:inline-flex}.el-button{--el-button-font-weight:var(--el-font-weight-primary);--el-button-border-color:var(--el-border-color);--el-button-bg-color:var(--el-fill-color-blank);--el-button-text-color:var(--el-text-color-regular);--el-button-disabled-text-color:var(--el-disabled-text-color);--el-button-disabled-bg-color:var(--el-fill-color-blank);--el-button-disabled-border-color:var(--el-border-color-light);--el-button-divide-border-color:rgba(255,255,255,0.5);--el-button-hover-text-color:var(--el-color-primary);--el-button-hover-bg-color:var(--el-color-primary-light-9);--el-button-hover-border-color:var(--el-color-primary-light-7);--el-button-active-text-color:var(--el-button-hover-text-color);--el-button-active-border-color:var(--el-color-primary);--el-button-active-bg-color:var(--el-button-hover-bg-color);--el-button-outline-color:var(--el-color-primary-light-5);--el-button-hover-link-text-color:var(--el-text-color-secondary);--el-button-active-color:var(--el-text-color-primary);align-items:center;-webkit-appearance:none;background-color:var(--el-button-bg-color);border:var(--el-border);border-color:var(--el-button-border-color);box-sizing:border-box;color:var(--el-button-text-color);cursor:pointer;display:inline-flex;font-weight:var(--el-button-font-weight);height:32px;justify-content:center;line-height:1;outline:none;text-align:center;transition:.1s;-webkit-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.el-button:hover{background-color:var(--el-button-hover-bg-color);border-color:var(--el-button-hover-border-color);color:var(--el-button-hover-text-color);outline:none}.el-button:active{background-color:var(--el-button-active-bg-color);border-color:var(--el-button-active-border-color);color:var(--el-button-active-text-color);outline:none}.el-button:focus-visible{outline:2px solid var(--el-button-outline-color);outline-offset:1px;transition:outline-offset 0s,outline 0s}.el-button>span{align-items:center;display:inline-flex}.el-button+.el-button{margin-left:12px}.el-button{border-radius:var(--el-border-radius-base);font-size:var(--el-font-size-base)}.el-button,.el-button.is-round{padding:8px 15px}.el-button::-moz-focus-inner{border:0}.el-button [class*=el-icon]+span{margin-left:6px}.el-button [class*=el-icon] svg{vertical-align:bottom}.el-button.is-plain{--el-button-hover-text-color:var(--el-color-primary);--el-button-hover-bg-color:var(--el-fill-color-blank);--el-button-hover-border-color:var(--el-color-primary)}.el-button.is-active{background-color:var(--el-button-active-bg-color);border-color:var(--el-button-active-border-color);color:var(--el-button-active-text-color);outline:none}.el-button.is-disabled,.el-button.is-disabled:hover{background-color:var(--el-button-disabled-bg-color);background-image:none;border-color:var(--el-button-disabled-border-color);color:var(--el-button-disabled-text-color);cursor:not-allowed}.el-button.is-loading{pointer-events:none;position:relative}.el-button.is-loading:before{background-color:var(--el-mask-color-extra-light);border-radius:inherit;bottom:-1px;content:"";left:-1px;pointer-events:none;position:absolute;right:-1px;top:-1px;z-index:1}.el-button.is-round{border-radius:var(--el-border-radius-round)}.el-button.is-circle{border-radius:50%;padding:8px;width:32px}.el-button.is-text{background-color:transparent;border:0 solid transparent;color:var(--el-button-text-color)}.el-button.is-text.is-disabled{background-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button.is-text:not(.is-disabled):hover{background-color:var(--el-fill-color-light)}.el-button.is-text:not(.is-disabled):focus-visible{outline:2px solid var(--el-button-outline-color);outline-offset:1px;transition:outline-offset 0s,outline 0s}.el-button.is-text:not(.is-disabled):active{background-color:var(--el-fill-color)}.el-button.is-text:not(.is-disabled).is-has-bg{background-color:var(--el-fill-color-light)}.el-button.is-text:not(.is-disabled).is-has-bg:hover{background-color:var(--el-fill-color)}.el-button.is-text:not(.is-disabled).is-has-bg:active{background-color:var(--el-fill-color-dark)}.el-button__text--expand{letter-spacing:.3em;margin-right:-.3em}.el-button.is-link{background:transparent;border-color:transparent;color:var(--el-button-text-color);height:auto;padding:2px}.el-button.is-link:hover{color:var(--el-button-hover-link-text-color)}.el-button.is-link.is-disabled{background-color:transparent!important;border-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button.is-link:not(.is-disabled):active,.el-button.is-link:not(.is-disabled):hover{background-color:transparent;border-color:transparent}.el-button.is-link:not(.is-disabled):active{color:var(--el-button-active-color)}.el-button--text{background:transparent;border-color:transparent;color:var(--el-color-primary);padding-left:0;padding-right:0}.el-button--text.is-disabled{background-color:transparent!important;border-color:transparent!important;color:var(--el-button-disabled-text-color)}.el-button--text:not(.is-disabled):hover{background-color:transparent;border-color:transparent;color:var(--el-color-primary-light-3)}.el-button--text:not(.is-disabled):active{background-color:transparent;border-color:transparent;color:var(--el-color-primary-dark-2)}.el-button__link--expand{letter-spacing:.3em;margin-right:-.3em}.el-button--primary{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-primary);--el-button-border-color:var(--el-color-primary);--el-button-outline-color:var(--el-color-primary-light-5);--el-button-active-color:var(--el-color-primary-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-primary-light-5);--el-button-hover-bg-color:var(--el-color-primary-light-3);--el-button-hover-border-color:var(--el-color-primary-light-3);--el-button-active-bg-color:var(--el-color-primary-dark-2);--el-button-active-border-color:var(--el-color-primary-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-primary-light-5);--el-button-disabled-border-color:var(--el-color-primary-light-5)}.el-button--primary.is-link,.el-button--primary.is-plain,.el-button--primary.is-text{--el-button-text-color:var(--el-color-primary);--el-button-bg-color:var(--el-color-primary-light-9);--el-button-border-color:var(--el-color-primary-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-primary);--el-button-hover-border-color:var(--el-color-primary);--el-button-active-text-color:var(--el-color-white)}.el-button--primary.is-link.is-disabled,.el-button--primary.is-link.is-disabled:active,.el-button--primary.is-link.is-disabled:focus,.el-button--primary.is-link.is-disabled:hover,.el-button--primary.is-plain.is-disabled,.el-button--primary.is-plain.is-disabled:active,.el-button--primary.is-plain.is-disabled:focus,.el-button--primary.is-plain.is-disabled:hover,.el-button--primary.is-text.is-disabled,.el-button--primary.is-text.is-disabled:active,.el-button--primary.is-text.is-disabled:focus,.el-button--primary.is-text.is-disabled:hover{background-color:var(--el-color-primary-light-9);border-color:var(--el-color-primary-light-8);color:var(--el-color-primary-light-5)}.el-button--success{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-success);--el-button-border-color:var(--el-color-success);--el-button-outline-color:var(--el-color-success-light-5);--el-button-active-color:var(--el-color-success-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-success-light-5);--el-button-hover-bg-color:var(--el-color-success-light-3);--el-button-hover-border-color:var(--el-color-success-light-3);--el-button-active-bg-color:var(--el-color-success-dark-2);--el-button-active-border-color:var(--el-color-success-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-success-light-5);--el-button-disabled-border-color:var(--el-color-success-light-5)}.el-button--success.is-link,.el-button--success.is-plain,.el-button--success.is-text{--el-button-text-color:var(--el-color-success);--el-button-bg-color:var(--el-color-success-light-9);--el-button-border-color:var(--el-color-success-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-success);--el-button-hover-border-color:var(--el-color-success);--el-button-active-text-color:var(--el-color-white)}.el-button--success.is-link.is-disabled,.el-button--success.is-link.is-disabled:active,.el-button--success.is-link.is-disabled:focus,.el-button--success.is-link.is-disabled:hover,.el-button--success.is-plain.is-disabled,.el-button--success.is-plain.is-disabled:active,.el-button--success.is-plain.is-disabled:focus,.el-button--success.is-plain.is-disabled:hover,.el-button--success.is-text.is-disabled,.el-button--success.is-text.is-disabled:active,.el-button--success.is-text.is-disabled:focus,.el-button--success.is-text.is-disabled:hover{background-color:var(--el-color-success-light-9);border-color:var(--el-color-success-light-8);color:var(--el-color-success-light-5)}.el-button--warning{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-warning);--el-button-border-color:var(--el-color-warning);--el-button-outline-color:var(--el-color-warning-light-5);--el-button-active-color:var(--el-color-warning-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-warning-light-5);--el-button-hover-bg-color:var(--el-color-warning-light-3);--el-button-hover-border-color:var(--el-color-warning-light-3);--el-button-active-bg-color:var(--el-color-warning-dark-2);--el-button-active-border-color:var(--el-color-warning-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-warning-light-5);--el-button-disabled-border-color:var(--el-color-warning-light-5)}.el-button--warning.is-link,.el-button--warning.is-plain,.el-button--warning.is-text{--el-button-text-color:var(--el-color-warning);--el-button-bg-color:var(--el-color-warning-light-9);--el-button-border-color:var(--el-color-warning-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-warning);--el-button-hover-border-color:var(--el-color-warning);--el-button-active-text-color:var(--el-color-white)}.el-button--warning.is-link.is-disabled,.el-button--warning.is-link.is-disabled:active,.el-button--warning.is-link.is-disabled:focus,.el-button--warning.is-link.is-disabled:hover,.el-button--warning.is-plain.is-disabled,.el-button--warning.is-plain.is-disabled:active,.el-button--warning.is-plain.is-disabled:focus,.el-button--warning.is-plain.is-disabled:hover,.el-button--warning.is-text.is-disabled,.el-button--warning.is-text.is-disabled:active,.el-button--warning.is-text.is-disabled:focus,.el-button--warning.is-text.is-disabled:hover{background-color:var(--el-color-warning-light-9);border-color:var(--el-color-warning-light-8);color:var(--el-color-warning-light-5)}.el-button--danger{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-danger);--el-button-border-color:var(--el-color-danger);--el-button-outline-color:var(--el-color-danger-light-5);--el-button-active-color:var(--el-color-danger-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-danger-light-5);--el-button-hover-bg-color:var(--el-color-danger-light-3);--el-button-hover-border-color:var(--el-color-danger-light-3);--el-button-active-bg-color:var(--el-color-danger-dark-2);--el-button-active-border-color:var(--el-color-danger-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-danger-light-5);--el-button-disabled-border-color:var(--el-color-danger-light-5)}.el-button--danger.is-link,.el-button--danger.is-plain,.el-button--danger.is-text{--el-button-text-color:var(--el-color-danger);--el-button-bg-color:var(--el-color-danger-light-9);--el-button-border-color:var(--el-color-danger-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-danger);--el-button-hover-border-color:var(--el-color-danger);--el-button-active-text-color:var(--el-color-white)}.el-button--danger.is-link.is-disabled,.el-button--danger.is-link.is-disabled:active,.el-button--danger.is-link.is-disabled:focus,.el-button--danger.is-link.is-disabled:hover,.el-button--danger.is-plain.is-disabled,.el-button--danger.is-plain.is-disabled:active,.el-button--danger.is-plain.is-disabled:focus,.el-button--danger.is-plain.is-disabled:hover,.el-button--danger.is-text.is-disabled,.el-button--danger.is-text.is-disabled:active,.el-button--danger.is-text.is-disabled:focus,.el-button--danger.is-text.is-disabled:hover{background-color:var(--el-color-danger-light-9);border-color:var(--el-color-danger-light-8);color:var(--el-color-danger-light-5)}.el-button--info{--el-button-text-color:var(--el-color-white);--el-button-bg-color:var(--el-color-info);--el-button-border-color:var(--el-color-info);--el-button-outline-color:var(--el-color-info-light-5);--el-button-active-color:var(--el-color-info-dark-2);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-link-text-color:var(--el-color-info-light-5);--el-button-hover-bg-color:var(--el-color-info-light-3);--el-button-hover-border-color:var(--el-color-info-light-3);--el-button-active-bg-color:var(--el-color-info-dark-2);--el-button-active-border-color:var(--el-color-info-dark-2);--el-button-disabled-text-color:var(--el-color-white);--el-button-disabled-bg-color:var(--el-color-info-light-5);--el-button-disabled-border-color:var(--el-color-info-light-5)}.el-button--info.is-link,.el-button--info.is-plain,.el-button--info.is-text{--el-button-text-color:var(--el-color-info);--el-button-bg-color:var(--el-color-info-light-9);--el-button-border-color:var(--el-color-info-light-5);--el-button-hover-text-color:var(--el-color-white);--el-button-hover-bg-color:var(--el-color-info);--el-button-hover-border-color:var(--el-color-info);--el-button-active-text-color:var(--el-color-white)}.el-button--info.is-link.is-disabled,.el-button--info.is-link.is-disabled:active,.el-button--info.is-link.is-disabled:focus,.el-button--info.is-link.is-disabled:hover,.el-button--info.is-plain.is-disabled,.el-button--info.is-plain.is-disabled:active,.el-button--info.is-plain.is-disabled:focus,.el-button--info.is-plain.is-disabled:hover,.el-button--info.is-text.is-disabled,.el-button--info.is-text.is-disabled:active,.el-button--info.is-text.is-disabled:focus,.el-button--info.is-text.is-disabled:hover{background-color:var(--el-color-info-light-9);border-color:var(--el-color-info-light-8);color:var(--el-color-info-light-5)}.el-button--large{--el-button-size:40px;height:var(--el-button-size)}.el-button--large [class*=el-icon]+span{margin-left:8px}.el-button--large{border-radius:var(--el-border-radius-base);font-size:var(--el-font-size-base);padding:12px 19px}.el-button--large.is-round{padding:12px 19px}.el-button--large.is-circle{padding:12px;width:var(--el-button-size)}.el-button--small{--el-button-size:24px;height:var(--el-button-size)}.el-button--small [class*=el-icon]+span{margin-left:4px}.el-button--small{border-radius:calc(var(--el-border-radius-base) - 1px);font-size:12px;padding:5px 11px}.el-button--small.is-round{padding:5px 11px}.el-button--small.is-circle{padding:5px;width:var(--el-button-size)}
-.global-dialog .p-dialog-header {
+.global-dialog .p-dialog-header[data-v-f715eb1e] {
     padding: 0.5rem
 }
 @media (min-width: 1536px) {
-.global-dialog .p-dialog-header {
+.global-dialog .p-dialog-header[data-v-f715eb1e] {
         padding: var(--p-dialog-header-padding)
 }
 }
-.global-dialog .p-dialog-header {
+.global-dialog .p-dialog-header[data-v-f715eb1e] {
     padding-bottom: 0px
 }
-.global-dialog .p-dialog-content {
+.global-dialog .p-dialog-content[data-v-f715eb1e] {
     padding: 0.5rem
 }
 @media (min-width: 1536px) {
-.global-dialog .p-dialog-content {
+.global-dialog .p-dialog-content[data-v-f715eb1e] {
         padding: var(--p-dialog-content-padding)
 }
 }
-.global-dialog .p-dialog-content {
+.global-dialog .p-dialog-content[data-v-f715eb1e] {
     padding-top: 0px
 }
 .workflow[data-v-d2759840] {
@@ -107,19 +107,19 @@
   background: #fff;
   border-radius: none;
 }
-.panels-container[data-v-95f9c909] {\r
+.panels-container[data-v-2ccb7b25] {\r
   height: 100%;\r
   width: 100%;\r
   position: relative;\r
   background: #fff;
 }
-.resizable-panel[data-v-95f9c909] {\r
+.resizable-panel[data-v-2ccb7b25] {\r
   background: white;\r
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
   overflow: hidden;\r
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.panel-header[data-v-95f9c909] {\r
+.panel-header[data-v-2ccb7b25] {\r
   background: #f8f9fa;\r
   cursor: pointer;\r
   border-bottom: 1px solid #eee;\r
@@ -134,36 +134,36 @@
   top: 0;\r
   z-index: 2;
 }
-.toggle-icon[data-v-95f9c909] {\r
+.toggle-icon[data-v-2ccb7b25] {\r
   font-size: 0.8em;\r
   opacity: 0.6;
 }
-.gutter[data-v-95f9c909] {\r
+.gutter[data-v-2ccb7b25] {\r
   background: #ddd;\r
   position: relative;\r
   transition: all 0.3s;
 }
-.gutter.gutter-active[data-v-95f9c909] {\r
+.gutter.gutter-active[data-v-2ccb7b25] {\r
   background: #ccc;\r
   cursor: row-resize;
 }
-.gutter[data-v-95f9c909]:not(.gutter-active) {\r
+.gutter[data-v-2ccb7b25]:not(.gutter-active) {\r
   pointer-events: none;\r
   opacity: 0;
 }\r
 \r
 /* 垂直布局分隔条 */
-.gutter[data-direction="vertical"][data-v-95f9c909] {\r
+.gutter[data-direction="vertical"][data-v-2ccb7b25] {\r
   height: 10px;\r
   cursor: row-resize;
 }\r
 \r
 /* 水平布局分隔条 */
-.gutter[data-direction="horizontal"][data-v-95f9c909] {\r
+.gutter[data-direction="horizontal"][data-v-2ccb7b25] {\r
   width: 5px;\r
   cursor: col-resize;
 }
-[data-v-95f9c909] .gutter-vertical {\r
+[data-v-2ccb7b25] .gutter-vertical {\r
   /* opacity: 0; */\r
   background-color: #fff;
 &:hover {\r
@@ -171,10 +171,10 @@
     cursor: row-resize;
 }
 }
-.panel[data-v-95f9c909] {\r
+.panel[data-v-2ccb7b25] {\r
   overflow: hidden;
 }
-.panel.expand[data-v-95f9c909] {\r
+.panel.expand[data-v-2ccb7b25] {\r
   overflow-y: auto;
 }\r
 
@@ -196,17 +196,17 @@
   border-radius: 4px;
 }\r
 
-.parent-container[data-v-0653bce0] {\r
+.parent-container[data-v-5546e76a] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-0653bce0] {\r
+.layout-grid[data-v-5546e76a] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-0653bce0] {\r
+.layout-grid[data-v-5546e76a] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
@@ -263,7 +263,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-d7dcc930] {
+}.explorer-container[data-v-e6dc61ad] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -521,6 +521,9 @@ img[data-v-11358f43] {
 .tw-gap-8 {\r
     gap: 2rem
 }\r
+.tw-gap-2 {\r
+    gap: 0.5rem
+}\r
 .tw-overflow-auto {\r
     overflow: auto
 }\r
@@ -574,6 +577,9 @@ img[data-v-11358f43] {
 }\r
 .tw-ps-1 {\r
     padding-inline-start: 0.25rem
+}\r
+.tw-pt-8 {\r
+    padding-top: 2rem
 }\r
 .tw-text-left {\r
     text-align: left
@@ -693,11 +699,11 @@ img[data-v-11358f43] {
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, ab as withKeys, n as nextTick$1, a1 as normalizeStyle, j as renderSlot$1, q as toRaw, Z as onUnmounted, T as Teleport, a5 as onBeforeUnmount, a3 as provide, ac as createApp } from "./assets/vue-ChYyLYeB.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$d, r as script$e, u as useToast, t as script$f, v as script$g, w as useConfirm, x as script$h, y as script$i, z as script$j, A as script$k, B as script$l, C as customAlphabet, D as script$m, F as script$n, G as z, H as script$o, I as DialogService, J as ConfirmationService, K as mixpanel, L as createPinia, M as ToastService } from "./assets/vendor-CHrLm6nO.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$d, r as script$e, u as useToast, t as script$f, v as script$g, w as useConfirm, x as script$h, y as script$i, z as script$j, A as script$k, B as script$l, C as customAlphabet, D as script$m, F as script$n, G as script$o, H as z, I as script$p, J as DialogService, K as ConfirmationService, L as mixpanel, M as createPinia, N as ToastService } from "./assets/vendor-C2n3B-7w.js";
 import { l as lodashExports } from "./assets/lodash-CNwZySND.js";
-import { w as usePrimeVue, x as script$c, P as PrimeVue, y as index$3 } from "./assets/primevue-D0yiU7G-.js";
+import { w as usePrimeVue, x as script$c, P as PrimeVue, y as index$3 } from "./assets/primevue-DZch12XG.js";
 import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-dK-pIQ5W.js";
-import { b$ as h, c0 as definePreset } from "./assets/primeuix-Bjv1mJRW.js";
+import { c0 as h, c1 as definePreset } from "./assets/primeuix-CMDX3_63.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-Bq6ymYKz.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
@@ -899,8 +905,8 @@ const useDialogStore = defineStore("dialog", () => {
     closeDialog
   };
 });
-const _hoisted_1$m = ["id"];
-const _sfc_main$r = /* @__PURE__ */ defineComponent({
+const _hoisted_1$n = ["id"];
+const _sfc_main$s = /* @__PURE__ */ defineComponent({
   __name: "GlobalDialog",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -909,6 +915,9 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       return ((_b2 = (_a2 = primevue == null ? void 0 : primevue.config) == null ? void 0 : _a2.zIndex) == null ? void 0 : _b2.modal) ?? 2100;
     });
+    const setContentRef = (el, dialogItem) => {
+      dialogItem.contentRef = el;
+    };
     onMounted(() => {
       document.createElement("div");
     });
@@ -932,10 +941,13 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
             }, null, 8, ["id"])) : (openBlock(), createElementBlock("h3", {
               key: 1,
               id: item.key
-            }, toDisplayString(item.title || " "), 9, _hoisted_1$m))
+            }, toDisplayString(item.title || " "), 9, _hoisted_1$n))
           ]),
           default: withCtx(() => [
-            (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({ ref_for: true }, item.contentProps, {
+            (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({
+              ref_for: true,
+              ref: (el) => setContentRef(el, item)
+            }, item.contentProps, {
               maximized: item.dialogComponentProps.maximized
             }), null, 16, ["maximized"]))
           ]),
@@ -945,6 +957,14 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
     };
   }
 });
+const _export_sfc = (sfc, props2) => {
+  const target2 = sfc.__vccOpts || sfc;
+  for (const [key2, val] of props2) {
+    target2[key2] = val;
+  }
+  return target2;
+};
+const GlobalDialog = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-f715eb1e"]]);
 const blankGraph = {
   last_node_id: 0,
   last_link_id: 0,
@@ -68619,15 +68639,8 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
-const _export_sfc = (sfc, props2) => {
-  const target2 = sfc.__vccOpts || sfc;
-  for (const [key2, val] of props2) {
-    target2[key2] = val;
-  }
-  return target2;
-};
-const _hoisted_1$l = { class: "w-full p-2" };
-const _sfc_main$q = /* @__PURE__ */ defineComponent({
+const _hoisted_1$m = { class: "w-full p-2" };
+const _sfc_main$r = /* @__PURE__ */ defineComponent({
   __name: "outPutForm",
   setup(__props, { expose: __expose }) {
     const fileStore = useFileStore();
@@ -68768,7 +68781,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
       const _component_el_form_item = ElFormItem;
       const _component_el_button = ElButton;
       const _component_el_form = ElForm;
-      return openBlock(), createElementBlock("div", _hoisted_1$l, [
+      return openBlock(), createElementBlock("div", _hoisted_1$m, [
         createBaseVNode("div", null, [
           createVNode(_component_el_form, {
             "label-position": "top",
@@ -68832,7 +68845,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$k = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
+const _hoisted_1$l = { class: "workflow w-full h-full comfy-vue-side-bar-container flex flex-col h-full group/sidebar-tab" };
 const _hoisted_2$f = { class: "comfy-vue-side-bar-header" };
 const _hoisted_3$c = { class: "text-sm truncate" };
 const _hoisted_4$a = { class: "flex flex-row motion-safe:w-0 motion-safe:opacity-0 motion-safe:group-hover/sidebar-tab:w-auto motion-safe:group-hover/sidebar-tab:opacity-100 motion-safe:group-focus-within/sidebar-tab:w-auto motion-safe:group-focus-within/sidebar-tab:opacity-100 touch:w-auto touch:opacity-100 transition-all duration-200" };
@@ -68840,8 +68853,8 @@ const _hoisted_5$8 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$4 = ["onClick", "onContextmenu"];
-const _hoisted_7$3 = {
+const _hoisted_6$5 = ["onClick", "onContextmenu"];
+const _hoisted_7$4 = {
   key: 0,
   class: "w-full flex items-center"
 };
@@ -68866,7 +68879,7 @@ const _hoisted_15$1 = {
   class: "w-full flex items-center"
 };
 const _hoisted_16$1 = { class: "truncate w-full text-center name" };
-const _sfc_main$p = /* @__PURE__ */ defineComponent({
+const _sfc_main$q = /* @__PURE__ */ defineComponent({
   __name: "clips",
   setup(__props) {
     useMenuStore();
@@ -68913,7 +68926,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
       const _component_Toolbar = script$2;
       const _component_ContextMenu = script$3;
       const _directive_tooltip = Tooltip;
-      return openBlock(), createElementBlock("div", _hoisted_1$k, [
+      return openBlock(), createElementBlock("div", _hoisted_1$l, [
         createBaseVNode("div", _hoisted_2$f, [
           createVNode(_component_Toolbar, { class: "p-toolbar p-component flex-shrink-0 border-x-0 border-t-0 rounded-none px-2 py-1 min-h-8" }, {
             start: withCtx(() => [
@@ -68945,7 +68958,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$3, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$4, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
@@ -68990,7 +69003,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$4);
+              ], 40, _hoisted_6$5);
             }), 128))
           ])
         ]),
@@ -69011,10 +69024,10 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const clips = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-f4c79b70"]]);
-const _hoisted_1$j = { class: "editable-text" };
+const clips = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-f4c79b70"]]);
+const _hoisted_1$k = { class: "editable-text" };
 const _hoisted_2$e = { key: 0 };
-const _sfc_main$o = /* @__PURE__ */ defineComponent({
+const _sfc_main$p = /* @__PURE__ */ defineComponent({
   __name: "EditableText",
   props: {
     modelValue: {},
@@ -69056,7 +69069,7 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
     };
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
-      return openBlock(), createElementBlock("div", _hoisted_1$j, [
+      return openBlock(), createElementBlock("div", _hoisted_1$k, [
         !props2.isEditing ? (openBlock(), createElementBlock("span", _hoisted_2$e, toDisplayString(_ctx.modelValue), 1)) : withDirectives((openBlock(), createBlock(_component_InputText, {
           key: 1,
           type: "text",
@@ -69081,8 +69094,8 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-5cf00c0d"]]);
-const _sfc_main$n = {
+const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-5cf00c0d"]]);
+const _sfc_main$o = {
   props: {
     // 面板配置数组
     sourcePanels: {
@@ -69172,8 +69185,10 @@ const _sfc_main$n = {
         // gutter: (index) => this.gutterElements[index],
         dragInterval: 1,
         onDragStart: (e) => {
+          console.log("onDragStart", e);
         },
-        onDragEnd: () => {
+        onDragEnd: (e) => {
+          console.log("onDragEnd", e);
         },
         onDrag: (sizes) => {
         }
@@ -69187,7 +69202,8 @@ const _sfc_main$n = {
       if (this.panels[index2].expanded) {
         this.panels.forEach((panel, idx) => {
           if (panel.expanded && idx !== index2) {
-            panel.size = 150 / this.$refs.container.offsetHeight * 100 || 8;
+            console.log(panel, "panel.expanded_已经展开,");
+            panel.size = 33.33;
           }
           if (idx != index2) {
             total += panel.size;
@@ -69244,7 +69260,7 @@ const _sfc_main$n = {
     if (this.splitInstance) this.splitInstance.destroy();
   }
 };
-const _hoisted_1$i = {
+const _hoisted_1$j = {
   class: "panels-container tw-h-100",
   ref: "container"
 };
@@ -69252,7 +69268,7 @@ const _hoisted_2$d = { class: "tw-h-full tw-flex tw-flex-col" };
 const _hoisted_3$b = ["onClick"];
 const _hoisted_4$9 = { class: "tw-ps-1" };
 function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$i, [
+  return openBlock(), createElementBlock("div", _hoisted_1$j, [
     (openBlock(true), createElementBlock(Fragment, null, renderList$1($data.panels, (panel, index2) => {
       return openBlock(), createElementBlock("div", {
         key: index2,
@@ -69284,10 +69300,10 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$2], ["__scopeId", "data-v-95f9c909"]]);
-const _hoisted_1$h = { class: "label tw-py-2" };
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$2], ["__scopeId", "data-v-2ccb7b25"]]);
+const _hoisted_1$i = { class: "label tw-py-2" };
 const _hoisted_2$c = { class: "content" };
-const _sfc_main$m = /* @__PURE__ */ defineComponent({
+const _sfc_main$n = /* @__PURE__ */ defineComponent({
   __name: "propertyAsset",
   props: {
     data: {}
@@ -69301,7 +69317,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
             class: "px-2 tw-mb-2",
             key: key2
           }, [
-            createBaseVNode("div", _hoisted_1$h, toDisplayString(key2) + ":", 1),
+            createBaseVNode("div", _hoisted_1$i, toDisplayString(key2) + ":", 1),
             createBaseVNode("div", _hoisted_2$c, [
               createVNode(_component_InputText, {
                 value: _ctx.data[key2],
@@ -69419,7 +69435,7 @@ const previewUtils = {
     };
   }
 };
-const _sfc_main$l = /* @__PURE__ */ defineComponent({
+const _sfc_main$m = /* @__PURE__ */ defineComponent({
   __name: "propertyClip",
   props: {
     data: {}
@@ -69542,12 +69558,12 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$g = { class: "parent-container" };
+const _hoisted_1$h = { class: "parent-container" };
 const _hoisted_2$b = { class: "layout-grid" };
 const _hoisted_3$a = { class: "px-2 tw-mb-2" };
 const _hoisted_4$8 = { class: "label tw-py-2" };
 const _hoisted_5$7 = { class: "content" };
-const _sfc_main$k = /* @__PURE__ */ defineComponent({
+const _sfc_main$l = /* @__PURE__ */ defineComponent({
   __name: "propertyTimelineClip",
   props: {
     data: {}
@@ -69592,22 +69608,23 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         if (((_a3 = config2[key2][1]) == null ? void 0 : _a3.defaultDelte) && ((_b3 = config2[key2][1]) == null ? void 0 : _b3.default) == temp[key2]) {
           delete temp[key2];
         }
-        if (["FLOAT"].includes(config2[key2][0]) && typeof temp[key2] == "string") {
-          temp[key2] = +temp[key2];
-        }
       });
       console.log("processData____", temp, props2);
       let selectClip = workSpaceStore.playerInstance.selected;
       console.log("选中的clip", selectClip);
       if (workSpaceStore.activeNode.fileType == "track_clip") {
-        console.log("多选_批处理");
+        console.log("多选_批处理", temp);
         if (flag || !selectClip.length) return;
-        let newTemp = Object.fromEntries(Object.entries(temp).filter(([key2, value2]) => value2 != "" && value2 != 0));
+        let newTemp = Object.fromEntries(Object.entries(temp).filter(([key2, value2]) => value2 !== ""));
         console.log("newTemp", newTemp);
         editGropClip(newTemp);
+        let tempNodes = [];
+        let config22 = {};
         selectClip.forEach((item) => {
-          workSpaceStore.playerInstance.applyChange(toRaw(item), JSON.parse(JSON.stringify(newTemp)));
+          tempNodes.push(toRaw(item));
+          config22[item.id] = newTemp;
         });
+        workSpaceStore.playerInstance.applyChange(tempNodes, config22);
       } else if (workSpaceStore.activeNode.fileType == "timeline") {
         console.log("单选_批处理");
         if (flag || ((_b2 = (_a2 = selectClip[0]) == null ? void 0 : _a2.conf) == null ? void 0 : _b2.refId) != props2.data.id) return;
@@ -69637,7 +69654,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
       const _component_InputText = script$4;
       const _component_ToggleButton = script$6;
       const _component_Select = script$7;
-      return openBlock(), createElementBlock("div", _hoisted_1$g, [
+      return openBlock(), createElementBlock("div", _hoisted_1$h, [
         createBaseVNode("div", _hoisted_2$b, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(options, (value2, key2) => {
             return openBlock(), createElementBlock("div", _hoisted_3$a, [
@@ -69677,20 +69694,20 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-0653bce0"]]);
-const _hoisted_1$f = { class: "px-2 tw-mb-2" };
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-5546e76a"]]);
+const _hoisted_1$g = { class: "px-2 tw-mb-2" };
 const _hoisted_2$a = { class: "content" };
 const _hoisted_3$9 = { class: "px-2 tw-mb-2" };
 const _hoisted_4$7 = { class: "content" };
 const _hoisted_5$6 = { class: "px-2 tw-mb-2" };
-const _hoisted_6$3 = { class: "content" };
-const _hoisted_7$2 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$4 = { class: "content" };
+const _hoisted_7$3 = { class: "px-2 tw-mb-2" };
 const _hoisted_8$2 = { class: "content" };
 const _hoisted_9$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_10$2 = { class: "content" };
 const _hoisted_11$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_12$2 = { class: "content" };
-const _sfc_main$j = /* @__PURE__ */ defineComponent({
+const _sfc_main$k = /* @__PURE__ */ defineComponent({
   __name: "propertyVideo",
   props: {
     data: {}
@@ -69699,7 +69716,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
       return openBlock(), createElementBlock("div", null, [
-        createBaseVNode("div", _hoisted_1$f, [
+        createBaseVNode("div", _hoisted_1$g, [
           _cache[6] || (_cache[6] = createBaseVNode("div", { class: "label tw-py-2" }, "file_name:", -1)),
           createBaseVNode("div", _hoisted_2$a, [
             createVNode(_component_InputText, {
@@ -69723,7 +69740,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
         ]),
         createBaseVNode("div", _hoisted_5$6, [
           _cache[8] || (_cache[8] = createBaseVNode("div", { class: "label tw-py-2" }, "height:", -1)),
-          createBaseVNode("div", _hoisted_6$3, [
+          createBaseVNode("div", _hoisted_6$4, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.height,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
@@ -69732,7 +69749,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_7$2, [
+        createBaseVNode("div", _hoisted_7$3, [
           _cache[9] || (_cache[9] = createBaseVNode("div", { class: "label tw-py-2" }, "codec_name:", -1)),
           createBaseVNode("div", _hoisted_8$2, [
             createVNode(_component_InputText, {
@@ -69769,8 +69786,8 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$e = { class: "property-collection" };
-const _sfc_main$i = /* @__PURE__ */ defineComponent({
+const _hoisted_1$f = { class: "property-collection" };
+const _sfc_main$j = /* @__PURE__ */ defineComponent({
   __name: "propertyCollection",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -69779,28 +69796,28 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
       return activeNode.value.fileType;
     });
     const components = {
-      "assets": markRaw(_sfc_main$m),
-      "workflows": markRaw(_sfc_main$l),
+      "assets": markRaw(_sfc_main$n),
+      "workflows": markRaw(_sfc_main$m),
       "timeline": markRaw(propertyTimelineClip),
       "track_clip": markRaw(propertyTimelineClip),
-      "video": markRaw(_sfc_main$j),
-      "ref": markRaw(_sfc_main$m),
-      "ref_build": markRaw(_sfc_main$m)
+      "video": markRaw(_sfc_main$k),
+      "ref": markRaw(_sfc_main$n),
+      "ref_build": markRaw(_sfc_main$n)
     };
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$e, [
+      return openBlock(), createElementBlock("div", _hoisted_1$f, [
         (openBlock(), createBlock(resolveDynamicComponent(components[fileType.value]), { data: unref(activeNode) }, null, 8, ["data"]))
       ]);
     };
   }
 });
-const _hoisted_1$d = { class: "wrapper-ref" };
+const _hoisted_1$e = { class: "wrapper-ref" };
 const _hoisted_2$9 = { class: "card tw-w-full" };
 const _hoisted_3$8 = { class: "form-item tw-my-2" };
 const _hoisted_4$6 = { class: "form-item-content" };
 const _hoisted_5$5 = { class: "flex justify-center" };
-const _hoisted_6$2 = { class: "form-item tw-my-2" };
-const _hoisted_7$1 = { class: "form-item-content" };
+const _hoisted_6$3 = { class: "form-item tw-my-2" };
+const _hoisted_7$2 = { class: "form-item-content" };
 const _hoisted_8$1 = { class: "flex justify-center" };
 const _hoisted_9$1 = { class: "form-item tw-my-2" };
 const _hoisted_10$1 = { class: "form-item-content" };
@@ -69820,7 +69837,7 @@ const _hoisted_23 = { class: "form-item-content" };
 const _hoisted_24 = { class: "form-item tw-my-2" };
 const _hoisted_25 = { class: "form-item-content" };
 const _hoisted_26 = { class: "flex justify-center" };
-const _sfc_main$h = /* @__PURE__ */ defineComponent({
+const _sfc_main$i = /* @__PURE__ */ defineComponent({
   __name: "addRefDialog",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -69946,7 +69963,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
       const _component_TabPanel = script$b;
       const _component_TabPanels = script$a;
       const _component_Tabs = script$e;
-      return openBlock(), createElementBlock("div", _hoisted_1$d, [
+      return openBlock(), createElementBlock("div", _hoisted_1$e, [
         createBaseVNode("div", _hoisted_2$9, [
           createVNode(_component_Tabs, {
             value: protocolType.value,
@@ -70046,9 +70063,9 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_6$2, [
+                            createBaseVNode("div", _hoisted_6$3, [
                               _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
-                              createBaseVNode("div", _hoisted_7$1, [
+                              createBaseVNode("div", _hoisted_7$2, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -70349,12 +70366,12 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-e5a5e115"]]);
-const _hoisted_1$c = { class: "wrapper-ref" };
+const addRefDialog = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-e5a5e115"]]);
+const _hoisted_1$d = { class: "wrapper-ref" };
 const _hoisted_2$8 = { class: "card tw-w-full" };
 const _hoisted_3$7 = { class: "custom-header" };
 const _hoisted_4$5 = { key: 0 };
-const _sfc_main$g = /* @__PURE__ */ defineComponent({
+const _sfc_main$h = /* @__PURE__ */ defineComponent({
   __name: "uploadAssetDialog",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -70422,7 +70439,7 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
       const _component_Button = script$1;
       const _component_FileUpload = script$f;
       const _component_Toast = script$g;
-      return openBlock(), createElementBlock("div", _hoisted_1$c, [
+      return openBlock(), createElementBlock("div", _hoisted_1$d, [
         createBaseVNode("div", _hoisted_2$8, [
           createVNode(_component_FileUpload, {
             ref_key: "fileUpload",
@@ -70493,8 +70510,8 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const uploadAssetDialog = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-f93fdfa7"]]);
-const _sfc_main$f = /* @__PURE__ */ defineComponent({
+const uploadAssetDialog = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-f93fdfa7"]]);
+const _sfc_main$g = /* @__PURE__ */ defineComponent({
   __name: "workflowClips",
   props: {
     data: {}
@@ -71044,7 +71061,7 @@ const useWorkflowService = () => {
     closeWorkflow
   };
 };
-const _sfc_main$e = {};
+const _sfc_main$f = {};
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
@@ -71052,7 +71069,7 @@ function _sfc_render$1(_ctx, _cache) {
     ], -1)
   ]));
 }
-const templateDialogHeader = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$1]]);
+const templateDialogHeader = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$1]]);
 const useResponsiveCollapse = (breakpointThreshold = "lg") => {
   const breakpoints = useBreakpoints(breakpointsTailwind);
   const isSmallScreen = breakpoints.smallerOrEqual(breakpointThreshold);
@@ -71074,10 +71091,10 @@ const useResponsiveCollapse = (breakpointThreshold = "lg") => {
     toggle: () => isOpen.value = !isOpen.value
   };
 };
-const _hoisted_1$b = { class: "tw-text-left tw-py-3 tw-px-12" };
+const _hoisted_1$c = { class: "tw-text-left tw-py-3 tw-px-12" };
 const _hoisted_2$7 = { class: "tw-text-lg" };
 const _hoisted_3$6 = ["data-id"];
-const _sfc_main$d = /* @__PURE__ */ defineComponent({
+const _sfc_main$e = /* @__PURE__ */ defineComponent({
   __name: "TemplateSideNav",
   props: {
     tabs: {},
@@ -71183,7 +71200,7 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
               listStyle: "tw-max-height:unset"
             }, {
               optiongroup: withCtx((slotProps) => [
-                createBaseVNode("div", _hoisted_1$b, [
+                createBaseVNode("div", _hoisted_1$c, [
                   createBaseVNode("h2", _hoisted_2$7, toDisplayString(slotProps.option.label), 1)
                 ])
               ]),
@@ -71216,8 +71233,8 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$a = { class: "relative w-64 h-64 rounded-t-lg overflow-hidden select-none" };
-const _sfc_main$c = /* @__PURE__ */ defineComponent({
+const _hoisted_1$b = { class: "relative w-64 h-64 rounded-t-lg overflow-hidden select-none" };
+const _sfc_main$d = /* @__PURE__ */ defineComponent({
   __name: "BaseThumbnail",
   props: {
     hoverZoom: { default: 4 },
@@ -71236,7 +71253,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
       });
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$a, [
+      return openBlock(), createElementBlock("div", _hoisted_1$b, [
         createBaseVNode("div", {
           ref_key: "contentRef",
           ref: contentRef,
@@ -71251,10 +71268,10 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const BaseThumbnail = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-11358f43"]]);
-const _hoisted_1$9 = { class: "overflow-hidden" };
+const BaseThumbnail = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-11358f43"]]);
+const _hoisted_1$a = { class: "overflow-hidden" };
 const _hoisted_2$6 = ["src", "alt"];
-const _sfc_main$b = /* @__PURE__ */ defineComponent({
+const _sfc_main$c = /* @__PURE__ */ defineComponent({
   __name: "DefaultThumbnail",
   props: {
     src: {},
@@ -71279,7 +71296,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
         "is-hovered": _ctx.isHovered
       }, {
         default: withCtx(() => [
-          createBaseVNode("div", _hoisted_1$9, [
+          createBaseVNode("div", _hoisted_1$a, [
             createBaseVNode("img", {
               src: tempSrc.value,
               alt: _ctx.alt,
@@ -71297,15 +71314,15 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$8 = { class: "flex items-center justify-center" };
+const _hoisted_1$9 = { class: "flex items-center justify-center" };
 const _hoisted_2$5 = { class: "relative overflow-hidden rounded-t-lg" };
 const _hoisted_3$5 = { class: "flex items-center px-4 py-3" };
 const _hoisted_4$4 = { class: "flex-1" };
 const _hoisted_5$4 = { class: "line-clamp-1 text-lg font-normal text-surface-900 dark:text-surface-100" };
-const _hoisted_6$1 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
+const _hoisted_6$2 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
 const UPSCALE_ZOOM_SCALE = 16;
 const DEFAULT_ZOOM_SCALE = 5;
-const _sfc_main$a = /* @__PURE__ */ defineComponent({
+const _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "TemplateWorkflowCard",
   props: {
     sourceModule: {}
@@ -71325,9 +71342,9 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("loadWorkflow", _ctx.sourceModule))
       }, {
         header: withCtx(() => [
-          createBaseVNode("div", _hoisted_1$8, [
+          createBaseVNode("div", _hoisted_1$9, [
             createBaseVNode("div", _hoisted_2$5, [
-              createVNode(_sfc_main$b, {
+              createVNode(_sfc_main$c, {
                 src: _ctx.sourceModule.src,
                 alt: _ctx.sourceModule.title,
                 "is-hovered": unref(isHovered),
@@ -71340,7 +71357,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
           createBaseVNode("div", _hoisted_3$5, [
             createBaseVNode("div", _hoisted_4$4, [
               createBaseVNode("h3", _hoisted_5$4, toDisplayString(_ctx.sourceModule.title), 1),
-              createBaseVNode("p", _hoisted_6$1, toDisplayString(_ctx.sourceModule.description), 1)
+              createBaseVNode("p", _hoisted_6$2, toDisplayString(_ctx.sourceModule.description), 1)
             ]),
             _cache[1] || (_cache[1] = createBaseVNode("div", { class: "tw-flex xl:flex tw-items-center tw-justify-center ml-4 tw-w-10 tw-h-10 tw-rounded-full tw-bg-surface-100" }, [
               createBaseVNode("i", { class: "pi pi-angle-right tw-text-2xl" })
@@ -71352,12 +71369,12 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$7 = { class: "folder-project" };
+const _hoisted_1$8 = { class: "folder-project" };
 const _hoisted_2$4 = { class: "form-wrapper w-full tw-px-4" };
 const _hoisted_3$4 = { class: "form-item" };
 const _hoisted_4$3 = { class: "form-item-content" };
 const _hoisted_5$3 = { class: "flex justify-center" };
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
   __name: "chooseFolderProject",
   setup(__props) {
     const dialogStore = useDialogStore();
@@ -71410,7 +71427,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       const _component_Message = script$d;
       const _component_Button = script$1;
       const _component_Form = script$c;
-      return openBlock(), createElementBlock("div", _hoisted_1$7, [
+      return openBlock(), createElementBlock("div", _hoisted_1$8, [
         createBaseVNode("div", _hoisted_2$4, [
           createVNode(_component_Form, {
             initialValues,
@@ -71464,8 +71481,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-68de2634"]]);
-const _hoisted_1$6 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-relative tw-pb-6" };
+const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-68de2634"]]);
+const _hoisted_1$7 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-relative tw-pb-6" };
 const _hoisted_2$3 = { class: "tw-flex tw-flex-1 tw-relative tw-overflow-hidden" };
 const _hoisted_3$3 = {
   key: 0,
@@ -71476,7 +71493,7 @@ const _hoisted_4$2 = {
   class: "flex flex-col px-12 pb-4"
 };
 const _hoisted_5$2 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "templateDialogContent",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -71549,7 +71566,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       const _component_Button = script$1;
       const _component_Divider = script$l;
-      return openBlock(), createElementBlock("div", _hoisted_1$6, [
+      return openBlock(), createElementBlock("div", _hoisted_1$7, [
         unref(isSmallScreen) ? (openBlock(), createBlock(_component_Button, {
           key: 0,
           icon: unref(isSideNavOpen) ? "pi pi-chevron-left" : "pi pi-chevron-right",
@@ -71560,7 +71577,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
         createVNode(_component_Divider, { class: "m-0 [&::before]:tw-border-surface-border/70 [&::before]:tw-border-t-2" }),
         createBaseVNode("div", _hoisted_2$3, [
           unref(isSideNavOpen) ? (openBlock(), createElementBlock("aside", _hoisted_3$3, [
-            createVNode(_sfc_main$d, {
+            createVNode(_sfc_main$e, {
               tabs: tabs.value,
               "selected-tab": selectedTab.value,
               "onUpdate:selectedTab": handleTabSelection
@@ -71587,7 +71604,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
               createBaseVNode("div", _hoisted_5$2, [
                 (openBlock(true), createElementBlock(Fragment, null, renderList$1(workFlows.value, (item) => {
                   return openBlock(), createElementBlock("div", { key: item }, [
-                    createVNode(_sfc_main$a, {
+                    createVNode(_sfc_main$b, {
                       "source-module": item,
                       onLoadWorkflow: _cache[0] || (_cache[0] = (name) => openWorkflow(name))
                     }, null, 8, ["source-module"])
@@ -71601,7 +71618,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_main$7 = {};
+const _sfc_main$8 = {};
 function _sfc_render(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
@@ -71609,11 +71626,11 @@ function _sfc_render(_ctx, _cache) {
     ], -1)
   ]));
 }
-const templateWorkflowHeader = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render]]);
-const _hoisted_1$5 = { class: "tw-text-left tw-py-3 tw-px-12" };
+const templateWorkflowHeader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render]]);
+const _hoisted_1$6 = { class: "tw-text-left tw-py-3 tw-px-12" };
 const _hoisted_2$2 = { class: "tw-text-lg" };
 const _hoisted_3$2 = ["data-id"];
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   __name: "WorkflowSideNav",
   props: {
     tabs: {},
@@ -71652,7 +71669,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
             listStyle: "tw-max-height:unset"
           }, {
             optiongroup: withCtx((slotProps) => [
-              createBaseVNode("div", _hoisted_1$5, [
+              createBaseVNode("div", _hoisted_1$6, [
                 createBaseVNode("h2", _hoisted_2$2, toDisplayString(slotProps.option.label), 1)
               ])
             ]),
@@ -71670,7 +71687,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$4 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-relative tw-pb-6" };
+const _hoisted_1$5 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-relative tw-pb-6" };
 const _hoisted_2$1 = { class: "tw-flex tw-flex-1 tw-relative tw-overflow-hidden" };
 const _hoisted_3$1 = {
   key: 0,
@@ -71680,8 +71697,10 @@ const _hoisted_4$1 = {
   key: 0,
   class: "flex flex-col px-12 pb-4"
 };
-const _hoisted_5$1 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const _hoisted_5$1 = { class: "py-3 text-left" };
+const _hoisted_6$1 = { class: "text-lg" };
+const _hoisted_7$1 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "templateWorkflowContent",
   setup(__props) {
     const workSpaceStore = useWorkSpaceStore();
@@ -71696,20 +71715,32 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         {
           label: "Locals",
           code: "locals",
-          items: [
-            {
-              name: "default",
-              projectId: "local"
-            }
-          ]
+          items: tabLists.value.map((item) => {
+            return {
+              name: item,
+              projectId: item
+            };
+          })
         }
       ];
     });
+    const tabLists = ref$3([]);
+    const getTbaLists = async () => {
+      let response = await app$1.api.fetchApi(`/Montagen/Template/Category`, {
+        method: "GET"
+      });
+      const json = await response.json();
+      console.log(json, "json_data_侧边栏tabs 数据");
+      selectedTab.value = json.data[0];
+      tabLists.value = json.data;
+      getWorkflowList();
+    };
     const selectedTab = ref$3(null);
     const handleTabSelection = (tab) => {
       console.log(tab, "tab");
       if (!tab) return;
       selectedTab.value = tab;
+      getWorkflowList();
     };
     const dialogStore = useDialogStore();
     const cusWorkflowID = customAlphabet("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 13);
@@ -71724,7 +71755,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     const workFlows = ref$3([]);
     const severOrigin = window.location.origin;
     const getWorkflowList = async () => {
-      let response = await app$1.api.fetchApi(`/Montagen/Template/List`, {
+      let response = await app$1.api.fetchApi(`/Montagen/Template/List?category=${selectedTab.value}`, {
         method: "GET"
       });
       const json = await response.json();
@@ -71738,13 +71769,12 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       });
     };
     onMounted(() => {
-      getWorkflowList();
-      selectedTab.value = workSpaceStore.activeProject.baseInfo.projectId;
+      getTbaLists();
     });
     return (_ctx, _cache) => {
       const _component_Button = script$1;
       const _component_Divider = script$l;
-      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+      return openBlock(), createElementBlock("div", _hoisted_1$5, [
         unref(isSmallScreen) ? (openBlock(), createBlock(_component_Button, {
           key: 0,
           icon: unref(isSideNavOpen) ? "pi pi-chevron-left" : "pi pi-chevron-right",
@@ -71755,7 +71785,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         createVNode(_component_Divider, { class: "m-0 [&::before]:tw-border-surface-border/70 [&::before]:tw-border-t-2" }),
         createBaseVNode("div", _hoisted_2$1, [
           unref(isSideNavOpen) ? (openBlock(), createElementBlock("aside", _hoisted_3$1, [
-            createVNode(_sfc_main$6, {
+            createVNode(_sfc_main$7, {
               tabs: tabs.value,
               "selected-tab": selectedTab.value,
               "onUpdate:selectedTab": handleTabSelection
@@ -71768,13 +71798,13 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
             }])
           }, [
             selectedTab.value ? (openBlock(), createElementBlock("div", _hoisted_4$1, [
-              _cache[1] || (_cache[1] = createBaseVNode("div", { class: "py-3 text-left" }, [
-                createBaseVNode("h2", { class: "text-lg" }, "测试数据")
-              ], -1)),
               createBaseVNode("div", _hoisted_5$1, [
+                createBaseVNode("h2", _hoisted_6$1, toDisplayString(selectedTab.value), 1)
+              ]),
+              createBaseVNode("div", _hoisted_7$1, [
                 (openBlock(true), createElementBlock(Fragment, null, renderList$1(workFlows.value, (item) => {
                   return openBlock(), createElementBlock("div", { key: item }, [
-                    createVNode(_sfc_main$a, {
+                    createVNode(_sfc_main$b, {
                       "source-module": item,
                       onLoadWorkflow: _cache[0] || (_cache[0] = (name) => openWorkflow(name))
                     }, null, 8, ["source-module"])
@@ -71784,6 +71814,67 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
             ])) : createCommentVNode("", true)
           ], 2)
         ])
+      ]);
+    };
+  }
+});
+const _hoisted_1$4 = { class: "tw-flex tw-flex-col tw-gap-2 tw-pt-8" };
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "addWorkflowDescript",
+  setup(__props, { expose: __expose }) {
+    const inputValue = ref$3("");
+    const initData2 = ref$3();
+    const setInitData = (data) => {
+      initData2.value = data;
+    };
+    const onConfirm = async () => {
+      console.log("inputValue", inputValue.value);
+      console.log("useDialogStore().closeDialog()_主动调用");
+      if (!inputValue.value) {
+        app$1.toast.error("请输入描述");
+        return;
+      }
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${initData2.value.projectId}/Workflow/${initData2.value.workflowId}/Rename`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ description: inputValue.value })
+      });
+      await response.json();
+      useWorkSpaceStore().getProjectDetail(initData2.value.projectId);
+      useDialogStore().closeDialog();
+    };
+    __expose({
+      inputValue,
+      onConfirm,
+      setInitData
+    });
+    return (_ctx, _cache) => {
+      const _component_InputText = script$4;
+      const _component_FloatLabel = script$m;
+      const _component_Button = script$1;
+      return openBlock(), createElementBlock("div", _hoisted_1$4, [
+        createVNode(_component_FloatLabel, null, {
+          default: withCtx(() => [
+            createVNode(_component_InputText, {
+              ref: "inputRef",
+              modelValue: inputValue.value,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => inputValue.value = $event),
+              onKeyup: withKeys(onConfirm, ["enter"]),
+              autofocus: "",
+              invalid: !inputValue.value
+            }, null, 8, ["modelValue", "invalid"]),
+            _cache[1] || (_cache[1] = createBaseVNode("label", null, "add description:", -1))
+          ]),
+          _: 1
+        }),
+        createVNode(_component_Button, { onClick: onConfirm }, {
+          default: withCtx(() => _cache[2] || (_cache[2] = [
+            createTextVNode$1("confirm")
+          ])),
+          _: 1
+        })
       ]);
     };
   }
@@ -72238,6 +72329,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               separator: true
             },
             {
+              label: "Add Description",
+              icon: "pi pi-file-word",
+              command: (e) => AddDescriptToWorkflow(menuTargetNode.value)
+            },
+            {
+              separator: true
+            },
+            {
               label: "Delete Workflow",
               icon: "pi pi-trash",
               command: (e) => {
@@ -72506,7 +72605,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         key: "global-templateDialog-mongaton",
         title: "Template project",
         headerComponent: templateDialogHeader,
-        component: _sfc_main$8,
+        component: _sfc_main$9,
         dialogComponentProps: {
           pt: {
             content: { class: "!tw-px-0 tw-overflow-y-hidden" }
@@ -72520,7 +72619,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         key: "global-templateDialog-mongaton",
         title: "Template project",
         headerComponent: templateWorkflowHeader,
-        component: _sfc_main$5,
+        component: _sfc_main$6,
         dialogComponentProps: {
           pt: {
             content: { class: "!tw-px-0 tw-overflow-y-hidden" }
@@ -72557,6 +72656,19 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       console.log("onNodeUnselect_node节点选中取消", e, event);
       nextTick$1(() => {
         onNodeContentClick(event, e);
+      });
+    };
+    const AddDescriptToWorkflow = (e) => {
+      console.log("addDescription_添加描述", e);
+      const decriptDialog = dialogStore.showDialog({
+        key: "global-addWorkflowdescription-mongaton",
+        title: "Add Description",
+        component: _sfc_main$5
+      });
+      console.log(decriptDialog, "decriptDialog_的实例", decriptDialog.contentRef);
+      nextTick$1(() => {
+        var _a2;
+        (_a2 = decriptDialog.contentRef) == null ? void 0 : _a2.setInitData({ projectId: e.projectId, workflowId: e.workflowId });
       });
     };
     const downloadFile = (url2) => {
@@ -72677,12 +72789,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               ]),
               "panel-1": withCtx(() => [
                 createBaseVNode("div", _hoisted_6, [
-                  createVNode(_sfc_main$f, { data: [] })
+                  createVNode(_sfc_main$g, { data: [] })
                 ])
               ]),
               "panel-2": withCtx(() => [
                 createBaseVNode("div", _hoisted_7, [
-                  createVNode(_sfc_main$i)
+                  createVNode(_sfc_main$j)
                 ])
               ]),
               _: 1
@@ -72765,7 +72877,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-d7dcc930"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-e6dc61ad"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -72795,7 +72907,7 @@ const useLeftToolStore = defineStore("leftToolStore", {
         tips: "EXPORT",
         selected: false,
         icon: "pi pi-file-export",
-        component: markRaw(_sfc_main$q)
+        component: markRaw(_sfc_main$r)
       }
       // {
       //   name: 'home',
@@ -72889,7 +73001,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$m), {
+        createVNode(unref(script$n), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -72899,7 +73011,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$n), {
+            createVNode(unref(script$o), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -72913,11 +73025,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$n), {
+            createVNode(unref(script$o), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$m), {
+                createVNode(unref(script$n), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -72930,7 +73042,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$n), {
+                    createVNode(unref(script$o), {
                       class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70,
@@ -72953,7 +73065,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$n), {
+                    createVNode(unref(script$o), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -73021,7 +73133,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
     });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$o;
+      const _component_Textarea = script$p;
       const _component_Message = script$d;
       const _component_Button = script$1;
       const _component_Dialog = script;
@@ -73380,7 +73492,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         }, null, 512), [
           [_directive_tooltip, "open MontagenEditor"]
         ]),
-        createVNode(_sfc_main$r)
+        createVNode(GlobalDialog)
       ], 64);
     };
   }

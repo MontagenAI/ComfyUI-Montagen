@@ -1338,7 +1338,7 @@ var config_default = {
     }
   }
 };
-var style$q = ({ dt: n2 }) => `
+var style$r = ({ dt: n2 }) => `
 *,
 ::before,
 ::after {
@@ -1460,7 +1460,7 @@ var style$q = ({ dt: n2 }) => `
     }
 }
 `;
-var style$p = ({ dt: t2 }) => `
+var style$q = ({ dt: t2 }) => `
 .p-tooltip {
     position: absolute;
     display: none;
@@ -1521,7 +1521,7 @@ var style$p = ({ dt: t2 }) => `
     border-bottom-color: ${t2("tooltip.background")};
 }
 `;
-var style$o = ({ dt: n2 }) => `
+var style$p = ({ dt: n2 }) => `
 .p-badge {
     display: inline-flex;
     border-radius: ${n2("badge.border.radius")};
@@ -1597,7 +1597,7 @@ var style$o = ({ dt: n2 }) => `
     height: ${n2("badge.xl.height")};
 }
 `;
-var style$n = ({ dt: n2 }) => `
+var style$o = ({ dt: n2 }) => `
 .p-ink {
     display: block;
     position: absolute;
@@ -1618,7 +1618,7 @@ var style$n = ({ dt: n2 }) => `
     }
 }
 `;
-var style$m = ({ dt: o2 }) => `
+var style$n = ({ dt: o2 }) => `
 .p-button {
     display: inline-flex;
     cursor: pointer;
@@ -2259,7 +2259,7 @@ var style$m = ({ dt: o2 }) => `
     color: ${o2("button.link.active.color")};
 }
 `;
-var style$l = ({ dt: o2 }) => `
+var style$m = ({ dt: o2 }) => `
 .p-dialog {
     max-height: 90%;
     transform: scale(1);
@@ -2407,7 +2407,7 @@ var style$l = ({ dt: o2 }) => `
     flex-grow: 1;
 }
 `;
-var style$k = ({ dt: n2 }) => `
+var style$l = ({ dt: n2 }) => `
 .p-splitter {
     display: flex;
     flex-wrap: nowrap;
@@ -2486,7 +2486,7 @@ var style$k = ({ dt: n2 }) => `
     border: 0 none;
 }
 `;
-var style$j = ({ dt: n2 }) => `
+var style$k = ({ dt: n2 }) => `
 .p-contextmenu {
     background: ${n2("contextmenu.background")};
     color: ${n2("contextmenu.color")};
@@ -2633,7 +2633,7 @@ var style$j = ({ dt: n2 }) => `
     transform: rotate(-90deg);
 }
 `;
-var style$i = ({ dt: o2 }) => `
+var style$j = ({ dt: o2 }) => `
 .p-toolbar {
     display: flex;
     align-items: center;
@@ -2654,7 +2654,7 @@ var style$i = ({ dt: o2 }) => `
     align-items: center;
 }
 `;
-var style$h = ({ dt: n2 }) => `
+var style$i = ({ dt: n2 }) => `
 .p-confirmdialog .p-dialog-content {
     display: flex;
     align-items: center;
@@ -2668,7 +2668,7 @@ var style$h = ({ dt: n2 }) => `
     height: ${n2("confirmdialog.icon.size")};
 }
 `;
-var style$g = ({ dt: n2 }) => `
+var style$h = ({ dt: n2 }) => `
 .p-iconfield {
     position: relative;
 }
@@ -2713,7 +2713,7 @@ var style$g = ({ dt: n2 }) => `
     margin-top: calc(-1 * (${n2("form.field.lg.font.size")} / 2));
 }
 `;
-var style$f = ({ dt: n2 }) => `
+var style$g = ({ dt: n2 }) => `
 .p-inputtext {
     font-family: inherit;
     font-feature-settings: inherit;
@@ -2787,7 +2787,7 @@ var style$f = ({ dt: n2 }) => `
     width: 100%;
 }
 `;
-var style$e = ({ dt: e2 }) => `
+var style$f = ({ dt: e2 }) => `
 .p-tree {
     background: ${e2("tree.background")};
     color: ${e2("tree.color")};
@@ -2944,7 +2944,7 @@ var style$e = ({ dt: e2 }) => `
     flex: 1;
 }
 `;
-var style$d = ({ dt: c2 }) => `
+var style$e = ({ dt: c2 }) => `
 .p-checkbox {
     position: relative;
     display: inline-flex;
@@ -3079,7 +3079,7 @@ var style$d = ({ dt: c2 }) => `
     height: ${c2("checkbox.icon.lg.size")};
 }
 `;
-var style$c = ({ dt: e2 }) => `
+var style$d = ({ dt: e2 }) => `
 .p-message {
     border-radius: ${e2("message.border.radius")};
     outline-width: ${e2("message.border.width")};
@@ -3402,7 +3402,7 @@ var h$4 = (y, i2, m2) => async ({ values: e2, name: s2 }) => {
     throw r2;
   }
 };
-var style$b = ({ dt: r2 }) => `
+var style$c = ({ dt: r2 }) => `
 .p-virtualscroller-loader {
     background: ${r2("virtualscroller.loader.mask.background")};
     color: ${r2("virtualscroller.loader.mask.color")};
@@ -3414,7 +3414,7 @@ var style$b = ({ dt: r2 }) => `
     height: ${r2("virtualscroller.loader.icon.size")};
 }
 `;
-var style$a = ({ dt: e2 }) => `
+var style$b = ({ dt: e2 }) => `
 .p-select {
     display: inline-flex;
     cursor: pointer;
@@ -3644,7 +3644,7 @@ input.p-select-label {
     height: ${e2("select.lg.font.size")};
 }
 `;
-var style$9 = ({ dt: o2 }) => `
+var style$a = ({ dt: o2 }) => `
 .p-togglebutton {
     display: inline-flex;
     cursor: pointer;
@@ -3752,7 +3752,7 @@ var style$9 = ({ dt: o2 }) => `
     padding: ${o2("togglebutton.content.lg.padding")};
 }
 `;
-var style$8 = ({ dt: n2 }) => `
+var style$9 = ({ dt: n2 }) => `
 .p-tabs {
     display: flex;
     flex-direction: column;
@@ -3896,7 +3896,7 @@ var style$8 = ({ dt: n2 }) => `
     transition: 250ms cubic-bezier(0.35, 0, 0.25, 1);
 }
 `;
-var style$7 = ({ dt: o2 }) => `
+var style$8 = ({ dt: o2 }) => `
 .p-toast {
     width: ${o2("toast.width")};
     white-space: pre-line;
@@ -4146,7 +4146,7 @@ var style$7 = ({ dt: o2 }) => `
     transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s, margin-bottom 0.3s;
 }
 `;
-var style$6 = ({ dt: n2 }) => `
+var style$7 = ({ dt: n2 }) => `
 .p-progressbar {
     position: relative;
     overflow: hidden;
@@ -4263,7 +4263,7 @@ var style$6 = ({ dt: n2 }) => `
     }
 }
 `;
-var style$5 = ({ dt: n2 }) => `
+var style$6 = ({ dt: n2 }) => `
 .p-fileupload input[type="file"] {
     display: none;
 }
@@ -4347,7 +4347,7 @@ var style$5 = ({ dt: n2 }) => `
     gap: ${n2("fileupload.basic.gap")};
 }
 `;
-var style$4 = ({ dt: n2 }) => `
+var style$5 = ({ dt: n2 }) => `
 .p-divider-horizontal {
     display: flex;
     width: 100%;
@@ -4429,7 +4429,7 @@ var style$4 = ({ dt: n2 }) => `
     flex-direction: row-reverse;
 }
 `;
-var style$3 = ({ dt: n2 }) => `
+var style$4 = ({ dt: n2 }) => `
 .p-scrollpanel-content-container {
     overflow: hidden;
     width: 100%;
@@ -4495,7 +4495,7 @@ var style$3 = ({ dt: n2 }) => `
     user-select: none;
 }
 `;
-var style$2 = ({ dt: o2 }) => `
+var style$3 = ({ dt: o2 }) => `
 .p-listbox {
     background: ${o2("listbox.background")};
     color: ${o2("listbox.color")};
@@ -4605,7 +4605,7 @@ var style$2 = ({ dt: o2 }) => `
     padding: ${o2("listbox.empty.message.padding")};
 }
 `;
-var style$1 = ({ dt: n2 }) => `
+var style$2 = ({ dt: n2 }) => `
 .p-card {
     background: ${n2("card.background")};
     color: ${n2("card.color")};
@@ -4635,6 +4635,100 @@ var style$1 = ({ dt: n2 }) => `
 
 .p-card-subtitle {
     color: ${n2("card.subtitle.color")};
+}
+`;
+var style$1 = ({ dt: l2 }) => `
+.p-floatlabel {
+    display: block;
+    position: relative;
+}
+
+.p-floatlabel label {
+    position: absolute;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    transition-property: all;
+    transition-timing-function: ease;
+    line-height: 1;
+    font-weight: ${l2("floatlabel.font.weight")};
+    inset-inline-start: ${l2("floatlabel.position.x")};
+    color: ${l2("floatlabel.color")};
+    transition-duration: ${l2("floatlabel.transition.duration")};
+}
+
+.p-floatlabel:has(.p-textarea) label {
+    top: ${l2("floatlabel.position.y")};
+    transform: translateY(0);
+}
+
+.p-floatlabel:has(.p-inputicon:first-child) label {
+    inset-inline-start: calc((${l2("form.field.padding.x")} * 2) + ${l2("icon.size")});
+}
+
+.p-floatlabel:has(.p-invalid) label {
+    color: ${l2("floatlabel.invalid.color")};
+}
+
+.p-floatlabel:has(input:focus) label,
+.p-floatlabel:has(input.p-filled) label,
+.p-floatlabel:has(input:-webkit-autofill) label,
+.p-floatlabel:has(textarea:focus) label,
+.p-floatlabel:has(textarea.p-filled) label,
+.p-floatlabel:has(.p-inputwrapper-focus) label,
+.p-floatlabel:has(.p-inputwrapper-filled) label {
+    top: ${l2("floatlabel.over.active.top")};
+    transform: translateY(0);
+    font-size: ${l2("floatlabel.active.font.size")};
+    font-weight: ${l2("floatlabel.active.font.weight")};
+}
+
+.p-floatlabel:has(input.p-filled) label,
+.p-floatlabel:has(textarea.p-filled) label,
+.p-floatlabel:has(.p-inputwrapper-filled) label {
+    color: ${l2("floatlabel.active.color")};
+}
+
+.p-floatlabel:has(input:focus) label,
+.p-floatlabel:has(input:-webkit-autofill) label,
+.p-floatlabel:has(textarea:focus) label,
+.p-floatlabel:has(.p-inputwrapper-focus) label {
+    color: ${l2("floatlabel.focus.color")};
+}
+
+.p-floatlabel-in .p-inputtext,
+.p-floatlabel-in .p-textarea,
+.p-floatlabel-in .p-select-label,
+.p-floatlabel-in .p-multiselect-label,
+.p-floatlabel-in .p-autocomplete-input-multiple,
+.p-floatlabel-in .p-cascadeselect-label,
+.p-floatlabel-in .p-treeselect-label {
+    padding-block-start: ${l2("floatlabel.in.input.padding.top")};
+    padding-block-end: ${l2("floatlabel.in.input.padding.bottom")};
+}
+
+.p-floatlabel-in:has(input:focus) label,
+.p-floatlabel-in:has(input.p-filled) label,
+.p-floatlabel-in:has(input:-webkit-autofill) label,
+.p-floatlabel-in:has(textarea:focus) label,
+.p-floatlabel-in:has(textarea.p-filled) label,
+.p-floatlabel-in:has(.p-inputwrapper-focus) label,
+.p-floatlabel-in:has(.p-inputwrapper-filled) label {
+    top: ${l2("floatlabel.in.active.top")};
+}
+
+.p-floatlabel-on:has(input:focus) label,
+.p-floatlabel-on:has(input.p-filled) label,
+.p-floatlabel-on:has(input:-webkit-autofill) label,
+.p-floatlabel-on:has(textarea:focus) label,
+.p-floatlabel-on:has(textarea.p-filled) label,
+.p-floatlabel-on:has(.p-inputwrapper-focus) label,
+.p-floatlabel-on:has(.p-inputwrapper-filled) label {
+    top: 0;
+    transform: translateY(-50%);
+    border-radius: ${l2("floatlabel.on.border.radius")};
+    background: ${l2("floatlabel.on.active.background")};
+    padding: ${l2("floatlabel.on.active.padding")};
 }
 `;
 var style = ({ dt: e2 }) => `
@@ -4900,8 +4994,8 @@ export {
   r$R as ay,
   l$9 as az,
   isClient as b,
-  h$4 as b$,
-  style$p as b0,
+  style as b$,
+  style$q as b0,
   hasClass as b1,
   getOuterWidth as b2,
   getOuterHeight as b3,
@@ -4912,42 +5006,42 @@ export {
   getWindowScrollTop as b8,
   ZIndex as b9,
   nestedPosition as bA,
-  style$i as bB,
-  style$h as bC,
-  style$g as bD,
-  style$f as bE,
-  style$e as bF,
-  style$d as bG,
+  style$j as bB,
+  style$i as bC,
+  style$h as bD,
+  style$g as bE,
+  style$f as bF,
+  style$e as bG,
   contains as bH,
   find as bI,
-  style$c as bJ,
-  style$b as bK,
+  style$d as bJ,
+  style$c as bK,
   isVisible as bL,
-  style$a as bM,
+  style$b as bM,
   getFocusableElements as bN,
   relativePosition as bO,
   absolutePosition as bP,
   isAndroid as bQ,
-  style$9 as bR,
-  style$8 as bS,
-  style$7 as bT,
-  style$6 as bU,
-  style$5 as bV,
-  style$4 as bW,
-  style$3 as bX,
-  style$2 as bY,
-  style$1 as bZ,
-  style as b_,
+  style$a as bR,
+  style$9 as bS,
+  style$8 as bT,
+  style$7 as bU,
+  style$6 as bV,
+  style$5 as bW,
+  style$4 as bX,
+  style$3 as bY,
+  style$2 as bZ,
+  style$1 as b_,
   createElement as ba,
   fadeIn as bb,
   isTouchDevice as bc,
   getAttribute as bd,
-  style$o as be,
-  style$n as bf,
+  style$p as be,
+  style$o as bf,
   getHeight as bg,
   getWidth as bh,
   getOffset as bi,
-  style$m as bj,
+  style$n as bj,
   getLastFocusableElement as bk,
   focus as bl,
   getFirstFocusableElement as bm,
@@ -4955,17 +5049,18 @@ export {
   unblockBodyScroll as bo,
   $dt as bp,
   blockBodyScroll as bq,
-  style$l as br,
+  style$m as br,
   addStyle as bs,
-  style$k as bt,
+  style$l as bt,
   isRTL as bu,
-  style$j as bv,
+  style$k as bv,
   findLastIndex as bw,
   getHiddenElementOuterWidth as bx,
   getHiddenElementOuterHeight as by,
   isPrintableCharacter as bz,
-  style$q as c,
-  definePreset as c0,
+  style$r as c,
+  h$4 as c0,
+  definePreset as c1,
   config_default as d,
   isNotEmpty$1 as e,
   dt as f,
