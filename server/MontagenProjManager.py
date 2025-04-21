@@ -106,7 +106,7 @@ class MontagenProjManager:
             return web.json_response(
                 {
                     "code": 0,
-                    "data": ["default","local"],
+                    "data": ["default", "local"],
                 }
             )
 
@@ -259,6 +259,18 @@ class MontagenProjManager:
             if not proj:
                 raise Exception("Project not found")
             proj.project_rename(name)
+            return web.json_response({"code": 0})
+
+        @server.routes.post("/Montagen/Proj/{id}/Workflow/Add")
+        @error_handling_decorator
+        async def add_project_workflow(request, register_action):
+            req_data = await request.json()
+            user_id = server.user_manager.get_request_user_id(request)
+            project_id = request.match_info.get("id", None)
+            proj = self.get_project(user_id, project_id)
+            if not proj:
+                raise Exception("Project not found")
+            proj.project_add_workflow_data(None, req_data["name"], req_data["workflow"])
             return web.json_response({"code": 0})
 
         @server.routes.post("/Montagen/Proj/{id}/Description")
