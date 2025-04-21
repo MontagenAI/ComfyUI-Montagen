@@ -107,19 +107,19 @@
   background: #fff;
   border-radius: none;
 }
-.panels-container[data-v-6cedd127] {\r
+.panels-container[data-v-2ccb7b25] {\r
   height: 100%;\r
   width: 100%;\r
   position: relative;\r
   background: #fff;
 }
-.resizable-panel[data-v-6cedd127] {\r
+.resizable-panel[data-v-2ccb7b25] {\r
   background: white;\r
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
   overflow: hidden;\r
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.panel-header[data-v-6cedd127] {\r
+.panel-header[data-v-2ccb7b25] {\r
   background: #f8f9fa;\r
   cursor: pointer;\r
   border-bottom: 1px solid #eee;\r
@@ -134,36 +134,36 @@
   top: 0;\r
   z-index: 2;
 }
-.toggle-icon[data-v-6cedd127] {\r
+.toggle-icon[data-v-2ccb7b25] {\r
   font-size: 0.8em;\r
   opacity: 0.6;
 }
-.gutter[data-v-6cedd127] {\r
+.gutter[data-v-2ccb7b25] {\r
   background: #ddd;\r
   position: relative;\r
   transition: all 0.3s;
 }
-.gutter.gutter-active[data-v-6cedd127] {\r
+.gutter.gutter-active[data-v-2ccb7b25] {\r
   background: #ccc;\r
   cursor: row-resize;
 }
-.gutter[data-v-6cedd127]:not(.gutter-active) {\r
+.gutter[data-v-2ccb7b25]:not(.gutter-active) {\r
   pointer-events: none;\r
   opacity: 0;
 }\r
 \r
 /* 垂直布局分隔条 */
-.gutter[data-direction="vertical"][data-v-6cedd127] {\r
+.gutter[data-direction="vertical"][data-v-2ccb7b25] {\r
   height: 10px;\r
   cursor: row-resize;
 }\r
 \r
 /* 水平布局分隔条 */
-.gutter[data-direction="horizontal"][data-v-6cedd127] {\r
+.gutter[data-direction="horizontal"][data-v-2ccb7b25] {\r
   width: 5px;\r
   cursor: col-resize;
 }
-[data-v-6cedd127] .gutter-vertical {\r
+[data-v-2ccb7b25] .gutter-vertical {\r
   /* opacity: 0; */\r
   background-color: #fff;
 &:hover {\r
@@ -171,10 +171,10 @@
     cursor: row-resize;
 }
 }
-.panel[data-v-6cedd127] {\r
+.panel[data-v-2ccb7b25] {\r
   overflow: hidden;
 }
-.panel.expand[data-v-6cedd127] {\r
+.panel.expand[data-v-2ccb7b25] {\r
   overflow-y: auto;
 }\r
 
@@ -69203,7 +69203,7 @@ const _sfc_main$o = {
         this.panels.forEach((panel, idx) => {
           if (panel.expanded && idx !== index2) {
             console.log(panel, "panel.expanded_已经展开,");
-            panel.size = 150 / this.$refs.container.offsetHeight * 100 || 8;
+            panel.size = 33.33;
           }
           if (idx != index2) {
             total += panel.size;
@@ -69300,7 +69300,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$2], ["__scopeId", "data-v-6cedd127"]]);
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$2], ["__scopeId", "data-v-2ccb7b25"]]);
 const _hoisted_1$i = { class: "label tw-py-2" };
 const _hoisted_2$c = { class: "content" };
 const _sfc_main$n = /* @__PURE__ */ defineComponent({
