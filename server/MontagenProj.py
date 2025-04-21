@@ -313,6 +313,17 @@ class MontagenProj:
         self.project_change_time()
         return workflow_id
 
+    def project_add_workflow_data(self, workflow_id, workflow_name: str, data: dict):
+        workflow_name = workflow_name or DEFAULTWORKFLOWNAME
+        workflow_id = workflow_id or to_base36_random()
+        workflow = MontagenWorkflow.create_new_workflow(
+            workflow_id, workflow_name, self
+        )
+        self.workflows.append(workflow)
+        workflow.syn_workflow_node(data, False)
+        self.project_change_time()
+        return workflow_id
+
     def project_delete_timeline(self, timeline_name: str):
         timeline = self.get_timeline(timeline_name)
         if timeline:
