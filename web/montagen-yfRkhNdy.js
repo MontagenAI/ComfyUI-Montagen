@@ -263,7 +263,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-db98ba41] {
+}.explorer-container[data-v-00aee052] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -71088,7 +71088,7 @@ const _sfc_main$f = {};
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
-      createBaseVNode("span", null, "Choose Project")
+      createBaseVNode("span", null, "Open project")
     ], -1)
   ]));
 }
@@ -71531,7 +71531,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     const tabs = computed(() => {
       return [
         {
-          label: "Local",
+          label: "Local Project",
           code: "local",
           items: list.value.map((item) => {
             item.name = item.baseInfo.name;
@@ -71647,7 +71647,7 @@ const _sfc_main$8 = {};
 function _sfc_render(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
-      createBaseVNode("span", null, "Choose Workflow")
+      createBaseVNode("span", null, "Get Started with a Template")
     ], -1)
   ]));
 }
@@ -71738,7 +71738,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     const tabs = computed(() => {
       return [
         {
-          label: "Locals",
+          label: "Montagen Examples",
           code: "locals",
           items: tabLists.value.map((item) => {
             return {
@@ -71929,7 +71929,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       return [
         { title: (_b2 = (_a2 = activeProject.value) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.name, expanded: true },
-        { title: "Nodes", expanded: false },
+        { title: "Adapters", expanded: false },
         { title: "Properties", expanded: false }
       ];
     });
@@ -72751,14 +72751,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     onClick: chooseProject
                   }, null, 512), [
                     [_directive_tooltip, "Open project"]
-                  ]),
-                  withDirectives(createVNode(_component_Button, {
-                    text: "",
-                    icon: "pi pi-refresh",
-                    class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: refreshList
-                  }, null, 512), [
-                    [_directive_tooltip, "Refresh project"]
                   ])
                 ])
               ]),
@@ -72902,7 +72894,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-db98ba41"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-00aee052"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
