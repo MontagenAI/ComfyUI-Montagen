@@ -263,7 +263,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-e6dc61ad] {
+}.explorer-container[data-v-db98ba41] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -68853,8 +68853,8 @@ const _hoisted_5$8 = {
   class: "list-none p-2",
   style: { "margin": "0" }
 };
-const _hoisted_6$5 = ["onClick", "onContextmenu"];
-const _hoisted_7$4 = {
+const _hoisted_6$6 = ["onClick", "onContextmenu"];
+const _hoisted_7$5 = {
   key: 0,
   class: "w-full flex items-center"
 };
@@ -68958,7 +68958,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
                 class: normalizeClass(["list-item", "cursor-pointer", "flex", "items-center", "justify-between", "py-2", "px-3"]),
                 key: item.clipId
               }, [
-                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$4, [
+                item.type == "text" ? (openBlock(), createElementBlock("div", _hoisted_7$5, [
                   _cache[1] || (_cache[1] = createBaseVNode("div", null, [
                     createBaseVNode("i", {
                       class: "pi pi-file",
@@ -69003,7 +69003,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
                   ], -1)),
                   createBaseVNode("div", _hoisted_16$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true)
-              ], 40, _hoisted_6$5);
+              ], 40, _hoisted_6$6);
             }), 128))
           ])
         ]),
@@ -69700,8 +69700,8 @@ const _hoisted_2$a = { class: "content" };
 const _hoisted_3$9 = { class: "px-2 tw-mb-2" };
 const _hoisted_4$7 = { class: "content" };
 const _hoisted_5$6 = { class: "px-2 tw-mb-2" };
-const _hoisted_6$4 = { class: "content" };
-const _hoisted_7$3 = { class: "px-2 tw-mb-2" };
+const _hoisted_6$5 = { class: "content" };
+const _hoisted_7$4 = { class: "px-2 tw-mb-2" };
 const _hoisted_8$2 = { class: "content" };
 const _hoisted_9$2 = { class: "px-2 tw-mb-2" };
 const _hoisted_10$2 = { class: "content" };
@@ -69740,7 +69740,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
         ]),
         createBaseVNode("div", _hoisted_5$6, [
           _cache[8] || (_cache[8] = createBaseVNode("div", { class: "label tw-py-2" }, "height:", -1)),
-          createBaseVNode("div", _hoisted_6$4, [
+          createBaseVNode("div", _hoisted_6$5, [
             createVNode(_component_InputText, {
               modelValue: _ctx.data.height,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.data.height = $event),
@@ -69749,7 +69749,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
             }, null, 8, ["modelValue"])
           ])
         ]),
-        createBaseVNode("div", _hoisted_7$3, [
+        createBaseVNode("div", _hoisted_7$4, [
           _cache[9] || (_cache[9] = createBaseVNode("div", { class: "label tw-py-2" }, "codec_name:", -1)),
           createBaseVNode("div", _hoisted_8$2, [
             createVNode(_component_InputText, {
@@ -69816,8 +69816,8 @@ const _hoisted_2$9 = { class: "card tw-w-full" };
 const _hoisted_3$8 = { class: "form-item tw-my-2" };
 const _hoisted_4$6 = { class: "form-item-content" };
 const _hoisted_5$5 = { class: "flex justify-center" };
-const _hoisted_6$3 = { class: "form-item tw-my-2" };
-const _hoisted_7$2 = { class: "form-item-content" };
+const _hoisted_6$4 = { class: "form-item tw-my-2" };
+const _hoisted_7$3 = { class: "form-item-content" };
 const _hoisted_8$1 = { class: "flex justify-center" };
 const _hoisted_9$1 = { class: "form-item tw-my-2" };
 const _hoisted_10$1 = { class: "form-item-content" };
@@ -70063,9 +70063,9 @@ const _sfc_main$i = /* @__PURE__ */ defineComponent({
                         default: withCtx(($form) => {
                           var _a2;
                           return [
-                            createBaseVNode("div", _hoisted_6$3, [
+                            createBaseVNode("div", _hoisted_6$4, [
                               _cache[5] || (_cache[5] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "filepath:", -1)),
-                              createBaseVNode("div", _hoisted_7$2, [
+                              createBaseVNode("div", _hoisted_7$3, [
                                 createVNode(_component_InputText, {
                                   name: "file_path",
                                   type: "text",
@@ -71065,7 +71065,7 @@ const _sfc_main$f = {};
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
-      createBaseVNode("span", null, "项目模板")
+      createBaseVNode("span", null, "Choose Project")
     ], -1)
   ]));
 }
@@ -71197,7 +71197,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                 option: { class: "tw-px-12 tw-py-3 tw-text-lg" },
                 optionGroup: { class: "tw-p-0 tw-text-left tw-text-inherit" }
               },
-              listStyle: "tw-max-height:unset"
+              listStyle: "max-height:auto"
             }, {
               optiongroup: withCtx((slotProps) => [
                 createBaseVNode("div", _hoisted_1$c, [
@@ -71319,7 +71319,7 @@ const _hoisted_2$5 = { class: "relative overflow-hidden rounded-t-lg" };
 const _hoisted_3$5 = { class: "flex items-center px-4 py-3" };
 const _hoisted_4$4 = { class: "flex-1" };
 const _hoisted_5$4 = { class: "line-clamp-1 text-lg font-normal text-surface-900 dark:text-surface-100" };
-const _hoisted_6$2 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
+const _hoisted_6$3 = { class: "line-clamp-2 text-sm text-surface-600 dark:text text-muted" };
 const UPSCALE_ZOOM_SCALE = 16;
 const DEFAULT_ZOOM_SCALE = 5;
 const _sfc_main$b = /* @__PURE__ */ defineComponent({
@@ -71357,7 +71357,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
           createBaseVNode("div", _hoisted_3$5, [
             createBaseVNode("div", _hoisted_4$4, [
               createBaseVNode("h3", _hoisted_5$4, toDisplayString(_ctx.sourceModule.title), 1),
-              createBaseVNode("p", _hoisted_6$2, toDisplayString(_ctx.sourceModule.description), 1)
+              createBaseVNode("p", _hoisted_6$3, toDisplayString(_ctx.sourceModule.description), 1)
             ]),
             _cache[1] || (_cache[1] = createBaseVNode("div", { class: "tw-flex xl:flex tw-items-center tw-justify-center ml-4 tw-w-10 tw-h-10 tw-rounded-full tw-bg-surface-100" }, [
               createBaseVNode("i", { class: "pi pi-angle-right tw-text-2xl" })
@@ -71492,7 +71492,9 @@ const _hoisted_4$2 = {
   key: 0,
   class: "flex flex-col px-12 pb-4"
 };
-const _hoisted_5$2 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
+const _hoisted_5$2 = { class: "py-3 text-left" };
+const _hoisted_6$2 = { class: "text-lg" };
+const _hoisted_7$2 = { class: "tw-grid tw-grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] tw-gap-8 tw-justify-items-center" };
 const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   __name: "templateDialogContent",
   setup(__props) {
@@ -71586,7 +71588,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
               createVNode(_component_Button, {
                 label: "Open Local Project",
                 class: "tw-w-full",
-                severity: "secondary",
+                severity: "Primary",
                 onClick: chooseProjectFolder
               })
             ])
@@ -71598,10 +71600,10 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
             }])
           }, [
             selectedTab.value ? (openBlock(), createElementBlock("div", _hoisted_4$2, [
-              _cache[1] || (_cache[1] = createBaseVNode("div", { class: "py-3 text-left" }, [
-                createBaseVNode("h2", { class: "text-lg" }, "测试数据")
-              ], -1)),
               createBaseVNode("div", _hoisted_5$2, [
+                createBaseVNode("h2", _hoisted_6$2, toDisplayString(unref(activeProject).baseInfo.name), 1)
+              ]),
+              createBaseVNode("div", _hoisted_7$2, [
                 (openBlock(true), createElementBlock(Fragment, null, renderList$1(workFlows.value, (item) => {
                   return openBlock(), createElementBlock("div", { key: item }, [
                     createVNode(_sfc_main$b, {
@@ -71666,7 +71668,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
               option: { class: "tw-px-12 tw-py-3 tw-text-lg" },
               optionGroup: { class: "tw-p-0 tw-text-left tw-text-inherit" }
             },
-            listStyle: "tw-max-height:unset"
+            listStyle: "max-height:auto"
           }, {
             optiongroup: withCtx((slotProps) => [
               createBaseVNode("div", _hoisted_1$6, [
@@ -72715,17 +72717,17 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     text: "",
                     icon: "pi pi-th-large",
                     class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: chooseProject
+                    onClick: chooseProjectFolder
                   }, null, 512), [
-                    [_directive_tooltip, "Open project"]
+                    [_directive_tooltip, "Browse Templates"]
                   ]),
                   withDirectives(createVNode(_component_Button, {
                     text: "",
                     icon: "pi pi-folder-open",
                     class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: chooseProjectFolder
+                    onClick: chooseProject
                   }, null, 512), [
-                    [_directive_tooltip, "Browse project"]
+                    [_directive_tooltip, "Open project"]
                   ]),
                   withDirectives(createVNode(_component_Button, {
                     text: "",
@@ -72877,7 +72879,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-e6dc61ad"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-db98ba41"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
