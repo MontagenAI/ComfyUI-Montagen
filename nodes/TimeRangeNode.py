@@ -7,8 +7,8 @@ from ..server.Utils import (
     SYNCACION,
     BYPASSACTION,
     MONTAGENACTIONTYPE,
+    MONTAGENDESCTYPE,
 )
-import json
 
 
 class TimeRangeNode(BaseWorkflow):
@@ -32,9 +32,14 @@ class TimeRangeNode(BaseWorkflow):
 
     DESCRIPTION = "SRT List Parser"
 
-    RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING", MONTAGENACTIONTYPE)
+    RETURN_TYPES = (
+        MONTAGENTIMERANGETYPE,
+        "STRING",
+        MONTAGENACTIONTYPE,
+        MONTAGENDESCTYPE,
+    )
 
-    OUTPUT_IS_LIST = (True, True, False)
+    OUTPUT_IS_LIST = (True, True, False, True)
 
     FUNCTION = "save_func"
 
@@ -78,5 +83,5 @@ class TimeRangeNode(BaseWorkflow):
                     }
                 ]
             },
-            "result": (units, subs, action),
+            "result": (units, subs, action, subs),
         }

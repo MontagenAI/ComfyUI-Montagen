@@ -7,6 +7,7 @@ import torch
 from comfy_extras import nodes_compositing
 import numpy as np
 from PIL import Image
+from ..server.Utils import MONTAGENDESCTYPE
 
 
 class ImageListAdapter(BaseListAdapter):
@@ -22,7 +23,7 @@ class ImageListAdapter(BaseListAdapter):
             "optional": {
                 "imageList": ("IMAGE", {"tooltip": "The image list."}),
                 "alphaList": ("MASK", {"tooltip": "The alpha list."}),
-                "descList": ("STRING", {"tooltip": "The alpha list."}),
+                "descList": (MONTAGENDESCTYPE,),
             }
         }
 
