@@ -73639,7 +73639,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         );
         previewWidget.computeSize = function(width) {
           if (!this.parentEl.hidden) {
-            if (this.aspectRatio) {
+            if (this.aspectRatio || this.type == "audio") {
+              if (this.type == "audio") {
+                return [width, 25];
+              }
               let height = (previewNode.size[0] - 20) / this.aspectRatio + 10;
               if (!(height > 0)) {
                 height = 0;
