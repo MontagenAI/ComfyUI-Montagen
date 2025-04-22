@@ -3,6 +3,8 @@ from ..server.Utils import (
     DEFAULTLISTNAME,
     MONTAGENTIMERANGETYPE,
     MONTAGENTIMELINETYPE,
+    MODIFYACTION,
+    MONTAGENACTIONTYPE,
 )
 from ..server.MontagenTimeRange import MontagenTimeRange
 
@@ -19,15 +21,12 @@ class TextListAdapter(BaseListAdapter):
         return {
             "required": {
                 "name": ("STRING", {"default": DEFAULTLISTNAME}),
-                "enableInput": (
-                    "BOOLEAN",
-                    {"default": False, "tooltip": "Enable input resources."},
-                ),
                 "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
+                "action": (MONTAGENACTIONTYPE,),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -37,11 +36,14 @@ class TextListAdapter(BaseListAdapter):
         }
 
     def save_func(
-        self, name, enableInput, tag, prompt, extra_pnginfo, unique_id, **keywords
+        self, name, action, tag, prompt, extra_pnginfo, unique_id, **keywords
     ):
         timeline = keywords.get("timeline", None)[0]
         name = name[0]
-        enableInput = enableInput[0]
+        if action:
+            action = action[0]
+        else:
+            action = MODIFYACTION
         tag = tag[0]
         prompt = prompt[0]
         extra_pnginfo = extra_pnginfo[0]
@@ -59,15 +61,14 @@ class TextListAdapter(BaseListAdapter):
         timeline = proj.get_timeline(timeline)
         if not timeline:
             raise ValueError("timeline is not found.")
-        if enableInput:
-            time_range: MontagenTimeRange = MontagenTimeRange(
-                keywords.get("timeRange", None)
-            )
-            if not time_range:
-                raise ValueError("time_range is required.")
-            node.sync_time_text_range(time_range)
-            node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
-            workflow.save()
+
+        time_range: MontagenTimeRange = MontagenTimeRange(
+            keywords.get("timeRange", None)
+        )
+        if not time_range:
+            raise ValueError("time_range is required.")
+        node.sync_time_text_range(time_range, action)
+        workflow.save()
         return self.protocol_return(
             timeline, proj, workflow_id, project_id, user_id, node, extra_pnginfo
         )

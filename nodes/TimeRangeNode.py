@@ -1,7 +1,13 @@
 from ..server.Utils import MONTAGENTIMERANGETYPE
 from .BaseWorkflow import BaseWorkflow
 from ..server.MontagenTimeRange import MontagenTime
-from ..server.Utils import TIMERANGENODETYPE, MODIFYACTION, SYNCACION
+from ..server.Utils import (
+    TIMERANGENODETYPE,
+    MODIFYACTION,
+    SYNCACION,
+    BYPASSACTION,
+    MONTAGENACTIONTYPE,
+)
 import json
 
 
@@ -12,6 +18,10 @@ class TimeRangeNode(BaseWorkflow):
         return {
             "required": {
                 "content": (MONTAGENTIMERANGETYPE,),
+                "action": (
+                    [MODIFYACTION, SYNCACION, BYPASSACTION],
+                    {"default": MODIFYACTION},
+                ),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -22,9 +32,9 @@ class TimeRangeNode(BaseWorkflow):
 
     DESCRIPTION = "Montagen Time Range Create"
 
-    RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING")
+    RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING", MONTAGENACTIONTYPE)
 
-    OUTPUT_IS_LIST = (True, True)
+    OUTPUT_IS_LIST = (True, True, False)
 
     FUNCTION = "save_func"
 
@@ -33,6 +43,7 @@ class TimeRangeNode(BaseWorkflow):
     def save_func(
         self,
         content,
+        action,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
@@ -45,6 +56,7 @@ class TimeRangeNode(BaseWorkflow):
         node.node_type = TIMERANGENODETYPE
 
         subs = []
+        units = []
         srt_subs = [MontagenTime(item) for item in content]
         srt_subs.sort(key=lambda x: x.index)
 
@@ -53,9 +65,10 @@ class TimeRangeNode(BaseWorkflow):
             sub.id = item_id
             if sub.is_selected:
                 subs.append(sub.content)
+                units.append(sub.serialize())
 
-        units = [item.serialize() for item in srt_subs]
-
+        if not units:
+            raise Exception("No time range selected")
         workflow.save()
         return {
             "ui": {
@@ -65,5 +78,5 @@ class TimeRangeNode(BaseWorkflow):
                     }
                 ]
             },
-            "result": (units, subs),
+            "result": (units, subs, action),
         }

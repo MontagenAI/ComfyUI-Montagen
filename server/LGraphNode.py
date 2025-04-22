@@ -14,9 +14,9 @@ from .Utils import (
     flat_to_tree,
     tree_to_flat,
     supported_group_config_type,
-    TIMERANGENODETYPE,
     SYNCACION,
     MODIFYACTION,
+    BYPASSACTION,
 )
 from typing import TYPE_CHECKING
 from .LGraphNodeItem import LGraphNodeItem
@@ -215,14 +215,6 @@ class LGraphNode:
     def is_montagen_node(self):
         return self.type is not None
 
-    # @property
-    # def time_range(self) -> MontagenTimeRange:
-    #     if self.node_type == TIMERANGENODETYPE:
-    #         if "montagen_time_range" not in self.properties:
-    #             self.properties["montagen_time_range"] = {}
-    #         return MontagenTimeRange(self.properties["montagen_time_range"])
-    #     return None
-
     @property
     def node_name(self) -> str:
         return self.properties.get("montagen_name", None)
@@ -291,19 +283,15 @@ class LGraphNode:
                 return True
         return False
 
-    def set_input_enbale(self, enable, index):
-        self.widgets[index] = enable
-
     def set_file_output(self, file_output_index):
         if file_output_index >= 0:
             self.widgets[file_output_index] = self.single_file_name
 
-    # def set_time_range_action(self):
-    #     self.widgets[1] = MODIFYACTION
-
     def sync_time_resoureces_range(
-        self, time_range: MontagenTimeRange, resoureces: list[str]
+        self, time_range: MontagenTimeRange, resoureces: list[str], action: str
     ):
+        if action == BYPASSACTION:
+            return
         used_item_ids = set()
         index = 0
         for time_unit in time_range.time_range:
@@ -333,20 +321,20 @@ class LGraphNode:
             )
             index += 1
             used_item_ids.add(item.item_id)
+        if action == SYNCACION:
+            delete_items = [
+                item for item in self.items if item.item_id not in used_item_ids
+            ]
+            self.items = [item for item in self.items if item.item_id in used_item_ids]
+            for item in delete_items:
+                item.delete()
 
-        delete_items = [
-            item for item in self.items if item.item_id not in used_item_ids
-        ]
-        self.items = [item for item in self.items if item.item_id in used_item_ids]
-        for item in delete_items:
-            item.delete()
-
-    def sync_time_text_range(self, time_range: MontagenTimeRange):
+    def sync_time_text_range(self, time_range: MontagenTimeRange, action: str):
+        if action == BYPASSACTION:
+            return
         used_item_ids = set()
         for time_unit in time_range.time_range:
             item_id = time_unit.id
-            if not item_id:
-                continue
             item, item_index = self.Get_item_and_index(item_id)
             if not item:
                 item = self.create_item()
@@ -360,15 +348,19 @@ class LGraphNode:
                 flush=True,
             )
             used_item_ids.add(item.item_id)
+        if action == SYNCACION:
+            delete_items = [
+                item for item in self.items if item.item_id not in used_item_ids
+            ]
+            self.items = [item for item in self.items if item.item_id in used_item_ids]
+            for item in delete_items:
+                item.delete()
 
-        delete_items = [
-            item for item in self.items if item.item_id not in used_item_ids
-        ]
-        self.items = [item for item in self.items if item.item_id in used_item_ids]
-        for item in delete_items:
-            item.delete()
-
-    def sync_time_images_range(self, time_range: MontagenTimeRange, images: list):
+    def sync_time_images_range(
+        self, time_range: MontagenTimeRange, images: list, action: str
+    ):
+        if action == BYPASSACTION:
+            return
         used_item_ids = set()
         index = 0
         for time_unit in time_range.time_range:
@@ -399,13 +391,13 @@ class LGraphNode:
             )
             index += 1
             used_item_ids.add(item.item_id)
-
-        delete_items = [
-            item for item in self.items if item.item_id not in used_item_ids
-        ]
-        self.items = [item for item in self.items if item.item_id in used_item_ids]
-        for item in delete_items:
-            item.delete()
+        if action == SYNCACION:
+            delete_items = [
+                item for item in self.items if item.item_id not in used_item_ids
+            ]
+            self.items = [item for item in self.items if item.item_id in used_item_ids]
+            for item in delete_items:
+                item.delete()
 
     def sync_file_meta(self, file_meta: dict):
         old_name = self.single_file_name

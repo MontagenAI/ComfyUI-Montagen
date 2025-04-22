@@ -40,6 +40,7 @@ class ImageListAdapter(BaseListAdapter):
         extra_pnginfo: dict,
         unique_id: int,
         time_range: MontagenTimeRange,
+        action: str,
         **keywords
     ):
         imagesList = keywords.get("images", None)
@@ -71,6 +72,5 @@ class ImageListAdapter(BaseListAdapter):
             for img in images
         ]
 
-        node.sync_time_images_range(time_range, images)
-        node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
+        node.sync_time_images_range(time_range, images, action)
         workflow.save()

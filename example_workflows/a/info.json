@@ -1,0 +1,9 @@
+{
+    "id": "1",
+    "name": "zf",
+    "description": "zf is a iu",
+    "modifyTime": "2017-01-01 00:00:00",
+    "cover": "/workflow1.jpg",
+    "category":"default",
+    "workflow":"/workflow1.json"
+}

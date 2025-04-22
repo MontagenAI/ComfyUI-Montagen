@@ -107,6 +107,7 @@ import { app } from "../../../scripts/app.js";
 
   function changeWidget() {
     let new_widgets = [];
+    new_widgets=[...this.widgets]
     new_widgets.push(
       app.widgets.MontagenTextUpload1(
         this,
