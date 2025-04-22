@@ -75,7 +75,7 @@ class MontagenProjManager:
         MontagenProjManager.instance = self
         self.montagen_cache_manager = MontagenCacheManager()
         self.cache_key = "{}_montagen_projects"
-        self.templates = []
+        self.templates: list[MontagenTemplate] = []
 
         @server.routes.get("/Montagen/Proj/List")
         @error_handling_decorator
@@ -627,6 +627,7 @@ class MontagenProjManager:
                 if template:
                     templates.append(template)
         self.templates = templates
+        templates.sort(key=lambda x: -x.modify_time.timestamp())
         return templates
 
     def get_project(self, user_id: str, project_id: str) -> MontagenProj:

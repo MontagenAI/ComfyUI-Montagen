@@ -14,6 +14,8 @@ from .Utils import (
     FILEADDR,
     TMPPAHT,
     generate_unique_filename,
+    get_hello_world,
+    hello_workflow_id,
 )
 
 
@@ -153,6 +155,10 @@ class MontagenWorkflow:
         )
 
     def to_json(self):
+        thumb = None
+        if self.workflow_id == hello_workflow_id:
+            hello_world = get_hello_world()
+            thumb = f"/Montagen/Template/File/{hello_world['thumb'].strip('/')}"
         return {
             "workflow": self.workflow_data.serialize(),
             "workflowId": self.workflow_id,
@@ -160,7 +166,7 @@ class MontagenWorkflow:
             "workflowDesc": self.workflow_desc,
             "nodes": [node.to_json() for node in self.nodes if node.is_montagen_node],
             "modifyTime": self.modify_time.isoformat(),
-            "thumb": self.get_thumb_file_url(),
+            "thumb": thumb if thumb else self.get_thumb_file_url(),
         }
 
     def get_output_path(self, node_id: str, index: int, ext: str):

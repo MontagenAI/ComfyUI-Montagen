@@ -16,6 +16,8 @@ from .Utils import (
     REfSDIR,
     supported_config_type,
     supported_group_config_type,
+    get_hello_world,
+    hello_workflow_id
 )
 from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
@@ -150,9 +152,14 @@ class MontagenProj:
         self.save_project(self.project_path, self.project_data)
 
     def to_json(self):
+        workflows = [workflow.to_json() for workflow in self.workflows]
+        if not workflows:
+            hello_world = get_hello_world()
+            self.project_add_workflow_data(hello_workflow_id, "hello_world", hello_world["workflow"])
+            workflows = [workflow.to_json() for workflow in self.workflows]
         return {
             **self.project_data,
-            "workflows": [workflow.to_json() for workflow in self.workflows],
+            "workflows": workflows,
             "assets": self.montagen_material.get_materials_by_location(False),
             "refs": self.montagen_material.get_materials_by_location(True),
             "timelines": [timline.to_json() for timline in self.timelines],

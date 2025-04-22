@@ -1240,3 +1240,17 @@ def extract_middle_frame_thumbnail(
     )
     if result.returncode != 0:
         raise RuntimeError(f"FFmpeg execution failed: {result.stderr}")
+
+
+hello_template = {}
+hello_workflow_id = "1"
+
+
+def get_hello_world():
+    global hello_template
+    if hello_template:
+        return hello_template
+    with open(os.path.join(TEMPLATEPATH, "helloworld.txt"), "r") as file:
+        helloworld = file.read()
+        hello_template = json.loads(helloworld)
+    return hello_template
