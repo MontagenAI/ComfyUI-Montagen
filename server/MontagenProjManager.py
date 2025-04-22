@@ -23,6 +23,7 @@ from .ExternMontagenProj import ExternMontagenProj
 from .MontagenTemplate import MontagenTemplate
 from contextlib import contextmanager
 import logging
+import json
 
 
 def error_handling_decorator(func):
@@ -103,10 +104,13 @@ class MontagenProjManager:
         @server.routes.get("/Montagen/Template/Category")
         @error_handling_decorator
         async def get_template(request, register_action):
+            with open(os.path.join(TEMPLATEPATH, "categorys.txt"), "r") as file:
+                category = file.read()
+                category = json.loads(category)
             return web.json_response(
                 {
                     "code": 0,
-                    "data": ["default", "local"],
+                    "data": category,
                 }
             )
 
