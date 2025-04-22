@@ -190,7 +190,7 @@ import { app } from "../../../scripts/app.js";
       }, 0);
       textarea.addEventListener("input", () => {
         console.log("textarea value", textarea.value);
-        srtEditWidet.entries[index].text = textarea.value;
+        srtEditWidet.entries[index].content = textarea.value;
         // textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + "px";
       });
