@@ -83,5 +83,5 @@ class TimeRangeNode(BaseWorkflow):
                     }
                 ]
             },
-            "result": (units, subs, action),
+            "result": (subs, units, action),
         }
