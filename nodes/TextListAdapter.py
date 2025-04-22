@@ -61,7 +61,7 @@ class TextListAdapter(BaseListAdapter):
             raise ValueError("timeline is not found.")
         if enableInput:
             time_range: MontagenTimeRange = MontagenTimeRange(
-                keywords.get("timeRange", None)[0]
+                keywords.get("timeRange", None)
             )
             if not time_range:
                 raise ValueError("time_range is required.")

@@ -46,7 +46,7 @@ class ImageListAdapter(BaseListAdapter):
         if not imagesList:
             raise ValueError("images must be provided")
         image_len = len(imagesList)
-        time_rang_len = len(time_range)
+        time_rang_len = len(time_range.time_range_selected)
         if image_len != time_rang_len:
             raise ValueError("images and time_range must be the same length")
         out_images = []

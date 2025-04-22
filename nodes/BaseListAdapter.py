@@ -91,7 +91,7 @@ class BaseListAdapter(BaseWorkflow):
         len_res = len(resoureces)
         if len_res == 0:
             raise ValueError("resoureces is required.")
-        len_timelines = len(time_range)
+        len_timelines = len(time_range.time_range_selected)
         if len_timelines == 0:
             raise ValueError("time_range is required.")
         if len_res != len_timelines:
@@ -124,7 +124,7 @@ class BaseListAdapter(BaseWorkflow):
             resoureces: list[str] = keywords.get("resoureces", None)
             if resoureces:
                 time_range: MontagenTimeRange = MontagenTimeRange(
-                    keywords.get("timeRange", None)[0]
+                    keywords.get("timeRange", None)
                 )
                 if not time_range:
                     raise ValueError("time_range is required.")
@@ -134,7 +134,7 @@ class BaseListAdapter(BaseWorkflow):
                 workflow.save()
             else:
                 time_range: MontagenTimeRange = MontagenTimeRange(
-                    keywords.get("timeRange", None)[0]
+                    keywords.get("timeRange", None)
                 )
                 if not time_range:
                     raise ValueError("time_range is required.")

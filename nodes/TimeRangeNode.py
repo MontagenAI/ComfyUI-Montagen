@@ -1,7 +1,8 @@
 from ..server.Utils import MONTAGENTIMERANGETYPE
 from .BaseWorkflow import BaseWorkflow
-from ..server import MontagenSrtParser
+from ..server.MontagenTimeRange import MontagenTime
 from ..server.Utils import TIMERANGENODETYPE, MODIFYACTION, SYNCACION
+import json
 
 
 class TimeRangeNode(BaseWorkflow):
@@ -10,8 +11,7 @@ class TimeRangeNode(BaseWorkflow):
     def INPUT_TYPES(s):
         return {
             "required": {
-                "content": ("STRING", {"multiline": True}),
-                "action": ([MODIFYACTION, SYNCACION], {"default": MODIFYACTION}),
+                "content": (MONTAGENTIMERANGETYPE,),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -33,7 +33,6 @@ class TimeRangeNode(BaseWorkflow):
     def save_func(
         self,
         content,
-        action,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
@@ -44,22 +43,19 @@ class TimeRangeNode(BaseWorkflow):
         workflow.syn_workflow_node(workflow_node, False)
         node = workflow.workflow_data.get_node_by_unique_id(unique_id)
         node.node_type = TIMERANGENODETYPE
-        timerange = node.time_range
+
         subs = []
-        timerange_array = []
-        new_timerange = {"timeRange": timerange_array}
-        units = [new_timerange]
-        srt_subs = [*MontagenSrtParser.parse(content)]
+        srt_subs = [MontagenTime(item) for item in content]
         srt_subs.sort(key=lambda x: x.index)
+
         for sub in srt_subs:
-            unit = timerange.add_or_update(node.node_id, sub)
-            timerange_array.append(unit.serialize())
-            subs.append(sub.content)
-        if action == SYNCACION:
-            timerange.reset(new_timerange)
-        timerange.sort()
-        new_timerange["action"] = action
-        node.set_time_range_action()
+            item_id = f"{node.node_id}_{sub.index}"
+            sub.id = item_id
+            if sub.is_selected:
+                subs.append(sub.content)
+
+        units = [item.serialize() for item in srt_subs]
+
         workflow.save()
         return {
             "ui": {

@@ -215,13 +215,13 @@ class LGraphNode:
     def is_montagen_node(self):
         return self.type is not None
 
-    @property
-    def time_range(self) -> MontagenTimeRange:
-        if self.node_type == TIMERANGENODETYPE:
-            if "montagen_time_range" not in self.properties:
-                self.properties["montagen_time_range"] = {}
-            return MontagenTimeRange(self.properties["montagen_time_range"])
-        return None
+    # @property
+    # def time_range(self) -> MontagenTimeRange:
+    #     if self.node_type == TIMERANGENODETYPE:
+    #         if "montagen_time_range" not in self.properties:
+    #             self.properties["montagen_time_range"] = {}
+    #         return MontagenTimeRange(self.properties["montagen_time_range"])
+    #     return None
 
     @property
     def node_name(self) -> str:
@@ -298,26 +298,29 @@ class LGraphNode:
         if file_output_index >= 0:
             self.widgets[file_output_index] = self.single_file_name
 
-    def set_time_range_action(self):
-        self.widgets[1] = MODIFYACTION
+    # def set_time_range_action(self):
+    #     self.widgets[1] = MODIFYACTION
 
     def sync_time_resoureces_range(
         self, time_range: MontagenTimeRange, resoureces: list[str]
     ):
-        action = time_range.action
         used_item_ids = set()
-        for i, time_unit in enumerate(time_range.time_range):
+        index = 0
+        for time_unit in time_range.time_range:
             item_id = time_unit.id
-            if not item_id:
-                continue
             item, item_index = self.Get_item_and_index(item_id)
+            if not time_unit.is_selected:
+                if item:
+                    used_item_ids.add(item.item_id)
+                continue
             if not item:
                 item_index = len(self.items)
+
             old_file = (
                 None if self.reserve_file else self.get_asset_file_name(item_index)
             )
             material, src = self.workflow.workflow_add_material(
-                self.node_name, item_index, resoureces[i], self.type
+                self.node_name, item_index, resoureces[index], self.type
             )
             self.set_asset(item_index, material)
             self.workflow.workflow_del_material(old_file)
@@ -328,19 +331,19 @@ class LGraphNode:
             item.set_main_content(
                 src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
+            index += 1
             used_item_ids.add(item.item_id)
-        if action == SYNCACION:
-            delete_items = [
-                item for item in self.items if item.item_id not in used_item_ids
-            ]
-            self.items = [item for item in self.items if item.item_id in used_item_ids]
-            for item in delete_items:
-                item.delete()
+
+        delete_items = [
+            item for item in self.items if item.item_id not in used_item_ids
+        ]
+        self.items = [item for item in self.items if item.item_id in used_item_ids]
+        for item in delete_items:
+            item.delete()
 
     def sync_time_text_range(self, time_range: MontagenTimeRange):
-        action = time_range.action
         used_item_ids = set()
-        for i, time_unit in enumerate(time_range.time_range):
+        for time_unit in time_range.time_range:
             item_id = time_unit.id
             if not item_id:
                 continue
@@ -357,29 +360,31 @@ class LGraphNode:
                 flush=True,
             )
             used_item_ids.add(item.item_id)
-        if action == SYNCACION:
-            delete_items = [
-                item for item in self.items if item.item_id not in used_item_ids
-            ]
-            self.items = [item for item in self.items if item.item_id in used_item_ids]
-            for item in delete_items:
-                item.delete()
+
+        delete_items = [
+            item for item in self.items if item.item_id not in used_item_ids
+        ]
+        self.items = [item for item in self.items if item.item_id in used_item_ids]
+        for item in delete_items:
+            item.delete()
 
     def sync_time_images_range(self, time_range: MontagenTimeRange, images: list):
-        action = time_range.action
         used_item_ids = set()
-        for i, time_unit in enumerate(time_range.time_range):
+        index = 0
+        for time_unit in time_range.time_range:
             item_id = time_unit.id
-            if not item_id:
-                continue
             item, item_index = self.Get_item_and_index(item_id)
+            if not time_unit.is_selected:
+                if item:
+                    used_item_ids.add(item.item_id)
+                continue
             if not item:
                 item_index = len(self.items)
             old_file = (
                 None if self.reserve_file else self.get_asset_file_name(item_index)
             )
             (file_fullName, tmp_fullName) = self.get_output_path(item_index, "png")
-            images[i].save(file_fullName)
+            images[index].save(file_fullName)
             material, src = self.workflow.workflow_add_material(
                 self.node_name, item_index, file_fullName, self.type
             )
@@ -392,14 +397,15 @@ class LGraphNode:
             item.set_main_content(
                 src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
+            index += 1
             used_item_ids.add(item.item_id)
-        if action == SYNCACION:
-            delete_items = [
-                item for item in self.items if item.item_id not in used_item_ids
-            ]
-            self.items = [item for item in self.items if item.item_id in used_item_ids]
-            for item in delete_items:
-                item.delete()
+
+        delete_items = [
+            item for item in self.items if item.item_id not in used_item_ids
+        ]
+        self.items = [item for item in self.items if item.item_id in used_item_ids]
+        for item in delete_items:
+            item.delete()
 
     def sync_file_meta(self, file_meta: dict):
         old_name = self.single_file_name
