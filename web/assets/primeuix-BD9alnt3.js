@@ -201,6 +201,16 @@ function calculateScrollbarWidth(element) {
     return scrollbarWidth;
   }
 }
+function clearSelection() {
+  if (window.getSelection) {
+    const selection = window.getSelection() || {};
+    if (selection.empty) {
+      selection.empty();
+    } else if (selection.removeAllRanges && selection.rangeCount > 0 && selection.getRangeAt(0).getClientRects().length > 0) {
+      selection.removeAllRanges();
+    }
+  }
+}
 function setAttributes(element, attributes = {}) {
   if (isElement(element)) {
     const computedStyles = (rule, value) => {
@@ -397,6 +407,11 @@ function getScrollableParents(element) {
     }
   }
   return scrollableParents;
+}
+function getSelection() {
+  if (window.getSelection) return window.getSelection().toString();
+  else if (document.getSelection) return document.getSelection().toString();
+  return void 0;
 }
 function getWidth(element) {
   if (element) {
@@ -1338,7 +1353,7 @@ var config_default = {
     }
   }
 };
-var style$r = ({ dt: n2 }) => `
+var style$s = ({ dt: n2 }) => `
 *,
 ::before,
 ::after {
@@ -1460,7 +1475,7 @@ var style$r = ({ dt: n2 }) => `
     }
 }
 `;
-var style$q = ({ dt: t2 }) => `
+var style$r = ({ dt: t2 }) => `
 .p-tooltip {
     position: absolute;
     display: none;
@@ -1521,7 +1536,7 @@ var style$q = ({ dt: t2 }) => `
     border-bottom-color: ${t2("tooltip.background")};
 }
 `;
-var style$p = ({ dt: n2 }) => `
+var style$q = ({ dt: n2 }) => `
 .p-badge {
     display: inline-flex;
     border-radius: ${n2("badge.border.radius")};
@@ -1597,7 +1612,7 @@ var style$p = ({ dt: n2 }) => `
     height: ${n2("badge.xl.height")};
 }
 `;
-var style$o = ({ dt: n2 }) => `
+var style$p = ({ dt: n2 }) => `
 .p-ink {
     display: block;
     position: absolute;
@@ -1618,7 +1633,7 @@ var style$o = ({ dt: n2 }) => `
     }
 }
 `;
-var style$n = ({ dt: o2 }) => `
+var style$o = ({ dt: o2 }) => `
 .p-button {
     display: inline-flex;
     cursor: pointer;
@@ -2259,7 +2274,7 @@ var style$n = ({ dt: o2 }) => `
     color: ${o2("button.link.active.color")};
 }
 `;
-var style$m = ({ dt: o2 }) => `
+var style$n = ({ dt: o2 }) => `
 .p-dialog {
     max-height: 90%;
     transform: scale(1);
@@ -2407,7 +2422,7 @@ var style$m = ({ dt: o2 }) => `
     flex-grow: 1;
 }
 `;
-var style$l = ({ dt: n2 }) => `
+var style$m = ({ dt: n2 }) => `
 .p-splitter {
     display: flex;
     flex-wrap: nowrap;
@@ -2486,7 +2501,7 @@ var style$l = ({ dt: n2 }) => `
     border: 0 none;
 }
 `;
-var style$k = ({ dt: n2 }) => `
+var style$l = ({ dt: n2 }) => `
 .p-contextmenu {
     background: ${n2("contextmenu.background")};
     color: ${n2("contextmenu.color")};
@@ -2633,7 +2648,7 @@ var style$k = ({ dt: n2 }) => `
     transform: rotate(-90deg);
 }
 `;
-var style$j = ({ dt: o2 }) => `
+var style$k = ({ dt: o2 }) => `
 .p-toolbar {
     display: flex;
     align-items: center;
@@ -2654,7 +2669,7 @@ var style$j = ({ dt: o2 }) => `
     align-items: center;
 }
 `;
-var style$i = ({ dt: n2 }) => `
+var style$j = ({ dt: n2 }) => `
 .p-confirmdialog .p-dialog-content {
     display: flex;
     align-items: center;
@@ -2668,7 +2683,7 @@ var style$i = ({ dt: n2 }) => `
     height: ${n2("confirmdialog.icon.size")};
 }
 `;
-var style$h = ({ dt: n2 }) => `
+var style$i = ({ dt: n2 }) => `
 .p-iconfield {
     position: relative;
 }
@@ -2713,7 +2728,7 @@ var style$h = ({ dt: n2 }) => `
     margin-top: calc(-1 * (${n2("form.field.lg.font.size")} / 2));
 }
 `;
-var style$g = ({ dt: n2 }) => `
+var style$h = ({ dt: n2 }) => `
 .p-inputtext {
     font-family: inherit;
     font-feature-settings: inherit;
@@ -2787,7 +2802,7 @@ var style$g = ({ dt: n2 }) => `
     width: 100%;
 }
 `;
-var style$f = ({ dt: e2 }) => `
+var style$g = ({ dt: e2 }) => `
 .p-tree {
     background: ${e2("tree.background")};
     color: ${e2("tree.color")};
@@ -2944,7 +2959,7 @@ var style$f = ({ dt: e2 }) => `
     flex: 1;
 }
 `;
-var style$e = ({ dt: c2 }) => `
+var style$f = ({ dt: c2 }) => `
 .p-checkbox {
     position: relative;
     display: inline-flex;
@@ -3079,7 +3094,7 @@ var style$e = ({ dt: c2 }) => `
     height: ${c2("checkbox.icon.lg.size")};
 }
 `;
-var style$d = ({ dt: e2 }) => `
+var style$e = ({ dt: e2 }) => `
 .p-message {
     border-radius: ${e2("message.border.radius")};
     outline-width: ${e2("message.border.width")};
@@ -3402,7 +3417,7 @@ var h$4 = (y, i2, m2) => async ({ values: e2, name: s2 }) => {
     throw r2;
   }
 };
-var style$c = ({ dt: r2 }) => `
+var style$d = ({ dt: r2 }) => `
 .p-virtualscroller-loader {
     background: ${r2("virtualscroller.loader.mask.background")};
     color: ${r2("virtualscroller.loader.mask.color")};
@@ -3414,7 +3429,7 @@ var style$c = ({ dt: r2 }) => `
     height: ${r2("virtualscroller.loader.icon.size")};
 }
 `;
-var style$b = ({ dt: e2 }) => `
+var style$c = ({ dt: e2 }) => `
 .p-select {
     display: inline-flex;
     cursor: pointer;
@@ -3644,7 +3659,7 @@ input.p-select-label {
     height: ${e2("select.lg.font.size")};
 }
 `;
-var style$a = ({ dt: o2 }) => `
+var style$b = ({ dt: o2 }) => `
 .p-togglebutton {
     display: inline-flex;
     cursor: pointer;
@@ -3750,6 +3765,170 @@ var style$a = ({ dt: o2 }) => `
 
 .p-togglebutton-lg .p-togglebutton-content {
     padding: ${o2("togglebutton.content.lg.padding")};
+}
+`;
+var style$a = ({ dt: n2 }) => `
+.p-inputnumber {
+    display: inline-flex;
+    position: relative;
+}
+
+.p-inputnumber-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    cursor: pointer;
+    background: ${n2("inputnumber.button.background")};
+    color: ${n2("inputnumber.button.color")};
+    width: ${n2("inputnumber.button.width")};
+    transition: background ${n2("inputnumber.transition.duration")}, color ${n2("inputnumber.transition.duration")}, border-color ${n2("inputnumber.transition.duration")}, outline-color ${n2("inputnumber.transition.duration")};
+}
+
+.p-inputnumber-button:disabled {
+    cursor: auto;
+}
+
+.p-inputnumber-button:not(:disabled):hover {
+    background: ${n2("inputnumber.button.hover.background")};
+    color: ${n2("inputnumber.button.hover.color")};
+}
+
+.p-inputnumber-button:not(:disabled):active {
+    background: ${n2("inputnumber.button.active.background")};
+    color: ${n2("inputnumber.button.active.color")};
+}
+
+.p-inputnumber-stacked .p-inputnumber-button {
+    position: relative;
+    border: 0 none;
+}
+
+.p-inputnumber-stacked .p-inputnumber-button-group {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    inset-block-start: 1px;
+    inset-inline-end: 1px;
+    height: calc(100% - 2px);
+    z-index: 1;
+}
+
+.p-inputnumber-stacked .p-inputnumber-increment-button {
+    padding: 0;
+    border-start-end-radius: calc(${n2("inputnumber.button.border.radius")} - 1px);
+}
+
+.p-inputnumber-stacked .p-inputnumber-decrement-button {
+    padding: 0;
+    border-end-end-radius: calc(${n2("inputnumber.button.border.radius")} - 1px);
+}
+
+.p-inputnumber-stacked .p-inputnumber-button {
+    flex: 1 1 auto;
+    border: 0 none;
+}
+
+.p-inputnumber-horizontal .p-inputnumber-button {
+    border: 1px solid ${n2("inputnumber.button.border.color")};
+}
+
+.p-inputnumber-horizontal .p-inputnumber-button:hover {
+    border-color: ${n2("inputnumber.button.hover.border.color")};
+}
+
+.p-inputnumber-horizontal .p-inputnumber-button:active {
+    border-color: ${n2("inputnumber.button.active.border.color")};
+}
+
+.p-inputnumber-horizontal .p-inputnumber-increment-button {
+    order: 3;
+    border-start-end-radius: ${n2("inputnumber.button.border.radius")};
+    border-end-end-radius: ${n2("inputnumber.button.border.radius")};
+    border-inline-start: 0 none;
+}
+
+.p-inputnumber-horizontal .p-inputnumber-input {
+    order: 2;
+    border-radius: 0;
+}
+
+.p-inputnumber-horizontal .p-inputnumber-decrement-button {
+    order: 1;
+    border-start-start-radius: ${n2("inputnumber.button.border.radius")};
+    border-end-start-radius: ${n2("inputnumber.button.border.radius")};
+    border-inline-end: 0 none;
+}
+
+.p-floatlabel:has(.p-inputnumber-horizontal) label {
+    margin-inline-start: ${n2("inputnumber.button.width")};
+}
+
+.p-inputnumber-vertical {
+    flex-direction: column;
+}
+
+.p-inputnumber-vertical .p-inputnumber-button {
+    border: 1px solid ${n2("inputnumber.button.border.color")};
+    padding: ${n2("inputnumber.button.vertical.padding")};
+}
+
+.p-inputnumber-vertical .p-inputnumber-button:hover {
+    border-color: ${n2("inputnumber.button.hover.border.color")};
+}
+
+.p-inputnumber-vertical .p-inputnumber-button:active {
+    border-color: ${n2("inputnumber.button.active.border.color")};
+}
+
+.p-inputnumber-vertical .p-inputnumber-increment-button {
+    order: 1;
+    border-start-start-radius: ${n2("inputnumber.button.border.radius")};
+    border-start-end-radius: ${n2("inputnumber.button.border.radius")};
+    width: 100%;
+    border-block-end: 0 none;
+}
+
+.p-inputnumber-vertical .p-inputnumber-input {
+    order: 2;
+    border-radius: 0;
+    text-align: center;
+}
+
+.p-inputnumber-vertical .p-inputnumber-decrement-button {
+    order: 3;
+    border-end-start-radius: ${n2("inputnumber.button.border.radius")};
+    border-end-end-radius: ${n2("inputnumber.button.border.radius")};
+    width: 100%;
+    border-block-start: 0 none;
+}
+
+.p-inputnumber-input {
+    flex: 1 1 auto;
+}
+
+.p-inputnumber-fluid {
+    width: 100%;
+}
+
+.p-inputnumber-fluid .p-inputnumber-input {
+    width: 1%;
+}
+
+.p-inputnumber-fluid.p-inputnumber-vertical .p-inputnumber-input {
+    width: 100%;
+}
+
+.p-inputnumber:has(.p-inputtext-sm) .p-inputnumber-button .p-icon {
+    font-size: ${n2("form.field.sm.font.size")};
+    width: ${n2("form.field.sm.font.size")};
+    height: ${n2("form.field.sm.font.size")};
+}
+
+.p-inputnumber:has(.p-inputtext-lg) .p-inputnumber-button .p-icon {
+    font-size: ${n2("form.field.lg.font.size")};
+    width: ${n2("form.field.lg.font.size")};
+    height: ${n2("form.field.lg.font.size")};
 }
 `;
 var style$9 = ({ dt: n2 }) => `
@@ -4994,8 +5173,8 @@ export {
   r$R as ay,
   l$9 as az,
   isClient as b,
-  style as b$,
-  style$q as b0,
+  style$3 as b$,
+  style$r as b0,
   hasClass as b1,
   getOuterWidth as b2,
   getOuterHeight as b3,
@@ -5006,42 +5185,42 @@ export {
   getWindowScrollTop as b8,
   ZIndex as b9,
   nestedPosition as bA,
-  style$j as bB,
-  style$i as bC,
-  style$h as bD,
-  style$g as bE,
-  style$f as bF,
-  style$e as bG,
+  style$k as bB,
+  style$j as bC,
+  style$i as bD,
+  style$h as bE,
+  style$g as bF,
+  style$f as bG,
   contains as bH,
   find as bI,
-  style$d as bJ,
-  style$c as bK,
+  style$e as bJ,
+  style$d as bK,
   isVisible as bL,
-  style$b as bM,
+  style$c as bM,
   getFocusableElements as bN,
   relativePosition as bO,
   absolutePosition as bP,
   isAndroid as bQ,
-  style$a as bR,
-  style$9 as bS,
-  style$8 as bT,
-  style$7 as bU,
-  style$6 as bV,
-  style$5 as bW,
-  style$4 as bX,
-  style$3 as bY,
-  style$2 as bZ,
-  style$1 as b_,
+  style$b as bR,
+  style$a as bS,
+  clearSelection as bT,
+  getSelection as bU,
+  style$9 as bV,
+  style$8 as bW,
+  style$7 as bX,
+  style$6 as bY,
+  style$5 as bZ,
+  style$4 as b_,
   createElement as ba,
   fadeIn as bb,
   isTouchDevice as bc,
   getAttribute as bd,
-  style$p as be,
-  style$o as bf,
+  style$q as be,
+  style$p as bf,
   getHeight as bg,
   getWidth as bh,
   getOffset as bi,
-  style$n as bj,
+  style$o as bj,
   getLastFocusableElement as bk,
   focus as bl,
   getFirstFocusableElement as bm,
@@ -5049,18 +5228,21 @@ export {
   unblockBodyScroll as bo,
   $dt as bp,
   blockBodyScroll as bq,
-  style$m as br,
+  style$n as br,
   addStyle as bs,
-  style$l as bt,
+  style$m as bt,
   isRTL as bu,
-  style$k as bv,
+  style$l as bv,
   findLastIndex as bw,
   getHiddenElementOuterWidth as bx,
   getHiddenElementOuterHeight as by,
   isPrintableCharacter as bz,
-  style$r as c,
-  h$4 as c0,
-  definePreset as c1,
+  style$s as c,
+  style$2 as c0,
+  style$1 as c1,
+  style as c2,
+  h$4 as c3,
+  definePreset as c4,
   config_default as d,
   isNotEmpty$1 as e,
   dt as f,
