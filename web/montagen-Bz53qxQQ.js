@@ -263,7 +263,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-db98ba41] {
+}.explorer-container[data-v-00aee052] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -518,11 +518,11 @@ img[data-v-11358f43] {
 .tw-justify-items-center {\r
     justify-items: center
 }\r
-.tw-gap-8 {\r
-    gap: 2rem
-}\r
 .tw-gap-2 {\r
     gap: 0.5rem
+}\r
+.tw-gap-8 {\r
+    gap: 2rem
 }\r
 .tw-overflow-auto {\r
     overflow: auto
@@ -699,11 +699,12 @@ img[data-v-11358f43] {
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, ab as withKeys, n as nextTick$1, a1 as normalizeStyle, j as renderSlot$1, q as toRaw, Z as onUnmounted, T as Teleport, a5 as onBeforeUnmount, a3 as provide, ac as createApp } from "./assets/vue-ChYyLYeB.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$d, r as script$e, u as useToast, t as script$f, v as script$g, w as useConfirm, x as script$h, y as script$i, z as script$j, A as script$k, B as script$l, C as customAlphabet, D as script$m, F as script$n, G as script$o, H as z, I as script$p, J as DialogService, K as ConfirmationService, L as mixpanel, M as createPinia, N as ToastService } from "./assets/vendor-C2n3B-7w.js";
+import { d as defineStore, s as script, e as storeToRefs, E as ElFormItem, f as ElInput, g as ElButton, h as ElForm, i as script$1, T as Tooltip, j as script$2, k as script$3, l as script$4, S as Split, m as script$5, n as script$6, o as script$7, p as script$8, q as script$9, r as script$a, t as script$b, u as script$d, v as script$e, w as useToast, x as script$f, y as script$g, z as useConfirm, A as script$h, B as script$i, C as script$j, D as script$k, F as script$l, G as customAlphabet, H as script$m, I as script$n, J as script$o, K as z, L as script$p, M as DialogService, N as ConfirmationService, O as mixpanel, P as createPinia, Q as ToastService } from "./assets/vendor-60epxXrn.js";
 import { l as lodashExports } from "./assets/lodash-CNwZySND.js";
 import { w as usePrimeVue, x as script$c, P as PrimeVue, y as index$3 } from "./assets/primevue-DZch12XG.js";
 import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-dK-pIQ5W.js";
 import { c0 as h, c1 as definePreset } from "./assets/primeuix-CMDX3_63.js";
+import { i as index$4 } from "./assets/fingerprintjs-Cb7jsgmG.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-Bq6ymYKz.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
@@ -68484,6 +68485,28 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
       const debouncedFetch = debounceFetch(fetchProject, 1e3);
       return debouncedFetch(projectId);
     },
+    async fetchProjectDetail(id) {
+      var _a2, _b2;
+      let response = await app$1.api.fetchApi(`/Montagen/Proj/${id}`);
+      const json = await response.json();
+      this.setActiveProject(json.data);
+      this.setUPloadAsset(json.data || []);
+      this.propertyConfig = json.data.configInfo;
+      if (((_a2 = this.workflowCips) == null ? void 0 : _a2.fileType) == "timeline") {
+        let id2 = this.workflowCips.key;
+        let temp = json.data.timelines.find((item) => item.timelineData.refId == id2);
+        if (temp) {
+          this.workflowCips.nodes = temp.nodes;
+        }
+      } else if (((_b2 = this.workflowCips) == null ? void 0 : _b2.fileType) == "workflows") {
+        let id2 = this.workflowCips.key;
+        let temp = json.data.workflows.find((item) => item.workflowId == id2);
+        if (temp) {
+          this.workflowCips.nodes = temp.nodes;
+        }
+      }
+      return json.data;
+    },
     // 
     setUPloadAsset(data) {
       let assets = data.assets || [];
@@ -71065,7 +71088,7 @@ const _sfc_main$f = {};
 function _sfc_render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
-      createBaseVNode("span", null, "Choose Project")
+      createBaseVNode("span", null, "Open project")
     ], -1)
   ]));
 }
@@ -71508,7 +71531,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     const tabs = computed(() => {
       return [
         {
-          label: "Local",
+          label: "Local Project",
           code: "local",
           items: list.value.map((item) => {
             item.name = item.baseInfo.name;
@@ -71524,7 +71547,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       if (!tab) return;
       getOpendWorkFlow(selectedTab.value);
       selectedTab.value = tab;
-      workSpaceStore.getProjectDetail(tab);
+      workSpaceStore.fetchProjectDetail(tab);
     };
     const getOpendWorkFlow = async (projectId) => {
       let tempOpenedWorkFlow = app$1.extensionManager.workflow.openWorkflows;
@@ -71624,7 +71647,7 @@ const _sfc_main$8 = {};
 function _sfc_render(_ctx, _cache) {
   return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
     createBaseVNode("h3", { class: "tw-px-4" }, [
-      createBaseVNode("span", null, "Choose Workflow")
+      createBaseVNode("span", null, "Get Started with a Template")
     ], -1)
   ]));
 }
@@ -71715,7 +71738,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     const tabs = computed(() => {
       return [
         {
-          label: "Locals",
+          label: "Montagen Examples",
           code: "locals",
           items: tabLists.value.map((item) => {
             return {
@@ -71906,7 +71929,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       return [
         { title: (_b2 = (_a2 = activeProject.value) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.name, expanded: true },
-        { title: "Nodes", expanded: false },
+        { title: "Adapters", expanded: false },
         { title: "Properties", expanded: false }
       ];
     });
@@ -72728,14 +72751,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     onClick: chooseProject
                   }, null, 512), [
                     [_directive_tooltip, "Open project"]
-                  ]),
-                  withDirectives(createVNode(_component_Button, {
-                    text: "",
-                    icon: "pi pi-refresh",
-                    class: "p-button-secondary py-1 2xl:py-2",
-                    onClick: refreshList
-                  }, null, 512), [
-                    [_directive_tooltip, "Refresh project"]
                   ])
                 ])
               ]),
@@ -72879,7 +72894,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-db98ba41"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-00aee052"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73469,9 +73484,27 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         });
       }
     };
+    const addBuriedPoint = async () => {
+      const res = await app$1.api.fetchApi("/system_stats");
+      let data = await res.json();
+      const fp = await index$4.load();
+      const result = await fp.get();
+      console.log("result_浏览器指纹", result);
+      console.log("data", data, window.my_mixpanel);
+      const mixpanel2 = window.my_mixpanel;
+      mixpanel2.alias(`user_${result.visitorId}`);
+      mixpanel2.people.set({
+        "$email": "user@example.com_123",
+        "$name": "John Doe_123",
+        "signup_date": (/* @__PURE__ */ new Date()).toISOString(),
+        "comfyui_version": data.system.comfyui_version,
+        "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"]
+      });
+    };
     onMounted(() => {
       try {
         init2();
+        addBuriedPoint();
       } catch (e) {
       }
     });
@@ -73606,7 +73639,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         );
         previewWidget.computeSize = function(width) {
           if (!this.parentEl.hidden) {
-            if (this.aspectRatio) {
+            if (this.aspectRatio || this.type == "audio") {
+              if (this.type == "audio") {
+                return [width, 25];
+              }
               let height = (previewNode.size[0] - 20) / this.aspectRatio + 10;
               if (!(height > 0)) {
                 height = 0;
@@ -74136,12 +74172,10 @@ mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
   track_pageview: false,
   autocapture: false,
   persistence: "localStorage",
-  ignore_dnt: true
+  ignore_dnt: true,
+  distinct_id: "USER_REGISTERED_ID_12345"
 });
-mixpanel.track("User Registered", {
-  "Registration Source": "Facebook-2024",
-  "Referrer": "campaign-source"
-});
+window.my_mixpanel = mixpanel;
 const ComfyUIPreset = definePreset(index$3, {
   semantic: {
     primary: index$3["primitive"].blue
