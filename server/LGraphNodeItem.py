@@ -130,7 +130,13 @@ class LGraphNodeItem:
         return -1
 
     def set_main_content(
-        self, main_content: str, start=None, duration=None, meta={}, flush=False
+        self,
+        main_content: str,
+        start=None,
+        duration=None,
+        meta={},
+        addition_meta={},
+        flush=False,
     ):
         if self.type == TEXTTYPE:
             self.text = main_content
@@ -140,7 +146,9 @@ class LGraphNodeItem:
         len_clips = len(clips)
         if len_clips == 0:
             clip_id = to_base36_random()
-            clip = MontagenClip(self.timeline, {**self.default, **meta, **self.meta})
+            clip = MontagenClip(
+                self.timeline, {**self.default, **meta, **self.meta, **addition_meta}
+            )
             clip.clip_id = clip_id
             clip.workflow_id = self.workflow_id
             clip.node_id = self.node_id
@@ -169,6 +177,7 @@ class LGraphNodeItem:
                     clip.text = main_content
                 else:
                     clip.src = main_content
+                clip.update_data(addition_meta)
                 if flush:
                     if start:
                         clip.start = start

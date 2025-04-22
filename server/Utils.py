@@ -222,11 +222,10 @@ def localfile_video_audio_info(file_path: str, total_size, type):
 
 
 MONTAGENPROJ = "MontagenProj"
-MONTAGENRESOURCESTYPE = "MONTAGENRESOURCES"
-MONTAGENTIMERANGETYPE = "MONTAGENTIMERANGE"
-MONTAGENMETASTYPE = "MONTAGENMETAS"
-MONTAGENTIMELINETYPE = "MONTAGENTIMELINE"
-MONTAGENACTIONTYPE = "MONTAGENACTION"
+MONTAGENRESOURCESTYPE = "RESOURCES"
+MONTAGENTIMERANGETYPE = "TIMERANGE"
+MONTAGENTIMELINETYPE = "TIMELINE"
+MONTAGENACTIONTYPE = "ACTION"
 DEFAULTSINGLENAME = "Untitled"
 DEFAULTLISTNAME = "Untitled List"
 DEFAULTWORKFLOWNAME = "Untitled Workflow"
@@ -380,6 +379,7 @@ image_option = {
         "BOOLEAN",
         {"default": False, "tooltip": "Preload the clip."},
     ),
+    "desc": ("STRING", {"default": ""}),
 }
 audio_option = {
     "active": ("BOOLEAN", {"default": True, "tooltip": "Activate the audio."}),

@@ -7,3 +7,7 @@ class AudioListAdapter(BaseListAdapter):
         self.type = "audio"
 
     DESCRIPTION = "Montagen Audio List Adapter"
+
+    @classmethod
+    def default_name(s):
+        return "audio"

@@ -251,7 +251,9 @@ class MontagenTimeline:
     def is_in_use(self, file_name):
         for clip in self._getNodes():
             if clip.src:
-                return file_name in clip.src
+                if file_name in clip.src:
+                    return True
+        return False
 
     def _getNodes(
         self,

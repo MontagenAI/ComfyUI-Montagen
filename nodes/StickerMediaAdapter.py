@@ -15,7 +15,11 @@ class StickerMediaAdapter(VideoMediaAdapter):
         super().__init__()
         self.type = "gif"
 
-    DESCRIPTION = "Montagen Sticker Media Adapter"
+    DESCRIPTION = "Sticker Adapter"
+
+    @classmethod
+    def default_name(s):
+        return "sticker"
 
     @classmethod
     def ClIP_INPUT_TYPES(s):
@@ -47,7 +51,7 @@ class StickerMediaAdapter(VideoMediaAdapter):
     ):
 
         images = keywords.get("images", None)
-        alpha = keywords.get("alpha", None)
+        alpha = keywords.get("alphas", None)
         preview_fps = keywords.get("preview_fps", 25)
         if images == None:
             raise Exception("images is required.")

@@ -189,7 +189,6 @@ class MontagenWorkflow:
             os.remove(self.workflow_json_path)
 
     def rename_workflow(self, name: str, description: str):
-        name = name or DEFAULTWORKFLOWNAME
         if description and description != self.workflow_desc:
             self.workflow_desc = description
         if name and name != self.workflow_name:

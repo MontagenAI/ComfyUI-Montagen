@@ -239,7 +239,7 @@ import { app } from "../../../scripts/app.js";
     name: "Comfy.Montagen.TextEditor1",
     beforeRegisterNodeDef(nodeType, nodeData) {
       // console.log("registering_TextEditor", nodeType, nodeData);
-      if (nodeData.name == "MontagenTimeRangeCreateNode") {
+      if (nodeData.name == "MontagenSRTListParser") {
         console.log("找到了这个named 节点", nodeType.prototype, nodeData);
         chainCallback(nodeType.prototype, "onNodeCreated", function () {
           changeWidget.call(this);

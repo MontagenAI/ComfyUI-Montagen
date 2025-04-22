@@ -7,3 +7,7 @@ class VideoListAdapter(BaseListAdapter):
         self.type = "video"
 
     DESCRIPTION = "Montagen Video List Adapter"
+
+    @classmethod
+    def default_name(s):
+        return "video"

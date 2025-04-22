@@ -16,12 +16,10 @@ class VideoMediaAdapter(ImageMediaAdapter):
 
     @classmethod
     def ClIP_INPUT_TYPES(s):
-        base = super().ClIP_INPUT_TYPES()
-        optional = base.get("optional")
-        del optional["file"]
         return {
             "optional": {
-                **optional,
+                "images": ("IMAGE", {"tooltip": "The images to preview."}),
+                "alphas": ("MASK", {"tooltip": "The alphas to preview."}),
                 "preview_fps": (
                     "INT",
                     {
@@ -34,7 +32,11 @@ class VideoMediaAdapter(ImageMediaAdapter):
 
     file_output_index = 3
 
-    DESCRIPTION = "Montagen Video Media Adapter"
+    DESCRIPTION = "Video Adapter"
+
+    @classmethod
+    def default_name(s):
+        return "video"
 
     def save_func_inner(
         self,
@@ -53,7 +55,7 @@ class VideoMediaAdapter(ImageMediaAdapter):
         **keywords
     ):
         images = keywords.get("images", None)
-        alpha = keywords.get("alpha", None)
+        alpha = keywords.get("alphas", None)
         preview_fps = keywords.get("preview_fps", 25)
         if images == None:
             raise Exception("images is required.")

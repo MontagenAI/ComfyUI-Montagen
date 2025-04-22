@@ -311,7 +311,6 @@ class LGraphNode:
                 self.node_name, item_index, resoureces[index], self.type
             )
             self.set_asset(item_index, material)
-            self.workflow.workflow_del_material(old_file)
             if not item:
                 item = self.create_item()
                 item.item_id = item_id
@@ -319,6 +318,7 @@ class LGraphNode:
             item.set_main_content(
                 src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
+            self.workflow.workflow_del_material(old_file)
             index += 1
             used_item_ids.add(item.item_id)
         if action == SYNCACION:
@@ -357,7 +357,11 @@ class LGraphNode:
                 item.delete()
 
     def sync_time_images_range(
-        self, time_range: MontagenTimeRange, images: list, action: str
+        self,
+        time_range: MontagenTimeRange,
+        images: list,
+        action: str,
+        desc_list: list[str],
     ):
         if action == BYPASSACTION:
             return
@@ -381,14 +385,20 @@ class LGraphNode:
                 self.node_name, item_index, file_fullName, self.type
             )
             self.set_asset(item_index, material)
-            self.workflow.workflow_del_material(old_file)
             if not item:
                 item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
+            meta = {"desc": desc_list[index] if desc_list else ""}
             item.set_main_content(
-                src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
+                src,
+                time_unit.start,
+                time_unit.duration,
+                meta=self.meta,
+                addition_meta=meta,
+                flush=True,
             )
+            self.workflow.workflow_del_material(old_file)
             index += 1
             used_item_ids.add(item.item_id)
         if action == SYNCACION:
@@ -402,10 +412,10 @@ class LGraphNode:
     def sync_file_meta(self, file_meta: dict):
         old_name = self.single_file_name
         self.single_asset = file_meta
-        if old_name != self.single_file_name and not self.reserve_file and old_name:
-            self.workflow.workflow_del_material(old_name)
         src = file_meta.get("src")
         self.create_single_item_if_not_exists(src)
+        if old_name != self.single_file_name and not self.reserve_file and old_name:
+            self.workflow.workflow_del_material(old_name)
 
     def sync_file_images(self, property: dict, images: list):
         format = property.get("format")
@@ -430,8 +440,8 @@ class LGraphNode:
             images[0].save(tmp_fullName)
         if os.path.exists(tmp_fullName):
             src, old_file = self.copy_output(tmp_fullName, file_fullName, 0)
-            self.workflow.workflow_del_material(old_file)
             self.create_single_item_if_not_exists(src)
+            self.workflow.workflow_del_material(old_file)
 
     def sync_file_buffer(self, property: dict, buffer: io.BytesIO):
         format = property.get("format")
@@ -440,8 +450,8 @@ class LGraphNode:
             f.write(buffer.getbuffer())
         if os.path.exists(tmp_fullName):
             src, old_file = self.copy_output(tmp_fullName, file_fullName, 0)
-            self.workflow.workflow_del_material(old_file)
             self.create_single_item_if_not_exists(src)
+            self.workflow.workflow_del_material(old_file)
 
     def sync_file_text(self, text: str):
         self.create_single_item_if_not_exists(text)

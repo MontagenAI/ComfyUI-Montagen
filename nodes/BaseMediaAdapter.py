@@ -19,7 +19,7 @@ class BaseMediaAdapter(BaseWorkflow):
         clips_types = s.ClIP_INPUT_TYPES()
         return {
             "required": {
-                "name": ("STRING", {"default": DEFAULTSINGLENAME}),
+                "name": ("STRING", {"default": s.default_name()}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
                 **clips_types.get("required", {}),
             },
@@ -37,6 +37,10 @@ class BaseMediaAdapter(BaseWorkflow):
     @classmethod
     def ClIP_INPUT_TYPES(s):
         return {}
+
+    @classmethod
+    def default_name(s):
+        return DEFAULTSINGLENAME
 
     @classmethod
     def IS_CHANGED(s, **keywords):

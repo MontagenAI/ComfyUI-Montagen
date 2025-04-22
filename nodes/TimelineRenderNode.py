@@ -32,7 +32,7 @@ class TimelineRenderNode(BaseWorkflow):
             },
         }
 
-    DESCRIPTION = "Montagen Timeline Render"
+    DESCRIPTION = "Render Timeline"
 
     RETURN_TYPES = ()
     FUNCTION = "save_func"

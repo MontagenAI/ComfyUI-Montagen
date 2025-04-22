@@ -14,15 +14,15 @@ class TextListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "text"
 
-    DESCRIPTION = "Montagen Text List Adapter"
+    DESCRIPTION = "Text List Adapter"
 
     @classmethod
     def INPUT_TYPES(s):
         return {
             "required": {
-                "name": ("STRING", {"default": DEFAULTLISTNAME}),
-                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
+                "name": ("STRING", {"default": s.default_name()}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
+                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
@@ -35,8 +35,12 @@ class TextListAdapter(BaseListAdapter):
             },
         }
 
+    @classmethod
+    def default_name(s):
+        return "text"
+
     def save_func(
-        self, name, action, tag, prompt, extra_pnginfo, unique_id, **keywords
+        self, name, tag, prompt, extra_pnginfo, unique_id, action=None, **keywords
     ):
         timeline = keywords.get("timeline", None)[0]
         name = name[0]

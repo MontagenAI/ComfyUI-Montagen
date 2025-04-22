@@ -30,7 +30,7 @@ class TimeRangeNode(BaseWorkflow):
             },
         }
 
-    DESCRIPTION = "Montagen Time Range Create"
+    DESCRIPTION = "SRT List Parser"
 
     RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING", MONTAGENACTIONTYPE)
 

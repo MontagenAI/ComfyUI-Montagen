@@ -16,12 +16,16 @@ class AudioMediaAdapter(BaseMediaAdapter):
     def ClIP_INPUT_TYPES(s):
         return {
             "optional": {
-                "audioInput": ("AUDIO", {"tooltip": "The audio to preview."}),
+                "audio": ("AUDIO", {"tooltip": "The audio to preview."}),
                 "file": ("STRING", {"montagen_upload": True, "montagen_type": "audio"}),
             }
         }
 
-    DESCRIPTION = "Montagen Audio Media Adapter"
+    @classmethod
+    def default_name(s):
+        return "audio"
+
+    DESCRIPTION = "Audio Adapter"
 
     file_output_index = 2
 
@@ -41,7 +45,7 @@ class AudioMediaAdapter(BaseMediaAdapter):
         unique_id: int,
         **keywords
     ):
-        audioInput = keywords.get("audioInput", None)
+        audioInput = keywords.get("audio", None)
         if audioInput == None:
             raise Exception("No audio input provided.")
         buff = io.BytesIO()

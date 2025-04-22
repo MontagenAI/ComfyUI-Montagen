@@ -14,16 +14,21 @@ class ImageListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "image"
 
-    DESCRIPTION = "Montagen Image List Adapter"
+    DESCRIPTION = "Image List Adapter"
 
     @classmethod
     def LIST_INPUT_TYPES(s):
         return {
             "optional": {
-                "images": ("IMAGE", {"tooltip": "The image list."}),
-                "alphas": ("MASK", {"tooltip": "The alpha list."}),
+                "imageList": ("IMAGE", {"tooltip": "The image list."}),
+                "alphaList": ("MASK", {"tooltip": "The alpha list."}),
+                "descList": ("STRING", {"tooltip": "The alpha list."}),
             }
         }
+
+    @classmethod
+    def default_name(s):
+        return "image"
 
     def save_images_time_range(
         self,
@@ -43,7 +48,8 @@ class ImageListAdapter(BaseListAdapter):
         action: str,
         **keywords
     ):
-        imagesList = keywords.get("images", None)
+        imagesList = keywords.get("imageList", None)
+        descList = keywords.get("descList", None)
         if not imagesList:
             raise ValueError("images must be provided")
         image_len = len(imagesList)
@@ -51,7 +57,7 @@ class ImageListAdapter(BaseListAdapter):
         if image_len != time_rang_len:
             raise ValueError("images and time_range must be the same length")
         out_images = []
-        alphasList = keywords.get("alphas", None)
+        alphasList = keywords.get("alphaList", None)
         image_index = 0
         for images in imagesList:
             image_len = len(images)
@@ -72,5 +78,5 @@ class ImageListAdapter(BaseListAdapter):
             for img in images
         ]
 
-        node.sync_time_images_range(time_range, images, action)
+        node.sync_time_images_range(time_range, images, action, descList)
         workflow.save()

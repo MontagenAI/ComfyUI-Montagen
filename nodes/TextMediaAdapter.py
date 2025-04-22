@@ -10,9 +10,13 @@ class TextMediaAdapter(BaseMediaAdapter):
         super().__init__()
         self.type = "text"
 
-    DESCRIPTION = "Montagen Text Media Adapter"
+    DESCRIPTION = "Text Adapter"
 
     file_output_index = -1
+
+    @classmethod
+    def default_name(s):
+        return "text"
 
     @classmethod
     def ClIP_INPUT_TYPES(s):

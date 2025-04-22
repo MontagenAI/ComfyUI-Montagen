@@ -96,7 +96,7 @@ class MontagenClip:
         return self.project.get_workflow_node_item(
             self.workflow_id, self.timeline_name, self.node_id, self.item_id
         )
-    
+
     @property
     def workflow_node(self):
         return self.project.get_workflow_node(
@@ -138,6 +138,9 @@ class MontagenClip:
 
     def get_data(self, name: str, default):
         return self.clip_data.get(name, default)
+
+    def update_data(self, meta={}):
+        self.clip_data.update(meta)
 
     def is_equal(self, clip: MontagenClip):
         if self.clip_id == clip.clip_id:

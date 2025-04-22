@@ -7,3 +7,7 @@ class StickerListAdapter(BaseListAdapter):
         self.type = "gif"
 
     DESCRIPTION = "Montagen Sticker List Adapter"
+
+    @classmethod
+    def default_name(s):
+        return "sticker"

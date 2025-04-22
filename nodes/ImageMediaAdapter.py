@@ -16,15 +16,19 @@ class ImageMediaAdapter(BaseMediaAdapter):
     def ClIP_INPUT_TYPES(s):
         return {
             "optional": {
-                "images": ("IMAGE", {"tooltip": "The images to preview."}),
+                "image": ("IMAGE", {"tooltip": "The image to preview."}),
                 "alpha": ("MASK", {"tooltip": "The alpha to preview."}),
                 "file": ("STRING", {"montagen_upload": True, "montagen_type": "image"}),
             },
         }
 
-    DESCRIPTION = "Montagen Image Media Adapter"
+    DESCRIPTION = "Image Adapter"
 
     file_output_index = 2
+
+    @classmethod
+    def default_name(s):
+        return "image"
 
     def save_func_inner(
         self,
@@ -42,7 +46,7 @@ class ImageMediaAdapter(BaseMediaAdapter):
         unique_id: int,
         **keywords
     ):
-        images = keywords.get("images", None)
+        images = keywords.get("image", None)
         alpha = keywords.get("alpha", None)
         if images == None:
             raise Exception("images is required.")

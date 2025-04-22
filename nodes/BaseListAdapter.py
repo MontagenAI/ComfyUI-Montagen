@@ -25,15 +25,18 @@ class BaseListAdapter(BaseWorkflow):
         clips_types = s.LIST_INPUT_TYPES()
         return {
             "required": {
-                "name": ("STRING", {"default": DEFAULTLISTNAME}),
-                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
+                "name": ("STRING", {"default": s.default_name()}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
+                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
                 **clips_types.get("required", {}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
                 "action": (MONTAGENACTIONTYPE,),
-                "resoureces": (MONTAGENRESOURCESTYPE, {"tooltip": "The resoureces."}),
+                "resoureceList": (
+                    MONTAGENRESOURCESTYPE,
+                    {"tooltip": "The resoureces."},
+                ),
                 **clips_types.get("optional", {}),
             },
             "hidden": {
@@ -44,6 +47,10 @@ class BaseListAdapter(BaseWorkflow):
         }
 
     INPUT_IS_LIST = True
+
+    @classmethod
+    def default_name(s):
+        return DEFAULTLISTNAME
 
     @classmethod
     def LIST_INPUT_TYPES(s):
@@ -95,7 +102,7 @@ class BaseListAdapter(BaseWorkflow):
             raise ValueError("resoureces length must be equal to time_range length")
 
     def save_func(
-        self, name, action, tag, prompt, extra_pnginfo, unique_id, **keywords
+        self, name, tag, prompt, extra_pnginfo, unique_id, action=None, **keywords
     ):
         timeline = keywords.get("timeline", None)[0]
         name = name[0]
