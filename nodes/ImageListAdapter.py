@@ -7,7 +7,6 @@ import torch
 from comfy_extras import nodes_compositing
 import numpy as np
 from PIL import Image
-from ..server.Utils import MONTAGENDESCTYPE
 
 
 class ImageListAdapter(BaseListAdapter):
@@ -23,13 +22,12 @@ class ImageListAdapter(BaseListAdapter):
             "optional": {
                 "imageList": ("IMAGE", {"tooltip": "The image list."}),
                 "alphaList": ("MASK", {"tooltip": "The alpha list."}),
-                "descList": (MONTAGENDESCTYPE,),
             }
         }
 
     @classmethod
     def default_name(s):
-        return "image"
+        return "imageList"
 
     def save_images_time_range(
         self,
@@ -50,7 +48,6 @@ class ImageListAdapter(BaseListAdapter):
         **keywords
     ):
         imagesList = keywords.get("imageList", None)
-        descList = keywords.get("descList", None)
         if not imagesList:
             raise ValueError("images must be provided")
         image_len = len(imagesList)
@@ -79,5 +76,5 @@ class ImageListAdapter(BaseListAdapter):
             for img in images
         ]
 
-        node.sync_time_images_range(time_range, images, action, descList)
+        node.sync_time_images_range(time_range, images, action)
         workflow.save()

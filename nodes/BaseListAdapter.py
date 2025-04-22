@@ -27,13 +27,13 @@ class BaseListAdapter(BaseWorkflow):
             "required": {
                 "name": ("STRING", {"default": s.default_name()}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
-                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
+                "timeRangeList": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
                 **clips_types.get("required", {}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
                 "action": (MONTAGENACTIONTYPE,),
-                "resoureceList": (
+                "resourceList": (
                     MONTAGENRESOURCESTYPE,
                     {"tooltip": "The resoureces."},
                 ),
@@ -128,10 +128,10 @@ class BaseListAdapter(BaseWorkflow):
         if not timeline:
             raise ValueError("timeline is not found.")
 
-        resoureces: list[str] = keywords.get("resoureces", None)
+        resoureces: list[str] = keywords.get("resourceList", None)
         if resoureces:
             time_range: MontagenTimeRange = MontagenTimeRange(
-                keywords.get("timeRange", None)
+                keywords.get("timeRangeList", None)
             )
             if not time_range:
                 raise ValueError("time_range is required.")
@@ -140,7 +140,7 @@ class BaseListAdapter(BaseWorkflow):
             workflow.save()
         else:
             time_range: MontagenTimeRange = MontagenTimeRange(
-                keywords.get("timeRange", None)
+                keywords.get("timeRangeList", None)
             )
             if not time_range:
                 raise ValueError("time_range is required.")

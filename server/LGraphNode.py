@@ -361,7 +361,6 @@ class LGraphNode:
         time_range: MontagenTimeRange,
         images: list,
         action: str,
-        desc_list: list[str],
     ):
         if action == BYPASSACTION:
             return
@@ -389,7 +388,7 @@ class LGraphNode:
                 item = self.create_item()
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
-            meta = {"desc": desc_list[index] if desc_list else ""}
+            meta = {"desc": time_unit.content}
             item.set_main_content(
                 src,
                 time_unit.start,
