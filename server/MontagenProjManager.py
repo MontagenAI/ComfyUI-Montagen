@@ -74,7 +74,7 @@ class MontagenProjManager:
         MontagenProjManager.instance = self
         self.montagen_cache_manager = MontagenCacheManager()
         self.cache_key = "{}_montagen_projects"
-        self.templates = {}
+        self.templates = []
 
         @server.routes.get("/Montagen/Proj/List")
         @error_handling_decorator
@@ -515,12 +515,10 @@ class MontagenProjManager:
         @server.routes.get("/Montagen/Template/File/{filename:.+}")
         @error_handling_decorator
         async def file_server_template(request, register_action):
-            user_id = server.user_manager.get_request_user_id(request)
             filename = request.match_info.get("filename", None)
             if not filename:
                 raise Exception("filename is not found")
-            user_projs_root = self.get_user_projects_root(user_id)
-            path = os.path.join(user_projs_root, TEMPLATEPATH, filename)
+            path = os.path.join(TEMPLATEPATH, filename)
             filename = os.path.basename(path)
             content_type = (
                 mimetypes.guess_type(filename)[0] or "application/octet-stream"
@@ -610,10 +608,9 @@ class MontagenProjManager:
         return projects
 
     def get_templates(self, user_id: str) -> list[MontagenTemplate]:
-        if user_id in self.templates:
-            return self.templates[user_id]
-        user_projs_root = self.get_user_projects_root(user_id)
-        template_root = os.path.join(user_projs_root, TEMPLATEPATH)
+        if self.templates:
+            return self.templates
+        template_root = TEMPLATEPATH
         if not os.path.exists(template_root):
             os.makedirs(template_root)
             return []
@@ -625,7 +622,7 @@ class MontagenProjManager:
                 template = MontagenTemplate.create_from_path(template_path)
                 if template:
                     templates.append(template)
-        self.templates[user_id] = templates
+        self.templates = templates
         return templates
 
     def get_project(self, user_id: str, project_id: str) -> MontagenProj:

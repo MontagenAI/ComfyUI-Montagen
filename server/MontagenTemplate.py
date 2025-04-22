@@ -1,6 +1,7 @@
 import os
 import json
 from datetime import datetime
+from .Utils import TEMPLATEPATH
 
 
 class MontagenTemplate:
@@ -36,9 +37,9 @@ class MontagenTemplate:
 
     @property
     def cover(self):
-        cover = self.template_data.get("cover")
+        cover:str = self.template_data.get("cover")
         if cover:
-            return f"/Montagen/Template/File/{self.template_path_name}/{cover}"
+            return f"/Montagen/Template/File/{cover.strip('/')}"
         return None
 
     @property
@@ -56,7 +57,8 @@ class MontagenTemplate:
         raise ValueError(f"Invalid {template_json} file")
 
     def _load_workflow(self) -> dict[str, any]:
-        workflow_json = os.path.join(self.template_path, "workflow.json")
+        workflow_json:str = self.template_data.get("workflow")
+        workflow_json=os.path.join(TEMPLATEPATH, workflow_json.strip('/'))
         if not os.path.exists(workflow_json):
             raise FileNotFoundError(f"{workflow_json} file not found")
         with open(workflow_json, "r") as file:

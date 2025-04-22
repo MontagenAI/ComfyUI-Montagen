@@ -226,6 +226,7 @@ MONTAGENRESOURCESTYPE = "MONTAGENRESOURCES"
 MONTAGENTIMERANGETYPE = "MONTAGENTIMERANGE"
 MONTAGENMETASTYPE = "MONTAGENMETAS"
 MONTAGENTIMELINETYPE = "MONTAGENTIMELINE"
+MONTAGENACTIONTYPE = "MONTAGENACTION"
 DEFAULTSINGLENAME = "Untitled"
 DEFAULTLISTNAME = "Untitled List"
 DEFAULTWORKFLOWNAME = "Untitled Workflow"
@@ -240,10 +241,15 @@ LISTNODETYPE = "list_item"
 TIMERANGENODETYPE = "timerange"
 WORKFLOWBASEPATH = "workflows"
 TIMELINEBASEPATH = "timelines"
-MODIFYACTION = "modify"
-SYNCACION = "sync"
+MODIFYACTION = "update"
+SYNCACION = "rebuild"
+BYPASSACTION = "bypass"
 TMPPAHT = "tmp"
-TEMPLATEPATH = "templates"
+TEMPLATEPATH = os.path.abspath(
+    os.path.normpath(
+        os.path.join(os.path.dirname(__file__), "../", "example_workflows")
+    )
+)
 illegal_chars_pattern = r'[\\/:*?"<>|]'
 INFOFILE = "project.montagen"
 ASSETSDIR = "assets"

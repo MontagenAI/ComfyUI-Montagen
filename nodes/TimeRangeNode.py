@@ -1,7 +1,14 @@
 from ..server.Utils import MONTAGENTIMERANGETYPE
 from .BaseWorkflow import BaseWorkflow
-from ..server import MontagenSrtParser
-from ..server.Utils import TIMERANGENODETYPE, MODIFYACTION, SYNCACION
+from ..server.MontagenTimeRange import MontagenTime
+from ..server.Utils import (
+    TIMERANGENODETYPE,
+    MODIFYACTION,
+    SYNCACION,
+    BYPASSACTION,
+    MONTAGENACTIONTYPE,
+)
+import json
 
 
 class TimeRangeNode(BaseWorkflow):
@@ -10,8 +17,11 @@ class TimeRangeNode(BaseWorkflow):
     def INPUT_TYPES(s):
         return {
             "required": {
-                "content": ("STRING", {"multiline": True}),
-                "action": ([MODIFYACTION, SYNCACION], {"default": MODIFYACTION}),
+                "content": (MONTAGENTIMERANGETYPE,),
+                "action": (
+                    [MODIFYACTION, SYNCACION, BYPASSACTION],
+                    {"default": MODIFYACTION},
+                ),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -22,9 +32,9 @@ class TimeRangeNode(BaseWorkflow):
 
     DESCRIPTION = "Montagen Time Range Create"
 
-    RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING")
+    RETURN_TYPES = (MONTAGENTIMERANGETYPE, "STRING", MONTAGENACTIONTYPE)
 
-    OUTPUT_IS_LIST = (True, True)
+    OUTPUT_IS_LIST = (True, True, False)
 
     FUNCTION = "save_func"
 
@@ -44,22 +54,21 @@ class TimeRangeNode(BaseWorkflow):
         workflow.syn_workflow_node(workflow_node, False)
         node = workflow.workflow_data.get_node_by_unique_id(unique_id)
         node.node_type = TIMERANGENODETYPE
-        timerange = node.time_range
+
         subs = []
-        timerange_array = []
-        new_timerange = {"timeRange": timerange_array}
-        units = [new_timerange]
-        srt_subs = [*MontagenSrtParser.parse(content)]
+        units = []
+        srt_subs = [MontagenTime(item) for item in content]
         srt_subs.sort(key=lambda x: x.index)
+
         for sub in srt_subs:
-            unit = timerange.add_or_update(node.node_id, sub)
-            timerange_array.append(unit.serialize())
-            subs.append(sub.content)
-        if action == SYNCACION:
-            timerange.reset(new_timerange)
-        timerange.sort()
-        new_timerange["action"] = action
-        node.set_time_range_action()
+            item_id = f"{node.node_id}_{sub.index}"
+            sub.id = item_id
+            if sub.is_selected:
+                subs.append(sub.content)
+                units.append(sub.serialize())
+
+        if not units:
+            raise Exception("No time range selected")
         workflow.save()
         return {
             "ui": {
@@ -69,5 +78,5 @@ class TimeRangeNode(BaseWorkflow):
                     }
                 ]
             },
-            "result": (units, subs),
+            "result": (units, subs, action),
         }

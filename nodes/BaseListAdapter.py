@@ -4,6 +4,8 @@ from ..server.Utils import (
     MONTAGENTIMERANGETYPE,
     MONTAGENTIMELINETYPE,
     LISTNODETYPE,
+    MODIFYACTION,
+    MONTAGENACTIONTYPE,
 )
 from .BaseWorkflow import BaseWorkflow
 from ..server.LGraphNode import LGraphNode
@@ -24,16 +26,13 @@ class BaseListAdapter(BaseWorkflow):
         return {
             "required": {
                 "name": ("STRING", {"default": DEFAULTLISTNAME}),
-                "enableInput": (
-                    "BOOLEAN",
-                    {"default": False, "tooltip": "Enable input resources."},
-                ),
                 "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
                 **clips_types.get("required", {}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
+                "action": (MONTAGENACTIONTYPE,),
                 "resoureces": (MONTAGENRESOURCESTYPE, {"tooltip": "The resoureces."}),
                 **clips_types.get("optional", {}),
             },
@@ -55,8 +54,6 @@ class BaseListAdapter(BaseWorkflow):
         return datetime.now().timestamp()
 
     RETURN_TYPES = ()
-
-    ENABLE_INPUT_INDEX = 1
 
     FUNCTION = "save_func"
 
@@ -91,18 +88,21 @@ class BaseListAdapter(BaseWorkflow):
         len_res = len(resoureces)
         if len_res == 0:
             raise ValueError("resoureces is required.")
-        len_timelines = len(time_range)
+        len_timelines = len(time_range.time_range_selected)
         if len_timelines == 0:
             raise ValueError("time_range is required.")
         if len_res != len_timelines:
             raise ValueError("resoureces length must be equal to time_range length")
 
     def save_func(
-        self, name, enableInput, tag, prompt, extra_pnginfo, unique_id, **keywords
+        self, name, action, tag, prompt, extra_pnginfo, unique_id, **keywords
     ):
         timeline = keywords.get("timeline", None)[0]
         name = name[0]
-        enableInput = enableInput[0]
+        if action:
+            action = action[0]
+        else:
+            action = MODIFYACTION
         tag = tag[0]
         prompt = prompt[0]
         extra_pnginfo = extra_pnginfo[0]
@@ -120,40 +120,40 @@ class BaseListAdapter(BaseWorkflow):
         timeline = proj.get_timeline(timeline)
         if not timeline:
             raise ValueError("timeline is not found.")
-        if enableInput:
-            resoureces: list[str] = keywords.get("resoureces", None)
-            if resoureces:
-                time_range: MontagenTimeRange = MontagenTimeRange(
-                    keywords.get("timeRange", None)[0]
-                )
-                if not time_range:
-                    raise ValueError("time_range is required.")
-                self.validate_input(resoureces, time_range)
-                node.sync_time_resoureces_range(time_range, resoureces)
-                node.set_input_enbale(False, self.ENABLE_INPUT_INDEX)
-                workflow.save()
-            else:
-                time_range: MontagenTimeRange = MontagenTimeRange(
-                    keywords.get("timeRange", None)[0]
-                )
-                if not time_range:
-                    raise ValueError("time_range is required.")
-                self.save_images_time_range(
-                    name,
-                    user_id,
-                    project_id,
-                    proj,
-                    workflow_id,
-                    workflow,
-                    node_id,
-                    node,
-                    tag,
-                    prompt,
-                    extra_pnginfo,
-                    unique_id,
-                    time_range,
-                    **keywords,
-                )
+
+        resoureces: list[str] = keywords.get("resoureces", None)
+        if resoureces:
+            time_range: MontagenTimeRange = MontagenTimeRange(
+                keywords.get("timeRange", None)
+            )
+            if not time_range:
+                raise ValueError("time_range is required.")
+            self.validate_input(resoureces, time_range)
+            node.sync_time_resoureces_range(time_range, resoureces, action)
+            workflow.save()
+        else:
+            time_range: MontagenTimeRange = MontagenTimeRange(
+                keywords.get("timeRange", None)
+            )
+            if not time_range:
+                raise ValueError("time_range is required.")
+            self.save_images_time_range(
+                name,
+                user_id,
+                project_id,
+                proj,
+                workflow_id,
+                workflow,
+                node_id,
+                node,
+                tag,
+                prompt,
+                extra_pnginfo,
+                unique_id,
+                time_range,
+                action,
+                **keywords,
+            )
         return self.protocol_return(
             timeline, proj, workflow_id, project_id, user_id, node, extra_pnginfo
         )
@@ -173,6 +173,7 @@ class BaseListAdapter(BaseWorkflow):
         extra_pnginfo: dict,
         unique_id: int,
         time_range: MontagenTimeRange,
+        action: str,
         **keywords
     ):
         raise ValueError("resoureces is required.")

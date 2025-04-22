@@ -14,9 +14,9 @@ from .Utils import (
     flat_to_tree,
     tree_to_flat,
     supported_group_config_type,
-    TIMERANGENODETYPE,
     SYNCACION,
     MODIFYACTION,
+    BYPASSACTION,
 )
 from typing import TYPE_CHECKING
 from .LGraphNodeItem import LGraphNodeItem
@@ -216,14 +216,6 @@ class LGraphNode:
         return self.type is not None
 
     @property
-    def time_range(self) -> MontagenTimeRange:
-        if self.node_type == TIMERANGENODETYPE:
-            if "montagen_time_range" not in self.properties:
-                self.properties["montagen_time_range"] = {}
-            return MontagenTimeRange(self.properties["montagen_time_range"])
-        return None
-
-    @property
     def node_name(self) -> str:
         return self.properties.get("montagen_name", None)
 
@@ -291,33 +283,32 @@ class LGraphNode:
                 return True
         return False
 
-    def set_input_enbale(self, enable, index):
-        self.widgets[index] = enable
-
     def set_file_output(self, file_output_index):
         if file_output_index >= 0:
             self.widgets[file_output_index] = self.single_file_name
 
-    def set_time_range_action(self):
-        self.widgets[1] = MODIFYACTION
-
     def sync_time_resoureces_range(
-        self, time_range: MontagenTimeRange, resoureces: list[str]
+        self, time_range: MontagenTimeRange, resoureces: list[str], action: str
     ):
-        action = time_range.action
+        if action == BYPASSACTION:
+            return
         used_item_ids = set()
-        for i, time_unit in enumerate(time_range.time_range):
+        index = 0
+        for time_unit in time_range.time_range:
             item_id = time_unit.id
-            if not item_id:
-                continue
             item, item_index = self.Get_item_and_index(item_id)
+            if not time_unit.is_selected:
+                if item:
+                    used_item_ids.add(item.item_id)
+                continue
             if not item:
                 item_index = len(self.items)
+
             old_file = (
                 None if self.reserve_file else self.get_asset_file_name(item_index)
             )
             material, src = self.workflow.workflow_add_material(
-                self.node_name, item_index, resoureces[i], self.type
+                self.node_name, item_index, resoureces[index], self.type
             )
             self.set_asset(item_index, material)
             self.workflow.workflow_del_material(old_file)
@@ -328,6 +319,7 @@ class LGraphNode:
             item.set_main_content(
                 src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
+            index += 1
             used_item_ids.add(item.item_id)
         if action == SYNCACION:
             delete_items = [
@@ -337,13 +329,12 @@ class LGraphNode:
             for item in delete_items:
                 item.delete()
 
-    def sync_time_text_range(self, time_range: MontagenTimeRange):
-        action = time_range.action
+    def sync_time_text_range(self, time_range: MontagenTimeRange, action: str):
+        if action == BYPASSACTION:
+            return
         used_item_ids = set()
-        for i, time_unit in enumerate(time_range.time_range):
+        for time_unit in time_range.time_range:
             item_id = time_unit.id
-            if not item_id:
-                continue
             item, item_index = self.Get_item_and_index(item_id)
             if not item:
                 item = self.create_item()
@@ -365,21 +356,27 @@ class LGraphNode:
             for item in delete_items:
                 item.delete()
 
-    def sync_time_images_range(self, time_range: MontagenTimeRange, images: list):
-        action = time_range.action
+    def sync_time_images_range(
+        self, time_range: MontagenTimeRange, images: list, action: str
+    ):
+        if action == BYPASSACTION:
+            return
         used_item_ids = set()
-        for i, time_unit in enumerate(time_range.time_range):
+        index = 0
+        for time_unit in time_range.time_range:
             item_id = time_unit.id
-            if not item_id:
-                continue
             item, item_index = self.Get_item_and_index(item_id)
+            if not time_unit.is_selected:
+                if item:
+                    used_item_ids.add(item.item_id)
+                continue
             if not item:
                 item_index = len(self.items)
             old_file = (
                 None if self.reserve_file else self.get_asset_file_name(item_index)
             )
             (file_fullName, tmp_fullName) = self.get_output_path(item_index, "png")
-            images[i].save(file_fullName)
+            images[index].save(file_fullName)
             material, src = self.workflow.workflow_add_material(
                 self.node_name, item_index, file_fullName, self.type
             )
@@ -392,6 +389,7 @@ class LGraphNode:
             item.set_main_content(
                 src, time_unit.start, time_unit.duration, meta=self.meta, flush=True
             )
+            index += 1
             used_item_ids.add(item.item_id)
         if action == SYNCACION:
             delete_items = [
