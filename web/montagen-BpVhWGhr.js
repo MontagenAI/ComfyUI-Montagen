@@ -71193,12 +71193,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
     const deleteProject = async (data) => {
       console.log("当前选中的项目", props2.selectedTab, data);
       if (props2.selectedTab === data) {
-        return app$1.extensionManager.toast.add({
-          severity: "info",
-          summary: "tips!",
-          detail: "Please switch items before deleting!",
-          life: 3e3
-        });
+        emit("update:selectedTab", "1");
       }
       let response = await app$1.api.fetchApi(`/Montagen/Proj/${data}`, {
         method: "DELETE"
@@ -71561,8 +71556,8 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
     const getOpendWorkFlow = async (projectId) => {
       let tempOpenedWorkFlow = app$1.extensionManager.workflow.openWorkflows;
       let openedWorkFlow = tempOpenedWorkFlow.filter((item) => {
-        var _a2, _b2;
-        return ((_b2 = (_a2 = item.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj.projectId) === projectId;
+        var _a2, _b2, _c2;
+        return ((_c2 = (_b2 = (_a2 = item.activeState) == null ? void 0 : _a2.extra) == null ? void 0 : _b2.MontagenProj) == null ? void 0 : _c2.projectId) === projectId;
       });
       for (let i2 = 0; i2 < openedWorkFlow.length; i2++) {
         await useWorkflowService().closeWorkflow(openedWorkFlow[i2]);
