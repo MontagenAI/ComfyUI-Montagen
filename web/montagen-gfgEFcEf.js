@@ -196,22 +196,22 @@
   border-radius: 4px;
 }\r
 
-.parent-container[data-v-c1d6ba0b] {\r
+.parent-container[data-v-e741bb47] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-c1d6ba0b] {\r
+.layout-grid[data-v-e741bb47] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-c1d6ba0b] {\r
+.layout-grid[data-v-e741bb47] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
 }
-.content[data-v-c1d6ba0b] .p-inputnumber-input {\r
+.content[data-v-e741bb47] .p-inputnumber-input {\r
   width: 100%;
 }\r
 .wrapper-ref[data-v-e5a5e115] {
@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-e2148afb] {
+}.explorer-container[data-v-c4b09bec] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -69713,7 +69713,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
                   modelValue: options[key2],
                   "onUpdate:modelValue": ($event) => options[key2] = $event,
                   options: unref(propertyConfig)[type2.value][key2][0],
-                  placeholder: "Select a City",
+                  placeholder: "",
                   checkmark: "",
                   highlightOnSelect: false,
                   class: "w-full"
@@ -69726,7 +69726,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-c1d6ba0b"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-e741bb47"]]);
 const _hoisted_1$h = { class: "px-2 tw-mb-2" };
 const _hoisted_2$a = { class: "content" };
 const _hoisted_3$9 = { class: "px-2 tw-mb-2" };
@@ -71151,6 +71151,7 @@ const _sfc_main$f = /* @__PURE__ */ defineComponent({
       const target2 = event2.target.closest(".p-listbox-option");
       if (!target2) return;
       const itemId = target2.querySelector(".full-height-item").dataset.id;
+      if (itemId == 1) return;
       let option = findItemById(itemId);
       if (!option) return;
       menuTargetNode.value = option;
@@ -71982,7 +71983,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       return [
         { title: (_b2 = (_a2 = activeProject.value) == null ? void 0 : _a2.baseInfo) == null ? void 0 : _b2.name, expanded: true },
-        { title: "Adapters", expanded: false },
+        { title: "Clips", expanded: false },
         { title: "Properties", expanded: false }
       ];
     });
@@ -72957,7 +72958,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-e2148afb"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-c4b09bec"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -74111,7 +74112,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         return srtEditWidet.entries || [];
       },
       setValue(v) {
-        console.log("setValue___开始赋值", v);
         try {
           console.log("widget value", v, srtEditWidet);
           if (!v) {
@@ -74131,18 +74131,38 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     srtEditWidet.container.innerHTML = "";
     const createEntryElement = (entry, index2) => {
       const div = document.createElement("div");
-      div.style.cssText = `display: flex; margin-bottom: 10px;align-items: flex-start;`;
+      div.style.cssText = `display: flex; margin-bottom: 6px;align-items: flex-start;`;
       div.innerHTML = `
             <input name="subcheck" type="checkbox" ${entry.isSelected ? "checked" : ""}></input>
             <div style="flex: 1; margin-left: 6px;border-bottom: 1px solid #eee;">
               <div style="margin-bottom:2rpx">${entry.index}   </div>
-              <span style="margin-bottom:2rpx">${entry.start} --> ${entry.end}</span>
-              <input name="content"  style="width: 100%;height:16px;border:none;outline:none;resize: none;font-size:12px;line-height:16px;" value="${entry.content}" ></input>
+              <div style="display: flex;align-items: center;">
+                <input name="start" class="myinput" type="number" value="${entry.start}"></input>
+                <sapn> --> </sapn>
+                <input name="end" class="myinput" type="number" style="width:40px;height:16px;border:none;outline:none;text-align:center;" value="${entry.end}"></input>
+              </div>
+              <input name="content" style="width: 100%;height:24px;border:none;outline:none;resize: none;font-size:12px;line-height:24px;" value="${entry.content}" ></input>
             </div>
         `;
       const textarea = div.querySelector('input[name="content"]');
       textarea.addEventListener("input", () => {
         srtEditWidet.entries[index2].content = textarea.value;
+      });
+      const start = div.querySelector('input[name="start"]');
+      start.style.cssText = `
+        width:40px;
+        height:16px;
+        border:none;
+        outline:none;
+        text-align:center;
+        
+      `;
+      start.addEventListener("input", () => {
+        srtEditWidet.entries[index2].start = Number(start.value) || 0;
+      });
+      const end = div.querySelector('input[name="end"]');
+      end.addEventListener("input", () => {
+        srtEditWidet.entries[index2].end = Number(end.value) || 0;
       });
       const checkbox = div.querySelector('input[type="checkbox"]');
       checkbox.addEventListener("change", () => {
@@ -74204,7 +74224,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     name: "Comfy.Montagen.TextEditor1",
     beforeRegisterNodeDef(nodeType, nodeData) {
       if (nodeData.name == "MontagenSRTListParser") {
-        console.log("找到了这个named 节点", nodeType.prototype, nodeData);
         chainCallback(nodeType.prototype, "onNodeCreated", function() {
           changeWidget.call(this);
         });
@@ -74307,6 +74326,11 @@ style.innerHTML = `
     }
     .comfyui-widget-container::-webkit-scrollbar-thumb:hover {
         background: #bbb;
+    }
+    .myinput[type="number"]::-webkit-inner-spin-button,
+    .myinput[type="number"]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
     }
 `;
 document.head.appendChild(style);
