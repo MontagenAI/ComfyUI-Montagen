@@ -1,5 +1,46 @@
 # ComfyUI-Montagen Changelog
 
+## [0.2.1] - 2025-04-23
+
+*Feature Update: Clip Split, List Adapter and Template Support.*
+
+### Added
+
+- [Core] Clip Split Support: Use `Ctrl + B` to split clip in Editor.(#23)
+- [Node] `SRT List Parser` Node:(#24)
+  - Input: Load SRT text content from either a connected node input or an uploaded file.
+  - SRT Parse: Display the parsed SRT with checkbox. Output the slected items.
+  - `action` Parameter: Use with List Adapter. `update` refers to only update the slected items for the clips. `rebuild` represents 
+- [Node] List Adapter Support:(#21)
+  - `Text List Adapter`: 
+  - `Image List Adapter`: 
+- [Explorer] Template Module:(#25)
+
+- [System] Telemetry Module: Basic Telemetry for Main Pipeline.(#12)
+  - ComfyUI Started: System Info; Custom Nodes
+  - Montagen Template Loaded: Template Workflow Json
+  - Montagen Workflow Executed: Workflow Json
+  - Montagen Timeline Updated: Timeline Json
+  - Montagen Timeline Rendered: Asset Properties
+
+### Changed
+
+- [Node] Update Custom Node Name and Class Name: (#29)
+  - `Create Timeline` (Not Changed): MontagenCreateTimeline
+  - `Render Timeline` (`Execute Timeline`): MontagenRenderTimeline
+  - `SRT List Parser` (New Added): MontagenSRTListParser
+  - `Image Adapter` (`Image Clip Adapter`): MontagenImageAdapter
+  - `Video Adapter` (`Video Clip Adapter`): MontagenVideoAdapter
+  - `Sticker Adapter` (`Sticker Clip Adapter`): MontagenStickerAdapter
+  - `Audio Adapter` (`Audio Clip Adapter`): MontagenAudioAdapter
+  - `Text Adapter` (`Text Clip Adapter`): MontagenTextAdapter
+  - `Image List Adapter` (New Added): MontagenImageListAdapter
+  - `Text List Adapter` (New Added): MontagenTextListAdapter
+- [Explorer] `Clips` Panel in Explorer:
+  - "Adapter – Clip" Hierarchy: "Adapter" refers to the Adapter Node, and "Clip" represents a splittable clip that can handle both single media and media lists.  
+  - Name Changed: From `nodes` to `Clips`. In order to better understand the internal items.
+
+
 ## [0.2.0] - 2025-04-03
 
 *Architected Release: Project-Structured Video Production Framework with Node-Controlled Timelines for ComfyUI.*
