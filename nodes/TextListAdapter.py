@@ -22,7 +22,7 @@ class TextListAdapter(BaseListAdapter):
             "required": {
                 "name": ("STRING", {"default": s.default_name()}),
                 "timeline": (MONTAGENTIMELINETYPE, {"tooltip": "The timeline."}),
-                "timeRange": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
+                "timeRangeList": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
             },
             "optional": {
                 "tag": ("STRING", {"tooltip": "The tag."}),
@@ -37,7 +37,7 @@ class TextListAdapter(BaseListAdapter):
 
     @classmethod
     def default_name(s):
-        return "text"
+        return "textList"
 
     def save_func(
         self, name, tag, prompt, extra_pnginfo, unique_id, action=None, **keywords
@@ -67,7 +67,7 @@ class TextListAdapter(BaseListAdapter):
             raise ValueError("timeline is not found.")
 
         time_range: MontagenTimeRange = MontagenTimeRange(
-            keywords.get("timeRange", None)
+            keywords.get("timeRangeList", None)
         )
         if not time_range:
             raise ValueError("time_range is required.")
