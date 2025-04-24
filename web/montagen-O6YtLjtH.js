@@ -74059,7 +74059,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   function fitHeight(node2) {
     var _a2;
     console.log("fitHeight_srt_node", node2);
-    const srtEditWidet = node2.widgets.find((w) => w.name === "content");
+    const srtEditWidet = node2.widgets.find((w) => w.name === "srt");
     let container = srtEditWidet.container;
     let height = container.getBoundingClientRect().height;
     if (!height) return;
@@ -74105,7 +74105,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       },
       true
     );
-    let srtEditWidet = this.addDOMWidget("content", "srtEditWidet", element, {
+    let srtEditWidet = this.addDOMWidget("srt", "srtEditWidet", element, {
       serialize: true,
       hideOnZoom: false,
       getValue() {
@@ -74245,7 +74245,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 );
                 console.log("result_读取出来的文本信息", node2.widgets);
                 const srtEditWidet = node2.widgets.find(
-                  (w) => w.name === "content"
+                  (w) => w.name === "srt"
                 );
                 if (srtEditWidet) {
                   srtEditWidet.updateUI(result);
