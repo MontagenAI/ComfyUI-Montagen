@@ -5,8 +5,10 @@ from ..server.Utils import (
     MONTAGENTIMELINETYPE,
     MODIFYACTION,
     MONTAGENACTIONTYPE,
+    MontagenWorkflowExecuted
 )
 from ..server.MontagenTimeRange import MontagenTimeRange
+from ..server.MontagenProjManager import MontagenProjManager
 
 
 class TextListAdapter(BaseListAdapter):
@@ -65,7 +67,16 @@ class TextListAdapter(BaseListAdapter):
         timeline = proj.get_timeline(timeline)
         if not timeline:
             raise ValueError("timeline is not found.")
-
+        MontagenProjManager.instance.onProcessEnd(
+            {
+                "prompt": prompt,
+                "timeline": timeline.to_json(),
+                "extra_pnginfo": extra_pnginfo,
+                "node": self.__class__.__name__,
+                "nodeId": unique_id,
+            },
+            MontagenWorkflowExecuted,
+        )
         time_range: MontagenTimeRange = MontagenTimeRange(
             keywords.get("timeRangeList", None)
         )

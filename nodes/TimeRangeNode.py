@@ -7,7 +7,9 @@ from ..server.Utils import (
     SYNCACION,
     BYPASSACTION,
     MONTAGENACTIONTYPE,
+    MontagenWorkflowExecuted,
 )
+from ..server.MontagenProjManager import MontagenProjManager
 
 
 class TimeRangeNode(BaseWorkflow):
@@ -75,6 +77,17 @@ class TimeRangeNode(BaseWorkflow):
 
         if not units:
             raise Exception("No time range selected")
+        MontagenProjManager.instance.onProcessEnd(
+            {
+                "prompt": prompt,
+                "extra_pnginfo": extra_pnginfo,
+                "node": self.__class__.__name__,
+                "nodeId": unique_id,
+                "action": action,
+                "srt": content,
+            },
+            MontagenWorkflowExecuted,
+        )
         workflow.save()
         return {
             "ui": {

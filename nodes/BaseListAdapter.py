@@ -6,12 +6,14 @@ from ..server.Utils import (
     LISTNODETYPE,
     MODIFYACTION,
     MONTAGENACTIONTYPE,
+    MontagenWorkflowExecuted
 )
 from .BaseWorkflow import BaseWorkflow
 from ..server.LGraphNode import LGraphNode
 from ..server.MontagenWorkflow import MontagenWorkflow
 from ..server.MontagenProj import MontagenProj
 from ..server.MontagenTimeRange import MontagenTimeRange
+from ..server.MontagenProjManager import MontagenProjManager
 from datetime import datetime
 
 
@@ -127,6 +129,14 @@ class BaseListAdapter(BaseWorkflow):
         timeline = proj.get_timeline(timeline)
         if not timeline:
             raise ValueError("timeline is not found.")
+        
+        MontagenProjManager.instance.onProcessEnd({
+            "prompt": prompt,
+            "timeline": timeline.to_json(),
+            "extra_pnginfo": extra_pnginfo,
+            "node": self.__class__.__name__,
+            "nodeId": unique_id,
+        }, MontagenWorkflowExecuted)
 
         resoureces: list[str] = keywords.get("resourceList", None)
         if resoureces:

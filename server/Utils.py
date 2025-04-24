@@ -220,7 +220,9 @@ def localfile_video_audio_info(file_path: str, total_size, type):
 
     return extract_video_audio_metadata(data_source, total_size, type)
 
-
+MontagenTimelineGenerated = "Montagen Timeline Generated"
+MontagenWorkflowExecuted = "Montagen Workflow Executed"
+MontagenTimelineRendered="Montagen Timeline Rendered"
 MONTAGENPROJ = "MontagenProj"
 MONTAGENRESOURCESTYPE = "RESOURCES"
 MONTAGENTIMERANGETYPE = "TIMERANGE"

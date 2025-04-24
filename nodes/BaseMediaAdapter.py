@@ -2,11 +2,13 @@ from ..server.Utils import (
     DEFAULTSINGLENAME,
     MONTAGENTIMELINETYPE,
     SINGLENODETYPE,
+    MontagenWorkflowExecuted,
 )
 from .BaseWorkflow import BaseWorkflow
 from ..server.LGraphNode import LGraphNode
 from ..server.MontagenWorkflow import MontagenWorkflow
 from ..server.MontagenProj import MontagenProj
+from ..server.MontagenProjManager import MontagenProjManager
 from datetime import datetime
 
 
@@ -93,6 +95,16 @@ class BaseMediaAdapter(BaseWorkflow):
         timeline = proj.get_timeline(timeline)
         if not timeline:
             raise ValueError("timeline is not found.")
+        MontagenProjManager.instance.onProcessEnd(
+            {
+                "prompt": prompt,
+                "timeline": timeline.to_json(),
+                "extra_pnginfo": extra_pnginfo,
+                "node": self.__class__.__name__,
+                "nodeId": unique_id,
+            },
+            MontagenWorkflowExecuted,
+        )
         try:
             self.save_func_inner(
                 name,

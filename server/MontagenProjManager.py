@@ -24,6 +24,7 @@ from .MontagenTemplate import MontagenTemplate
 from contextlib import contextmanager
 import logging
 import json
+from .MontagenMachineId import id
 
 
 def error_handling_decorator(func):
@@ -76,6 +77,11 @@ class MontagenProjManager:
         self.montagen_cache_manager = MontagenCacheManager()
         self.cache_key = "{}_montagen_projects"
         self.templates: list[MontagenTemplate] = []
+
+        @server.routes.get("/Montagen/Id")
+        @error_handling_decorator
+        async def get_machine_id(request, register_action):
+            return web.json_response({"code": 0, "data": id()})
 
         @server.routes.get("/Montagen/Proj/List")
         @error_handling_decorator

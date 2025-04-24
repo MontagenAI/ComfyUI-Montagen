@@ -6,9 +6,10 @@ import subprocess
 from comfy.cli_args import args
 from .BaseWorkflow import BaseWorkflow
 import re
-from comfy.utils import ProgressBar
+from comfy.utils import ProgressBar, MontagenTimelineRendered
 from ..server.Utils import MONTAGENTIMELINETYPE, FFMPEG, FFPROBE
 import logging
+from ..server.MontagenProjManager import MontagenProjManager
 
 
 class TimelineRenderNode(BaseWorkflow):
@@ -121,7 +122,11 @@ class TimelineRenderNode(BaseWorkflow):
                     stderr=process.stderr,
                 )
             pbar.update_absolute(100)
-            proj.montagen_build.add_build(output_path, f"{output_name}.mp4")
+            meta = proj.montagen_build.add_build(output_path, f"{output_name}.mp4")
+            MontagenProjManager.instance.onProcessEnd(
+                meta,
+                MontagenTimelineRendered,
+            )
             proj.project_change_time()
         finally:
             os.remove(tempJson)

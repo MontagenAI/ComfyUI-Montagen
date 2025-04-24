@@ -1,6 +1,7 @@
-from ..server.Utils import MONTAGENTIMELINETYPE
+from ..server.Utils import MONTAGENTIMELINETYPE, MontagenTimelineGenerated
 from .BaseWorkflow import BaseWorkflow
 from datetime import datetime
+from ..server.MontagenProjManager import MontagenProjManager
 
 
 class TimelineNode(BaseWorkflow):
@@ -52,6 +53,15 @@ class TimelineNode(BaseWorkflow):
         timeline = proj.get_timeline(name)
         if not timeline:
             proj.project_add_timeline(name)
+            MontagenProjManager.instance.onProcessEnd(
+                {
+                    "name": name,
+                    "width": width,
+                    "height": height,
+                    "fps": fps,
+                },
+                MontagenTimelineGenerated,
+            )
             timeline = proj.get_timeline(name)
             if not timeline:
                 raise ValueError("timeline is required.")

@@ -139,7 +139,7 @@ class MontagenBuild:
             json.dump(metadata, meta_file)
 
         self.cache_manager.delete(self.key)
-        return file_name
+        return metadata
 
     def get_build(self, file_name: str) -> Optional[Dict[str, Any]]:
         materials = self.get_build_list()
