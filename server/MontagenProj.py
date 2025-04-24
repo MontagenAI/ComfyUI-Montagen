@@ -17,7 +17,7 @@ from .Utils import (
     supported_config_type,
     supported_group_config_type,
     get_hello_world,
-    hello_workflow_id
+    hello_workflow_id,
 )
 from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
@@ -99,8 +99,6 @@ class MontagenProj:
         workflows_path = os.path.join(self.project_path, WORKFLOWBASEPATH)
         if not os.path.exists(workflows_path):
             os.makedirs(workflows_path)
-            return []
-
         workflows = []
         for workflow_name in os.listdir(workflows_path):
             workflow_path = os.path.join(workflows_path, workflow_name)
@@ -155,7 +153,9 @@ class MontagenProj:
         workflows = [workflow.to_json() for workflow in self.workflows]
         if not workflows:
             hello_world = get_hello_world()
-            self.project_add_workflow_data(hello_workflow_id, "hello_world", hello_world["workflow"])
+            self.project_add_workflow_data(
+                hello_workflow_id, "hello_world", hello_world["workflow"]
+            )
             workflows = [workflow.to_json() for workflow in self.workflows]
         return {
             **self.project_data,
