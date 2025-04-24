@@ -74279,7 +74279,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               fileInput.click();
             }
           );
-          uploadWidget.serialize = false;
           return { widget: uploadWidget };
         }
       };
