@@ -16,7 +16,7 @@ class TimeRangeNode(BaseWorkflow):
     def INPUT_TYPES(s):
         return {
             "required": {
-                "content": (MONTAGENTIMERANGETYPE,),
+                "srt": (MONTAGENTIMERANGETYPE,),
                 "action": (
                     [MODIFYACTION, SYNCACION, BYPASSACTION],
                     {"default": MODIFYACTION},
@@ -37,7 +37,7 @@ class TimeRangeNode(BaseWorkflow):
         MONTAGENACTIONTYPE,
     )
 
-    RETURN_NAMES = ("prompt", "timeRangeList", "action")
+    RETURN_NAMES = ("promptList", "timeRangeList", "action")
 
     OUTPUT_IS_LIST = (True, True, False)
 
@@ -47,12 +47,13 @@ class TimeRangeNode(BaseWorkflow):
 
     def save_func(
         self,
-        content,
+        srt,
         action,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
+        content = srt
         user_id, project_id, proj, workflow_id, workflow, workflow_node = (
             self.get_base_info(unique_id, prompt, extra_pnginfo)
         )

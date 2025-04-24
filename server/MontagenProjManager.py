@@ -578,7 +578,11 @@ class MontagenProjManager:
         cached_projects = self.montagen_cache_manager.get(key)
         if cached_projects is not None:
             cached_projects.sort(
-                key=lambda x: (x.project_name, -x.modify_time.timestamp())
+                key=lambda x: (
+                    0 if x.project_id == defualt_user_info["default_project_id"] else 1,
+                    x.project_name,
+                    -x.modify_time.timestamp(),
+                )
             )
             return cached_projects
 
@@ -586,7 +590,7 @@ class MontagenProjManager:
             os.makedirs(user_projs_root)
             return []
 
-        projects = []
+        projects: list[MontagenProj] = []
         for project_name in os.listdir(user_projs_root):
             project_path = os.path.join(user_projs_root, project_name)
             if os.path.isdir(project_path):
@@ -607,7 +611,13 @@ class MontagenProjManager:
                 except:
                     pass
 
-        projects.sort(key=lambda x: (x.project_name, -x.modify_time.timestamp()))
+        projects.sort(
+            key=lambda x: (
+                0 if x.project_id == defualt_user_info["default_project_id"] else 1,
+                x.project_name,
+                -x.modify_time.timestamp(),
+            )
+        )
         self.montagen_cache_manager.add(key, projects)
         return projects
 
