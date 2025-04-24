@@ -6,8 +6,13 @@ import subprocess
 from comfy.cli_args import args
 from .BaseWorkflow import BaseWorkflow
 import re
-from comfy.utils import ProgressBar, MontagenTimelineRendered
-from ..server.Utils import MONTAGENTIMELINETYPE, FFMPEG, FFPROBE
+from comfy.utils import ProgressBar
+from ..server.Utils import (
+    MONTAGENTIMELINETYPE,
+    FFMPEG,
+    FFPROBE,
+    MontagenTimelineRendered,
+)
 import logging
 from ..server.MontagenProjManager import MontagenProjManager
 
