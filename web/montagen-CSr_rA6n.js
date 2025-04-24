@@ -74073,7 +74073,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     new_widgets.push(
       app$1.widgets.MontagenTextUpload(
         this,
-        "text",
+        "choose file to upload",
         [
           {
             name: "text",
