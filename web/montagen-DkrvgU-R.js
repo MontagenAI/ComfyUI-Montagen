@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-c4b09bec] {
+}.explorer-container[data-v-b97e483c] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -702,12 +702,11 @@ img[data-v-11358f43] {
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, ac as withKeys, n as nextTick$1, a1 as normalizeStyle, j as renderSlot$1, q as toRaw, Z as onUnmounted, T as Teleport, a5 as onBeforeUnmount, a3 as provide, ad as createApp } from "./assets/vue-CbAVCKWg.js";
-import { d as defineStore, s as script, e as storeToRefs, E as ElFormItem, f as ElInput, g as ElButton, h as ElForm, i as script$1, T as Tooltip, j as script$2, k as script$3, l as script$4, S as Split, m as script$5, n as script$6, o as script$7, p as script$8, q as script$9, r as script$a, t as script$b, u as script$c, v as script$e, w as script$f, x as useToast, y as script$g, z as script$h, A as useConfirm, B as script$i, C as script$j, D as script$k, F as script$l, G as script$m, H as customAlphabet, I as script$n, J as script$o, K as script$p, L as z, M as script$q, N as DialogService, O as ConfirmationService, P as mixpanel, Q as createPinia, R as ToastService } from "./assets/vendor-DR3bLJhr.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$c, r as script$e, t as script$f, u as useToast, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, B as script$l, C as script$m, D as customAlphabet, F as script$n, G as script$o, H as script$p, I as z, J as script$q, K as DialogService, L as ConfirmationService, M as mixpanel, N as createPinia, O as ToastService } from "./assets/vendor-I8spPIsN.js";
 import { l as lodashExports } from "./assets/lodash-CNwZySND.js";
 import { y as usePrimeVue, z as script$d, P as PrimeVue, A as index$3 } from "./assets/primevue-CULgF5yu.js";
 import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-04jNbkwA.js";
 import { c3 as h, c4 as definePreset } from "./assets/primeuix-BD9alnt3.js";
-import { i as index$4 } from "./assets/fingerprintjs-DWetn-Ce.js";
 import { E as ElementPlusIconsVue } from "./assets/element-plus-DYKV9M1j.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
@@ -71777,10 +71776,18 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     const openWorkflow = (data) => {
       console.log(data, "data");
       let temp = JSON.parse(JSON.stringify(data.workflow));
-      temp.extra.MontagenProj.projectId = workSpaceStore.activeProject.baseInfo.projectId;
-      temp.extra.MontagenProj.workflowId = cusWorkflowID();
+      let MontagenProj = {
+        projectId: workSpaceStore.activeProject.baseInfo.projectId,
+        workflowId: cusWorkflowID()
+      };
+      temp.extra.MontagenProj = MontagenProj;
       workflowUtils.openTabByWorkFlowData(temp, data.name);
       dialogStore.closeDialog();
+      const mixpanel2 = window.my_mixpanel;
+      mixpanel2.track("Montagen_Template_Loaded", {
+        "Time": (/* @__PURE__ */ new Date()).toISOString(),
+        "Referrer": JSON.stringify(temp)
+      });
     };
     const workFlows = ref$3([]);
     const severOrigin = window.location.origin;
@@ -72769,13 +72776,36 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       document.body.removeChild(link);
     };
     onMounted(() => {
+      console.log("newExplorer_组件挂载_????????????");
       setProxyWorkFlow();
+      const mixpanel2 = window.my_mixpanel;
       app$1.api.addEventListener("MontagenProcessEnd", function(e) {
         var _a2, _b2, _c2;
         console.log("MontagenProcessEnd_蒙太奇节点执行完成", e);
         if (((_a2 = e.detail) == null ? void 0 : _a2.projectId) && ((_b2 = e.detail) == null ? void 0 : _b2.projectId) == ((_c2 = workSpaceStore.activeProject) == null ? void 0 : _c2.baseInfo.projectId)) {
           workSpaceStore.getProjectDetail(e.detail.projectId);
         }
+      });
+      app$1.api.addEventListener("Montagen Timeline Generated", function(e) {
+        console.log("MontagenProcessEnd_Timeline_chuangjian", e);
+        mixpanel2.track("Montagen_Timeline_Generated", {
+          "Time": (/* @__PURE__ */ new Date()).toISOString(),
+          "Referrer": JSON.stringify(e.detail)
+        });
+      });
+      app$1.api.addEventListener("Montagen Workflow Executed", function(e) {
+        console.log("MontagenProcessEnd_workflow执行", e);
+        mixpanel2.track("Montagen_Workflow_Executed", {
+          "Time": (/* @__PURE__ */ new Date()).toISOString(),
+          "Referrer": JSON.stringify(e.detail)
+        });
+      });
+      app$1.api.addEventListener("Montagen Timeline Rendered", function(e) {
+        console.log("MontagenProcessEnd_timeline渲染", e);
+        mixpanel2.track("Montagen_Timeline_Rendered", {
+          "Time": (/* @__PURE__ */ new Date()).toISOString(),
+          "Referrer": JSON.stringify(e.detail)
+        });
       });
     });
     return (_ctx, _cache) => {
@@ -72958,7 +72988,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-c4b09bec"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-b97e483c"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73482,12 +73512,30 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }
             }, 0);
             window.myUI = ui;
+            let isOpened = false;
+            const mixpanel2 = window.my_mixpanel;
             mutationObserver.value = new MutationObserver((mutationsList) => {
               let target2 = document.querySelector(".comfyui-body-left .side-tool-bar-container");
+              let montagenButton = target2.querySelector(".mentegen-explorer-tab-button");
               let width = getComputedStyle(target2).getPropertyValue("--sidebar-width");
               if (width) {
                 document.querySelector("#comfyui-maskpage").style.setProperty("--sidebar-width", width);
                 document.querySelector("#comfyui-maskpage").style.setProperty("--sidebar-icon-size", getComputedStyle(target2).getPropertyValue("--sidebar-icon-size"));
+              }
+              if (montagenButton) {
+                if (montagenButton.classList.contains("side-bar-button-selected")) {
+                  isOpened = true;
+                  mixpanel2.track("Montagen_Open", {
+                    "Time": (/* @__PURE__ */ new Date()).toISOString(),
+                    "Referrer": "user open Montagen"
+                  });
+                } else if (isOpened && !montagenButton.classList.contains("side-bar-button-selected")) {
+                  isOpened = false;
+                  mixpanel2.track("Montagen_Closed", {
+                    "Time": (/* @__PURE__ */ new Date()).toISOString(),
+                    "Referrer": "user close Montagen"
+                  });
+                }
               }
             });
             mutationObserver.value.observe(ui.bodyLeft, {
@@ -73551,15 +73599,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const addBuriedPoint = async () => {
       const res = await app$1.api.fetchApi("/system_stats");
       let data = await res.json();
-      const fp = await index$4.load();
-      const result = await fp.get();
-      console.log("result_浏览器指纹", result);
+      let macRes = await app$1.api.fetchApi("/Montagen/Id");
+      let macData = await macRes.json();
+      console.log("macData_获取到的mac地址", macData);
       console.log("data", data, window.my_mixpanel);
       const mixpanel2 = window.my_mixpanel;
-      mixpanel2.alias(`user_${result.visitorId}`);
+      mixpanel2.alias(`user_${macData.data}`);
       mixpanel2.people.set({
-        "$email": "user@example.com_123",
-        "$name": "John Doe_123",
+        "$email": `${macData.data}`,
+        "$name": `montagen_${macData.data}`,
         "signup_date": (/* @__PURE__ */ new Date()).toISOString(),
         "comfyui_version": data.system.comfyui_version,
         "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"]
@@ -74291,8 +74339,8 @@ mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
   track_pageview: false,
   autocapture: false,
   persistence: "localStorage",
-  ignore_dnt: true,
-  distinct_id: "USER_REGISTERED_ID_12345"
+  ignore_dnt: true
+  // distinct_id: 'USER_REGISTERED_ID_12345'
 });
 window.my_mixpanel = mixpanel;
 const ComfyUIPreset = definePreset(index$3, {
