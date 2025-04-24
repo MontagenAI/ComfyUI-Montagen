@@ -1,0 +1,217 @@
+{
+    "id": "fd3b79f7-0b8d-412d-9499-c210e167fbd6",
+    "revision": 0,
+    "last_node_id": 3,
+    "last_link_id": 2,
+    "nodes": [
+        {
+            "id": 1,
+            "type": "MontagenCreateTimeline",
+            "pos": [
+                2139.580810546875,
+                1327.6483154296875
+            ],
+            "size": [
+                315,
+                130
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "timeline",
+                    "type": "TIMELINE",
+                    "links": [
+                        1,
+                        2
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "ComfyUI-Montagen",
+                "ver": "58819f7a038b09d76c495570e5a0801976ed1405",
+                "Node name for S&R": "MontagenCreateTimeline"
+            },
+            "widgets_values": [
+                "Basic1",
+                1280,
+                720,
+                25
+            ]
+        },
+        {
+            "id": 2,
+            "type": "MontagenRenderTimeline",
+            "pos": [
+                2143.89990234375,
+                1648.27587890625
+            ],
+            "size": [
+                315,
+                58
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 4,
+            "inputs": [
+                {
+                    "name": "name",
+                    "type": "TIMELINE",
+                    "link": 1
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "ComfyUI-Montagen",
+                "ver": "58819f7a038b09d76c495570e5a0801976ed1405",
+                "Node name for S&R": "MontagenRenderTimeline"
+            },
+            "widgets_values": [
+                "image"
+            ]
+        },
+        {
+            "id": 3,
+            "type": "MontagenImageAdapter",
+            "pos": [
+                2618.859375,
+                1329.598388671875
+            ],
+            "size": [
+                315,
+                479
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "timeline",
+                    "type": "TIMELINE",
+                    "link": 2
+                },
+                {
+                    "name": "image",
+                    "shape": 7,
+                    "type": "IMAGE",
+                    "link": null
+                },
+                {
+                    "name": "alpha",
+                    "shape": 7,
+                    "type": "MASK",
+                    "link": null
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "ComfyUI-Montagen",
+                "ver": "58819f7a038b09d76c495570e5a0801976ed1405",
+                "Node name for S&R": "MontagenImageAdapter",
+                "montagen_name": "image",
+                "montagen_type": "image",
+                "montagen_node_type": "single_item",
+                "montagen_timeline_name": "Basic1",
+                "outputs": {
+                    "assets": [
+                        {
+                            "file_name": "20220525215307_6ef30.jpeg",
+                            "file_path": "image\\20220525215307_6ef30.jpeg",
+                            "file_time": 1745490369.6872797,
+                            "file_size": 151354,
+                            "file_type": "image",
+                            "is_ref": false,
+                            "width": 1000,
+                            "height": 1000,
+                            "frame_rate": 25.0,
+                            "pixel_format": "yuvj420p",
+                            "color_space": "bt470bg",
+                            "bit_rate": null,
+                            "codec_name": "mjpeg",
+                            "duration": 0.0,
+                            "parent": null,
+                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/20220525215307_6ef30.jpeg"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "meta": {
+                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/20220525215307_6ef30.jpeg"
+                            },
+                            "default": {
+                                "type": "image",
+                                "children": [],
+                                "start": -1,
+                                "duration": -1,
+                                "object-fit": "contain",
+                                "x": "50vw",
+                                "y": "50vh",
+                                "width": "50vw",
+                                "loop": true,
+                                "audio": false,
+                                "mute": false
+                            },
+                            "item_id": "2ubq6b9eos7z3w1"
+                        }
+                    ],
+                    "meta": {}
+                },
+                "reserve_file": true
+            },
+            "widgets_values": [
+                "image",
+                "",
+                "20220525215307_6ef30.jpeg",
+                null,
+                ""
+            ]
+        }
+    ],
+    "links": [
+        [
+            1,
+            1,
+            0,
+            2,
+            0,
+            "TIMELINE"
+        ],
+        [
+            2,
+            1,
+            0,
+            3,
+            0,
+            "TIMELINE"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {
+        "ds": {
+            "scale": 1.2100000000000002,
+            "offset": [
+                -1565.7790765052987,
+                -1088.061570197492
+            ]
+        },
+        "frontendVersion": "1.17.9",
+        "MontagenProj": {
+            "userId": "default",
+            "projectId": "2ubphbiltvvvfcb",
+            "workflowId": "V971YoM0xJc6c",
+            "workflowName": "Create and Render Timeline",
+            "version": 7,
+            "modifyTime": "2025-04-24T18:26:41.958906",
+            "workflowDesc": "Create and Render Timeline"
+        },
+        "VHS_latentpreview": false,
+        "VHS_latentpreviewrate": 0,
+        "VHS_MetadataImage": true,
+        "VHS_KeepIntermediate": true
+    },
+    "version": 0.4,
+    "seed_widgets": {}
+}

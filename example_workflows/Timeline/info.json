@@ -1,0 +1,9 @@
+{
+    "id": "1",
+    "name": "Timeline",
+    "description": "Create and Render Timeline",
+    "modifyTime": "2025-04-24 18:59:00",
+    "cover": "/Timeline/Timeline.jpg",
+    "category":"Basic",
+    "workflow":"/Timeline/Timeline.json"
+}
