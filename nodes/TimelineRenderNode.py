@@ -23,7 +23,7 @@ class TimelineRenderNode(BaseWorkflow):
     def INPUT_TYPES(s):
         return {
             "required": {
-                "name": (
+                "timeline": (
                     MONTAGENTIMELINETYPE,
                     {
                         "tooltip": "The name of the timeline to export.",
@@ -49,12 +49,13 @@ class TimelineRenderNode(BaseWorkflow):
 
     def save_func(
         self,
-        name,
+        timeline,
         outputName,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
     ):
+        name = timeline
         user_id, project_id, proj, workflow_id, workflow, workflow_node = (
             self.get_base_info(unique_id, prompt, extra_pnginfo)
         )

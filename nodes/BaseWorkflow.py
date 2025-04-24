@@ -32,6 +32,7 @@ class BaseWorkflow:
         user_id = lgraph.montagen_user_id
         project_id_context = lgraph.montagen_project_id
         workflow_id = lgraph.montagen_workflow_id
+        workflow_name = lgraph.montagen_name
         project_id = defualt_user_info["default_project_id"]
         if project_id_context:
             project_id = project_id_context
@@ -48,7 +49,9 @@ class BaseWorkflow:
                 workflow_id = to_base36_random()
             workflow = proj.get_workflow(workflow_id)
             if not workflow:
-                proj.project_add_workflow(workflow_id, DEFAULTWORKFLOWNAME)
+                proj.project_add_workflow(
+                    workflow_id, workflow_name if workflow_name else DEFAULTWORKFLOWNAME
+                )
                 workflow = proj.get_workflow(workflow_id)
                 workflow.syn_workflow_node(workflow_node, False)
             if not workflow:
