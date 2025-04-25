@@ -1167,7 +1167,7 @@ def create_default_option(type: str):
             "start": -1,
             "duration": -1,
             "x": "50vw",
-            "y": "100vh",
+            "y": "95vh",
             "width": "95vw",
             "fontSize": "10rpx",
             "wrap": True,
