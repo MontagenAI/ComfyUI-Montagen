@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-b97e483c] {
+}.explorer-container[data-v-0efb816c] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -71783,11 +71783,6 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
       temp.extra.MontagenProj = MontagenProj;
       workflowUtils.openTabByWorkFlowData(temp, data.name);
       dialogStore.closeDialog();
-      const mixpanel2 = window.my_mixpanel;
-      mixpanel2.track("Montagen_Template_Loaded", {
-        "Time": (/* @__PURE__ */ new Date()).toISOString(),
-        "Referrer": JSON.stringify(temp)
-      });
     };
     const workFlows = ref$3([]);
     const severOrigin = window.location.origin;
@@ -71877,6 +71872,10 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       useDialogStore().closeDialog();
       workSpaceStore.fetchProjectDetail(projectId);
     };
+    onMounted(() => {
+      var _a2, _b2, _c2;
+      inputValue.value = ((_c2 = (_b2 = (_a2 = app$1.extensionManager) == null ? void 0 : _a2.workflow) == null ? void 0 : _b2.activeWorkflow) == null ? void 0 : _c2.filename) || "";
+    });
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
       const _component_FloatLabel = script$n;
@@ -72206,47 +72205,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       } else {
         let data = flag ? flag.activeState : node2.workflowData;
         await workflowUtils.openTabByWorkFlowData(toRaw(data), flag || node2.label);
-        centerCurrentWorkFlow();
       }
-    };
-    const centerCurrentWorkFlow = () => {
-      setTimeout(() => {
-        try {
-          const canvas2 = app$1.canvas;
-          if (!canvas2 || !canvas2.ds) {
-            console.error("Canvas or DrawingState not initialized!");
-            return;
-          }
-          let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-          app$1.graph._nodes.forEach((node2) => {
-            const [x, y] = node2.pos;
-            const [width, height] = node2.size;
-            minX = Math.min(minX, x);
-            maxX = Math.max(maxX, x + width);
-            minY = Math.min(minY, y);
-            maxY = Math.max(maxY, y + height);
-          });
-          if (minX === Infinity || maxX === -Infinity) {
-            console.warn("No nodes found in the workflow!");
-            return;
-          }
-          const workflowWidth = maxX - minX;
-          const workflowHeight = maxY - minY;
-          const centerX = minX + workflowWidth / 2;
-          const centerY = minY + workflowHeight / 2;
-          const viewportWidth = canvas2.canvas.width;
-          const viewportHeight = canvas2.canvas.height;
-          const scale = app$1.canvas.ds.scale || 1;
-          const offsetX = viewportWidth / 2 - centerX * scale;
-          const offsetY = viewportHeight / 2 - centerY * scale;
-          canvas2.ds.scale = scale;
-          canvas2.ds.offset = [offsetX, offsetY];
-          canvas2.setDirty(true, true);
-          console.log(`Centered with scale: ${scale.toFixed(2)}, offset: [${offsetX.toFixed(0)}, ${offsetY.toFixed(0)}]`);
-        } catch (error) {
-          console.error("Error centering workflow:", error);
-        }
-      }, 500);
     };
     const visible = ref$3(false);
     const initialValues = ref$3({
@@ -72775,10 +72734,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       link.click();
       document.body.removeChild(link);
     };
+    const mixpanel2 = window.my_mixpanel;
     onMounted(() => {
-      console.log("newExplorer_组件挂载_????????????");
       setProxyWorkFlow();
-      const mixpanel2 = window.my_mixpanel;
       app$1.api.addEventListener("MontagenProcessEnd", function(e) {
         var _a2, _b2, _c2;
         console.log("MontagenProcessEnd_蒙太奇节点执行完成", e);
@@ -72988,7 +72946,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-b97e483c"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-0efb816c"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73513,7 +73471,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, 0);
             window.myUI = ui;
             let isOpened = false;
-            const mixpanel2 = window.my_mixpanel;
+            const mixpanel22 = window.my_mixpanel;
             mutationObserver.value = new MutationObserver((mutationsList) => {
               let target2 = document.querySelector(".comfyui-body-left .side-tool-bar-container");
               let montagenButton = target2.querySelector(".mentegen-explorer-tab-button");
@@ -73525,15 +73483,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               if (montagenButton) {
                 if (montagenButton.classList.contains("side-bar-button-selected")) {
                   isOpened = true;
-                  mixpanel2.track("Montagen_Open", {
+                  mixpanel22.track("Explorer_Open", {
                     "Time": (/* @__PURE__ */ new Date()).toISOString(),
-                    "Referrer": "user open Montagen"
+                    "Referrer": "user open Explorer"
                   });
                 } else if (isOpened && !montagenButton.classList.contains("side-bar-button-selected")) {
                   isOpened = false;
-                  mixpanel2.track("Montagen_Closed", {
+                  mixpanel22.track("Explorer_Closed", {
                     "Time": (/* @__PURE__ */ new Date()).toISOString(),
-                    "Referrer": "user close Montagen"
+                    "Referrer": "user close Explorer"
                   });
                 }
               }
@@ -73599,24 +73557,67 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const addBuriedPoint = async () => {
       const res = await app$1.api.fetchApi("/system_stats");
       let data = await res.json();
+      window["__COMFYUI_VERSION__"] = data.system.comfyui_version;
       let macRes = await app$1.api.fetchApi("/Montagen/Id");
       let macData = await macRes.json();
       console.log("macData_获取到的mac地址", macData);
       console.log("data", data, window.my_mixpanel);
-      const mixpanel2 = window.my_mixpanel;
-      mixpanel2.alias(`user_${macData.data}`);
-      mixpanel2.people.set({
+      const mixpanel22 = window.my_mixpanel;
+      mixpanel22.alias(`user_${macData.data}`);
+      mixpanel22.people.set({
         "$email": `${macData.data}`,
         "$name": `montagen_${macData.data}`,
         "signup_date": (/* @__PURE__ */ new Date()).toISOString(),
         "comfyui_version": data.system.comfyui_version,
-        "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"]
+        "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"],
+        "language": navigator.language,
+        "timeZone": Intl.DateTimeFormat().resolvedOptions().timeZone,
+        "devices_name": data.devices[0].name,
+        "devices_torch_vram_free": data.devices[0].torch_vram_free,
+        "devices_torch_vram_total": data.devices[0].torch_vram_total,
+        "devices_type": data.devices[0].type,
+        "devices_vram_free": data.devices[0].vram_free,
+        "devices_vram_total": data.devices[0].vram_total
+      });
+      mixpanel22.track("ComfyUI_loaded", {
+        "Time": (/* @__PURE__ */ new Date()).toISOString(),
+        "Referrer": `${data.system.comfyui_version}-${window["__COMFYUI_FRONTEND_VERSION__"]}`,
+        "comfyui_version": data.system.comfyui_version,
+        "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"],
+        "Montagen version": 0.2,
+        "system_os": data.system.os,
+        "system_python_version": data.system.python_version,
+        "system_pytorch_version": data.system.pytorch_version,
+        "system_ram_free": data.system.ram_free,
+        "system_ram_total": data.system.ram_total
       });
     };
+    const proxyWorkflowConfig = () => {
+      console.log("onConfigure_获取到的数据_workflow_加载", app$1.graph);
+      const originConfigure = app$1.graph.onConfigure;
+      app$1.graph.onConfigure = function(...args) {
+        var _a2, _b2, _c2, _d2;
+        originConfigure.apply(this, args);
+        console.log("onConfigure_获取到的数据_workflow_加载", args, (_b2 = (_a2 = app$1.extensionManager) == null ? void 0 : _a2.workflow) == null ? void 0 : _b2.activeWorkflow);
+        let temp = args[0];
+        if ((_c2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _c2.source) {
+          mixpanel2.track("Montagen_Template_Loaded", {
+            "Referrer": JSON.stringify(temp),
+            "sourece": (_d2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _d2.source
+          });
+        }
+      };
+    };
+    const mixpanel2 = window.my_mixpanel;
     onMounted(() => {
+      var _a2;
       try {
+        console.log("onConfigure_获取到的数据_workflow_加载", (_a2 = app$1 == null ? void 0 : app$1.graph) == null ? void 0 : _a2.onConfigure);
         init2();
         addBuriedPoint();
+        setTimeout(() => {
+          proxyWorkflowConfig();
+        }, 800);
       } catch (e) {
       }
     });
