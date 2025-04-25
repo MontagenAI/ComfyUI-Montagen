@@ -20,11 +20,10 @@
   - `example_workflows` for ComfyUI: Showcases the ComfyUI-Montagen template in the official workflow templates section.
   - `Browse Templates`: Displays categorized ComfyUI-Montagen templates in the Montagen Explorer.
 - [System] Telemetry Module: Basic Telemetry for Main Pipeline.(#12)
-  - ComfyUI Started: System Info; Custom Nodes
-  - Montagen Template Loaded: Template Workflow Json
-  - Montagen Workflow Executed: Workflow Json
-  - Montagen Timeline Updated: Timeline Json
-  - Montagen Timeline Rendered: Asset Properties
+  - ComfyUI_Started: System Info
+  - Explorer_Opened: Event
+  - Explorer_Closed: Event
+  - Template_Loaded: Event
 
 ### Changed
 
