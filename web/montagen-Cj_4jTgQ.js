@@ -73483,7 +73483,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               if (montagenButton) {
                 if (montagenButton.classList.contains("side-bar-button-selected")) {
                   isOpened = true;
-                  mixpanel22.track("Explorer_Open", {
+                  mixpanel22.track("Explorer_Opened", {
                     "Time": (/* @__PURE__ */ new Date()).toISOString(),
                     "Referrer": "user open Explorer"
                   });
@@ -73590,7 +73590,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         "devices_vram_free": formatSize(data.devices[0].vram_free),
         "devices_vram_total": formatSize(data.devices[0].vram_total)
       });
-      mixpanel22.track("ComfyUI_start", {
+      mixpanel22.track("ComfyUI_Started", {
         "Time": (/* @__PURE__ */ new Date()).toISOString(),
         "Referrer": `${data.system.comfyui_version}-${window["__COMFYUI_FRONTEND_VERSION__"]}`,
         "comfyui_version": data.system.comfyui_version,
@@ -73613,7 +73613,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         console.log("onConfigure_获取到的数据_workflow_加载", args, (_b2 = (_a2 = app$1.extensionManager) == null ? void 0 : _a2.workflow) == null ? void 0 : _b2.activeWorkflow);
         let temp = args[0];
         if ((_c2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _c2.source) {
-          mixpanel2.track("Montagen_Template_Loaded", {
+          mixpanel2.track("Template_Loaded", {
             "Referrer": JSON.stringify(temp),
             "sourece": (_d2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _d2.source
           });
@@ -74347,7 +74347,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   });
 })();
 console.log("mixpanel", mixpanel);
-mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
+mixpanel.init("777a64cc4362c846dfad317334ad9dcf", {
   debug: true,
   track_pageview: false,
   autocapture: false,
