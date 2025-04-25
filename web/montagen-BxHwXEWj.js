@@ -73554,6 +73554,17 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         });
       }
     };
+    function formatSize(value2) {
+      if (value2 === null || value2 === void 0) {
+        return "-";
+      }
+      const bytes = value2;
+      if (bytes === 0) return "0 B";
+      const k = 1024;
+      const sizes = ["B", "KB", "MB", "GB"];
+      const i2 = Math.floor(Math.log(bytes) / Math.log(k));
+      return `${parseFloat((bytes / Math.pow(k, i2)).toFixed(2))} ${sizes[i2]}`;
+    }
     const addBuriedPoint = async () => {
       const res = await app$1.api.fetchApi("/system_stats");
       let data = await res.json();
@@ -73563,10 +73574,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       console.log("macData_获取到的mac地址", macData);
       console.log("data", data, window.my_mixpanel);
       const mixpanel22 = window.my_mixpanel;
-      mixpanel22.alias(`user_${macData.data}`);
+      mixpanel22.alias(`user_${macData.data.id}`);
       mixpanel22.people.set({
-        "$email": `${macData.data}`,
-        "$name": `montagen_${macData.data}`,
+        "$email": `${macData.data.id}`,
+        "$name": `montagen_${macData.data.id}`,
         "signup_date": (/* @__PURE__ */ new Date()).toISOString(),
         "comfyui_version": data.system.comfyui_version,
         "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"],
@@ -73576,20 +73587,21 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         "devices_torch_vram_free": data.devices[0].torch_vram_free,
         "devices_torch_vram_total": data.devices[0].torch_vram_total,
         "devices_type": data.devices[0].type,
-        "devices_vram_free": data.devices[0].vram_free,
-        "devices_vram_total": data.devices[0].vram_total
+        "devices_vram_free": formatSize(data.devices[0].vram_free),
+        "devices_vram_total": formatSize(data.devices[0].vram_total)
       });
-      mixpanel22.track("ComfyUI_loaded", {
+      mixpanel22.track("ComfyUI_start", {
         "Time": (/* @__PURE__ */ new Date()).toISOString(),
         "Referrer": `${data.system.comfyui_version}-${window["__COMFYUI_FRONTEND_VERSION__"]}`,
         "comfyui_version": data.system.comfyui_version,
         "comfyui_frontend_version": window["__COMFYUI_FRONTEND_VERSION__"],
-        "Montagen version": 0.2,
+        "Montagen_version": macData.data.version,
         "system_os": data.system.os,
         "system_python_version": data.system.python_version,
         "system_pytorch_version": data.system.pytorch_version,
-        "system_ram_free": data.system.ram_free,
-        "system_ram_total": data.system.ram_total
+        "system_ram_free": formatSize(data.system.ram_free),
+        "system_ram_total": formatSize(data.system.ram_total),
+        "custom_nodes": JSON.stringify(macData.data.customNodes)
       });
     };
     const proxyWorkflowConfig = () => {
