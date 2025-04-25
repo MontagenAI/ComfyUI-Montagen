@@ -26,7 +26,6 @@ from contextlib import contextmanager
 import logging
 import json
 from .MontagenMachineId import id
-import nodes
 
 
 def error_handling_decorator(func):
@@ -83,20 +82,24 @@ class MontagenProjManager:
         @server.routes.get("/Montagen/Id")
         @error_handling_decorator
         async def get_machine_id(request, register_action):
+            modules=[]
+            node_paths = folder_paths.get_folder_paths("custom_nodes")
+            for custom_node_path in node_paths:
+                possible_modules = os.listdir(os.path.realpath(custom_node_path))
+                if "__pycache__" in possible_modules:
+                    possible_modules.remove("__pycache__")
+                for possible_module in possible_modules:
+                    module_path = os.path.join(custom_node_path, possible_module)
+                    if os.path.isfile(module_path): continue
+                    if module_path.endswith(".disabled"): continue    
+                    modules.append(os.path.basename(module_path))
             return web.json_response(
                 {
                     "code": 0,
                     "data": {
                         "id": id(),
                         "version": version,
-                        "customNodes": [
-                            nodename
-                            for (nodename, nodecls) in nodes.NODE_CLASS_MAPPINGS.items()
-                            if hasattr(nodecls, "RELATIVE_PYTHON_MODULE")
-                            and nodecls.RELATIVE_PYTHON_MODULE.startswith(
-                                "custom_nodes"
-                            )
-                        ],
+                        "customNodes": modules,
                     },
                 }
             )
