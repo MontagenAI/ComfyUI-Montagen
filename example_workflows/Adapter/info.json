@@ -1,9 +1,0 @@
-{
-    "id": "2",
-    "name": "Adapter",
-    "description": "Media Adapter",
-    "modifyTime": "2025-04-24 18:58:00",
-    "cover": "/Adapter/Adapter.jpg",
-    "category":"Basic",
-    "workflow":"/Adapter/Adapter.json"
-}

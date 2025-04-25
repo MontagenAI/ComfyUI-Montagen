@@ -1,9 +1,0 @@
-{
-    "id": "3",
-    "name": "List",
-    "description": "Parser and List Adapter",
-    "modifyTime": "2025-04-24 18:57:00",
-    "cover": "/List/List.jpg",
-    "category":"Basic",
-    "workflow":"/List/List.json"
-}

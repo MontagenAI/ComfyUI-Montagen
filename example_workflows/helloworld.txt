@@ -1,69 +1,258 @@
 {
-    "thumb": "/workflow1.jpg",
+    "thumb": "/helloworld.jpg",
     "workflow": {
-        "id": "f477843f-27ce-4d17-96aa-fc5ac78f4f9c",
+        "id": "fd3b79f7-0b8d-412d-9499-c210e167fbd6",
         "revision": 0,
-        "last_node_id": 3,
-        "last_link_id": 3,
+        "last_node_id": 8,
+        "last_link_id": 7,
         "nodes": [
             {
-                "id": 2,
+                "id": 3,
                 "type": "MontagenImageAdapter",
                 "pos": [
-                    551.146728515625,
-                    -150.9558868408203
+                    2723.360595703125,
+                    1093.098388671875
                 ],
                 "size": [
                     315,
-                    218
+                    479
                 ],
                 "flags": {},
-                "order": 2,
+                "order": 3,
                 "mode": 0,
                 "inputs": [
                     {
                         "name": "timeline",
                         "type": "TIMELINE",
-                        "link": 1
+                        "link": 2
                     },
                     {
                         "name": "image",
                         "shape": 7,
                         "type": "IMAGE",
-                        "link": 2
+                        "link": null
                     },
                     {
                         "name": "alpha",
                         "shape": 7,
                         "type": "MASK",
+                        "link": null
+                    }
+                ],
+                "outputs": [],
+                "properties": {
+                    "cnr_id": "ComfyUI-Montagen",
+                    "ver": "58819f7a038b09d76c495570e5a0801976ed1405",
+                    "Node name for S&R": "MontagenImageAdapter",
+                    "montagen_name": "image",
+                    "montagen_type": "image",
+                    "montagen_node_type": "single_item",
+                    "montagen_timeline_name": "Hello World",
+                    "outputs": {
+                        "assets": [
+                            {
+                                "file_name": "20220525215307_6ef30.jpeg",
+                                "file_path": "image\\20220525215307_6ef30.jpeg",
+                                "file_time": 1745490369.6872797,
+                                "file_size": 151354,
+                                "file_type": "image",
+                                "is_ref": false,
+                                "width": 1000,
+                                "height": 1000,
+                                "frame_rate": 25.0,
+                                "pixel_format": "yuvj420p",
+                                "color_space": "bt470bg",
+                                "bit_rate": null,
+                                "codec_name": "mjpeg",
+                                "duration": 0.0,
+                                "parent": null,
+                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/20220525215307_6ef30.jpeg"
+                            }
+                        ],
+                        "items": [
+                            {
+                                "meta": {
+                                    "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/20220525215307_6ef30.jpeg"
+                                },
+                                "default": {
+                                    "type": "image",
+                                    "children": [],
+                                    "start": -1,
+                                    "duration": -1,
+                                    "object-fit": "contain",
+                                    "x": "50vw",
+                                    "y": "50vh",
+                                    "width": "50vw",
+                                    "loop": true,
+                                    "audio": false,
+                                    "mute": false
+                                },
+                                "item_id": "2ubq6b9eos7z3w1"
+                            }
+                        ],
+                        "meta": {}
+                    },
+                    "reserve_file": true
+                },
+                "widgets_values": [
+                    "image",
+                    "",
+                    "20220525215307_6ef30.jpeg",
+                    null,
+                    ""
+                ]
+            },
+            {
+                "id": 4,
+                "type": "MontagenTextAdapter",
+                "pos": [
+                    2732.930908203125,
+                    1648.42236328125
+                ],
+                "size": [
+                    315,
+                    106
+                ],
+                "flags": {},
+                "order": 4,
+                "mode": 0,
+                "inputs": [
+                    {
+                        "name": "timeline",
+                        "type": "TIMELINE",
                         "link": 3
                     }
                 ],
                 "outputs": [],
                 "properties": {
-                    "Node name for S&R": "MontagenImageAdapter",
-                    "montagen_name": "image",
-                    "montagen_type": "image",
-                    "montagen_node_type": "single_item"
+                    "cnr_id": "ComfyUI-Montagen",
+                    "ver": "1da7f348ea6818e85d21cf8461f6f5be66b38d74",
+                    "Node name for S&R": "MontagenTextAdapter",
+                    "montagen_name": "text",
+                    "montagen_type": "text",
+                    "montagen_node_type": "single_item",
+                    "montagen_timeline_name": "Hello World",
+                    "outputs": {
+                        "items": [
+                            {
+                                "meta": {
+                                    "text": "Hello World"
+                                },
+                                "default": {
+                                    "type": "text",
+                                    "children": [],
+                                    "start": -1,
+                                    "duration": -1,
+                                    "x": "50vw",
+                                    "y": "100vh",
+                                    "width": "95vw",
+                                    "fontSize": "10rpx",
+                                    "wrap": true,
+                                    "valign": "bottom",
+                                    "color": "#FFF",
+                                    "zIndex": 1000
+                                },
+                                "item_id": "2ubw8fu8zgklrkq"
+                            }
+                        ],
+                        "meta": {},
+                        "assets": []
+                    },
+                    "reserve_file": false
                 },
                 "widgets_values": [
-                    "image",
-                    "",
-                    "",
-                    "image",
+                    "text",
+                    "Hello World",
+                    ""
+                ]
+            },
+            {
+                "id": 7,
+                "type": "MontagenAudioAdapter",
+                "pos": [
+                    2584.430908203125,
+                    1768.3228759765625
+                ],
+                "size": [
+                    315,
+                    179
+                ],
+                "flags": {},
+                "order": 6,
+                "mode": 0,
+                "inputs": [
                     {
-                        "hidden": false,
-                        "paused": false,
-                        "params": {}
+                        "name": "timeline",
+                        "type": "TIMELINE",
+                        "link": 7
+                    },
+                    {
+                        "name": "audio",
+                        "shape": 7,
+                        "type": "AUDIO",
+                        "link": 6
                     }
+                ],
+                "outputs": [],
+                "properties": {
+                    "cnr_id": "ComfyUI-Montagen",
+                    "ver": "1da7f348ea6818e85d21cf8461f6f5be66b38d74",
+                    "Node name for S&R": "MontagenAudioAdapter",
+                    "montagen_name": "audio",
+                    "montagen_type": "audio",
+                    "montagen_node_type": "single_item",
+                    "montagen_timeline_name": "Hello World",
+                    "outputs": {
+                        "assets": [
+                            {
+                                "file_name": "audio_0_20250425164137.mp3",
+                                "file_path": "audio\\audio_0_20250425164137.mp3",
+                                "file_time": 1745570497.2907653,
+                                "file_size": 9552,
+                                "file_type": "audio",
+                                "is_ref": false,
+                                "channels": 1,
+                                "sample_rate": "24000",
+                                "codec_name": "mp3",
+                                "bit_rate": "33872",
+                                "duration": 2.256,
+                                "parent": "audio",
+                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/audio_0_20250425164137.mp3"
+                            }
+                        ],
+                        "items": [
+                            {
+                                "meta": {
+                                    "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/audio_0_20250425164137.mp3"
+                                },
+                                "default": {
+                                    "type": "audio",
+                                    "children": [],
+                                    "start": -1,
+                                    "duration": -1,
+                                    "loop": false
+                                },
+                                "item_id": "2ubw91iqtftlb7n"
+                            }
+                        ],
+                        "meta": {}
+                    },
+                    "reserve_file": false
+                },
+                "widgets_values": [
+                    "audio",
+                    "",
+                    "audio_0_20250425164137.mp3",
+                    null,
+                    ""
                 ]
             },
             {
                 "id": 1,
                 "type": "MontagenCreateTimeline",
                 "pos": [
-                    3.346817970275879,
-                    -200.08917236328125
+                    2049.380615234375,
+                    1306.7484130859375
                 ],
                 "size": [
                     315,
@@ -78,30 +267,66 @@
                         "name": "timeline",
                         "type": "TIMELINE",
                         "links": [
-                            1
+                            2,
+                            3,
+                            5,
+                            7
                         ]
                     }
                 ],
                 "properties": {
+                    "cnr_id": "ComfyUI-Montagen",
+                    "ver": "58819f7a038b09d76c495570e5a0801976ed1405",
                     "Node name for S&R": "MontagenCreateTimeline"
                 },
                 "widgets_values": [
-                    "",
+                    "Hello World",
                     1280,
                     720,
                     25
                 ]
             },
             {
-                "id": 3,
-                "type": "LoadImage",
+                "id": 5,
+                "type": "MontagenRenderTimeline",
                 "pos": [
-                    58.34674835205078,
-                    96.91081237792969
+                    2049.831298828125,
+                    1999.32275390625
                 ],
                 "size": [
                     315,
-                    314
+                    58
+                ],
+                "flags": {},
+                "order": 5,
+                "mode": 4,
+                "inputs": [
+                    {
+                        "name": "timeline",
+                        "type": "TIMELINE",
+                        "link": 5
+                    }
+                ],
+                "outputs": [],
+                "properties": {
+                    "cnr_id": "ComfyUI-Montagen",
+                    "ver": "1da7f348ea6818e85d21cf8461f6f5be66b38d74",
+                    "Node name for S&R": "MontagenRenderTimeline"
+                },
+                "widgets_values": [
+                    "Hello World"
+                ]
+            },
+            {
+                "id": 8,
+                "type": "PrimitiveNode",
+                "pos": [
+                    10,
+                    10
+                ],
+                "size": [
+                    203.1999969482422,
+                    60
                 ],
                 "flags": {},
                 "order": 1,
@@ -109,67 +334,107 @@
                 "inputs": [],
                 "outputs": [
                     {
-                        "name": "IMAGE",
-                        "type": "IMAGE",
-                        "links": [
-                            2
-                        ]
-                    },
+                        "name": "connect to widget input",
+                        "type": "*",
+                        "links": null
+                    }
+                ],
+                "properties": {
+                    "Run widget replace on values": false
+                }
+            },
+            {
+                "id": 6,
+                "type": "EdgeTTS",
+                "pos": [
+                    2009.1314697265625,
+                    1578.0230712890625
+                ],
+                "size": [
+                    400,
+                    200
+                ],
+                "flags": {},
+                "order": 2,
+                "mode": 0,
+                "inputs": [],
+                "outputs": [
                     {
-                        "name": "MASK",
-                        "type": "MASK",
+                        "name": "AUDIO",
+                        "type": "AUDIO",
                         "links": [
-                            3
+                            6
                         ]
                     }
                 ],
                 "properties": {
-                    "Node name for S&R": "LoadImage"
+                    "cnr_id": "comfyui-edgetts",
+                    "ver": "867a5b61064ea1bd743e7cef2f2201f876e0540a",
+                    "Node name for S&R": "EdgeTTS"
                 },
                 "widgets_values": [
-                    "",
-                    "image",
-                    ""
+                    "Hello World",
+                    "en-US-JennyNeural",
+                    0.8,
+                    0
                 ]
             }
         ],
         "links": [
             [
-                1,
+                2,
                 1,
                 0,
-                2,
+                3,
                 0,
                 "TIMELINE"
             ],
             [
-                2,
                 3,
-                0,
-                2,
                 1,
-                "IMAGE"
+                0,
+                4,
+                0,
+                "TIMELINE"
             ],
             [
-                3,
-                3,
+                5,
                 1,
-                2,
-                2,
-                "MASK"
+                0,
+                5,
+                0,
+                "TIMELINE"
+            ],
+            [
+                6,
+                6,
+                0,
+                7,
+                1,
+                "AUDIO"
+            ],
+            [
+                7,
+                1,
+                0,
+                7,
+                0,
+                "TIMELINE"
             ]
         ],
         "groups": [],
         "config": {},
         "extra": {
             "ds": {
-                "scale": 0.9090909090909094,
+                "scale": 0.9090909090909091,
                 "offset": [
-                    529.0532502673954,
-                    359.9559017836911
+                    -1312.8309173553716,
+                    -1003.8228580015029
                 ]
-            }
+            },
+            "frontendVersion": "1.17.9"
         },
-        "version": 0.4
+        "version": 0.4,
+        "seed_widgets": {}
     }
 }

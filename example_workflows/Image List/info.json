@@ -1,0 +1,9 @@
+{
+    "id": "1",
+    "name": "Image List",
+    "description": "Script to Image List",
+    "modifyTime": "2025-04-24 18:59:00",
+    "cover": "/Image List/Image List.jpg",
+    "category":"Script to Timeline",
+    "workflow":"/Image List/Image List.json"
+}
