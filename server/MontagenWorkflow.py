@@ -264,6 +264,7 @@ class MontagenWorkflow:
         self.workflow_data = new_workflow
         self.workflow_data.montagen_info = montagen_info
         self.workflow_data.version = version
+        self.workflow_data.source = "MontagenWorkflow"
         for node_unique_id in property_cache:
             properties = property_cache[node_unique_id]
             node_item = self.workflow_data.get_node_by_unique_id(node_unique_id)

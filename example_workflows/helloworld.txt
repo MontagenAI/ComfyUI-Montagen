@@ -1,5 +1,7 @@
 {
     "thumb": "/helloworld.jpg",
+    "name": "Hello World",
+    "description": "123",
     "workflow": {
         "id": "fd3b79f7-0b8d-412d-9499-c210e167fbd6",
         "revision": 0,

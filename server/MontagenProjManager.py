@@ -16,6 +16,7 @@ from .Utils import (
     to_base36_random,
     TEMPLATEPATH,
     TMPPAHT,
+    version,
 )
 from .MontagenProj import MontagenProj
 from .MontagenCacheManager import MontagenCacheManager
@@ -25,6 +26,7 @@ from contextlib import contextmanager
 import logging
 import json
 from .MontagenMachineId import id
+import nodes
 
 
 def error_handling_decorator(func):
@@ -81,7 +83,23 @@ class MontagenProjManager:
         @server.routes.get("/Montagen/Id")
         @error_handling_decorator
         async def get_machine_id(request, register_action):
-            return web.json_response({"code": 0, "data": id()})
+            return web.json_response(
+                {
+                    "code": 0,
+                    "data": {
+                        "id": id(),
+                        "version": version,
+                        "customNodes": [
+                            nodename
+                            for (nodename, nodecls) in nodes.NODE_CLASS_MAPPINGS.items()
+                            if hasattr(nodecls, "RELATIVE_PYTHON_MODULE")
+                            and nodecls.RELATIVE_PYTHON_MODULE.startswith(
+                                "custom_nodes"
+                            )
+                        ],
+                    },
+                }
+            )
 
         @server.routes.get("/Montagen/Proj/List")
         @error_handling_decorator

@@ -11,6 +11,8 @@ import logging
 import ffmpeg
 from PIL import Image
 
+version = "0.2.0"
+
 
 def to_base36_random() -> str:
     timestamp = int(time.time() * 10000000)
@@ -220,9 +222,10 @@ def localfile_video_audio_info(file_path: str, total_size, type):
 
     return extract_video_audio_metadata(data_source, total_size, type)
 
+
 MontagenTimelineGenerated = "Montagen Timeline Generated"
 MontagenWorkflowExecuted = "Montagen Workflow Executed"
-MontagenTimelineRendered="Montagen Timeline Rendered"
+MontagenTimelineRendered = "Montagen Timeline Rendered"
 MONTAGENPROJ = "MontagenProj"
 MONTAGENRESOURCESTYPE = "RESOURCES"
 MONTAGENTIMERANGETYPE = "TIMERANGE"
@@ -260,8 +263,8 @@ FFMPEG = str(ffmpeg.FFMPEG_PATH)
 FFPROBE = str(ffmpeg.FFPROBE_PATH)
 defualt_user_info = {
     "default_project_id": "1",
-    "default_project_name": "default",
-    "default_project_description": "default project",
+    "default_project_name": "Default",
+    "default_project_description": "Default project",
     "default_project": None,
 }
 MONTAGENPROCESSEND = "MontagenProcessEnd"

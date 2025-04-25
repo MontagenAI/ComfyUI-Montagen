@@ -3,6 +3,7 @@ from .LGraphNode import LGraphNode
 from .Utils import MONTAGENPROJ, DEFAULTUSERID
 from datetime import datetime
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from .MontagenWorkflow import MontagenWorkflow
     from .MontagenProj import MontagenProj
@@ -47,15 +48,15 @@ class LGraph:
         }
 
     @property
-    def owner_workflow(self) -> Optional['MontagenWorkflow']:
+    def owner_workflow(self) -> Optional["MontagenWorkflow"]:
         return self.__workflow
 
     @owner_workflow.setter
-    def owner_workflow(self, value: 'MontagenWorkflow'):
+    def owner_workflow(self, value: "MontagenWorkflow"):
         self.__workflow = value
 
     @property
-    def owner_project(self) -> Optional['MontagenProj']:
+    def owner_project(self) -> Optional["MontagenProj"]:
         if self.owner_workflow:
             return self.owner_workflow.project
         return None
@@ -151,6 +152,14 @@ class LGraph:
     @montagen_modify_time.setter
     def montagen_modify_time(self, value: datetime):
         self.montagen_info["modifyTime"] = value.isoformat()
+
+    @property
+    def source(self):
+        return self.extra.get("source")
+
+    @source.setter
+    def source(self, value: str):
+        self.extra["source"] = value
 
     def get_node_by_unique_id(self, id):
         for node in self.nodes:

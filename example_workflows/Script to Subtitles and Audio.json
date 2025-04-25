@@ -446,6 +446,7 @@
                 -491.4936466942151
             ]
         },
+        "source": "ComfyUI",
         "frontendVersion": "1.17.9"
     },
     "version": 0.4,

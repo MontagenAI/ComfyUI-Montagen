@@ -18,6 +18,7 @@ from .Utils import (
     supported_group_config_type,
     get_hello_world,
     hello_workflow_id,
+    defualt_user_info,
 )
 from .MontagenWorkflow import MontagenWorkflow
 from .MontagenCacheManager import MontagenCacheManager
@@ -151,11 +152,12 @@ class MontagenProj:
 
     def to_json(self):
         workflows = [workflow.to_json() for workflow in self.workflows]
-        if not workflows:
+        if not workflows and self.project_id == defualt_user_info["default_project_id"]:
             hello_world = get_hello_world()
-            self.project_add_workflow_data(
-                hello_workflow_id, "hello_world", hello_world["workflow"]
+            hello_workflow = self.project_add_workflow_data(
+                hello_workflow_id, hello_world["name"], hello_world["workflow"]
             )
+            hello_workflow.rename_workflow(None, hello_world["description"])
             workflows = [workflow.to_json() for workflow in self.workflows]
         return {
             **self.project_data,
@@ -329,7 +331,7 @@ class MontagenProj:
         self.workflows.append(workflow)
         workflow.syn_workflow_node(data, False)
         self.project_change_time()
-        return workflow_id
+        return workflow
 
     def project_delete_timeline(self, timeline_name: str):
         timeline = self.get_timeline(timeline_name)
