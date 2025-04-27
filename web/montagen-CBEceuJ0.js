@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-3b5fa9a1] {
+}.explorer-container[data-v-94318dc9] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -68898,7 +68898,7 @@ const _hoisted_13$2 = {
   key: 3,
   class: "w-full flex items-center"
 };
-const _hoisted_14$2 = { class: "truncate w-full text-center name" };
+const _hoisted_14$1 = { class: "truncate w-full text-center name" };
 const _hoisted_15$1 = {
   key: 4,
   class: "w-full flex items-center"
@@ -69017,7 +69017,7 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
                       style: { "font-size": "1rem" }
                     })
                   ], -1)),
-                  createBaseVNode("div", _hoisted_14$2, toDisplayString(item.refId), 1)
+                  createBaseVNode("div", _hoisted_14$1, toDisplayString(item.refId), 1)
                 ])) : createCommentVNode("", true),
                 item.type == "gif" ? (openBlock(), createElementBlock("div", _hoisted_15$1, [
                   _cache[5] || (_cache[5] = createBaseVNode("div", null, [
@@ -69855,7 +69855,7 @@ const _hoisted_10$1 = { class: "form-item-content" };
 const _hoisted_11$1 = { class: "form-item tw-my-2" };
 const _hoisted_12$1 = { class: "form-item-content" };
 const _hoisted_13$1 = { class: "form-item tw-my-2" };
-const _hoisted_14$1 = { class: "form-item-content" };
+const _hoisted_14 = { class: "form-item-content" };
 const _hoisted_15 = { class: "form-item tw-my-2" };
 const _hoisted_16 = { class: "form-item-content" };
 const _hoisted_17 = { class: "flex justify-center" };
@@ -70197,7 +70197,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
                             ]),
                             createBaseVNode("div", _hoisted_13$1, [
                               _cache[8] || (_cache[8] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "password:", -1)),
-                              createBaseVNode("div", _hoisted_14$1, [
+                              createBaseVNode("div", _hoisted_14, [
                                 createVNode(_component_InputText, {
                                   name: "password",
                                   type: "text",
@@ -71970,17 +71970,16 @@ const _hoisted_3 = { class: "flex flex-row" };
 const _hoisted_4 = { class: "flex-1 overflow-hidden" };
 const _hoisted_5 = { class: "custom-content" };
 const _hoisted_6 = { class: "custom-content" };
-const _hoisted_7 = { class: "custom-content" };
-const _hoisted_8 = { id: "custom-dialog" };
-const _hoisted_9 = { class: "flex flex-col justify-center" };
+const _hoisted_7 = { id: "custom-dialog" };
+const _hoisted_8 = { class: "flex flex-col justify-center" };
+const _hoisted_9 = { class: "mb-2" };
 const _hoisted_10 = { class: "mb-2" };
 const _hoisted_11 = { class: "mb-2" };
 const _hoisted_12 = { class: "mb-2" };
-const _hoisted_13 = { class: "mb-2" };
-const _hoisted_14 = { class: "flex justify-center" };
+const _hoisted_13 = { class: "flex justify-center" };
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   __name: "newExplorer",
-  setup(__props) {
+  setup(__props, { expose: __expose }) {
     const confirm = useConfirm();
     const dialogStore = useDialogStore();
     const workSpaceStore = useWorkSpaceStore();
@@ -72765,6 +72764,16 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         });
       });
     });
+    const treeContainer = ref$3();
+    const setMyData = () => {
+      console.log("自娱自乐吧_??????????????", expandedKeys.value, selectedKeys.value);
+      selectedKeys.value["2uc99utn5ros0ox"] = true;
+      expandedKeys.value["4"] = true;
+    };
+    __expose({
+      setMyData,
+      treeContainer
+    });
     return (_ctx, _cache) => {
       const _component_Button = script$1;
       const _component_Toolbar = script$2;
@@ -72821,7 +72830,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               direction: "vertical"
             }, {
               "panel-0": withCtx(() => [
-                createBaseVNode("div", _hoisted_5, [
+                createBaseVNode("div", {
+                  class: "custom-content",
+                  ref_key: "treeContainer",
+                  ref: treeContainer
+                }, [
                   createVNode(_component_Tree, {
                     class: "tree-explorer py-0 px-2 2xl:px-4",
                     value: treeNodes.value,
@@ -72859,15 +72872,15 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     }),
                     _: 1
                   }, 8, ["value", "expandedKeys", "selectionKeys", "pt"])
-                ])
+                ], 512)
               ]),
               "panel-1": withCtx(() => [
-                createBaseVNode("div", _hoisted_6, [
+                createBaseVNode("div", _hoisted_5, [
                   createVNode(_sfc_main$h, { data: [] })
                 ])
               ]),
               "panel-2": withCtx(() => [
-                createBaseVNode("div", _hoisted_7, [
+                createBaseVNode("div", _hoisted_6, [
                   createVNode(_sfc_main$k)
                 ])
               ]),
@@ -72889,7 +72902,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           }
         }, null, 8, ["model"]),
         (openBlock(), createBlock(Teleport, { to: "body" }, [
-          createBaseVNode("div", _hoisted_8, [
+          createBaseVNode("div", _hoisted_7, [
             createVNode(_component_Dialog, {
               visible: visible.value,
               "onUpdate:visible": _cache[6] || (_cache[6] = ($event) => visible.value = $event),
@@ -72898,8 +72911,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
               style: { width: "18rem" }
             }, {
               default: withCtx(() => [
-                createBaseVNode("div", _hoisted_9, [
-                  createBaseVNode("div", _hoisted_10, [
+                createBaseVNode("div", _hoisted_8, [
+                  createBaseVNode("div", _hoisted_9, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.name,
                       "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => initialValues.value.name = $event),
@@ -72907,7 +72920,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "name"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_11, [
+                  createBaseVNode("div", _hoisted_10, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.description,
                       "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => initialValues.value.description = $event),
@@ -72915,7 +72928,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "description"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_12, [
+                  createBaseVNode("div", _hoisted_11, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.width,
                       "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => initialValues.value.width = $event),
@@ -72923,7 +72936,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "videoWidth"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_13, [
+                  createBaseVNode("div", _hoisted_12, [
                     createVNode(_component_el_input, {
                       modelValue: initialValues.value.height,
                       "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => initialValues.value.height = $event),
@@ -72931,7 +72944,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                       placeholder: "videoHeight"
                     }, null, 8, ["modelValue"])
                   ]),
-                  createBaseVNode("div", _hoisted_14, [
+                  createBaseVNode("div", _hoisted_13, [
                     createVNode(_component_Button, {
                       class: "w-full",
                       type: "submit",
@@ -72951,7 +72964,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-3b5fa9a1"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-94318dc9"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73451,11 +73464,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         });
         return;
       }
-      if (!menuStore.showPage) {
-        menuStore.changeShow(true);
-      }
-      workSpaceStore.openWorkFlow({ projectId: "", timeLine: temp.timelineData });
+      console.log("打开时间线_tempExplorerInstance组件实例", tempExplorerInstance);
     };
+    let tempExplorerInstance = null;
     const init2 = () => {
       app$1.extensionManager.registerSidebarTab({
         id: "mentegen-explorer",
@@ -73491,7 +73502,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             app2.use(window.sharePinia);
           }
           el.style.height = "100%";
-          app2.mount(el);
+          tempExplorerInstance = app2.mount(el);
         }
       });
       if (switchRef.value) {
@@ -74386,14 +74397,7 @@ console.log("mixpanel", mixpanel);
 mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
   debug: true,
   track_pageview: false,
-  autotrack: false,
-  autocapture: {
-    include: (element) => {
-      const shouldTrack = element.matches(".track-me") || element.hasAttribute("data-track");
-      console.log("Should track element:", element, shouldTrack);
-      return shouldTrack;
-    }
-  },
+  autocapture: false,
   persistence: "localStorage",
   ignore_dnt: true
   // distinct_id: 'USER_REGISTERED_ID_12345'
