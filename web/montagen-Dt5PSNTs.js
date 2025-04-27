@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-0efb816c] {
+}.explorer-container[data-v-3b5fa9a1] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -72720,7 +72720,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
         title: "Add Description",
         component: _sfc_main$5
       });
-      console.log(decriptDialog, "decriptDialog_的实例", decriptDialog.contentRef);
       nextTick$1(() => {
         var _a2;
         (_a2 = decriptDialog.contentRef) == null ? void 0 : _a2.setInitData({ projectId: e.projectId, workflowId: e.workflowId });
@@ -72792,6 +72791,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                     text: "",
                     icon: "pi pi-th-large",
                     class: "p-button-secondary py-1 2xl:py-2",
+                    pt: {
+                      root: { "data-track": "Browse Templates" }
+                    },
                     onClick: chooseProjectFolder
                   }, null, 512), [
                     [_directive_tooltip, "Browse Templates"]
@@ -72799,6 +72801,9 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                   withDirectives(createVNode(_component_Button, {
                     text: "",
                     icon: "pi pi-folder-open",
+                    pt: {
+                      root: { "data-track": "Open project" }
+                    },
                     class: "p-button-secondary py-1 2xl:py-2",
                     onClick: chooseProject
                   }, null, 512), [
@@ -72946,7 +72951,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-0efb816c"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-3b5fa9a1"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73417,6 +73422,40 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       };
     };
     const mutationObserver = ref$3(null);
+    function AddButtonOpenTimeline() {
+      console.log("AddButtonOpenTimeline__哈哈", this);
+      this.addWidget(
+        "button",
+        "open timeline",
+        "opentimeline",
+        () => {
+          console.log("MontagenCreateTimeline__点击了按钮", this);
+          openTimeline(this);
+        }
+      );
+    }
+    const openTimeline = (node2) => {
+      var _a2;
+      const widget = (_a2 = node2.widgets) == null ? void 0 : _a2.find((w) => w.name === "name");
+      let name = widget == null ? void 0 : widget.value;
+      let timelines = workSpaceStore.activeProject.timelines || [];
+      let temp = timelines.find((item) => {
+        return item.timelineName === name;
+      });
+      if (!name || !temp) {
+        app$1.extensionManager.toast.add({
+          severity: "warn",
+          summary: "Warning!",
+          detail: "Please create a timeline first",
+          life: 3e3
+        });
+        return;
+      }
+      if (!menuStore.showPage) {
+        menuStore.changeShow(true);
+      }
+      workSpaceStore.openWorkFlow({ projectId: "", timeLine: temp.timelineData });
+    };
     const init2 = () => {
       app$1.extensionManager.registerSidebarTab({
         id: "mentegen-explorer",
@@ -73471,7 +73510,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, 0);
             window.myUI = ui;
             let isOpened = false;
-            const mixpanel22 = window.my_mixpanel;
+            const mixpanel2 = window.my_mixpanel;
             mutationObserver.value = new MutationObserver((mutationsList) => {
               let target2 = document.querySelector(".comfyui-body-left .side-tool-bar-container");
               let montagenButton = target2.querySelector(".mentegen-explorer-tab-button");
@@ -73483,13 +73522,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               if (montagenButton) {
                 if (montagenButton.classList.contains("side-bar-button-selected")) {
                   isOpened = true;
-                  mixpanel22.track("Explorer_Opened", {
+                  mixpanel2.track("Explorer_Opened", {
                     "Time": (/* @__PURE__ */ new Date()).toISOString(),
                     "Referrer": "user open Explorer"
                   });
                 } else if (isOpened && !montagenButton.classList.contains("side-bar-button-selected")) {
                   isOpened = false;
-                  mixpanel22.track("Explorer_Closed", {
+                  mixpanel2.track("Explorer_Closed", {
                     "Time": (/* @__PURE__ */ new Date()).toISOString(),
                     "Referrer": "user close Explorer"
                   });
@@ -73506,8 +73545,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             });
           },
           async beforeRegisterNodeDef(nodeType, nodeData, app2) {
-            chainCallback(nodeType.prototype, "onNodeCreated", function(node2) {
-            });
+            if ((nodeData == null ? void 0 : nodeData.name) == "MontagenCreateTimeline") {
+              console.log("MontagenCreateTimeline___________", nodeData);
+              chainCallback(nodeType.prototype, "onNodeCreated", function() {
+                AddButtonOpenTimeline.call(this);
+              });
+            }
             if ((nodeData == null ? void 0 : nodeData.category) == "Montagen") {
               addUploadWidget(nodeType);
               chainCallback(nodeType.prototype, "onExecuted", async function(message) {
@@ -73573,9 +73616,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       let macData = await macRes.json();
       console.log("macData_获取到的mac地址", macData);
       console.log("data", data, window.my_mixpanel);
-      const mixpanel22 = window.my_mixpanel;
-      mixpanel22.alias(`user_${macData.data.id}`);
-      mixpanel22.people.set({
+      const mixpanel2 = window.my_mixpanel;
+      mixpanel2.alias(`user_${macData.data.id}`);
+      mixpanel2.people.set({
         "$email": `${macData.data.id}`,
         "$name": `montagen_${macData.data.id}`,
         "signup_date": (/* @__PURE__ */ new Date()).toISOString(),
@@ -73590,7 +73633,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         "devices_vram_free": formatSize(data.devices[0].vram_free),
         "devices_vram_total": formatSize(data.devices[0].vram_total)
       });
-      mixpanel22.track("ComfyUI_Started", {
+      mixpanel2.track("ComfyUI_Started", {
         "Time": (/* @__PURE__ */ new Date()).toISOString(),
         "Referrer": `${data.system.comfyui_version}-${window["__COMFYUI_FRONTEND_VERSION__"]}`,
         "comfyui_version": data.system.comfyui_version,
@@ -73605,26 +73648,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       });
     };
     const proxyWorkflowConfig = () => {
-      console.log("onConfigure_获取到的数据_workflow_加载", app$1.graph);
       const originConfigure = app$1.graph.onConfigure;
       app$1.graph.onConfigure = function(...args) {
-        var _a2, _b2, _c2, _d2;
+        var _a2;
         originConfigure.apply(this, args);
-        console.log("onConfigure_获取到的数据_workflow_加载", args, (_b2 = (_a2 = app$1.extensionManager) == null ? void 0 : _a2.workflow) == null ? void 0 : _b2.activeWorkflow);
         let temp = args[0];
-        if ((_c2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _c2.source) {
-          mixpanel2.track("Template_Loaded", {
-            "Referrer": JSON.stringify(temp),
-            "sourece": (_d2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _d2.source
-          });
-        }
+        if ((_a2 = temp == null ? void 0 : temp.extra) == null ? void 0 : _a2.source) ;
       };
     };
-    const mixpanel2 = window.my_mixpanel;
     onMounted(() => {
-      var _a2;
       try {
-        console.log("onConfigure_获取到的数据_workflow_加载", (_a2 = app$1 == null ? void 0 : app$1.graph) == null ? void 0 : _a2.onConfigure);
         init2();
         addBuriedPoint();
         setTimeout(() => {
@@ -74260,6 +74293,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           srtEditWidet.container.querySelectorAll('input[name="subcheck"]').forEach((checkbox) => {
             checkbox.checked = allCheck.checked;
           });
+          srtEditWidet.entries.forEach((entry) => {
+            entry.isSelected = allCheck.checked;
+          });
         });
         entries.forEach((entry, index2) => {
           srtEditWidet.container.appendChild(createEntryElement(entry, index2));
@@ -74347,10 +74383,17 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   });
 })();
 console.log("mixpanel", mixpanel);
-mixpanel.init("777a64cc4362c846dfad317334ad9dcf", {
+mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
   debug: true,
   track_pageview: false,
-  autocapture: false,
+  autotrack: false,
+  autocapture: {
+    include: (element) => {
+      const shouldTrack = element.matches(".track-me") || element.hasAttribute("data-track");
+      console.log("Should track element:", element, shouldTrack);
+      return shouldTrack;
+    }
+  },
   persistence: "localStorage",
   ignore_dnt: true
   // distinct_id: 'USER_REGISTERED_ID_12345'
