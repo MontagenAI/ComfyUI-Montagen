@@ -1,6 +1,6 @@
 # ComfyUI-Montagen Changelog
 
-## [0.2.1] - 2025-04-23
+## [0.2.1] - 2025-04-25
 
 *Feature Update: Clip Split, List Adapter and Template Support.*
 
@@ -24,6 +24,9 @@
   - Explorer_Opened: Event
   - Explorer_Closed: Event
   - Template_Loaded: Event
+  - Montagen_Workflow_Executed: Event
+  - Montagen_Timeline_Generated: Event
+  - Montagen_Timeline_Rendered: Event
 
 ### Changed
 
