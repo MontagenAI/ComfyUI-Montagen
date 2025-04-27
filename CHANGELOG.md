@@ -1,6 +1,6 @@
 # ComfyUI-Montagen Changelog
 
-## [0.2.1] - 2025-04-23
+## [0.2.1] - 2025-04-25
 
 *Feature Update: Clip Split, List Adapter and Template Support.*
 
@@ -20,11 +20,13 @@
   - `example_workflows` for ComfyUI: Showcases the ComfyUI-Montagen template in the official workflow templates section.
   - `Browse Templates`: Displays categorized ComfyUI-Montagen templates in the Montagen Explorer.
 - [System] Telemetry Module: Basic Telemetry for Main Pipeline.(#12)
-  - ComfyUI Started: System Info; Custom Nodes
-  - Montagen Template Loaded: Template Workflow Json
-  - Montagen Workflow Executed: Workflow Json
-  - Montagen Timeline Updated: Timeline Json
-  - Montagen Timeline Rendered: Asset Properties
+  - ComfyUI_Started: System Info
+  - Explorer_Opened: Event
+  - Explorer_Closed: Event
+  - Template_Loaded: Event
+  - Montagen_Workflow_Executed: Event
+  - Montagen_Timeline_Generated: Event
+  - Montagen_Timeline_Rendered: Event
 
 ### Changed
 

@@ -11,7 +11,7 @@ import logging
 import ffmpeg
 from PIL import Image
 
-version = "0.2.0"
+version = "0.2.1"
 
 
 def to_base36_random() -> str:
@@ -1167,7 +1167,7 @@ def create_default_option(type: str):
             "start": -1,
             "duration": -1,
             "x": "50vw",
-            "y": "100vh",
+            "y": "95vh",
             "width": "95vw",
             "fontSize": "10rpx",
             "wrap": True,
