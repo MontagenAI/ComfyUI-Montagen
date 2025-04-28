@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-0981eb26] {
+}.explorer-container[data-v-de7785ab] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -72768,8 +72768,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     const setMyData = (name) => {
       expandedKeys.value["4"] = true;
       nextTick$1(() => {
-        var _a2, _b2, _c2;
-        (_c2 = (_b2 = (_a2 = treeContainer.value) == null ? void 0 : _a2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _b2.firstElementChild) == null ? void 0 : _c2.click();
+        var _a2, _b2, _c2, _d2;
+        (_d2 = (_c2 = (_b2 = (_a2 = treeContainer.value) == null ? void 0 : _a2.querySelector('li[aria-label="timelines"]')) == null ? void 0 : _b2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _c2.firstElementChild) == null ? void 0 : _d2.click();
       });
     };
     __expose({
@@ -72966,7 +72966,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-0981eb26"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-de7785ab"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
