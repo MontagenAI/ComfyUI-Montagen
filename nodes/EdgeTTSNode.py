@@ -6,6 +6,7 @@ from ..server.Utils import (
     SYNCACION,
     EDGETTSNODETYPE,
     get_video_duration,
+    trim_audio_start,
 )
 from .BaseWorkflow import BaseWorkflow
 from ..server.MontagenProjManager import MontagenProjManager
@@ -83,7 +84,6 @@ class EdgeTTSNode(BaseWorkflow):
                     {
                         "multiline": True,
                         "placeholder": "Enter text to convert to speech",
-                        "defaultInput": True,
                     },
                 ),
                 "timeRangeList": (MONTAGENTIMERANGETYPE, {"tooltip": "The timeRange."}),
@@ -118,6 +118,10 @@ class EdgeTTSNode(BaseWorkflow):
                         "tooltip": "Voice pitch adjustment (-20 to +20 Hz)",
                     },
                 ),
+                "trim": (
+                    "FLOAT",
+                    {"default": 0.2, "min": 0.0, "step": 0.01, "max": 2.0},
+                ),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -148,6 +152,7 @@ class EdgeTTSNode(BaseWorkflow):
     async def generate_speech(
         self,
         text: list[str],
+        trim,
         timeRangeList: list[dict],
         action: str,
         voice: str,
@@ -210,6 +215,13 @@ class EdgeTTSNode(BaseWorkflow):
                     pitch=f"{pitch:+d}Hz",
                 )
                 await communicate.save(temp_file)
+            temp2_file = os.path.join(
+                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.wav"
+            )
+            if trim > 0.0:
+                trim_audio_start(temp_file, temp2_file, trim)
+                os.remove(temp_file)
+                temp_file = temp2_file
             resourceList.append(temp_file)
             duration = get_video_duration(temp_file)
             time_unit.start = 0
@@ -224,6 +236,7 @@ class EdgeTTSNode(BaseWorkflow):
     def tts(
         self,
         voice,
+        trim=None,
         text=None,
         timeRangeList=None,
         action=None,
@@ -240,6 +253,7 @@ class EdgeTTSNode(BaseWorkflow):
         except RuntimeError:
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
+        trim = trim[0]
         offset = offset[0]
         volume = volume[0]
         speed = speed[0]
@@ -252,6 +266,7 @@ class EdgeTTSNode(BaseWorkflow):
         return loop.run_until_complete(
             self.generate_speech(
                 text,
+                trim,
                 timeRangeList,
                 action,
                 voice,
