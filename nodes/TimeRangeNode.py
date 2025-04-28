@@ -1,6 +1,6 @@
 from ..server.Utils import MONTAGENTIMERANGETYPE
 from .BaseWorkflow import BaseWorkflow
-from ..server.MontagenTimeRange import MontagenTime
+from ..server.MontagenTimeRange import MontagenTime, MontagenTimeRange
 from ..server.Utils import (
     TIMERANGENODETYPE,
     MODIFYACTION,
@@ -65,10 +65,9 @@ class TimeRangeNode(BaseWorkflow):
 
         subs = []
         units = []
-        srt_subs = [MontagenTime(item) for item in content]
-        srt_subs.sort(key=lambda x: x.index)
+        srt_subs = MontagenTimeRange(content)
 
-        for sub in srt_subs:
+        for sub in srt_subs.time_range:
             item_id = f"{node.node_id}_{sub.index}"
             sub.id = item_id
             if sub.is_selected:

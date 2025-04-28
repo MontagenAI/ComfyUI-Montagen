@@ -9,6 +9,7 @@ import asyncio
 import threading
 from queue import Queue
 import logging
+from comfy.cli_args import args
 
 
 class MontagenMaterial:
@@ -402,10 +403,14 @@ class MontagenMaterial:
         return None
 
     def get_material_full_path(self, material: dict) -> Optional[Dict[str, Any]]:
-        file_path = material.get("file_path")
-        file_path = file_path and os.path.abspath(
-            os.path.join(self.project.project_path, self.assets_dir, file_path)
-        )
+        is_ref = material.get("is_ref")
+        if not is_ref:
+            file_path = material.get("file_path")
+            file_path = file_path and os.path.abspath(
+                os.path.join(self.project.project_path, self.assets_dir, file_path)
+            )
+        else:
+            file_path = f"http://127.0.0.1:{args.port}/{material.get('src').strip('/')}"
         return file_path
 
     def get_material_output(self, file_name: str) -> Optional[Dict[str, Any]]:

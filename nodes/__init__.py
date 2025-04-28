@@ -11,6 +11,7 @@ from .StickerListAdapter import StickerListAdapter
 from .AudioListAdapter import AudioListAdapter
 from .TextListAdapter import TextListAdapter
 from .TimeRangeNode import TimeRangeNode
+from .EdgeTTSNode import EdgeTTSNode
 
 NODE_CLASS_MAPPINGS = {
     "MontagenCreateTimeline": TimelineNode,
@@ -24,8 +25,9 @@ NODE_CLASS_MAPPINGS = {
     # "MontagenVideoListAdapter": VideoListAdapter,
     "MontagenImageListAdapter": ImageListAdapter,
     # "MontagenStickerListAdapter": StickerListAdapter,
-    # "MontagenAudioListAdapter": AudioListAdapter,
+    "MontagenAudioListAdapter": AudioListAdapter,
     "MontagenTextListAdapter": TextListAdapter,
+    "MontagenEdgeTTSNode": EdgeTTSNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -40,8 +42,9 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     # "MontagenVideoListAdapter": VideoListAdapter.DESCRIPTION,
     "MontagenImageListAdapter": ImageListAdapter.DESCRIPTION,
     # "MontagenStickerListAdapter": StickerListAdapter.DESCRIPTION,
-    # "MontagenAudioListAdapter": AudioListAdapter.DESCRIPTION,
+    "MontagenAudioListAdapter": AudioListAdapter.DESCRIPTION,
     "MontagenTextListAdapter": TextListAdapter.DESCRIPTION,
+    "MontagenEdgeTTSNode": EdgeTTSNode.DESCRIPTION,
 }
 
 __all__ = [NODE_DISPLAY_NAME_MAPPINGS, NODE_CLASS_MAPPINGS]

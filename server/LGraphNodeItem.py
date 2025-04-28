@@ -46,6 +46,14 @@ class LGraphNodeItem:
         self.data["item_id"] = value
 
     @property
+    def item_index(self) -> str:
+        return self.data.get("item_index", 0)
+
+    @item_index.setter
+    def item_index(self, value: int):
+        self.data["item_index"] = value
+
+    @property
     def src(self) -> str:
         return self.meta.get("src")
 
@@ -184,6 +192,18 @@ class LGraphNodeItem:
                     if duration:
                         clip.duration = duration
             self.timeline.save()
+
+    def set_time(
+        self,
+        start=None,
+        duration=None,
+    ):
+        for clip in self.clips:
+            if start:
+                clip.start = start
+            if duration:
+                clip.duration = duration
+        self.timeline.save()
 
     def syn_meta(self, meta: dict):
         opt = flat_to_tree(meta, supported_group_config_type[self.type])

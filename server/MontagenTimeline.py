@@ -179,6 +179,8 @@ class MontagenTimeline:
             grouped_link_clips[clip.node_id]["clips"].append(clip.to_json())
 
         nodes = [*grouped_link_clips.values()]
+        for node_item in nodes:
+            node_item["clips"].sort(key=lambda x: x.get("name"))
         clips = [clip.to_json() for clip in self.un_link_clips]
         clips.sort(key=lambda x: x.get("name"))
         if clips:
