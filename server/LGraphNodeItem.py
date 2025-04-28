@@ -187,9 +187,9 @@ class LGraphNodeItem:
                     clip.src = main_content
                 clip.update_data(addition_meta)
                 if flush:
-                    if start:
+                    if start != None:
                         clip.start = start
-                    if duration:
+                    if duration != None:
                         clip.duration = duration
             self.timeline.save()
 
@@ -199,9 +199,9 @@ class LGraphNodeItem:
         duration=None,
     ):
         for clip in self.clips:
-            if start:
+            if start != None:
                 clip.start = start
-            if duration:
+            if duration != None:
                 clip.duration = duration
         self.timeline.save()
 
