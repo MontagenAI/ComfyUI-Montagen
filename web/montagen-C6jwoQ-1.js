@@ -107,19 +107,19 @@
   background: #fff;
   border-radius: none;
 }
-.panels-container[data-v-2ccb7b25] {\r
+.panels-container[data-v-06227500] {\r
   height: 100%;\r
   width: 100%;\r
   position: relative;\r
   background: #fff;
 }
-.resizable-panel[data-v-2ccb7b25] {\r
+.resizable-panel[data-v-06227500] {\r
   background: white;\r
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r
   overflow: hidden;\r
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.panel-header[data-v-2ccb7b25] {\r
+.panel-header[data-v-06227500] {\r
   background: #f8f9fa;\r
   cursor: pointer;\r
   border-bottom: 1px solid #eee;\r
@@ -134,36 +134,36 @@
   top: 0;\r
   z-index: 2;
 }
-.toggle-icon[data-v-2ccb7b25] {\r
+.toggle-icon[data-v-06227500] {\r
   font-size: 0.8em;\r
   opacity: 0.6;
 }
-.gutter[data-v-2ccb7b25] {\r
+.gutter[data-v-06227500] {\r
   background: #ddd;\r
   position: relative;\r
   transition: all 0.3s;
 }
-.gutter.gutter-active[data-v-2ccb7b25] {\r
+.gutter.gutter-active[data-v-06227500] {\r
   background: #ccc;\r
   cursor: row-resize;
 }
-.gutter[data-v-2ccb7b25]:not(.gutter-active) {\r
+.gutter[data-v-06227500]:not(.gutter-active) {\r
   pointer-events: none;\r
   opacity: 0;
 }\r
 \r
 /* 垂直布局分隔条 */
-.gutter[data-direction="vertical"][data-v-2ccb7b25] {\r
+.gutter[data-direction="vertical"][data-v-06227500] {\r
   height: 10px;\r
   cursor: row-resize;
 }\r
 \r
 /* 水平布局分隔条 */
-.gutter[data-direction="horizontal"][data-v-2ccb7b25] {\r
+.gutter[data-direction="horizontal"][data-v-06227500] {\r
   width: 5px;\r
   cursor: col-resize;
 }
-[data-v-2ccb7b25] .gutter-vertical {\r
+[data-v-06227500] .gutter-vertical {\r
   /* opacity: 0; */\r
   background-color: #fff;
 &:hover {\r
@@ -171,10 +171,10 @@
     cursor: row-resize;
 }
 }
-.panel[data-v-2ccb7b25] {\r
+.panel[data-v-06227500] {\r
   overflow: hidden;
 }
-.panel.expand[data-v-2ccb7b25] {\r
+.panel.expand[data-v-06227500] {\r
   overflow-y: auto;
 }\r
 
@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-de7785ab] {
+}.explorer-container[data-v-080911a5] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -702,7 +702,7 @@ img[data-v-11358f43] {
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
 import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, c as createElementBlock, o as openBlock, O as Fragment, P as renderList$1, H as createBlock, I as withCtx, L as resolveDynamicComponent, m as mergeProps$1, D as toDisplayString, Q as unref, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, k as withModifiers, ac as withKeys, n as nextTick$1, a1 as normalizeStyle, j as renderSlot$1, q as toRaw, Z as onUnmounted, T as Teleport, a5 as onBeforeUnmount, a3 as provide, ad as createApp } from "./assets/vue-CbAVCKWg.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$c, r as script$e, t as script$f, u as useToast, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, B as script$l, C as script$m, D as customAlphabet, F as script$n, G as script$o, H as script$p, I as z, J as script$q, K as DialogService, L as ConfirmationService, M as mixpanel, N as createPinia, O as ToastService } from "./assets/vendor-I8spPIsN.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElFormItem, b as ElInput, c as ElButton, e as ElForm, f as script$1, T as Tooltip, g as script$2, h as script$3, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$c, r as script$e, t as script$f, u as useToast, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, B as script$l, C as script$m, D as customAlphabet, F as script$n, G as script$o, H as script$p, I as z, J as script$q, K as DialogService, L as ConfirmationService, M as mixpanel$1, N as createPinia, O as ToastService } from "./assets/vendor-I8spPIsN.js";
 import { l as lodashExports } from "./assets/lodash-CNwZySND.js";
 import { y as usePrimeVue, z as script$d, P as PrimeVue, A as index$3 } from "./assets/primevue-CULgF5yu.js";
 import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-04jNbkwA.js";
@@ -69120,6 +69120,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
   }
 });
 const EditableText = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-5cf00c0d"]]);
+const mixpanel = window.my_mixpanel;
 const _sfc_main$p = {
   props: {
     // 面板配置数组
@@ -69220,18 +69221,19 @@ const _sfc_main$p = {
       });
     },
     // 切换面板展开状态
-    togglePanel(index2) {
+    togglePanel(index2, panel) {
+      console.log("togglePanel_打开关闭", index2, panel, mixpanel, window.my_mixpanel);
       this.panels[index2].expanded = !this.panels[index2].expanded;
       this.$forceUpdate();
       let total = 0;
       if (this.panels[index2].expanded) {
-        this.panels.forEach((panel, idx) => {
-          if (panel.expanded && idx !== index2) {
-            console.log(panel, "panel.expanded_已经展开,");
-            panel.size = 33.33;
+        this.panels.forEach((panel2, idx) => {
+          if (panel2.expanded && idx !== index2) {
+            console.log(panel2, "panel.expanded_已经展开,");
+            panel2.size = 33.33;
           }
           if (idx != index2) {
-            total += panel.size;
+            total += panel2.size;
           }
         });
         this.panels[index2].size = 100 - total;
@@ -69304,7 +69306,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
         createBaseVNode("div", _hoisted_2$d, [
           createBaseVNode("div", {
             class: "panel-header py-1 px-2",
-            onClick: ($event) => $options.togglePanel(index2),
+            onClick: ($event) => $options.togglePanel(index2, panel),
             style: normalizeStyle({ height: `${$data.headerHeight}px` })
           }, [
             createBaseVNode("div", null, [
@@ -69325,7 +69327,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 512);
 }
-const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$2], ["__scopeId", "data-v-2ccb7b25"]]);
+const ResizablePanels = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$2], ["__scopeId", "data-v-06227500"]]);
 const _hoisted_1$j = { class: "label tw-py-2" };
 const _hoisted_2$c = { class: "content" };
 const _sfc_main$o = /* @__PURE__ */ defineComponent({
@@ -72766,10 +72768,13 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     });
     const treeContainer = ref$3();
     const setMyData = (name) => {
+      console.log("自娱自乐吧_??????????????", expandedKeys.value, selectedKeys.value);
       expandedKeys.value["4"] = true;
+      selectedKeys.value = {};
       nextTick$1(() => {
-        var _a2, _b2, _c2, _d2;
+        var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2;
         (_d2 = (_c2 = (_b2 = (_a2 = treeContainer.value) == null ? void 0 : _a2.querySelector('li[aria-label="timelines"]')) == null ? void 0 : _b2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _c2.firstElementChild) == null ? void 0 : _d2.click();
+        (_h2 = (_g2 = (_f2 = (_e2 = treeContainer.value) == null ? void 0 : _e2.querySelector('li[aria-label="timelines"]')) == null ? void 0 : _f2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _g2.firstElementChild) == null ? void 0 : _h2.click();
       });
     };
     __expose({
@@ -72966,7 +72971,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-de7785ab"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-080911a5"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73438,13 +73443,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
     const mutationObserver = ref$3(null);
     function AddButtonOpenTimeline() {
-      console.log("AddButtonOpenTimeline__哈哈", this);
       this.addWidget(
         "button",
         "open timeline",
         "opentimeline",
         () => {
-          console.log("MontagenCreateTimeline__点击了按钮", this);
           openTimeline(this);
         }
       );
@@ -74405,8 +74408,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     }
   });
 })();
-console.log("mixpanel", mixpanel);
-mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
+console.log("mixpanel", mixpanel$1);
+mixpanel$1.init("51e1691164f672d0d04493847aa0bdfd", {
   debug: true,
   track_pageview: false,
   autocapture: false,
@@ -74414,7 +74417,7 @@ mixpanel.init("51e1691164f672d0d04493847aa0bdfd", {
   ignore_dnt: true
   // distinct_id: 'USER_REGISTERED_ID_12345'
 });
-window.my_mixpanel = mixpanel;
+window.my_mixpanel = mixpanel$1;
 const ComfyUIPreset = definePreset(index$3, {
   semantic: {
     primary: index$3["primitive"].blue
