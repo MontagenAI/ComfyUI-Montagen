@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-080911a5] {
+}.explorer-container[data-v-48a4de6b] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -72772,9 +72772,8 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       expandedKeys.value["4"] = true;
       selectedKeys.value = {};
       nextTick$1(() => {
-        var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2;
+        var _a2, _b2, _c2, _d2;
         (_d2 = (_c2 = (_b2 = (_a2 = treeContainer.value) == null ? void 0 : _a2.querySelector('li[aria-label="timelines"]')) == null ? void 0 : _b2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _c2.firstElementChild) == null ? void 0 : _d2.click();
-        (_h2 = (_g2 = (_f2 = (_e2 = treeContainer.value) == null ? void 0 : _e2.querySelector('li[aria-label="timelines"]')) == null ? void 0 : _f2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _g2.firstElementChild) == null ? void 0 : _h2.click();
       });
     };
     __expose({
@@ -72971,7 +72970,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-080911a5"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-48a4de6b"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
