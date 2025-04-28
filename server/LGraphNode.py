@@ -1,5 +1,6 @@
 from __future__ import annotations
 import io, os
+import random
 import shutil
 from .videosave import save_video
 from .Utils import (
@@ -8,6 +9,7 @@ from .Utils import (
     GIFTYPE,
     IMAGETYPE,
     VIDEOTYPE,
+    TEXTTYPE,
     extract_middle_frame_thumbnail,
     extract_gif_middle_frame,
     extract_image_thumbnail,
@@ -79,6 +81,7 @@ class LGraphNode:
     def __init__(self, graph: LGraph, data: dict[str, any]):
         self.graph = graph
         self.data = data
+        self._default_opt = None
 
     def serialize(self):
         return self.data
@@ -133,7 +136,31 @@ class LGraphNode:
 
     @property
     def default_opt(self):
-        return create_default_option(self.type)
+        if not self._default_opt:
+            self._default_opt = create_default_option(self.type)
+        return self._default_opt
+
+    @property
+    def z_index(self):
+        index = self.properties.get("zIndex", None)
+        if index:
+            return index
+        index = 0
+        if self.type == TEXTTYPE:
+            index = 3000
+        index = index + random.randint(0, 1000)
+        self.properties["zIndex"] = index
+        return index
+
+    @property
+    def timerange(self) -> MontagenTimeRange:
+        if "outputs" not in self.properties:
+            self.properties["outputs"] = {}
+        if "timerange" not in self.properties["outputs"]:
+            self.properties["outputs"]["timerange"] = []
+        return MontagenTimeRange(
+            self.properties.get("outputs", {}).get("timerange", [])
+        )
 
     @property
     def items(self):
@@ -145,7 +172,9 @@ class LGraphNode:
             self.properties["outputs"] = {}
         if "items" not in self.properties["outputs"]:
             self.properties["outputs"]["items"] = []
-        return self.properties.get("outputs", {}).get("items", [])
+        list: list[dict[str, any]] = self.properties.get("outputs", {}).get("items", [])
+        list.sort(key=lambda x: LGraphNodeItem(self, 0, x).item_index)
+        return list
 
     @items.setter
     def items(self, value: list[LGraphNodeItem]):
@@ -246,7 +275,6 @@ class LGraphNode:
 
     def to_json(self):
         flat_dict = tree_to_flat(self.meta, supported_group_config_type[self.type])
-        self.items.sort(key=lambda x: x.item_id)
         return {
             "id": self.node_id,
             "workflowId": self.workflow.workflow_id,
@@ -299,6 +327,7 @@ class LGraphNode:
             item, item_index = self.Get_item_and_index(item_id)
             if not time_unit.is_selected:
                 if item:
+                    item.set_time(time_unit.start, time_unit.duration)
                     used_item_ids.add(item.item_id)
                 continue
             if not item:
@@ -313,6 +342,7 @@ class LGraphNode:
             self.set_asset(item_index, material)
             if not item:
                 item = self.create_item()
+                item.item_index = time_unit.index
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
@@ -336,8 +366,14 @@ class LGraphNode:
         for time_unit in time_range.time_range:
             item_id = time_unit.id
             item, item_index = self.Get_item_and_index(item_id)
+            if not time_unit.is_selected:
+                if item:
+                    item.set_time(time_unit.start, time_unit.duration)
+                    used_item_ids.add(item.item_id)
+                continue
             if not item:
                 item = self.create_item()
+                item.item_index = time_unit.index
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             item.set_main_content(
@@ -371,6 +407,7 @@ class LGraphNode:
             item, item_index = self.Get_item_and_index(item_id)
             if not time_unit.is_selected:
                 if item:
+                    item.set_time(time_unit.start, time_unit.duration)
                     used_item_ids.add(item.item_id)
                 continue
             if not item:
@@ -386,6 +423,7 @@ class LGraphNode:
             self.set_asset(item_index, material)
             if not item:
                 item = self.create_item()
+                item.item_index = time_unit.index
                 item.item_id = item_id
                 self.items_raw.append(item.serialize())
             meta = {"desc": time_unit.content}
@@ -499,8 +537,16 @@ class LGraphNode:
 
     def create_item(self):
         item_id = to_base36_random()
-        item = LGraphNodeItem(self, 0, {"meta": {}, "default": self.default_opt})
+        item = LGraphNodeItem(
+            self,
+            0,
+            {
+                "meta": {"zIndex": self.z_index},
+                "default": self.default_opt,
+            },
+        )
         item.item_id = item_id
+        item.item_index = 0
         return item
 
     def Get_item_and_index(self, item_id: str):

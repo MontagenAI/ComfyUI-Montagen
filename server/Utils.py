@@ -10,6 +10,8 @@ import json
 import logging
 import ffmpeg
 from PIL import Image
+from io import BytesIO
+import requests
 
 version = "0.2.1"
 
@@ -243,6 +245,7 @@ SUPPORTEDTYPES = [VIDEOTYPE, IMAGETYPE, AUDIOTYPE, GIFTYPE, TEXTTYPE]
 SINGLENODETYPE = "single_item"
 LISTNODETYPE = "list_item"
 TIMERANGENODETYPE = "timerange"
+EDGETTSNODETYPE = "edgetts"
 WORKFLOWBASEPATH = "workflows"
 TIMELINEBASEPATH = "timelines"
 MODIFYACTION = "update"
@@ -1173,18 +1176,34 @@ def create_default_option(type: str):
             "wrap": True,
             "valign": "bottom",
             "color": "#FFF",
+            "backgroundColor": "#000000A0",
+            "padding": "15%",
             "zIndex": 1000,
         }
 
 
+def download_image_from_url(url):
+    response = requests.get(url)
+    response.raise_for_status()  # Ensure the request was successful
+    return BytesIO(response.content)
+
+
 def extract_image_thumbnail(input_path, output_path, width=256, height=256):
-    with Image.open(input_path) as img:
-        img.thumbnail((width, height))
-        img.save(output_path)
+    if input_path.startswith(("http://", "https://")):
+        img = Image.open(download_image_from_url(input_path))
+    else:
+        img = Image.open(input_path)
+    with img as _img:
+        _img.thumbnail((width, height))
+        _img.save(output_path)
 
 
 def extract_gif_middle_frame(input_path, output_path, width=256, height=256):
-    with Image.open(input_path) as gif:
+    if input_path.startswith(("http://", "https://")):
+        img = Image.open(download_image_from_url(input_path))
+    else:
+        img = Image.open(input_path)
+    with img as gif:
         total_frames = 0
         while True:
             try:

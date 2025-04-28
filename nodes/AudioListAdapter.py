@@ -6,7 +6,7 @@ class AudioListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "audio"
 
-    DESCRIPTION = "Montagen Audio List Adapter"
+    DESCRIPTION = "Audio List Adapter"
 
     @classmethod
     def default_name(s):
