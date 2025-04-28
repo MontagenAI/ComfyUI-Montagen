@@ -266,7 +266,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-94318dc9] {
+}.explorer-container[data-v-0981eb26] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -72765,10 +72765,12 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
       });
     });
     const treeContainer = ref$3();
-    const setMyData = () => {
-      console.log("自娱自乐吧_??????????????", expandedKeys.value, selectedKeys.value);
-      selectedKeys.value["2uc99utn5ros0ox"] = true;
+    const setMyData = (name) => {
       expandedKeys.value["4"] = true;
+      nextTick$1(() => {
+        var _a2, _b2, _c2;
+        (_c2 = (_b2 = (_a2 = treeContainer.value) == null ? void 0 : _a2.querySelector('li[aria-label="' + name + '"]')) == null ? void 0 : _b2.firstElementChild) == null ? void 0 : _c2.click();
+      });
     };
     __expose({
       setMyData,
@@ -72964,7 +72966,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-94318dc9"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-0981eb26"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -73450,6 +73452,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const openTimeline = (node2) => {
       var _a2;
       const widget = (_a2 = node2.widgets) == null ? void 0 : _a2.find((w) => w.name === "name");
+      console.log("MontagenCreateTimeline__点击了按钮", widget, node2);
       let name = widget == null ? void 0 : widget.value;
       let timelines = workSpaceStore.activeProject.timelines || [];
       let temp = timelines.find((item) => {
@@ -73464,7 +73467,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         });
         return;
       }
-      console.log("打开时间线_tempExplorerInstance组件实例", tempExplorerInstance);
+      if (app$1.bodyLeft && app$1.bodyLeft.querySelector('button[aria-label="MONTAGEN"]').classList.contains("side-bar-button-selected")) {
+        tempExplorerInstance == null ? void 0 : tempExplorerInstance.setMyData(name);
+      } else {
+        app$1.extensionManager.toast.add({
+          severity: "warn",
+          summary: "Warning!",
+          detail: "Please open the explorer first",
+          life: 3e3
+        });
+      }
     };
     let tempExplorerInstance = null;
     const init2 = () => {
