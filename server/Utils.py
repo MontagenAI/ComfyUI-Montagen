@@ -1238,6 +1238,20 @@ def get_video_duration(input_path):
     return float(info["format"]["duration"])
 
 
+def trim_audio_start(input_file, output_file, seconds_to_trim):
+    command = [
+        FFMPEG,
+        "-i",
+        input_file,
+        "-ss",
+        str(seconds_to_trim),
+        "-c",
+        "copy",
+        output_file,
+    ]
+    subprocess.run(command, check=True)
+
+
 def extract_middle_frame_thumbnail(
     input_path,
     output_path,
