@@ -73597,15 +73597,25 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           },
           async beforeRegisterNodeDef(nodeType, nodeData, app2) {
             chainCallback(nodeType.prototype, "onNodeCreated", function() {
-              console.log("关门打钩__onNodeCreated", nodeData);
               if (["Montagen", "Montagen/Generator"].includes(nodeData == null ? void 0 : nodeData.category)) {
-                window.my_mixpanel.track("Node_Added", {
-                  "category": nodeData.category,
-                  "description": nodeData.description,
-                  "display_name": nodeData.display_name,
-                  "name": nodeData.name,
-                  "python_module": nodeData.python_module
-                });
+                console.log("打钩__onNodeCreated", nodeData, this, this.properties.createtime);
+                console.log("Montagen__onNodeCreated_节点创建了当前时间", (/* @__PURE__ */ new Date()).getTime());
+                setTimeout(() => {
+                  if (!this.properties.createtime) {
+                    this.properties.createtime = (/* @__PURE__ */ new Date()).getTime();
+                    console.log("Montagen__onNodeCreated_节点首次创建");
+                    window.my_mixpanel.track("Node_Added", {
+                      "category": nodeData.category,
+                      "description": nodeData.description,
+                      "display_name": nodeData.display_name,
+                      "name": nodeData.name,
+                      "python_module": nodeData.python_module
+                    });
+                  } else {
+                    console.log("Montagen__onNodeCreated_节点不是首次创建了2222");
+                  }
+                }, 0);
+                console.log("Montagen__onNodeCreated_节点不是首次创建了3333");
               }
             });
             if ((nodeData == null ? void 0 : nodeData.name) == "MontagenCreateTimeline") {
