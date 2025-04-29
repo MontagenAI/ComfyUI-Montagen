@@ -44708,7 +44708,7 @@ function requireAudio() {
         this.material.path,
         this.creator().uuid,
         this.sampleRate,
-        -1,
+        0.1,
         p
       ), this.material.length = this.audioBuffer.duration;
     }
@@ -44766,7 +44766,7 @@ function requireAudio() {
     toLoopFilter() {
       let { pitch: p = 1, loop: d } = this;
       const m = this.material.getEndOffset(true) - this.material.getStartOffset(), g = this.sampleRate;
-      return `,asetrate=${g * p},aresample=${g},aloop=${d ? "-1" : "0"}:size=${m * g}`;
+      return `,asetrate=${g * p},aresample=${g}:ochl=stereo,aloop=${d ? "-1" : "0"}:size=${m * g}`;
     }
     toDelayFilter() {
       let { speed: p = 1, pitch: d = 1 } = this;
