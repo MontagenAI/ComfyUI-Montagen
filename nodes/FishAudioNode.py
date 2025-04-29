@@ -210,14 +210,14 @@ class FishAudioTTS(BaseWorkflow):
         self,
         text: list[str],
         trim,
-        timeRangeList: list[dict],
-        action: str,
         voice: str,
         offset: float,
         unique_id,
         prompt,
         extra_pnginfo,
         apiKey=None,
+        timeRangeList: list[dict] = None,
+        action: str = None,
     ):
         trim = trim[0]
         offset = offset[0]
@@ -225,7 +225,7 @@ class FishAudioTTS(BaseWorkflow):
         prompt = prompt[0]
         extra_pnginfo = extra_pnginfo[0]
         voice = voice[0]
-        voice=voice.split("__")[-1].strip()
+        voice = voice.split("__")[-1].strip()
         action = action[0] if action else MODIFYACTION
         apiKey = apiKey[0] if apiKey else None
         if not timeRangeList:
