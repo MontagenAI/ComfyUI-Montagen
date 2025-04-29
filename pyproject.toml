@@ -3,7 +3,7 @@ name = "comfyui-montagen"
 description = "ComfyUI Video Studio with Node-Controlled Timelines for Multi-Task Production."
 version = "0.2.1"
 license = {file = "LICENSE"}
-dependencies = ["smbprotocol","ffmpeg-binaries","edge_tts"]
+dependencies = ["smbprotocol","ffmpeg-binaries","edge_tts","fish-audio-sdk"]
 
 [project.urls]
 Repository = "https://github.com/MontagenAI/ComfyUI-Montagen"

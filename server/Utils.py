@@ -246,6 +246,8 @@ SINGLENODETYPE = "single_item"
 LISTNODETYPE = "list_item"
 TIMERANGENODETYPE = "timerange"
 EDGETTSNODETYPE = "edgetts"
+FISHAUDIONODETYPE = "fish_audio"
+HUMANDIGITALNODETYPE = "humandigital"
 WORKFLOWBASEPATH = "workflows"
 TIMELINEBASEPATH = "timelines"
 MODIFYACTION = "update"
@@ -1180,6 +1182,14 @@ def create_default_option(type: str):
             "padding": "15%",
             "zIndex": 1000,
         }
+
+
+def download_file(tmpfile: str, url: str):
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        with open(tmpfile, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
 
 
 def download_image_from_url(url):
