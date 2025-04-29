@@ -73603,19 +73603,21 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 setTimeout(() => {
                   if (!this.properties.createtime) {
                     this.properties.createtime = (/* @__PURE__ */ new Date()).getTime();
-                    console.log("Montagen__onNodeCreated_节点首次创建");
+                    app2.graph.serialize();
+                    app2.extensionManager.workflow.activeWorkflow.save();
+                    console.log("Montagen__onNodeCreated_节点首次创建111111");
                     window.my_mixpanel.track("Node_Added", {
                       "category": nodeData.category,
                       "description": nodeData.description,
                       "display_name": nodeData.display_name,
                       "name": nodeData.name,
-                      "python_module": nodeData.python_module
+                      "python_module": nodeData.python_module,
+                      "id": this.id
                     });
                   } else {
                     console.log("Montagen__onNodeCreated_节点不是首次创建了2222");
                   }
-                }, 0);
-                console.log("Montagen__onNodeCreated_节点不是首次创建了3333");
+                }, 600);
               }
             });
             if ((nodeData == null ? void 0 : nodeData.name) == "MontagenCreateTimeline") {
