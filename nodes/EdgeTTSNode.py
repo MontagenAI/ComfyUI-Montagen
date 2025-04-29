@@ -193,7 +193,7 @@ class EdgeTTSNode(BaseWorkflow):
             rate = "+0%" if speed_percent == 0 else f"{speed_percent:+d}%"
             volume_percent = f"{volume_percent:+d}%"
             temp_file = os.path.join(
-                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.wav"
+                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.mp3"
             )
             text = text.strip()
             if not text:
@@ -216,7 +216,7 @@ class EdgeTTSNode(BaseWorkflow):
                 )
                 await communicate.save(temp_file)
             temp2_file = os.path.join(
-                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.wav"
+                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.mp3"
             )
             if trim > 0.0:
                 trim_audio_start(temp_file, temp2_file, trim)
