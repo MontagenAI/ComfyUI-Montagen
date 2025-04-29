@@ -33,8 +33,8 @@ class MontagenMaterial:
         self.cache_manager = MontagenCacheManager()
         self.supported_types = supported_types
 
-    def support_file(self, file_name, type):
-        if file_name.endswith((*self.supported_types[type],)):
+    def support_file(self, file_name: str, type):
+        if file_name.lower().endswith((*self.supported_types[type],)):
             return True
         else:
             return False
