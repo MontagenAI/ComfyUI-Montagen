@@ -105,15 +105,15 @@ const CacheUtil = {
               }
               return new Promise((r, j) => {
                 let total = Number(res.headers.get("content-length")) || 0;
-                try {
-                  const stats = fs.statSync(cacheFile);
-                  if (stats.size === total) {
-                    (async function () {
-                      await setMetadataInner();
-                      r(cacheFile);
-                    })();
-                  }
-                } catch (e) {}
+                // try {
+                //   const stats = fs.statSync(cacheFile);
+                //   if (stats.size === total) {
+                //     (async function () {
+                //       await setMetadataInner();
+                //       r(cacheFile);
+                //     })();
+                //   }
+                // } catch (e) {}
 
                 const fileStream = fs.createWriteStream(cacheFile);
                 // console.log('total:', total);
