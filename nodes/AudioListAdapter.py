@@ -10,4 +10,4 @@ class AudioListAdapter(BaseListAdapter):
 
     @classmethod
     def default_name(s):
-        return "audio"
+        return "audioList"

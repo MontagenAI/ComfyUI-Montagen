@@ -1,3 +1,4 @@
 smbprotocol
 ffmpeg-binaries
 edge_tts
+fish-audio-sdk

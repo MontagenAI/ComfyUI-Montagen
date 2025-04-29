@@ -6,8 +6,8 @@ class StickerListAdapter(BaseListAdapter):
         super().__init__()
         self.type = "gif"
 
-    DESCRIPTION = "Montagen Sticker List Adapter"
+    DESCRIPTION = "Sticker List Adapter"
 
     @classmethod
     def default_name(s):
-        return "sticker"
+        return "stickerList"

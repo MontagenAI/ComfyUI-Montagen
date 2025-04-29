@@ -402,7 +402,7 @@ class MontagenMaterial:
                 return material
         return None
 
-    def get_material_full_path(self, material: dict) -> Optional[Dict[str, Any]]:
+    def get_material_full_path(self, material: dict) -> str:
         is_ref = material.get("is_ref")
         if not is_ref:
             file_path = material.get("file_path")
