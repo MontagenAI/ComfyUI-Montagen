@@ -84,7 +84,7 @@ class HumandigitalapiNode(BaseWorkflow):
         workflow.syn_workflow_node(workflow_node, False)
         node = workflow.workflow_data.get_node_by_unique_id(unique_id)
         node.node_type = HUMANDIGITALNODETYPE
-        apiKey = apiKey[0] if apiKey else get_humandigital_api_key()
+        apiKey = apiKey[0] if apiKey else None
         if not apiKey:
             apiKey = get_humandigital_api_key()
         if not apiKey:
@@ -109,7 +109,13 @@ class HumandigitalapiNode(BaseWorkflow):
             if jsonDict["code"] == 0:
                 videoId = jsonDict["data"]
                 pbar.update(30)
+                start_time = time.time()
                 while True:
+                    elapsed_time = time.time() - start_time
+                    if elapsed_time > 600:
+                        raise Exception(
+                            "Timeout: Video processing took longer than 10 minutes."
+                        )
                     videoStatus = self.get_video_status(apiKey, videoId)
                     if videoStatus["code"] == 0:
                         if videoStatus["data"]["status"] == "success":
@@ -122,7 +128,7 @@ class HumandigitalapiNode(BaseWorkflow):
                             break
                     else:
                         raise Exception(videoStatus["msg"])
-                    time.sleep(1)
+                    time.sleep(5)
             else:
                 raise Exception(jsonDict["msg"])
         return (output_list,)
