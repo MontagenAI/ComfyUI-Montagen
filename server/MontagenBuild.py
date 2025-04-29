@@ -3,7 +3,7 @@ import shutil
 from typing import Any, Dict, List, Optional
 import json
 from .MontagenCacheManager import MontagenCacheManager
-from .Utils import localfile_video_audio_info, BUILDFILEADDR
+from .Utils import localfile_video_audio_info, BUILDFILEADDR, get_file_type
 from .remotefile.RemoteFileHandler import RemoteFileHandler
 import asyncio
 import threading
@@ -32,7 +32,7 @@ class MontagenBuild:
         file_time = os.path.getmtime(file_path)
         if file_path.endswith(".meta"):
             return None
-        file_type = "video"
+        file_type = get_file_type(file_name)
         if not file_type:
             return None
         relative_file_path = os.path.relpath(
@@ -113,7 +113,7 @@ class MontagenBuild:
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"File {file_path} does not exist.")
         file_name = file_name or os.path.basename(file_path)
-        file_type = "video"
+        file_type = get_file_type(file_name)
         total_size = os.path.getsize(file_path)
         asset_dir = self._get_asset_dir()
         if not os.path.exists(asset_dir):
@@ -139,6 +139,9 @@ class MontagenBuild:
             json.dump(metadata, meta_file)
 
         self.cache_manager.delete(self.key)
+        metadata["src"] = "/" + BUILDFILEADDR.format(
+            id=self.project.project_id, filename=file_name
+        )
         return metadata
 
     def get_build(self, file_name: str) -> Optional[Dict[str, Any]]:

@@ -30,6 +30,7 @@ class TimelineRenderNode(BaseWorkflow):
                     },
                 ),
                 "outputName": ("STRING", {"tooltip": "The name of the output file."}),
+                "type": (["wav", "mp3", "mp4"], {"default": "mp4"}),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -51,6 +52,7 @@ class TimelineRenderNode(BaseWorkflow):
         self,
         timeline,
         outputName,
+        type,
         unique_id=None,
         prompt: dict = None,
         extra_pnginfo=None,
@@ -63,19 +65,14 @@ class TimelineRenderNode(BaseWorkflow):
         timeline = proj.get_timeline(name)
         if not timeline:
             raise ValueError("timeline is required.")
-        self.combineMix(proj, outputName, timeline.to_timeline_json())
+        src = self.combineMix(proj, outputName, timeline.to_timeline_json(), type)
         return {
             "ui": {
-                "assets": [
-                    {
-                        "timelineName": name,
-                        "projectId": project_id,
-                    }
-                ]
+                "assets": [{"timelineName": name, "projectId": project_id, "src": src}]
             }
         }
 
-    def combineMix(self, proj, output_name: str, timeline):
+    def combineMix(self, proj, output_name: str, timeline, type: str):
         output_path = os.path.join(
             folder_paths.get_temp_directory(), f"{uuid.uuid4()}.mp4"
         )
@@ -128,12 +125,20 @@ class TimelineRenderNode(BaseWorkflow):
                     stderr=process.stderr,
                 )
             pbar.update_absolute(100)
-            meta = proj.montagen_build.add_build(output_path, f"{output_name}.mp4")
+            if type != "mp4":
+                output_path2 = os.path.join(
+                    folder_paths.get_temp_directory(), f"{uuid.uuid4()}.{type}"
+                )
+                cmd = [FFMPEG, "-i", output_path, output_path2]
+                subprocess.run(cmd, check=True)
+                output_path = output_path2
+            meta = proj.montagen_build.add_build(output_path, f"{output_name}.{type}")
             MontagenProjManager.instance.onProcessEnd(
                 meta,
                 MontagenTimelineRendered,
             )
             proj.project_change_time()
+            return meta.get("src")
         finally:
             os.remove(tempJson)
             os.remove(output_path)
