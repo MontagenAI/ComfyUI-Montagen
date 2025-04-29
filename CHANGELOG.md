@@ -1,5 +1,16 @@
 # ComfyUI-Montagen Changelog
 
+## [0.2.2] - 2025-04-29
+
+*Feature Update: Audio Generator and List Adapter Support.*
+
+### Added
+
+- [Node] `Audio List Adapter` Support: 123(#)
+
+
+### Changed
+
 ## [0.2.1] - 2025-04-25
 
 *Feature Update: Clip Split, List Adapter and Template Support.*

@@ -1,6 +1,13 @@
 # ComfyUI-Montagen
 
+
 *ComfyUI Video Studio with Node-Controlled Timelines for Multi-Task Production.*
+
+## Updates
+
+### [[0.2.2]](/CHANGELOG.md) - 2025-04-29
+
+*Feature Update: Audio Generator and List Adapter Support.*
 
 ![Montagen ScreenShot](assets/montagen0.2.1.png)
 
@@ -90,3 +97,4 @@ To install ComfyUI-Montagen in addition to an existing installation of ComfyUI, 
 
 - Base on the project of [FFCreator](https://github.com/tnfe/FFCreator). And inspired by the examples of [miravideo](https://github.com/miravideo).
 - Reference portions of media loading/preview code from [ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite) into our custom node implementation.
+- Reference EdgeTTS code from [ComfyUI-EdgeTTS](https://github.com/1038lab/ComfyUI-EdgeTTS) into our custom node implementation.
