@@ -6,10 +6,44 @@
 
 ### Added
 
-- [Node] `Audio List Adapter` Support: 123(#)
-
+- [Node] EdgeTTS for Audio List Adapter Support:(#30)
+  - `Audio List Adapter`:
+  - `Edge TTS`:
+  - `Resource Convert To Audio`:
+  - `Audio Convert To Resource`:
+- [Node] Fish Audio TTS with Voice Cloning Support:(#32)
+  - `Fish Audio TTS`:
+  - `Fish Audio Clone`:
+- [Node] Humandigital for Video List Adapter Support:(#28)
+  - `Video List Adapter`:
+  - `Humandigital`:
 
 ### Changed
+- [Node] `Render Timeline`: Export Support for `mp3`, `wav`, `mp4`.(#20)
+- [Node] `Create Timline`: Add `open timeline` buttion.(#33)
+- [System] Telemetry Update: Basic Telemetry Collection for Main UI Interactions.(#34)
+  - ComfyUI_Started
+  - Explorer_Opened
+  - Explorer_Closed
+  - Explorer_Folders_Opened
+  - Explorer_Folders_Closed
+  - Explorer_Folders_Updated
+  - Explorer_Clips_Opened
+  - Explorer_Clips_Closed
+  - Explorer_Properties_Opened
+  - Explorer_Properties_Closed
+  - Explorer_Templates_Opened
+  - Explorer_Templates_Closed
+  - Explorer_Projects_Opened
+  - Explorer_Projects_Closed
+  - Template_Loaded
+  - Workflow_Executed
+  - Timeline_Created
+  - Timeline_Rendered
+  - Editor_Opened
+  - Editor_Closed
+  - Node_Added
+
 
 ## [0.2.1] - 2025-04-25
 
