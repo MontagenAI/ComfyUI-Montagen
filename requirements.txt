@@ -1,4 +1,4 @@
-smbprotocol=1.15.0
-ffmpeg-binaries=1.0.1
-edge_tts=7.0.1
-fish-audio-sdk=2025.4.2
+smbprotocol==1.15.0
+ffmpeg-binaries==1.0.1
+edge_tts==7.0.1
+fish-audio-sdk==2025.4.2
