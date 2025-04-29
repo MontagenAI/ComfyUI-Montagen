@@ -226,6 +226,8 @@ class FishAudioTTS(BaseWorkflow):
         extra_pnginfo = extra_pnginfo[0]
         voice = voice[0]
         voice = voice.split("__")[-1].strip()
+        if not voice:
+            raise ValueError("Voice is required for Fish Audio TTS.")
         action = action[0] if action else MODIFYACTION
         apiKey = apiKey[0] if apiKey else None
         if not timeRangeList:
@@ -256,7 +258,7 @@ class FishAudioTTS(BaseWorkflow):
                 continue
             text = time_unit.content
             temp_file = os.path.join(
-                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.wav"
+                folder_paths.get_temp_directory(), f"{uuid.uuid4()}.mp3"
             )
             text = text.strip()
             if not text:
@@ -266,8 +268,6 @@ class FishAudioTTS(BaseWorkflow):
                     TTSRequest(
                         reference_id=voice,
                         text=text,
-                        format="wav",
-                        sample_rate=16000,
                     )
                 ):
                     f.write(chunk)

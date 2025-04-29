@@ -14,6 +14,7 @@ from .TimeRangeNode import TimeRangeNode
 from .EdgeTTSNode import EdgeTTSNode
 from .FishAudioNode import FishAudioClone, FishAudioTTS
 from .HumandigitalapiNode import get_humandigital_enabled, HumandigitalapiNode
+from .AudioResourceLoadAdapter import ResourceConvertAudioAdapter,AudioConvertResourceAdapter
 
 NODE_CLASS_MAPPINGS = {
     "MontagenCreateTimeline": TimelineNode,
@@ -32,6 +33,8 @@ NODE_CLASS_MAPPINGS = {
     "MontagenEdgeTTSNode": EdgeTTSNode,
     "MontagenFishAudioCloneNode": FishAudioClone,
     "MontagenFishAudioTTSNode": FishAudioTTS,
+    "MontagenResourceConvertAudioAdapter": ResourceConvertAudioAdapter,
+    "MontagenAudioConvertResourceAdapter": AudioConvertResourceAdapter,
 }
 
 if get_humandigital_enabled():
@@ -54,6 +57,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MontagenEdgeTTSNode": EdgeTTSNode.DESCRIPTION,
     "MontagenFishAudioCloneNode": FishAudioClone.DESCRIPTION,
     "MontagenFishAudioTTSNode": FishAudioTTS.DESCRIPTION,
+    "MontagenResourceConvertAudioAdapter": ResourceConvertAudioAdapter.DESCRIPTION,
+    "MontagenAudioConvertResourceAdapter": AudioConvertResourceAdapter.DESCRIPTION,
 }
 
 if get_humandigital_enabled():
