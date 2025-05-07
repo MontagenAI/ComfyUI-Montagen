@@ -7,16 +7,16 @@
 ### Added
 
 - [Node] EdgeTTS for Audio List Adapter Support:(#30)
-  - `Audio List Adapter`:
-  - `Edge TTS`:
-  - `Resource Convert To Audio`:
-  - `Audio Convert To Resource`:
+  - `Audio List Adapter`: Need `resourceList` Input.
+  - `Edge TTS`: Support Text List and Multiline Text Input to Generate Audio List.
+  - `Resource Convert To Audio`: A Tool to Combine Audio List into One Audio.
+  - `Audio Convert To Resource`: A Tool to Load Audio From Audio Type `resourceList`.
 - [Node] Fish Audio TTS with Voice Cloning Support:(#32)
-  - `Fish Audio TTS`:
-  - `Fish Audio Clone`:
+  - `Fish Audio Clone`: Need to Set `Api Key` and `Api Url` if Necessary.
+  - `Fish Audio TTS`: Need Cloned Voice.
 - [Node] Humandigital for Video List Adapter Support:(#28)
-  - `Video List Adapter`:
-  - `Humandigital`:
+  - `Video List Adapter`: Need `resourceList` Input.
+  - `Humandigital`: Experimental Features.
 
 ### Changed
 - [Node] `Render Timeline`: Export Support for `mp3`, `wav`, `mp4`.(#20)
