@@ -3160,13 +3160,6 @@ function ensureValidVNode(vnodes) {
     return true;
   }) ? vnodes : null;
 }
-function toHandlers(obj, preserveCaseIfNecessary) {
-  const ret = {};
-  for (const key in obj) {
-    ret[/[A-Z]/.test(key) ? `on:${key}` : toHandlerKey(key)] = obj[key];
-  }
-  return ret;
-}
 const getPublicInstance = (i) => {
   if (!i) return null;
   if (isStatefulComponent(i)) return getComponentPublicInstance(i);
@@ -7500,9 +7493,8 @@ export {
   createSlots as a8,
   vShow as a9,
   normalizeProps as aa,
-  toHandlers as ab,
-  withKeys as ac,
-  createApp as ad,
+  withKeys as ab,
+  createApp as ac,
   readonly as b,
   createElementBlock as c,
   defineComponent as d,
