@@ -74570,7 +74570,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         start: timeToSeconds(startStr),
         end: timeToSeconds(endStr),
         content: text2,
-        isSelected: true
+        isSelected: false
+        // 默认不选中
       });
     }
     return entries;
@@ -74587,6 +74588,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     let container = srtEditWidet.container;
     let height = container.getBoundingClientRect().height;
     if (!height) return;
+    height = Math.min(height, window.innerHeight * 0.75);
     const [width, originalHeight] = node2.computeSize();
     node2.setSize([node2.size[0], originalHeight + height]);
     (_a2 = node2 == null ? void 0 : node2.graph) == null ? void 0 : _a2.setDirtyCanvas(true);
@@ -74620,6 +74622,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       padding: 6px 2px;
       font-size: 12px;
       display: none; /* 初始隐藏 */
+      position: relative;
     `;
     element.addEventListener(
       "contextmenu",
@@ -74710,7 +74713,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         element.style.display = "block";
         let isAllChecked = entries.every((entry) => entry.isSelected);
         srtEditWidet.container.innerHTML = `
-          <label style="display: flex;align-items: center;border-bottom: 1px solid #eee;margin-bottom: 4px;">
+          <label style="display: flex;align-items: center;border-bottom: 1px solid #eee;margin-bottom: 4px;position:sticky;top:0;background:#fff;z-index: 2;">
             <input type="checkbox" name="allcheck" ${isAllChecked ? "checked" : ""}></input>
             <span>全选</span>
           </label>
