@@ -6,13 +6,13 @@
 
 ### Changed
 
-- [Explorer] Properties Panel Update: 
+- [Explorer] Properties Panel Update: (#37)
   - Apply changes when input field loses focus.
   - Added unit selector to switch between px, vw, and other units.
 
 ### Fixed
 
-- [Node] Custom Node Registry: Fixed a bug where Montagen nodes failed to register due to changes introduced in ComfyUI frontend v1.19.
+- [Node] Custom Node Registry: Fixed a bug where Montagen nodes failed to register due to changes introduced in ComfyUI frontend v1.19.(#48)
 
 
 ## [0.2.2] - 2025-04-29
