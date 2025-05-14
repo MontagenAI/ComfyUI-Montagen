@@ -244,22 +244,22 @@
   border: none !important;
 }\r
 
-.parent-container[data-v-32803d24] {\r
+.parent-container[data-v-a670799a] {\r
   container-type: inline-size;\r
   /* 启用容器查询 */
 }
-.layout-grid[data-v-32803d24] {\r
+.layout-grid[data-v-a670799a] {\r
   display: grid;\r
   grid-template-columns: repeat(1, minmax(0, 1fr));\r
   /* 默认 1 列 */
 }
 @container (min-width: 200px) {
-.layout-grid[data-v-32803d24] {\r
+.layout-grid[data-v-a670799a] {\r
     grid-template-columns: repeat(2, minmax(0, 1fr));\r
     /* 父元素 > 400px 时 2 列 */
 }
 }
-.content[data-v-32803d24] .p-inputnumber-input {\r
+.content[data-v-a670799a] .p-inputnumber-input {\r
   width: 100%;
 }\r
 .wrapper-ref[data-v-e5a5e115] {
@@ -69890,7 +69890,6 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
       const _component_ToggleButton = script$7;
       const _component_Select = script$8;
       return openBlock(), createElementBlock("div", _hoisted_1$i, [
-        _cache[0] || (_cache[0] = createBaseVNode("hr", null, null, -1)),
         createBaseVNode("div", _hoisted_2$b, [
           (openBlock(true), createElementBlock(Fragment, null, renderList$1(options, (value2, key2) => {
             return openBlock(), createElementBlock("div", _hoisted_3$a, [
@@ -69948,7 +69947,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-32803d24"]]);
+const propertyTimelineClip = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-a670799a"]]);
 const _hoisted_1$h = { class: "px-2 tw-mb-2" };
 const _hoisted_2$a = { class: "content" };
 const _hoisted_3$9 = { class: "px-2 tw-mb-2" };
@@ -73642,7 +73641,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           workflowId: cusWorkflowID()
         };
         if ((_b2 = workSpaceStore.activeProject) == null ? void 0 : _b2.baseInfo) {
-          app$1.graph.extra.MontagenProj.projectId = workSpaceStore.activeProject.baseInfo.projectId;
+          data.extra.MontagenProj.projectId = workSpaceStore.activeProject.baseInfo.projectId;
         }
       }
     };
