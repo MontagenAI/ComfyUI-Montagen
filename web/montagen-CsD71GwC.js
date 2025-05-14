@@ -73637,11 +73637,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       var _a2, _b2;
       let data = app$1.graph.serialize();
       if (!((_a2 = data.extra) == null ? void 0 : _a2.MontagenProj)) {
-        data.extra.MontagenProj = {
+        app$1.graph.extra.MontagenProj = {
           workflowId: cusWorkflowID()
         };
         if ((_b2 = workSpaceStore.activeProject) == null ? void 0 : _b2.baseInfo) {
-          data.extra.MontagenProj.projectId = workSpaceStore.activeProject.baseInfo.projectId;
+          app$1.graph.extra.MontagenProj.projectId = workSpaceStore.activeProject.baseInfo.projectId;
         }
       }
     };
