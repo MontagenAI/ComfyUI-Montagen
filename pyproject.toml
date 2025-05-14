@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-montagen"
 description = "ComfyUI Video Studio with Node-Controlled Timelines for Multi-Task Production."
-version = "0.2.2"
+version = "0.2.3"
 license = {file = "LICENSE"}
 dependencies = ["smbprotocol","ffmpeg-binaries","edge_tts","fish-audio-sdk"]
 

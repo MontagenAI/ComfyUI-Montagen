@@ -1,5 +1,20 @@
 # ComfyUI-Montagen Changelog
 
+## [0.2.3] - 2025-05-14
+
+*Compatibility Hotfix: Fixed Custom Node Registration Issue Caused by ComfyUI Frontend v1.19 Update.*
+
+### Changed
+
+- [Explorer] Properties Panel Update: 
+  - Apply changes when input field loses focus.
+  - Added unit selector to switch between px, vw, and other units.
+
+### Fixed
+
+- [Node] Custom Node Registry: Fixed a bug where Montagen nodes failed to register due to changes introduced in ComfyUI frontend v1.19.
+
+
 ## [0.2.2] - 2025-04-29
 
 *Feature Update: Audio Generator and List Adapter Support.*

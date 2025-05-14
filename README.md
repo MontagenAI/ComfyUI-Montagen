@@ -5,9 +5,9 @@
 
 ## Updates
 
-### [[0.2.2]](/CHANGELOG.md) - 2025-04-29
+### [[0.2.3]](/CHANGELOG.md) - 2025-05-14
 
-*Feature Update: Audio Generator and List Adapter Support.*
+*Compatibility Hotfix: Fixed Custom Node Registration Issue Caused by ComfyUI Frontend v1.19 Update.*
 
 ![Montagen ScreenShot](assets/montagen0.2.1.png)
 
