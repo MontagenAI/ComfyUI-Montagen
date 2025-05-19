@@ -179,6 +179,10 @@ class FishAudioTTS(BaseWorkflow):
                     {"default": 0.0, "min": 0.0, "step": 0.01, "max": 2.0},
                 ),
                 "apiKey": ("STRING",),
+                "normalize": ("BOOLEAN", {"default": True}),
+                # "latency": (Literal["normal", "balanced"]),
+                "top_p": ("FLOAT", {"default": 0.7, "min": 0.0, "step": 0.01, "max": 1.0}),
+                "temperature": ("FLOAT", {"default": 0.7, "min": 0.0, "step": 0.01, "max": 1.0}),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -218,6 +222,9 @@ class FishAudioTTS(BaseWorkflow):
         apiKey=None,
         timeRangeList: list[dict] = None,
         action: str = None,
+        normalize: bool = True,
+        top_p: float = 0.7,
+        temperature: float = 0.7,
     ):
         trim = trim[0]
         offset = offset[0]
@@ -226,6 +233,9 @@ class FishAudioTTS(BaseWorkflow):
         extra_pnginfo = extra_pnginfo[0]
         voice = voice[0]
         voice = voice.split("__")[-1].strip()
+        normalize = normalize[0]
+        top_p = top_p[0]
+        temperature = temperature[0]
         if not voice:
             raise ValueError("Voice is required for Fish Audio TTS.")
         action = action[0] if action else MODIFYACTION
@@ -268,6 +278,10 @@ class FishAudioTTS(BaseWorkflow):
                     TTSRequest(
                         reference_id=voice,
                         text=text,
+                        normalize=normalize,
+                        top_p=top_p,
+                        temperature=temperature,
+                        latency="normal"
                     )
                 ):
                     f.write(chunk)
