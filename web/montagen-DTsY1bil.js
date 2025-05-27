@@ -321,7 +321,7 @@ img[data-v-11358f43] {
   width: 60vw;
   max-width: 1024px;
   overflow: hidden;
-}.explorer-container[data-v-44836863] {
+}.explorer-container[data-v-a0443d0b] {
   background-color: #fff;
 }[data-v-624028f7] .split-container {
   border: none;
@@ -805,16 +805,6 @@ const useFileStore = defineStore("fileStore", {
     }
   }
 });
-const useMenuStore = defineStore("menuStore", {
-  state: (_) => ({
-    showPage: false
-  }),
-  actions: {
-    changeShow(flag) {
-      this.showPage = flag ?? !this.showPage;
-    }
-  }
-});
 let app$1 = ((_b = (_a = window.comfyAPI) == null ? void 0 : _a.app) == null ? void 0 : _b.app) || null;
 let api = ((_d = (_c = window.comfyAPI) == null ? void 0 : _c.api) == null ? void 0 : _d.api) || null;
 ((_f = (_e = window.comfyAPI) == null ? void 0 : _e.ui) == null ? void 0 : _f.$el) || null;
@@ -822,211 +812,6 @@ let api = ((_d = (_c = window.comfyAPI) == null ? void 0 : _c.api) == null ? voi
 ((_j = (_i = window.comfyAPI) == null ? void 0 : _i.widgets) == null ? void 0 : _j.ComfyWidgets) || null;
 ((_l = (_k = window.comfyAPI) == null ? void 0 : _k.utils) == null ? void 0 : _l.applyTextReplacements) || null;
 ((_n = (_m = window.comfyAPI) == null ? void 0 : _m.groupNode) == null ? void 0 : _n.GroupNodeConfig) || null;
-const workflowUtils = {
-  isWorkFlowOpend(data) {
-    var _a2, _b2, _c2;
-    let temArr = app$1.extensionManager.workflow.openWorkflows;
-    let flag = false;
-    for (let i2 = 0; i2 < temArr.length; i2++) {
-      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
-      if (temp) {
-        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
-          flag = temArr[i2];
-          break;
-        }
-      }
-    }
-    if (flag) {
-      app$1.loadGraphData(JSON.parse(JSON.stringify(flag.activeState)), true, true, flag);
-    }
-    return flag;
-  },
-  openWorkFlowByGrahData(graphData) {
-    app$1.loadGraphData(graphData);
-    let menuStore = useMenuStore();
-    menuStore.changeShow(false);
-  },
-  checkWorkFlowIsOpenByIds(data) {
-    var _a2, _b2, _c2;
-    let flag = false;
-    let temArr = app$1.extensionManager.workflow.openWorkflows;
-    for (let i2 = 0; i2 < temArr.length; i2++) {
-      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
-      if (temp) {
-        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
-          flag = temArr[i2];
-          break;
-        }
-      }
-    }
-    return flag;
-  },
-  openTabByWorkFlowData(data, name) {
-    return new Promise(async (resolve, reject) => {
-      await app$1.loadGraphData(data, true, true, name);
-      resolve();
-    });
-  }
-};
-const useDialogStore = defineStore("dialog", () => {
-  const dialogStack = ref$3([]);
-  const genDialogKey = () => `dialog-${Math.random().toString(36).slice(2, 9)}`;
-  function riseDialog(options) {
-    const dialogKey = options.key;
-    const index2 = dialogStack.value.findIndex((d) => d.key === dialogKey);
-    if (index2 !== -1) {
-      const dialogs = dialogStack.value.splice(index2, 1);
-      dialogStack.value.push(...dialogs);
-    }
-  }
-  function closeDialog(options) {
-    if (!options) {
-      dialogStack.value.pop();
-      return;
-    }
-    const dialogKey = options.key;
-    const index2 = dialogStack.value.findIndex((d) => d.key === dialogKey);
-    if (index2 === -1) {
-      return;
-    }
-    dialogStack.value.splice(index2, 1);
-  }
-  function createDialog(options) {
-    var _a2;
-    if (dialogStack.value.length >= 10) {
-      dialogStack.value.shift();
-    }
-    const dialog = {
-      key: options.key,
-      visible: true,
-      title: options.title,
-      headerComponent: options.headerComponent ? markRaw(options.headerComponent) : void 0,
-      component: markRaw(options.component),
-      contentProps: { ...options.props },
-      dialogComponentProps: {
-        maximizable: false,
-        modal: true,
-        closable: true,
-        closeOnEscape: true,
-        dismissableMask: true,
-        ...options.dialogComponentProps,
-        maximized: false,
-        onMaximize: () => {
-          dialog.dialogComponentProps.maximized = true;
-        },
-        onUnmaximize: () => {
-          dialog.dialogComponentProps.maximized = false;
-        },
-        onAfterHide: () => {
-          var _a3, _b2;
-          (_b2 = (_a3 = options.dialogComponentProps) == null ? void 0 : _a3.onClose) == null ? void 0 : _b2.call(_a3);
-          closeDialog(dialog);
-        },
-        pt: lodashExports.merge(((_a2 = options.dialogComponentProps) == null ? void 0 : _a2.pt) || {}, {
-          root: {
-            onMousedown: () => {
-              riseDialog(dialog);
-            }
-          }
-        })
-        // pt: {
-        //   root: {
-        //     onMousedown: () => {
-        //       riseDialog(dialog)
-        //     }
-        //   }
-        // }
-      }
-    };
-    dialogStack.value.push(dialog);
-    return dialog;
-  }
-  function showDialog(options) {
-    const dialogKey = options.key || genDialogKey();
-    let dialog = dialogStack.value.find((d) => d.key === dialogKey);
-    if (dialog) {
-      dialog.visible = true;
-      riseDialog(dialog);
-    } else {
-      dialog = createDialog({ ...options, key: dialogKey });
-    }
-    return dialog;
-  }
-  return {
-    dialogStack,
-    riseDialog,
-    showDialog,
-    closeDialog
-  };
-});
-const _hoisted_1$p = ["id"];
-const _sfc_main$u = /* @__PURE__ */ defineComponent({
-  __name: "GlobalDialog",
-  setup(__props) {
-    const dialogStore = useDialogStore();
-    const primevue = usePrimeVue();
-    const baseZIndex = computed(() => {
-      var _a2, _b2;
-      return ((_b2 = (_a2 = primevue == null ? void 0 : primevue.config) == null ? void 0 : _a2.zIndex) == null ? void 0 : _b2.modal) ?? 2100;
-    });
-    const setContentRef = (el, dialogItem) => {
-      dialogItem.contentRef = el;
-    };
-    const handleDialogClose = (closedKey) => {
-      if (closedKey == "global-projectDialog-mongaton") {
-        window.my_mixpanel.track("Explorer_Projects_Closed", {});
-      } else if (closedKey == "global-templateDialog-mongaton") {
-        window.my_mixpanel.track("Explorer_Templates_Closed", {});
-      }
-    };
-    onMounted(() => {
-      document.createElement("div");
-    });
-    return (_ctx, _cache) => {
-      return openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(dialogStore).dialogStack, (item, index2) => {
-        return openBlock(), createBlock(unref(script), mergeProps$1({
-          key: item.key,
-          visible: item.visible,
-          "onUpdate:visible": ($event) => item.visible = $event,
-          class: "global-dialog",
-          ref_for: true
-        }, item.dialogComponentProps, {
-          "auto-z-index": false,
-          "pt:mask:style": { zIndex: baseZIndex.value + index2 + 1 },
-          "aria-labelledby": item.key,
-          onHide: ($event) => handleDialogClose(item.key)
-        }), {
-          header: withCtx(() => [
-            item.headerComponent ? (openBlock(), createBlock(resolveDynamicComponent(item.headerComponent), {
-              key: 0,
-              id: item.key
-            }, null, 8, ["id"])) : (openBlock(), createElementBlock("h3", {
-              key: 1,
-              id: item.key
-            }, toDisplayString(item.title || " "), 9, _hoisted_1$p))
-          ]),
-          default: withCtx(() => [
-            (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({
-              ref_for: true,
-              ref: (el) => setContentRef(el, item)
-            }, item.contentProps, {
-              maximized: item.dialogComponentProps.maximized
-            }), null, 16, ["maximized"]))
-          ]),
-          _: 2
-        }, 1040, ["visible", "onUpdate:visible", "pt:mask:style", "aria-labelledby", "onHide"]);
-      }), 128);
-    };
-  }
-});
-const _export_sfc = (sfc, props2) => {
-  const target2 = sfc.__vccOpts || sfc;
-  for (const [key2, val] of props2) {
-    target2[key2] = val;
-  }
-  return target2;
-};
-const GlobalDialog = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-aa11f38c"]]);
 const blankGraph = {
   last_node_id: 0,
   last_link_id: 0,
@@ -68435,6 +68220,52 @@ const index = {
     return addControls(e), e;
   }
 };
+const workflowUtils = {
+  isWorkFlowOpend(data) {
+    var _a2, _b2, _c2;
+    let temArr = app$1.extensionManager.workflow.openWorkflows;
+    let flag = false;
+    for (let i2 = 0; i2 < temArr.length; i2++) {
+      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
+      if (temp) {
+        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
+          flag = temArr[i2];
+          break;
+        }
+      }
+    }
+    if (flag) {
+      app$1.loadGraphData(JSON.parse(JSON.stringify(flag.activeState)), true, true, flag);
+    }
+    return flag;
+  },
+  openWorkFlowByGrahData(graphData) {
+    app$1.loadGraphData(graphData);
+    let menuStore = useMenuStore();
+    menuStore.changeShow(false);
+  },
+  checkWorkFlowIsOpenByIds(data) {
+    var _a2, _b2, _c2;
+    let flag = false;
+    let temArr = app$1.extensionManager.workflow.openWorkflows;
+    for (let i2 = 0; i2 < temArr.length; i2++) {
+      let temp = (_c2 = (_b2 = (_a2 = temArr[i2]) == null ? void 0 : _a2.activeState) == null ? void 0 : _b2.extra) == null ? void 0 : _c2.MontagenProj;
+      if (temp) {
+        if (temp.projectId == data.projectId && data.workflowId == temp.workflowId) {
+          flag = temArr[i2];
+          break;
+        }
+      }
+    }
+    return flag;
+  },
+  openTabByWorkFlowData(data, name) {
+    return new Promise(async (resolve, reject) => {
+      await app$1.loadGraphData(data, true, true, name);
+      resolve();
+    });
+  }
+};
 let timeoutId;
 const useWorkSpaceStore = defineStore("workSpaceStore", {
   state: (_) => ({
@@ -68759,6 +68590,182 @@ const useWorkSpaceStore = defineStore("workSpaceStore", {
     }
   }
 });
+const useMenuStore = defineStore("menuStore", {
+  state: (_) => ({
+    showPage: false
+  }),
+  actions: {
+    changeShow(flag) {
+      this.showPage = flag ?? !this.showPage;
+      let workSpaceStore = useWorkSpaceStore();
+      if (workSpaceStore.playerInstance) {
+        if (!this.showPage) {
+          workSpaceStore.playerInstance.pause();
+        }
+        workSpaceStore.playerInstance.opts.enableKeyboard = this.showPage ? true : false;
+      }
+    }
+  }
+});
+const useDialogStore = defineStore("dialog", () => {
+  const dialogStack = ref$3([]);
+  const genDialogKey = () => `dialog-${Math.random().toString(36).slice(2, 9)}`;
+  function riseDialog(options) {
+    const dialogKey = options.key;
+    const index2 = dialogStack.value.findIndex((d) => d.key === dialogKey);
+    if (index2 !== -1) {
+      const dialogs = dialogStack.value.splice(index2, 1);
+      dialogStack.value.push(...dialogs);
+    }
+  }
+  function closeDialog(options) {
+    if (!options) {
+      dialogStack.value.pop();
+      return;
+    }
+    const dialogKey = options.key;
+    const index2 = dialogStack.value.findIndex((d) => d.key === dialogKey);
+    if (index2 === -1) {
+      return;
+    }
+    dialogStack.value.splice(index2, 1);
+  }
+  function createDialog(options) {
+    var _a2;
+    if (dialogStack.value.length >= 10) {
+      dialogStack.value.shift();
+    }
+    const dialog = {
+      key: options.key,
+      visible: true,
+      title: options.title,
+      headerComponent: options.headerComponent ? markRaw(options.headerComponent) : void 0,
+      component: markRaw(options.component),
+      contentProps: { ...options.props },
+      dialogComponentProps: {
+        maximizable: false,
+        modal: true,
+        closable: true,
+        closeOnEscape: true,
+        dismissableMask: true,
+        ...options.dialogComponentProps,
+        maximized: false,
+        onMaximize: () => {
+          dialog.dialogComponentProps.maximized = true;
+        },
+        onUnmaximize: () => {
+          dialog.dialogComponentProps.maximized = false;
+        },
+        onAfterHide: () => {
+          var _a3, _b2;
+          (_b2 = (_a3 = options.dialogComponentProps) == null ? void 0 : _a3.onClose) == null ? void 0 : _b2.call(_a3);
+          closeDialog(dialog);
+        },
+        pt: lodashExports.merge(((_a2 = options.dialogComponentProps) == null ? void 0 : _a2.pt) || {}, {
+          root: {
+            onMousedown: () => {
+              riseDialog(dialog);
+            }
+          }
+        })
+        // pt: {
+        //   root: {
+        //     onMousedown: () => {
+        //       riseDialog(dialog)
+        //     }
+        //   }
+        // }
+      }
+    };
+    dialogStack.value.push(dialog);
+    return dialog;
+  }
+  function showDialog(options) {
+    const dialogKey = options.key || genDialogKey();
+    let dialog = dialogStack.value.find((d) => d.key === dialogKey);
+    if (dialog) {
+      dialog.visible = true;
+      riseDialog(dialog);
+    } else {
+      dialog = createDialog({ ...options, key: dialogKey });
+    }
+    return dialog;
+  }
+  return {
+    dialogStack,
+    riseDialog,
+    showDialog,
+    closeDialog
+  };
+});
+const _hoisted_1$p = ["id"];
+const _sfc_main$u = /* @__PURE__ */ defineComponent({
+  __name: "GlobalDialog",
+  setup(__props) {
+    const dialogStore = useDialogStore();
+    const primevue = usePrimeVue();
+    const baseZIndex = computed(() => {
+      var _a2, _b2;
+      return ((_b2 = (_a2 = primevue == null ? void 0 : primevue.config) == null ? void 0 : _a2.zIndex) == null ? void 0 : _b2.modal) ?? 2100;
+    });
+    const setContentRef = (el, dialogItem) => {
+      dialogItem.contentRef = el;
+    };
+    const handleDialogClose = (closedKey) => {
+      if (closedKey == "global-projectDialog-mongaton") {
+        window.my_mixpanel.track("Explorer_Projects_Closed", {});
+      } else if (closedKey == "global-templateDialog-mongaton") {
+        window.my_mixpanel.track("Explorer_Templates_Closed", {});
+      }
+    };
+    onMounted(() => {
+      document.createElement("div");
+    });
+    return (_ctx, _cache) => {
+      return openBlock(true), createElementBlock(Fragment, null, renderList$1(unref(dialogStore).dialogStack, (item, index2) => {
+        return openBlock(), createBlock(unref(script), mergeProps$1({
+          key: item.key,
+          visible: item.visible,
+          "onUpdate:visible": ($event) => item.visible = $event,
+          class: "global-dialog",
+          ref_for: true
+        }, item.dialogComponentProps, {
+          "auto-z-index": false,
+          "pt:mask:style": { zIndex: baseZIndex.value + index2 + 1 },
+          "aria-labelledby": item.key,
+          onHide: ($event) => handleDialogClose(item.key)
+        }), {
+          header: withCtx(() => [
+            item.headerComponent ? (openBlock(), createBlock(resolveDynamicComponent(item.headerComponent), {
+              key: 0,
+              id: item.key
+            }, null, 8, ["id"])) : (openBlock(), createElementBlock("h3", {
+              key: 1,
+              id: item.key
+            }, toDisplayString(item.title || " "), 9, _hoisted_1$p))
+          ]),
+          default: withCtx(() => [
+            (openBlock(), createBlock(resolveDynamicComponent(item.component), mergeProps$1({
+              ref_for: true,
+              ref: (el) => setContentRef(el, item)
+            }, item.contentProps, {
+              maximized: item.dialogComponentProps.maximized
+            }), null, 16, ["maximized"]))
+          ]),
+          _: 2
+        }, 1040, ["visible", "onUpdate:visible", "pt:mask:style", "aria-labelledby", "onHide"]);
+      }), 128);
+    };
+  }
+});
+const _export_sfc = (sfc, props2) => {
+  const target2 = sfc.__vccOpts || sfc;
+  for (const [key2, val] of props2) {
+    target2[key2] = val;
+  }
+  return target2;
+};
+const GlobalDialog = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-aa11f38c"]]);
 const _hoisted_1$o = { class: "w-full p-2" };
 const _sfc_main$t = /* @__PURE__ */ defineComponent({
   __name: "outPutForm",
@@ -73246,7 +73253,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-44836863"]]);
+const newExplorer = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-a0443d0b"]]);
 const useLeftToolStore = defineStore("leftToolStore", {
   state: (_) => ({
     menues: [
@@ -74658,12 +74665,13 @@ getLocale();
     node2.setSize([node2.size[0], originalHeight + height]);
     (_a2 = node2 == null ? void 0 : node2.graph) == null ? void 0 : _a2.setDirtyCanvas(true);
     setTimeout(() => {
-      console.log("fitHeight_srt_node_scrollTop", app$1.myScrollTop);
-      srtEditWidet.element.scrollTop = app$1.myScrollTop || 0;
+      console.log("fitHeight_srt_node_scrollTop", app$1.myScrollTop, node2.id, app$1.graph.id);
+      srtEditWidet.element.scrollTop = app$1[`myScrollTop_${app$1.graph.id}_${node2.id}`] || 0;
     }, 0);
   }
   function changeWidget() {
     let new_widgets = [];
+    let _this = this;
     new_widgets = [...this.widgets];
     new_widgets.push(
       app$1.widgets.MontagenTextUpload(
@@ -74775,8 +74783,6 @@ getLocale();
       return div;
     };
     srtEditWidet.updateUI = function(entries) {
-      const scrollTop = srtEditWidet.element.scrollTop;
-      console.log("scrollTop_获取元素的滚动距离_????????", scrollTop, "srtEditWidet.element.style.display", srtEditWidet.element.style.display, "srtEditWidet.element", JSON.stringify(srtEditWidet.element.innerHTML));
       srtEditWidet.entries = entries;
       srtEditWidet.container.innerHTML = "";
       if (!entries.length) {
@@ -74787,7 +74793,7 @@ getLocale();
         srtEditWidet.container.innerHTML = `
           <label style="display: flex;align-items: center;border-bottom: 1px solid #eee;margin-bottom: 4px;position:sticky;top:0;background:#fff;z-index: 2;padding: 2px 0 ;">
             <input type="checkbox" name="allcheck" ${isAllChecked ? "checked" : ""}></input>
-            <span>全选</span>
+            <span style="color:#3f3f46;">Select all</span>
           </label>
         `;
         const allCheck = srtEditWidet.container.querySelector(
@@ -74807,11 +74813,10 @@ getLocale();
         });
       }
       srtEditWidet.element.addEventListener("scroll", (e) => {
-        app$1.myScrollTop = e.srcElement.scrollTop;
+        app$1[`myScrollTop_${app$1.graph.id}_${_this.id}`] = e.srcElement.scrollTop;
       });
       setTimeout(() => {
-        console.log("fitHeight_srt_node_scrollTop", app$1.myScrollTop);
-        srtEditWidet.element.scrollTop = app$1.myScrollTop || 0;
+        srtEditWidet.element.scrollTop = app$1[`myScrollTop_${app$1.graph.id}_${_this.id}`] || 0;
       }, 0);
     };
     srtEditWidet.updateNodeData = function() {
@@ -74835,7 +74840,6 @@ getLocale();
       if (nodeData.name == "MontagenSRTListParser") {
         chainCallback(nodeType.prototype, "onNodeCreated", function() {
           changeWidget.call(this);
-          console.log("首次添加自定义组件————————————————————？？？");
         });
       }
     },
@@ -74858,7 +74862,7 @@ getLocale();
                   (w) => w.name === "srt"
                 );
                 if (srtEditWidet) {
-                  app2.myScrollTop = 0;
+                  app2[`myScrollTop_${app2.graph.id}_${node2.id}`] = 0;
                   srtEditWidet.updateUI(result);
                   srtEditWidet.updateNodeData();
                 } else {
