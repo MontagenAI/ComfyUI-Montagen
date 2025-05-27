@@ -74734,6 +74734,7 @@ getLocale();
     srtEditWidet.container = document.createElement("div");
     srtEditWidet.container.innerHTML = "";
     const createEntryElement = (entry, index2) => {
+      var _a2, _b2;
       const div = document.createElement("div");
       div.style.cssText = `display: flex; margin-bottom: 6px;align-items: flex-start;`;
       div.innerHTML = `
@@ -74741,9 +74742,9 @@ getLocale();
             <div style="flex: 1; margin-left: 6px;border-bottom: 1px solid #eee;">
               <div style="margin-bottom:2rpx">${entry.index}   </div>
               <div style="display: flex;align-items: center;">
-                <input name="start" class="myinput" type="number" value="${entry.start}"></input>
+                <input name="start" class="myinput" type="number" value="${(_a2 = +entry.start) == null ? void 0 : _a2.toFixed(3)}"></input>
                 <sapn> --> </sapn>
-                <input name="end" class="myinput" type="number" style="width:60px;height:16px;border:none;outline:none;text-align:center;background:transparent;color:var(--fg-color)" value="${entry.end}"></input>
+                <input name="end" class="myinput" type="number" style="width:60px;height:16px;border:none;outline:none;text-align:center;background:transparent;color:var(--fg-color)" value="${(_b2 = +entry.end) == null ? void 0 : _b2.toFixed(3)}"></input>
               </div>
               <input name="content" style="width: 100%;height:24px;border:none;outline:none;resize: none;font-size:12px;line-height:24px;background:transparent;color:var(--fg-color)" value="${entry.content}" ></input>
             </div>
