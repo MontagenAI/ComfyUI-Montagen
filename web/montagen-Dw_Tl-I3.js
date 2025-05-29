@@ -315,7 +315,7 @@ li[data-v-f93fdfa7] {
 img[data-v-11358f43] {
   transition: transform 1s cubic-bezier(0.2, 0, 0.4, 1);
 }
-.folder-project[data-v-68de2634] {
+.folder-project[data-v-aaa9ba23] {
   display: flex;
   height: 40vh;
   width: 60vw;
@@ -752,13 +752,13 @@ img[data-v-11358f43] {
   }
 })();
 var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
-import { r as ref$3, p as markRaw, d as defineComponent, h as computed, e as onMounted, o as openBlock, c as createElementBlock, P as renderList$1, Q as unref, O as Fragment, H as createBlock, I as withCtx, L as resolveDynamicComponent, D as toDisplayString, m as mergeProps$1, f as reactive, a as createBaseVNode, M as createVNode, C as createTextVNode$1, G as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, n as nextTick$1, ab as withKeys, k as withModifiers, a1 as normalizeStyle, j as renderSlot$1, v as toRaw, Z as onUnmounted, T as Teleport, a5 as onBeforeUnmount, a3 as provide, ac as createApp } from "./assets/vue-DklvDGl_.js";
-import { d as defineStore, s as script, a as storeToRefs, E as ElForm, b as ElInput, c as ElFormItem, e as ElButton, f as script$1, g as script$2, h as script$3, T as Tooltip, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$d, r as script$e, t as script$f, u as useToast, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, B as script$l, C as script$m, D as customAlphabet, F as script$n, G as script$o, H as script$p, I as z, J as script$q, K as DialogService, L as ConfirmationService, M as mixpanel$1, N as createPinia, O as ToastService } from "./assets/vendor-Bw-2nfTk.js";
+import { r as ref$3, u as markRaw, d as defineComponent, h as computed, e as onMounted, o as openBlock, c as createElementBlock, O as renderList$1, P as unref, N as Fragment, l as createBlock, p as withCtx, q as resolveDynamicComponent, F as toDisplayString, m as mergeProps$1, f as reactive, a as createBaseVNode, L as createVNode, E as createTextVNode$1, I as withDirectives, K as normalizeClass, J as createCommentVNode, w as watch, n as nextTick$1, aa as withKeys, k as withModifiers, a0 as normalizeStyle, j as renderSlot$1, y as toRaw, Y as onUnmounted, T as Teleport, a4 as onBeforeUnmount, a2 as provide, ab as createApp } from "./assets/vue-DLDgppwU.js";
+import { d as defineStore, s as script, a as storeToRefs, E as ElForm, b as ElInput, c as ElFormItem, e as ElButton, f as script$1, g as script$2, h as script$3, T as Tooltip, i as script$4, S as Split, j as script$5, k as script$6, l as script$7, m as script$8, n as script$9, o as script$a, p as script$b, q as script$d, r as script$e, t as script$f, u as useToast, v as script$g, w as script$h, x as useConfirm, y as script$i, z as script$j, A as script$k, B as script$l, C as z, D as script$n, F as customAlphabet, G as script$o, H as script$p, I as script$q, J as script$r, K as DialogService, L as ConfirmationService, M as mixpanel$1, N as createPinia, O as ToastService } from "./assets/vendor-PS8klotU.js";
 import { l as lodashExports } from "./assets/lodash-BRplnvIi.js";
-import { aD as zodResolver } from "./assets/primeuix-C3IJgEkH.js";
-import { w as usePrimeVue, x as script$c, P as PrimeVue, y as definePreset, z as index$3 } from "./assets/primevue-D-fZSLLk.js";
-import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-aACRzhhb.js";
-import { E as ElementPlusIconsVue } from "./assets/element-plus-DHHuCJXR.js";
+import { w as usePrimeVue, x as script$c, y as script$m, P as PrimeVue, z as index$3 } from "./assets/primevue-CDtjyBBt.js";
+import { u as useBreakpoints, b as breakpointsTailwind, a as useEventListener, c as useElementHover } from "./assets/vueuse-CMKQGx-q.js";
+import { aa as zodResolver, ab as definePreset } from "./assets/primeuix-BlnkOWpw.js";
+import { E as ElementPlusIconsVue } from "./assets/element-plus-BUzQbu-C.js";
 import "./assets/ctrl-CUqN8X7N.js";
 const useFileStore = defineStore("fileStore", {
   state: (_) => ({
@@ -71682,17 +71682,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
     const initialValues = reactive({
       path: ""
     });
-    const resolver = ({ values }) => {
-      const errors = {};
-      if (!values.path) {
-        errors.path = [{ message: "path is required." }];
-      }
-      return {
-        values,
-        // (Optional) Used to pass current form values to submit event.
-        errors
-      };
-    };
+    const resolver = zodResolver(
+      z.object({
+        path: z.string().nonempty("path is required.")
+      })
+    );
     const isLoading = ref$3(false);
     const onFormSubmit = async ({ values, valid }) => {
       if (valid) {
@@ -71726,62 +71720,62 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       const _component_InputText = script$4;
       const _component_Message = script$b;
       const _component_Button = script$3;
-      const _component_Form = script$c;
       return openBlock(), createElementBlock("div", _hoisted_1$9, [
         createBaseVNode("div", _hoisted_2$4, [
-          createVNode(_component_Form, {
+          createVNode(unref(script$c), {
             initialValues,
-            resolver,
+            resolver: unref(resolver),
             onSubmit: onFormSubmit,
             class: "flex flex-col gap-4 w-full"
           }, {
-            default: withCtx(($form) => {
-              var _a2;
-              return [
-                createBaseVNode("div", _hoisted_3$4, [
-                  _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "Please enter the project folder path:", -1)),
-                  createBaseVNode("div", _hoisted_4$3, [
-                    createVNode(_component_InputText, {
-                      name: "path",
-                      type: "text",
-                      placeholder: "path",
-                      fluid: ""
-                    }),
-                    ((_a2 = $form.path) == null ? void 0 : _a2.invalid) ? (openBlock(), createBlock(_component_Message, {
-                      key: 0,
-                      severity: "error",
-                      size: "small",
-                      variant: "simple"
-                    }, {
-                      default: withCtx(() => {
-                        var _a3;
-                        return [
-                          createTextVNode$1(toDisplayString((_a3 = $form.path.error) == null ? void 0 : _a3.message), 1)
-                        ];
-                      }),
-                      _: 2
-                    }, 1024)) : createCommentVNode("", true)
-                  ])
-                ]),
-                createBaseVNode("div", _hoisted_5$3, [
-                  createVNode(_component_Button, {
-                    class: "tw-w-full",
-                    type: "submit",
-                    loading: isLoading.value,
-                    severity: "secondary",
-                    label: "Submit"
-                  }, null, 8, ["loading"])
+            default: withCtx(($form) => [
+              createBaseVNode("div", _hoisted_3$4, [
+                _cache[0] || (_cache[0] = createBaseVNode("div", { class: "form-item-label tw-py-2" }, "Please enter the project folder path:", -1)),
+                createBaseVNode("div", _hoisted_4$3, [
+                  createVNode(unref(script$m), { name: "path" }, {
+                    default: withCtx(($field) => [
+                      createVNode(_component_InputText, mergeProps$1($field, {
+                        type: "text",
+                        placeholder: "path",
+                        fluid: ""
+                      }), null, 16),
+                      ($field == null ? void 0 : $field.invalid) ? (openBlock(), createBlock(_component_Message, {
+                        key: 0,
+                        severity: "error",
+                        size: "small",
+                        variant: "simple"
+                      }, {
+                        default: withCtx(() => {
+                          var _a2;
+                          return [
+                            createTextVNode$1(toDisplayString((_a2 = $field.error) == null ? void 0 : _a2.message), 1)
+                          ];
+                        }),
+                        _: 2
+                      }, 1024)) : createCommentVNode("", true)
+                    ]),
+                    _: 1
+                  })
                 ])
-              ];
-            }),
+              ]),
+              createBaseVNode("div", _hoisted_5$3, [
+                createVNode(_component_Button, {
+                  class: "tw-w-full",
+                  type: "submit",
+                  loading: isLoading.value,
+                  severity: "secondary",
+                  label: "Submit"
+                }, null, 8, ["loading"])
+              ])
+            ]),
             _: 1
-          }, 8, ["initialValues"])
+          }, 8, ["initialValues", "resolver"])
         ])
       ]);
     };
   }
 });
-const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-68de2634"]]);
+const chooseFolderProjectVue = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-aaa9ba23"]]);
 const _hoisted_1$8 = { class: "tw-flex tw-flex-col tw-h-[83vh] tw-w-[90vw] tw-relative tw-pb-6" };
 const _hoisted_2$3 = { class: "tw-flex tw-flex-1 tw-relative tw-overflow-hidden" };
 const _hoisted_3$3 = {
@@ -71869,7 +71863,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       const _component_Button = script$3;
-      const _component_Divider = script$m;
+      const _component_Divider = script$n;
       return openBlock(), createElementBlock("div", _hoisted_1$8, [
         unref(isSmallScreen) ? (openBlock(), createBlock(_component_Button, {
           key: 0,
@@ -72081,7 +72075,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       const _component_Button = script$3;
-      const _component_Divider = script$m;
+      const _component_Divider = script$n;
       return openBlock(), createElementBlock("div", _hoisted_1$6, [
         unref(isSmallScreen) ? (openBlock(), createBlock(_component_Button, {
           key: 0,
@@ -72154,7 +72148,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
-      const _component_FloatLabel = script$n;
+      const _component_FloatLabel = script$o;
       const _component_Button = script$3;
       return openBlock(), createElementBlock("div", _hoisted_1$5, [
         createVNode(_component_FloatLabel, null, {
@@ -72215,7 +72209,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       const _component_InputText = script$4;
-      const _component_FloatLabel = script$n;
+      const _component_FloatLabel = script$o;
       const _component_Button = script$3;
       return openBlock(), createElementBlock("div", _hoisted_1$4, [
         createVNode(_component_FloatLabel, null, {
@@ -73377,7 +73371,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
         ref_key: "container",
         ref: container
       }, [
-        createVNode(unref(script$o), {
+        createVNode(unref(script$p), {
           sizes: splitterSizes.value,
           "onUpdate:sizes": _cache[0] || (_cache[0] = ($event) => splitterSizes.value = $event),
           dt: { "background": "#262626", "height": "100%", "width": "100%" },
@@ -73387,7 +73381,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           }
         }, {
           default: withCtx(() => [
-            createVNode(unref(script$p), {
+            createVNode(unref(script$q), {
               class: "flex",
               pt: {
                 root: { class: "split-panel-left" }
@@ -73401,11 +73395,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
               ]),
               _: 1
             }, 8, ["size"]),
-            createVNode(unref(script$p), {
+            createVNode(unref(script$q), {
               size: splitterSizes.value[1]
             }, {
               default: withCtx(() => [
-                createVNode(unref(script$o), {
+                createVNode(unref(script$p), {
                   layout: "vertical",
                   pt: {
                     gutter: { class: "split-gutter" },
@@ -73418,7 +73412,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(script$p), {
+                    createVNode(unref(script$q), {
                       class: "flex items-center justify-center",
                       size: 70,
                       minSize: 70,
@@ -73441,7 +73435,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       ]),
                       _: 1
                     }),
-                    createVNode(unref(script$p), {
+                    createVNode(unref(script$q), {
                       class: "flex items-center justify-center",
                       size: 30,
                       minSize: 30,
@@ -73509,7 +73503,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     onMounted(() => {
     });
     return (_ctx, _cache) => {
-      const _component_Textarea = script$q;
+      const _component_Textarea = script$r;
       const _component_Message = script$b;
       const _component_Button = script$3;
       const _component_Dialog = script;

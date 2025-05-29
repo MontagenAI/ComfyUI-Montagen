@@ -1,7 +1,7 @@
-import { l as effectScope, r as ref, p as markRaw, w as watch, f as reactive, q as isRef, s as isReactive, v as toRaw, i as inject, x as toRef, y as getCurrentScope, z as onScopeDispose, n as nextTick, A as hasInjectionContext, B as toRefs, h as computed, o as openBlock, c as createElementBlock, j as renderSlot, C as createTextVNode, D as toDisplayString, m as mergeProps, E as resolveComponent, F as resolveDirective, G as withDirectives, H as createBlock, I as withCtx, J as createCommentVNode, a as createBaseVNode, K as normalizeClass, L as resolveDynamicComponent, T as Teleport, M as createVNode, N as Transition, O as Fragment, P as renderList, g as getCurrentInstance, Q as unref, R as isString$2, S as shallowRef, U as watchEffect, b as readonly, e as onMounted, V as isObject, W as hasOwn, X as warn, Y as NOOP$1, d as defineComponent, Z as onUnmounted, _ as isFunction, $ as useAttrs$1, a0 as useSlots, k as withModifiers, a1 as normalizeStyle, a2 as Text, a3 as provide, a4 as isArray$1, a5 as onBeforeUnmount, a6 as onUpdated, a7 as TransitionGroup, a8 as createSlots, a9 as vShow, aa as normalizeProps, ab as withKeys } from "./vue-DklvDGl_.js";
-import { B as style, u as uuid, q as isEmpty, C as getAttribute, D as isTouchDevice, i as isExist, F as fadeIn, Z as ZIndex, y as findSingle, G as createElement, H as getWindowScrollLeft, I as getWindowScrollTop, J as getOuterWidth, K as getOuterHeight, L as getViewport, M as removeClass, N as addClass, O as hasClass, P as style$1, d as isNotEmpty, Q as cn, R as style$2, S as getHeight, T as getWidth, U as getOffset, V as style$3, W as focus, X as getFirstFocusableElement, Y as getLastFocusableElement, _ as isFocusableElement, b as isClient$1, $ as blockBodyScroll$1, a0 as $dt, a1 as unblockBodyScroll$1, a2 as style$4, a as setAttribute, a3 as addStyle, a4 as style$5, a5 as isRTL, p as isArray, a6 as style$6, r as resolve$4, a7 as isPrintableCharacter, a8 as getHiddenElementOuterWidth, a9 as getHiddenElementOuterHeight, aa as findLastIndex, ab as nestedPosition, ac as style$7, E as EventBus, ad as style$8, ae as style$9, af as style$a, ag as style$b, ah as style$c, x as equals, ai as contains$2, v as resolveFieldData, o as isFunction$1, aj as find, ak as style$d, al as style$e, am as isVisible, an as style$f, ao as isAndroid, ap as relativePosition, aq as absolutePosition, ar as getFocusableElements, as as style$g, at as style$h, au as style$i, av as style$j, aw as style$k, ax as style$l, ay as style$m, az as style$n, z as isElement$1, aA as style$o, aB as style$p, aC as style$q } from "./primeuix-C3IJgEkH.js";
-import { B as BaseStyle, a as BaseDirective, C as ConnectedOverlayScrollHandler, s as script$y, b as script$z, c as script$A, d as script$B, e as script$C, g as getVNodeProp, f as script$D, h as script$E, i as script$F, j as script$G, k as script$H, l as script$I, m as script$J, F as FilterService, n as script$K, o as script$L, p as script$M, q as script$N, r as script$O, t as script$P, u as script$Q, v as script$R } from "./primevue-D-fZSLLk.js";
-import { l as loading_default, c as circle_check_default, a as circle_close_default, v as view_default, h as hide_default } from "./element-plus-DHHuCJXR.js";
+import { s as effectScope, r as ref, u as markRaw, w as watch, f as reactive, v as isRef, x as isReactive, y as toRaw, i as inject, z as toRef, A as getCurrentScope, B as onScopeDispose, n as nextTick, C as hasInjectionContext, D as toRefs, h as computed, o as openBlock, c as createElementBlock, j as renderSlot, E as createTextVNode, F as toDisplayString, m as mergeProps, G as resolveComponent, H as resolveDirective, I as withDirectives, l as createBlock, p as withCtx, J as createCommentVNode, a as createBaseVNode, K as normalizeClass, q as resolveDynamicComponent, T as Teleport, L as createVNode, M as Transition, N as Fragment, O as renderList, g as getCurrentInstance, P as unref, Q as isString$2, R as shallowRef, S as watchEffect, b as readonly, e as onMounted, U as isObject, V as hasOwn, W as warn, X as NOOP$1, d as defineComponent, Y as onUnmounted, Z as isFunction, _ as useAttrs$1, $ as useSlots, k as withModifiers, a0 as normalizeStyle, a1 as Text, a2 as provide, a3 as isArray$1, a4 as onBeforeUnmount, a5 as onUpdated, a6 as TransitionGroup, a7 as createSlots, a8 as vShow, a9 as normalizeProps, aa as withKeys } from "./vue-DLDgppwU.js";
+import { p as isEmpty, A as getAttribute, i as isExist, B as fadeIn, C as isTouchDevice, Z as ZIndex, D as createElement, F as getWindowScrollLeft, G as getWindowScrollTop, H as getOuterWidth, I as getOuterHeight, J as removeClass, K as addClass, x as findSingle, L as getViewport, M as hasClass, c as isNotEmpty, N as getHeight, O as getWidth, P as getOffset, Q as focus, R as getFirstFocusableElement, S as getLastFocusableElement, T as isFocusableElement, b as isClient$1, U as blockBodyScroll, V as unblockBodyScroll, a as setAttribute, W as addStyle, X as isRTL, o as isArray, r as resolve$4, Y as isPrintableCharacter, _ as getHiddenElementOuterWidth, $ as getHiddenElementOuterHeight, a0 as findLastIndex, a1 as nestedPosition, E as EventBus, w as equals, a2 as contains$2, q as resolveFieldData, n as isFunction$1, a3 as find, a4 as isVisible, a5 as isAndroid, a6 as relativePosition, a7 as absolutePosition, a8 as getFocusableElements, a9 as isElement$1 } from "./primeuix-BlnkOWpw.js";
+import { B as BaseStyle, a as BaseDirective, U as UniqueComponentId, C as ConnectedOverlayScrollHandler, s as script$y, b as script$z, c as script$A, d as script$B, e as script$C, g as getVNodeProp, f as script$D, h as script$E, i as script$F, j as script$G, k as script$H, l as script$I, m as script$J, F as FilterService, n as script$K, o as script$L, p as script$M, q as script$N, r as script$O, t as script$P, u as script$Q, v as script$R } from "./primevue-CDtjyBBt.js";
+import { l as loading_default, c as circle_check_default, a as circle_close_default, v as view_default, h as hide_default } from "./element-plus-BUzQbu-C.js";
 import { f as fromPairs, g as get, s as set, p as pick, i as isNil, c as castArray, a as clone } from "./lodash-BRplnvIi.js";
 import { T as TinyColor } from "./ctrl-CUqN8X7N.js";
 var isVue2 = false;
@@ -367,6 +367,10 @@ function storeToRefs(store) {
     return refs;
   }
 }
+var theme$q = function theme(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-tooltip {\n    position: absolute;\n    display: none;\n    max-width: ".concat(dt("tooltip.max.width"), ";\n}\n\n.p-tooltip-right,\n.p-tooltip-left {\n    padding: 0 ").concat(dt("tooltip.gutter"), ";\n}\n\n.p-tooltip-top,\n.p-tooltip-bottom {\n    padding: ").concat(dt("tooltip.gutter"), " 0;\n}\n\n.p-tooltip-text {\n    white-space: pre-line;\n    word-break: break-word;\n    background: ").concat(dt("tooltip.background"), ";\n    color: ").concat(dt("tooltip.color"), ";\n    padding: ").concat(dt("tooltip.padding"), ";\n    box-shadow: ").concat(dt("tooltip.shadow"), ";\n    border-radius: ").concat(dt("tooltip.border.radius"), ";\n}\n\n.p-tooltip-arrow {\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-color: transparent;\n    border-style: solid;\n}\n\n.p-tooltip-right .p-tooltip-arrow {\n    margin-top: calc(-1 * ").concat(dt("tooltip.gutter"), ");\n    border-width: ").concat(dt("tooltip.gutter"), " ").concat(dt("tooltip.gutter"), " ").concat(dt("tooltip.gutter"), " 0;\n    border-right-color: ").concat(dt("tooltip.background"), ";\n}\n\n.p-tooltip-left .p-tooltip-arrow {\n    margin-top: calc(-1 * ").concat(dt("tooltip.gutter"), ");\n    border-width: ").concat(dt("tooltip.gutter"), " 0 ").concat(dt("tooltip.gutter"), " ").concat(dt("tooltip.gutter"), ";\n    border-left-color: ").concat(dt("tooltip.background"), ";\n}\n\n.p-tooltip-top .p-tooltip-arrow {\n    margin-left: calc(-1 * ").concat(dt("tooltip.gutter"), ");\n    border-width: ").concat(dt("tooltip.gutter"), " ").concat(dt("tooltip.gutter"), " 0 ").concat(dt("tooltip.gutter"), ";\n    border-top-color: ").concat(dt("tooltip.background"), ";\n    border-bottom-color: ").concat(dt("tooltip.background"), ";\n}\n\n.p-tooltip-bottom .p-tooltip-arrow {\n    margin-left: calc(-1 * ").concat(dt("tooltip.gutter"), ");\n    border-width: 0 ").concat(dt("tooltip.gutter"), " ").concat(dt("tooltip.gutter"), " ").concat(dt("tooltip.gutter"), ";\n    border-top-color: ").concat(dt("tooltip.background"), ";\n    border-bottom-color: ").concat(dt("tooltip.background"), ";\n}\n");
+};
 var classes$v = {
   root: "p-tooltip p-component",
   arrow: "p-tooltip-arrow",
@@ -374,7 +378,7 @@ var classes$v = {
 };
 var TooltipStyle = BaseStyle.extend({
   name: "tooltip-directive",
-  style,
+  theme: theme$q,
   classes: classes$v
 });
 var BaseTooltip = BaseDirective.extend({
@@ -420,30 +424,30 @@ function _iterableToArrayLimit(r, l) {
 function _arrayWithHoles(r) {
   if (Array.isArray(r)) return r;
 }
-function _defineProperty$k(e, r, t) {
-  return (r = _toPropertyKey$k(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$b(e, r, t) {
+  return (r = _toPropertyKey$b(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$k(t) {
-  var i = _toPrimitive$k(t, "string");
-  return "symbol" == _typeof$k(i) ? i : i + "";
+function _toPropertyKey$b(t) {
+  var i = _toPrimitive$b(t, "string");
+  return "symbol" == _typeof$b(i) ? i : i + "";
 }
-function _toPrimitive$k(t, r) {
-  if ("object" != _typeof$k(t) || !t) return t;
+function _toPrimitive$b(t, r) {
+  if ("object" != _typeof$b(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$k(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$b(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
-function _typeof$k(o) {
+function _typeof$b(o) {
   "@babel/helpers - typeof";
-  return _typeof$k = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$b = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$k(o);
+  }, _typeof$b(o);
 }
 var Tooltip = BaseTooltip.extend("tooltip", {
   beforeMount: function beforeMount(el, options3) {
@@ -457,11 +461,11 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       target2.$_ptooltipEscape = true;
       target2.$_ptooltipClass = null;
       target2.$_ptooltipFitContent = true;
-      target2.$_ptooltipIdAttr = uuid("pv_id") + "_tooltip";
+      target2.$_ptooltipIdAttr = UniqueComponentId() + "_tooltip";
       target2.$_ptooltipShowDelay = 0;
       target2.$_ptooltipHideDelay = 0;
       target2.$_ptooltipAutoHide = true;
-    } else if (_typeof$k(options3.value) === "object" && options3.value) {
+    } else if (_typeof$b(options3.value) === "object" && options3.value) {
       if (isEmpty(options3.value.value) || options3.value.value.trim() === "") return;
       else {
         target2.$_ptooltipValue = options3.value.value;
@@ -469,7 +473,7 @@ var Tooltip = BaseTooltip.extend("tooltip", {
         target2.$_ptooltipEscape = !!options3.value.escape === options3.value.escape ? options3.value.escape : true;
         target2.$_ptooltipClass = options3.value["class"] || "";
         target2.$_ptooltipFitContent = !!options3.value.fitContent === options3.value.fitContent ? options3.value.fitContent : true;
-        target2.$_ptooltipIdAttr = options3.value.id || uuid("pv_id") + "_tooltip";
+        target2.$_ptooltipIdAttr = options3.value.id || UniqueComponentId() + "_tooltip";
         target2.$_ptooltipShowDelay = options3.value.showDelay || 0;
         target2.$_ptooltipHideDelay = options3.value.hideDelay || 0;
         target2.$_ptooltipAutoHide = !!options3.value.autoHide === options3.value.autoHide ? options3.value.autoHide : true;
@@ -491,12 +495,12 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       target2.$_ptooltipDisabled = false;
       target2.$_ptooltipEscape = true;
       target2.$_ptooltipClass = null;
-      target2.$_ptooltipIdAttr = target2.$_ptooltipIdAttr || uuid("pv_id") + "_tooltip";
+      target2.$_ptooltipIdAttr = target2.$_ptooltipIdAttr || UniqueComponentId() + "_tooltip";
       target2.$_ptooltipShowDelay = 0;
       target2.$_ptooltipHideDelay = 0;
       target2.$_ptooltipAutoHide = true;
       this.bindEvents(target2, options3);
-    } else if (_typeof$k(options3.value) === "object" && options3.value) {
+    } else if (_typeof$b(options3.value) === "object" && options3.value) {
       if (isEmpty(options3.value.value) || options3.value.value.trim() === "") {
         this.unbindEvents(target2, options3);
         return;
@@ -506,7 +510,7 @@ var Tooltip = BaseTooltip.extend("tooltip", {
         target2.$_ptooltipEscape = !!options3.value.escape === options3.value.escape ? options3.value.escape : true;
         target2.$_ptooltipClass = options3.value["class"] || "";
         target2.$_ptooltipFitContent = !!options3.value.fitContent === options3.value.fitContent ? options3.value.fitContent : true;
-        target2.$_ptooltipIdAttr = options3.value.id || target2.$_ptooltipIdAttr || uuid("pv_id") + "_tooltip";
+        target2.$_ptooltipIdAttr = options3.value.id || target2.$_ptooltipIdAttr || UniqueComponentId() + "_tooltip";
         target2.$_ptooltipShowDelay = options3.value.showDelay || 0;
         target2.$_ptooltipHideDelay = options3.value.hideDelay || 0;
         target2.$_ptooltipAutoHide = !!options3.value.autoHide === options3.value.autoHide ? options3.value.autoHide : true;
@@ -516,7 +520,6 @@ var Tooltip = BaseTooltip.extend("tooltip", {
   },
   unmounted: function unmounted(el, options3) {
     var target2 = this.getTarget(el);
-    this.hide(el, 0);
     this.remove(target2);
     this.unbindEvents(target2, options3);
     if (target2.$_ptooltipScrollHandler) {
@@ -530,46 +533,34 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       var _this = this;
       var modifiers = el.$_ptooltipModifiers;
       if (modifiers.focus) {
-        el.$_ptooltipFocusEvent = function(event) {
+        el.$_focusevent = function(event) {
           return _this.onFocus(event, options3);
         };
-        el.$_ptooltipBlurEvent = this.onBlur.bind(this);
-        el.addEventListener("focus", el.$_ptooltipFocusEvent);
-        el.addEventListener("blur", el.$_ptooltipBlurEvent);
+        el.addEventListener("focus", el.$_focusevent);
+        el.addEventListener("blur", this.onBlur.bind(this));
       } else {
-        el.$_ptooltipMouseEnterEvent = function(event) {
+        el.$_mouseenterevent = function(event) {
           return _this.onMouseEnter(event, options3);
         };
-        el.$_ptooltipMouseLeaveEvent = this.onMouseLeave.bind(this);
-        el.$_ptooltipClickEvent = this.onClick.bind(this);
-        el.addEventListener("mouseenter", el.$_ptooltipMouseEnterEvent);
-        el.addEventListener("mouseleave", el.$_ptooltipMouseLeaveEvent);
-        el.addEventListener("click", el.$_ptooltipClickEvent);
+        el.addEventListener("mouseenter", el.$_mouseenterevent);
+        el.addEventListener("mouseleave", this.onMouseLeave.bind(this));
+        el.addEventListener("click", this.onClick.bind(this));
       }
-      el.$_ptooltipKeydownEvent = this.onKeydown.bind(this);
-      el.addEventListener("keydown", el.$_ptooltipKeydownEvent);
-      el.$_pWindowResizeEvent = this.onWindowResize.bind(this, el);
+      el.addEventListener("keydown", this.onKeydown.bind(this));
     },
     unbindEvents: function unbindEvents(el) {
       var modifiers = el.$_ptooltipModifiers;
       if (modifiers.focus) {
-        el.removeEventListener("focus", el.$_ptooltipFocusEvent);
-        el.$_ptooltipFocusEvent = null;
-        el.removeEventListener("blur", el.$_ptooltipBlurEvent);
-        el.$_ptooltipBlurEvent = null;
+        el.removeEventListener("focus", el.$_focusevent);
+        el.$_focusevent = null;
+        el.removeEventListener("blur", this.onBlur.bind(this));
       } else {
-        el.removeEventListener("mouseenter", el.$_ptooltipMouseEnterEvent);
-        el.$_ptooltipMouseEnterEvent = null;
-        el.removeEventListener("mouseleave", el.$_ptooltipMouseLeaveEvent);
-        el.$_ptooltipMouseLeaveEvent = null;
-        el.removeEventListener("click", el.$_ptooltipClickEvent);
-        el.$_ptooltipClickEvent = null;
+        el.removeEventListener("mouseenter", el.$_mouseenterevent);
+        el.$_mouseenterevent = null;
+        el.removeEventListener("mouseleave", this.onMouseLeave.bind(this));
+        el.removeEventListener("click", this.onClick.bind(this));
       }
-      el.removeEventListener("keydown", el.$_ptooltipKeydownEvent);
-      window.removeEventListener("resize", el.$_pWindowResizeEvent);
-      if (el.$_ptooltipId) {
-        this.remove(el);
-      }
+      el.removeEventListener("keydown", this.onKeydown.bind(this));
     },
     bindScrollListener: function bindScrollListener(el) {
       var _this2 = this;
@@ -621,12 +612,6 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       var hideDelay = el.$_ptooltipHideDelay;
       event.code === "Escape" && this.hide(event.currentTarget, hideDelay);
     },
-    onWindowResize: function onWindowResize(el) {
-      if (!isTouchDevice()) {
-        this.hide(el);
-      }
-      window.removeEventListener("resize", el.$_pWindowResizeEvent);
-    },
     tooltipActions: function tooltipActions(el, options3) {
       if (el.$_ptooltipDisabled || !isExist(el)) {
         return;
@@ -635,13 +620,18 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       this.align(el);
       !this.isUnstyled() && fadeIn(tooltipElement, 250);
       var $this = this;
-      window.addEventListener("resize", el.$_pWindowResizeEvent);
+      window.addEventListener("resize", function onWindowResize() {
+        if (!isTouchDevice()) {
+          $this.hide(el);
+        }
+        window.removeEventListener("resize", onWindowResize);
+      });
       tooltipElement.addEventListener("mouseleave", function onTooltipLeave() {
         $this.hide(el);
         tooltipElement.removeEventListener("mouseleave", onTooltipLeave);
-        el.removeEventListener("mouseenter", el.$_ptooltipMouseEnterEvent);
+        el.removeEventListener("mouseenter", el.$_mouseenterevent);
         setTimeout(function() {
-          return el.addEventListener("mouseenter", el.$_ptooltipMouseEnterEvent);
+          return el.addEventListener("mouseenter", el.$_mouseenterevent);
         }, 50);
       });
       this.bindScrollListener(el);
@@ -660,7 +650,6 @@ var Tooltip = BaseTooltip.extend("tooltip", {
     tooltipRemoval: function tooltipRemoval(el) {
       this.remove(el);
       this.unbindScrollListener(el);
-      window.removeEventListener("resize", el.$_pWindowResizeEvent);
     },
     hide: function hide(el, hideDelay) {
       var _this4 = this;
@@ -675,10 +664,6 @@ var Tooltip = BaseTooltip.extend("tooltip", {
     },
     getTooltipElement: function getTooltipElement(el) {
       return document.getElementById(el.$_ptooltipId);
-    },
-    getArrowElement: function getArrowElement(el) {
-      var tooltipElement = this.getTooltipElement(el);
-      return findSingle(tooltipElement, '[data-pc-section="arrow"]');
     },
     create: function create(el) {
       var modifiers = el.$_ptooltipModifiers;
@@ -700,7 +685,7 @@ var Tooltip = BaseTooltip.extend("tooltip", {
         tooltipText.innerHTML = "";
         tooltipText.appendChild(document.createTextNode(el.$_ptooltipValue));
       }
-      var container2 = createElement("div", _defineProperty$k(_defineProperty$k({
+      var container2 = createElement("div", _defineProperty$b(_defineProperty$b({
         id: el.$_ptooltipIdAttr,
         role: "tooltip",
         style: {
@@ -787,76 +772,38 @@ var Tooltip = BaseTooltip.extend("tooltip", {
     alignRight: function alignRight(el) {
       this.preAlign(el, "right");
       var tooltipElement = this.getTooltipElement(el);
-      var arrowElement = this.getArrowElement(el);
       var hostOffset = this.getHostOffset(el);
       var left = hostOffset.left + getOuterWidth(el);
       var top = hostOffset.top + (getOuterHeight(el) - getOuterHeight(tooltipElement)) / 2;
       tooltipElement.style.left = left + "px";
       tooltipElement.style.top = top + "px";
-      arrowElement.style.top = "50%";
-      arrowElement.style.right = null;
-      arrowElement.style.bottom = null;
-      arrowElement.style.left = "0";
     },
     alignLeft: function alignLeft(el) {
       this.preAlign(el, "left");
       var tooltipElement = this.getTooltipElement(el);
-      var arrowElement = this.getArrowElement(el);
       var hostOffset = this.getHostOffset(el);
       var left = hostOffset.left - getOuterWidth(tooltipElement);
       var top = hostOffset.top + (getOuterHeight(el) - getOuterHeight(tooltipElement)) / 2;
       tooltipElement.style.left = left + "px";
       tooltipElement.style.top = top + "px";
-      arrowElement.style.top = "50%";
-      arrowElement.style.right = "0";
-      arrowElement.style.bottom = null;
-      arrowElement.style.left = null;
     },
     alignTop: function alignTop(el) {
       this.preAlign(el, "top");
       var tooltipElement = this.getTooltipElement(el);
-      var arrowElement = this.getArrowElement(el);
-      var tooltipWidth = getOuterWidth(tooltipElement);
-      var elementWidth = getOuterWidth(el);
-      var _getViewport = getViewport(), viewportWidth = _getViewport.width;
       var hostOffset = this.getHostOffset(el);
-      var left = hostOffset.left + (elementWidth - tooltipWidth) / 2;
+      var left = hostOffset.left + (getOuterWidth(el) - getOuterWidth(tooltipElement)) / 2;
       var top = hostOffset.top - getOuterHeight(tooltipElement);
-      if (left < 0) {
-        left = 0;
-      } else if (left + tooltipWidth > viewportWidth) {
-        left = Math.floor(hostOffset.left + elementWidth - tooltipWidth);
-      }
       tooltipElement.style.left = left + "px";
       tooltipElement.style.top = top + "px";
-      var elementRelativeCenter = hostOffset.left - this.getHostOffset(tooltipElement).left + elementWidth / 2;
-      arrowElement.style.top = null;
-      arrowElement.style.right = null;
-      arrowElement.style.bottom = "0";
-      arrowElement.style.left = elementRelativeCenter + "px";
     },
     alignBottom: function alignBottom(el) {
       this.preAlign(el, "bottom");
       var tooltipElement = this.getTooltipElement(el);
-      var arrowElement = this.getArrowElement(el);
-      var tooltipWidth = getOuterWidth(tooltipElement);
-      var elementWidth = getOuterWidth(el);
-      var _getViewport2 = getViewport(), viewportWidth = _getViewport2.width;
       var hostOffset = this.getHostOffset(el);
-      var left = hostOffset.left + (elementWidth - tooltipWidth) / 2;
+      var left = hostOffset.left + (getOuterWidth(el) - getOuterWidth(tooltipElement)) / 2;
       var top = hostOffset.top + getOuterHeight(el);
-      if (left < 0) {
-        left = 0;
-      } else if (left + tooltipWidth > viewportWidth) {
-        left = Math.floor(hostOffset.left + elementWidth - tooltipWidth);
-      }
       tooltipElement.style.left = left + "px";
       tooltipElement.style.top = top + "px";
-      var elementRelativeCenter = hostOffset.left - this.getHostOffset(tooltipElement).left + elementWidth / 2;
-      arrowElement.style.top = "0";
-      arrowElement.style.right = null;
-      arrowElement.style.bottom = null;
-      arrowElement.style.left = elementRelativeCenter + "px";
     },
     preAlign: function preAlign(el, position3) {
       var tooltipElement = this.getTooltipElement(el);
@@ -866,6 +813,11 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       !this.isUnstyled() && addClass(tooltipElement, "p-tooltip-".concat(position3));
       tooltipElement.$_ptooltipPosition = position3;
       tooltipElement.setAttribute("data-p-position", position3);
+      var arrowElement = findSingle(tooltipElement, '[data-pc-section="arrow"]');
+      arrowElement.style.top = position3 === "bottom" ? "0" : position3 === "right" || position3 === "left" || position3 !== "right" && position3 !== "left" && position3 !== "top" && position3 !== "bottom" ? "50%" : null;
+      arrowElement.style.bottom = position3 === "top" ? "0" : null;
+      arrowElement.style.left = position3 === "right" || position3 !== "right" && position3 !== "left" && position3 !== "top" && position3 !== "bottom" ? "0" : position3 === "top" || position3 === "bottom" ? "50%" : null;
+      arrowElement.style.right = position3 === "left" ? "0" : null;
     },
     isOutOfBounds: function isOutOfBounds(el) {
       var tooltipElement = this.getTooltipElement(el);
@@ -885,7 +837,7 @@ var Tooltip = BaseTooltip.extend("tooltip", {
       if (options3.modifiers && Object.keys(options3.modifiers).length) {
         return options3.modifiers;
       }
-      if (options3.arg && _typeof$k(options3.arg) === "object") {
+      if (options3.arg && _typeof$b(options3.arg) === "object") {
         return Object.entries(options3.arg).reduce(function(acc, _ref) {
           var _ref2 = _slicedToArray(_ref, 2), key = _ref2[0], val = _ref2[1];
           if (key === "event" || key === "position") acc[val] = true;
@@ -896,9 +848,13 @@ var Tooltip = BaseTooltip.extend("tooltip", {
     }
   }
 });
+var theme$p = function theme2(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-badge {\n    display: inline-flex;\n    border-radius: ".concat(dt("badge.border.radius"), ";\n    align-items: center;\n    justify-content: center;\n    padding: ").concat(dt("badge.padding"), ";\n    background: ").concat(dt("badge.primary.background"), ";\n    color: ").concat(dt("badge.primary.color"), ";\n    font-size: ").concat(dt("badge.font.size"), ";\n    font-weight: ").concat(dt("badge.font.weight"), ";\n    min-width: ").concat(dt("badge.min.width"), ";\n    height: ").concat(dt("badge.height"), ";\n}\n\n.p-badge-dot {\n    width: ").concat(dt("badge.dot.size"), ";\n    min-width: ").concat(dt("badge.dot.size"), ";\n    height: ").concat(dt("badge.dot.size"), ";\n    border-radius: 50%;\n    padding: 0;\n}\n\n.p-badge-circle {\n    padding: 0;\n    border-radius: 50%;\n}\n\n.p-badge-secondary {\n    background: ").concat(dt("badge.secondary.background"), ";\n    color: ").concat(dt("badge.secondary.color"), ";\n}\n\n.p-badge-success {\n    background: ").concat(dt("badge.success.background"), ";\n    color: ").concat(dt("badge.success.color"), ";\n}\n\n.p-badge-info {\n    background: ").concat(dt("badge.info.background"), ";\n    color: ").concat(dt("badge.info.color"), ";\n}\n\n.p-badge-warn {\n    background: ").concat(dt("badge.warn.background"), ";\n    color: ").concat(dt("badge.warn.color"), ";\n}\n\n.p-badge-danger {\n    background: ").concat(dt("badge.danger.background"), ";\n    color: ").concat(dt("badge.danger.color"), ";\n}\n\n.p-badge-contrast {\n    background: ").concat(dt("badge.contrast.background"), ";\n    color: ").concat(dt("badge.contrast.color"), ";\n}\n\n.p-badge-sm {\n    font-size: ").concat(dt("badge.sm.font.size"), ";\n    min-width: ").concat(dt("badge.sm.min.width"), ";\n    height: ").concat(dt("badge.sm.height"), ";\n}\n\n.p-badge-lg {\n    font-size: ").concat(dt("badge.lg.font.size"), ";\n    min-width: ").concat(dt("badge.lg.min.width"), ";\n    height: ").concat(dt("badge.lg.height"), ";\n}\n\n.p-badge-xl {\n    font-size: ").concat(dt("badge.xl.font.size"), ";\n    min-width: ").concat(dt("badge.xl.min.width"), ";\n    height: ").concat(dt("badge.xl.height"), ";\n}\n");
+};
 var classes$u = {
-  root: function root(_ref) {
-    var props = _ref.props, instance = _ref.instance;
+  root: function root(_ref2) {
+    var props = _ref2.props, instance = _ref2.instance;
     return ["p-badge p-component", {
       "p-badge-circle": isNotEmpty(props.value) && String(props.value).length === 1,
       "p-badge-dot": isEmpty(props.value) && !instance.$slots["default"],
@@ -916,7 +872,7 @@ var classes$u = {
 };
 var BadgeStyle = BaseStyle.extend({
   name: "badge",
-  style: style$1,
+  theme: theme$p,
   classes: classes$u
 });
 var script$1$u = {
@@ -944,72 +900,41 @@ var script$1$u = {
     };
   }
 };
-function _typeof$j(o) {
-  "@babel/helpers - typeof";
-  return _typeof$j = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$j(o);
-}
-function _defineProperty$j(e, r, t) {
-  return (r = _toPropertyKey$j(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$j(t) {
-  var i = _toPrimitive$j(t, "string");
-  return "symbol" == _typeof$j(i) ? i : i + "";
-}
-function _toPrimitive$j(t, r) {
-  if ("object" != _typeof$j(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$j(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$x = {
   name: "Badge",
   "extends": script$1$u,
-  inheritAttrs: false,
-  computed: {
-    dataP: function dataP() {
-      return cn(_defineProperty$j(_defineProperty$j({
-        circle: this.value != null && String(this.value).length === 1,
-        empty: this.value == null && !this.$slots["default"]
-      }, this.severity, this.severity), this.size, this.size));
-    }
-  }
+  inheritAttrs: false
 };
-var _hoisted_1$k = ["data-p"];
 function render$v(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", mergeProps({
-    "class": _ctx.cx("root"),
-    "data-p": $options.dataP
+    "class": _ctx.cx("root")
   }, _ctx.ptmi("root")), [renderSlot(_ctx.$slots, "default", {}, function() {
     return [createTextVNode(toDisplayString(_ctx.value), 1)];
-  })], 16, _hoisted_1$k);
+  })], 16);
 }
 script$x.render = render$v;
+var theme$o = function theme3(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-ink {\n    display: block;\n    position: absolute;\n    background: ".concat(dt("ripple.background"), ";\n    border-radius: 100%;\n    transform: scale(0);\n    pointer-events: none;\n}\n\n.p-ink-active {\n    animation: ripple 0.4s linear;\n}\n\n@keyframes ripple {\n    100% {\n        opacity: 0;\n        transform: scale(2.5);\n    }\n}\n");
+};
 var classes$t = {
   root: "p-ink"
 };
 var RippleStyle = BaseStyle.extend({
   name: "ripple-directive",
-  style: style$2,
+  theme: theme$o,
   classes: classes$t
 });
 var BaseRipple = BaseDirective.extend({
   style: RippleStyle
 });
-function _typeof$i(o) {
+function _typeof$a(o) {
   "@babel/helpers - typeof";
-  return _typeof$i = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$a = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$i(o);
+  }, _typeof$a(o);
 }
 function _toConsumableArray$7(r) {
   return _arrayWithoutHoles$7(r) || _iterableToArray$7(r) || _unsupportedIterableToArray$7(r) || _nonIterableSpread$7();
@@ -1035,19 +960,19 @@ function _arrayLikeToArray$7(r, a) {
   for (var e = 0, n2 = Array(a); e < a; e++) n2[e] = r[e];
   return n2;
 }
-function _defineProperty$i(e, r, t) {
-  return (r = _toPropertyKey$i(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$a(e, r, t) {
+  return (r = _toPropertyKey$a(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$i(t) {
-  var i = _toPrimitive$i(t, "string");
-  return "symbol" == _typeof$i(i) ? i : i + "";
+function _toPropertyKey$a(t) {
+  var i = _toPrimitive$a(t, "string");
+  return "symbol" == _typeof$a(i) ? i : i + "";
 }
-function _toPrimitive$i(t, r) {
-  if ("object" != _typeof$i(t) || !t) return t;
+function _toPrimitive$a(t, r) {
+  if ("object" != _typeof$a(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$i(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$a(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -1079,19 +1004,16 @@ var Ripple = BaseRipple.extend("ripple", {
       el.removeEventListener("mousedown", this.onMouseDown.bind(this));
     },
     createRipple: function createRipple(el) {
-      var ink = this.getInk(el);
-      if (!ink) {
-        ink = createElement("span", _defineProperty$i(_defineProperty$i({
-          role: "presentation",
-          "aria-hidden": true,
-          "data-p-ink": true,
-          "data-p-ink-active": false,
-          "class": !this.isUnstyled() && this.cx("root"),
-          onAnimationEnd: this.onAnimationEnd.bind(this)
-        }, this.$attrSelector, ""), "p-bind", this.ptm("root")));
-        el.appendChild(ink);
-        this.$el = ink;
-      }
+      var ink = createElement("span", _defineProperty$a(_defineProperty$a({
+        role: "presentation",
+        "aria-hidden": true,
+        "data-p-ink": true,
+        "data-p-ink-active": false,
+        "class": !this.isUnstyled() && this.cx("root"),
+        onAnimationEnd: this.onAnimationEnd.bind(this)
+      }, this.$attrSelector, ""), "p-bind", this.ptm("root")));
+      el.appendChild(ink);
+      this.$el = ink;
     },
     remove: function remove2(el) {
       var ink = this.getInk(el);
@@ -1145,35 +1067,39 @@ var Ripple = BaseRipple.extend("ripple", {
     }
   }
 });
-function _typeof$h(o) {
+function _typeof$9(o) {
   "@babel/helpers - typeof";
-  return _typeof$h = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$9 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$h(o);
+  }, _typeof$9(o);
 }
-function _defineProperty$h(e, r, t) {
-  return (r = _toPropertyKey$h(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$9(e, r, t) {
+  return (r = _toPropertyKey$9(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$h(t) {
-  var i = _toPrimitive$h(t, "string");
-  return "symbol" == _typeof$h(i) ? i : i + "";
+function _toPropertyKey$9(t) {
+  var i = _toPrimitive$9(t, "string");
+  return "symbol" == _typeof$9(i) ? i : i + "";
 }
-function _toPrimitive$h(t, r) {
-  if ("object" != _typeof$h(t) || !t) return t;
+function _toPrimitive$9(t, r) {
+  if ("object" != _typeof$9(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$h(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$9(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
+var theme$n = function theme4(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-button {\n    display: inline-flex;\n    cursor: pointer;\n    user-select: none;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n    position: relative;\n    color: ".concat(dt("button.primary.color"), ";\n    background: ").concat(dt("button.primary.background"), ";\n    border: 1px solid ").concat(dt("button.primary.border.color"), ";\n    padding: ").concat(dt("button.padding.y"), " ").concat(dt("button.padding.x"), ";\n    font-size: 1rem;\n    font-family: inherit;\n    font-feature-settings: inherit;\n    transition: background ").concat(dt("button.transition.duration"), ", color ").concat(dt("button.transition.duration"), ", border-color ").concat(dt("button.transition.duration"), ",\n            outline-color ").concat(dt("button.transition.duration"), ", box-shadow ").concat(dt("button.transition.duration"), ";\n    border-radius: ").concat(dt("button.border.radius"), ";\n    outline-color: transparent;\n    gap: ").concat(dt("button.gap"), ";\n}\n\n.p-button:disabled {\n    cursor: default;\n}\n\n.p-button-icon-right {\n    order: 1;\n}\n\n.p-button-icon-right:dir(rtl) {\n    order: -1;\n}\n\n.p-button:not(.p-button-vertical) .p-button-icon:not(.p-button-icon-right):dir(rtl) {\n    order: 1;\n}\n\n.p-button-icon-bottom {\n    order: 2;\n}\n\n.p-button-icon-only {\n    width: ").concat(dt("button.icon.only.width"), ";\n    padding-inline-start: 0;\n    padding-inline-end: 0;\n    gap: 0;\n}\n\n.p-button-icon-only.p-button-rounded {\n    border-radius: 50%;\n    height: ").concat(dt("button.icon.only.width"), ";\n}\n\n.p-button-icon-only .p-button-label {\n    visibility: hidden;\n    width: 0;\n}\n\n.p-button-sm {\n    font-size: ").concat(dt("button.sm.font.size"), ";\n    padding: ").concat(dt("button.sm.padding.y"), " ").concat(dt("button.sm.padding.x"), ";\n}\n\n.p-button-sm .p-button-icon {\n    font-size: ").concat(dt("button.sm.font.size"), ";\n}\n\n.p-button-lg {\n    font-size: ").concat(dt("button.lg.font.size"), ";\n    padding: ").concat(dt("button.lg.padding.y"), " ").concat(dt("button.lg.padding.x"), ";\n}\n\n.p-button-lg .p-button-icon {\n    font-size: ").concat(dt("button.lg.font.size"), ";\n}\n\n.p-button-vertical {\n    flex-direction: column;\n}\n\n.p-button-label {\n    font-weight: ").concat(dt("button.label.font.weight"), ";\n}\n\n.p-button-fluid {\n    width: 100%;\n}\n\n.p-button-fluid.p-button-icon-only {\n    width: ").concat(dt("button.icon.only.width"), ";\n}\n\n.p-button:not(:disabled):hover {\n    background: ").concat(dt("button.primary.hover.background"), ";\n    border: 1px solid ").concat(dt("button.primary.hover.border.color"), ";\n    color: ").concat(dt("button.primary.hover.color"), ";\n}\n\n.p-button:not(:disabled):active {\n    background: ").concat(dt("button.primary.active.background"), ";\n    border: 1px solid ").concat(dt("button.primary.active.border.color"), ";\n    color: ").concat(dt("button.primary.active.color"), ";\n}\n\n.p-button:focus-visible {\n    box-shadow: ").concat(dt("button.primary.focus.ring.shadow"), ";\n    outline: ").concat(dt("button.focus.ring.width"), " ").concat(dt("button.focus.ring.style"), " ").concat(dt("button.primary.focus.ring.color"), ";\n    outline-offset: ").concat(dt("button.focus.ring.offset"), ";\n}\n\n.p-button .p-badge {\n    min-width: ").concat(dt("button.badge.size"), ";\n    height: ").concat(dt("button.badge.size"), ";\n    line-height: ").concat(dt("button.badge.size"), ";\n}\n\n.p-button-raised {\n    box-shadow: ").concat(dt("button.raised.shadow"), ";\n}\n\n.p-button-rounded {\n    border-radius: ").concat(dt("button.rounded.border.radius"), ";\n}\n\n.p-button-secondary {\n    background: ").concat(dt("button.secondary.background"), ";\n    border: 1px solid ").concat(dt("button.secondary.border.color"), ";\n    color: ").concat(dt("button.secondary.color"), ";\n}\n\n.p-button-secondary:not(:disabled):hover {\n    background: ").concat(dt("button.secondary.hover.background"), ";\n    border: 1px solid ").concat(dt("button.secondary.hover.border.color"), ";\n    color: ").concat(dt("button.secondary.hover.color"), ";\n}\n\n.p-button-secondary:not(:disabled):active {\n    background: ").concat(dt("button.secondary.active.background"), ";\n    border: 1px solid ").concat(dt("button.secondary.active.border.color"), ";\n    color: ").concat(dt("button.secondary.active.color"), ";\n}\n\n.p-button-secondary:focus-visible {\n    outline-color: ").concat(dt("button.secondary.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.secondary.focus.ring.shadow"), ";\n}\n\n.p-button-success {\n    background: ").concat(dt("button.success.background"), ";\n    border: 1px solid ").concat(dt("button.success.border.color"), ";\n    color: ").concat(dt("button.success.color"), ";\n}\n\n.p-button-success:not(:disabled):hover {\n    background: ").concat(dt("button.success.hover.background"), ";\n    border: 1px solid ").concat(dt("button.success.hover.border.color"), ";\n    color: ").concat(dt("button.success.hover.color"), ";\n}\n\n.p-button-success:not(:disabled):active {\n    background: ").concat(dt("button.success.active.background"), ";\n    border: 1px solid ").concat(dt("button.success.active.border.color"), ";\n    color: ").concat(dt("button.success.active.color"), ";\n}\n\n.p-button-success:focus-visible {\n    outline-color: ").concat(dt("button.success.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.success.focus.ring.shadow"), ";\n}\n\n.p-button-info {\n    background: ").concat(dt("button.info.background"), ";\n    border: 1px solid ").concat(dt("button.info.border.color"), ";\n    color: ").concat(dt("button.info.color"), ";\n}\n\n.p-button-info:not(:disabled):hover {\n    background: ").concat(dt("button.info.hover.background"), ";\n    border: 1px solid ").concat(dt("button.info.hover.border.color"), ";\n    color: ").concat(dt("button.info.hover.color"), ";\n}\n\n.p-button-info:not(:disabled):active {\n    background: ").concat(dt("button.info.active.background"), ";\n    border: 1px solid ").concat(dt("button.info.active.border.color"), ";\n    color: ").concat(dt("button.info.active.color"), ";\n}\n\n.p-button-info:focus-visible {\n    outline-color: ").concat(dt("button.info.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.info.focus.ring.shadow"), ";\n}\n\n.p-button-warn {\n    background: ").concat(dt("button.warn.background"), ";\n    border: 1px solid ").concat(dt("button.warn.border.color"), ";\n    color: ").concat(dt("button.warn.color"), ";\n}\n\n.p-button-warn:not(:disabled):hover {\n    background: ").concat(dt("button.warn.hover.background"), ";\n    border: 1px solid ").concat(dt("button.warn.hover.border.color"), ";\n    color: ").concat(dt("button.warn.hover.color"), ";\n}\n\n.p-button-warn:not(:disabled):active {\n    background: ").concat(dt("button.warn.active.background"), ";\n    border: 1px solid ").concat(dt("button.warn.active.border.color"), ";\n    color: ").concat(dt("button.warn.active.color"), ";\n}\n\n.p-button-warn:focus-visible {\n    outline-color: ").concat(dt("button.warn.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.warn.focus.ring.shadow"), ";\n}\n\n.p-button-help {\n    background: ").concat(dt("button.help.background"), ";\n    border: 1px solid ").concat(dt("button.help.border.color"), ";\n    color: ").concat(dt("button.help.color"), ";\n}\n\n.p-button-help:not(:disabled):hover {\n    background: ").concat(dt("button.help.hover.background"), ";\n    border: 1px solid ").concat(dt("button.help.hover.border.color"), ";\n    color: ").concat(dt("button.help.hover.color"), ";\n}\n\n.p-button-help:not(:disabled):active {\n    background: ").concat(dt("button.help.active.background"), ";\n    border: 1px solid ").concat(dt("button.help.active.border.color"), ";\n    color: ").concat(dt("button.help.active.color"), ";\n}\n\n.p-button-help:focus-visible {\n    outline-color: ").concat(dt("button.help.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.help.focus.ring.shadow"), ";\n}\n\n.p-button-danger {\n    background: ").concat(dt("button.danger.background"), ";\n    border: 1px solid ").concat(dt("button.danger.border.color"), ";\n    color: ").concat(dt("button.danger.color"), ";\n}\n\n.p-button-danger:not(:disabled):hover {\n    background: ").concat(dt("button.danger.hover.background"), ";\n    border: 1px solid ").concat(dt("button.danger.hover.border.color"), ";\n    color: ").concat(dt("button.danger.hover.color"), ";\n}\n\n.p-button-danger:not(:disabled):active {\n    background: ").concat(dt("button.danger.active.background"), ";\n    border: 1px solid ").concat(dt("button.danger.active.border.color"), ";\n    color: ").concat(dt("button.danger.active.color"), ";\n}\n\n.p-button-danger:focus-visible {\n    outline-color: ").concat(dt("button.danger.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.danger.focus.ring.shadow"), ";\n}\n\n.p-button-contrast {\n    background: ").concat(dt("button.contrast.background"), ";\n    border: 1px solid ").concat(dt("button.contrast.border.color"), ";\n    color: ").concat(dt("button.contrast.color"), ";\n}\n\n.p-button-contrast:not(:disabled):hover {\n    background: ").concat(dt("button.contrast.hover.background"), ";\n    border: 1px solid ").concat(dt("button.contrast.hover.border.color"), ";\n    color: ").concat(dt("button.contrast.hover.color"), ";\n}\n\n.p-button-contrast:not(:disabled):active {\n    background: ").concat(dt("button.contrast.active.background"), ";\n    border: 1px solid ").concat(dt("button.contrast.active.border.color"), ";\n    color: ").concat(dt("button.contrast.active.color"), ";\n}\n\n.p-button-contrast:focus-visible {\n    outline-color: ").concat(dt("button.contrast.focus.ring.color"), ";\n    box-shadow: ").concat(dt("button.contrast.focus.ring.shadow"), ";\n}\n\n.p-button-outlined {\n    background: transparent;\n    border-color: ").concat(dt("button.outlined.primary.border.color"), ";\n    color: ").concat(dt("button.outlined.primary.color"), ";\n}\n\n.p-button-outlined:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.primary.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.primary.border.color"), ";\n    color: ").concat(dt("button.outlined.primary.color"), ";\n}\n\n.p-button-outlined:not(:disabled):active {\n    background: ").concat(dt("button.outlined.primary.active.background"), ";\n    border-color: ").concat(dt("button.outlined.primary.border.color"), ";\n    color: ").concat(dt("button.outlined.primary.color"), ";\n}\n\n.p-button-outlined.p-button-secondary {\n    border-color: ").concat(dt("button.outlined.secondary.border.color"), ";\n    color: ").concat(dt("button.outlined.secondary.color"), ";\n}\n\n.p-button-outlined.p-button-secondary:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.secondary.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.secondary.border.color"), ";\n    color: ").concat(dt("button.outlined.secondary.color"), ";\n}\n\n.p-button-outlined.p-button-secondary:not(:disabled):active {\n    background: ").concat(dt("button.outlined.secondary.active.background"), ";\n    border-color: ").concat(dt("button.outlined.secondary.border.color"), ";\n    color: ").concat(dt("button.outlined.secondary.color"), ";\n}\n\n.p-button-outlined.p-button-success {\n    border-color: ").concat(dt("button.outlined.success.border.color"), ";\n    color: ").concat(dt("button.outlined.success.color"), ";\n}\n\n.p-button-outlined.p-button-success:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.success.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.success.border.color"), ";\n    color: ").concat(dt("button.outlined.success.color"), ";\n}\n\n.p-button-outlined.p-button-success:not(:disabled):active {\n    background: ").concat(dt("button.outlined.success.active.background"), ";\n    border-color: ").concat(dt("button.outlined.success.border.color"), ";\n    color: ").concat(dt("button.outlined.success.color"), ";\n}\n\n.p-button-outlined.p-button-info {\n    border-color: ").concat(dt("button.outlined.info.border.color"), ";\n    color: ").concat(dt("button.outlined.info.color"), ";\n}\n\n.p-button-outlined.p-button-info:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.info.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.info.border.color"), ";\n    color: ").concat(dt("button.outlined.info.color"), ";\n}\n\n.p-button-outlined.p-button-info:not(:disabled):active {\n    background: ").concat(dt("button.outlined.info.active.background"), ";\n    border-color: ").concat(dt("button.outlined.info.border.color"), ";\n    color: ").concat(dt("button.outlined.info.color"), ";\n}\n\n.p-button-outlined.p-button-warn {\n    border-color: ").concat(dt("button.outlined.warn.border.color"), ";\n    color: ").concat(dt("button.outlined.warn.color"), ";\n}\n\n.p-button-outlined.p-button-warn:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.warn.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.warn.border.color"), ";\n    color: ").concat(dt("button.outlined.warn.color"), ";\n}\n\n.p-button-outlined.p-button-warn:not(:disabled):active {\n    background: ").concat(dt("button.outlined.warn.active.background"), ";\n    border-color: ").concat(dt("button.outlined.warn.border.color"), ";\n    color: ").concat(dt("button.outlined.warn.color"), ";\n}\n\n.p-button-outlined.p-button-help {\n    border-color: ").concat(dt("button.outlined.help.border.color"), ";\n    color: ").concat(dt("button.outlined.help.color"), ";\n}\n\n.p-button-outlined.p-button-help:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.help.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.help.border.color"), ";\n    color: ").concat(dt("button.outlined.help.color"), ";\n}\n\n.p-button-outlined.p-button-help:not(:disabled):active {\n    background: ").concat(dt("button.outlined.help.active.background"), ";\n    border-color: ").concat(dt("button.outlined.help.border.color"), ";\n    color: ").concat(dt("button.outlined.help.color"), ";\n}\n\n.p-button-outlined.p-button-danger {\n    border-color: ").concat(dt("button.outlined.danger.border.color"), ";\n    color: ").concat(dt("button.outlined.danger.color"), ";\n}\n\n.p-button-outlined.p-button-danger:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.danger.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.danger.border.color"), ";\n    color: ").concat(dt("button.outlined.danger.color"), ";\n}\n\n.p-button-outlined.p-button-danger:not(:disabled):active {\n    background: ").concat(dt("button.outlined.danger.active.background"), ";\n    border-color: ").concat(dt("button.outlined.danger.border.color"), ";\n    color: ").concat(dt("button.outlined.danger.color"), ";\n}\n\n.p-button-outlined.p-button-contrast {\n    border-color: ").concat(dt("button.outlined.contrast.border.color"), ";\n    color: ").concat(dt("button.outlined.contrast.color"), ";\n}\n\n.p-button-outlined.p-button-contrast:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.contrast.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.contrast.border.color"), ";\n    color: ").concat(dt("button.outlined.contrast.color"), ";\n}\n\n.p-button-outlined.p-button-contrast:not(:disabled):active {\n    background: ").concat(dt("button.outlined.contrast.active.background"), ";\n    border-color: ").concat(dt("button.outlined.contrast.border.color"), ";\n    color: ").concat(dt("button.outlined.contrast.color"), ";\n}\n\n.p-button-outlined.p-button-plain {\n    border-color: ").concat(dt("button.outlined.plain.border.color"), ";\n    color: ").concat(dt("button.outlined.plain.color"), ";\n}\n\n.p-button-outlined.p-button-plain:not(:disabled):hover {\n    background: ").concat(dt("button.outlined.plain.hover.background"), ";\n    border-color: ").concat(dt("button.outlined.plain.border.color"), ";\n    color: ").concat(dt("button.outlined.plain.color"), ";\n}\n\n.p-button-outlined.p-button-plain:not(:disabled):active {\n    background: ").concat(dt("button.outlined.plain.active.background"), ";\n    border-color: ").concat(dt("button.outlined.plain.border.color"), ";\n    color: ").concat(dt("button.outlined.plain.color"), ";\n}\n\n.p-button-text {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.primary.color"), ";\n}\n\n.p-button-text:not(:disabled):hover {\n    background: ").concat(dt("button.text.primary.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.primary.color"), ";\n}\n\n.p-button-text:not(:disabled):active {\n    background: ").concat(dt("button.text.primary.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.primary.color"), ";\n}\n\n.p-button-text.p-button-secondary {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.secondary.color"), ";\n}\n\n.p-button-text.p-button-secondary:not(:disabled):hover {\n    background: ").concat(dt("button.text.secondary.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.secondary.color"), ";\n}\n\n.p-button-text.p-button-secondary:not(:disabled):active {\n    background: ").concat(dt("button.text.secondary.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.secondary.color"), ";\n}\n\n.p-button-text.p-button-success {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.success.color"), ";\n}\n\n.p-button-text.p-button-success:not(:disabled):hover {\n    background: ").concat(dt("button.text.success.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.success.color"), ";\n}\n\n.p-button-text.p-button-success:not(:disabled):active {\n    background: ").concat(dt("button.text.success.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.success.color"), ";\n}\n\n.p-button-text.p-button-info {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.info.color"), ";\n}\n\n.p-button-text.p-button-info:not(:disabled):hover {\n    background: ").concat(dt("button.text.info.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.info.color"), ";\n}\n\n.p-button-text.p-button-info:not(:disabled):active {\n    background: ").concat(dt("button.text.info.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.info.color"), ";\n}\n\n.p-button-text.p-button-warn {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.warn.color"), ";\n}\n\n.p-button-text.p-button-warn:not(:disabled):hover {\n    background: ").concat(dt("button.text.warn.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.warn.color"), ";\n}\n\n.p-button-text.p-button-warn:not(:disabled):active {\n    background: ").concat(dt("button.text.warn.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.warn.color"), ";\n}\n\n.p-button-text.p-button-help {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.help.color"), ";\n}\n\n.p-button-text.p-button-help:not(:disabled):hover {\n    background: ").concat(dt("button.text.help.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.help.color"), ";\n}\n\n.p-button-text.p-button-help:not(:disabled):active {\n    background: ").concat(dt("button.text.help.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.help.color"), ";\n}\n\n.p-button-text.p-button-danger {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.danger.color"), ";\n}\n\n.p-button-text.p-button-danger:not(:disabled):hover {\n    background: ").concat(dt("button.text.danger.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.danger.color"), ";\n}\n\n.p-button-text.p-button-danger:not(:disabled):active {\n    background: ").concat(dt("button.text.danger.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.danger.color"), ";\n}\n\n.p-button-text.p-button-contrast {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.contrast.color"), ";\n}\n\n.p-button-text.p-button-contrast:not(:disabled):hover {\n    background: ").concat(dt("button.text.contrast.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.contrast.color"), ";\n}\n\n.p-button-text.p-button-contrast:not(:disabled):active {\n    background: ").concat(dt("button.text.contrast.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.contrast.color"), ";\n}\n\n.p-button-text.p-button-plain {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.text.plain.color"), ";\n}\n\n.p-button-text.p-button-plain:not(:disabled):hover {\n    background: ").concat(dt("button.text.plain.hover.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.plain.color"), ";\n}\n\n.p-button-text.p-button-plain:not(:disabled):active {\n    background: ").concat(dt("button.text.plain.active.background"), ";\n    border-color: transparent;\n    color: ").concat(dt("button.text.plain.color"), ";\n}\n\n.p-button-link {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.link.color"), ";\n}\n\n.p-button-link:not(:disabled):hover {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.link.hover.color"), ";\n}\n\n.p-button-link:not(:disabled):hover .p-button-label {\n    text-decoration: underline;\n}\n\n.p-button-link:not(:disabled):active {\n    background: transparent;\n    border-color: transparent;\n    color: ").concat(dt("button.link.active.color"), ";\n}\n");
+};
 var classes$s = {
-  root: function root2(_ref) {
-    var instance = _ref.instance, props = _ref.props;
-    return ["p-button p-component", _defineProperty$h(_defineProperty$h(_defineProperty$h(_defineProperty$h(_defineProperty$h(_defineProperty$h(_defineProperty$h(_defineProperty$h(_defineProperty$h({
+  root: function root2(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props;
+    return ["p-button p-component", _defineProperty$9(_defineProperty$9(_defineProperty$9(_defineProperty$9(_defineProperty$9(_defineProperty$9(_defineProperty$9(_defineProperty$9(_defineProperty$9({
       "p-button-icon-only": instance.hasIcon && !props.label && !props.badge,
       "p-button-vertical": (props.iconPos === "top" || props.iconPos === "bottom") && props.label,
       "p-button-loading": props.loading,
@@ -1181,15 +1107,15 @@ var classes$s = {
     }, "p-button-".concat(props.severity), props.severity), "p-button-raised", props.raised), "p-button-rounded", props.rounded), "p-button-text", props.text || props.variant === "text"), "p-button-outlined", props.outlined || props.variant === "outlined"), "p-button-sm", props.size === "small"), "p-button-lg", props.size === "large"), "p-button-plain", props.plain), "p-button-fluid", instance.hasFluid)];
   },
   loadingIcon: "p-button-loading-icon",
-  icon: function icon(_ref3) {
-    var props = _ref3.props;
-    return ["p-button-icon", _defineProperty$h({}, "p-button-icon-".concat(props.iconPos), props.label)];
+  icon: function icon(_ref4) {
+    var props = _ref4.props;
+    return ["p-button-icon", _defineProperty$9({}, "p-button-icon-".concat(props.iconPos), props.label)];
   },
   label: "p-button-label"
 };
 var ButtonStyle = BaseStyle.extend({
   name: "button",
-  style: style$3,
+  theme: theme$n,
   classes: classes$s
 });
 var script$1$t = {
@@ -1289,31 +1215,6 @@ var script$1$t = {
     };
   }
 };
-function _typeof$g(o) {
-  "@babel/helpers - typeof";
-  return _typeof$g = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$g(o);
-}
-function _defineProperty$g(e, r, t) {
-  return (r = _toPropertyKey$g(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$g(t) {
-  var i = _toPrimitive$g(t, "string");
-  return "symbol" == _typeof$g(i) ? i : i + "";
-}
-function _toPrimitive$g(t, r) {
-  if ("object" != _typeof$g(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$g(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$w = {
   name: "Button",
   "extends": script$1$t,
@@ -1362,15 +1263,6 @@ var script$w = {
     },
     hasFluid: function hasFluid() {
       return isEmpty(this.fluid) ? !!this.$pcFluid : this.fluid;
-    },
-    dataP: function dataP2() {
-      return cn(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g(_defineProperty$g({}, this.size, this.size), "icon-only", this.hasIcon && !this.label && !this.badge), "loading", this.loading), "fluid", this.hasFluid), "rounded", this.rounded), "raised", this.raised), "outlined", this.outlined || this.variant === "outlined"), "text", this.text || this.variant === "text"), "link", this.link || this.variant === "link"), "vertical", (this.iconPos === "top" || this.iconPos === "bottom") && this.label));
-    },
-    dataIconP: function dataIconP() {
-      return cn(_defineProperty$g(_defineProperty$g({}, this.iconPos, this.iconPos), this.size, this.size));
-    },
-    dataLabelP: function dataLabelP() {
-      return cn(_defineProperty$g(_defineProperty$g({}, this.size, this.size), "icon-only", this.hasIcon && !this.label && !this.badge));
     }
   },
   components: {
@@ -1381,16 +1273,13 @@ var script$w = {
     ripple: Ripple
   }
 };
-var _hoisted_1$j = ["data-p"];
-var _hoisted_2$f = ["data-p"];
 function render$u(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SpinnerIcon = resolveComponent("SpinnerIcon");
   var _component_Badge = resolveComponent("Badge");
   var _directive_ripple = resolveDirective("ripple");
   return !_ctx.asChild ? withDirectives((openBlock(), createBlock(resolveDynamicComponent(_ctx.as), mergeProps({
     key: 0,
-    "class": _ctx.cx("root"),
-    "data-p": $options.dataP
+    "class": _ctx.cx("root")
   }, $options.attrs), {
     "default": withCtx(function() {
       return [renderSlot(_ctx.$slots, "default", {}, function() {
@@ -1412,14 +1301,11 @@ function render$u(_ctx, _cache, $props, $setup, $data, $options) {
         }, _ctx.ptm("icon")), function() {
           return [_ctx.icon ? (openBlock(), createElementBlock("span", mergeProps({
             key: 0,
-            "class": [_ctx.cx("icon"), _ctx.icon, _ctx.iconClass],
-            "data-p": $options.dataIconP
-          }, _ctx.ptm("icon")), null, 16, _hoisted_1$j)) : createCommentVNode("", true)];
+            "class": [_ctx.cx("icon"), _ctx.icon, _ctx.iconClass]
+          }, _ctx.ptm("icon")), null, 16)) : createCommentVNode("", true)];
         }), createBaseVNode("span", mergeProps({
           "class": _ctx.cx("label")
-        }, _ctx.ptm("label"), {
-          "data-p": $options.dataLabelP
-        }), toDisplayString(_ctx.label || " "), 17, _hoisted_2$f), _ctx.badge ? (openBlock(), createBlock(_component_Badge, {
+        }, _ctx.ptm("label")), toDisplayString(_ctx.label || " "), 17), _ctx.badge ? (openBlock(), createBlock(_component_Badge, {
           key: 2,
           value: _ctx.badge,
           "class": normalizeClass(_ctx.badgeClass),
@@ -1430,7 +1316,7 @@ function render$u(_ctx, _cache, $props, $setup, $data, $options) {
       })];
     }),
     _: 3
-  }, 16, ["class", "data-p"])), [[_directive_ripple]]) : renderSlot(_ctx.$slots, "default", {
+  }, 16, ["class"])), [[_directive_ripple]]) : renderSlot(_ctx.$slots, "default", {
     key: 1,
     "class": normalizeClass(_ctx.cx("root")),
     a11yAttrs: $options.a11yAttrs
@@ -1443,13 +1329,13 @@ var FocusTrapStyle = BaseStyle.extend({
 var BaseFocusTrap = BaseDirective.extend({
   style: FocusTrapStyle
 });
-function _typeof$f(o) {
+function _typeof$8(o) {
   "@babel/helpers - typeof";
-  return _typeof$f = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$8 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$f(o);
+  }, _typeof$8(o);
 }
 function ownKeys$7(e, r) {
   var t = Object.keys(e);
@@ -1465,26 +1351,26 @@ function _objectSpread$7(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$7(Object(t), true).forEach(function(r2) {
-      _defineProperty$f(e, r2, t[r2]);
+      _defineProperty$8(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$7(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$f(e, r, t) {
-  return (r = _toPropertyKey$f(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$8(e, r, t) {
+  return (r = _toPropertyKey$8(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$f(t) {
-  var i = _toPrimitive$f(t, "string");
-  return "symbol" == _typeof$f(i) ? i : i + "";
+function _toPropertyKey$8(t) {
+  var i = _toPrimitive$8(t, "string");
+  return "symbol" == _typeof$8(i) ? i : i + "";
 }
-function _toPrimitive$f(t, r) {
-  if ("object" != _typeof$f(t) || !t) return t;
+function _toPrimitive$8(t, r) {
+  if ("object" != _typeof$8(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$f(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$8(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -1630,19 +1516,13 @@ function render$t(_ctx, _cache, $props, $setup, $data, $options) {
   }, [renderSlot(_ctx.$slots, "default")], 8, ["to"])) : createCommentVNode("", true);
 }
 script$v.render = render$t;
-function blockBodyScroll() {
-  blockBodyScroll$1({
-    variableName: $dt("scrollbar.width").name
-  });
-}
-function unblockBodyScroll() {
-  unblockBodyScroll$1({
-    variableName: $dt("scrollbar.width").name
-  });
-}
-var inlineStyles$2 = {
-  mask: function mask(_ref) {
-    var position3 = _ref.position, modal2 = _ref.modal;
+var theme$m = function theme5(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-dialog {\n    max-height: 90%;\n    transform: scale(1);\n    border-radius: ".concat(dt("dialog.border.radius"), ";\n    box-shadow: ").concat(dt("dialog.shadow"), ";\n    background: ").concat(dt("dialog.background"), ";\n    border: 1px solid ").concat(dt("dialog.border.color"), ";\n    color: ").concat(dt("dialog.color"), ";\n}\n\n.p-dialog-content {\n    overflow-y: auto;\n    padding: ").concat(dt("dialog.content.padding"), ";\n}\n\n.p-dialog-header {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    flex-shrink: 0;\n    padding: ").concat(dt("dialog.header.padding"), ";\n}\n\n.p-dialog-title {\n    font-weight: ").concat(dt("dialog.title.font.weight"), ";\n    font-size: ").concat(dt("dialog.title.font.size"), ";\n}\n\n.p-dialog-footer {\n    flex-shrink: 0;\n    padding: ").concat(dt("dialog.footer.padding"), ";\n    display: flex;\n    justify-content: flex-end;\n    gap: ").concat(dt("dialog.footer.gap"), ";\n}\n\n.p-dialog-header-actions {\n    display: flex;\n    align-items: center;\n    gap: ").concat(dt("dialog.header.gap"), ";\n}\n\n.p-dialog-enter-active {\n    transition: all 150ms cubic-bezier(0, 0, 0.2, 1);\n}\n\n.p-dialog-leave-active {\n    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.p-dialog-enter-from,\n.p-dialog-leave-to {\n    opacity: 0;\n    transform: scale(0.7);\n}\n\n.p-dialog-top .p-dialog,\n.p-dialog-bottom .p-dialog,\n.p-dialog-left .p-dialog,\n.p-dialog-right .p-dialog,\n.p-dialog-topleft .p-dialog,\n.p-dialog-topright .p-dialog,\n.p-dialog-bottomleft .p-dialog,\n.p-dialog-bottomright .p-dialog {\n    margin: 0.75rem;\n    transform: translate3d(0px, 0px, 0px);\n}\n\n.p-dialog-top .p-dialog-enter-active,\n.p-dialog-top .p-dialog-leave-active,\n.p-dialog-bottom .p-dialog-enter-active,\n.p-dialog-bottom .p-dialog-leave-active,\n.p-dialog-left .p-dialog-enter-active,\n.p-dialog-left .p-dialog-leave-active,\n.p-dialog-right .p-dialog-enter-active,\n.p-dialog-right .p-dialog-leave-active,\n.p-dialog-topleft .p-dialog-enter-active,\n.p-dialog-topleft .p-dialog-leave-active,\n.p-dialog-topright .p-dialog-enter-active,\n.p-dialog-topright .p-dialog-leave-active,\n.p-dialog-bottomleft .p-dialog-enter-active,\n.p-dialog-bottomleft .p-dialog-leave-active,\n.p-dialog-bottomright .p-dialog-enter-active,\n.p-dialog-bottomright .p-dialog-leave-active {\n    transition: all 0.3s ease-out;\n}\n\n.p-dialog-top .p-dialog-enter-from,\n.p-dialog-top .p-dialog-leave-to {\n    transform: translate3d(0px, -100%, 0px);\n}\n\n.p-dialog-bottom .p-dialog-enter-from,\n.p-dialog-bottom .p-dialog-leave-to {\n    transform: translate3d(0px, 100%, 0px);\n}\n\n.p-dialog-left .p-dialog-enter-from,\n.p-dialog-left .p-dialog-leave-to,\n.p-dialog-topleft .p-dialog-enter-from,\n.p-dialog-topleft .p-dialog-leave-to,\n.p-dialog-bottomleft .p-dialog-enter-from,\n.p-dialog-bottomleft .p-dialog-leave-to {\n    transform: translate3d(-100%, 0px, 0px);\n}\n\n.p-dialog-right .p-dialog-enter-from,\n.p-dialog-right .p-dialog-leave-to,\n.p-dialog-topright .p-dialog-enter-from,\n.p-dialog-topright .p-dialog-leave-to,\n.p-dialog-bottomright .p-dialog-enter-from,\n.p-dialog-bottomright .p-dialog-leave-to {\n    transform: translate3d(100%, 0px, 0px);\n}\n\n.p-dialog-left:dir(rtl) .p-dialog-enter-from,\n.p-dialog-left:dir(rtl) .p-dialog-leave-to,\n.p-dialog-topleft:dir(rtl) .p-dialog-enter-from,\n.p-dialog-topleft:dir(rtl) .p-dialog-leave-to,\n.p-dialog-bottomleft:dir(rtl) .p-dialog-enter-from,\n.p-dialog-bottomleft:dir(rtl) .p-dialog-leave-to {\n    transform: translate3d(100%, 0px, 0px);\n}\n\n.p-dialog-right:dir(rtl) .p-dialog-enter-from,\n.p-dialog-right:dir(rtl) .p-dialog-leave-to,\n.p-dialog-topright:dir(rtl) .p-dialog-enter-from,\n.p-dialog-topright:dir(rtl) .p-dialog-leave-to,\n.p-dialog-bottomright:dir(rtl) .p-dialog-enter-from,\n.p-dialog-bottomright:dir(rtl) .p-dialog-leave-to {\n    transform: translate3d(-100%, 0px, 0px);\n}\n\n.p-dialog-maximized {\n    width: 100vw !important;\n    height: 100vh !important;\n    top: 0px !important;\n    left: 0px !important;\n    max-height: 100%;\n    height: 100%;\n    border-radius: 0;\n}\n\n.p-dialog-maximized .p-dialog-content {\n    flex-grow: 1;\n}\n");
+};
+var inlineStyles$3 = {
+  mask: function mask(_ref2) {
+    var position3 = _ref2.position, modal2 = _ref2.modal;
     return {
       position: "fixed",
       height: "100%",
@@ -1662,8 +1542,8 @@ var inlineStyles$2 = {
   }
 };
 var classes$r = {
-  mask: function mask2(_ref2) {
-    var props = _ref2.props;
+  mask: function mask2(_ref3) {
+    var props = _ref3.props;
     var positions = ["left", "right", "top", "topleft", "topright", "bottom", "bottomleft", "bottomright"];
     var pos = positions.find(function(item2) {
       return item2 === props.position;
@@ -1672,8 +1552,8 @@ var classes$r = {
       "p-overlay-mask p-overlay-mask-enter": props.modal
     }, pos ? "p-dialog-".concat(pos) : ""];
   },
-  root: function root3(_ref3) {
-    var props = _ref3.props, instance = _ref3.instance;
+  root: function root3(_ref4) {
+    var props = _ref4.props, instance = _ref4.instance;
     return ["p-dialog p-component", {
       "p-dialog-maximized": props.maximizable && instance.maximized
     }];
@@ -1688,9 +1568,9 @@ var classes$r = {
 };
 var DialogStyle = BaseStyle.extend({
   name: "dialog",
-  style: style$4,
+  theme: theme$m,
   classes: classes$r,
-  inlineStyles: inlineStyles$2
+  inlineStyles: inlineStyles$3
 });
 var script$1$s = {
   name: "BaseDialog",
@@ -1841,12 +1721,18 @@ var script$u = {
   },
   data: function data2() {
     return {
+      id: this.$attrs.id,
       containerVisible: this.visible,
       maximized: false,
       focusableMax: null,
       focusableClose: null,
       target: null
     };
+  },
+  watch: {
+    "$attrs.id": function $attrsId(newValue) {
+      this.id = newValue || UniqueComponentId();
+    }
   },
   documentKeydownListener: null,
   container: null,
@@ -1879,6 +1765,7 @@ var script$u = {
     this.mask = null;
   },
   mounted: function mounted3() {
+    this.id = this.id || UniqueComponentId();
     if (this.breakpoints) {
       this.createStyle();
     }
@@ -2132,16 +2019,10 @@ var script$u = {
       return this.maximized ? this.minimizeIcon ? "span" : "WindowMinimizeIcon" : this.maximizeIcon ? "span" : "WindowMaximizeIcon";
     },
     ariaLabelledById: function ariaLabelledById() {
-      return this.header != null || this.$attrs["aria-labelledby"] !== null ? this.$id + "_header" : null;
+      return this.header != null || this.$attrs["aria-labelledby"] !== null ? this.id + "_header" : null;
     },
     closeAriaLabel: function closeAriaLabel() {
       return this.$primevue.config.locale.aria ? this.$primevue.config.locale.aria.close : void 0;
-    },
-    dataP: function dataP3() {
-      return cn({
-        maximized: this.maximized,
-        modal: this.modal
-      });
     }
   },
   directives: {
@@ -2156,13 +2037,13 @@ var script$u = {
     TimesIcon: script$C
   }
 };
-function _typeof$e(o) {
+function _typeof$7(o) {
   "@babel/helpers - typeof";
-  return _typeof$e = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$7 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$e(o);
+  }, _typeof$7(o);
 }
 function ownKeys$6(e, r) {
   var t = Object.keys(e);
@@ -2178,34 +2059,32 @@ function _objectSpread$6(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$6(Object(t), true).forEach(function(r2) {
-      _defineProperty$e(e, r2, t[r2]);
+      _defineProperty$7(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$6(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$e(e, r, t) {
-  return (r = _toPropertyKey$e(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$7(e, r, t) {
+  return (r = _toPropertyKey$7(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$e(t) {
-  var i = _toPrimitive$e(t, "string");
-  return "symbol" == _typeof$e(i) ? i : i + "";
+function _toPropertyKey$7(t) {
+  var i = _toPrimitive$7(t, "string");
+  return "symbol" == _typeof$7(i) ? i : i + "";
 }
-function _toPrimitive$e(t, r) {
-  if ("object" != _typeof$e(t) || !t) return t;
+function _toPrimitive$7(t, r) {
+  if ("object" != _typeof$7(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$e(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$7(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
-var _hoisted_1$i = ["data-p"];
-var _hoisted_2$e = ["aria-labelledby", "aria-modal", "data-p"];
-var _hoisted_3$b = ["id"];
-var _hoisted_4$7 = ["data-p"];
+var _hoisted_1$i = ["aria-labelledby", "aria-modal"];
+var _hoisted_2$9 = ["id"];
 function render$s(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Button = resolveComponent("Button");
   var _component_Portal = resolveComponent("Portal");
@@ -2227,8 +2106,7 @@ function render$s(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         onMouseup: _cache[2] || (_cache[2] = function() {
           return $options.onMaskMouseUp && $options.onMaskMouseUp.apply($options, arguments);
-        }),
-        "data-p": $options.dataP
+        })
       }, _ctx.ptm("mask")), [createVNode(Transition, mergeProps({
         name: "p-dialog",
         onEnter: $options.onEnter,
@@ -2246,8 +2124,7 @@ function render$s(_ctx, _cache, $props, $setup, $data, $options) {
             style: _ctx.sx("root"),
             role: "dialog",
             "aria-labelledby": $options.ariaLabelledById,
-            "aria-modal": _ctx.modal,
-            "data-p": $options.dataP
+            "aria-modal": _ctx.modal
           }, _ctx.ptmi("root")), [_ctx.$slots.container ? renderSlot(_ctx.$slots, "container", {
             key: 0,
             closeCallback: $options.close,
@@ -2270,96 +2147,100 @@ function render$s(_ctx, _cache, $props, $setup, $data, $options) {
               key: 0,
               id: $options.ariaLabelledById,
               "class": _ctx.cx("title")
-            }, _ctx.ptm("title")), toDisplayString(_ctx.header), 17, _hoisted_3$b)) : createCommentVNode("", true)];
+            }, _ctx.ptm("title")), toDisplayString(_ctx.header), 17, _hoisted_2$9)) : createCommentVNode("", true)];
           }), createBaseVNode("div", mergeProps({
             "class": _ctx.cx("headerActions")
-          }, _ctx.ptm("headerActions")), [_ctx.maximizable ? renderSlot(_ctx.$slots, "maximizebutton", {
+          }, _ctx.ptm("headerActions")), [_ctx.maximizable ? (openBlock(), createBlock(_component_Button, mergeProps({
             key: 0,
-            maximized: $data.maximized,
-            maximizeCallback: function maximizeCallback(event) {
-              return $options.maximize(event);
-            }
-          }, function() {
-            return [createVNode(_component_Button, mergeProps({
-              ref: $options.maximizableRef,
-              autofocus: $data.focusableMax,
-              "class": _ctx.cx("pcMaximizeButton"),
-              onClick: $options.maximize,
-              tabindex: _ctx.maximizable ? "0" : "-1",
-              unstyled: _ctx.unstyled
-            }, _ctx.maximizeButtonProps, {
-              pt: _ctx.ptm("pcMaximizeButton"),
-              "data-pc-group-section": "headericon"
-            }), {
-              icon: withCtx(function(slotProps) {
-                return [renderSlot(_ctx.$slots, "maximizeicon", {
-                  maximized: $data.maximized
-                }, function() {
-                  return [(openBlock(), createBlock(resolveDynamicComponent($options.maximizeIconComponent), mergeProps({
-                    "class": [slotProps["class"], $data.maximized ? _ctx.minimizeIcon : _ctx.maximizeIcon]
-                  }, _ctx.ptm("pcMaximizeButton")["icon"]), null, 16, ["class"]))];
-                })];
-              }),
-              _: 3
-            }, 16, ["autofocus", "class", "onClick", "tabindex", "unstyled", "pt"])];
-          }) : createCommentVNode("", true), _ctx.closable ? renderSlot(_ctx.$slots, "closebutton", {
+            ref: $options.maximizableRef,
+            autofocus: $data.focusableMax,
+            "class": _ctx.cx("pcMaximizeButton"),
+            onClick: $options.maximize,
+            tabindex: _ctx.maximizable ? "0" : "-1",
+            unstyled: _ctx.unstyled
+          }, _ctx.maximizeButtonProps, {
+            pt: _ctx.ptm("pcMaximizeButton"),
+            "data-pc-group-section": "headericon"
+          }), {
+            icon: withCtx(function(slotProps) {
+              return [renderSlot(_ctx.$slots, "maximizeicon", {
+                maximized: $data.maximized
+              }, function() {
+                return [(openBlock(), createBlock(resolveDynamicComponent($options.maximizeIconComponent), mergeProps({
+                  "class": [slotProps["class"], $data.maximized ? _ctx.minimizeIcon : _ctx.maximizeIcon]
+                }, _ctx.ptm("pcMaximizeButton")["icon"]), null, 16, ["class"]))];
+              })];
+            }),
+            _: 3
+          }, 16, ["autofocus", "class", "onClick", "tabindex", "unstyled", "pt"])) : createCommentVNode("", true), _ctx.closable ? (openBlock(), createBlock(_component_Button, mergeProps({
             key: 1,
-            closeCallback: $options.close
-          }, function() {
-            return [createVNode(_component_Button, mergeProps({
-              ref: $options.closeButtonRef,
-              autofocus: $data.focusableClose,
-              "class": _ctx.cx("pcCloseButton"),
-              onClick: $options.close,
-              "aria-label": $options.closeAriaLabel,
-              unstyled: _ctx.unstyled
-            }, _ctx.closeButtonProps, {
-              pt: _ctx.ptm("pcCloseButton"),
-              "data-pc-group-section": "headericon"
-            }), {
-              icon: withCtx(function(slotProps) {
-                return [renderSlot(_ctx.$slots, "closeicon", {}, function() {
-                  return [(openBlock(), createBlock(resolveDynamicComponent(_ctx.closeIcon ? "span" : "TimesIcon"), mergeProps({
-                    "class": [_ctx.closeIcon, slotProps["class"]]
-                  }, _ctx.ptm("pcCloseButton")["icon"]), null, 16, ["class"]))];
-                })];
-              }),
-              _: 3
-            }, 16, ["autofocus", "class", "onClick", "aria-label", "unstyled", "pt"])];
-          }) : createCommentVNode("", true)], 16)], 16)) : createCommentVNode("", true), createBaseVNode("div", mergeProps({
+            ref: $options.closeButtonRef,
+            autofocus: $data.focusableClose,
+            "class": _ctx.cx("pcCloseButton"),
+            onClick: $options.close,
+            "aria-label": $options.closeAriaLabel,
+            unstyled: _ctx.unstyled
+          }, _ctx.closeButtonProps, {
+            pt: _ctx.ptm("pcCloseButton"),
+            "data-pc-group-section": "headericon"
+          }), {
+            icon: withCtx(function(slotProps) {
+              return [renderSlot(_ctx.$slots, "closeicon", {}, function() {
+                return [(openBlock(), createBlock(resolveDynamicComponent(_ctx.closeIcon ? "span" : "TimesIcon"), mergeProps({
+                  "class": [_ctx.closeIcon, slotProps["class"]]
+                }, _ctx.ptm("pcCloseButton")["icon"]), null, 16, ["class"]))];
+              })];
+            }),
+            _: 3
+          }, 16, ["autofocus", "class", "onClick", "aria-label", "unstyled", "pt"])) : createCommentVNode("", true)], 16)], 16)) : createCommentVNode("", true), createBaseVNode("div", mergeProps({
             ref: $options.contentRef,
             "class": [_ctx.cx("content"), _ctx.contentClass],
-            style: _ctx.contentStyle,
-            "data-p": $options.dataP
-          }, _objectSpread$6(_objectSpread$6({}, _ctx.contentProps), _ctx.ptm("content"))), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_4$7), _ctx.footer || _ctx.$slots.footer ? (openBlock(), createElementBlock("div", mergeProps({
+            style: _ctx.contentStyle
+          }, _objectSpread$6(_objectSpread$6({}, _ctx.contentProps), _ctx.ptm("content"))), [renderSlot(_ctx.$slots, "default")], 16), _ctx.footer || _ctx.$slots.footer ? (openBlock(), createElementBlock("div", mergeProps({
             key: 1,
             ref: $options.footerContainerRef,
             "class": _ctx.cx("footer")
           }, _ctx.ptm("footer")), [renderSlot(_ctx.$slots, "footer", {}, function() {
             return [createTextVNode(toDisplayString(_ctx.footer), 1)];
-          })], 16)) : createCommentVNode("", true)], 64))], 16, _hoisted_2$e)), [[_directive_focustrap, {
+          })], 16)) : createCommentVNode("", true)], 64))], 16, _hoisted_1$i)), [[_directive_focustrap, {
             disabled: !_ctx.modal
           }]]) : createCommentVNode("", true)];
         }),
         _: 3
-      }, 16, ["onEnter", "onAfterEnter", "onBeforeLeave", "onLeave", "onAfterLeave"])], 16, _hoisted_1$i)) : createCommentVNode("", true)];
+      }, 16, ["onEnter", "onAfterEnter", "onBeforeLeave", "onLeave", "onAfterLeave"])], 16)) : createCommentVNode("", true)];
     }),
     _: 3
   }, 8, ["appendTo"]);
 }
 script$u.render = render$s;
+var theme$l = function theme6(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-splitter {\n    display: flex;\n    flex-wrap: nowrap;\n    border: 1px solid ".concat(dt("splitter.border.color"), ";\n    background: ").concat(dt("splitter.background"), ";\n    border-radius: ").concat(dt("border.radius.md"), ";\n    color: ").concat(dt("splitter.color"), ";\n}\n\n.p-splitter-vertical {\n    flex-direction: column;\n}\n\n.p-splitter-gutter {\n    flex-grow: 0;\n    flex-shrink: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    z-index: 1;\n    background: ").concat(dt("splitter.gutter.background"), ";\n}\n\n.p-splitter-gutter-handle {\n    border-radius: ").concat(dt("splitter.handle.border.radius"), ";\n    background: ").concat(dt("splitter.handle.background"), ";\n    transition: outline-color ").concat(dt("splitter.transition.duration"), ", box-shadow ").concat(dt("splitter.transition.duration"), ";\n    outline-color: transparent;\n}\n\n.p-splitter-gutter-handle:focus-visible {\n    box-shadow: ").concat(dt("splitter.handle.focus.ring.shadow"), ";\n    outline: ").concat(dt("splitter.handle.focus.ring.width"), " ").concat(dt("splitter.handle.focus.ring.style"), " ").concat(dt("splitter.handle.focus.ring.color"), ";\n    outline-offset: ").concat(dt("splitter.handle.focus.ring.offset"), ";\n}\n\n.p-splitter-horizontal.p-splitter-resizing {\n    cursor: col-resize;\n    user-select: none;\n}\n\n.p-splitter-vertical.p-splitter-resizing {\n    cursor: row-resize;\n    user-select: none;\n}\n\n.p-splitter-horizontal > .p-splitter-gutter > .p-splitter-gutter-handle {\n    height: ").concat(dt("splitter.handle.size"), ";\n    width: 100%;\n}\n\n.p-splitter-vertical > .p-splitter-gutter > .p-splitter-gutter-handle {\n    width: ").concat(dt("splitter.handle.size"), ";\n    height: 100%;\n}\n\n.p-splitter-horizontal > .p-splitter-gutter {\n    cursor: col-resize;\n}\n\n.p-splitter-vertical > .p-splitter-gutter {\n    cursor: row-resize;\n}\n\n.p-splitterpanel {\n    flex-grow: 1;\n    overflow: hidden;\n}\n\n.p-splitterpanel-nested {\n    display: flex;\n}\n\n.p-splitterpanel .p-splitter {\n    flex-grow: 1;\n    border: 0 none;\n}\n");
+};
 var classes$q = {
-  root: function root4(_ref) {
-    var props = _ref.props;
+  root: function root4(_ref2) {
+    var props = _ref2.props;
     return ["p-splitter p-component", "p-splitter-" + props.layout];
   },
   gutter: "p-splitter-gutter",
   gutterHandle: "p-splitter-gutter-handle"
 };
+var inlineStyles$2 = {
+  root: function root5(_ref3) {
+    var props = _ref3.props;
+    return [{
+      display: "flex",
+      "flex-wrap": "nowrap"
+    }, props.layout === "vertical" ? {
+      "flex-direction": "column"
+    } : ""];
+  }
+};
 var SplitterStyle = BaseStyle.extend({
   name: "splitter",
-  style: style$5,
-  classes: classes$q
+  theme: theme$l,
+  classes: classes$q,
+  inlineStyles: inlineStyles$2
 });
 var script$1$r = {
   name: "BaseSplitter",
@@ -2394,31 +2275,6 @@ var script$1$r = {
     };
   }
 };
-function _typeof$d(o) {
-  "@babel/helpers - typeof";
-  return _typeof$d = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$d(o);
-}
-function _defineProperty$d(e, r, t) {
-  return (r = _toPropertyKey$d(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$d(t) {
-  var i = _toPrimitive$d(t, "string");
-  return "symbol" == _typeof$d(i) ? i : i + "";
-}
-function _toPrimitive$d(t, r) {
-  if ("object" != _typeof$d(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$d(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 function _toConsumableArray$6(r) {
   return _arrayWithoutHoles$6(r) || _iterableToArray$6(r) || _unsupportedIterableToArray$6(r) || _nonIterableSpread$6();
 }
@@ -2492,7 +2348,7 @@ var script$t = {
           });
           var _panelSizes = [];
           this.panels.map(function(panel, i) {
-            var panelInitialSize = panel.props && isNotEmpty(panel.props.size) ? panel.props.size : null;
+            var panelInitialSize = panel.props && panel.props.size ? panel.props.size : null;
             var panelSize = panelInitialSize || 100 / _this.panels.length;
             _panelSizes[i] = panelSize;
             children[i].style.flexBasis = "calc(" + panelSize + "% - " + (_this.panels.length - 1) * _this.gutterSize + "px)";
@@ -2549,15 +2405,13 @@ var script$t = {
         newPrevPanelSize = this.prevPanelSize + newPos;
         newNextPanelSize = this.nextPanelSize - newPos;
       }
-      if (!this.validateResize(newPrevPanelSize, newNextPanelSize)) {
-        newPrevPanelSize = Math.min(Math.max(this.prevPanelMinSize, newPrevPanelSize), 100 - this.nextPanelMinSize);
-        newNextPanelSize = Math.min(Math.max(this.nextPanelMinSize, newNextPanelSize), 100 - this.prevPanelMinSize);
+      if (this.validateResize(newPrevPanelSize, newNextPanelSize)) {
+        this.prevPanelElement.style.flexBasis = "calc(" + newPrevPanelSize + "% - " + (this.panels.length - 1) * this.gutterSize + "px)";
+        this.nextPanelElement.style.flexBasis = "calc(" + newNextPanelSize + "% - " + (this.panels.length - 1) * this.gutterSize + "px)";
+        this.panelSizes[this.prevPanelIndex] = newPrevPanelSize;
+        this.panelSizes[this.prevPanelIndex + 1] = newNextPanelSize;
+        this.prevSize = parseFloat(newPrevPanelSize).toFixed(4);
       }
-      this.prevPanelElement.style.flexBasis = "calc(" + newPrevPanelSize + "% - " + (this.panels.length - 1) * this.gutterSize + "px)";
-      this.nextPanelElement.style.flexBasis = "calc(" + newNextPanelSize + "% - " + (this.panels.length - 1) * this.gutterSize + "px)";
-      this.panelSizes[this.prevPanelIndex] = newPrevPanelSize;
-      this.panelSizes[this.prevPanelIndex + 1] = newNextPanelSize;
-      this.prevSize = parseFloat(newPrevPanelSize).toFixed(4);
       this.$emit("resize", {
         originalEvent: event,
         sizes: this.panelSizes
@@ -2684,10 +2538,12 @@ var script$t = {
     validateResize: function validateResize(newPrevPanelSize, newNextPanelSize) {
       if (newPrevPanelSize > 100 || newPrevPanelSize < 0) return false;
       if (newNextPanelSize > 100 || newNextPanelSize < 0) return false;
-      if (this.prevPanelMinSize > newPrevPanelSize) {
+      var prevPanelMinSize = getVNodeProp(this.panels[this.prevPanelIndex], "minSize");
+      if (this.panels[this.prevPanelIndex].props && prevPanelMinSize && prevPanelMinSize > newPrevPanelSize) {
         return false;
       }
-      if (this.nextPanelMinSize > newNextPanelSize) {
+      var newPanelMinSize = getVNodeProp(this.panels[this.prevPanelIndex + 1], "minSize");
+      if (this.panels[this.prevPanelIndex + 1].props && newPanelMinSize && newPanelMinSize > newNextPanelSize) {
         return false;
       }
       return true;
@@ -2796,35 +2652,16 @@ var script$t = {
           nested: (_this$$parentInstance = this.$parentInstance) === null || _this$$parentInstance === void 0 ? void 0 : _this$$parentInstance.nestedState
         }
       };
-    },
-    prevPanelMinSize: function prevPanelMinSize() {
-      var prevPanelMinSize2 = getVNodeProp(this.panels[this.prevPanelIndex], "minSize");
-      if (this.panels[this.prevPanelIndex].props && prevPanelMinSize2) {
-        return prevPanelMinSize2;
-      }
-      return 0;
-    },
-    nextPanelMinSize: function nextPanelMinSize() {
-      var nextPanelMinSize2 = getVNodeProp(this.panels[this.prevPanelIndex + 1], "minSize");
-      if (this.panels[this.prevPanelIndex + 1].props && nextPanelMinSize2) {
-        return nextPanelMinSize2;
-      }
-      return 0;
-    },
-    dataP: function dataP4() {
-      var _this$$parentInstance2;
-      return cn(_defineProperty$d(_defineProperty$d({}, this.layout, this.layout), "nested", ((_this$$parentInstance2 = this.$parentInstance) === null || _this$$parentInstance2 === void 0 ? void 0 : _this$$parentInstance2.nestedState) != null));
     }
   }
 };
-var _hoisted_1$h = ["data-p"];
-var _hoisted_2$d = ["onMousedown", "onTouchstart", "onTouchmove", "onTouchend", "data-p"];
-var _hoisted_3$a = ["aria-orientation", "aria-valuenow", "onKeydown", "data-p"];
+var _hoisted_1$h = ["onMousedown", "onTouchstart", "onTouchmove", "onTouchend"];
+var _hoisted_2$8 = ["aria-orientation", "aria-valuenow", "onKeydown"];
 function render$r(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", mergeProps({
     "class": _ctx.cx("root"),
-    "data-p-resizing": false,
-    "data-p": $options.dataP
+    style: _ctx.sx("root"),
+    "data-p-resizing": false
   }, _ctx.ptmi("root", $options.getPTOptions)), [(openBlock(true), createElementBlock(Fragment, null, renderList($options.panels, function(panel, i) {
     return openBlock(), createElementBlock(Fragment, {
       key: i
@@ -2849,8 +2686,7 @@ function render$r(_ctx, _cache, $props, $setup, $data, $options) {
       onTouchend: function onTouchend($event) {
         return $options.onGutterTouchEnd($event, i);
       },
-      "data-p-gutter-resizing": false,
-      "data-p": $options.dataP
+      "data-p-gutter-resizing": false
     }, _ctx.ptm("gutter")), [createBaseVNode("div", mergeProps({
       "class": _ctx.cx("gutterHandle"),
       tabindex: "0",
@@ -2863,14 +2699,13 @@ function render$r(_ctx, _cache, $props, $setup, $data, $options) {
       onKeydown: function onKeydown3($event) {
         return $options.onGutterKeyDown($event, i);
       },
-      "data-p": $options.dataP,
       ref_for: true
-    }, _ctx.ptm("gutterHandle")), null, 16, _hoisted_3$a)], 16, _hoisted_2$d)) : createCommentVNode("", true)], 64);
-  }), 128))], 16, _hoisted_1$h);
+    }, _ctx.ptm("gutterHandle")), null, 16, _hoisted_2$8)], 16, _hoisted_1$h)) : createCommentVNode("", true)], 64);
+  }), 128))], 16);
 }
 script$t.render = render$r;
 var classes$p = {
-  root: function root5(_ref) {
+  root: function root6(_ref) {
     var instance = _ref.instance;
     return ["p-splitterpanel", {
       "p-splitterpanel-nested": instance.isNested
@@ -3420,7 +3255,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props = __props;
     const ns = useNamespace("icon");
-    const style2 = computed(() => {
+    const style = computed(() => {
       const { size, color } = props;
       if (!size && !color)
         return {};
@@ -3432,7 +3267,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("i", mergeProps({
         class: unref(ns).b(),
-        style: unref(style2)
+        style: unref(style)
       }, _ctx.$attrs), [
         renderSlot(_ctx.$slots, "default")
       ], 16);
@@ -3480,11 +3315,11 @@ const CONTEXT_STYLE = [
   "box-sizing"
 ];
 function calculateNodeStyling(targetElement) {
-  const style2 = window.getComputedStyle(targetElement);
-  const boxSizing = style2.getPropertyValue("box-sizing");
-  const paddingSize = Number.parseFloat(style2.getPropertyValue("padding-bottom")) + Number.parseFloat(style2.getPropertyValue("padding-top"));
-  const borderSize = Number.parseFloat(style2.getPropertyValue("border-bottom-width")) + Number.parseFloat(style2.getPropertyValue("border-top-width"));
-  const contextStyle = CONTEXT_STYLE.map((name) => `${name}:${style2.getPropertyValue(name)}`).join(";");
+  const style = window.getComputedStyle(targetElement);
+  const boxSizing = style.getPropertyValue("box-sizing");
+  const paddingSize = Number.parseFloat(style.getPropertyValue("padding-bottom")) + Number.parseFloat(style.getPropertyValue("padding-top"));
+  const borderSize = Number.parseFloat(style.getPropertyValue("border-bottom-width")) + Number.parseFloat(style.getPropertyValue("border-top-width"));
+  const contextStyle = CONTEXT_STYLE.map((name) => `${name}:${style.getPropertyValue(name)}`).join(";");
   return { contextStyle, paddingSize, borderSize, boxSizing };
 }
 function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
@@ -5937,19 +5772,19 @@ var FormLabelWrap = defineComponent({
       if (isAutoWidth) {
         const autoLabelWidth = formContext == null ? void 0 : formContext.autoLabelWidth;
         const hasLabel2 = formItemContext == null ? void 0 : formItemContext.hasLabel;
-        const style2 = {};
+        const style = {};
         if (hasLabel2 && autoLabelWidth && autoLabelWidth !== "auto") {
           const marginWidth = Math.max(0, Number.parseInt(autoLabelWidth, 10) - computedWidth.value);
           const labelPosition = formItemContext.labelPosition || formContext.labelPosition;
           const marginPosition = labelPosition === "left" ? "marginRight" : "marginLeft";
           if (marginWidth) {
-            style2[marginPosition] = `${marginWidth}px`;
+            style[marginPosition] = `${marginWidth}px`;
           }
         }
         return createVNode("div", {
           "ref": el,
           "class": [ns.be("item", "label-wrap")],
-          "style": style2
+          "style": style
         }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)]);
       } else {
         return createVNode(Fragment, {
@@ -6268,16 +6103,20 @@ const ElForm = withInstall(Form, {
   FormItem
 });
 const ElFormItem = withNoopInstall(FormItem);
+var theme$k = function theme7(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-contextmenu {\n    background: ".concat(dt("contextmenu.background"), ";\n    color: ").concat(dt("contextmenu.color"), ";\n    border: 1px solid ").concat(dt("contextmenu.border.color"), ";\n    border-radius: ").concat(dt("contextmenu.border.radius"), ";\n    box-shadow: ").concat(dt("contextmenu.shadow"), ";\n    min-width: 12.5rem;\n}\n\n.p-contextmenu-root-list,\n.p-contextmenu-submenu {\n    margin: 0;\n    padding: ").concat(dt("contextmenu.list.padding"), ";\n    list-style: none;\n    outline: 0 none;\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("contextmenu.list.gap"), ";\n}\n\n.p-contextmenu-submenu {\n    position: absolute;\n    display: flex;\n    flex-direction: column;\n    min-width: 100%;\n    z-index: 1;\n    background: ").concat(dt("contextmenu.background"), ";\n    color: ").concat(dt("contextmenu.color"), ";\n    border: 1px solid ").concat(dt("contextmenu.border.color"), ";\n    border-radius: ").concat(dt("contextmenu.border.radius"), ";\n    box-shadow: ").concat(dt("contextmenu.shadow"), ";\n}\n\n.p-contextmenu-item {\n    position: relative;\n}\n\n.p-contextmenu-item-content {\n    transition: background ").concat(dt("contextmenu.transition.duration"), ", color ").concat(dt("contextmenu.transition.duration"), ";\n    border-radius: ").concat(dt("contextmenu.item.border.radius"), ";\n    color: ").concat(dt("contextmenu.item.color"), ";\n}\n\n.p-contextmenu-item-link {\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n    overflow: hidden;\n    position: relative;\n    color: inherit;\n    padding: ").concat(dt("contextmenu.item.padding"), ";\n    gap: ").concat(dt("contextmenu.item.gap"), ";\n    user-select: none;\n}\n\n.p-contextmenu-item-label {\n    line-height: 1;\n}\n\n.p-contextmenu-item-icon {\n    color: ").concat(dt("contextmenu.item.icon.color"), ";\n}\n\n.p-contextmenu-submenu-icon {\n    color: ").concat(dt("contextmenu.submenu.icon.color"), ";\n    margin-left: auto;\n    font-size: ").concat(dt("contextmenu.submenu.icon.size"), ";\n    width: ").concat(dt("contextmenu.submenu.icon.size"), ";\n    height: ").concat(dt("contextmenu.submenu.icon.size"), ";\n}\n\n.p-contextmenu-submenu-icon:dir(rtl) {\n    margin-left: 0;\n    margin-right: auto;\n}\n\n.p-contextmenu-item.p-focus > .p-contextmenu-item-content {\n    color: ").concat(dt("contextmenu.item.focus.color"), ";\n    background: ").concat(dt("contextmenu.item.focus.background"), ";\n}\n\n.p-contextmenu-item.p-focus > .p-contextmenu-item-content .p-contextmenu-item-icon {\n    color: ").concat(dt("contextmenu.item.icon.focus.color"), ";\n}\n\n.p-contextmenu-item.p-focus > .p-contextmenu-item-content .p-contextmenu-submenu-icon {\n    color: ").concat(dt("contextmenu.submenu.icon.focus.color"), ";\n}\n\n.p-contextmenu-item:not(.p-disabled) > .p-contextmenu-item-content:hover {\n    color: ").concat(dt("contextmenu.item.focus.color"), ";\n    background: ").concat(dt("contextmenu.item.focus.background"), ";\n}\n\n.p-contextmenu-item:not(.p-disabled) > .p-contextmenu-item-content:hover .p-contextmenu-item-icon {\n    color: ").concat(dt("contextmenu.item.icon.focus.color"), ";\n}\n\n.p-contextmenu-item:not(.p-disabled) > .p-contextmenu-item-content:hover .p-contextmenu-submenu-icon {\n    color: ").concat(dt("contextmenu.submenu.icon.focus.color"), ";\n}\n\n.p-contextmenu-item-active > .p-contextmenu-item-content {\n    color: ").concat(dt("contextmenu.item.active.color"), ";\n    background: ").concat(dt("contextmenu.item.active.background"), ";\n}\n\n.p-contextmenu-item-active > .p-contextmenu-item-content .p-contextmenu-item-icon {\n    color: ").concat(dt("contextmenu.item.icon.active.color"), ";\n}\n\n.p-contextmenu-item-active > .p-contextmenu-item-content .p-contextmenu-submenu-icon {\n    color: ").concat(dt("contextmenu.submenu.icon.active.color"), ";\n}\n\n.p-contextmenu-separator {\n    border-block-start: 1px solid ").concat(dt("contextmenu.separator.border.color"), ";\n}\n\n.p-contextmenu-enter-from,\n.p-contextmenu-leave-active {\n    opacity: 0;\n}\n\n.p-contextmenu-enter-active {\n    transition: opacity 250ms;\n}\n\n.p-contextmenu-mobile .p-contextmenu-submenu {\n    position: static;\n    box-shadow: none;\n    border: 0 none;\n    padding-inline-start: ").concat(dt("tieredmenu.submenu.mobile.indent"), ";\n    padding-inline-end: 0;\n}\n\n.p-contextmenu-mobile .p-contextmenu-submenu-icon {\n    transition: transform 0.2s;\n    transform: rotate(90deg);\n}\n\n.p-contextmenu-mobile .p-contextmenu-item-active > .p-contextmenu-item-content .p-contextmenu-submenu-icon {\n    transform: rotate(-90deg);\n}\n");
+};
 var classes$o = {
-  root: function root6(_ref) {
-    var instance = _ref.instance;
+  root: function root7(_ref2) {
+    var instance = _ref2.instance;
     return ["p-contextmenu p-component", {
       "p-contextmenu-mobile": instance.queryMatches
     }];
   },
   rootList: "p-contextmenu-root-list",
-  item: function item(_ref2) {
-    var instance = _ref2.instance, processedItem = _ref2.processedItem;
+  item: function item(_ref3) {
+    var instance = _ref3.instance, processedItem = _ref3.processedItem;
     return ["p-contextmenu-item", {
       "p-contextmenu-item-active": instance.isItemActive(processedItem),
       "p-focus": instance.isItemFocused(processedItem),
@@ -6294,7 +6133,7 @@ var classes$o = {
 };
 var ContextMenuStyle = BaseStyle.extend({
   name: "contextmenu",
-  style: style$6,
+  theme: theme$k,
   classes: classes$o
 });
 var script$2$4 = {
@@ -6498,10 +6337,10 @@ var script$1$p = {
   }
 };
 var _hoisted_1$g = ["tabindex"];
-var _hoisted_2$c = ["id", "aria-label", "aria-disabled", "aria-expanded", "aria-haspopup", "aria-level", "aria-setsize", "aria-posinset", "data-p-active", "data-p-focused", "data-p-disabled"];
-var _hoisted_3$9 = ["onClick", "onMouseenter", "onMousemove"];
-var _hoisted_4$6 = ["href", "target"];
-var _hoisted_5$5 = ["id"];
+var _hoisted_2$7 = ["id", "aria-label", "aria-disabled", "aria-expanded", "aria-haspopup", "aria-level", "aria-setsize", "aria-posinset", "data-p-active", "data-p-focused", "data-p-disabled"];
+var _hoisted_3$5 = ["onClick", "onMouseenter", "onMousemove"];
+var _hoisted_4$2 = ["href", "target"];
+var _hoisted_5$2 = ["id"];
 var _hoisted_6$2 = ["id"];
 function render$1$4(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_AngleRightIcon = resolveComponent("AngleRightIcon");
@@ -6570,7 +6409,7 @@ function render$1$4(_ctx, _cache, $props, $setup, $data, $options) {
           id: $options.getItemLabelId(processedItem),
           "class": _ctx.cx("itemLabel"),
           ref_for: true
-        }, $options.getPTOptions("itemLabel", processedItem, index2)), toDisplayString($options.getItemLabel(processedItem)), 17, _hoisted_5$5), $options.getItemProp(processedItem, "items") ? (openBlock(), createElementBlock(Fragment, {
+        }, $options.getPTOptions("itemLabel", processedItem, index2)), toDisplayString($options.getItemLabel(processedItem)), 17, _hoisted_5$2), $options.getItemProp(processedItem, "items") ? (openBlock(), createElementBlock(Fragment, {
           key: 2
         }, [$props.templates.submenuicon ? (openBlock(), createBlock(resolveDynamicComponent($props.templates.submenuicon), {
           key: 0,
@@ -6580,13 +6419,13 @@ function render$1$4(_ctx, _cache, $props, $setup, $data, $options) {
           key: 1,
           "class": _ctx.cx("submenuIcon"),
           ref_for: true
-        }, $options.getPTOptions("submenuicon", processedItem, index2)), null, 16, ["class"]))], 64)) : createCommentVNode("", true)], 16, _hoisted_4$6)), [[_directive_ripple]]) : (openBlock(), createBlock(resolveDynamicComponent($props.templates.item), {
+        }, $options.getPTOptions("submenuicon", processedItem, index2)), null, 16, ["class"]))], 64)) : createCommentVNode("", true)], 16, _hoisted_4$2)), [[_directive_ripple]]) : (openBlock(), createBlock(resolveDynamicComponent($props.templates.item), {
           key: 1,
           item: processedItem.item,
           hasSubmenu: $options.getItemProp(processedItem, "items"),
           label: $options.getItemLabel(processedItem),
           props: $options.getMenuItemProps(processedItem, index2)
-        }, null, 8, ["item", "hasSubmenu", "label", "props"]))], 16, _hoisted_3$9), $options.isItemVisible(processedItem) && $options.isItemGroup(processedItem) ? (openBlock(), createBlock(_component_ContextMenuSub, mergeProps({
+        }, null, 8, ["item", "hasSubmenu", "label", "props"]))], 16, _hoisted_3$5), $options.isItemVisible(processedItem) && $options.isItemGroup(processedItem) ? (openBlock(), createBlock(_component_ContextMenuSub, mergeProps({
           key: 0,
           id: $options.getItemId(processedItem) + "_list",
           role: "menu",
@@ -6611,7 +6450,7 @@ function render$1$4(_ctx, _cache, $props, $setup, $data, $options) {
           }),
           "aria-labelledby": $options.getItemLabelId(processedItem),
           ref_for: true
-        }, _ctx.ptm("submenu")), null, 16, ["id", "class", "menuId", "focusedItemId", "items", "templates", "activeItemPath", "level", "visible", "pt", "unstyled", "aria-labelledby"])) : createCommentVNode("", true)], 16, _hoisted_2$c)) : createCommentVNode("", true), $options.isItemVisible(processedItem) && $options.getItemProp(processedItem, "separator") ? (openBlock(), createElementBlock("li", mergeProps({
+        }, _ctx.ptm("submenu")), null, 16, ["id", "class", "menuId", "focusedItemId", "items", "templates", "activeItemPath", "level", "visible", "pt", "unstyled", "aria-labelledby"])) : createCommentVNode("", true)], 16, _hoisted_2$7)) : createCommentVNode("", true), $options.isItemVisible(processedItem) && $options.getItemProp(processedItem, "separator") ? (openBlock(), createElementBlock("li", mergeProps({
           key: 1,
           id: $options.getItemId(processedItem),
           style: $options.getItemProp(processedItem, "style"),
@@ -6641,6 +6480,7 @@ var script$r = {
   list: null,
   data: function data5() {
     return {
+      id: this.$attrs.id,
       focused: false,
       focusedItemInfo: {
         index: -1,
@@ -6655,6 +6495,9 @@ var script$r = {
     };
   },
   watch: {
+    "$attrs.id": function $attrsId2(newValue) {
+      this.id = newValue || UniqueComponentId();
+    },
     activeItemPath: function activeItemPath(newPath) {
       if (isNotEmpty(newPath)) {
         this.bindOutsideClickListener();
@@ -6666,6 +6509,7 @@ var script$r = {
     }
   },
   mounted: function mounted5() {
+    this.id = this.id || UniqueComponentId();
     this.bindMatchMediaListener();
     if (this.global) {
       this.bindDocumentContextMenuListener();
@@ -6804,8 +6648,8 @@ var script$r = {
     onItemChange: function onItemChange(event, type4) {
       var processedItem = event.processedItem, isFocus = event.isFocus;
       if (isEmpty(processedItem)) return;
-      var index2 = processedItem.index, key = processedItem.key, level = processedItem.level, parentKey = processedItem.parentKey, items = processedItem.items;
-      var grouped = isNotEmpty(items);
+      var index2 = processedItem.index, key = processedItem.key, level = processedItem.level, parentKey = processedItem.parentKey, items2 = processedItem.items;
+      var grouped = isNotEmpty(items2);
       var activeItemPath2 = this.activeItemPath.filter(function(p) {
         return p.parentKey !== parentKey && p.parentKey !== key;
       });
@@ -6880,8 +6724,8 @@ var script$r = {
       var parentItem = this.activeItemPath.find(function(p) {
         return p.key === processedItem.parentKey;
       });
-      var root26 = isEmpty(processedItem.parent);
-      if (!root26) {
+      var root27 = isEmpty(processedItem.parent);
+      if (!root27) {
         this.focusedItemInfo = {
           index: -1,
           parentKey: parentItem ? parentItem.parentKey : ""
@@ -7008,12 +6852,12 @@ var script$r = {
             _this2.hide();
           }
         };
-        document.addEventListener("click", this.outsideClickListener, true);
+        document.addEventListener("click", this.outsideClickListener);
       }
     },
     unbindOutsideClickListener: function unbindOutsideClickListener() {
       if (this.outsideClickListener) {
-        document.removeEventListener("click", this.outsideClickListener, true);
+        document.removeEventListener("click", this.outsideClickListener);
         this.outsideClickListener = null;
       }
     },
@@ -7109,9 +6953,9 @@ var script$r = {
       return matchedItemIndex > -1 ? matchedItemIndex : index2;
     },
     findSelectedItemIndex: function findSelectedItemIndex() {
-      var _this0 = this;
+      var _this10 = this;
       return this.visibleItems.findIndex(function(processedItem) {
-        return _this0.isValidSelectedItem(processedItem);
+        return _this10.isValidSelectedItem(processedItem);
       });
     },
     findFirstFocusedItemIndex: function findFirstFocusedItemIndex() {
@@ -7123,20 +6967,20 @@ var script$r = {
       return selectedIndex < 0 ? this.findLastItemIndex() : selectedIndex;
     },
     searchItems: function searchItems(event, _char) {
-      var _this1 = this;
+      var _this11 = this;
       this.searchValue = (this.searchValue || "") + _char;
       var itemIndex = -1;
       var matched = false;
       if (this.focusedItemInfo.index !== -1) {
         itemIndex = this.visibleItems.slice(this.focusedItemInfo.index).findIndex(function(processedItem) {
-          return _this1.isItemMatched(processedItem);
+          return _this11.isItemMatched(processedItem);
         });
         itemIndex = itemIndex === -1 ? this.visibleItems.slice(0, this.focusedItemInfo.index).findIndex(function(processedItem) {
-          return _this1.isItemMatched(processedItem);
+          return _this11.isItemMatched(processedItem);
         }) : itemIndex + this.focusedItemInfo.index;
       } else {
         itemIndex = this.visibleItems.findIndex(function(processedItem) {
-          return _this1.isItemMatched(processedItem);
+          return _this11.isItemMatched(processedItem);
         });
       }
       if (itemIndex !== -1) {
@@ -7152,8 +6996,8 @@ var script$r = {
         clearTimeout(this.searchTimeout);
       }
       this.searchTimeout = setTimeout(function() {
-        _this1.searchValue = "";
-        _this1.searchTimeout = null;
+        _this11.searchValue = "";
+        _this11.searchTimeout = null;
       }, 500);
       return matched;
     },
@@ -7165,7 +7009,7 @@ var script$r = {
     },
     scrollInView: function scrollInView() {
       var index2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : -1;
-      var id3 = index2 !== -1 ? "".concat(this.$id, "_").concat(index2) : this.focusedItemIdx;
+      var id3 = index2 !== -1 ? "".concat(this.id, "_").concat(index2) : this.focusedItemIdx;
       var element = findSingle(this.list, 'li[id="'.concat(id3, '"]'));
       if (element) {
         element.scrollIntoView && element.scrollIntoView({
@@ -7174,13 +7018,13 @@ var script$r = {
         });
       }
     },
-    createProcessedItems: function createProcessedItems(items) {
-      var _this10 = this;
+    createProcessedItems: function createProcessedItems(items2) {
+      var _this12 = this;
       var level = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
       var parent = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
       var parentKey = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : "";
       var processedItems2 = [];
-      items && items.forEach(function(item2, index2) {
+      items2 && items2.forEach(function(item2, index2) {
         var key = (parentKey !== "" ? parentKey + "_" : "") + index2;
         var newItem = {
           item: item2,
@@ -7190,7 +7034,7 @@ var script$r = {
           parent,
           parentKey
         };
-        newItem["items"] = _this10.createProcessedItems(item2.items, level + 1, newItem, key);
+        newItem["items"] = _this12.createProcessedItems(item2.items, level + 1, newItem, key);
         processedItems2.push(newItem);
       });
       return processedItems2;
@@ -7207,14 +7051,14 @@ var script$r = {
       return this.createProcessedItems(this.model || []);
     },
     visibleItems: function visibleItems() {
-      var _this11 = this;
+      var _this13 = this;
       var processedItem = this.activeItemPath.find(function(p) {
-        return p.key === _this11.focusedItemInfo.parentKey;
+        return p.key === _this13.focusedItemInfo.parentKey;
       });
       return processedItem ? processedItem.items : this.processedItems;
     },
     focusedItemIdx: function focusedItemIdx() {
-      return this.focusedItemInfo.index !== -1 ? "".concat(this.$id).concat(isNotEmpty(this.focusedItemInfo.parentKey) ? "_" + this.focusedItemInfo.parentKey : "", "_").concat(this.focusedItemInfo.index) : null;
+      return this.focusedItemInfo.index !== -1 ? "".concat(this.id).concat(isNotEmpty(this.focusedItemInfo.parentKey) ? "_" + this.focusedItemInfo.parentKey : "", "_").concat(this.focusedItemInfo.index) : null;
     }
   },
   components: {
@@ -7243,14 +7087,14 @@ function render$p(_ctx, _cache, $props, $setup, $data, $options) {
             "class": _ctx.cx("root")
           }, _ctx.ptmi("root")), [createVNode(_component_ContextMenuSub, {
             ref: $options.listRef,
-            id: _ctx.$id + "_list",
+            id: $data.id + "_list",
             "class": normalizeClass(_ctx.cx("rootList")),
             role: "menubar",
             root: true,
             tabindex: _ctx.tabindex,
             "aria-orientation": "vertical",
             "aria-activedescendant": $data.focused ? $options.focusedItemIdx : void 0,
-            menuId: _ctx.$id,
+            menuId: $data.id,
             focusedItemId: $data.focused ? $options.focusedItemIdx : void 0,
             items: $options.processedItems,
             templates: _ctx.$slots,
@@ -7276,6 +7120,10 @@ function render$p(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["appendTo"]);
 }
 script$r.render = render$p;
+var theme$j = function theme8(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-toolbar {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    padding: ".concat(dt("toolbar.padding"), ";\n    background: ").concat(dt("toolbar.background"), ";\n    border: 1px solid ").concat(dt("toolbar.border.color"), ";\n    color: ").concat(dt("toolbar.color"), ";\n    border-radius: ").concat(dt("toolbar.border.radius"), ";\n    gap: ").concat(dt("toolbar.gap"), ";\n}\n\n.p-toolbar-start,\n.p-toolbar-center,\n.p-toolbar-end {\n    display: flex;\n    align-items: center;\n}\n");
+};
 var classes$n = {
   root: "p-toolbar p-component",
   start: "p-toolbar-start",
@@ -7284,7 +7132,7 @@ var classes$n = {
 };
 var ToolbarStyle = BaseStyle.extend({
   name: "toolbar",
-  style: style$7,
+  theme: theme$j,
   classes: classes$n
 });
 var script$1$o = {
@@ -7352,6 +7200,10 @@ function useConfirm() {
   return PrimeVueConfirm;
 }
 var PrimeVueDialogSymbol = Symbol();
+var theme$i = function theme9(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-confirmdialog .p-dialog-content {\n    display: flex;\n    align-items: center;\n    gap:  ".concat(dt("confirmdialog.content.gap"), ";\n}\n\n.p-confirmdialog-icon {\n    color: ").concat(dt("confirmdialog.icon.color"), ";\n    font-size: ").concat(dt("confirmdialog.icon.size"), ";\n    width: ").concat(dt("confirmdialog.icon.size"), ";\n    height: ").concat(dt("confirmdialog.icon.size"), ";\n}\n");
+};
 var classes$m = {
   root: "p-confirmdialog",
   icon: "p-confirmdialog-icon",
@@ -7361,7 +7213,7 @@ var classes$m = {
 };
 var ConfirmDialogStyle = BaseStyle.extend({
   name: "confirmdialog",
-  style: style$8,
+  theme: theme$i,
   classes: classes$m
 });
 var script$1$n = {
@@ -7615,12 +7467,16 @@ function render$n(_ctx, _cache, $props, $setup, $data, $options) {
   } : void 0]), 1032, ["visible", "class", "modal", "header", "blockScroll", "appendTo", "position", "breakpoints", "closeOnEscape", "draggable", "onUpdate:visible", "pt", "unstyled"]);
 }
 script$p.render = render$n;
+var theme$h = function theme10(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-iconfield {\n    position: relative;\n}\n\n.p-inputicon {\n    position: absolute;\n    top: 50%;\n    margin-top: calc(-1 * (".concat(dt("icon.size"), " / 2));\n    color: ").concat(dt("iconfield.icon.color"), ";\n    line-height: 1;\n}\n\n.p-iconfield .p-inputicon:first-child {\n    inset-inline-start: ").concat(dt("form.field.padding.x"), ";\n}\n\n.p-iconfield .p-inputicon:last-child {\n    inset-inline-end: ").concat(dt("form.field.padding.x"), ";\n}\n\n.p-iconfield .p-inputtext:not(:first-child) {\n    padding-inline-start: calc((").concat(dt("form.field.padding.x"), " * 2) + ").concat(dt("icon.size"), ");\n}\n\n.p-iconfield .p-inputtext:not(:last-child) {\n    padding-inline-end: calc((").concat(dt("form.field.padding.x"), " * 2) + ").concat(dt("icon.size"), ");\n}\n\n.p-iconfield:has(.p-inputfield-sm) .p-inputicon {\n    font-size: ").concat(dt("form.field.sm.font.size"), ";\n    width: ").concat(dt("form.field.sm.font.size"), ";\n    height: ").concat(dt("form.field.sm.font.size"), ";\n    margin-top: calc(-1 * (").concat(dt("form.field.sm.font.size"), " / 2));\n}\n\n.p-iconfield:has(.p-inputfield-lg) .p-inputicon {\n    font-size: ").concat(dt("form.field.lg.font.size"), ";\n    width: ").concat(dt("form.field.lg.font.size"), ";\n    height: ").concat(dt("form.field.lg.font.size"), ";\n    margin-top: calc(-1 * (").concat(dt("form.field.lg.font.size"), " / 2));\n}\n");
+};
 var classes$l = {
   root: "p-iconfield"
 };
 var IconFieldStyle = BaseStyle.extend({
   name: "iconfield",
-  style: style$9,
+  theme: theme$h,
   classes: classes$l
 });
 var script$1$m = {
@@ -7682,9 +7538,13 @@ function render$l(_ctx, _cache, $props, $setup, $data, $options) {
   }, _ctx.ptmi("root")), [renderSlot(_ctx.$slots, "default")], 16);
 }
 script$n.render = render$l;
+var theme$g = function theme11(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-inputtext {\n    font-family: inherit;\n    font-feature-settings: inherit;\n    font-size: 1rem;\n    color: ".concat(dt("inputtext.color"), ";\n    background: ").concat(dt("inputtext.background"), ";\n    padding-block: ").concat(dt("inputtext.padding.y"), ";\n    padding-inline: ").concat(dt("inputtext.padding.x"), ";\n    border: 1px solid ").concat(dt("inputtext.border.color"), ";\n    transition: background ").concat(dt("inputtext.transition.duration"), ", color ").concat(dt("inputtext.transition.duration"), ", border-color ").concat(dt("inputtext.transition.duration"), ", outline-color ").concat(dt("inputtext.transition.duration"), ", box-shadow ").concat(dt("inputtext.transition.duration"), ";\n    appearance: none;\n    border-radius: ").concat(dt("inputtext.border.radius"), ";\n    outline-color: transparent;\n    box-shadow: ").concat(dt("inputtext.shadow"), ";\n}\n\n.p-inputtext:enabled:hover {\n    border-color: ").concat(dt("inputtext.hover.border.color"), ";\n}\n\n.p-inputtext:enabled:focus {\n    border-color: ").concat(dt("inputtext.focus.border.color"), ";\n    box-shadow: ").concat(dt("inputtext.focus.ring.shadow"), ";\n    outline: ").concat(dt("inputtext.focus.ring.width"), " ").concat(dt("inputtext.focus.ring.style"), " ").concat(dt("inputtext.focus.ring.color"), ";\n    outline-offset: ").concat(dt("inputtext.focus.ring.offset"), ";\n}\n\n.p-inputtext.p-invalid {\n    border-color: ").concat(dt("inputtext.invalid.border.color"), ";\n}\n\n.p-inputtext.p-variant-filled {\n    background: ").concat(dt("inputtext.filled.background"), ";\n}\n\n.p-inputtext.p-variant-filled:enabled:hover {\n    background: ").concat(dt("inputtext.filled.hover.background"), ";\n}\n\n.p-inputtext.p-variant-filled:enabled:focus {\n    background: ").concat(dt("inputtext.filled.focus.background"), ";\n}\n\n.p-inputtext:disabled {\n    opacity: 1;\n    background: ").concat(dt("inputtext.disabled.background"), ";\n    color: ").concat(dt("inputtext.disabled.color"), ";\n}\n\n.p-inputtext::placeholder {\n    color: ").concat(dt("inputtext.placeholder.color"), ";\n}\n\n.p-inputtext.p-invalid::placeholder {\n    color: ").concat(dt("inputtext.invalid.placeholder.color"), ";\n}\n\n.p-inputtext-sm {\n    font-size: ").concat(dt("inputtext.sm.font.size"), ";\n    padding-block: ").concat(dt("inputtext.sm.padding.y"), ";\n    padding-inline: ").concat(dt("inputtext.sm.padding.x"), ";\n}\n\n.p-inputtext-lg {\n    font-size: ").concat(dt("inputtext.lg.font.size"), ";\n    padding-block: ").concat(dt("inputtext.lg.padding.y"), ";\n    padding-inline: ").concat(dt("inputtext.lg.padding.x"), ";\n}\n\n.p-inputtext-fluid {\n    width: 100%;\n}\n");
+};
 var classes$j = {
-  root: function root7(_ref) {
-    var instance = _ref.instance, props = _ref.props;
+  root: function root8(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props;
     return ["p-inputtext p-component", {
       "p-filled": instance.$filled,
       "p-inputtext-sm p-inputfield-sm": props.size === "small",
@@ -7697,7 +7557,7 @@ var classes$j = {
 };
 var InputTextStyle = BaseStyle.extend({
   name: "inputtext",
-  style: style$a,
+  theme: theme$g,
   classes: classes$j
 });
 var script$1$k = {
@@ -7711,31 +7571,6 @@ var script$1$k = {
     };
   }
 };
-function _typeof$c(o) {
-  "@babel/helpers - typeof";
-  return _typeof$c = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$c(o);
-}
-function _defineProperty$c(e, r, t) {
-  return (r = _toPropertyKey$c(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$c(t) {
-  var i = _toPrimitive$c(t, "string");
-  return "symbol" == _typeof$c(i) ? i : i + "";
-}
-function _toPrimitive$c(t, r) {
-  if ("object" != _typeof$c(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$c(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$m = {
   name: "InputText",
   "extends": script$1$k,
@@ -7753,35 +7588,30 @@ var script$m = {
           disabled: this.disabled
         }
       }), this.formField);
-    },
-    dataP: function dataP5() {
-      return cn(_defineProperty$c({
-        invalid: this.$invalid,
-        fluid: this.$fluid,
-        filled: this.$variant === "filled"
-      }, this.size, this.size));
     }
   }
 };
-var _hoisted_1$e = ["value", "name", "disabled", "aria-invalid", "data-p"];
+var _hoisted_1$e = ["value", "disabled", "aria-invalid"];
 function render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("input", mergeProps({
     type: "text",
     "class": _ctx.cx("root"),
     value: _ctx.d_value,
-    name: _ctx.name,
     disabled: _ctx.disabled,
     "aria-invalid": _ctx.$invalid || void 0,
-    "data-p": $options.dataP,
     onInput: _cache[0] || (_cache[0] = function() {
       return $options.onInput && $options.onInput.apply($options, arguments);
     })
   }, $options.attrs), null, 16, _hoisted_1$e);
 }
 script$m.render = render$k;
+var theme$f = function theme12(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-tree {\n    background: ".concat(dt("tree.background"), ";\n    color: ").concat(dt("tree.color"), ";\n    padding: ").concat(dt("tree.padding"), ";\n}\n\n.p-tree-root-children,\n.p-tree-node-children {\n    display: flex;\n    list-style-type: none;\n    flex-direction: column;\n    margin: 0;\n    gap: ").concat(dt("tree.gap"), ";\n}\n\n.p-tree-root-children {\n    padding: 0;\n    padding-block-start: ").concat(dt("tree.gap"), ";\n}\n\n.p-tree-node-children {\n    padding: 0;\n    padding-block-start: ").concat(dt("tree.gap"), ";\n    padding-inline-start: ").concat(dt("tree.indent"), ";\n}\n\n.p-tree-node {\n    padding: 0;\n    outline: 0 none;\n}\n\n.p-tree-node-content {\n    border-radius: ").concat(dt("tree.node.border.radius"), ";\n    padding: ").concat(dt("tree.node.padding"), ";\n    display: flex;\n    align-items: center;\n    outline-color: transparent;\n    color: ").concat(dt("tree.node.color"), ";\n    gap: ").concat(dt("tree.node.gap"), ";\n    transition: background ").concat(dt("tree.transition.duration"), ", color ").concat(dt("tree.transition.duration"), ", outline-color ").concat(dt("tree.transition.duration"), ", box-shadow ").concat(dt("tree.transition.duration"), ";\n}\n\n.p-tree-node:focus-visible > .p-tree-node-content {\n    box-shadow: ").concat(dt("tree.node.focus.ring.shadow"), ";\n    outline: ").concat(dt("tree.node.focus.ring.width"), " ").concat(dt("tree.node.focus.ring.style"), " ").concat(dt("tree.node.focus.ring.color"), ";\n    outline-offset: ").concat(dt("tree.node.focus.ring.offset"), ";\n}\n\n.p-tree-node-content.p-tree-node-selectable:not(.p-tree-node-selected):hover {\n    background: ").concat(dt("tree.node.hover.background"), ";\n    color: ").concat(dt("tree.node.hover.color"), ";\n}\n\n.p-tree-node-content.p-tree-node-selectable:not(.p-tree-node-selected):hover .p-tree-node-icon {\n    color: ").concat(dt("tree.node.icon.hover.color"), ";\n}\n\n.p-tree-node-content.p-tree-node-selected {\n    background: ").concat(dt("tree.node.selected.background"), ";\n    color: ").concat(dt("tree.node.selected.color"), ";\n}\n\n.p-tree-node-content.p-tree-node-selected .p-tree-node-toggle-button {\n    color: inherit;\n}\n\n.p-tree-node-toggle-button {\n    cursor: pointer;\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n    position: relative;\n    flex-shrink: 0;\n    width: ").concat(dt("tree.node.toggle.button.size"), ";\n    height: ").concat(dt("tree.node.toggle.button.size"), ";\n    color: ").concat(dt("tree.node.toggle.button.color"), ";\n    border: 0 none;\n    background: transparent;\n    border-radius: ").concat(dt("tree.node.toggle.button.border.radius"), ";\n    transition: background ").concat(dt("tree.transition.duration"), ", color ").concat(dt("tree.transition.duration"), ", border-color ").concat(dt("tree.transition.duration"), ", outline-color ").concat(dt("tree.transition.duration"), ", box-shadow ").concat(dt("tree.transition.duration"), ";\n    outline-color: transparent;\n    padding: 0;\n}\n\n.p-tree-node-toggle-button:enabled:hover {\n    background: ").concat(dt("tree.node.toggle.button.hover.background"), ";\n    color: ").concat(dt("tree.node.toggle.button.hover.color"), ";\n}\n\n.p-tree-node-content.p-tree-node-selected .p-tree-node-toggle-button:hover {\n    background: ").concat(dt("tree.node.toggle.button.selected.hover.background"), ";\n    color: ").concat(dt("tree.node.toggle.button.selected.hover.color"), ";\n}\n\n.p-tree-root {\n    overflow: auto;\n}\n\n.p-tree-node-selectable {\n    cursor: pointer;\n    user-select: none;\n}\n\n.p-tree-node-leaf > .p-tree-node-content .p-tree-node-toggle-button {\n    visibility: hidden;\n}\n\n.p-tree-node-icon {\n    color: ").concat(dt("tree.node.icon.color"), ";\n    transition: color ").concat(dt("tree.transition.duration"), ";\n}\n\n.p-tree-node-content.p-tree-node-selected .p-tree-node-icon {\n    color: ").concat(dt("tree.node.icon.selected.color"), ";\n}\n\n.p-tree-filter {\n    margin: ").concat(dt("tree.filter.margin"), ";\n}\n\n.p-tree-filter-input {\n    width: 100%;\n}\n\n.p-tree-loading {\n    position: relative;\n    height: 100%;\n}\n\n.p-tree-loading-icon {\n    font-size: ").concat(dt("tree.loading.icon.size"), ";\n    width: ").concat(dt("tree.loading.icon.size"), ";\n    height: ").concat(dt("tree.loading.icon.size"), ";\n}\n\n.p-tree .p-tree-mask {\n    position: absolute;\n    z-index: 1;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.p-tree-flex-scrollable {\n    display: flex;\n    flex: 1;\n    height: 100%;\n    flex-direction: column;\n}\n\n.p-tree-flex-scrollable .p-tree-root {\n    flex: 1;\n}\n");
+};
 var classes$i = {
-  root: function root8(_ref) {
-    var props = _ref.props;
+  root: function root9(_ref2) {
+    var props = _ref2.props;
     return ["p-tree p-component", {
       "p-tree-selectable": props.selectionMode != null,
       "p-tree-loading": props.loading,
@@ -7795,14 +7625,14 @@ var classes$i = {
   wrapper: "p-tree-root",
   //TODO: discuss
   rootChildren: "p-tree-root-children",
-  node: function node(_ref2) {
-    var instance = _ref2.instance;
+  node: function node(_ref3) {
+    var instance = _ref3.instance;
     return ["p-tree-node", {
       "p-tree-node-leaf": instance.leaf
     }];
   },
-  nodeContent: function nodeContent(_ref3) {
-    var instance = _ref3.instance;
+  nodeContent: function nodeContent(_ref4) {
+    var instance = _ref4.instance;
     return ["p-tree-node-content", instance.node.styleClass, {
       "p-tree-node-selectable": instance.selectable,
       "p-tree-node-selected": instance.checkboxMode && instance.$parentInstance.highlightOnSelect ? instance.checked : instance.selected
@@ -7817,12 +7647,16 @@ var classes$i = {
 };
 var TreeStyle = BaseStyle.extend({
   name: "tree",
-  style: style$b,
+  theme: theme$f,
   classes: classes$i
 });
+var theme$e = function theme13(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-checkbox {\n    position: relative;\n    display: inline-flex;\n    user-select: none;\n    vertical-align: bottom;\n    width: ".concat(dt("checkbox.width"), ";\n    height: ").concat(dt("checkbox.height"), ";\n}\n\n.p-checkbox-input {\n    cursor: pointer;\n    appearance: none;\n    position: absolute;\n    inset-block-start: 0;\n    inset-inline-start: 0;\n    width: 100%;\n    height: 100%;\n    padding: 0;\n    margin: 0;\n    opacity: 0;\n    z-index: 1;\n    outline: 0 none;\n    border: 1px solid transparent;\n    border-radius: ").concat(dt("checkbox.border.radius"), ";\n}\n\n.p-checkbox-box {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    border-radius: ").concat(dt("checkbox.border.radius"), ";\n    border: 1px solid ").concat(dt("checkbox.border.color"), ";\n    background: ").concat(dt("checkbox.background"), ";\n    width: ").concat(dt("checkbox.width"), ";\n    height: ").concat(dt("checkbox.height"), ";\n    transition: background ").concat(dt("checkbox.transition.duration"), ", color ").concat(dt("checkbox.transition.duration"), ", border-color ").concat(dt("checkbox.transition.duration"), ", box-shadow ").concat(dt("checkbox.transition.duration"), ", outline-color ").concat(dt("checkbox.transition.duration"), ";\n    outline-color: transparent;\n    box-shadow: ").concat(dt("checkbox.shadow"), ";\n}\n\n.p-checkbox-icon {\n    transition-duration: ").concat(dt("checkbox.transition.duration"), ";\n    color: ").concat(dt("checkbox.icon.color"), ";\n    font-size: ").concat(dt("checkbox.icon.size"), ";\n    width: ").concat(dt("checkbox.icon.size"), ";\n    height: ").concat(dt("checkbox.icon.size"), ";\n}\n\n.p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {\n    border-color: ").concat(dt("checkbox.hover.border.color"), ";\n}\n\n.p-checkbox-checked .p-checkbox-box {\n    border-color: ").concat(dt("checkbox.checked.border.color"), ";\n    background: ").concat(dt("checkbox.checked.background"), ";\n}\n\n.p-checkbox-checked .p-checkbox-icon {\n    color: ").concat(dt("checkbox.icon.checked.color"), ";\n}\n\n.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {\n    background: ").concat(dt("checkbox.checked.hover.background"), ";\n    border-color: ").concat(dt("checkbox.checked.hover.border.color"), ";\n}\n\n.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-icon {\n    color: ").concat(dt("checkbox.icon.checked.hover.color"), ";\n}\n\n.p-checkbox:not(.p-disabled):has(.p-checkbox-input:focus-visible) .p-checkbox-box {\n    border-color: ").concat(dt("checkbox.focus.border.color"), ";\n    box-shadow: ").concat(dt("checkbox.focus.ring.shadow"), ";\n    outline: ").concat(dt("checkbox.focus.ring.width"), " ").concat(dt("checkbox.focus.ring.style"), " ").concat(dt("checkbox.focus.ring.color"), ";\n    outline-offset: ").concat(dt("checkbox.focus.ring.offset"), ";\n}\n\n.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:focus-visible) .p-checkbox-box {\n    border-color: ").concat(dt("checkbox.checked.focus.border.color"), ";\n}\n\n.p-checkbox.p-invalid > .p-checkbox-box {\n    border-color: ").concat(dt("checkbox.invalid.border.color"), ";\n}\n\n.p-checkbox.p-variant-filled .p-checkbox-box {\n    background: ").concat(dt("checkbox.filled.background"), ";\n}\n\n.p-checkbox-checked.p-variant-filled .p-checkbox-box {\n    background: ").concat(dt("checkbox.checked.background"), ";\n}\n\n.p-checkbox-checked.p-variant-filled:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {\n    background: ").concat(dt("checkbox.checked.hover.background"), ";\n}\n\n.p-checkbox.p-disabled {\n    opacity: 1;\n}\n\n.p-checkbox.p-disabled .p-checkbox-box {\n    background: ").concat(dt("checkbox.disabled.background"), ";\n    border-color: ").concat(dt("checkbox.checked.disabled.border.color"), ";\n}\n\n.p-checkbox.p-disabled .p-checkbox-box .p-checkbox-icon {\n    color: ").concat(dt("checkbox.icon.disabled.color"), ";\n}\n\n.p-checkbox-sm,\n.p-checkbox-sm .p-checkbox-box {\n    width: ").concat(dt("checkbox.sm.width"), ";\n    height: ").concat(dt("checkbox.sm.height"), ";\n}\n\n.p-checkbox-sm .p-checkbox-icon {\n    font-size: ").concat(dt("checkbox.icon.sm.size"), ";\n    width: ").concat(dt("checkbox.icon.sm.size"), ";\n    height: ").concat(dt("checkbox.icon.sm.size"), ";\n}\n\n.p-checkbox-lg,\n.p-checkbox-lg .p-checkbox-box {\n    width: ").concat(dt("checkbox.lg.width"), ";\n    height: ").concat(dt("checkbox.lg.height"), ";\n}\n\n.p-checkbox-lg .p-checkbox-icon {\n    font-size: ").concat(dt("checkbox.icon.lg.size"), ";\n    width: ").concat(dt("checkbox.icon.lg.size"), ";\n    height: ").concat(dt("checkbox.icon.lg.size"), ";\n}\n");
+};
 var classes$h = {
-  root: function root9(_ref) {
-    var instance = _ref.instance, props = _ref.props;
+  root: function root10(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props;
     return ["p-checkbox p-component", {
       "p-checkbox-checked": instance.checked,
       "p-disabled": props.disabled,
@@ -7838,7 +7672,7 @@ var classes$h = {
 };
 var CheckboxStyle = BaseStyle.extend({
   name: "checkbox",
-  style: style$c,
+  theme: theme$e,
   classes: classes$h
 });
 var script$1$j = {
@@ -7900,31 +7734,6 @@ var script$1$j = {
     };
   }
 };
-function _typeof$b(o) {
-  "@babel/helpers - typeof";
-  return _typeof$b = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$b(o);
-}
-function _defineProperty$b(e, r, t) {
-  return (r = _toPropertyKey$b(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$b(t) {
-  var i = _toPrimitive$b(t, "string");
-  return "symbol" == _typeof$b(i) ? i : i + "";
-}
-function _toPrimitive$b(t, r) {
-  if ("object" != _typeof$b(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$b(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 function _toConsumableArray$5(r) {
   return _arrayWithoutHoles$5(r) || _iterableToArray$5(r) || _unsupportedIterableToArray$5(r) || _nonIterableSpread$5();
 }
@@ -8017,14 +7826,6 @@ var script$l = {
     checked: function checked() {
       var value2 = this.$pcCheckboxGroup ? this.$pcCheckboxGroup.d_value : this.d_value;
       return this.d_indeterminate ? false : this.binary ? value2 === this.trueValue : contains$2(this.value, value2);
-    },
-    dataP: function dataP6() {
-      return cn(_defineProperty$b({
-        invalid: this.$invalid,
-        checked: this.checked,
-        disabled: this.disabled,
-        filled: this.$variant === "filled"
-      }, this.size, this.size));
     }
   },
   components: {
@@ -8032,9 +7833,8 @@ var script$l = {
     MinusIcon: script$G
   }
 };
-var _hoisted_1$d = ["data-p-checked", "data-p-indeterminate", "data-p-disabled", "data-p"];
-var _hoisted_2$b = ["id", "value", "name", "checked", "tabindex", "disabled", "readonly", "required", "aria-labelledby", "aria-label", "aria-invalid", "aria-checked"];
-var _hoisted_3$8 = ["data-p"];
+var _hoisted_1$d = ["data-p-checked", "data-p-indeterminate", "data-p-disabled"];
+var _hoisted_2$6 = ["id", "value", "name", "checked", "tabindex", "disabled", "readonly", "required", "aria-labelledby", "aria-label", "aria-invalid", "aria-checked"];
 function render$j(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_CheckIcon = resolveComponent("CheckIcon");
   var _component_MinusIcon = resolveComponent("MinusIcon");
@@ -8043,8 +7843,7 @@ function render$j(_ctx, _cache, $props, $setup, $data, $options) {
   }, $options.getPTOptions("root"), {
     "data-p-checked": $options.checked,
     "data-p-indeterminate": $data.d_indeterminate || void 0,
-    "data-p-disabled": _ctx.disabled,
-    "data-p": $options.dataP
+    "data-p-disabled": _ctx.disabled
   }), [createBaseVNode("input", mergeProps({
     id: _ctx.inputId,
     type: "checkbox",
@@ -8070,28 +7869,21 @@ function render$j(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[2] || (_cache[2] = function() {
       return $options.onChange && $options.onChange.apply($options, arguments);
     })
-  }, $options.getPTOptions("input")), null, 16, _hoisted_2$b), createBaseVNode("div", mergeProps({
+  }, $options.getPTOptions("input")), null, 16, _hoisted_2$6), createBaseVNode("div", mergeProps({
     "class": _ctx.cx("box")
-  }, $options.getPTOptions("box"), {
-    "data-p": $options.dataP
-  }), [renderSlot(_ctx.$slots, "icon", {
+  }, $options.getPTOptions("box")), [renderSlot(_ctx.$slots, "icon", {
     checked: $options.checked,
     indeterminate: $data.d_indeterminate,
-    "class": normalizeClass(_ctx.cx("icon")),
-    dataP: $options.dataP
+    "class": normalizeClass(_ctx.cx("icon"))
   }, function() {
     return [$options.checked ? (openBlock(), createBlock(_component_CheckIcon, mergeProps({
       key: 0,
       "class": _ctx.cx("icon")
-    }, $options.getPTOptions("icon"), {
-      "data-p": $options.dataP
-    }), null, 16, ["class", "data-p"])) : $data.d_indeterminate ? (openBlock(), createBlock(_component_MinusIcon, mergeProps({
+    }, $options.getPTOptions("icon")), null, 16, ["class"])) : $data.d_indeterminate ? (openBlock(), createBlock(_component_MinusIcon, mergeProps({
       key: 1,
       "class": _ctx.cx("icon")
-    }, $options.getPTOptions("icon"), {
-      "data-p": $options.dataP
-    }), null, 16, ["class", "data-p"])) : createCommentVNode("", true)];
-  })], 16, _hoisted_3$8)], 16, _hoisted_1$d);
+    }, $options.getPTOptions("icon")), null, 16, ["class"])) : createCommentVNode("", true)];
+  })], 16)], 16, _hoisted_1$d);
 }
 script$l.render = render$j;
 var script$2$3 = {
@@ -8250,7 +8042,7 @@ function _toPrimitive$2$1(t, r) {
   if ("object" != _typeof$2$1(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
+    var i = e.call(t, r || "default");
     if ("object" != _typeof$2$1(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
@@ -8645,9 +8437,8 @@ var script$1$i = {
     ripple: Ripple
   }
 };
-var _hoisted_1$1$3 = ["aria-label", "aria-selected", "aria-expanded", "aria-setsize", "aria-posinset", "aria-level", "aria-checked", "tabindex"];
-var _hoisted_2$1$1 = ["data-p-selected", "data-p-selectable"];
-var _hoisted_3$1$1 = ["data-p-leaf"];
+var _hoisted_1$1$2 = ["aria-label", "aria-selected", "aria-expanded", "aria-setsize", "aria-posinset", "aria-level", "aria-checked", "tabindex"];
+var _hoisted_2$5 = ["data-p-selected", "data-p-selectable"];
 function render$1$3(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SpinnerIcon = resolveComponent("SpinnerIcon");
   var _component_Checkbox = resolveComponent("Checkbox");
@@ -8668,7 +8459,7 @@ function render$1$3(_ctx, _cache, $props, $setup, $data, $options) {
     onKeydown: _cache[4] || (_cache[4] = function() {
       return $options.onKeyDown && $options.onKeyDown.apply($options, arguments);
     })
-  }, $options.getPTOptions("node")), [createBaseVNode("div", mergeProps({
+  }, $props.level === 1 ? $options.getPTOptions("node") : _ctx.ptm("nodeChildren")), [createBaseVNode("div", mergeProps({
     "class": _ctx.cx("nodeContent"),
     onClick: _cache[2] || (_cache[2] = function() {
       return $options.onClick && $options.onClick.apply($options, arguments);
@@ -8686,8 +8477,7 @@ function render$1$3(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function() {
       return $options.toggle && $options.toggle.apply($options, arguments);
     }),
-    tabindex: "-1",
-    "data-p-leaf": $options.leaf
+    tabindex: "-1"
   }, $options.getPTOptions("nodeToggleButton")), [$props.node.loading && $props.loadingMode === "icon" ? (openBlock(), createElementBlock(Fragment, {
     key: 0
   }, [$props.templates["nodetoggleicon"] || $props.templates["nodetogglericon"] ? (openBlock(), createBlock(resolveDynamicComponent($props.templates["nodetoggleicon"] || $props.templates["nodetogglericon"]), {
@@ -8712,7 +8502,7 @@ function render$1$3(_ctx, _cache, $props, $setup, $data, $options) {
   }, $options.getPTOptions("nodeToggleIcon")), null, 16, ["class"])) : (openBlock(), createBlock(resolveDynamicComponent($props.node.collapsedIcon ? "span" : "ChevronRightIcon"), mergeProps({
     key: 2,
     "class": _ctx.cx("nodeToggleIcon")
-  }, $options.getPTOptions("nodeToggleIcon")), null, 16, ["class"]))], 64))], 16, _hoisted_3$1$1)), [[_directive_ripple]]), $options.checkboxMode ? (openBlock(), createBlock(_component_Checkbox, {
+  }, $options.getPTOptions("nodeToggleIcon")), null, 16, ["class"]))], 64))], 16)), [[_directive_ripple]]), $options.checkboxMode ? (openBlock(), createBlock(_component_Checkbox, {
     key: 0,
     defaultValue: $options.checked,
     binary: true,
@@ -8751,7 +8541,7 @@ function render$1$3(_ctx, _cache, $props, $setup, $data, $options) {
     selected: $options.checkboxMode ? $options.checked : $options.selected
   }, null, 8, ["node", "expanded", "selected"])) : (openBlock(), createElementBlock(Fragment, {
     key: 1
-  }, [createTextVNode(toDisplayString($options.label($props.node)), 1)], 64))], 16)], 16, _hoisted_2$1$1), $options.hasChildren && $options.expanded ? (openBlock(), createElementBlock("ul", mergeProps({
+  }, [createTextVNode(toDisplayString($options.label($props.node)), 1)], 64))], 16)], 16, _hoisted_2$5), $options.hasChildren && $options.expanded ? (openBlock(), createElementBlock("ul", mergeProps({
     key: 0,
     "class": _ctx.cx("nodeChildren"),
     role: "group"
@@ -8771,16 +8561,16 @@ function render$1$3(_ctx, _cache, $props, $setup, $data, $options) {
       unstyled: _ctx.unstyled,
       pt: _ctx.pt
     }, null, 8, ["node", "templates", "level", "loadingMode", "expandedKeys", "onNodeToggle", "onNodeClick", "selectionMode", "selectionKeys", "onCheckboxChange", "unstyled", "pt"]);
-  }), 128))], 16)) : createCommentVNode("", true)], 16, _hoisted_1$1$3);
+  }), 128))], 16)) : createCommentVNode("", true)], 16, _hoisted_1$1$2);
 }
 script$1$i.render = render$1$3;
-function _typeof$1$3(o) {
+function _typeof$1$1(o) {
   "@babel/helpers - typeof";
-  return _typeof$1$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$1$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$1$3(o);
+  }, _typeof$1$1(o);
 }
 function _createForOfIteratorHelper$2(r, e) {
   var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
@@ -8851,26 +8641,26 @@ function _objectSpread$1$1(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$1$1(Object(t), true).forEach(function(r2) {
-      _defineProperty$1$3(e, r2, t[r2]);
+      _defineProperty$1$1(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$1$1(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$1$3(e, r, t) {
-  return (r = _toPropertyKey$1$3(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$1$1(e, r, t) {
+  return (r = _toPropertyKey$1$1(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$1$3(t) {
-  var i = _toPrimitive$1$3(t, "string");
-  return "symbol" == _typeof$1$3(i) ? i : i + "";
+function _toPropertyKey$1$1(t) {
+  var i = _toPrimitive$1$1(t, "string");
+  return "symbol" == _typeof$1$1(i) ? i : i + "";
 }
-function _toPrimitive$1$3(t, r) {
-  if ("object" != _typeof$1$3(t) || !t) return t;
+function _toPrimitive$1$1(t, r) {
+  if ("object" != _typeof$1$1(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$1$3(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$1$1(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -8982,7 +8772,7 @@ var script$k = {
     isNodeLeaf: function isNodeLeaf(node3) {
       return node3.leaf === false ? false : !(node3.children && node3.children.length);
     },
-    onFilterKeyup: function onFilterKeyup(event) {
+    onFilterKeydown: function onFilterKeydown(event) {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         event.preventDefault();
       }
@@ -9075,17 +8865,6 @@ var script$k = {
     valueToRender: function valueToRender() {
       if (this.filterValue && this.filterValue.trim().length > 0) return this.filteredValue;
       else return this.value;
-    },
-    containerDataP: function containerDataP() {
-      return cn({
-        loading: this.loading,
-        scrollable: this.scrollHeight === "flex"
-      });
-    },
-    wrapperDataP: function wrapperDataP() {
-      return cn({
-        scrollable: this.scrollHeight === "flex"
-      });
     }
   },
   components: {
@@ -9097,13 +8876,13 @@ var script$k = {
     SpinnerIcon: script$z
   }
 };
-function _typeof$a(o) {
+function _typeof$6(o) {
   "@babel/helpers - typeof";
-  return _typeof$a = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$6 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$a(o);
+  }, _typeof$6(o);
 }
 function ownKeys$5(e, r) {
   var t = Object.keys(e);
@@ -9119,33 +8898,31 @@ function _objectSpread$5(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$5(Object(t), true).forEach(function(r2) {
-      _defineProperty$a(e, r2, t[r2]);
+      _defineProperty$6(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$5(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$a(e, r, t) {
-  return (r = _toPropertyKey$a(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$6(e, r, t) {
+  return (r = _toPropertyKey$6(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$a(t) {
-  var i = _toPrimitive$a(t, "string");
-  return "symbol" == _typeof$a(i) ? i : i + "";
+function _toPropertyKey$6(t) {
+  var i = _toPrimitive$6(t, "string");
+  return "symbol" == _typeof$6(i) ? i : i + "";
 }
-function _toPrimitive$a(t, r) {
-  if ("object" != _typeof$a(t) || !t) return t;
+function _toPrimitive$6(t, r) {
+  if ("object" != _typeof$6(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$a(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$6(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
-var _hoisted_1$c = ["data-p"];
-var _hoisted_2$a = ["data-p"];
-var _hoisted_3$7 = ["aria-labelledby", "aria-label"];
+var _hoisted_1$c = ["aria-labelledby", "aria-label"];
 function render$i(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SpinnerIcon = resolveComponent("SpinnerIcon");
   var _component_InputText = resolveComponent("InputText");
@@ -9154,8 +8931,7 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_IconField = resolveComponent("IconField");
   var _component_TreeNode = resolveComponent("TreeNode");
   return openBlock(), createElementBlock("div", mergeProps({
-    "class": _ctx.cx("root"),
-    "data-p": $options.containerDataP
+    "class": _ctx.cx("root")
   }, _ctx.ptmi("root")), [_ctx.loading && _ctx.loadingMode === "mask" ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
     "class": _ctx.cx("mask")
@@ -9186,9 +8962,9 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
         "class": normalizeClass(_ctx.cx("pcFilterInput")),
         placeholder: _ctx.filterPlaceholder,
         unstyled: _ctx.unstyled,
-        onKeyup: $options.onFilterKeyup,
+        onKeydown: $options.onFilterKeydown,
         pt: _ctx.ptm("pcFilterInput")
-      }, null, 8, ["modelValue", "class", "placeholder", "unstyled", "onKeyup", "pt"]), createVNode(_component_InputIcon, {
+      }, null, 8, ["modelValue", "class", "placeholder", "unstyled", "onKeydown", "pt"]), createVNode(_component_InputIcon, {
         unstyled: _ctx.unstyled,
         pt: _ctx.ptm("pcFilterIconContainer")
       }, {
@@ -9209,8 +8985,7 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
     "class": _ctx.cx("wrapper"),
     style: {
       maxHeight: _ctx.scrollHeight
-    },
-    "data-p": $options.wrapperDataP
+    }
   }, _ctx.ptm("wrapper")), [renderSlot(_ctx.$slots, "header", {
     value: _ctx.value,
     expandedKeys: _ctx.expandedKeys,
@@ -9237,16 +9012,20 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
       unstyled: _ctx.unstyled,
       pt: _ctx.pt
     }, null, 8, ["node", "templates", "level", "index", "expandedKeys", "onNodeToggle", "onNodeClick", "selectionMode", "selectionKeys", "onCheckboxChange", "loadingMode", "unstyled", "pt"]);
-  }), 128))], 16, _hoisted_3$7), renderSlot(_ctx.$slots, "footer", {
+  }), 128))], 16, _hoisted_1$c), renderSlot(_ctx.$slots, "footer", {
     value: _ctx.value,
     expandedKeys: _ctx.expandedKeys,
     selectionKeys: _ctx.selectionKeys
-  })], 16, _hoisted_2$a)], 16, _hoisted_1$c);
+  })], 16)], 16);
 }
 script$k.render = render$i;
+var theme$d = function theme14(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-message {\n    border-radius: ".concat(dt("message.border.radius"), ";\n    outline-width: ").concat(dt("message.border.width"), ";\n    outline-style: solid;\n}\n\n.p-message-content {\n    display: flex;\n    align-items: center;\n    padding: ").concat(dt("message.content.padding"), ";\n    gap: ").concat(dt("message.content.gap"), ";\n    height: 100%;\n}\n\n.p-message-icon {\n    flex-shrink: 0;\n}\n\n.p-message-close-button {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-shrink: 0;\n    margin-inline-start: auto;\n    overflow: hidden;\n    position: relative;\n    width: ").concat(dt("message.close.button.width"), ";\n    height: ").concat(dt("message.close.button.height"), ";\n    border-radius: ").concat(dt("message.close.button.border.radius"), ";\n    background: transparent;\n    transition: background ").concat(dt("message.transition.duration"), ", color ").concat(dt("message.transition.duration"), ", outline-color ").concat(dt("message.transition.duration"), ", box-shadow ").concat(dt("message.transition.duration"), ", opacity 0.3s;\n    outline-color: transparent;\n    color: inherit;\n    padding: 0;\n    border: none;\n    cursor: pointer;\n    user-select: none;\n}\n\n.p-message-close-icon {\n    font-size: ").concat(dt("message.close.icon.size"), ";\n    width: ").concat(dt("message.close.icon.size"), ";\n    height: ").concat(dt("message.close.icon.size"), ";\n}\n\n.p-message-close-button:focus-visible {\n    outline-width: ").concat(dt("message.close.button.focus.ring.width"), ";\n    outline-style: ").concat(dt("message.close.button.focus.ring.style"), ";\n    outline-offset: ").concat(dt("message.close.button.focus.ring.offset"), ";\n}\n\n.p-message-info {\n    background: ").concat(dt("message.info.background"), ";\n    outline-color: ").concat(dt("message.info.border.color"), ";\n    color: ").concat(dt("message.info.color"), ";\n    box-shadow: ").concat(dt("message.info.shadow"), ";\n}\n\n.p-message-info .p-message-close-button:focus-visible {\n    outline-color: ").concat(dt("message.info.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("message.info.close.button.focus.ring.shadow"), ";\n}\n\n.p-message-info .p-message-close-button:hover {\n    background: ").concat(dt("message.info.close.button.hover.background"), ";\n}\n\n.p-message-info.p-message-outlined {\n    color: ").concat(dt("message.info.outlined.color"), ";\n    outline-color: ").concat(dt("message.info.outlined.border.color"), ";\n}\n\n.p-message-info.p-message-simple {\n    color: ").concat(dt("message.info.simple.color"), ";\n}\n\n.p-message-success {\n    background: ").concat(dt("message.success.background"), ";\n    outline-color: ").concat(dt("message.success.border.color"), ";\n    color: ").concat(dt("message.success.color"), ";\n    box-shadow: ").concat(dt("message.success.shadow"), ";\n}\n\n.p-message-success .p-message-close-button:focus-visible {\n    outline-color: ").concat(dt("message.success.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("message.success.close.button.focus.ring.shadow"), ";\n}\n\n.p-message-success .p-message-close-button:hover {\n    background: ").concat(dt("message.success.close.button.hover.background"), ";\n}\n\n.p-message-success.p-message-outlined {\n    color: ").concat(dt("message.success.outlined.color"), ";\n    outline-color: ").concat(dt("message.success.outlined.border.color"), ";\n}\n\n.p-message-success.p-message-simple {\n    color: ").concat(dt("message.success.simple.color"), ";\n}\n\n.p-message-warn {\n    background: ").concat(dt("message.warn.background"), ";\n    outline-color: ").concat(dt("message.warn.border.color"), ";\n    color: ").concat(dt("message.warn.color"), ";\n    box-shadow: ").concat(dt("message.warn.shadow"), ";\n}\n\n.p-message-warn .p-message-close-button:focus-visible {\n    outline-color: ").concat(dt("message.warn.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("message.warn.close.button.focus.ring.shadow"), ";\n}\n\n.p-message-warn .p-message-close-button:hover {\n    background: ").concat(dt("message.warn.close.button.hover.background"), ";\n}\n\n.p-message-warn.p-message-outlined {\n    color: ").concat(dt("message.warn.outlined.color"), ";\n    outline-color: ").concat(dt("message.warn.outlined.border.color"), ";\n}\n\n.p-message-warn.p-message-simple {\n    color: ").concat(dt("message.warn.simple.color"), ";\n}\n\n.p-message-error {\n    background: ").concat(dt("message.error.background"), ";\n    outline-color: ").concat(dt("message.error.border.color"), ";\n    color: ").concat(dt("message.error.color"), ";\n    box-shadow: ").concat(dt("message.error.shadow"), ";\n}\n\n.p-message-error .p-message-close-button:focus-visible {\n    outline-color: ").concat(dt("message.error.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("message.error.close.button.focus.ring.shadow"), ";\n}\n\n.p-message-error .p-message-close-button:hover {\n    background: ").concat(dt("message.error.close.button.hover.background"), ";\n}\n\n.p-message-error.p-message-outlined {\n    color: ").concat(dt("message.error.outlined.color"), ";\n    outline-color: ").concat(dt("message.error.outlined.border.color"), ";\n}\n\n.p-message-error.p-message-simple {\n    color: ").concat(dt("message.error.simple.color"), ";\n}\n\n.p-message-secondary {\n    background: ").concat(dt("message.secondary.background"), ";\n    outline-color: ").concat(dt("message.secondary.border.color"), ";\n    color: ").concat(dt("message.secondary.color"), ";\n    box-shadow: ").concat(dt("message.secondary.shadow"), ";\n}\n\n.p-message-secondary .p-message-close-button:focus-visible {\n    outline-color: ").concat(dt("message.secondary.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("message.secondary.close.button.focus.ring.shadow"), ";\n}\n\n.p-message-secondary .p-message-close-button:hover {\n    background: ").concat(dt("message.secondary.close.button.hover.background"), ";\n}\n\n.p-message-secondary.p-message-outlined {\n    color: ").concat(dt("message.secondary.outlined.color"), ";\n    outline-color: ").concat(dt("message.secondary.outlined.border.color"), ";\n}\n\n.p-message-secondary.p-message-simple {\n    color: ").concat(dt("message.secondary.simple.color"), ";\n}\n\n.p-message-contrast {\n    background: ").concat(dt("message.contrast.background"), ";\n    outline-color: ").concat(dt("message.contrast.border.color"), ";\n    color: ").concat(dt("message.contrast.color"), ";\n    box-shadow: ").concat(dt("message.contrast.shadow"), ";\n}\n\n.p-message-contrast .p-message-close-button:focus-visible {\n    outline-color: ").concat(dt("message.contrast.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("message.contrast.close.button.focus.ring.shadow"), ";\n}\n\n.p-message-contrast .p-message-close-button:hover {\n    background: ").concat(dt("message.contrast.close.button.hover.background"), ";\n}\n\n.p-message-contrast.p-message-outlined {\n    color: ").concat(dt("message.contrast.outlined.color"), ";\n    outline-color: ").concat(dt("message.contrast.outlined.border.color"), ";\n}\n\n.p-message-contrast.p-message-simple {\n    color: ").concat(dt("message.contrast.simple.color"), ";\n}\n\n.p-message-text {\n    font-size: ").concat(dt("message.text.font.size"), ";\n    font-weight: ").concat(dt("message.text.font.weight"), ";\n}\n\n.p-message-icon {\n    font-size: ").concat(dt("message.icon.size"), ";\n    width: ").concat(dt("message.icon.size"), ";\n    height: ").concat(dt("message.icon.size"), ";\n}\n\n.p-message-enter-from {\n    opacity: 0;\n}\n\n.p-message-enter-active {\n    transition: opacity 0.3s;\n}\n\n.p-message.p-message-leave-from {\n    max-height: 1000px;\n}\n\n.p-message.p-message-leave-to {\n    max-height: 0;\n    opacity: 0;\n    margin: 0;\n}\n\n.p-message-leave-active {\n    overflow: hidden;\n    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s, margin 0.3s;\n}\n\n.p-message-leave-active .p-message-close-button {\n    opacity: 0;\n}\n\n.p-message-sm .p-message-content {\n    padding: ").concat(dt("message.content.sm.padding"), ";\n}\n\n.p-message-sm .p-message-text {\n    font-size: ").concat(dt("message.text.sm.font.size"), ";\n}\n\n.p-message-sm .p-message-icon {\n    font-size: ").concat(dt("message.icon.sm.size"), ";\n    width: ").concat(dt("message.icon.sm.size"), ";\n    height: ").concat(dt("message.icon.sm.size"), ";\n}\n\n.p-message-sm .p-message-close-icon {\n    font-size: ").concat(dt("message.close.icon.sm.size"), ";\n    width: ").concat(dt("message.close.icon.sm.size"), ";\n    height: ").concat(dt("message.close.icon.sm.size"), ";\n}\n\n.p-message-lg .p-message-content {\n    padding: ").concat(dt("message.content.lg.padding"), ";\n}\n\n.p-message-lg .p-message-text {\n    font-size: ").concat(dt("message.text.lg.font.size"), ";\n}\n\n.p-message-lg .p-message-icon {\n    font-size: ").concat(dt("message.icon.lg.size"), ";\n    width: ").concat(dt("message.icon.lg.size"), ";\n    height: ").concat(dt("message.icon.lg.size"), ";\n}\n\n.p-message-lg .p-message-close-icon {\n    font-size: ").concat(dt("message.close.icon.lg.size"), ";\n    width: ").concat(dt("message.close.icon.lg.size"), ";\n    height: ").concat(dt("message.close.icon.lg.size"), ";\n}\n\n.p-message-outlined {\n    background: transparent;\n    outline-width: ").concat(dt("message.outlined.border.width"), ";\n}\n\n.p-message-simple {\n    background: transparent;\n    outline-color: transparent;\n    box-shadow: none;\n}\n\n.p-message-simple .p-message-content {\n    padding: ").concat(dt("message.simple.content.padding"), ";\n}\n\n.p-message-outlined .p-message-close-button:hover,\n.p-message-simple .p-message-close-button:hover {\n    background: transparent;\n}\n");
+};
 var classes$g = {
-  root: function root10(_ref) {
-    var props = _ref.props;
+  root: function root11(_ref2) {
+    var props = _ref2.props;
     return ["p-message p-component p-message-" + props.severity, {
       "p-message-outlined": props.variant === "outlined",
       "p-message-simple": props.variant === "simple",
@@ -9262,7 +9041,7 @@ var classes$g = {
 };
 var MessageStyle = BaseStyle.extend({
   name: "message",
-  style: style$d,
+  theme: theme$d,
   classes: classes$g
 });
 var script$1$h = {
@@ -9310,31 +9089,6 @@ var script$1$h = {
     };
   }
 };
-function _typeof$1$2(o) {
-  "@babel/helpers - typeof";
-  return _typeof$1$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$1$2(o);
-}
-function _defineProperty$1$2(e, r, t) {
-  return (r = _toPropertyKey$1$2(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$1$2(t) {
-  var i = _toPrimitive$1$2(t, "string");
-  return "symbol" == _typeof$1$2(i) ? i : i + "";
-}
-function _toPrimitive$1$2(t, r) {
-  if ("object" != _typeof$1$2(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$1$2(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$j = {
   name: "Message",
   "extends": script$1$h,
@@ -9364,12 +9118,6 @@ var script$j = {
   computed: {
     closeAriaLabel: function closeAriaLabel2() {
       return this.$primevue.config.locale.aria ? this.$primevue.config.locale.aria.close : void 0;
-    },
-    dataP: function dataP7() {
-      return cn(_defineProperty$1$2(_defineProperty$1$2({
-        outlined: this.variant === "outlined",
-        simple: this.variant === "simple"
-      }, this.severity, this.severity), this.size, this.size));
     }
   },
   directives: {
@@ -9379,13 +9127,13 @@ var script$j = {
     TimesIcon: script$C
   }
 };
-function _typeof$9(o) {
+function _typeof$5(o) {
   "@babel/helpers - typeof";
-  return _typeof$9 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$5 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$9(o);
+  }, _typeof$5(o);
 }
 function ownKeys$4(e, r) {
   var t = Object.keys(e);
@@ -9401,35 +9149,31 @@ function _objectSpread$4(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$4(Object(t), true).forEach(function(r2) {
-      _defineProperty$9(e, r2, t[r2]);
+      _defineProperty$5(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$4(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$9(e, r, t) {
-  return (r = _toPropertyKey$9(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$5(e, r, t) {
+  return (r = _toPropertyKey$5(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$9(t) {
-  var i = _toPrimitive$9(t, "string");
-  return "symbol" == _typeof$9(i) ? i : i + "";
+function _toPropertyKey$5(t) {
+  var i = _toPrimitive$5(t, "string");
+  return "symbol" == _typeof$5(i) ? i : i + "";
 }
-function _toPrimitive$9(t, r) {
-  if ("object" != _typeof$9(t) || !t) return t;
+function _toPrimitive$5(t, r) {
+  if ("object" != _typeof$5(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$9(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$5(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
-var _hoisted_1$b = ["data-p"];
-var _hoisted_2$9 = ["data-p"];
-var _hoisted_3$6 = ["data-p"];
-var _hoisted_4$5 = ["aria-label", "data-p"];
-var _hoisted_5$4 = ["data-p"];
+var _hoisted_1$b = ["aria-label"];
 function render$h(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_TimesIcon = resolveComponent("TimesIcon");
   var _directive_ripple = resolveDirective("ripple");
@@ -9442,46 +9186,39 @@ function render$h(_ctx, _cache, $props, $setup, $data, $options) {
         "class": _ctx.cx("root"),
         role: "alert",
         "aria-live": "assertive",
-        "aria-atomic": "true",
-        "data-p": $options.dataP
+        "aria-atomic": "true"
       }, _ctx.ptm("root")), [_ctx.$slots.container ? renderSlot(_ctx.$slots, "container", {
         key: 0,
         closeCallback: $options.close
       }) : (openBlock(), createElementBlock("div", mergeProps({
         key: 1,
-        "class": _ctx.cx("content"),
-        "data-p": $options.dataP
+        "class": _ctx.cx("content")
       }, _ctx.ptm("content")), [renderSlot(_ctx.$slots, "icon", {
         "class": normalizeClass(_ctx.cx("icon"))
       }, function() {
         return [(openBlock(), createBlock(resolveDynamicComponent(_ctx.icon ? "span" : null), mergeProps({
-          "class": [_ctx.cx("icon"), _ctx.icon],
-          "data-p": $options.dataP
-        }, _ctx.ptm("icon")), null, 16, ["class", "data-p"]))];
+          "class": [_ctx.cx("icon"), _ctx.icon]
+        }, _ctx.ptm("icon")), null, 16, ["class"]))];
       }), _ctx.$slots["default"] ? (openBlock(), createElementBlock("div", mergeProps({
         key: 0,
-        "class": _ctx.cx("text"),
-        "data-p": $options.dataP
-      }, _ctx.ptm("text")), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_3$6)) : createCommentVNode("", true), _ctx.closable ? withDirectives((openBlock(), createElementBlock("button", mergeProps({
+        "class": _ctx.cx("text")
+      }, _ctx.ptm("text")), [renderSlot(_ctx.$slots, "default")], 16)) : createCommentVNode("", true), _ctx.closable ? withDirectives((openBlock(), createElementBlock("button", mergeProps({
         key: 1,
         "class": _ctx.cx("closeButton"),
         "aria-label": $options.closeAriaLabel,
         type: "button",
         onClick: _cache[0] || (_cache[0] = function($event) {
           return $options.close($event);
-        }),
-        "data-p": $options.dataP
+        })
       }, _objectSpread$4(_objectSpread$4({}, _ctx.closeButtonProps), _ctx.ptm("closeButton"))), [renderSlot(_ctx.$slots, "closeicon", {}, function() {
         return [_ctx.closeIcon ? (openBlock(), createElementBlock("i", mergeProps({
           key: 0,
-          "class": [_ctx.cx("closeIcon"), _ctx.closeIcon],
-          "data-p": $options.dataP
-        }, _ctx.ptm("closeIcon")), null, 16, _hoisted_5$4)) : (openBlock(), createBlock(_component_TimesIcon, mergeProps({
+          "class": [_ctx.cx("closeIcon"), _ctx.closeIcon]
+        }, _ctx.ptm("closeIcon")), null, 16)) : (openBlock(), createBlock(_component_TimesIcon, mergeProps({
           key: 1,
-          "class": [_ctx.cx("closeIcon"), _ctx.closeIcon],
-          "data-p": $options.dataP
-        }, _ctx.ptm("closeIcon")), null, 16, ["class", "data-p"]))];
-      })], 16, _hoisted_4$5)), [[_directive_ripple]]) : createCommentVNode("", true)], 16, _hoisted_2$9))], 16, _hoisted_1$b), [[vShow, $data.visible]])];
+          "class": [_ctx.cx("closeIcon"), _ctx.closeIcon]
+        }, _ctx.ptm("closeIcon")), null, 16, ["class"]))];
+      })], 16, _hoisted_1$b)), [[_directive_ripple]]) : createCommentVNode("", true)], 16))], 16), [[vShow, $data.visible]])];
     }),
     _: 3
   }, 16);
@@ -9497,9 +9234,9 @@ var util;
     throw new Error();
   }
   util2.assertNever = assertNever;
-  util2.arrayToEnum = (items) => {
+  util2.arrayToEnum = (items2) => {
     const obj = {};
-    for (const item2 of items) {
+    for (const item2 of items2) {
       obj[item2] = item2;
     }
     return obj;
@@ -12397,18 +12134,18 @@ class ZodTuple extends ZodType {
       });
       status.dirty();
     }
-    const items = [...ctx.data].map((item2, itemIndex) => {
+    const items2 = [...ctx.data].map((item2, itemIndex) => {
       const schema = this._def.items[itemIndex] || this._def.rest;
       if (!schema)
         return null;
       return schema._parse(new ParseInputLazyPath(ctx, item2, ctx.path, itemIndex));
     }).filter((x2) => !!x2);
     if (ctx.common.async) {
-      return Promise.all(items).then((results) => {
+      return Promise.all(items2).then((results) => {
         return ParseStatus.mergeArray(status, results);
       });
     } else {
-      return ParseStatus.mergeArray(status, items);
+      return ParseStatus.mergeArray(status, items2);
     }
   }
   get items() {
@@ -12722,10 +12459,10 @@ class ZodFunction extends ZodType {
   returnType() {
     return this._def.returns;
   }
-  args(...items) {
+  args(...items2) {
     return new ZodFunction({
       ...this._def,
-      args: ZodTuple.create(items).rest(ZodUnknown.create())
+      args: ZodTuple.create(items2).rest(ZodUnknown.create())
     });
   }
   returns(returnType) {
@@ -13607,13 +13344,13 @@ var defaultGutterFn = function(i, gutterDirection) {
   return gut;
 };
 var defaultElementStyleFn = function(dim, size, gutSize) {
-  var style2 = {};
+  var style = {};
   if (!isString(size)) {
-    style2[dim] = calc + "(" + size + "% - " + gutSize + "px)";
+    style[dim] = calc + "(" + size + "% - " + gutSize + "px)";
   } else {
-    style2[dim] = size;
+    style[dim] = size;
   }
-  return style2;
+  return style;
 };
 var defaultGutterStyleFn = function(dim, gutSize) {
   var obj;
@@ -13684,15 +13421,15 @@ var Split = function(idsOption, options3) {
     clientSize = "clientHeight";
   }
   function setElementSize(el, size, gutSize, i) {
-    var style2 = elementStyle(dimension, size, gutSize, i);
-    Object.keys(style2).forEach(function(prop) {
-      el.style[prop] = style2[prop];
+    var style = elementStyle(dimension, size, gutSize, i);
+    Object.keys(style).forEach(function(prop) {
+      el.style[prop] = style[prop];
     });
   }
   function setGutterSize(gutterElement, gutSize, i) {
-    var style2 = gutterStyle2(dimension, gutSize, i);
-    Object.keys(style2).forEach(function(prop) {
-      gutterElement.style[prop] = style2[prop];
+    var style = gutterStyle2(dimension, gutSize, i);
+    Object.keys(style).forEach(function(prop) {
+      gutterElement.style[prop] = style[prop];
     });
   }
   function getSizes() {
@@ -13995,12 +13732,12 @@ var Split = function(idsOption, options3) {
         );
       }
       if (preserveStyles !== true) {
-        var style2 = elementStyle(
+        var style = elementStyle(
           dimension,
           pair.a.size,
           pair[aGutterSize]
         );
-        Object.keys(style2).forEach(function(prop) {
+        Object.keys(style).forEach(function(prop) {
           elements[pair.a].element.style[prop] = "";
           elements[pair.b].element.style[prop] = "";
         });
@@ -14018,11 +13755,15 @@ var Split = function(idsOption, options3) {
     pairs
   };
 };
-var css = "\n.p-virtualscroller {\n    position: relative;\n    overflow: auto;\n    contain: strict;\n    transform: translateZ(0);\n    will-change: scroll-position;\n    outline: 0 none;\n}\n\n.p-virtualscroller-content {\n    position: absolute;\n    top: 0;\n    left: 0;\n    min-height: 100%;\n    min-width: 100%;\n    will-change: transform;\n}\n\n.p-virtualscroller-spacer {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 1px;\n    width: 1px;\n    transform-origin: 0 0;\n    pointer-events: none;\n}\n\n.p-virtualscroller-loader {\n    position: sticky;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n.p-virtualscroller-loader-mask {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.p-virtualscroller-horizontal > .p-virtualscroller-content {\n    display: flex;\n}\n\n.p-virtualscroller-inline .p-virtualscroller-content {\n    position: static;\n}\n\n.p-virtualscroller .p-virtualscroller-loading {\n    transform: none !important;\n    min-height: 0;\n    position: sticky;\n    inset-block-start: 0;\n    inset-inline-start: 0;\n}\n";
+var theme$c = function theme15(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-virtualscroller-loader {\n    background: ".concat(dt("virtualscroller.loader.mask.background"), ";\n    color: ").concat(dt("virtualscroller.loader.mask.color"), ";\n}\n\n.p-virtualscroller-loading-icon {\n    font-size: ").concat(dt("virtualscroller.loader.icon.size"), ";\n    width: ").concat(dt("virtualscroller.loader.icon.size"), ";\n    height: ").concat(dt("virtualscroller.loader.icon.size"), ";\n}\n");
+};
+var css = "\n.p-virtualscroller {\n    position: relative;\n    overflow: auto;\n    contain: strict;\n    transform: translateZ(0);\n    will-change: scroll-position;\n    outline: 0 none;\n}\n\n.p-virtualscroller-content {\n    position: absolute;\n    top: 0;\n    left: 0;\n    min-height: 100%;\n    min-width: 100%;\n    will-change: transform;\n}\n\n.p-virtualscroller-spacer {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 1px;\n    width: 1px;\n    transform-origin: 0 0;\n    pointer-events: none;\n}\n\n.p-virtualscroller-loader {\n    position: sticky;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n.p-virtualscroller-loader-mask {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.p-virtualscroller-horizontal > .p-virtualscroller-content {\n    display: flex;\n}\n\n.p-virtualscroller-inline .p-virtualscroller-content {\n    position: static;\n}\n";
 var VirtualScrollerStyle = BaseStyle.extend({
   name: "virtualscroller",
   css,
-  style: style$e
+  theme: theme$c
 });
 var script$1$g = {
   name: "BaseVirtualScroller",
@@ -14123,13 +13864,13 @@ var script$1$g = {
     });
   }
 };
-function _typeof$8(o) {
+function _typeof$4(o) {
   "@babel/helpers - typeof";
-  return _typeof$8 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$4 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$8(o);
+  }, _typeof$4(o);
 }
 function ownKeys$3(e, r) {
   var t = Object.keys(e);
@@ -14145,26 +13886,26 @@ function _objectSpread$3(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$3(Object(t), true).forEach(function(r2) {
-      _defineProperty$8(e, r2, t[r2]);
+      _defineProperty$4(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$3(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$8(e, r, t) {
-  return (r = _toPropertyKey$8(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$4(e, r, t) {
+  return (r = _toPropertyKey$4(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$8(t) {
-  var i = _toPrimitive$8(t, "string");
-  return "symbol" == _typeof$8(i) ? i : i + "";
+function _toPropertyKey$4(t) {
+  var i = _toPrimitive$4(t, "string");
+  return "symbol" == _typeof$4(i) ? i : i + "";
 }
-function _toPrimitive$8(t, r) {
-  if ("object" != _typeof$8(t) || !t) return t;
+function _toPrimitive$4(t, r) {
+  if ("object" != _typeof$4(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$8(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$4(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -14216,7 +13957,6 @@ var script$i = {
   isRangeChanged: false,
   lazyLoadState: {},
   resizeListener: null,
-  resizeObserver: null,
   initialized: false,
   watch: {
     numToleratedItems: function numToleratedItems(newValue) {
@@ -14227,14 +13967,11 @@ var script$i = {
         this.d_loading = newValue;
       }
     },
-    items: {
-      handler: function handler(newValue, oldValue) {
-        if (!oldValue || oldValue.length !== (newValue || []).length) {
-          this.init();
-          this.calculateAutoSize();
-        }
-      },
-      deep: true
+    items: function items(newValue, oldValue) {
+      if (!oldValue || oldValue.length !== (newValue || []).length) {
+        this.init();
+        this.calculateAutoSize();
+      }
     },
     itemSize: function itemSize() {
       this.init();
@@ -14539,11 +14276,11 @@ var script$i = {
     },
     getContentPosition: function getContentPosition() {
       if (this.content) {
-        var style2 = getComputedStyle(this.content);
-        var left = parseFloat(style2.paddingLeft) + Math.max(parseFloat(style2.left) || 0, 0);
-        var right = parseFloat(style2.paddingRight) + Math.max(parseFloat(style2.right) || 0, 0);
-        var top = parseFloat(style2.paddingTop) + Math.max(parseFloat(style2.top) || 0, 0);
-        var bottom = parseFloat(style2.paddingBottom) + Math.max(parseFloat(style2.bottom) || 0, 0);
+        var style = getComputedStyle(this.content);
+        var left = parseFloat(style.paddingLeft) + Math.max(parseFloat(style.left) || 0, 0);
+        var right = parseFloat(style.paddingRight) + Math.max(parseFloat(style.right) || 0, 0);
+        var top = parseFloat(style.paddingTop) + Math.max(parseFloat(style.top) || 0, 0);
+        var bottom = parseFloat(style.paddingBottom) + Math.max(parseFloat(style.bottom) || 0, 0);
         return {
           left,
           right,
@@ -14583,20 +14320,20 @@ var script$i = {
     },
     setSpacerSize: function setSpacerSize() {
       var _this6 = this;
-      var items = this.items;
-      if (items) {
+      var items2 = this.items;
+      if (items2) {
         var both = this.isBoth();
         var horizontal2 = this.isHorizontal();
         var contentPos = this.getContentPosition();
         var setProp = function setProp2(_name, _value, _size) {
           var _cpos = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : 0;
-          return _this6.spacerStyle = _objectSpread$3(_objectSpread$3({}, _this6.spacerStyle), _defineProperty$8({}, "".concat(_name), (_value || []).length * _size + _cpos + "px"));
+          return _this6.spacerStyle = _objectSpread$3(_objectSpread$3({}, _this6.spacerStyle), _defineProperty$4({}, "".concat(_name), (_value || []).length * _size + _cpos + "px"));
         };
         if (both) {
-          setProp("height", items, this.itemSize[0], contentPos.y);
-          setProp("width", this.columns || items[1], this.itemSize[1], contentPos.x);
+          setProp("height", items2, this.itemSize[0], contentPos.y);
+          setProp("width", this.columns || items2[1], this.itemSize[1], contentPos.x);
         } else {
-          horizontal2 ? setProp("width", this.columns || items, this.itemSize, contentPos.x) : setProp("height", items, this.itemSize, contentPos.y);
+          horizontal2 ? setProp("width", this.columns || items2, this.itemSize, contentPos.x) : setProp("height", items2, this.itemSize, contentPos.y);
         }
       }
     },
@@ -14639,12 +14376,9 @@ var script$i = {
       var calculateTriggerIndex = function calculateTriggerIndex2(_currentIndex, _first, _last, _num, _numT, _isScrollDownOrRight) {
         return _currentIndex <= _numT ? _numT : _isScrollDownOrRight ? _last - _num - _numT : _first + _numT - 1;
       };
-      var calculateFirst = function calculateFirst2(_currentIndex, _triggerIndex, _first, _last, _num, _numT, _isScrollDownOrRight, _isCols) {
+      var calculateFirst = function calculateFirst2(_currentIndex, _triggerIndex, _first, _last, _num, _numT, _isScrollDownOrRight) {
         if (_currentIndex <= _numT) return 0;
-        var firstValue = Math.max(0, _isScrollDownOrRight ? _currentIndex < _triggerIndex ? _first : _currentIndex - _numT : _currentIndex > _triggerIndex ? _first : _currentIndex - 2 * _numT);
-        var maxFirst = _this8.getLast(firstValue, _isCols);
-        if (firstValue > maxFirst) return maxFirst - _num;
-        else return firstValue;
+        else return Math.max(0, _isScrollDownOrRight ? _currentIndex < _triggerIndex ? _first : _currentIndex - _numT : _currentIndex > _triggerIndex ? _first : _currentIndex - 2 * _numT);
       };
       var calculateLast = function calculateLast2(_currentIndex, _first, _last, _num, _numT, _isCols) {
         var lastValue = _first + _num + 2 * _numT;
@@ -14676,7 +14410,7 @@ var script$i = {
           };
           newFirst = {
             rows: calculateFirst(currentIndex.rows, triggerIndex.rows, this.first.rows, this.last.rows, this.numItemsInViewport.rows, this.d_numToleratedItems[0], isScrollDown),
-            cols: calculateFirst(currentIndex.cols, triggerIndex.cols, this.first.cols, this.last.cols, this.numItemsInViewport.cols, this.d_numToleratedItems[1], isScrollRight, true)
+            cols: calculateFirst(currentIndex.cols, triggerIndex.cols, this.first.cols, this.last.cols, this.numItemsInViewport.cols, this.d_numToleratedItems[1], isScrollRight)
           };
           newLast = {
             rows: calculateLast(currentIndex.rows, newFirst.rows, this.last.rows, this.numItemsInViewport.rows, this.d_numToleratedItems[0]),
@@ -14757,39 +14491,34 @@ var script$i = {
       }
     },
     onResize: function onResize2() {
-      var _this0 = this;
+      var _this10 = this;
       if (this.resizeTimeout) {
         clearTimeout(this.resizeTimeout);
       }
       this.resizeTimeout = setTimeout(function() {
-        if (isVisible(_this0.element)) {
-          var both = _this0.isBoth();
-          var vertical = _this0.isVertical();
-          var horizontal2 = _this0.isHorizontal();
-          var _ref3 = [getWidth(_this0.element), getHeight(_this0.element)], width = _ref3[0], height = _ref3[1];
-          var isDiffWidth = width !== _this0.defaultWidth, isDiffHeight = height !== _this0.defaultHeight;
+        if (isVisible(_this10.element)) {
+          var both = _this10.isBoth();
+          var vertical = _this10.isVertical();
+          var horizontal2 = _this10.isHorizontal();
+          var _ref3 = [getWidth(_this10.element), getHeight(_this10.element)], width = _ref3[0], height = _ref3[1];
+          var isDiffWidth = width !== _this10.defaultWidth, isDiffHeight = height !== _this10.defaultHeight;
           var reinit = both ? isDiffWidth || isDiffHeight : horizontal2 ? isDiffWidth : vertical ? isDiffHeight : false;
           if (reinit) {
-            _this0.d_numToleratedItems = _this0.numToleratedItems;
-            _this0.defaultWidth = width;
-            _this0.defaultHeight = height;
-            _this0.defaultContentWidth = getWidth(_this0.content);
-            _this0.defaultContentHeight = getHeight(_this0.content);
-            _this0.init();
+            _this10.d_numToleratedItems = _this10.numToleratedItems;
+            _this10.defaultWidth = width;
+            _this10.defaultHeight = height;
+            _this10.defaultContentWidth = getWidth(_this10.content);
+            _this10.defaultContentHeight = getHeight(_this10.content);
+            _this10.init();
           }
         }
       }, this.resizeDelay);
     },
     bindResizeListener: function bindResizeListener2() {
-      var _this1 = this;
       if (!this.resizeListener) {
         this.resizeListener = this.onResize.bind(this);
         window.addEventListener("resize", this.resizeListener);
         window.addEventListener("orientationchange", this.resizeListener);
-        this.resizeObserver = new ResizeObserver(function() {
-          _this1.onResize();
-        });
-        this.resizeObserver.observe(this.element);
       }
     },
     unbindResizeListener: function unbindResizeListener2() {
@@ -14797,10 +14526,6 @@ var script$i = {
         window.removeEventListener("resize", this.resizeListener);
         window.removeEventListener("orientationchange", this.resizeListener);
         this.resizeListener = null;
-      }
-      if (this.resizeObserver) {
-        this.resizeObserver.disconnect();
-        this.resizeObserver = null;
       }
     },
     getOptions: function getOptions(renderedIndex) {
@@ -14861,10 +14586,10 @@ var script$i = {
       }];
     },
     loadedItems: function loadedItems() {
-      var _this10 = this;
+      var _this11 = this;
       if (this.items && !this.d_loading) {
         if (this.isBoth()) return this.items.slice(this.appendOnly ? 0 : this.first.rows, this.last.rows).map(function(item2) {
-          return _this10.columns ? item2 : item2.slice(_this10.appendOnly ? 0 : _this10.first.cols, _this10.last.cols);
+          return _this11.columns ? item2 : item2.slice(_this11.appendOnly ? 0 : _this11.first.cols, _this11.last.cols);
         });
         else if (this.isHorizontal() && this.columns) return this.items;
         else return this.items.slice(this.appendOnly ? 0 : this.first, this.last);
@@ -14958,9 +14683,13 @@ function render$g(_ctx, _cache, $props, $setup, $data, $options) {
   })], 64));
 }
 script$i.render = render$g;
+var theme$b = function theme16(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-select {\n    display: inline-flex;\n    cursor: pointer;\n    position: relative;\n    user-select: none;\n    background: ".concat(dt("select.background"), ";\n    border: 1px solid ").concat(dt("select.border.color"), ";\n    transition: background ").concat(dt("select.transition.duration"), ", color ").concat(dt("select.transition.duration"), ", border-color ").concat(dt("select.transition.duration"), ",\n        outline-color ").concat(dt("select.transition.duration"), ", box-shadow ").concat(dt("select.transition.duration"), ";\n    border-radius: ").concat(dt("select.border.radius"), ";\n    outline-color: transparent;\n    box-shadow: ").concat(dt("select.shadow"), ";\n}\n\n.p-select:not(.p-disabled):hover {\n    border-color: ").concat(dt("select.hover.border.color"), ";\n}\n\n.p-select:not(.p-disabled).p-focus {\n    border-color: ").concat(dt("select.focus.border.color"), ";\n    box-shadow: ").concat(dt("select.focus.ring.shadow"), ";\n    outline: ").concat(dt("select.focus.ring.width"), " ").concat(dt("select.focus.ring.style"), " ").concat(dt("select.focus.ring.color"), ";\n    outline-offset: ").concat(dt("select.focus.ring.offset"), ";\n}\n\n.p-select.p-variant-filled {\n    background: ").concat(dt("select.filled.background"), ";\n}\n\n.p-select.p-variant-filled:not(.p-disabled):hover {\n    background: ").concat(dt("select.filled.hover.background"), ";\n}\n\n.p-select.p-variant-filled:not(.p-disabled).p-focus {\n    background: ").concat(dt("select.filled.focus.background"), ";\n}\n\n.p-select.p-invalid {\n    border-color: ").concat(dt("select.invalid.border.color"), ";\n}\n\n.p-select.p-disabled {\n    opacity: 1;\n    background: ").concat(dt("select.disabled.background"), ";\n}\n\n.p-select-clear-icon {\n    position: absolute;\n    top: 50%;\n    margin-top: -0.5rem;\n    color: ").concat(dt("select.clear.icon.color"), ";\n    inset-inline-end: ").concat(dt("select.dropdown.width"), ";\n}\n\n.p-select-dropdown {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-shrink: 0;\n    background: transparent;\n    color: ").concat(dt("select.dropdown.color"), ";\n    width: ").concat(dt("select.dropdown.width"), ";\n    border-start-end-radius: ").concat(dt("select.border.radius"), ";\n    border-end-end-radius: ").concat(dt("select.border.radius"), ";\n}\n\n.p-select-label {\n    display: block;\n    white-space: nowrap;\n    overflow: hidden;\n    flex: 1 1 auto;\n    width: 1%;\n    padding: ").concat(dt("select.padding.y"), " ").concat(dt("select.padding.x"), ";\n    text-overflow: ellipsis;\n    cursor: pointer;\n    color: ").concat(dt("select.color"), ";\n    background: transparent;\n    border: 0 none;\n    outline: 0 none;\n}\n\n.p-select-label.p-placeholder {\n    color: ").concat(dt("select.placeholder.color"), ";\n}\n\n.p-select.p-invalid .p-select-label.p-placeholder {\n    color: ").concat(dt("select.invalid.placeholder.color"), ";\n}\n\n.p-select:has(.p-select-clear-icon) .p-select-label {\n    padding-inline-end: calc(1rem + ").concat(dt("select.padding.x"), ");\n}\n\n.p-select.p-disabled .p-select-label {\n    color: ").concat(dt("select.disabled.color"), ";\n}\n\n.p-select-label-empty {\n    overflow: hidden;\n    opacity: 0;\n}\n\ninput.p-select-label {\n    cursor: default;\n}\n\n.p-select .p-select-overlay {\n    min-width: 100%;\n}\n\n.p-select-overlay {\n    position: absolute;\n    top: 0;\n    left: 0;\n    background: ").concat(dt("select.overlay.background"), ";\n    color: ").concat(dt("select.overlay.color"), ";\n    border: 1px solid ").concat(dt("select.overlay.border.color"), ";\n    border-radius: ").concat(dt("select.overlay.border.radius"), ";\n    box-shadow: ").concat(dt("select.overlay.shadow"), ";\n}\n\n.p-select-header {\n    padding: ").concat(dt("select.list.header.padding"), ";\n}\n\n.p-select-filter {\n    width: 100%;\n}\n\n.p-select-list-container {\n    overflow: auto;\n}\n\n.p-select-option-group {\n    cursor: auto;\n    margin: 0;\n    padding: ").concat(dt("select.option.group.padding"), ";\n    background: ").concat(dt("select.option.group.background"), ";\n    color: ").concat(dt("select.option.group.color"), ";\n    font-weight: ").concat(dt("select.option.group.font.weight"), ";\n}\n\n.p-select-list {\n    margin: 0;\n    padding: 0;\n    list-style-type: none;\n    padding: ").concat(dt("select.list.padding"), ";\n    gap: ").concat(dt("select.list.gap"), ";\n    display: flex;\n    flex-direction: column;\n}\n\n.p-select-option {\n    cursor: pointer;\n    font-weight: normal;\n    white-space: nowrap;\n    position: relative;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    padding: ").concat(dt("select.option.padding"), ";\n    border: 0 none;\n    color: ").concat(dt("select.option.color"), ";\n    background: transparent;\n    transition: background ").concat(dt("select.transition.duration"), ", color ").concat(dt("select.transition.duration"), ", border-color ").concat(dt("select.transition.duration"), ",\n            box-shadow ").concat(dt("select.transition.duration"), ", outline-color ").concat(dt("select.transition.duration"), ";\n    border-radius: ").concat(dt("select.option.border.radius"), ";\n}\n\n.p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {\n    background: ").concat(dt("select.option.focus.background"), ";\n    color: ").concat(dt("select.option.focus.color"), ";\n}\n\n.p-select-option.p-select-option-selected {\n    background: ").concat(dt("select.option.selected.background"), ";\n    color: ").concat(dt("select.option.selected.color"), ";\n}\n\n.p-select-option.p-select-option-selected.p-focus {\n    background: ").concat(dt("select.option.selected.focus.background"), ";\n    color: ").concat(dt("select.option.selected.focus.color"), ";\n}\n\n.p-select-option-check-icon {\n    position: relative;\n    margin-inline-start: ").concat(dt("select.checkmark.gutter.start"), ";\n    margin-inline-end: ").concat(dt("select.checkmark.gutter.end"), ";\n    color: ").concat(dt("select.checkmark.color"), ";\n}\n\n.p-select-empty-message {\n    padding: ").concat(dt("select.empty.message.padding"), ";\n}\n\n.p-select-fluid {\n    display: flex;\n    width: 100%;\n}\n\n.p-select-sm .p-select-label {\n    font-size: ").concat(dt("select.sm.font.size"), ";\n    padding-block: ").concat(dt("select.sm.padding.y"), ";\n    padding-inline: ").concat(dt("select.sm.padding.x"), ";\n}\n\n.p-select-sm .p-select-dropdown .p-icon {\n    font-size: ").concat(dt("select.sm.font.size"), ";\n    width: ").concat(dt("select.sm.font.size"), ";\n    height: ").concat(dt("select.sm.font.size"), ";\n}\n\n.p-select-lg .p-select-label {\n    font-size: ").concat(dt("select.lg.font.size"), ";\n    padding-block: ").concat(dt("select.lg.padding.y"), ";\n    padding-inline: ").concat(dt("select.lg.padding.x"), ";\n}\n\n.p-select-lg .p-select-dropdown .p-icon {\n    font-size: ").concat(dt("select.lg.font.size"), ";\n    width: ").concat(dt("select.lg.font.size"), ";\n    height: ").concat(dt("select.lg.font.size"), ";\n}\n");
+};
 var classes$f = {
-  root: function root11(_ref) {
-    var instance = _ref.instance, props = _ref.props, state = _ref.state;
+  root: function root12(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props, state = _ref2.state;
     return ["p-select p-component p-inputwrapper", {
       "p-disabled": props.disabled,
       "p-invalid": instance.$invalid,
@@ -14974,8 +14703,8 @@ var classes$f = {
       "p-select-lg p-inputfield-lg": props.size === "large"
     }];
   },
-  label: function label2(_ref2) {
-    var instance = _ref2.instance, props = _ref2.props;
+  label: function label2(_ref3) {
+    var instance = _ref3.instance, props = _ref3.props;
     return ["p-select-label", {
       "p-placeholder": !props.editable && instance.label === props.placeholder,
       "p-select-label-empty": !props.editable && !instance.$slots["value"] && (instance.label === "p-emptylabel" || instance.label.length === 0)
@@ -14992,8 +14721,8 @@ var classes$f = {
   list: "p-select-list",
   optionGroup: "p-select-option-group",
   optionGroupLabel: "p-select-option-group-label",
-  option: function option(_ref3) {
-    var instance = _ref3.instance, props = _ref3.props, state = _ref3.state, _option = _ref3.option, focusedOption = _ref3.focusedOption;
+  option: function option(_ref4) {
+    var instance = _ref4.instance, props = _ref4.props, state = _ref4.state, _option = _ref4.option, focusedOption = _ref4.focusedOption;
     return ["p-select-option", {
       "p-select-option-selected": instance.isSelected(_option) && props.highlightOnSelect,
       "p-focus": state.focusedOptionIndex === focusedOption,
@@ -15007,7 +14736,7 @@ var classes$f = {
 };
 var SelectStyle = BaseStyle.extend({
   name: "select",
-  style: style$f,
+  theme: theme$b,
   classes: classes$f
 });
 var script$1$f = {
@@ -15186,13 +14915,13 @@ var script$1$f = {
     };
   }
 };
-function _typeof$7(o) {
+function _typeof$3(o) {
   "@babel/helpers - typeof";
-  return _typeof$7 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$7(o);
+  }, _typeof$3(o);
 }
 function _toConsumableArray$3(r) {
   return _arrayWithoutHoles$3(r) || _iterableToArray$3(r) || _unsupportedIterableToArray$3(r) || _nonIterableSpread$3();
@@ -15232,26 +14961,26 @@ function _objectSpread$2(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$2(Object(t), true).forEach(function(r2) {
-      _defineProperty$7(e, r2, t[r2]);
+      _defineProperty$3(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$2(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$7(e, r, t) {
-  return (r = _toPropertyKey$7(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$3(e, r, t) {
+  return (r = _toPropertyKey$3(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$7(t) {
-  var i = _toPrimitive$7(t, "string");
-  return "symbol" == _typeof$7(i) ? i : i + "";
+function _toPropertyKey$3(t) {
+  var i = _toPrimitive$3(t, "string");
+  return "symbol" == _typeof$3(i) ? i : i + "";
 }
-function _toPrimitive$7(t, r) {
-  if ("object" != _typeof$7(t) || !t) return t;
+function _toPrimitive$3(t, r) {
+  if ("object" != _typeof$3(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$7(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$3(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -15265,7 +14994,6 @@ var script$h = {
   scrollHandler: null,
   resizeListener: null,
   labelClickListener: null,
-  matchMediaOrientationListener: null,
   overlay: null,
   list: null,
   virtualScroller: null,
@@ -15274,15 +15002,18 @@ var script$h = {
   isModelValueChanged: false,
   data: function data11() {
     return {
+      id: this.$attrs.id,
       clicked: false,
       focused: false,
       focusedOptionIndex: -1,
       filterValue: null,
-      overlayVisible: false,
-      queryOrientation: null
+      overlayVisible: false
     };
   },
   watch: {
+    "$attrs.id": function $attrsId3(newValue) {
+      this.id = newValue || UniqueComponentId();
+    },
     modelValue: function modelValue() {
       this.isModelValueChanged = true;
     },
@@ -15291,9 +15022,9 @@ var script$h = {
     }
   },
   mounted: function mounted10() {
+    this.id = this.id || UniqueComponentId();
     this.autoUpdateModel();
     this.bindLabelClickListener();
-    this.bindMatchMediaOrientationListener();
   },
   updated: function updated5() {
     if (this.overlayVisible && this.isModelValueChanged) {
@@ -15305,7 +15036,6 @@ var script$h = {
     this.unbindOutsideClickListener();
     this.unbindResizeListener();
     this.unbindLabelClickListener();
-    this.unbindMatchMediaOrientationListener();
     if (this.scrollHandler) {
       this.scrollHandler.destroy();
       this.scrollHandler = null;
@@ -15390,34 +15120,17 @@ var script$h = {
       this.$emit("focus", event);
     },
     onBlur: function onBlur4(event) {
-      var _this3 = this;
-      setTimeout(function() {
-        var _this3$formField$onBl, _this3$formField;
-        _this3.focused = false;
-        _this3.focusedOptionIndex = -1;
-        _this3.searchValue = "";
-        _this3.$emit("blur", event);
-        (_this3$formField$onBl = (_this3$formField = _this3.formField).onBlur) === null || _this3$formField$onBl === void 0 || _this3$formField$onBl.call(_this3$formField, event);
-      }, 100);
+      var _this$formField$onBlu, _this$formField;
+      this.focused = false;
+      this.focusedOptionIndex = -1;
+      this.searchValue = "";
+      this.$emit("blur", event);
+      (_this$formField$onBlu = (_this$formField = this.formField).onBlur) === null || _this$formField$onBlu === void 0 || _this$formField$onBlu.call(_this$formField, event);
     },
     onKeyDown: function onKeyDown4(event) {
-      if (this.disabled) {
+      if (this.disabled || isAndroid()) {
         event.preventDefault();
         return;
-      }
-      if (isAndroid()) {
-        switch (event.code) {
-          case "Backspace":
-            this.onBackspaceKey(event, this.editable);
-            break;
-          case "Enter":
-          case "NumpadDecimal":
-            this.onEnterKey(event);
-            break;
-          default:
-            event.preventDefault();
-            return;
-        }
       }
       var metaKey = event.metaKey || event.ctrlKey;
       switch (event.code) {
@@ -15687,18 +15400,17 @@ var script$h = {
       }
     },
     onOverlayEnter: function onOverlayEnter(el) {
-      var _this4 = this;
+      var _this3 = this;
       ZIndex.set("overlay", el, this.$primevue.config.zIndex.overlay);
       addStyle(el, {
         position: "absolute",
-        top: "0"
+        top: "0",
+        left: "0"
       });
       this.alignOverlay();
       this.scrollInView();
-      this.$attrSelector && el.setAttribute(this.$attrSelector, "");
       setTimeout(function() {
-        _this4.autoFilterFocus && _this4.filter && focus(_this4.$refs.filterInput.$el);
-        _this4.autoUpdateModel();
+        _this3.autoFilterFocus && _this3.filter && focus(_this3.$refs.filterInput.$el);
       }, 1);
     },
     onOverlayAfterEnter: function onOverlayAfterEnter() {
@@ -15708,15 +15420,13 @@ var script$h = {
       this.$emit("show");
     },
     onOverlayLeave: function onOverlayLeave() {
-      var _this5 = this;
+      var _this4 = this;
       this.unbindOutsideClickListener();
       this.unbindScrollListener();
       this.unbindResizeListener();
       if (this.autoFilterFocus && this.filter && !this.editable) {
         this.$nextTick(function() {
-          if (_this5.$refs.filterInput) {
-            focus(_this5.$refs.filterInput.$el);
-          }
+          focus(_this4.$refs.filterInput.$el);
         });
       }
       this.$emit("hide");
@@ -15729,36 +15439,33 @@ var script$h = {
       if (this.appendTo === "self") {
         relativePosition(this.overlay, this.$el);
       } else {
-        if (this.overlay) {
-          this.overlay.style.minWidth = getOuterWidth(this.$el) + "px";
-          absolutePosition(this.overlay, this.$el);
-        }
+        this.overlay.style.minWidth = getOuterWidth(this.$el) + "px";
+        absolutePosition(this.overlay, this.$el);
       }
     },
     bindOutsideClickListener: function bindOutsideClickListener2() {
-      var _this6 = this;
+      var _this5 = this;
       if (!this.outsideClickListener) {
         this.outsideClickListener = function(event) {
-          var composedPath = event.composedPath();
-          if (_this6.overlayVisible && _this6.overlay && !composedPath.includes(_this6.$el) && !composedPath.includes(_this6.overlay)) {
-            _this6.hide();
+          if (_this5.overlayVisible && _this5.overlay && !_this5.$el.contains(event.target) && !_this5.overlay.contains(event.target)) {
+            _this5.hide();
           }
         };
-        document.addEventListener("click", this.outsideClickListener, true);
+        document.addEventListener("click", this.outsideClickListener);
       }
     },
     unbindOutsideClickListener: function unbindOutsideClickListener2() {
       if (this.outsideClickListener) {
-        document.removeEventListener("click", this.outsideClickListener, true);
+        document.removeEventListener("click", this.outsideClickListener);
         this.outsideClickListener = null;
       }
     },
     bindScrollListener: function bindScrollListener2() {
-      var _this7 = this;
+      var _this6 = this;
       if (!this.scrollHandler) {
         this.scrollHandler = new ConnectedOverlayScrollHandler(this.$refs.container, function() {
-          if (_this7.overlayVisible) {
-            _this7.hide();
+          if (_this6.overlayVisible) {
+            _this6.hide();
           }
         });
       }
@@ -15770,11 +15477,11 @@ var script$h = {
       }
     },
     bindResizeListener: function bindResizeListener3() {
-      var _this8 = this;
+      var _this7 = this;
       if (!this.resizeListener) {
         this.resizeListener = function() {
-          if (_this8.overlayVisible && !isTouchDevice()) {
-            _this8.hide();
+          if (_this7.overlayVisible && !isTouchDevice()) {
+            _this7.hide();
           }
         };
         window.addEventListener("resize", this.resizeListener);
@@ -15787,12 +15494,12 @@ var script$h = {
       }
     },
     bindLabelClickListener: function bindLabelClickListener() {
-      var _this9 = this;
+      var _this8 = this;
       if (!this.editable && !this.labelClickListener) {
         var label5 = document.querySelector('label[for="'.concat(this.labelId, '"]'));
         if (label5 && isVisible(label5)) {
           this.labelClickListener = function() {
-            focus(_this9.$refs.focusInput);
+            focus(_this8.$refs.focusInput);
           };
           label5.addEventListener("click", this.labelClickListener);
         }
@@ -15806,34 +15513,12 @@ var script$h = {
         }
       }
     },
-    bindMatchMediaOrientationListener: function bindMatchMediaOrientationListener() {
-      var _this0 = this;
-      if (!this.matchMediaOrientationListener) {
-        var query = matchMedia("(orientation: portrait)");
-        this.queryOrientation = query;
-        this.matchMediaOrientationListener = function() {
-          _this0.alignOverlay();
-        };
-        this.queryOrientation.addEventListener("change", this.matchMediaOrientationListener);
-      }
-    },
-    unbindMatchMediaOrientationListener: function unbindMatchMediaOrientationListener() {
-      if (this.matchMediaOrientationListener) {
-        this.queryOrientation.removeEventListener("change", this.matchMediaOrientationListener);
-        this.queryOrientation = null;
-        this.matchMediaOrientationListener = null;
-      }
-    },
     hasFocusableElements: function hasFocusableElements() {
       return getFocusableElements(this.overlay, ':not([data-p-hidden-focusable="true"])').length > 0;
     },
-    isOptionExactMatched: function isOptionExactMatched(option3) {
+    isOptionMatched: function isOptionMatched(option3) {
       var _this$getOptionLabel;
-      return this.isValidOption(option3) && typeof this.getOptionLabel(option3) === "string" && ((_this$getOptionLabel = this.getOptionLabel(option3)) === null || _this$getOptionLabel === void 0 ? void 0 : _this$getOptionLabel.toLocaleLowerCase(this.filterLocale)) == this.searchValue.toLocaleLowerCase(this.filterLocale);
-    },
-    isOptionStartsWith: function isOptionStartsWith(option3) {
-      var _this$getOptionLabel2;
-      return this.isValidOption(option3) && typeof this.getOptionLabel(option3) === "string" && ((_this$getOptionLabel2 = this.getOptionLabel(option3)) === null || _this$getOptionLabel2 === void 0 ? void 0 : _this$getOptionLabel2.toLocaleLowerCase(this.filterLocale).startsWith(this.searchValue.toLocaleLowerCase(this.filterLocale)));
+      return this.isValidOption(option3) && typeof this.getOptionLabel(option3) === "string" && ((_this$getOptionLabel = this.getOptionLabel(option3)) === null || _this$getOptionLabel === void 0 ? void 0 : _this$getOptionLabel.toLocaleLowerCase(this.filterLocale).startsWith(this.searchValue.toLocaleLowerCase(this.filterLocale)));
     },
     isValidOption: function isValidOption(option3) {
       return isNotEmpty(option3) && !(this.isOptionDisabled(option3) || this.isOptionGroup(option3));
@@ -15845,9 +15530,9 @@ var script$h = {
       return equals(this.d_value, this.getOptionValue(option3), this.equalityKey);
     },
     findFirstOptionIndex: function findFirstOptionIndex() {
-      var _this1 = this;
+      var _this9 = this;
       return this.visibleOptions.findIndex(function(option3) {
-        return _this1.isValidOption(option3);
+        return _this9.isValidOption(option3);
       });
     },
     findLastOptionIndex: function findLastOptionIndex() {
@@ -15890,12 +15575,16 @@ var script$h = {
       var optionIndex = -1;
       var matched = false;
       if (isNotEmpty(this.searchValue)) {
-        optionIndex = this.visibleOptions.findIndex(function(option3) {
-          return _this14.isOptionExactMatched(option3);
-        });
-        if (optionIndex === -1) {
+        if (this.focusedOptionIndex !== -1) {
+          optionIndex = this.visibleOptions.slice(this.focusedOptionIndex).findIndex(function(option3) {
+            return _this14.isOptionMatched(option3);
+          });
+          optionIndex = optionIndex === -1 ? this.visibleOptions.slice(0, this.focusedOptionIndex).findIndex(function(option3) {
+            return _this14.isOptionMatched(option3);
+          }) : optionIndex + this.focusedOptionIndex;
+        } else {
           optionIndex = this.visibleOptions.findIndex(function(option3) {
-            return _this14.isOptionStartsWith(option3);
+            return _this14.isOptionMatched(option3);
           });
         }
         if (optionIndex !== -1) {
@@ -15930,12 +15619,12 @@ var script$h = {
       var _this15 = this;
       var index2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : -1;
       this.$nextTick(function() {
-        var id3 = index2 !== -1 ? "".concat(_this15.$id, "_").concat(index2) : _this15.focusedOptionId;
+        var id3 = index2 !== -1 ? "".concat(_this15.id, "_").concat(index2) : _this15.focusedOptionId;
         var element = findSingle(_this15.list, 'li[id="'.concat(id3, '"]'));
         if (element) {
           element.scrollIntoView && element.scrollIntoView({
             block: "nearest",
-            inline: "nearest"
+            inline: "start"
           });
         } else if (!_this15.virtualScrollerDisabled) {
           _this15.virtualScroller && _this15.virtualScroller.scrollToIndex(index2 !== -1 ? index2 : _this15.focusedOptionIndex);
@@ -15943,10 +15632,8 @@ var script$h = {
       });
     },
     autoUpdateModel: function autoUpdateModel() {
-      if (this.autoOptionFocus) {
-        this.focusedOptionIndex = this.findFirstFocusedOptionIndex();
-      }
       if (this.selectOnFocus && this.autoOptionFocus && !this.$filled) {
+        this.focusedOptionIndex = this.findFirstFocusedOptionIndex();
         this.onOptionSelect(null, this.visibleOptions[this.focusedOptionIndex], false);
       }
     },
@@ -15997,7 +15684,7 @@ var script$h = {
             var filteredItems = groupChildren.filter(function(item2) {
               return filteredOptions.includes(item2);
             });
-            if (filteredItems.length > 0) filtered.push(_objectSpread$2(_objectSpread$2({}, group), {}, _defineProperty$7({}, typeof _this17.optionGroupChildren === "string" ? _this17.optionGroupChildren : "items", _toConsumableArray$3(filteredItems))));
+            if (filteredItems.length > 0) filtered.push(_objectSpread$2(_objectSpread$2({}, group), {}, _defineProperty$3({}, typeof _this17.optionGroupChildren === "string" ? _this17.optionGroupChildren : "items", _toConsumableArray$3(filteredItems))));
           });
           return this.flatOptions(filtered);
         }
@@ -16045,7 +15732,7 @@ var script$h = {
       return this.$filled ? this.selectionMessageText.replaceAll("{0}", "1") : this.emptySelectionMessageText;
     },
     focusedOptionId: function focusedOptionId() {
-      return this.focusedOptionIndex !== -1 ? "".concat(this.$id, "_").concat(this.focusedOptionIndex) : null;
+      return this.focusedOptionIndex !== -1 ? "".concat(this.id, "_").concat(this.focusedOptionIndex) : null;
     },
     ariaSetSize: function ariaSetSize() {
       var _this18 = this;
@@ -16058,29 +15745,6 @@ var script$h = {
     },
     virtualScrollerDisabled: function virtualScrollerDisabled() {
       return !this.virtualScrollerOptions;
-    },
-    containerDataP: function containerDataP2() {
-      return cn(_defineProperty$7({
-        invalid: this.$invalid,
-        disabled: this.disabled,
-        focus: this.focused,
-        fluid: this.$fluid,
-        filled: this.$variant === "filled"
-      }, this.size, this.size));
-    },
-    labelDataP: function labelDataP() {
-      return cn(_defineProperty$7(_defineProperty$7({
-        placeholder: !this.editable && this.label === this.placeholder,
-        clearable: this.showClear,
-        disabled: this.disabled,
-        editable: this.editable
-      }, this.size, this.size), "empty", !this.editable && !this.$slots["value"] && (this.label === "p-emptylabel" || this.label.length === 0)));
-    },
-    dropdownIconDataP: function dropdownIconDataP() {
-      return cn(_defineProperty$7({}, this.size, this.size));
-    },
-    overlayDataP: function overlayDataP() {
-      return cn(_defineProperty$7({}, "portal-" + this.appendTo, "portal-" + this.appendTo));
     }
   },
   directives: {
@@ -16100,13 +15764,12 @@ var script$h = {
     BlankIcon: script$K
   }
 };
-var _hoisted_1$9 = ["id", "data-p"];
-var _hoisted_2$8 = ["name", "id", "value", "placeholder", "tabindex", "disabled", "aria-label", "aria-labelledby", "aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid", "data-p"];
-var _hoisted_3$5 = ["name", "id", "tabindex", "aria-label", "aria-labelledby", "aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid", "aria-disabled", "data-p"];
-var _hoisted_4$4 = ["data-p"];
-var _hoisted_5$3 = ["id"];
-var _hoisted_6$1 = ["id"];
-var _hoisted_7 = ["id", "aria-label", "aria-selected", "aria-disabled", "aria-setsize", "aria-posinset", "onMousedown", "onMousemove", "data-p-selected", "data-p-focused", "data-p-disabled"];
+var _hoisted_1$9 = ["id"];
+var _hoisted_2$4 = ["id", "value", "placeholder", "tabindex", "disabled", "aria-label", "aria-labelledby", "aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid"];
+var _hoisted_3$4 = ["id", "tabindex", "aria-label", "aria-labelledby", "aria-expanded", "aria-controls", "aria-activedescendant", "aria-disabled"];
+var _hoisted_4$1 = ["id"];
+var _hoisted_5$1 = ["id"];
+var _hoisted_6$1 = ["id", "aria-label", "aria-selected", "aria-disabled", "aria-setsize", "aria-posinset", "onClick", "onMousemove", "data-p-selected", "data-p-focused", "data-p-disabled"];
 function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SpinnerIcon = resolveComponent("SpinnerIcon");
   var _component_InputText = resolveComponent("InputText");
@@ -16120,16 +15783,14 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("div", mergeProps({
     ref: "container",
-    id: _ctx.$id,
+    id: $data.id,
     "class": _ctx.cx("root"),
-    onClick: _cache[12] || (_cache[12] = function() {
+    onClick: _cache[11] || (_cache[11] = function() {
       return $options.onContainerClick && $options.onContainerClick.apply($options, arguments);
-    }),
-    "data-p": $options.containerDataP
+    })
   }, _ctx.ptmi("root")), [_ctx.editable ? (openBlock(), createElementBlock("input", mergeProps({
     key: 0,
     ref: "focusInput",
-    name: _ctx.name,
     id: _ctx.labelId || _ctx.inputId,
     type: "text",
     "class": [_ctx.cx("label"), _ctx.inputClass, _ctx.labelClass],
@@ -16144,7 +15805,7 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-labelledby": _ctx.ariaLabelledby,
     "aria-haspopup": "listbox",
     "aria-expanded": $data.overlayVisible,
-    "aria-controls": _ctx.$id + "_list",
+    "aria-controls": $data.id + "_list",
     "aria-activedescendant": $data.focused ? $options.focusedOptionId : void 0,
     "aria-invalid": _ctx.invalid || void 0,
     onFocus: _cache[0] || (_cache[0] = function() {
@@ -16158,12 +15819,10 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     onInput: _cache[3] || (_cache[3] = function() {
       return $options.onEditableInput && $options.onEditableInput.apply($options, arguments);
-    }),
-    "data-p": $options.labelDataP
-  }, _ctx.ptm("label")), null, 16, _hoisted_2$8)) : (openBlock(), createElementBlock("span", mergeProps({
+    })
+  }, _ctx.ptm("label")), null, 16, _hoisted_2$4)) : (openBlock(), createElementBlock("span", mergeProps({
     key: 1,
     ref: "focusInput",
-    name: _ctx.name,
     id: _ctx.labelId || _ctx.inputId,
     "class": [_ctx.cx("label"), _ctx.inputClass, _ctx.labelClass],
     style: [_ctx.inputStyle, _ctx.labelStyle],
@@ -16173,9 +15832,8 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-labelledby": _ctx.ariaLabelledby,
     "aria-haspopup": "listbox",
     "aria-expanded": $data.overlayVisible,
-    "aria-controls": _ctx.$id + "_list",
+    "aria-controls": $data.id + "_list",
     "aria-activedescendant": $data.focused ? $options.focusedOptionId : void 0,
-    "aria-invalid": _ctx.invalid || void 0,
     "aria-disabled": _ctx.disabled,
     onFocus: _cache[4] || (_cache[4] = function() {
       return $options.onFocus && $options.onFocus.apply($options, arguments);
@@ -16185,15 +15843,14 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     onKeydown: _cache[6] || (_cache[6] = function() {
       return $options.onKeyDown && $options.onKeyDown.apply($options, arguments);
-    }),
-    "data-p": $options.labelDataP
+    })
   }, _ctx.ptm("label")), [renderSlot(_ctx.$slots, "value", {
     value: _ctx.d_value,
     placeholder: _ctx.placeholder
   }, function() {
     var _$options$label;
     return [createTextVNode(toDisplayString($options.label === "p-emptylabel" ? " " : (_$options$label = $options.label) !== null && _$options$label !== void 0 ? _$options$label : "empty"), 1)];
-  })], 16, _hoisted_3$5)), $options.isClearIconVisible ? renderSlot(_ctx.$slots, "clearicon", {
+  })], 16, _hoisted_3$4)), $options.isClearIconVisible ? renderSlot(_ctx.$slots, "clearicon", {
     key: 2,
     "class": normalizeClass(_ctx.cx("clearIcon")),
     clearCallback: $options.onClearClick
@@ -16227,9 +15884,8 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   }, function() {
     return [(openBlock(), createBlock(resolveDynamicComponent(_ctx.dropdownIcon ? "span" : "ChevronDownIcon"), mergeProps({
       "class": [_ctx.cx("dropdownIcon"), _ctx.dropdownIcon],
-      "aria-hidden": "true",
-      "data-p": $options.dropdownIconDataP
-    }, _ctx.ptm("dropdownIcon")), null, 16, ["class", "data-p"]))];
+      "aria-hidden": "true"
+    }, _ctx.ptm("dropdownIcon")), null, 16, ["class"]))];
   })], 16), createVNode(_component_Portal, {
     appendTo: _ctx.appendTo
   }, {
@@ -16247,13 +15903,12 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
             ref: $options.overlayRef,
             "class": [_ctx.cx("overlay"), _ctx.panelClass, _ctx.overlayClass],
             style: [_ctx.panelStyle, _ctx.overlayStyle],
-            onClick: _cache[10] || (_cache[10] = function() {
+            onClick: _cache[9] || (_cache[9] = function() {
               return $options.onOverlayClick && $options.onOverlayClick.apply($options, arguments);
             }),
-            onKeydown: _cache[11] || (_cache[11] = function() {
+            onKeydown: _cache[10] || (_cache[10] = function() {
               return $options.onOverlayKeyDown && $options.onOverlayKeyDown.apply($options, arguments);
-            }),
-            "data-p": $options.overlayDataP
+            })
           }, _ctx.ptm("overlay")), [createBaseVNode("span", mergeProps({
             ref: "firstHiddenFocusableElementOnOverlay",
             role: "presentation",
@@ -16289,15 +15944,12 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
                 unstyled: _ctx.unstyled,
                 role: "searchbox",
                 autocomplete: "off",
-                "aria-owns": _ctx.$id + "_list",
+                "aria-owns": $data.id + "_list",
                 "aria-activedescendant": $options.focusedOptionId,
                 onKeydown: $options.onFilterKeyDown,
                 onBlur: $options.onFilterBlur,
                 onInput: $options.onFilterChange,
-                pt: _ctx.ptm("pcFilter"),
-                formControl: {
-                  novalidate: true
-                }
+                pt: _ctx.ptm("pcFilter")
               }, null, 8, ["value", "onVnodeMounted", "onVnodeUpdated", "class", "placeholder", "variant", "unstyled", "aria-owns", "aria-activedescendant", "onKeydown", "onBlur", "onInput", "pt"]), createVNode(_component_InputIcon, {
                 unstyled: _ctx.unstyled,
                 pt: _ctx.ptm("pcFilterIconContainer")
@@ -16339,21 +15991,21 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
             pt: _ctx.ptm("virtualScroller")
           }), createSlots({
             content: withCtx(function(_ref) {
-              var styleClass = _ref.styleClass, contentRef3 = _ref.contentRef, items = _ref.items, getItemOptions = _ref.getItemOptions, contentStyle = _ref.contentStyle, itemSize2 = _ref.itemSize;
+              var styleClass = _ref.styleClass, contentRef3 = _ref.contentRef, items2 = _ref.items, getItemOptions = _ref.getItemOptions, contentStyle = _ref.contentStyle, itemSize2 = _ref.itemSize;
               return [createBaseVNode("ul", mergeProps({
                 ref: function ref2(el) {
                   return $options.listRef(el, contentRef3);
                 },
-                id: _ctx.$id + "_list",
+                id: $data.id + "_list",
                 "class": [_ctx.cx("list"), styleClass],
                 style: contentStyle,
                 role: "listbox"
-              }, _ctx.ptm("list")), [(openBlock(true), createElementBlock(Fragment, null, renderList(items, function(option3, i) {
+              }, _ctx.ptm("list")), [(openBlock(true), createElementBlock(Fragment, null, renderList(items2, function(option3, i) {
                 return openBlock(), createElementBlock(Fragment, {
                   key: $options.getOptionRenderKey(option3, $options.getOptionIndex(i, getItemOptions))
                 }, [$options.isOptionGroup(option3) ? (openBlock(), createElementBlock("li", mergeProps({
                   key: 0,
-                  id: _ctx.$id + "_" + $options.getOptionIndex(i, getItemOptions),
+                  id: $data.id + "_" + $options.getOptionIndex(i, getItemOptions),
                   style: {
                     height: itemSize2 ? itemSize2 + "px" : void 0
                   },
@@ -16368,9 +16020,9 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
                     "class": _ctx.cx("optionGroupLabel"),
                     ref_for: true
                   }, _ctx.ptm("optionGroupLabel")), toDisplayString($options.getOptionGroupLabel(option3.optionGroup)), 17)];
-                })], 16, _hoisted_6$1)) : withDirectives((openBlock(), createElementBlock("li", mergeProps({
+                })], 16, _hoisted_5$1)) : withDirectives((openBlock(), createElementBlock("li", mergeProps({
                   key: 1,
-                  id: _ctx.$id + "_" + $options.getOptionIndex(i, getItemOptions),
+                  id: $data.id + "_" + $options.getOptionIndex(i, getItemOptions),
                   "class": _ctx.cx("option", {
                     option: option3,
                     focusedOption: $options.getOptionIndex(i, getItemOptions)
@@ -16384,15 +16036,13 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
                   "aria-disabled": $options.isOptionDisabled(option3),
                   "aria-setsize": $options.ariaSetSize,
                   "aria-posinset": $options.getAriaPosInset($options.getOptionIndex(i, getItemOptions)),
-                  onMousedown: function onMousedown($event) {
+                  onClick: function onClick4($event) {
                     return $options.onOptionSelect($event, option3);
                   },
                   onMousemove: function onMousemove($event) {
                     return $options.onOptionMouseMove($event, $options.getOptionIndex(i, getItemOptions));
                   },
-                  onClick: _cache[8] || (_cache[8] = withModifiers(function() {
-                  }, ["stop"])),
-                  "data-p-selected": !_ctx.checkmark && $options.isSelected(option3),
+                  "data-p-selected": $options.isSelected(option3),
                   "data-p-focused": $data.focusedOptionIndex === $options.getOptionIndex(i, getItemOptions),
                   "data-p-disabled": $options.isOptionDisabled(option3),
                   ref_for: true
@@ -16415,8 +16065,8 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
                     "class": _ctx.cx("optionLabel"),
                     ref_for: true
                   }, _ctx.ptm("optionLabel")), toDisplayString($options.getOptionLabel(option3)), 17)];
-                })], 16, _hoisted_7)), [[_directive_ripple]])], 64);
-              }), 128)), $data.filterValue && (!items || items && items.length === 0) ? (openBlock(), createElementBlock("li", mergeProps({
+                })], 16, _hoisted_6$1)), [[_directive_ripple]])], 64);
+              }), 128)), $data.filterValue && (!items2 || items2 && items2.length === 0) ? (openBlock(), createElementBlock("li", mergeProps({
                 key: 0,
                 "class": _ctx.cx("emptyMessage"),
                 role: "option"
@@ -16432,7 +16082,7 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
                 "data-p-hidden-accessible": true
               }), [renderSlot(_ctx.$slots, "empty", {}, function() {
                 return [createTextVNode(toDisplayString($options.emptyMessageText), 1)];
-              })], 16)) : createCommentVNode("", true)], 16, _hoisted_5$3)];
+              })], 16)) : createCommentVNode("", true)], 16, _hoisted_4$1)];
             }),
             _: 2
           }, [_ctx.$slots.loader ? {
@@ -16466,13 +16116,13 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
             "aria-hidden": "true",
             "class": "p-hidden-accessible p-hidden-focusable",
             tabindex: 0,
-            onFocus: _cache[9] || (_cache[9] = function() {
+            onFocus: _cache[8] || (_cache[8] = function() {
               return $options.onLastHiddenFocus && $options.onLastHiddenFocus.apply($options, arguments);
             })
           }, _ctx.ptm("hiddenLastFocusableEl"), {
             "data-p-hidden-accessible": true,
             "data-p-hidden-focusable": true
-          }), null, 16)], 16, _hoisted_4$4)) : createCommentVNode("", true)];
+          }), null, 16)], 16)) : createCommentVNode("", true)];
         }),
         _: 3
       }, 16, ["onEnter", "onAfterEnter", "onLeave", "onAfterLeave"])];
@@ -16481,9 +16131,13 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8, ["appendTo"])], 16, _hoisted_1$9);
 }
 script$h.render = render$f;
+var theme$a = function theme17(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-togglebutton {\n    display: inline-flex;\n    cursor: pointer;\n    user-select: none;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n    position: relative;\n    color: ".concat(dt("togglebutton.color"), ";\n    background: ").concat(dt("togglebutton.background"), ";\n    border: 1px solid ").concat(dt("togglebutton.border.color"), ";\n    padding: ").concat(dt("togglebutton.padding"), ";\n    font-size: 1rem;\n    font-family: inherit;\n    font-feature-settings: inherit;\n    transition: background ").concat(dt("togglebutton.transition.duration"), ", color ").concat(dt("togglebutton.transition.duration"), ", border-color ").concat(dt("togglebutton.transition.duration"), ",\n        outline-color ").concat(dt("togglebutton.transition.duration"), ", box-shadow ").concat(dt("togglebutton.transition.duration"), ";\n    border-radius: ").concat(dt("togglebutton.border.radius"), ";\n    outline-color: transparent;\n    font-weight: ").concat(dt("togglebutton.font.weight"), ";\n}\n\n.p-togglebutton-content {\n    position: relative;\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    gap: ").concat(dt("togglebutton.gap"), ';\n}\n\n.p-togglebutton-label,\n.p-togglebutton-icon {\n    position: relative;\n    transition: none;\n}\n\n.p-togglebutton::before {\n    content: "";\n    background: transparent;\n    transition: background ').concat(dt("togglebutton.transition.duration"), ", color ").concat(dt("togglebutton.transition.duration"), ", border-color ").concat(dt("togglebutton.transition.duration"), ",\n            outline-color ").concat(dt("togglebutton.transition.duration"), ", box-shadow ").concat(dt("togglebutton.transition.duration"), ";\n    position: absolute;\n    inset-inline-start: ").concat(dt("togglebutton.content.left"), ";\n    inset-block-start: ").concat(dt("togglebutton.content.top"), ";\n    width: calc(100% - calc(2 * ").concat(dt("togglebutton.content.left"), "));\n    height: calc(100% - calc(2 * ").concat(dt("togglebutton.content.top"), "));\n    border-radius: ").concat(dt("togglebutton.border.radius"), ";\n}\n\n.p-togglebutton.p-togglebutton-checked::before {\n    background: ").concat(dt("togglebutton.content.checked.background"), ";\n    box-shadow: ").concat(dt("togglebutton.content.checked.shadow"), ";\n}\n\n.p-togglebutton:not(:disabled):not(.p-togglebutton-checked):hover {\n    background: ").concat(dt("togglebutton.hover.background"), ";\n    color: ").concat(dt("togglebutton.hover.color"), ";\n}\n\n.p-togglebutton.p-togglebutton-checked {\n    background: ").concat(dt("togglebutton.checked.background"), ";\n    border-color: ").concat(dt("togglebutton.checked.border.color"), ";\n    color: ").concat(dt("togglebutton.checked.color"), ";\n}\n\n.p-togglebutton:focus-visible {\n    box-shadow: ").concat(dt("togglebutton.focus.ring.shadow"), ";\n    outline: ").concat(dt("togglebutton.focus.ring.width"), " ").concat(dt("togglebutton.focus.ring.style"), " ").concat(dt("togglebutton.focus.ring.color"), ";\n    outline-offset: ").concat(dt("togglebutton.focus.ring.offset"), ";\n}\n\n.p-togglebutton.p-invalid {\n    border-color: ").concat(dt("togglebutton.invalid.border.color"), ";\n}\n\n.p-togglebutton:disabled {\n    opacity: 1;\n    cursor: default;\n    background: ").concat(dt("togglebutton.disabled.background"), ";\n    border-color: ").concat(dt("togglebutton.disabled.border.color"), ";\n    color: ").concat(dt("togglebutton.disabled.color"), ";\n}\n\n.p-togglebutton-icon {\n    color: ").concat(dt("togglebutton.icon.color"), ";\n}\n\n.p-togglebutton:not(:disabled):not(.p-togglebutton-checked):hover .p-togglebutton-icon {\n    color: ").concat(dt("togglebutton.icon.hover.color"), ";\n}\n\n.p-togglebutton.p-togglebutton-checked .p-togglebutton-icon {\n    color: ").concat(dt("togglebutton.icon.checked.color"), ";\n}\n\n.p-togglebutton:disabled .p-togglebutton-icon {\n    color: ").concat(dt("togglebutton.icon.disabled.color"), ";\n}\n\n.p-togglebutton-sm {\n    padding: ").concat(dt("togglebutton.sm.padding"), ";\n    font-size: ").concat(dt("togglebutton.sm.font.size"), ";\n}\n\n.p-togglebutton-lg {\n    padding: ").concat(dt("togglebutton.lg.padding"), ";\n    font-size: ").concat(dt("togglebutton.lg.font.size"), ";\n}\n");
+};
 var classes$e = {
-  root: function root12(_ref) {
-    var instance = _ref.instance, props = _ref.props;
+  root: function root13(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props;
     return ["p-togglebutton p-component", {
       "p-togglebutton-checked": instance.active,
       "p-invalid": instance.$invalid,
@@ -16497,7 +16151,7 @@ var classes$e = {
 };
 var ToggleButtonStyle = BaseStyle.extend({
   name: "togglebutton",
-  style: style$g,
+  theme: theme$a,
   classes: classes$e
 });
 var script$1$e = {
@@ -16547,31 +16201,6 @@ var script$1$e = {
     };
   }
 };
-function _typeof$6(o) {
-  "@babel/helpers - typeof";
-  return _typeof$6 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$6(o);
-}
-function _defineProperty$6(e, r, t) {
-  return (r = _toPropertyKey$6(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$6(t) {
-  var i = _toPrimitive$6(t, "string");
-  return "symbol" == _typeof$6(i) ? i : i + "";
-}
-function _toPrimitive$6(t, r) {
-  if ("object" != _typeof$6(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$6(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$g = {
   name: "ToggleButton",
   "extends": script$1$e,
@@ -16607,20 +16236,13 @@ var script$g = {
     },
     label: function label4() {
       return this.hasLabel ? this.d_value ? this.onLabel : this.offLabel : " ";
-    },
-    dataP: function dataP8() {
-      return cn(_defineProperty$6({
-        checked: this.active,
-        invalid: this.$invalid
-      }, this.size, this.size));
     }
   },
   directives: {
     ripple: Ripple
   }
 };
-var _hoisted_1$8 = ["tabindex", "disabled", "aria-pressed", "aria-label", "aria-labelledby", "data-p-checked", "data-p-disabled", "data-p"];
-var _hoisted_2$7 = ["data-p"];
+var _hoisted_1$8 = ["tabindex", "disabled", "aria-pressed", "aria-labelledby", "data-p-checked", "data-p-disabled"];
 function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   var _directive_ripple = resolveDirective("ripple");
   return withDirectives((openBlock(), createElementBlock("button", mergeProps({
@@ -16636,16 +16258,12 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.onBlur && $options.onBlur.apply($options, arguments);
     })
   }, $options.getPTOptions("root"), {
-    "aria-label": _ctx.ariaLabel,
     "aria-labelledby": _ctx.ariaLabelledby,
     "data-p-checked": $options.active,
-    "data-p-disabled": _ctx.disabled,
-    "data-p": $options.dataP
+    "data-p-disabled": _ctx.disabled
   }), [createBaseVNode("span", mergeProps({
     "class": _ctx.cx("content")
-  }, $options.getPTOptions("content"), {
-    "data-p": $options.dataP
-  }), [renderSlot(_ctx.$slots, "default", {}, function() {
+  }, $options.getPTOptions("content")), [renderSlot(_ctx.$slots, "default", {}, function() {
     return [renderSlot(_ctx.$slots, "icon", {
       value: _ctx.d_value,
       "class": normalizeClass(_ctx.cx("icon"))
@@ -16657,7 +16275,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     }), createBaseVNode("span", mergeProps({
       "class": _ctx.cx("label")
     }, $options.getPTOptions("label")), toDisplayString($options.label), 17)];
-  })], 16, _hoisted_2$7)], 16, _hoisted_1$8)), [[_directive_ripple]]);
+  })], 16)], 16, _hoisted_1$8)), [[_directive_ripple]]);
 }
 script$g.render = render$e;
 var script$f = {
@@ -16667,9 +16285,13 @@ var script$f = {
     console.warn("Deprecated since v4. Use Select component instead.");
   }
 };
+var theme$9 = function theme18(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-tabs {\n    display: flex;\n    flex-direction: column;\n}\n\n.p-tablist {\n    display: flex;\n    position: relative;\n}\n\n.p-tabs-scrollable > .p-tablist {\n    overflow: hidden;\n}\n\n.p-tablist-viewport {\n    overflow-x: auto;\n    overflow-y: hidden;\n    scroll-behavior: smooth;\n    scrollbar-width: none;\n    overscroll-behavior: contain auto;\n}\n\n.p-tablist-viewport::-webkit-scrollbar {\n    display: none;\n}\n\n.p-tablist-tab-list {\n    position: relative;\n    display: flex;\n    background: ".concat(dt("tabs.tablist.background"), ";\n    border-style: solid;\n    border-color: ").concat(dt("tabs.tablist.border.color"), ";\n    border-width: ").concat(dt("tabs.tablist.border.width"), ";\n}\n\n.p-tablist-content {\n    flex-grow: 1;\n}\n\n.p-tablist-nav-button {\n    all: unset;\n    position: absolute !important;\n    flex-shrink: 0;\n    inset-block-start: 0;\n    z-index: 2;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: ").concat(dt("tabs.nav.button.background"), ";\n    color: ").concat(dt("tabs.nav.button.color"), ";\n    width: ").concat(dt("tabs.nav.button.width"), ";\n    transition: color ").concat(dt("tabs.transition.duration"), ", outline-color ").concat(dt("tabs.transition.duration"), ", box-shadow ").concat(dt("tabs.transition.duration"), ";\n    box-shadow: ").concat(dt("tabs.nav.button.shadow"), ";\n    outline-color: transparent;\n    cursor: pointer;\n}\n\n.p-tablist-nav-button:focus-visible {\n    z-index: 1;\n    box-shadow: ").concat(dt("tabs.nav.button.focus.ring.shadow"), ";\n    outline: ").concat(dt("tabs.nav.button.focus.ring.width"), " ").concat(dt("tabs.nav.button.focus.ring.style"), " ").concat(dt("tabs.nav.button.focus.ring.color"), ";\n    outline-offset: ").concat(dt("tabs.nav.button.focus.ring.offset"), ";\n}\n\n.p-tablist-nav-button:hover {\n    color: ").concat(dt("tabs.nav.button.hover.color"), ";\n}\n\n.p-tablist-prev-button {\n    inset-inline-start: 0;\n}\n\n.p-tablist-next-button {\n    inset-inline-end: 0;\n}\n\n.p-tablist-prev-button:dir(rtl),\n.p-tablist-next-button:dir(rtl) {\n    transform: rotate(180deg);\n}\n\n\n.p-tab {\n    flex-shrink: 0;\n    cursor: pointer;\n    user-select: none;\n    position: relative;\n    border-style: solid;\n    white-space: nowrap;\n    background: ").concat(dt("tabs.tab.background"), ";\n    border-width: ").concat(dt("tabs.tab.border.width"), ";\n    border-color: ").concat(dt("tabs.tab.border.color"), ";\n    color: ").concat(dt("tabs.tab.color"), ";\n    padding: ").concat(dt("tabs.tab.padding"), ";\n    font-weight: ").concat(dt("tabs.tab.font.weight"), ";\n    transition: background ").concat(dt("tabs.transition.duration"), ", border-color ").concat(dt("tabs.transition.duration"), ", color ").concat(dt("tabs.transition.duration"), ", outline-color ").concat(dt("tabs.transition.duration"), ", box-shadow ").concat(dt("tabs.transition.duration"), ";\n    margin: ").concat(dt("tabs.tab.margin"), ";\n    outline-color: transparent;\n}\n\n.p-tab:not(.p-disabled):focus-visible {\n    z-index: 1;\n    box-shadow: ").concat(dt("tabs.tab.focus.ring.shadow"), ";\n    outline: ").concat(dt("tabs.tab.focus.ring.width"), " ").concat(dt("tabs.tab.focus.ring.style"), " ").concat(dt("tabs.tab.focus.ring.color"), ";\n    outline-offset: ").concat(dt("tabs.tab.focus.ring.offset"), ";\n}\n\n.p-tab:not(.p-tab-active):not(.p-disabled):hover {\n    background: ").concat(dt("tabs.tab.hover.background"), ";\n    border-color: ").concat(dt("tabs.tab.hover.border.color"), ";\n    color: ").concat(dt("tabs.tab.hover.color"), ";\n}\n\n.p-tab-active {\n    background: ").concat(dt("tabs.tab.active.background"), ";\n    border-color: ").concat(dt("tabs.tab.active.border.color"), ";\n    color: ").concat(dt("tabs.tab.active.color"), ";\n}\n\n.p-tabpanels {\n    background: ").concat(dt("tabs.tabpanel.background"), ";\n    color: ").concat(dt("tabs.tabpanel.color"), ";\n    padding: ").concat(dt("tabs.tabpanel.padding"), ";\n    outline: 0 none;\n}\n\n.p-tabpanel:focus-visible {\n    box-shadow: ").concat(dt("tabs.tabpanel.focus.ring.shadow"), ";\n    outline: ").concat(dt("tabs.tabpanel.focus.ring.width"), " ").concat(dt("tabs.tabpanel.focus.ring.style"), " ").concat(dt("tabs.tabpanel.focus.ring.color"), ";\n    outline-offset: ").concat(dt("tabs.tabpanel.focus.ring.offset"), ";\n}\n\n.p-tablist-active-bar {\n    z-index: 1;\n    display: block;\n    position: absolute;\n    inset-block-end: ").concat(dt("tabs.active.bar.bottom"), ";\n    height: ").concat(dt("tabs.active.bar.height"), ";\n    background: ").concat(dt("tabs.active.bar.background"), ";\n    transition: 250ms cubic-bezier(0.35, 0, 0.25, 1);\n}\n");
+};
 var classes$d = {
-  root: function root13(_ref) {
-    var props = _ref.props;
+  root: function root14(_ref2) {
+    var props = _ref2.props;
     return ["p-tabs p-component", {
       "p-tabs-scrollable": props.scrollable
     }];
@@ -16677,7 +16299,7 @@ var classes$d = {
 };
 var TabsStyle = BaseStyle.extend({
   name: "tabs",
-  style: style$h,
+  theme: theme$9,
   classes: classes$d
 });
 var script$1$d = {
@@ -16724,13 +16346,20 @@ var script$e = {
   emits: ["update:value"],
   data: function data12() {
     return {
+      id: this.$attrs.id,
       d_value: this.value
     };
   },
   watch: {
+    "$attrs.id": function $attrsId4(newValue) {
+      this.id = newValue || UniqueComponentId();
+    },
     value: function value(newValue) {
       this.d_value = newValue;
     }
+  },
+  mounted: function mounted12() {
+    this.id = this.id || UniqueComponentId();
   },
   methods: {
     updateValue: function updateValue(newValue) {
@@ -16782,7 +16411,7 @@ function render$c(_ctx, _cache, $props, $setup, $data, $options) {
 }
 script$d.render = render$c;
 var classes$b = {
-  root: function root14(_ref) {
+  root: function root15(_ref) {
     var instance = _ref.instance;
     return ["p-tabpanel", {
       "p-tabpanel-active": instance.active
@@ -16841,11 +16470,11 @@ var script$c = {
     },
     id: function id() {
       var _this$$pcTabs2;
-      return "".concat((_this$$pcTabs2 = this.$pcTabs) === null || _this$$pcTabs2 === void 0 ? void 0 : _this$$pcTabs2.$id, "_tabpanel_").concat(this.value);
+      return "".concat((_this$$pcTabs2 = this.$pcTabs) === null || _this$$pcTabs2 === void 0 ? void 0 : _this$$pcTabs2.id, "_tabpanel_").concat(this.value);
     },
     ariaLabelledby: function ariaLabelledby() {
       var _this$$pcTabs3;
-      return "".concat((_this$$pcTabs3 = this.$pcTabs) === null || _this$$pcTabs3 === void 0 ? void 0 : _this$$pcTabs3.$id, "_tab_").concat(this.value);
+      return "".concat((_this$$pcTabs3 = this.$pcTabs) === null || _this$$pcTabs3 === void 0 ? void 0 : _this$$pcTabs3.id, "_tab_").concat(this.value);
     },
     attrs: function attrs3() {
       return mergeProps(this.a11yAttrs, this.ptmi("root", this.ptParams));
@@ -16941,16 +16570,16 @@ var script$b = {
     },
     activeValue: {
       flush: "post",
-      handler: function handler2() {
+      handler: function handler() {
         this.updateInkBar();
       }
     }
   },
-  mounted: function mounted12() {
+  mounted: function mounted13() {
     var _this = this;
-    setTimeout(function() {
+    this.$nextTick(function() {
       _this.updateInkBar();
-    }, 150);
+    });
     if (this.showNavigators) {
       this.updateButtonState();
       this.bindResizeObserver();
@@ -17002,7 +16631,6 @@ var script$b = {
     },
     updateInkBar: function updateInkBar() {
       var _this$$refs = this.$refs, content2 = _this$$refs.content, inkbar = _this$$refs.inkbar, tabs = _this$$refs.tabs;
-      if (!inkbar) return;
       var activeTab = findSingle(content2, '[data-pc-name="tab"][data-p-active="true"]');
       if (this.$pcTabs.isVertical()) {
         inkbar.style.height = getOuterHeight(activeTab) + "px";
@@ -17049,11 +16677,6 @@ var script$b = {
     },
     nextButtonAriaLabel: function nextButtonAriaLabel() {
       return this.$primevue.config.locale.aria ? this.$primevue.config.locale.aria.next : void 0;
-    },
-    dataP: function dataP9() {
-      return cn({
-        scrollable: this.$pcTabs.scrollable
-      });
     }
   },
   components: {
@@ -17064,21 +16687,17 @@ var script$b = {
     ripple: Ripple
   }
 };
-var _hoisted_1$7 = ["data-p"];
-var _hoisted_2$6 = ["aria-label", "tabindex"];
-var _hoisted_3$4 = ["data-p"];
-var _hoisted_4$3 = ["aria-orientation"];
-var _hoisted_5$2 = ["aria-label", "tabindex"];
+var _hoisted_1$7 = ["aria-label", "tabindex"];
+var _hoisted_2$3 = ["aria-orientation"];
+var _hoisted_3$3 = ["aria-label", "tabindex"];
 function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("div", mergeProps({
     ref: "list",
-    "class": _ctx.cx("root"),
-    "data-p": $options.dataP
+    "class": _ctx.cx("root")
   }, _ctx.ptmi("root")), [$options.showNavigators && $data.isPrevButtonEnabled ? withDirectives((openBlock(), createElementBlock("button", mergeProps({
     key: 0,
     ref: "prevButton",
-    type: "button",
     "class": _ctx.cx("prevButton"),
     "aria-label": $options.prevButtonAriaLabel,
     tabindex: $options.$pcTabs.tabindex,
@@ -17089,13 +16708,12 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
     "data-pc-group-section": "navigator"
   }), [(openBlock(), createBlock(resolveDynamicComponent($options.templates.previcon || "ChevronLeftIcon"), mergeProps({
     "aria-hidden": "true"
-  }, _ctx.ptm("prevIcon")), null, 16))], 16, _hoisted_2$6)), [[_directive_ripple]]) : createCommentVNode("", true), createBaseVNode("div", mergeProps({
+  }, _ctx.ptm("prevIcon")), null, 16))], 16, _hoisted_1$7)), [[_directive_ripple]]) : createCommentVNode("", true), createBaseVNode("div", mergeProps({
     ref: "content",
     "class": _ctx.cx("content"),
     onScroll: _cache[1] || (_cache[1] = function() {
       return $options.onScroll && $options.onScroll.apply($options, arguments);
-    }),
-    "data-p": $options.dataP
+    })
   }, _ctx.ptm("content")), [createBaseVNode("div", mergeProps({
     ref: "tabs",
     "class": _ctx.cx("tabList"),
@@ -17106,10 +16724,9 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
     "class": _ctx.cx("activeBar"),
     role: "presentation",
     "aria-hidden": "true"
-  }, _ctx.ptm("activeBar")), null, 16)], 16, _hoisted_4$3)], 16, _hoisted_3$4), $options.showNavigators && $data.isNextButtonEnabled ? withDirectives((openBlock(), createElementBlock("button", mergeProps({
+  }, _ctx.ptm("activeBar")), null, 16)], 16, _hoisted_2$3)], 16), $options.showNavigators && $data.isNextButtonEnabled ? withDirectives((openBlock(), createElementBlock("button", mergeProps({
     key: 1,
     ref: "nextButton",
-    type: "button",
     "class": _ctx.cx("nextButton"),
     "aria-label": $options.nextButtonAriaLabel,
     tabindex: $options.$pcTabs.tabindex,
@@ -17120,11 +16737,11 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
     "data-pc-group-section": "navigator"
   }), [(openBlock(), createBlock(resolveDynamicComponent($options.templates.nexticon || "ChevronRightIcon"), mergeProps({
     "aria-hidden": "true"
-  }, _ctx.ptm("nextIcon")), null, 16))], 16, _hoisted_5$2)), [[_directive_ripple]]) : createCommentVNode("", true)], 16, _hoisted_1$7);
+  }, _ctx.ptm("nextIcon")), null, 16))], 16, _hoisted_3$3)), [[_directive_ripple]]) : createCommentVNode("", true)], 16);
 }
 script$b.render = render$a;
 var classes$9 = {
-  root: function root15(_ref) {
+  root: function root16(_ref) {
     var instance = _ref.instance, props = _ref.props;
     return ["p-tab", {
       "p-tab-active": instance.active,
@@ -17239,18 +16856,18 @@ var script$a = {
     findNextTab: function findNextTab(tabElement) {
       var selfCheck = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
       var element = selfCheck ? tabElement : tabElement.nextElementSibling;
-      return element ? getAttribute(element, "data-p-disabled") || getAttribute(element, "data-pc-section") === "activebar" ? this.findNextTab(element) : findSingle(element, '[data-pc-name="tab"]') : null;
+      return element ? getAttribute(element, "data-p-disabled") || getAttribute(element, "data-pc-section") === "inkbar" ? this.findNextTab(element) : findSingle(element, '[data-pc-name="tab"]') : null;
     },
     findPrevTab: function findPrevTab(tabElement) {
       var selfCheck = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
       var element = selfCheck ? tabElement : tabElement.previousElementSibling;
-      return element ? getAttribute(element, "data-p-disabled") || getAttribute(element, "data-pc-section") === "activebar" ? this.findPrevTab(element) : findSingle(element, '[data-pc-name="tab"]') : null;
+      return element ? getAttribute(element, "data-p-disabled") || getAttribute(element, "data-pc-section") === "inkbar" ? this.findPrevTab(element) : findSingle(element, '[data-pc-name="tab"]') : null;
     },
     findFirstTab: function findFirstTab() {
-      return this.findNextTab(this.$pcTabList.$refs.tabs.firstElementChild, true);
+      return this.findNextTab(this.$pcTabList.$refs.content.firstElementChild, true);
     },
     findLastTab: function findLastTab() {
-      return this.findPrevTab(this.$pcTabList.$refs.tabs.lastElementChild, true);
+      return this.findPrevTab(this.$pcTabList.$refs.content.lastElementChild, true);
     },
     changeActiveValue: function changeActiveValue() {
       this.$pcTabs.updateValue(this.value);
@@ -17273,11 +16890,11 @@ var script$a = {
     },
     id: function id2() {
       var _this$$pcTabs2;
-      return "".concat((_this$$pcTabs2 = this.$pcTabs) === null || _this$$pcTabs2 === void 0 ? void 0 : _this$$pcTabs2.$id, "_tab_").concat(this.value);
+      return "".concat((_this$$pcTabs2 = this.$pcTabs) === null || _this$$pcTabs2 === void 0 ? void 0 : _this$$pcTabs2.id, "_tab_").concat(this.value);
     },
     ariaControls: function ariaControls() {
       var _this$$pcTabs3;
-      return "".concat((_this$$pcTabs3 = this.$pcTabs) === null || _this$$pcTabs3 === void 0 ? void 0 : _this$$pcTabs3.$id, "_tabpanel_").concat(this.value);
+      return "".concat((_this$$pcTabs3 = this.$pcTabs) === null || _this$$pcTabs3 === void 0 ? void 0 : _this$$pcTabs3.id, "_tabpanel_").concat(this.value);
     },
     attrs: function attrs4() {
       return mergeProps(this.asAttrs, this.a11yAttrs, this.ptmi("root", this.ptParams));
@@ -17308,11 +16925,6 @@ var script$a = {
           active: this.active
         }
       };
-    },
-    dataP: function dataP10() {
-      return cn({
-        active: this.active
-      });
     }
   },
   directives: {
@@ -17324,16 +16936,14 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return !_ctx.asChild ? withDirectives((openBlock(), createBlock(resolveDynamicComponent(_ctx.as), mergeProps({
     key: 0,
     "class": _ctx.cx("root"),
-    "data-p": $options.dataP,
     onClick: $options.onClick
   }, $options.attrs), {
     "default": withCtx(function() {
       return [renderSlot(_ctx.$slots, "default")];
     }),
     _: 3
-  }, 16, ["class", "data-p", "onClick"])), [[_directive_ripple]]) : renderSlot(_ctx.$slots, "default", {
+  }, 16, ["class", "onClick"])), [[_directive_ripple]]) : renderSlot(_ctx.$slots, "default", {
     key: 1,
-    dataP: $options.dataP,
     "class": normalizeClass(_ctx.cx("root")),
     active: $options.active,
     a11yAttrs: $options.a11yAttrs,
@@ -17342,34 +16952,38 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
 }
 script$a.render = render$9;
 var ToastEventBus = EventBus();
-function _typeof$5(o) {
+function _typeof$2(o) {
   "@babel/helpers - typeof";
-  return _typeof$5 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$5(o);
+  }, _typeof$2(o);
 }
-function _defineProperty$5(e, r, t) {
-  return (r = _toPropertyKey$5(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$2(e, r, t) {
+  return (r = _toPropertyKey$2(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$5(t) {
-  var i = _toPrimitive$5(t, "string");
-  return "symbol" == _typeof$5(i) ? i : i + "";
+function _toPropertyKey$2(t) {
+  var i = _toPrimitive$2(t, "string");
+  return "symbol" == _typeof$2(i) ? i : i + "";
 }
-function _toPrimitive$5(t, r) {
-  if ("object" != _typeof$5(t) || !t) return t;
+function _toPrimitive$2(t, r) {
+  if ("object" != _typeof$2(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$5(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$2(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
+var theme$8 = function theme19(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-toast {\n    width: ".concat(dt("toast.width"), ";\n    white-space: pre-line;\n    word-break: break-word;\n}\n\n.p-toast-message {\n    margin: 0 0 1rem 0;\n}\n\n.p-toast-message-icon {\n    flex-shrink: 0;\n    font-size: ").concat(dt("toast.icon.size"), ";\n    width: ").concat(dt("toast.icon.size"), ";\n    height: ").concat(dt("toast.icon.size"), ";\n}\n\n.p-toast-message-content {\n    display: flex;\n    align-items: flex-start;\n    padding: ").concat(dt("toast.content.padding"), ";\n    gap: ").concat(dt("toast.content.gap"), ";\n}\n\n.p-toast-message-text {\n    flex: 1 1 auto;\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("toast.text.gap"), ";\n}\n\n.p-toast-summary {\n    font-weight: ").concat(dt("toast.summary.font.weight"), ";\n    font-size: ").concat(dt("toast.summary.font.size"), ";\n}\n\n.p-toast-detail {\n    font-weight: ").concat(dt("toast.detail.font.weight"), ";\n    font-size: ").concat(dt("toast.detail.font.size"), ";\n}\n\n.p-toast-close-button {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n    position: relative;\n    cursor: pointer;\n    background: transparent;\n    transition: background ").concat(dt("toast.transition.duration"), ", color ").concat(dt("toast.transition.duration"), ", outline-color ").concat(dt("toast.transition.duration"), ", box-shadow ").concat(dt("toast.transition.duration"), ";\n    outline-color: transparent;\n    color: inherit;\n    width: ").concat(dt("toast.close.button.width"), ";\n    height: ").concat(dt("toast.close.button.height"), ";\n    border-radius: ").concat(dt("toast.close.button.border.radius"), ";\n    margin: -25% 0 0 0;\n    right: -25%;\n    padding: 0;\n    border: none;\n    user-select: none;\n}\n\n.p-toast-close-button:dir(rtl) {\n    margin: -25% 0 0 auto;\n    left: -25%;\n    right: auto;\n}\n\n.p-toast-message-info,\n.p-toast-message-success,\n.p-toast-message-warn,\n.p-toast-message-error,\n.p-toast-message-secondary,\n.p-toast-message-contrast {\n    border-width: ").concat(dt("toast.border.width"), ";\n    border-style: solid;\n    backdrop-filter: blur(").concat(dt("toast.blur"), ");\n    border-radius: ").concat(dt("toast.border.radius"), ";\n}\n\n.p-toast-close-icon {\n    font-size: ").concat(dt("toast.close.icon.size"), ";\n    width: ").concat(dt("toast.close.icon.size"), ";\n    height: ").concat(dt("toast.close.icon.size"), ";\n}\n\n.p-toast-close-button:focus-visible {\n    outline-width: ").concat(dt("focus.ring.width"), ";\n    outline-style: ").concat(dt("focus.ring.style"), ";\n    outline-offset: ").concat(dt("focus.ring.offset"), ";\n}\n\n.p-toast-message-info {\n    background: ").concat(dt("toast.info.background"), ";\n    border-color: ").concat(dt("toast.info.border.color"), ";\n    color: ").concat(dt("toast.info.color"), ";\n    box-shadow: ").concat(dt("toast.info.shadow"), ";\n}\n\n.p-toast-message-info .p-toast-detail {\n    color: ").concat(dt("toast.info.detail.color"), ";\n}\n\n.p-toast-message-info .p-toast-close-button:focus-visible {\n    outline-color: ").concat(dt("toast.info.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("toast.info.close.button.focus.ring.shadow"), ";\n}\n\n.p-toast-message-info .p-toast-close-button:hover {\n    background: ").concat(dt("toast.info.close.button.hover.background"), ";\n}\n\n.p-toast-message-success {\n    background: ").concat(dt("toast.success.background"), ";\n    border-color: ").concat(dt("toast.success.border.color"), ";\n    color: ").concat(dt("toast.success.color"), ";\n    box-shadow: ").concat(dt("toast.success.shadow"), ";\n}\n\n.p-toast-message-success .p-toast-detail {\n    color: ").concat(dt("toast.success.detail.color"), ";\n}\n\n.p-toast-message-success .p-toast-close-button:focus-visible {\n    outline-color: ").concat(dt("toast.success.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("toast.success.close.button.focus.ring.shadow"), ";\n}\n\n.p-toast-message-success .p-toast-close-button:hover {\n    background: ").concat(dt("toast.success.close.button.hover.background"), ";\n}\n\n.p-toast-message-warn {\n    background: ").concat(dt("toast.warn.background"), ";\n    border-color: ").concat(dt("toast.warn.border.color"), ";\n    color: ").concat(dt("toast.warn.color"), ";\n    box-shadow: ").concat(dt("toast.warn.shadow"), ";\n}\n\n.p-toast-message-warn .p-toast-detail {\n    color: ").concat(dt("toast.warn.detail.color"), ";\n}\n\n.p-toast-message-warn .p-toast-close-button:focus-visible {\n    outline-color: ").concat(dt("toast.warn.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("toast.warn.close.button.focus.ring.shadow"), ";\n}\n\n.p-toast-message-warn .p-toast-close-button:hover {\n    background: ").concat(dt("toast.warn.close.button.hover.background"), ";\n}\n\n.p-toast-message-error {\n    background: ").concat(dt("toast.error.background"), ";\n    border-color: ").concat(dt("toast.error.border.color"), ";\n    color: ").concat(dt("toast.error.color"), ";\n    box-shadow: ").concat(dt("toast.error.shadow"), ";\n}\n\n.p-toast-message-error .p-toast-detail {\n    color: ").concat(dt("toast.error.detail.color"), ";\n}\n\n.p-toast-message-error .p-toast-close-button:focus-visible {\n    outline-color: ").concat(dt("toast.error.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("toast.error.close.button.focus.ring.shadow"), ";\n}\n\n.p-toast-message-error .p-toast-close-button:hover {\n    background: ").concat(dt("toast.error.close.button.hover.background"), ";\n}\n\n.p-toast-message-secondary {\n    background: ").concat(dt("toast.secondary.background"), ";\n    border-color: ").concat(dt("toast.secondary.border.color"), ";\n    color: ").concat(dt("toast.secondary.color"), ";\n    box-shadow: ").concat(dt("toast.secondary.shadow"), ";\n}\n\n.p-toast-message-secondary .p-toast-detail {\n    color: ").concat(dt("toast.secondary.detail.color"), ";\n}\n\n.p-toast-message-secondary .p-toast-close-button:focus-visible {\n    outline-color: ").concat(dt("toast.secondary.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("toast.secondary.close.button.focus.ring.shadow"), ";\n}\n\n.p-toast-message-secondary .p-toast-close-button:hover {\n    background: ").concat(dt("toast.secondary.close.button.hover.background"), ";\n}\n\n.p-toast-message-contrast {\n    background: ").concat(dt("toast.contrast.background"), ";\n    border-color: ").concat(dt("toast.contrast.border.color"), ";\n    color: ").concat(dt("toast.contrast.color"), ";\n    box-shadow: ").concat(dt("toast.contrast.shadow"), ";\n}\n\n.p-toast-message-contrast .p-toast-detail {\n    color: ").concat(dt("toast.contrast.detail.color"), ";\n}\n\n.p-toast-message-contrast .p-toast-close-button:focus-visible {\n    outline-color: ").concat(dt("toast.contrast.close.button.focus.ring.color"), ";\n    box-shadow: ").concat(dt("toast.contrast.close.button.focus.ring.shadow"), ";\n}\n\n.p-toast-message-contrast .p-toast-close-button:hover {\n    background: ").concat(dt("toast.contrast.close.button.hover.background"), ";\n}\n\n.p-toast-top-center {\n    transform: translateX(-50%);\n}\n\n.p-toast-bottom-center {\n    transform: translateX(-50%);\n}\n\n.p-toast-center {\n    min-width: 20vw;\n    transform: translate(-50%, -50%);\n}\n\n.p-toast-message-enter-from {\n    opacity: 0;\n    transform: translateY(50%);\n}\n\n.p-toast-message-leave-from {\n    max-height: 1000px;\n}\n\n.p-toast .p-toast-message.p-toast-message-leave-to {\n    max-height: 0;\n    opacity: 0;\n    margin-bottom: 0;\n    overflow: hidden;\n}\n\n.p-toast-message-enter-active {\n    transition: transform 0.3s, opacity 0.3s;\n}\n\n.p-toast-message-leave-active {\n    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s, margin-bottom 0.3s;\n}\n");
+};
 var inlineStyles$1 = {
-  root: function root16(_ref) {
-    var position3 = _ref.position;
+  root: function root17(_ref2) {
+    var position3 = _ref2.position;
     return {
       position: "fixed",
       top: position3 === "top-right" || position3 === "top-left" || position3 === "top-center" ? "20px" : position3 === "center" ? "50%" : null,
@@ -17380,12 +16994,12 @@ var inlineStyles$1 = {
   }
 };
 var classes$8 = {
-  root: function root17(_ref2) {
-    var props = _ref2.props;
+  root: function root18(_ref3) {
+    var props = _ref3.props;
     return ["p-toast p-component p-toast-" + props.position];
   },
-  message: function message2(_ref3) {
-    var props = _ref3.props;
+  message: function message2(_ref4) {
+    var props = _ref4.props;
     return ["p-toast-message", {
       "p-toast-message-info": props.message.severity === "info" || props.message.severity === void 0,
       "p-toast-message-warn": props.message.severity === "warn",
@@ -17396,9 +17010,9 @@ var classes$8 = {
     }];
   },
   messageContent: "p-toast-message-content",
-  messageIcon: function messageIcon(_ref4) {
-    var props = _ref4.props;
-    return ["p-toast-message-icon", _defineProperty$5(_defineProperty$5(_defineProperty$5(_defineProperty$5({}, props.infoIcon, props.message.severity === "info"), props.warnIcon, props.message.severity === "warn"), props.errorIcon, props.message.severity === "error"), props.successIcon, props.message.severity === "success")];
+  messageIcon: function messageIcon(_ref5) {
+    var props = _ref5.props;
+    return ["p-toast-message-icon", _defineProperty$2(_defineProperty$2(_defineProperty$2(_defineProperty$2({}, props.infoIcon, props.message.severity === "info"), props.warnIcon, props.message.severity === "warn"), props.errorIcon, props.message.severity === "error"), props.successIcon, props.message.severity === "success")];
   },
   messageText: "p-toast-message-text",
   summary: "p-toast-summary",
@@ -17408,7 +17022,7 @@ var classes$8 = {
 };
 var ToastStyle = BaseStyle.extend({
   name: "toast",
-  style: style$i,
+  theme: theme$8,
   classes: classes$8,
   inlineStyles: inlineStyles$1
 });
@@ -17459,18 +17073,6 @@ var script$2$2 = {
     closeButtonProps: {
       type: null,
       "default": null
-    },
-    onMouseEnter: {
-      type: Function,
-      "default": void 0
-    },
-    onMouseLeave: {
-      type: Function,
-      "default": void 0
-    },
-    onClick: {
-      type: Function,
-      "default": void 0
     }
   },
   style: ToastStyle,
@@ -17481,39 +17083,12 @@ var script$2$2 = {
     };
   }
 };
-function _typeof$3(o) {
-  "@babel/helpers - typeof";
-  return _typeof$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$3(o);
-}
-function _defineProperty$3(e, r, t) {
-  return (r = _toPropertyKey$3(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$3(t) {
-  var i = _toPrimitive$3(t, "string");
-  return "symbol" == _typeof$3(i) ? i : i + "";
-}
-function _toPrimitive$3(t, r) {
-  if ("object" != _typeof$3(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$3(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$1$8 = {
   name: "ToastMessage",
   hostName: "Toast",
   "extends": script$y,
   emits: ["close"],
   closeTimeout: null,
-  createdAt: null,
-  lifeRemaining: null,
   props: {
     message: {
       type: null,
@@ -17548,26 +17123,21 @@ var script$1$8 = {
       "default": null
     }
   },
-  mounted: function mounted13() {
+  mounted: function mounted14() {
+    var _this = this;
     if (this.message.life) {
-      this.lifeRemaining = this.message.life;
-      this.startTimeout();
+      this.closeTimeout = setTimeout(function() {
+        _this.close({
+          message: _this.message,
+          type: "life-end"
+        });
+      }, this.message.life);
     }
   },
   beforeUnmount: function beforeUnmount7() {
     this.clearCloseTimeout();
   },
   methods: {
-    startTimeout: function startTimeout() {
-      var _this = this;
-      this.createdAt = (/* @__PURE__ */ new Date()).valueOf();
-      this.closeTimeout = setTimeout(function() {
-        _this.close({
-          message: _this.message,
-          type: "life-end"
-        });
-      }, this.lifeRemaining);
-    },
     close: function close3(params) {
       this.$emit("close", params);
     },
@@ -17583,45 +17153,6 @@ var script$1$8 = {
         clearTimeout(this.closeTimeout);
         this.closeTimeout = null;
       }
-    },
-    onMessageClick: function onMessageClick(event) {
-      var _this$props;
-      ((_this$props = this.props) === null || _this$props === void 0 ? void 0 : _this$props.onClick) && this.props.onClick({
-        originalEvent: event,
-        message: this.message
-      });
-    },
-    onMouseEnter: function onMouseEnter2(event) {
-      var _this$props2;
-      if ((_this$props2 = this.props) !== null && _this$props2 !== void 0 && _this$props2.onMouseEnter) {
-        this.props.onMouseEnter({
-          originalEvent: event,
-          message: this.message
-        });
-        if (event.defaultPrevented) {
-          return;
-        }
-        if (this.message.life) {
-          this.lifeRemaining = this.createdAt + this.lifeRemaining - Date().valueOf();
-          this.createdAt = null;
-          this.clearCloseTimeout();
-        }
-      }
-    },
-    onMouseLeave: function onMouseLeave2(event) {
-      var _this$props3;
-      if ((_this$props3 = this.props) !== null && _this$props3 !== void 0 && _this$props3.onMouseLeave) {
-        this.props.onMouseLeave({
-          originalEvent: event,
-          message: this.message
-        });
-        if (event.defaultPrevented) {
-          return;
-        }
-        if (this.message.life) {
-          this.startTimeout();
-        }
-      }
     }
   },
   computed: {
@@ -17635,9 +17166,6 @@ var script$1$8 = {
     },
     closeAriaLabel: function closeAriaLabel3() {
       return this.$primevue.config.locale.aria ? this.$primevue.config.locale.aria.close : void 0;
-    },
-    dataP: function dataP11() {
-      return cn(_defineProperty$3({}, this.message.severity, this.message.severity));
     }
   },
   components: {
@@ -17651,13 +17179,13 @@ var script$1$8 = {
     ripple: Ripple
   }
 };
-function _typeof$2(o) {
+function _typeof$1(o) {
   "@babel/helpers - typeof";
-  return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$2(o);
+  }, _typeof$1(o);
 }
 function ownKeys$1(e, r) {
   var t = Object.keys(e);
@@ -17673,54 +17201,39 @@ function _objectSpread$1(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys$1(Object(t), true).forEach(function(r2) {
-      _defineProperty$2(e, r2, t[r2]);
+      _defineProperty$1(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$1(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$2(e, r, t) {
-  return (r = _toPropertyKey$2(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$1(e, r, t) {
+  return (r = _toPropertyKey$1(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$2(t) {
-  var i = _toPrimitive$2(t, "string");
-  return "symbol" == _typeof$2(i) ? i : i + "";
+function _toPropertyKey$1(t) {
+  var i = _toPrimitive$1(t, "string");
+  return "symbol" == _typeof$1(i) ? i : i + "";
 }
-function _toPrimitive$2(t, r) {
-  if ("object" != _typeof$2(t) || !t) return t;
+function _toPrimitive$1(t, r) {
+  if ("object" != _typeof$1(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$2(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$1(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
-var _hoisted_1$1$2 = ["data-p"];
-var _hoisted_2$5 = ["data-p"];
-var _hoisted_3$3 = ["data-p"];
-var _hoisted_4$2 = ["data-p"];
-var _hoisted_5$1 = ["aria-label", "data-p"];
+var _hoisted_1$6 = ["aria-label"];
 function render$1$2(_ctx, _cache, $props, $setup, $data, $options) {
   var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("div", mergeProps({
     "class": [_ctx.cx("message"), $props.message.styleClass],
     role: "alert",
     "aria-live": "assertive",
-    "aria-atomic": "true",
-    "data-p": $options.dataP
-  }, _ctx.ptm("message"), {
-    onClick: _cache[1] || (_cache[1] = function() {
-      return $options.onMessageClick && $options.onMessageClick.apply($options, arguments);
-    }),
-    onMouseenter: _cache[2] || (_cache[2] = function() {
-      return $options.onMouseEnter && $options.onMouseEnter.apply($options, arguments);
-    }),
-    onMouseleave: _cache[3] || (_cache[3] = function() {
-      return $options.onMouseLeave && $options.onMouseLeave.apply($options, arguments);
-    })
-  }), [$props.templates.container ? (openBlock(), createBlock(resolveDynamicComponent($props.templates.container), {
+    "aria-atomic": "true"
+  }, _ctx.ptm("message")), [$props.templates.container ? (openBlock(), createBlock(resolveDynamicComponent($props.templates.container), {
     key: 0,
     message: $props.message,
     closeCallback: $options.onCloseClick
@@ -17732,16 +17245,12 @@ function render$1$2(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(openBlock(), createBlock(resolveDynamicComponent($props.templates.messageicon ? $props.templates.messageicon : $props.templates.icon ? $props.templates.icon : $options.iconComponent && $options.iconComponent.name ? $options.iconComponent : "span"), mergeProps({
     "class": _ctx.cx("messageIcon")
   }, _ctx.ptm("messageIcon")), null, 16, ["class"])), createBaseVNode("div", mergeProps({
-    "class": _ctx.cx("messageText"),
-    "data-p": $options.dataP
+    "class": _ctx.cx("messageText")
   }, _ctx.ptm("messageText")), [createBaseVNode("span", mergeProps({
-    "class": _ctx.cx("summary"),
-    "data-p": $options.dataP
-  }, _ctx.ptm("summary")), toDisplayString($props.message.summary), 17, _hoisted_3$3), $props.message.detail ? (openBlock(), createElementBlock("div", mergeProps({
-    key: 0,
-    "class": _ctx.cx("detail"),
-    "data-p": $options.dataP
-  }, _ctx.ptm("detail")), toDisplayString($props.message.detail), 17, _hoisted_4$2)) : createCommentVNode("", true)], 16, _hoisted_2$5)], 64)) : (openBlock(), createBlock(resolveDynamicComponent($props.templates.message), {
+    "class": _ctx.cx("summary")
+  }, _ctx.ptm("summary")), toDisplayString($props.message.summary), 17), createBaseVNode("div", mergeProps({
+    "class": _ctx.cx("detail")
+  }, _ctx.ptm("detail")), toDisplayString($props.message.detail), 17)], 16)], 64)) : (openBlock(), createBlock(resolveDynamicComponent($props.templates.message), {
     key: 1,
     message: $props.message
   }, null, 8, ["message"])), $props.message.closable !== false ? (openBlock(), createElementBlock("div", normalizeProps(mergeProps({
@@ -17753,38 +17262,12 @@ function render$1$2(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function() {
       return $options.onCloseClick && $options.onCloseClick.apply($options, arguments);
     }),
-    autofocus: "",
-    "data-p": $options.dataP
+    autofocus: ""
   }, _objectSpread$1(_objectSpread$1({}, $props.closeButtonProps), _ctx.ptm("closeButton"))), [(openBlock(), createBlock(resolveDynamicComponent($props.templates.closeicon || "TimesIcon"), mergeProps({
     "class": [_ctx.cx("closeIcon"), $props.closeIcon]
-  }, _ctx.ptm("closeIcon")), null, 16, ["class"]))], 16, _hoisted_5$1)), [[_directive_ripple]])], 16)) : createCommentVNode("", true)], 16))], 16, _hoisted_1$1$2);
+  }, _ctx.ptm("closeIcon")), null, 16, ["class"]))], 16, _hoisted_1$6)), [[_directive_ripple]])], 16)) : createCommentVNode("", true)], 16))], 16);
 }
 script$1$8.render = render$1$2;
-function _typeof$1$1(o) {
-  "@babel/helpers - typeof";
-  return _typeof$1$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$1$1(o);
-}
-function _defineProperty$1$1(e, r, t) {
-  return (r = _toPropertyKey$1$1(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$1$1(t) {
-  var i = _toPrimitive$1$1(t, "string");
-  return "symbol" == _typeof$1$1(i) ? i : i + "";
-}
-function _toPrimitive$1$1(t, r) {
-  if ("object" != _typeof$1$1(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$1$1(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 function _toConsumableArray$2(r) {
   return _arrayWithoutHoles$2(r) || _iterableToArray$2(r) || _unsupportedIterableToArray$2(r) || _nonIterableSpread$2();
 }
@@ -17821,7 +17304,7 @@ var script$9 = {
     };
   },
   styleElement: null,
-  mounted: function mounted14() {
+  mounted: function mounted15() {
     ToastEventBus.on("add", this.onAdd);
     ToastEventBus.on("remove", this.onRemove);
     ToastEventBus.on("remove-group", this.onRemoveGroup);
@@ -17875,12 +17358,6 @@ var script$9 = {
       }
     },
     onRemoveAllGroups: function onRemoveAllGroups() {
-      var _this = this;
-      this.messages.forEach(function(message3) {
-        return _this.$emit("close", {
-          message: message3
-        });
-      });
       this.messages = [];
     },
     onEnter: function onEnter4() {
@@ -17889,10 +17366,10 @@ var script$9 = {
       }
     },
     onLeave: function onLeave3() {
-      var _this2 = this;
+      var _this = this;
       if (this.$refs.container && this.autoZIndex && isEmpty(this.messages)) {
         setTimeout(function() {
-          ZIndex.clear(_this2.$refs.container);
+          ZIndex.clear(_this.$refs.container);
         }, 200);
       }
     },
@@ -17921,23 +17398,18 @@ var script$9 = {
       }
     }
   },
-  computed: {
-    dataP: function dataP12() {
-      return cn(_defineProperty$1$1({}, this.position, this.position));
-    }
-  },
   components: {
     ToastMessage: script$1$8,
     Portal: script$v
   }
 };
-function _typeof$4(o) {
+function _typeof(o) {
   "@babel/helpers - typeof";
-  return _typeof$4 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$4(o);
+  }, _typeof(o);
 }
 function ownKeys(e, r) {
   var t = Object.keys(e);
@@ -17953,31 +17425,30 @@ function _objectSpread(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
     r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
-      _defineProperty$4(e, r2, t[r2]);
+      _defineProperty(e, r2, t[r2]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$4(e, r, t) {
-  return (r = _toPropertyKey$4(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty(e, r, t) {
+  return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$4(t) {
-  var i = _toPrimitive$4(t, "string");
-  return "symbol" == _typeof$4(i) ? i : i + "";
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == _typeof(i) ? i : i + "";
 }
-function _toPrimitive$4(t, r) {
-  if ("object" != _typeof$4(t) || !t) return t;
+function _toPrimitive(t, r) {
+  if ("object" != _typeof(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$4(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
-var _hoisted_1$6 = ["data-p"];
 function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ToastMessage = resolveComponent("ToastMessage");
   var _component_Portal = resolveComponent("Portal");
@@ -17988,8 +17459,7 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
         "class": _ctx.cx("root"),
         style: _ctx.sx("root", true, {
           position: _ctx.position
-        }),
-        "data-p": $options.dataP
+        })
       }, _ctx.ptmi("root")), [createVNode(TransitionGroup, mergeProps({
         name: "p-toast-message",
         tag: "div",
@@ -18017,15 +17487,19 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
           }), 128))];
         }),
         _: 1
-      }, 16, ["onEnter", "onLeave"])], 16, _hoisted_1$6)];
+      }, 16, ["onEnter", "onLeave"])], 16)];
     }),
     _: 1
   });
 }
 script$9.render = render$8;
+var theme$7 = function theme20(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-progressbar {\n    position: relative;\n    overflow: hidden;\n    height: ".concat(dt("progressbar.height"), ";\n    background: ").concat(dt("progressbar.background"), ";\n    border-radius: ").concat(dt("progressbar.border.radius"), ";\n}\n\n.p-progressbar-value {\n    margin: 0;\n    background: ").concat(dt("progressbar.value.background"), ";\n}\n\n.p-progressbar-label {\n    color: ").concat(dt("progressbar.label.color"), ";\n    font-size: ").concat(dt("progressbar.label.font.size"), ";\n    font-weight: ").concat(dt("progressbar.label.font.weight"), ';\n}\n\n.p-progressbar-determinate .p-progressbar-value {\n    height: 100%;\n    width: 0%;\n    position: absolute;\n    display: none;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n    transition: width 1s ease-in-out;\n}\n\n.p-progressbar-determinate .p-progressbar-label {\n    display: inline-flex;\n}\n\n.p-progressbar-indeterminate .p-progressbar-value::before {\n    content: "";\n    position: absolute;\n    background: inherit;\n    inset-block-start: 0;\n    inset-inline-start: 0;\n    inset-block-end: 0;\n    will-change: inset-inline-start, inset-inline-end;\n    animation: p-progressbar-indeterminate-anim 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;\n}\n\n.p-progressbar-indeterminate .p-progressbar-value::after {\n    content: "";\n    position: absolute;\n    background: inherit;\n    inset-block-start: 0;\n    inset-inline-start: 0;\n    inset-block-end: 0;\n    will-change: inset-inline-start, inset-inline-end;\n    animation: p-progressbar-indeterminate-anim-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;\n    animation-delay: 1.15s;\n}\n\n@keyframes p-progressbar-indeterminate-anim {\n    0% {\n        inset-inline-start: -35%;\n        inset-inline-end: 100%;\n    }\n    60% {\n        inset-inline-start: 100%;\n        inset-inline-end: -90%;\n    }\n    100% {\n        inset-inline-start: 100%;\n        inset-inline-end: -90%;\n    }\n}\n@-webkit-keyframes p-progressbar-indeterminate-anim {\n    0% {\n        inset-inline-start: -35%;\n        inset-inline-end: 100%;\n    }\n    60% {\n        inset-inline-start: 100%;\n        inset-inline-end: -90%;\n    }\n    100% {\n        inset-inline-start: 100%;\n        inset-inline-end: -90%;\n    }\n}\n\n@keyframes p-progressbar-indeterminate-anim-short {\n    0% {\n        inset-inline-start: -200%;\n        inset-inline-end: 100%;\n    }\n    60% {\n        inset-inline-start: 107%;\n        inset-inline-end: -8%;\n    }\n    100% {\n        inset-inline-start: 107%;\n        inset-inline-end: -8%;\n    }\n}\n@-webkit-keyframes p-progressbar-indeterminate-anim-short {\n    0% {\n        inset-inline-start: -200%;\n        inset-inline-end: 100%;\n    }\n    60% {\n        inset-inline-start: 107%;\n        inset-inline-end: -8%;\n    }\n    100% {\n        inset-inline-start: 107%;\n        inset-inline-end: -8%;\n    }\n}\n');
+};
 var classes$7 = {
-  root: function root18(_ref) {
-    var instance = _ref.instance;
+  root: function root19(_ref2) {
+    var instance = _ref2.instance;
     return ["p-progressbar p-component", {
       "p-progressbar-determinate": instance.determinate,
       "p-progressbar-indeterminate": instance.indeterminate
@@ -18036,7 +17510,7 @@ var classes$7 = {
 };
 var ProgressBarStyle = BaseStyle.extend({
   name: "progressbar",
-  style: style$j,
+  theme: theme$7,
   classes: classes$7
 });
 var script$1$7 = {
@@ -18080,48 +17554,39 @@ var script$8 = {
     },
     determinate: function determinate() {
       return this.mode === "determinate";
-    },
-    dataP: function dataP13() {
-      return cn({
-        determinate: this.determinate,
-        indeterminate: this.indeterminate
-      });
     }
   }
 };
-var _hoisted_1$5 = ["aria-valuenow", "data-p"];
-var _hoisted_2$4 = ["data-p"];
-var _hoisted_3$2 = ["data-p"];
-var _hoisted_4$1 = ["data-p"];
+var _hoisted_1$5 = ["aria-valuenow"];
 function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", mergeProps({
     role: "progressbar",
     "class": _ctx.cx("root"),
     "aria-valuemin": "0",
     "aria-valuenow": _ctx.value,
-    "aria-valuemax": "100",
-    "data-p": $options.dataP
+    "aria-valuemax": "100"
   }, _ctx.ptmi("root")), [$options.determinate ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
     "class": _ctx.cx("value"),
-    style: $options.progressStyle,
-    "data-p": $options.dataP
+    style: $options.progressStyle
   }, _ctx.ptm("value")), [_ctx.value != null && _ctx.value !== 0 && _ctx.showValue ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
-    "class": _ctx.cx("label"),
-    "data-p": $options.dataP
+    "class": _ctx.cx("label")
   }, _ctx.ptm("label")), [renderSlot(_ctx.$slots, "default", {}, function() {
     return [createTextVNode(toDisplayString(_ctx.value + "%"), 1)];
-  })], 16, _hoisted_3$2)) : createCommentVNode("", true)], 16, _hoisted_2$4)) : $options.indeterminate ? (openBlock(), createElementBlock("div", mergeProps({
+  })], 16)) : createCommentVNode("", true)], 16)) : $options.indeterminate ? (openBlock(), createElementBlock("div", mergeProps({
     key: 1,
-    "class": _ctx.cx("value"),
-    "data-p": $options.dataP
-  }, _ctx.ptm("value")), null, 16, _hoisted_4$1)) : createCommentVNode("", true)], 16, _hoisted_1$5);
+    "class": _ctx.cx("value")
+  }, _ctx.ptm("value")), null, 16)) : createCommentVNode("", true)], 16, _hoisted_1$5);
 }
 script$8.render = render$7;
+var theme$6 = function theme21(_ref) {
+  var dt = _ref.dt;
+  return '\n.p-fileupload input[type="file"] {\n    display: none;\n}\n\n.p-fileupload-advanced {\n    border: 1px solid '.concat(dt("fileupload.border.color"), ";\n    border-radius: ").concat(dt("fileupload.border.radius"), ";\n    background: ").concat(dt("fileupload.background"), ";\n    color: ").concat(dt("fileupload.color"), ";\n}\n\n.p-fileupload-header {\n    display: flex;\n    align-items: center;\n    padding: ").concat(dt("fileupload.header.padding"), ";\n    background: ").concat(dt("fileupload.header.background"), ";\n    color: ").concat(dt("fileupload.header.color"), ";\n    border-style: solid;\n    border-width: ").concat(dt("fileupload.header.border.width"), ";\n    border-color: ").concat(dt("fileupload.header.border.color"), ";\n    border-radius: ").concat(dt("fileupload.header.border.radius"), ";\n    gap: ").concat(dt("fileupload.header.gap"), ";\n}\n\n.p-fileupload-content {\n    border: 1px solid transparent;\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("fileupload.content.gap"), ";\n    transition: border-color ").concat(dt("fileupload.transition.duration"), ";\n    padding: ").concat(dt("fileupload.content.padding"), ";\n}\n\n.p-fileupload-content .p-progressbar {\n    width: 100%;\n    height: ").concat(dt("fileupload.progressbar.height"), ";\n}\n\n.p-fileupload-file-list {\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("fileupload.filelist.gap"), ";\n}\n\n.p-fileupload-file {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    padding: ").concat(dt("fileupload.file.padding"), ";\n    border-block-end: 1px solid ").concat(dt("fileupload.file.border.color"), ";\n    gap: ").concat(dt("fileupload.file.gap"), ";\n}\n\n.p-fileupload-file:last-child {\n    border-block-end: 0;\n}\n\n.p-fileupload-file-info {\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("fileupload.file.info.gap"), ";\n}\n\n.p-fileupload-file-thumbnail {\n    flex-shrink: 0;\n}\n\n.p-fileupload-file-actions {\n    margin-inline-start: auto;\n}\n\n.p-fileupload-highlight {\n    border: 1px dashed ").concat(dt("fileupload.content.highlight.border.color"), ";\n}\n\n.p-fileupload-basic {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: center;\n    gap: ").concat(dt("fileupload.basic.gap"), ";\n}\n");
+};
 var classes$6 = {
-  root: function root19(_ref) {
-    var props = _ref.props;
+  root: function root20(_ref2) {
+    var props = _ref2.props;
     return ["p-fileupload p-fileupload-".concat(props.mode, " p-component")];
   },
   header: "p-fileupload-header",
@@ -18141,7 +17606,7 @@ var classes$6 = {
 };
 var FileUploadStyle = BaseStyle.extend({
   name: "fileupload",
-  style: style$k,
+  theme: theme$6,
   classes: classes$6
 });
 var script$2$1 = {
@@ -18519,6 +17984,7 @@ var script$7 = {
         this.$emit("uploader", {
           files: this.files
         });
+        this.clear();
       } else {
         var xhr = new XMLHttpRequest();
         var formData = new FormData();
@@ -18548,9 +18014,9 @@ var script$7 = {
         });
         xhr.onreadystatechange = function() {
           if (xhr.readyState === 4) {
+            var _this$uploadedFiles;
             _this.progress = 0;
             if (xhr.status >= 200 && xhr.status < 300) {
-              var _this$uploadedFiles;
               if (_this.fileLimit) {
                 _this.uploadedFileCount += _this.files.length;
               }
@@ -18558,25 +18024,23 @@ var script$7 = {
                 xhr,
                 files: _this.files
               });
-              (_this$uploadedFiles = _this.uploadedFiles).push.apply(_this$uploadedFiles, _toConsumableArray$1(_this.files));
             } else {
               _this.$emit("error", {
                 xhr,
                 files: _this.files
               });
             }
+            (_this$uploadedFiles = _this.uploadedFiles).push.apply(_this$uploadedFiles, _toConsumableArray$1(_this.files));
             _this.clear();
           }
         };
-        if (this.url) {
-          xhr.open("POST", this.url, true);
-          this.$emit("before-send", {
-            xhr,
-            formData
-          });
-          xhr.withCredentials = this.withCredentials;
-          xhr.send(formData);
-        }
+        xhr.open("POST", this.url, true);
+        this.$emit("before-send", {
+          xhr,
+          formData
+        });
+        xhr.withCredentials = this.withCredentials;
+        xhr.send(formData);
       }
     },
     clear: function clear2() {
@@ -18806,7 +18270,8 @@ var script$7 = {
   }
 };
 var _hoisted_1$4 = ["multiple", "accept", "disabled"];
-var _hoisted_2$3 = ["accept", "disabled", "multiple"];
+var _hoisted_2$2 = ["files"];
+var _hoisted_3$2 = ["accept", "disabled", "multiple"];
 function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Button = resolveComponent("Button");
   var _component_ProgressBar = resolveComponent("ProgressBar");
@@ -19008,12 +18473,12 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 16, ["label", "class", "style", "disabled", "unstyled", "onMouseup", "onKeydown", "onFocus", "onBlur", "pt"]), !_ctx.auto ? renderSlot(_ctx.$slots, "filelabel", {
     key: 0,
-    "class": normalizeClass(_ctx.cx("filelabel")),
-    files: $data.files
+    "class": normalizeClass(_ctx.cx("filelabel"))
   }, function() {
     return [createBaseVNode("span", {
-      "class": normalizeClass(_ctx.cx("filelabel"))
-    }, toDisplayString($options.basicFileChosenLabel), 3)];
+      "class": normalizeClass(_ctx.cx("filelabel")),
+      files: $data.files
+    }, toDisplayString($options.basicFileChosenLabel), 11, _hoisted_2$2)];
   }) : createCommentVNode("", true), createBaseVNode("input", mergeProps({
     ref: "fileInput",
     type: "file",
@@ -19029,7 +18494,7 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[7] || (_cache[7] = function() {
       return $options.onBlur && $options.onBlur.apply($options, arguments);
     })
-  }, _ctx.ptm("input")), null, 16, _hoisted_2$3)], 16)) : createCommentVNode("", true);
+  }, _ctx.ptm("input")), null, 16, _hoisted_3$2)], 16)) : createCommentVNode("", true);
 }
 script$7.render = render$6;
 var PrimeVueToastSymbol = Symbol();
@@ -19040,9 +18505,13 @@ function useToast() {
   }
   return PrimeVueToast;
 }
+var theme$5 = function theme22(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-divider-horizontal {\n    display: flex;\n    width: 100%;\n    position: relative;\n    align-items: center;\n    margin: ".concat(dt("divider.horizontal.margin"), ";\n    padding: ").concat(dt("divider.horizontal.padding"), ';\n}\n\n.p-divider-horizontal:before {\n    position: absolute;\n    display: block;\n    inset-block-start: 50%;\n    inset-inline-start: 0;\n    width: 100%;\n    content: "";\n    border-block-start: 1px solid ').concat(dt("divider.border.color"), ";\n}\n\n.p-divider-horizontal .p-divider-content {\n    padding: ").concat(dt("divider.horizontal.content.padding"), ";\n}\n\n.p-divider-vertical {\n    min-height: 100%;\n    display: flex;\n    position: relative;\n    justify-content: center;\n    margin: ").concat(dt("divider.vertical.margin"), ";\n    padding: ").concat(dt("divider.vertical.padding"), ';\n}\n\n.p-divider-vertical:before {\n    position: absolute;\n    display: block;\n    inset-block-start: 0;\n    inset-inline-start: 50%;\n    height: 100%;\n    content: "";\n    border-inline-start: 1px solid ').concat(dt("divider.border.color"), ";\n}\n\n.p-divider.p-divider-vertical .p-divider-content {\n    padding: ").concat(dt("divider.vertical.content.padding"), ";\n}\n\n.p-divider-content {\n    z-index: 1;\n    background: ").concat(dt("divider.content.background"), ";\n    color: ").concat(dt("divider.content.color"), ";\n}\n\n.p-divider-solid.p-divider-horizontal:before {\n    border-block-start-style: solid;\n}\n\n.p-divider-solid.p-divider-vertical:before {\n    border-inline-start-style: solid;\n}\n\n.p-divider-dashed.p-divider-horizontal:before {\n    border-block-start-style: dashed;\n}\n\n.p-divider-dashed.p-divider-vertical:before {\n    border-inline-start-style: dashed;\n}\n\n.p-divider-dotted.p-divider-horizontal:before {\n    border-block-start-style: dotted;\n}\n\n.p-divider-dotted.p-divider-vertical:before {\n    border-inline-start-style: dotted;\n}\n\n.p-divider-left:dir(rtl),\n.p-divider-right:dir(rtl) {\n    flex-direction: row-reverse;\n}\n");
+};
 var inlineStyles = {
-  root: function root20(_ref) {
-    var props = _ref.props;
+  root: function root21(_ref2) {
+    var props = _ref2.props;
     return {
       justifyContent: props.layout === "horizontal" ? props.align === "center" || props.align === null ? "center" : props.align === "left" ? "flex-start" : props.align === "right" ? "flex-end" : null : null,
       alignItems: props.layout === "vertical" ? props.align === "center" || props.align === null ? "center" : props.align === "top" ? "flex-start" : props.align === "bottom" ? "flex-end" : null : null
@@ -19050,8 +18519,8 @@ var inlineStyles = {
   }
 };
 var classes$5 = {
-  root: function root21(_ref2) {
-    var props = _ref2.props;
+  root: function root22(_ref3) {
+    var props = _ref3.props;
     return ["p-divider p-component", "p-divider-" + props.layout, "p-divider-" + props.type, {
       "p-divider-left": props.layout === "horizontal" && (!props.align || props.align === "left")
     }, {
@@ -19070,7 +18539,7 @@ var classes$5 = {
 };
 var DividerStyle = BaseStyle.extend({
   name: "divider",
-  style: style$l,
+  theme: theme$5,
   classes: classes$5,
   inlineStyles
 });
@@ -19099,57 +18568,28 @@ var script$1$5 = {
     };
   }
 };
-function _typeof$1(o) {
-  "@babel/helpers - typeof";
-  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$1(o);
-}
-function _defineProperty$1(e, r, t) {
-  return (r = _toPropertyKey$1(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$1(t) {
-  var i = _toPrimitive$1(t, "string");
-  return "symbol" == _typeof$1(i) ? i : i + "";
-}
-function _toPrimitive$1(t, r) {
-  if ("object" != _typeof$1(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$1(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script$6 = {
   name: "Divider",
   "extends": script$1$5,
-  inheritAttrs: false,
-  computed: {
-    dataP: function dataP14() {
-      return cn(_defineProperty$1(_defineProperty$1(_defineProperty$1({}, this.align, this.align), this.layout, this.layout), this.type, this.type));
-    }
-  }
+  inheritAttrs: false
 };
-var _hoisted_1$3 = ["aria-orientation", "data-p"];
-var _hoisted_2$2 = ["data-p"];
+var _hoisted_1$3 = ["aria-orientation"];
 function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", mergeProps({
     "class": _ctx.cx("root"),
     style: _ctx.sx("root"),
     role: "separator",
-    "aria-orientation": _ctx.layout,
-    "data-p": $options.dataP
+    "aria-orientation": _ctx.layout
   }, _ctx.ptmi("root")), [_ctx.$slots["default"] ? (openBlock(), createElementBlock("div", mergeProps({
     key: 0,
-    "class": _ctx.cx("content"),
-    "data-p": $options.dataP
-  }, _ctx.ptm("content")), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_2$2)) : createCommentVNode("", true)], 16, _hoisted_1$3);
+    "class": _ctx.cx("content")
+  }, _ctx.ptm("content")), [renderSlot(_ctx.$slots, "default")], 16)) : createCommentVNode("", true)], 16, _hoisted_1$3);
 }
 script$6.render = render$5;
+var theme$4 = function theme23(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-scrollpanel-content-container {\n    overflow: hidden;\n    width: 100%;\n    height: 100%;\n    position: relative;\n    z-index: 1;\n    float: left;\n}\n\n.p-scrollpanel-content {\n    height: calc(100% + calc(2 * ".concat(dt("scrollpanel.bar.size"), "));\n    width: calc(100% + calc(2 * ").concat(dt("scrollpanel.bar.size"), "));\n    padding-inline: 0 calc(2 * ").concat(dt("scrollpanel.bar.size"), ");\n    padding-block: 0 calc(2 * ").concat(dt("scrollpanel.bar.size"), ");\n    position: relative;\n    overflow: auto;\n    box-sizing: border-box;\n    scrollbar-width: none;\n}\n\n.p-scrollpanel-content::-webkit-scrollbar {\n    display: none;\n}\n\n.p-scrollpanel-bar {\n    position: relative;\n    border-radius: ").concat(dt("scrollpanel.bar.border.radius"), ";\n    z-index: 2;\n    cursor: pointer;\n    opacity: 0;\n    outline-color: transparent;\n    background: ").concat(dt("scrollpanel.bar.background"), ";\n    border: 0 none;\n    transition: outline-color ").concat(dt("scrollpanel.transition.duration"), ", opacity ").concat(dt("scrollpanel.transition.duration"), ";\n}\n\n.p-scrollpanel-bar:focus-visible {\n    box-shadow: ").concat(dt("scrollpanel.bar.focus.ring.shadow"), ";\n    outline: ").concat(dt("scrollpanel.barfocus.ring.width"), " ").concat(dt("scrollpanel.bar.focus.ring.style"), " ").concat(dt("scrollpanel.bar.focus.ring.color"), ";\n    outline-offset: ").concat(dt("scrollpanel.barfocus.ring.offset"), ";\n}\n\n.p-scrollpanel-bar-y {\n    width: ").concat(dt("scrollpanel.bar.size"), ";\n    inset-block-start: 0;\n}\n\n.p-scrollpanel-bar-x {\n    height: ").concat(dt("scrollpanel.bar.size"), ";\n    inset-block-end: 0;\n}\n\n.p-scrollpanel-hidden {\n    visibility: hidden;\n}\n\n.p-scrollpanel:hover .p-scrollpanel-bar,\n.p-scrollpanel:active .p-scrollpanel-bar {\n    opacity: 1;\n}\n\n.p-scrollpanel-grabbed {\n    user-select: none;\n}\n");
+};
 var classes$4 = {
   root: "p-scrollpanel p-component",
   contentContainer: "p-scrollpanel-content-container",
@@ -19159,7 +18599,7 @@ var classes$4 = {
 };
 var ScrollPanelStyle = BaseStyle.extend({
   name: "scrollpanel",
-  style: style$m,
+  theme: theme$4,
   classes: classes$4
 });
 var script$1$4 = {
@@ -19198,12 +18638,19 @@ var script$5 = {
   outsideClickListener: null,
   data: function data16() {
     return {
+      id: this.$attrs.id,
       orientation: "vertical",
       lastScrollTop: 0,
       lastScrollLeft: 0
     };
   },
-  mounted: function mounted15() {
+  watch: {
+    "$attrs.id": function $attrsId5(newValue) {
+      this.id = newValue || UniqueComponentId();
+    }
+  },
+  mounted: function mounted16() {
+    this.id = this.id || UniqueComponentId();
     if (this.$el.offsetParent) {
       this.initialize();
     }
@@ -19467,7 +18914,7 @@ var script$5 = {
   },
   computed: {
     contentId: function contentId() {
-      return this.$id + "_content";
+      return this.id + "_content";
     }
   }
 };
@@ -19539,9 +18986,13 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   }), null, 16, _hoisted_3$1)], 16);
 }
 script$5.render = render$4;
+var theme$3 = function theme24(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-listbox {\n    background: ".concat(dt("listbox.background"), ";\n    color: ").concat(dt("listbox.color"), ";\n    border: 1px solid ").concat(dt("listbox.border.color"), ";\n    border-radius: ").concat(dt("listbox.border.radius"), ";\n    transition: background ").concat(dt("listbox.transition.duration"), ", color ").concat(dt("listbox.transition.duration"), ", border-color ").concat(dt("listbox.transition.duration"), ",\n            box-shadow ").concat(dt("listbox.transition.duration"), ", outline-color ").concat(dt("listbox.transition.duration"), ";\n    outline-color: transparent;\n    box-shadow: ").concat(dt("listbox.shadow"), ";\n}\n\n.p-listbox.p-disabled {\n    opacity: 1;\n    background: ").concat(dt("listbox.disabled.background"), ";\n    color: ").concat(dt("listbox.disabled.color"), ";\n}\n\n.p-listbox.p-disabled .p-listbox-option {\n    color: ").concat(dt("listbox.disabled.color"), ";\n}\n\n.p-listbox.p-invalid {\n    border-color: ").concat(dt("listbox.invalid.border.color"), ";\n}\n\n.p-listbox-header {\n    padding: ").concat(dt("listbox.list.header.padding"), ";\n}\n\n.p-listbox-filter {\n    width: 100%;\n}\n\n.p-listbox-list-container {\n    overflow: auto;\n}\n\n.p-listbox-list {\n    list-style-type: none;\n    margin: 0;\n    padding: ").concat(dt("listbox.list.padding"), ";\n    outline: 0 none;\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("listbox.list.gap"), ";\n}\n\n.p-listbox-option {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n    position: relative;\n    overflow: hidden;\n    padding: ").concat(dt("listbox.option.padding"), ";\n    border: 0 none;\n    border-radius: ").concat(dt("listbox.option.border.radius"), ";\n    color: ").concat(dt("listbox.option.color"), ";\n    transition: background ").concat(dt("listbox.transition.duration"), ", color ").concat(dt("listbox.transition.duration"), ", border-color ").concat(dt("listbox.transition.duration"), ",\n            box-shadow ").concat(dt("listbox.transition.duration"), ", outline-color ").concat(dt("listbox.transition.duration"), ";\n}\n\n.p-listbox-striped li:nth-child(even of .p-listbox-option) {\n    background: ").concat(dt("listbox.option.striped.background"), ";\n}\n\n.p-listbox .p-listbox-list .p-listbox-option.p-listbox-option-selected {\n    background: ").concat(dt("listbox.option.selected.background"), ";\n    color: ").concat(dt("listbox.option.selected.color"), ";\n}\n\n.p-listbox:not(.p-disabled) .p-listbox-option.p-listbox-option-selected.p-focus {\n    background: ").concat(dt("listbox.option.selected.focus.background"), ";\n    color: ").concat(dt("listbox.option.selected.focus.color"), ";\n}\n\n.p-listbox:not(.p-disabled) .p-listbox-option:not(.p-listbox-option-selected):not(.p-disabled).p-focus {\n    background: ").concat(dt("listbox.option.focus.background"), ";\n    color: ").concat(dt("listbox.option.focus.color"), ";\n}\n\n.p-listbox:not(.p-disabled) .p-listbox-option:not(.p-listbox-option-selected):not(.p-disabled):hover {\n    background: ").concat(dt("listbox.option.focus.background"), ";\n    color: ").concat(dt("listbox.option.focus.color"), ";\n}\n\n.p-listbox-option-check-icon {\n    position: relative;\n    margin-inline-start: ").concat(dt("listbox.checkmark.gutter.start"), ";\n    margin-inline-end: ").concat(dt("listbox.checkmark.gutter.end"), ";\n    color: ").concat(dt("listbox.checkmark.color"), ";\n}\n\n.p-listbox-option-group {\n    margin: 0;\n    padding: ").concat(dt("listbox.option.group.padding"), ";\n    color: ").concat(dt("listbox.option.group.color"), ";\n    background: ").concat(dt("listbox.option.group.background"), ";\n    font-weight: ").concat(dt("listbox.option.group.font.weight"), ";\n}\n\n.p-listbox-empty-message {\n    padding: ").concat(dt("listbox.empty.message.padding"), ";\n}\n");
+};
 var classes$3 = {
-  root: function root22(_ref) {
-    var instance = _ref.instance, props = _ref.props;
+  root: function root23(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props;
     return ["p-listbox p-component", {
       "p-listbox-striped": props.striped,
       "p-disabled": props.disabled,
@@ -19553,8 +19004,8 @@ var classes$3 = {
   listContainer: "p-listbox-list-container",
   list: "p-listbox-list",
   optionGroup: "p-listbox-option-group",
-  option: function option2(_ref2) {
-    var instance = _ref2.instance, props = _ref2.props, _option = _ref2.option, index2 = _ref2.index, getItemOptions = _ref2.getItemOptions;
+  option: function option2(_ref3) {
+    var instance = _ref3.instance, props = _ref3.props, _option = _ref3.option, index2 = _ref3.index, getItemOptions = _ref3.getItemOptions;
     return ["p-listbox-option", {
       "p-listbox-option-selected": instance.isSelected(_option) && props.highlightOnSelect,
       "p-focus": instance.focusedOptionIndex === instance.getOptionIndex(index2, getItemOptions),
@@ -19567,7 +19018,7 @@ var classes$3 = {
 };
 var ListboxStyle = BaseStyle.extend({
   name: "listbox",
-  style: style$n,
+  theme: theme$3,
   classes: classes$3
 });
 var script$1$3 = {
@@ -19715,17 +19166,22 @@ var script$4 = {
   searchValue: "",
   data: function data17() {
     return {
+      id: this.$attrs.id,
       filterValue: null,
       focused: false,
       focusedOptionIndex: -1
     };
   },
   watch: {
+    "$attrs.id": function $attrsId6(newValue) {
+      this.id = newValue || UniqueComponentId();
+    },
     options: function options2() {
       this.autoUpdateModel();
     }
   },
-  mounted: function mounted16() {
+  mounted: function mounted17() {
+    this.id = this.id || UniqueComponentId();
     this.autoUpdateModel();
   },
   methods: {
@@ -19794,7 +19250,6 @@ var script$4 = {
       this.focused = true;
       this.focusedOptionIndex = this.focusedOptionIndex !== -1 ? this.focusedOptionIndex : this.autoOptionFocus ? this.findFirstFocusedOptionIndex() : this.findSelectedOptionIndex();
       this.autoUpdateModel();
-      this.scrollInView(this.focusedOptionIndex);
       this.$emit("focus", event);
     },
     onListBlur: function onListBlur(event) {
@@ -20066,7 +19521,7 @@ var script$4 = {
     onShiftKey: function onShiftKey() {
       this.startRangeIndex = this.focusedOptionIndex;
     },
-    isOptionMatched: function isOptionMatched(option3) {
+    isOptionMatched: function isOptionMatched2(option3) {
       var _this$getOptionLabel;
       return this.isValidOption(option3) && typeof this.getOptionLabel(option3) === "string" && ((_this$getOptionLabel = this.getOptionLabel(option3)) === null || _this$getOptionLabel === void 0 ? void 0 : _this$getOptionLabel.toLocaleLowerCase(this.filterLocale).startsWith(this.searchValue.toLocaleLowerCase(this.filterLocale)));
     },
@@ -20139,28 +19594,28 @@ var script$4 = {
       return -1;
     },
     findFirstSelectedOptionIndex: function findFirstSelectedOptionIndex() {
-      var _this0 = this;
+      var _this10 = this;
       return this.$filled ? this.visibleOptions.findIndex(function(option3) {
-        return _this0.isValidSelectedOption(option3);
+        return _this10.isValidSelectedOption(option3);
       }) : -1;
     },
     findLastSelectedOptionIndex: function findLastSelectedOptionIndex() {
-      var _this1 = this;
+      var _this11 = this;
       return this.$filled ? findLastIndex(this.visibleOptions, function(option3) {
-        return _this1.isValidSelectedOption(option3);
+        return _this11.isValidSelectedOption(option3);
       }) : -1;
     },
     findNextSelectedOptionIndex: function findNextSelectedOptionIndex(index2) {
-      var _this10 = this;
+      var _this12 = this;
       var matchedOptionIndex = this.$filled && index2 < this.visibleOptions.length - 1 ? this.visibleOptions.slice(index2 + 1).findIndex(function(option3) {
-        return _this10.isValidSelectedOption(option3);
+        return _this12.isValidSelectedOption(option3);
       }) : -1;
       return matchedOptionIndex > -1 ? matchedOptionIndex + index2 + 1 : -1;
     },
     findPrevSelectedOptionIndex: function findPrevSelectedOptionIndex(index2) {
-      var _this11 = this;
+      var _this13 = this;
       var matchedOptionIndex = this.$filled && index2 > 0 ? findLastIndex(this.visibleOptions.slice(0, index2), function(option3) {
-        return _this11.isValidSelectedOption(option3);
+        return _this13.isValidSelectedOption(option3);
       }) : -1;
       return matchedOptionIndex > -1 ? matchedOptionIndex : -1;
     },
@@ -20187,20 +19642,20 @@ var script$4 = {
       return selectedIndex < 0 ? this.findLastOptionIndex() : selectedIndex;
     },
     searchOptions: function searchOptions2(event, _char) {
-      var _this12 = this;
+      var _this14 = this;
       this.searchValue = (this.searchValue || "") + _char;
       var optionIndex = -1;
       if (isNotEmpty(this.searchValue)) {
         if (this.focusedOptionIndex !== -1) {
           optionIndex = this.visibleOptions.slice(this.focusedOptionIndex).findIndex(function(option3) {
-            return _this12.isOptionMatched(option3);
+            return _this14.isOptionMatched(option3);
           });
           optionIndex = optionIndex === -1 ? this.visibleOptions.slice(0, this.focusedOptionIndex).findIndex(function(option3) {
-            return _this12.isOptionMatched(option3);
+            return _this14.isOptionMatched(option3);
           }) : optionIndex + this.focusedOptionIndex;
         } else {
           optionIndex = this.visibleOptions.findIndex(function(option3) {
-            return _this12.isOptionMatched(option3);
+            return _this14.isOptionMatched(option3);
           });
         }
         if (optionIndex === -1 && this.focusedOptionIndex === -1) {
@@ -20214,14 +19669,14 @@ var script$4 = {
         clearTimeout(this.searchTimeout);
       }
       this.searchTimeout = setTimeout(function() {
-        _this12.searchValue = "";
-        _this12.searchTimeout = null;
+        _this14.searchValue = "";
+        _this14.searchTimeout = null;
       }, 500);
     },
     removeOption: function removeOption(option3) {
-      var _this13 = this;
+      var _this15 = this;
       return this.d_value.filter(function(val) {
-        return !equals(val, _this13.getOptionValue(option3), _this13.equalityKey);
+        return !equals(val, _this15.getOptionValue(option3), _this15.equalityKey);
       });
     },
     changeFocusedOptionIndex: function changeFocusedOptionIndex2(event, index2) {
@@ -20234,19 +19689,19 @@ var script$4 = {
       }
     },
     scrollInView: function scrollInView5() {
-      var _this14 = this;
+      var _this16 = this;
       var index2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : -1;
       this.$nextTick(function() {
-        var id3 = index2 !== -1 ? "".concat(_this14.$id, "_").concat(index2) : _this14.focusedOptionId;
-        var element = findSingle(_this14.list, 'li[id="'.concat(id3, '"]'));
+        var id3 = index2 !== -1 ? "".concat(_this16.id, "_").concat(index2) : _this16.focusedOptionId;
+        var element = findSingle(_this16.list, 'li[id="'.concat(id3, '"]'));
         if (element) {
           element.scrollIntoView && element.scrollIntoView({
             block: "nearest",
             inline: "nearest",
             behavior: "smooth"
           });
-        } else if (!_this14.virtualScrollerDisabled) {
-          _this14.virtualScroller && _this14.virtualScroller.scrollToIndex(index2 !== -1 ? index2 : _this14.focusedOptionIndex);
+        } else if (!_this16.virtualScrollerDisabled) {
+          _this16.virtualScroller && _this16.virtualScroller.scrollToIndex(index2 !== -1 ? index2 : _this16.focusedOptionIndex);
         }
       });
     },
@@ -20276,11 +19731,11 @@ var script$4 = {
       return this.filterValue ? FilterService.filter(this.options, this.searchFields, this.filterValue, this.filterMatchMode, this.filterLocale) : this.options;
     },
     optionsListGroup: function optionsListGroup() {
-      var _this15 = this;
+      var _this17 = this;
       var filteredOptions = [];
       (this.options || []).forEach(function(optionGroup) {
-        var optionGroupChildren = _this15.getOptionGroupChildren(optionGroup) || [];
-        var filteredChildren = _this15.filterValue ? FilterService.filter(optionGroupChildren, _this15.searchFields, _this15.filterValue, _this15.filterMatchMode, _this15.filterLocale) : optionGroupChildren;
+        var optionGroupChildren = _this17.getOptionGroupChildren(optionGroup) || [];
+        var filteredChildren = _this17.filterValue ? FilterService.filter(optionGroupChildren, _this17.searchFields, _this17.filterValue, _this17.filterMatchMode, _this17.filterLocale) : optionGroupChildren;
         if (filteredChildren !== null && filteredChildren !== void 0 && filteredChildren.length) {
           filteredOptions.push.apply(filteredOptions, [{
             optionGroup,
@@ -20325,22 +19780,16 @@ var script$4 = {
       return this.$filled ? this.selectionMessageText.replaceAll("{0}", this.multiple ? this.d_value.length : "1") : this.emptySelectionMessageText;
     },
     focusedOptionId: function focusedOptionId2() {
-      return this.focusedOptionIndex !== -1 ? "".concat(this.$id, "_").concat(this.focusedOptionIndex) : null;
+      return this.focusedOptionIndex !== -1 ? "".concat(this.id, "_").concat(this.focusedOptionIndex) : null;
     },
     ariaSetSize: function ariaSetSize2() {
-      var _this16 = this;
+      var _this18 = this;
       return this.visibleOptions.filter(function(option3) {
-        return !_this16.isOptionGroup(option3);
+        return !_this18.isOptionGroup(option3);
       }).length;
     },
     virtualScrollerDisabled: function virtualScrollerDisabled2() {
       return !this.virtualScrollerOptions;
-    },
-    containerDataP: function containerDataP3() {
-      return cn({
-        invalid: this.$invalid,
-        disabled: this.disabled
-      });
     }
   },
   directives: {
@@ -20356,7 +19805,7 @@ var script$4 = {
     BlankIcon: script$K
   }
 };
-var _hoisted_1$1 = ["id", "data-p"];
+var _hoisted_1$1 = ["id"];
 var _hoisted_2 = ["tabindex"];
 var _hoisted_3 = ["id", "aria-multiselectable", "aria-label", "aria-labelledby", "aria-activedescendant", "aria-disabled"];
 var _hoisted_4 = ["id"];
@@ -20372,12 +19821,11 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_VirtualScroller = resolveComponent("VirtualScroller");
   var _directive_ripple = resolveDirective("ripple");
   return openBlock(), createElementBlock("div", mergeProps({
-    id: _ctx.$id,
+    id: $data.id,
     "class": _ctx.cx("root"),
     onFocusout: _cache[7] || (_cache[7] = function() {
       return $options.onFocusout && $options.onFocusout.apply($options, arguments);
-    }),
-    "data-p": $options.containerDataP
+    })
   }, _ctx.ptmi("root")), [createBaseVNode("span", mergeProps({
     ref: "firstHiddenFocusableElement",
     role: "presentation",
@@ -20416,7 +19864,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
         autocomplete: "off",
         disabled: _ctx.disabled,
         unstyled: _ctx.unstyled,
-        "aria-owns": _ctx.$id + "_list",
+        "aria-owns": $data.id + "_list",
         "aria-activedescendant": $options.focusedOptionId,
         tabindex: !_ctx.disabled && !$data.focused ? _ctx.tabindex : -1,
         onInput: $options.onFilterChange,
@@ -20464,12 +19912,12 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     pt: _ctx.ptm("virtualScroller")
   }), createSlots({
     content: withCtx(function(_ref) {
-      var styleClass = _ref.styleClass, contentRef3 = _ref.contentRef, items = _ref.items, getItemOptions = _ref.getItemOptions, contentStyle = _ref.contentStyle, itemSize2 = _ref.itemSize;
+      var styleClass = _ref.styleClass, contentRef3 = _ref.contentRef, items2 = _ref.items, getItemOptions = _ref.getItemOptions, contentStyle = _ref.contentStyle, itemSize2 = _ref.itemSize;
       return [createBaseVNode("ul", mergeProps({
         ref: function ref2(el) {
           return $options.listRef(el, contentRef3);
         },
-        id: _ctx.$id + "_list",
+        id: $data.id + "_list",
         "class": [_ctx.cx("list"), styleClass],
         style: contentStyle,
         tabindex: -1,
@@ -20488,12 +19936,12 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
         onKeydown: _cache[5] || (_cache[5] = function() {
           return $options.onListKeyDown && $options.onListKeyDown.apply($options, arguments);
         })
-      }, _ctx.ptm("list")), [(openBlock(true), createElementBlock(Fragment, null, renderList(items, function(option3, i) {
+      }, _ctx.ptm("list")), [(openBlock(true), createElementBlock(Fragment, null, renderList(items2, function(option3, i) {
         return openBlock(), createElementBlock(Fragment, {
           key: $options.getOptionRenderKey(option3, $options.getOptionIndex(i, getItemOptions))
         }, [$options.isOptionGroup(option3) ? (openBlock(), createElementBlock("li", mergeProps({
           key: 0,
-          id: _ctx.$id + "_" + $options.getOptionIndex(i, getItemOptions),
+          id: $data.id + "_" + $options.getOptionIndex(i, getItemOptions),
           style: {
             height: itemSize2 ? itemSize2 + "px" : void 0
           },
@@ -20507,7 +19955,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
           return [createTextVNode(toDisplayString($options.getOptionGroupLabel(option3.optionGroup)), 1)];
         })], 16, _hoisted_4)) : withDirectives((openBlock(), createElementBlock("li", mergeProps({
           key: 1,
-          id: _ctx.$id + "_" + $options.getOptionIndex(i, getItemOptions),
+          id: $data.id + "_" + $options.getOptionIndex(i, getItemOptions),
           style: {
             height: itemSize2 ? itemSize2 + "px" : void 0
           },
@@ -20539,7 +19987,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
           },
           ref_for: true
         }, $options.getPTOptions(option3, getItemOptions, i, "option"), {
-          "data-p-selected": !_ctx.checkmark && $options.isSelected(option3),
+          "data-p-selected": $options.isSelected(option3),
           "data-p-focused": $data.focusedOptionIndex === $options.getOptionIndex(i, getItemOptions),
           "data-p-disabled": $options.isOptionDisabled(option3)
         }), [_ctx.checkmark ? (openBlock(), createElementBlock(Fragment, {
@@ -20559,7 +20007,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
         }, function() {
           return [createTextVNode(toDisplayString($options.getOptionLabel(option3)), 1)];
         })], 16, _hoisted_5)), [[_directive_ripple]])], 64);
-      }), 128)), $data.filterValue && (!items || items && items.length === 0) ? (openBlock(), createElementBlock("li", mergeProps({
+      }), 128)), $data.filterValue && (!items2 || items2 && items2.length === 0) ? (openBlock(), createElementBlock("li", mergeProps({
         key: 0,
         "class": _ctx.cx("emptyMessage"),
         role: "option"
@@ -20614,6 +20062,10 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   }), null, 16, _hoisted_6)], 16, _hoisted_1$1);
 }
 script$4.render = render$3;
+var theme$2 = function theme25(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-card {\n    background: ".concat(dt("card.background"), ";\n    color: ").concat(dt("card.color"), ";\n    box-shadow: ").concat(dt("card.shadow"), ";\n    border-radius: ").concat(dt("card.border.radius"), ";\n    display: flex;\n    flex-direction: column;\n}\n\n.p-card-caption {\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("card.caption.gap"), ";\n}\n\n.p-card-body {\n    padding: ").concat(dt("card.body.padding"), ";\n    display: flex;\n    flex-direction: column;\n    gap: ").concat(dt("card.body.gap"), ";\n}\n\n.p-card-title {\n    font-size: ").concat(dt("card.title.font.size"), ";\n    font-weight: ").concat(dt("card.title.font.weight"), ";\n}\n\n.p-card-subtitle {\n    color: ").concat(dt("card.subtitle.color"), ";\n}\n");
+};
 var classes$2 = {
   root: "p-card p-component",
   header: "p-card-header",
@@ -20626,7 +20078,7 @@ var classes$2 = {
 };
 var CardStyle = BaseStyle.extend({
   name: "card",
-  style: style$o,
+  theme: theme$2,
   classes: classes$2
 });
 var script$1$2 = {
@@ -20670,9 +20122,14 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   }, _ctx.ptm("footer")), [renderSlot(_ctx.$slots, "footer")], 16)) : createCommentVNode("", true)], 16)], 16);
 }
 script$3.render = render$2;
+var theme$1 = function theme26(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-floatlabel {\n    display: block;\n    position: relative;\n}\n\n.p-floatlabel label {\n    position: absolute;\n    pointer-events: none;\n    top: 50%;\n    transform: translateY(-50%);\n    transition-property: all;\n    transition-timing-function: ease;\n    line-height: 1;\n    font-weight: ".concat(dt("floatlabel.font.weight"), ";\n    inset-inline-start: ").concat(dt("floatlabel.position.x"), ";\n    color: ").concat(dt("floatlabel.color"), ";\n    transition-duration: ").concat(dt("floatlabel.transition.duration"), ";\n}\n\n.p-floatlabel:has(.p-textarea) label {\n    top: ").concat(dt("floatlabel.position.y"), ";\n    transform: translateY(0);\n}\n\n.p-floatlabel:has(.p-inputicon:first-child) label {\n    inset-inline-start: calc((").concat(dt("form.field.padding.x"), " * 2) + ").concat(dt("icon.size"), ");\n}\n\n.p-floatlabel:has(.p-invalid) label {\n    color: ").concat(dt("floatlabel.invalid.color"), ";\n}\n\n.p-floatlabel:has(input:focus) label,\n.p-floatlabel:has(input.p-filled) label,\n.p-floatlabel:has(input:-webkit-autofill) label,\n.p-floatlabel:has(textarea:focus) label,\n.p-floatlabel:has(textarea.p-filled) label,\n.p-floatlabel:has(.p-inputwrapper-focus) label,\n.p-floatlabel:has(.p-inputwrapper-filled) label {\n    top: ").concat(dt("floatlabel.over.active.top"), ";\n    transform: translateY(0);\n    font-size: ").concat(dt("floatlabel.active.font.size"), ";\n    font-weight: ").concat(dt("floatlabel.label.active.font.weight"), ";\n}\n\n.p-floatlabel:has(input.p-filled) label,\n.p-floatlabel:has(textarea.p-filled) label,\n.p-floatlabel:has(.p-inputwrapper-filled) label {\n    color: ").concat(dt("floatlabel.active.color"), ";\n}\n\n.p-floatlabel:has(input:focus) label,\n.p-floatlabel:has(input:-webkit-autofill) label,\n.p-floatlabel:has(textarea:focus) label,\n.p-floatlabel:has(.p-inputwrapper-focus) label {\n    color: ").concat(dt("floatlabel.focus.color"), ";\n}\n\n.p-floatlabel-in .p-inputtext,\n.p-floatlabel-in .p-textarea,\n.p-floatlabel-in .p-select-label,\n.p-floatlabel-in .p-multiselect-label,\n.p-floatlabel-in .p-autocomplete-input-multiple,\n.p-floatlabel-in .p-cascadeselect-label,\n.p-floatlabel-in .p-treeselect-label {\n    padding-block-start: ").concat(dt("floatlabel.in.input.padding.top"), ";\n    padding-block-end: ").concat(dt("floatlabel.in.input.padding.bottom"), ";\n}\n\n.p-floatlabel-in:has(input:focus) label,\n.p-floatlabel-in:has(input.p-filled) label,\n.p-floatlabel-in:has(input:-webkit-autofill) label,\n.p-floatlabel-in:has(textarea:focus) label,\n.p-floatlabel-in:has(textarea.p-filled) label,\n.p-floatlabel-in:has(.p-inputwrapper-focus) label,\n.p-floatlabel-in:has(.p-inputwrapper-filled) label {\n    top: ").concat(dt("floatlabel.in.active.top"), ";\n}\n\n.p-floatlabel-on:has(input:focus) label,\n.p-floatlabel-on:has(input.p-filled) label,\n.p-floatlabel-on:has(input:-webkit-autofill) label,\n.p-floatlabel-on:has(textarea:focus) label,\n.p-floatlabel-on:has(textarea.p-filled) label,\n.p-floatlabel-on:has(.p-inputwrapper-focus) label,\n.p-floatlabel-on:has(.p-inputwrapper-filled) label {\n    top: 0;\n    transform: translateY(-50%);\n    border-radius: ").concat(dt("floatlabel.on.border.radius"), ";\n    background: ").concat(dt("floatlabel.on.active.background"), ";\n    padding: ").concat(dt("floatlabel.on.active.padding"), ";\n}\n");
+};
 var classes$1 = {
-  root: function root23(_ref) {
-    var props = _ref.props;
+  root: function root24(_ref2) {
+    _ref2.instance;
+    var props = _ref2.props;
     return ["p-floatlabel", {
       "p-floatlabel-over": props.variant === "over",
       "p-floatlabel-on": props.variant === "on",
@@ -20682,7 +20139,7 @@ var classes$1 = {
 };
 var FloatLabelStyle = BaseStyle.extend({
   name: "floatlabel",
-  style: style$p,
+  theme: theme$1,
   classes: classes$1
 });
 var script$1$1 = {
@@ -20713,9 +20170,13 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   }, _ctx.ptmi("root")), [renderSlot(_ctx.$slots, "default")], 16);
 }
 script$2.render = render$1;
+var theme27 = function theme28(_ref) {
+  var dt = _ref.dt;
+  return "\n.p-textarea {\n    font-family: inherit;\n    font-feature-settings: inherit;\n    font-size: 1rem;\n    color: ".concat(dt("textarea.color"), ";\n    background: ").concat(dt("textarea.background"), ";\n    padding-block: ").concat(dt("textarea.padding.y"), ";\n    padding-inline: ").concat(dt("textarea.padding.x"), ";\n    border: 1px solid ").concat(dt("textarea.border.color"), ";\n    transition: background ").concat(dt("textarea.transition.duration"), ", color ").concat(dt("textarea.transition.duration"), ", border-color ").concat(dt("textarea.transition.duration"), ", outline-color ").concat(dt("textarea.transition.duration"), ", box-shadow ").concat(dt("textarea.transition.duration"), ";\n    appearance: none;\n    border-radius: ").concat(dt("textarea.border.radius"), ";\n    outline-color: transparent;\n    box-shadow: ").concat(dt("textarea.shadow"), ";\n}\n\n.p-textarea:enabled:hover {\n    border-color: ").concat(dt("textarea.hover.border.color"), ";\n}\n\n.p-textarea:enabled:focus {\n    border-color: ").concat(dt("textarea.focus.border.color"), ";\n    box-shadow: ").concat(dt("textarea.focus.ring.shadow"), ";\n    outline: ").concat(dt("textarea.focus.ring.width"), " ").concat(dt("textarea.focus.ring.style"), " ").concat(dt("textarea.focus.ring.color"), ";\n    outline-offset: ").concat(dt("textarea.focus.ring.offset"), ";\n}\n\n.p-textarea.p-invalid {\n    border-color: ").concat(dt("textarea.invalid.border.color"), ";\n}\n\n.p-textarea.p-variant-filled {\n    background: ").concat(dt("textarea.filled.background"), ";\n}\n\n.p-textarea.p-variant-filled:enabled:focus {\n    background: ").concat(dt("textarea.filled.focus.background"), ";\n}\n\n.p-textarea:disabled {\n    opacity: 1;\n    background: ").concat(dt("textarea.disabled.background"), ";\n    color: ").concat(dt("textarea.disabled.color"), ";\n}\n\n.p-textarea::placeholder {\n    color: ").concat(dt("textarea.placeholder.color"), ";\n}\n\n.p-textarea.p-invalid::placeholder {\n    color: ").concat(dt("textarea.invalid.placeholder.color"), ";\n}\n\n.p-textarea-fluid {\n    width: 100%;\n}\n\n.p-textarea-resizable {\n    overflow: hidden;\n    resize: none;\n}\n\n.p-textarea-sm {\n    font-size: ").concat(dt("textarea.sm.font.size"), ";\n    padding-block: ").concat(dt("textarea.sm.padding.y"), ";\n    padding-inline: ").concat(dt("textarea.sm.padding.x"), ";\n}\n\n.p-textarea-lg {\n    font-size: ").concat(dt("textarea.lg.font.size"), ";\n    padding-block: ").concat(dt("textarea.lg.padding.y"), ";\n    padding-inline: ").concat(dt("textarea.lg.padding.x"), ";\n}\n");
+};
 var classes = {
-  root: function root24(_ref) {
-    var instance = _ref.instance, props = _ref.props;
+  root: function root25(_ref2) {
+    var instance = _ref2.instance, props = _ref2.props;
     return ["p-textarea p-component", {
       "p-filled": instance.$filled,
       "p-textarea-resizable ": props.autoResize,
@@ -20729,7 +20190,7 @@ var classes = {
 };
 var TextareaStyle = BaseStyle.extend({
   name: "textarea",
-  style: style$q,
+  theme: theme27,
   classes
 });
 var script$1 = {
@@ -20746,43 +20207,16 @@ var script$1 = {
     };
   }
 };
-function _typeof(o) {
-  "@babel/helpers - typeof";
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof(o);
-}
-function _defineProperty(e, r, t) {
-  return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey(t) {
-  var i = _toPrimitive(t, "string");
-  return "symbol" == _typeof(i) ? i : i + "";
-}
-function _toPrimitive(t, r) {
-  if ("object" != _typeof(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
 var script = {
   name: "Textarea",
   "extends": script$1,
   inheritAttrs: false,
   observer: null,
-  mounted: function mounted17() {
+  mounted: function mounted18() {
     var _this = this;
     if (this.autoResize) {
       this.observer = new ResizeObserver(function() {
-        requestAnimationFrame(function() {
-          _this.resize();
-        });
+        _this.resize();
       });
       this.observer.observe(this.$el);
     }
@@ -20824,25 +20258,16 @@ var script = {
           disabled: this.disabled
         }
       }), this.formField);
-    },
-    dataP: function dataP15() {
-      return cn(_defineProperty({
-        invalid: this.$invalid,
-        fluid: this.$fluid,
-        filled: this.$variant === "filled"
-      }, this.size, this.size));
     }
   }
 };
-var _hoisted_1 = ["value", "name", "disabled", "aria-invalid", "data-p"];
+var _hoisted_1 = ["value", "disabled", "aria-invalid"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("textarea", mergeProps({
     "class": _ctx.cx("root"),
     value: _ctx.d_value,
-    name: _ctx.name,
     disabled: _ctx.disabled,
     "aria-invalid": _ctx.invalid || void 0,
-    "data-p": $options.dataP,
     onInput: _cache[0] || (_cache[0] = function() {
       return $options.onInput && $options.onInput.apply($options, arguments);
     })
@@ -21673,8 +21098,8 @@ function absolutifyURLs(cssText, href) {
 function normalizeCssString(cssText) {
   return cssText.replace(/(\/\*[^*]*\*\/)|[\s;]/g, "");
 }
-function splitCssText(cssText, style2) {
-  var childNodes2 = Array.from(style2.childNodes);
+function splitCssText(cssText, style) {
+  var childNodes2 = Array.from(style.childNodes);
   var splits = [];
   if (childNodes2.length > 1 && cssText && typeof cssText === "string") {
     var cssTextNorm = normalizeCssString(cssText);
@@ -21701,8 +21126,8 @@ function splitCssText(cssText, style2) {
   splits.push(cssText);
   return splits;
 }
-function markCssSplits(cssText, style2) {
-  return splitCssText(cssText, style2).join("/* rr_split */");
+function markCssSplits(cssText, style) {
+  return splitCssText(cssText, style).join("/* rr_split */");
 }
 var _id = 1;
 var tagNameRegex = new RegExp("[^a-z0-9-_:]");
@@ -22776,31 +22201,31 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
       }
     }
     if (!parent) return DEFAULT_RAW$1[detect];
-    var root26 = node22.root();
-    if (!root26.rawCache) root26.rawCache = {};
-    if (typeof root26.rawCache[detect] !== "undefined") {
-      return root26.rawCache[detect];
+    var root27 = node22.root();
+    if (!root27.rawCache) root27.rawCache = {};
+    if (typeof root27.rawCache[detect] !== "undefined") {
+      return root27.rawCache[detect];
     }
     if (detect === "before" || detect === "after") {
       return this.beforeAfter(node22, detect);
     } else {
       var method4 = "raw" + capitalize$1(detect);
       if (this[method4]) {
-        value2 = this[method4](root26, node22);
+        value2 = this[method4](root27, node22);
       } else {
-        root26.walk(function(i2) {
+        root27.walk(function(i2) {
           value2 = i2.raws[own];
           if (typeof value2 !== "undefined") return false;
         });
       }
     }
     if (typeof value2 === "undefined") value2 = DEFAULT_RAW$1[detect];
-    root26.rawCache[detect] = value2;
+    root27.rawCache[detect] = value2;
     return value2;
   };
-  _proto.rawBeforeClose = function rawBeforeClose(root26) {
+  _proto.rawBeforeClose = function rawBeforeClose(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.nodes && i2.nodes.length > 0) {
         if (typeof i2.raws.after !== "undefined") {
           value2 = i2.raws.after;
@@ -22814,9 +22239,9 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     if (value2) value2 = value2.replace(/\S/g, "");
     return value2;
   };
-  _proto.rawBeforeComment = function rawBeforeComment(root26, node22) {
+  _proto.rawBeforeComment = function rawBeforeComment(root27, node22) {
     var value2;
-    root26.walkComments(function(i2) {
+    root27.walkComments(function(i2) {
       if (typeof i2.raws.before !== "undefined") {
         value2 = i2.raws.before;
         if (value2.includes("\n")) {
@@ -22832,9 +22257,9 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     }
     return value2;
   };
-  _proto.rawBeforeDecl = function rawBeforeDecl(root26, node22) {
+  _proto.rawBeforeDecl = function rawBeforeDecl(root27, node22) {
     var value2;
-    root26.walkDecls(function(i2) {
+    root27.walkDecls(function(i2) {
       if (typeof i2.raws.before !== "undefined") {
         value2 = i2.raws.before;
         if (value2.includes("\n")) {
@@ -22850,9 +22275,9 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     }
     return value2;
   };
-  _proto.rawBeforeOpen = function rawBeforeOpen(root26) {
+  _proto.rawBeforeOpen = function rawBeforeOpen(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.type !== "decl") {
         value2 = i2.raws.between;
         if (typeof value2 !== "undefined") return false;
@@ -22860,10 +22285,10 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawBeforeRule = function rawBeforeRule(root26) {
+  _proto.rawBeforeRule = function rawBeforeRule(root27) {
     var value2;
-    root26.walk(function(i2) {
-      if (i2.nodes && (i2.parent !== root26 || root26.first !== i2)) {
+    root27.walk(function(i2) {
+      if (i2.nodes && (i2.parent !== root27 || root27.first !== i2)) {
         if (typeof i2.raws.before !== "undefined") {
           value2 = i2.raws.before;
           if (value2.includes("\n")) {
@@ -22876,9 +22301,9 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     if (value2) value2 = value2.replace(/\S/g, "");
     return value2;
   };
-  _proto.rawColon = function rawColon(root26) {
+  _proto.rawColon = function rawColon(root27) {
     var value2;
-    root26.walkDecls(function(i2) {
+    root27.walkDecls(function(i2) {
       if (typeof i2.raws.between !== "undefined") {
         value2 = i2.raws.between.replace(/[^\s:]/g, "");
         return false;
@@ -22886,9 +22311,9 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawEmptyBody = function rawEmptyBody(root26) {
+  _proto.rawEmptyBody = function rawEmptyBody(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.nodes && i2.nodes.length === 0) {
         value2 = i2.raws.after;
         if (typeof value2 !== "undefined") return false;
@@ -22896,12 +22321,12 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawIndent = function rawIndent(root26) {
-    if (root26.raws.indent) return root26.raws.indent;
+  _proto.rawIndent = function rawIndent(root27) {
+    if (root27.raws.indent) return root27.raws.indent;
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       var p = i2.parent;
-      if (p && p !== root26 && p.parent && p.parent === root26) {
+      if (p && p !== root27 && p.parent && p.parent === root27) {
         if (typeof i2.raws.before !== "undefined") {
           var parts = i2.raws.before.split("\n");
           value2 = parts[parts.length - 1];
@@ -22912,9 +22337,9 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawSemicolon = function rawSemicolon(root26) {
+  _proto.rawSemicolon = function rawSemicolon(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.nodes && i2.nodes.length && i2.last.type === "decl") {
         value2 = i2.raws.semicolon;
         if (typeof value2 !== "undefined") return false;
@@ -22930,7 +22355,7 @@ var Stringifier$2$1 = /* @__PURE__ */ function() {
     }
     return value2;
   };
-  _proto.root = function root26(node22) {
+  _proto.root = function root27(node22) {
     this.body(node22);
     if (node22.raws.after) this.builder(node22.raws.after);
   };
@@ -23226,7 +22651,7 @@ var Node$4$1 = /* @__PURE__ */ function() {
     }
     return this;
   };
-  _proto.root = function root26() {
+  _proto.root = function root27() {
     var result2 = this;
     while (result2.parent && result2.parent.type !== "document") {
       result2 = result2.parent;
@@ -23689,10 +23114,10 @@ var Input$3$1 = input$1;
 var sourceMapAvailable$2 = Boolean(SourceMapConsumer$3 && SourceMapGenerator$3);
 var pathAvailable$2 = Boolean(dirname$2 && resolve$2 && relative$1 && sep$1);
 var MapGenerator$2$1 = /* @__PURE__ */ function() {
-  function MapGenerator(stringify2, root26, opts, cssString) {
+  function MapGenerator(stringify2, root27, opts, cssString) {
     this.stringify = stringify2;
     this.mapOpts = opts.map || {};
-    this.root = root26;
+    this.root = root27;
     this.opts = opts;
     this.css = cssString;
     this.originalCSS = cssString;
@@ -23721,7 +23146,7 @@ var MapGenerator$2$1 = /* @__PURE__ */ function() {
     for (var _iterator = _create_for_of_iterator_helper_loose(this.previous()), _step; !(_step = _iterator()).done; ) {
       var prev = _step.value;
       var from = this.toUrl(this.path(prev.file));
-      var root26 = prev.root || dirname$2(prev.file);
+      var root27 = prev.root || dirname$2(prev.file);
       var map = void 0;
       if (this.mapOpts.sourcesContent === false) {
         map = new SourceMapConsumer$3(prev.text);
@@ -23731,7 +23156,7 @@ var MapGenerator$2$1 = /* @__PURE__ */ function() {
       } else {
         map = prev.consumer();
       }
-      this.map.applySourceMap(map, from, this.toUrl(this.path(root26)));
+      this.map.applySourceMap(map, from, this.toUrl(this.path(root27)));
     }
   };
   _proto.clearAnnotation = function clearAnnotation() {
@@ -24537,10 +23962,10 @@ var warning$1 = Warning$2$1;
 Warning$2$1.default = Warning$2$1;
 var Warning$1$1 = warning$1;
 var Result$3$1 = /* @__PURE__ */ function() {
-  function Result(processor2, root26, opts) {
+  function Result(processor2, root27, opts) {
     this.processor = processor2;
     this.messages = [];
-    this.root = root26;
+    this.root = root27;
     this.opts = opts;
     this.css = void 0;
     this.map = void 0;
@@ -25678,11 +25103,11 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
     var _this = this;
     this.stringified = false;
     this.processed = false;
-    var root26;
+    var root27;
     if ((typeof css2 === "undefined" ? "undefined" : _type_of(css2)) === "object" && css2 !== null && (css2.type === "root" || css2.type === "document")) {
-      root26 = cleanMarks$1(css2);
+      root27 = cleanMarks$1(css2);
     } else if (_instanceof(css2, LazyResult) || _instanceof(css2, Result$2$1)) {
-      root26 = cleanMarks$1(css2.root);
+      root27 = cleanMarks$1(css2.root);
       if (css2.map) {
         if (typeof opts.map === "undefined") opts.map = {};
         if (!opts.map.inline) opts.map.inline = false;
@@ -25694,16 +25119,16 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
       if (opts.parser) parser2 = opts.parser;
       if (parser2.parse) parser2 = parser2.parse;
       try {
-        root26 = parser2(css2, opts);
+        root27 = parser2(css2, opts);
       } catch (error) {
         this.processed = true;
         this.error = error;
       }
-      if (root26 && !root26[my$3]) {
-        Container$1$1.rebuild(root26);
+      if (root27 && !root27[my$3]) {
+        Container$1$1.rebuild(root27);
       }
     }
-    this.result = new Result$2$1(processor2, root26, opts);
+    this.result = new Result$2$1(processor2, root27, opts);
     this.helpers = _extends({}, postcss$2$1, {
       postcss: postcss$2$1,
       result: this.result
@@ -25789,7 +25214,7 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
   _proto.runAsync = function runAsync() {
     var _this = this;
     return _async_to_generator(function() {
-      var i2, plugin22, promise, error, root26, stack, promise1, e2, node22, _loop, _iterator, _step;
+      var i2, plugin22, promise, error, root27, stack, promise1, e2, node22, _loop, _iterator, _step;
       return _ts_generator(this, function(_state) {
         switch (_state.label) {
           case 0:
@@ -25840,16 +25265,16 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
               3,
               18
             ];
-            root26 = _this.result.root;
+            root27 = _this.result.root;
             _state.label = 7;
           case 7:
-            if (!!root26[isClean$3]) return [
+            if (!!root27[isClean$3]) return [
               3,
               14
             ];
-            root26[isClean$3] = true;
+            root27[isClean$3] = true;
             stack = [
-              toStack$1(root26)
+              toStack$1(root27)
             ];
             _state.label = 8;
           case 8:
@@ -25914,11 +25339,11 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
                       ,
                       7
                     ]);
-                    if (!(root26.type === "document")) return [
+                    if (!(root27.type === "document")) return [
                       3,
                       3
                     ];
-                    roots = root26.nodes.map(function(subRoot) {
+                    roots = root27.nodes.map(function(subRoot) {
                       return visitor(subRoot, _this.helpers);
                     });
                     return [
@@ -25934,7 +25359,7 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
                   case 3:
                     return [
                       4,
-                      visitor(root26, _this.helpers)
+                      visitor(root27, _this.helpers)
                     ];
                   case 4:
                     _state2.sent();
@@ -25989,8 +25414,8 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
     try {
       if ((typeof plugin22 === "undefined" ? "undefined" : _type_of(plugin22)) === "object" && plugin22.Once) {
         if (this.result.root.type === "document") {
-          var roots = this.result.root.nodes.map(function(root26) {
-            return plugin22.Once(root26, _this.helpers);
+          var roots = this.result.root.nodes.map(function(root27) {
+            return plugin22.Once(root27, _this.helpers);
           });
           if (isPromise$1(roots[0])) {
             return Promise.all(roots);
@@ -26037,19 +25462,19 @@ var LazyResult$2$1 = /* @__PURE__ */ function() {
     }
     this.prepareVisitors();
     if (this.hasListener) {
-      var root26 = this.result.root;
-      while (!root26[isClean$3]) {
-        root26[isClean$3] = true;
-        this.walkSync(root26);
+      var root27 = this.result.root;
+      while (!root27[isClean$3]) {
+        root27[isClean$3] = true;
+        this.walkSync(root27);
       }
       if (this.listeners.OnceExit) {
-        if (root26.type === "document") {
-          for (var _iterator1 = _create_for_of_iterator_helper_loose(root26.nodes), _step1; !(_step1 = _iterator1()).done; ) {
+        if (root27.type === "document") {
+          for (var _iterator1 = _create_for_of_iterator_helper_loose(root27.nodes), _step1; !(_step1 = _iterator1()).done; ) {
             var subRoot = _step1.value;
             this.visitSync(this.listeners.OnceExit, subRoot);
           }
         } else {
-          this.visitSync(this.listeners.OnceExit, root26);
+          this.visitSync(this.listeners.OnceExit, root27);
         }
       }
     }
@@ -26225,9 +25650,9 @@ var NoWorkResult$1$1 = /* @__PURE__ */ function() {
     this._css = css2;
     this._opts = opts;
     this._map = void 0;
-    var root26;
+    var root27;
     var str = stringify$1$1;
-    this.result = new Result$1$1(this._processor, root26, this._opts);
+    this.result = new Result$1$1(this._processor, root27, this._opts);
     this.result.css = css2;
     var self2 = this;
     Object.defineProperty(this.result, "root", {
@@ -26235,7 +25660,7 @@ var NoWorkResult$1$1 = /* @__PURE__ */ function() {
         return self2.root;
       }
     });
-    var map = new MapGenerator2$1(str, root26, this._opts, css2);
+    var map = new MapGenerator2$1(str, root27, this._opts, css2);
     if (map.isMap()) {
       var _map_generate = map.generate(), generatedCSS = _map_generate[0], generatedMap = _map_generate[1];
       if (generatedCSS) {
@@ -26316,18 +25741,18 @@ var NoWorkResult$1$1 = /* @__PURE__ */ function() {
         if (this._root) {
           return this._root;
         }
-        var root26;
+        var root27;
         var parser2 = parse$1$1;
         try {
-          root26 = parser2(this._css, this._opts);
+          root27 = parser2(this._css, this._opts);
         } catch (error) {
           this.error = error;
         }
         if (this.error) {
           throw this.error;
         } else {
-          this._root = root26;
-          return root26;
+          this._root = root27;
+          return root27;
         }
       }
     },
@@ -26879,31 +26304,31 @@ var Stringifier$2 = /* @__PURE__ */ function() {
       }
     }
     if (!parent) return DEFAULT_RAW[detect];
-    var root26 = node22.root();
-    if (!root26.rawCache) root26.rawCache = {};
-    if (typeof root26.rawCache[detect] !== "undefined") {
-      return root26.rawCache[detect];
+    var root27 = node22.root();
+    if (!root27.rawCache) root27.rawCache = {};
+    if (typeof root27.rawCache[detect] !== "undefined") {
+      return root27.rawCache[detect];
     }
     if (detect === "before" || detect === "after") {
       return this.beforeAfter(node22, detect);
     } else {
       var method4 = "raw" + capitalize(detect);
       if (this[method4]) {
-        value2 = this[method4](root26, node22);
+        value2 = this[method4](root27, node22);
       } else {
-        root26.walk(function(i2) {
+        root27.walk(function(i2) {
           value2 = i2.raws[own];
           if (typeof value2 !== "undefined") return false;
         });
       }
     }
     if (typeof value2 === "undefined") value2 = DEFAULT_RAW[detect];
-    root26.rawCache[detect] = value2;
+    root27.rawCache[detect] = value2;
     return value2;
   };
-  _proto.rawBeforeClose = function rawBeforeClose(root26) {
+  _proto.rawBeforeClose = function rawBeforeClose(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.nodes && i2.nodes.length > 0) {
         if (typeof i2.raws.after !== "undefined") {
           value2 = i2.raws.after;
@@ -26917,9 +26342,9 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     if (value2) value2 = value2.replace(/\S/g, "");
     return value2;
   };
-  _proto.rawBeforeComment = function rawBeforeComment(root26, node22) {
+  _proto.rawBeforeComment = function rawBeforeComment(root27, node22) {
     var value2;
-    root26.walkComments(function(i2) {
+    root27.walkComments(function(i2) {
       if (typeof i2.raws.before !== "undefined") {
         value2 = i2.raws.before;
         if (value2.includes("\n")) {
@@ -26935,9 +26360,9 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     }
     return value2;
   };
-  _proto.rawBeforeDecl = function rawBeforeDecl(root26, node22) {
+  _proto.rawBeforeDecl = function rawBeforeDecl(root27, node22) {
     var value2;
-    root26.walkDecls(function(i2) {
+    root27.walkDecls(function(i2) {
       if (typeof i2.raws.before !== "undefined") {
         value2 = i2.raws.before;
         if (value2.includes("\n")) {
@@ -26953,9 +26378,9 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     }
     return value2;
   };
-  _proto.rawBeforeOpen = function rawBeforeOpen(root26) {
+  _proto.rawBeforeOpen = function rawBeforeOpen(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.type !== "decl") {
         value2 = i2.raws.between;
         if (typeof value2 !== "undefined") return false;
@@ -26963,10 +26388,10 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawBeforeRule = function rawBeforeRule(root26) {
+  _proto.rawBeforeRule = function rawBeforeRule(root27) {
     var value2;
-    root26.walk(function(i2) {
-      if (i2.nodes && (i2.parent !== root26 || root26.first !== i2)) {
+    root27.walk(function(i2) {
+      if (i2.nodes && (i2.parent !== root27 || root27.first !== i2)) {
         if (typeof i2.raws.before !== "undefined") {
           value2 = i2.raws.before;
           if (value2.includes("\n")) {
@@ -26979,9 +26404,9 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     if (value2) value2 = value2.replace(/\S/g, "");
     return value2;
   };
-  _proto.rawColon = function rawColon(root26) {
+  _proto.rawColon = function rawColon(root27) {
     var value2;
-    root26.walkDecls(function(i2) {
+    root27.walkDecls(function(i2) {
       if (typeof i2.raws.between !== "undefined") {
         value2 = i2.raws.between.replace(/[^\s:]/g, "");
         return false;
@@ -26989,9 +26414,9 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawEmptyBody = function rawEmptyBody(root26) {
+  _proto.rawEmptyBody = function rawEmptyBody(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.nodes && i2.nodes.length === 0) {
         value2 = i2.raws.after;
         if (typeof value2 !== "undefined") return false;
@@ -26999,12 +26424,12 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawIndent = function rawIndent(root26) {
-    if (root26.raws.indent) return root26.raws.indent;
+  _proto.rawIndent = function rawIndent(root27) {
+    if (root27.raws.indent) return root27.raws.indent;
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       var p = i2.parent;
-      if (p && p !== root26 && p.parent && p.parent === root26) {
+      if (p && p !== root27 && p.parent && p.parent === root27) {
         if (typeof i2.raws.before !== "undefined") {
           var parts = i2.raws.before.split("\n");
           value2 = parts[parts.length - 1];
@@ -27015,9 +26440,9 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     });
     return value2;
   };
-  _proto.rawSemicolon = function rawSemicolon(root26) {
+  _proto.rawSemicolon = function rawSemicolon(root27) {
     var value2;
-    root26.walk(function(i2) {
+    root27.walk(function(i2) {
       if (i2.nodes && i2.nodes.length && i2.last.type === "decl") {
         value2 = i2.raws.semicolon;
         if (typeof value2 !== "undefined") return false;
@@ -27033,7 +26458,7 @@ var Stringifier$2 = /* @__PURE__ */ function() {
     }
     return value2;
   };
-  _proto.root = function root26(node22) {
+  _proto.root = function root27(node22) {
     this.body(node22);
     if (node22.raws.after) this.builder(node22.raws.after);
   };
@@ -27329,7 +26754,7 @@ var Node$4 = /* @__PURE__ */ function() {
     }
     return this;
   };
-  _proto.root = function root26() {
+  _proto.root = function root27() {
     var result2 = this;
     while (result2.parent && result2.parent.type !== "document") {
       result2 = result2.parent;
@@ -27792,10 +27217,10 @@ var Input$3 = input;
 var sourceMapAvailable = Boolean(SourceMapConsumer && SourceMapGenerator);
 var pathAvailable = Boolean(dirname && resolve$3 && relative && sep);
 var MapGenerator$2 = /* @__PURE__ */ function() {
-  function MapGenerator2(stringify2, root26, opts, cssString) {
+  function MapGenerator2(stringify2, root27, opts, cssString) {
     this.stringify = stringify2;
     this.mapOpts = opts.map || {};
-    this.root = root26;
+    this.root = root27;
     this.opts = opts;
     this.css = cssString;
     this.originalCSS = cssString;
@@ -27824,7 +27249,7 @@ var MapGenerator$2 = /* @__PURE__ */ function() {
     for (var _iterator = _create_for_of_iterator_helper_loose(this.previous()), _step; !(_step = _iterator()).done; ) {
       var prev = _step.value;
       var from = this.toUrl(this.path(prev.file));
-      var root26 = prev.root || dirname(prev.file);
+      var root27 = prev.root || dirname(prev.file);
       var map = void 0;
       if (this.mapOpts.sourcesContent === false) {
         map = new SourceMapConsumer(prev.text);
@@ -27834,7 +27259,7 @@ var MapGenerator$2 = /* @__PURE__ */ function() {
       } else {
         map = prev.consumer();
       }
-      this.map.applySourceMap(map, from, this.toUrl(this.path(root26)));
+      this.map.applySourceMap(map, from, this.toUrl(this.path(root27)));
     }
   };
   _proto.clearAnnotation = function clearAnnotation() {
@@ -28640,10 +28065,10 @@ var warning = Warning$2;
 Warning$2.default = Warning$2;
 var Warning$1 = warning;
 var Result$3 = /* @__PURE__ */ function() {
-  function Result2(processor2, root26, opts) {
+  function Result2(processor2, root27, opts) {
     this.processor = processor2;
     this.messages = [];
-    this.root = root26;
+    this.root = root27;
     this.opts = opts;
     this.css = void 0;
     this.map = void 0;
@@ -29020,7 +28445,7 @@ Root$5.registerLazyResult = function(dependant) {
 Root$5.registerProcessor = function(dependant) {
   Processor$2 = dependant;
 };
-var root25 = Root$5;
+var root26 = Root$5;
 Root$5.default = Root$5;
 Container$4.registerRoot(Root$5);
 var list$2 = {
@@ -29112,7 +28537,7 @@ var Declaration$2 = declaration;
 var tokenizer22 = tokenize;
 var Comment$2 = comment;
 var AtRule$2 = atRule;
-var Root$4 = root25;
+var Root$4 = root26;
 var Rule$2 = rule;
 var SAFE_COMMENT_NEIGHBOR = {
   empty: true,
@@ -29670,7 +29095,7 @@ var Container$1 = container;
 var Document$2 = document$1$2;
 var Result$2 = result;
 var parse$2 = parse_1;
-var Root$3 = root25;
+var Root$3 = root26;
 var TYPE_TO_CLASS_NAME = {
   atrule: "AtRule",
   comment: "Comment",
@@ -29781,11 +29206,11 @@ var LazyResult$2 = /* @__PURE__ */ function() {
     var _this = this;
     this.stringified = false;
     this.processed = false;
-    var root26;
+    var root27;
     if ((typeof css2 === "undefined" ? "undefined" : _type_of(css2)) === "object" && css2 !== null && (css2.type === "root" || css2.type === "document")) {
-      root26 = cleanMarks(css2);
+      root27 = cleanMarks(css2);
     } else if (_instanceof(css2, LazyResult2) || _instanceof(css2, Result$2)) {
-      root26 = cleanMarks(css2.root);
+      root27 = cleanMarks(css2.root);
       if (css2.map) {
         if (typeof opts.map === "undefined") opts.map = {};
         if (!opts.map.inline) opts.map.inline = false;
@@ -29797,16 +29222,16 @@ var LazyResult$2 = /* @__PURE__ */ function() {
       if (opts.parser) parser2 = opts.parser;
       if (parser2.parse) parser2 = parser2.parse;
       try {
-        root26 = parser2(css2, opts);
+        root27 = parser2(css2, opts);
       } catch (error) {
         this.processed = true;
         this.error = error;
       }
-      if (root26 && !root26[my]) {
-        Container$1.rebuild(root26);
+      if (root27 && !root27[my]) {
+        Container$1.rebuild(root27);
       }
     }
-    this.result = new Result$2(processor2, root26, opts);
+    this.result = new Result$2(processor2, root27, opts);
     this.helpers = _extends({}, postcss$2, {
       postcss: postcss$2,
       result: this.result
@@ -29892,7 +29317,7 @@ var LazyResult$2 = /* @__PURE__ */ function() {
   _proto.runAsync = function runAsync() {
     var _this = this;
     return _async_to_generator(function() {
-      var i2, plugin22, promise, error, root26, stack, promise1, e2, node22, _loop, _iterator, _step;
+      var i2, plugin22, promise, error, root27, stack, promise1, e2, node22, _loop, _iterator, _step;
       return _ts_generator(this, function(_state) {
         switch (_state.label) {
           case 0:
@@ -29943,16 +29368,16 @@ var LazyResult$2 = /* @__PURE__ */ function() {
               3,
               18
             ];
-            root26 = _this.result.root;
+            root27 = _this.result.root;
             _state.label = 7;
           case 7:
-            if (!!root26[isClean]) return [
+            if (!!root27[isClean]) return [
               3,
               14
             ];
-            root26[isClean] = true;
+            root27[isClean] = true;
             stack = [
-              toStack(root26)
+              toStack(root27)
             ];
             _state.label = 8;
           case 8:
@@ -30017,11 +29442,11 @@ var LazyResult$2 = /* @__PURE__ */ function() {
                       ,
                       7
                     ]);
-                    if (!(root26.type === "document")) return [
+                    if (!(root27.type === "document")) return [
                       3,
                       3
                     ];
-                    roots = root26.nodes.map(function(subRoot) {
+                    roots = root27.nodes.map(function(subRoot) {
                       return visitor(subRoot, _this.helpers);
                     });
                     return [
@@ -30037,7 +29462,7 @@ var LazyResult$2 = /* @__PURE__ */ function() {
                   case 3:
                     return [
                       4,
-                      visitor(root26, _this.helpers)
+                      visitor(root27, _this.helpers)
                     ];
                   case 4:
                     _state2.sent();
@@ -30092,8 +29517,8 @@ var LazyResult$2 = /* @__PURE__ */ function() {
     try {
       if ((typeof plugin22 === "undefined" ? "undefined" : _type_of(plugin22)) === "object" && plugin22.Once) {
         if (this.result.root.type === "document") {
-          var roots = this.result.root.nodes.map(function(root26) {
-            return plugin22.Once(root26, _this.helpers);
+          var roots = this.result.root.nodes.map(function(root27) {
+            return plugin22.Once(root27, _this.helpers);
           });
           if (isPromise(roots[0])) {
             return Promise.all(roots);
@@ -30140,19 +29565,19 @@ var LazyResult$2 = /* @__PURE__ */ function() {
     }
     this.prepareVisitors();
     if (this.hasListener) {
-      var root26 = this.result.root;
-      while (!root26[isClean]) {
-        root26[isClean] = true;
-        this.walkSync(root26);
+      var root27 = this.result.root;
+      while (!root27[isClean]) {
+        root27[isClean] = true;
+        this.walkSync(root27);
       }
       if (this.listeners.OnceExit) {
-        if (root26.type === "document") {
-          for (var _iterator1 = _create_for_of_iterator_helper_loose(root26.nodes), _step1; !(_step1 = _iterator1()).done; ) {
+        if (root27.type === "document") {
+          for (var _iterator1 = _create_for_of_iterator_helper_loose(root27.nodes), _step1; !(_step1 = _iterator1()).done; ) {
             var subRoot = _step1.value;
             this.visitSync(this.listeners.OnceExit, subRoot);
           }
         } else {
-          this.visitSync(this.listeners.OnceExit, root26);
+          this.visitSync(this.listeners.OnceExit, root27);
         }
       }
     }
@@ -30328,9 +29753,9 @@ var NoWorkResult$1 = /* @__PURE__ */ function() {
     this._css = css2;
     this._opts = opts;
     this._map = void 0;
-    var root26;
+    var root27;
     var str = stringify$1;
-    this.result = new Result$1(this._processor, root26, this._opts);
+    this.result = new Result$1(this._processor, root27, this._opts);
     this.result.css = css2;
     var self2 = this;
     Object.defineProperty(this.result, "root", {
@@ -30338,7 +29763,7 @@ var NoWorkResult$1 = /* @__PURE__ */ function() {
         return self2.root;
       }
     });
-    var map = new MapGenerator22(str, root26, this._opts, css2);
+    var map = new MapGenerator22(str, root27, this._opts, css2);
     if (map.isMap()) {
       var _map_generate = map.generate(), generatedCSS = _map_generate[0], generatedMap = _map_generate[1];
       if (generatedCSS) {
@@ -30419,18 +29844,18 @@ var NoWorkResult$1 = /* @__PURE__ */ function() {
         if (this._root) {
           return this._root;
         }
-        var root26;
+        var root27;
         var parser2 = parse$1;
         try {
-          root26 = parser2(this._css, this._opts);
+          root27 = parser2(this._css, this._opts);
         } catch (error) {
           this.error = error;
         }
         if (this.error) {
           throw this.error;
         } else {
-          this._root = root26;
-          return root26;
+          this._root = root27;
+          return root27;
         }
       }
     },
@@ -30448,7 +29873,7 @@ NoWorkResult$1.default = NoWorkResult$1;
 var NoWorkResult22 = noWorkResult;
 var LazyResult$1 = lazyResult;
 var Document$1 = document$1$2;
-var Root$2 = root25;
+var Root$2 = root26;
 var Processor$1 = /* @__PURE__ */ function() {
   function Processor2(plugins) {
     if (plugins === void 0) plugins = [];
@@ -30503,7 +29928,7 @@ var PreviousMap22 = previousMap;
 var Comment$1 = comment;
 var AtRule$1 = atRule;
 var Input$1 = input;
-var Root$1 = root25;
+var Root$1 = root26;
 var Rule$1 = rule;
 function fromJSON$1(json, inputs) {
   if (Array.isArray(json)) return json.map(function(n2) {
@@ -30573,7 +29998,7 @@ var Input22 = input;
 var parse = parse_1;
 var list = list_1;
 var Rule22 = rule;
-var Root22 = root25;
+var Root22 = root26;
 var Node22 = node2;
 function postcss() {
   for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -31569,8 +30994,8 @@ var MutationBuffer = /* @__PURE__ */ function() {
         _this.attributes.push(item2);
         _this.attributeMap.set(textarea, item2);
       }
-      item2.attributes.value = Array.from(index.childNodes(textarea), function(cn2) {
-        return index.textContent(cn2) || "";
+      item2.attributes.value = Array.from(index.childNodes(textarea), function(cn) {
+        return index.textContent(cn) || "";
       }).join("");
     });
     __publicField(this, "processMutation", function(m) {
@@ -31845,8 +31270,8 @@ function _isAncestorInSet(set2, n2) {
   return _isAncestorInSet(set2, parent);
 }
 var errorHandler;
-function registerErrorHandler(handler3) {
-  errorHandler = handler3;
+function registerErrorHandler(handler2) {
+  errorHandler = handler2;
 }
 function unregisterErrorHandler() {
   errorHandler = void 0;
@@ -32014,7 +31439,7 @@ function initMouseInteractionObserver(param) {
     return Number.isNaN(Number(key)) && !key.endsWith("_Departed") && disableMap[key] !== false;
   }).forEach(function(eventKey) {
     var eventName = toLowerCase(eventKey);
-    var handler3 = getHandler(eventKey);
+    var handler2 = getHandler(eventKey);
     if (window.PointerEvent) {
       switch (MouseInteractions[eventKey]) {
         case MouseInteractions.MouseDown:
@@ -32026,7 +31451,7 @@ function initMouseInteractionObserver(param) {
           return;
       }
     }
-    handlers.push(on(eventName, handler3, doc));
+    handlers.push(on(eventName, handler2, doc));
   });
   return callbackWrapper(function() {
     handlers.forEach(function(h) {
@@ -32515,7 +31940,7 @@ function initStyleDeclarationObserver(param, param1) {
 }
 function initMediaInteractionObserver(param) {
   var mediaInteractionCb = param.mediaInteractionCb, blockClass = param.blockClass, blockSelector = param.blockSelector, mirror2 = param.mirror, sampling = param.sampling, doc = param.doc;
-  var handler3 = callbackWrapper(function(type4) {
+  var handler2 = callbackWrapper(function(type4) {
     return throttle(callbackWrapper(function(event) {
       var target2 = getEventTarget(event);
       if (!target2 || isBlocked(target2, blockClass, blockSelector, true)) {
@@ -32534,11 +31959,11 @@ function initMediaInteractionObserver(param) {
     }), sampling.media || 500);
   });
   var handlers = [
-    on("play", handler3(MediaInteractions.Play), doc),
-    on("pause", handler3(MediaInteractions.Pause), doc),
-    on("seeked", handler3(MediaInteractions.Seeked), doc),
-    on("volumechange", handler3(MediaInteractions.VolumeChange), doc),
-    on("ratechange", handler3(MediaInteractions.RateChange), doc)
+    on("play", handler2(MediaInteractions.Play), doc),
+    on("pause", handler2(MediaInteractions.Pause), doc),
+    on("seeked", handler2(MediaInteractions.Seeked), doc),
+    on("volumechange", handler2(MediaInteractions.VolumeChange), doc),
+    on("ratechange", handler2(MediaInteractions.RateChange), doc)
   ];
   return callbackWrapper(function() {
     handlers.forEach(function(h) {
@@ -33111,8 +32536,8 @@ var IframeManager = /* @__PURE__ */ function() {
             this.replaceStyleIds(e2.data, iframeEl, [
               "styleIds"
             ]);
-            (_a2 = e2.data.styles) == null ? void 0 : _a2.forEach(function(style2) {
-              _this.replaceStyleIds(style2, iframeEl, [
+            (_a2 = e2.data.styles) == null ? void 0 : _a2.forEach(function(style) {
+              _this.replaceStyleIds(style, iframeEl, [
                 "styleId"
               ]);
             });
@@ -33228,9 +32653,9 @@ var ShadowDomManager = /* @__PURE__ */ function() {
     }));
   };
   _proto.reset = function reset2() {
-    this.restoreHandlers.forEach(function(handler3) {
+    this.restoreHandlers.forEach(function(handler2) {
       try {
-        handler3();
+        handler2();
       } catch (e2) {
       }
     });
@@ -35328,15 +34753,15 @@ _.UUID = function() {
   try {
     return win["crypto"]["randomUUID"]();
   } catch (err) {
-    var uuid2 = new Array(36);
+    var uuid = new Array(36);
     for (var i = 0; i < 36; i++) {
-      uuid2[i] = Math.floor(Math.random() * 16);
+      uuid[i] = Math.floor(Math.random() * 16);
     }
-    uuid2[14] = 4;
-    uuid2[19] = uuid2[19] &= -5;
-    uuid2[19] = uuid2[19] |= 1 << 3;
-    uuid2[8] = uuid2[13] = uuid2[18] = uuid2[23] = "-";
-    return _.map(uuid2, function(x2) {
+    uuid[14] = 4;
+    uuid[19] = uuid[19] &= -5;
+    uuid[19] = uuid[19] |= 1 << 3;
+    uuid[8] = uuid[13] = uuid[18] = uuid[23] = "-";
+    return _.map(uuid, function(x2) {
       return x2.toString(16);
     }).join("");
   }
@@ -35554,21 +34979,21 @@ function _storageWrapper(storage, name, is_supported_fn) {
 _.localStorage = _storageWrapper(win.localStorage, "localStorage", localStorageSupported);
 _.sessionStorage = _storageWrapper(win.sessionStorage, "sessionStorage", sessionStorageSupported);
 _.register_event = function() {
-  var register_event = function(element, type4, handler3, oldSchool, useCapture) {
+  var register_event = function(element, type4, handler2, oldSchool, useCapture) {
     if (!element) {
       console$1.error("No valid element provided to register_event");
       return;
     }
     if (element.addEventListener && !oldSchool) {
-      element.addEventListener(type4, handler3, !!useCapture);
+      element.addEventListener(type4, handler2, !!useCapture);
     } else {
       var ontype = "on" + type4;
       var old_handler = element[ontype];
-      element[ontype] = makeHandler(element, handler3, old_handler);
+      element[ontype] = makeHandler(element, handler2, old_handler);
     }
   };
   function makeHandler(element, new_handler, old_handlers) {
-    var handler3 = function(event) {
+    var handler2 = function(event) {
       event = event || fixEvent(win.event);
       if (!event) {
         return void 0;
@@ -35584,7 +35009,7 @@ _.register_event = function() {
       }
       return ret;
     };
-    return handler3;
+    return handler2;
   }
   function fixEvent(event) {
     if (event) {
@@ -36501,9 +35926,9 @@ RequestQueue.prototype.fillBatch = function(batchSize) {
     return PromisePolyfill.resolve(batch);
   }
 };
-var filterOutIDsAndInvalid = function(items, idSet) {
+var filterOutIDsAndInvalid = function(items2, idSet) {
   var filteredItems = [];
-  _.each(items, function(item2) {
+  _.each(items2, function(item2) {
     if (item2["id"] && !idSet[item2["id"]]) {
       filteredItems.push(item2);
     }
@@ -39180,11 +38605,11 @@ MixpanelLib.prototype._init = function(token, config, name) {
   this["persistence"] = this["cookie"] = new MixpanelPersistence(this["config"]);
   this.unpersisted_superprops = {};
   this._gdpr_init();
-  var uuid2 = _.UUID();
+  var uuid = _.UUID();
   if (!this.get_distinct_id()) {
     this.register_once({
-      "distinct_id": DEVICE_ID_PREFIX + uuid2,
-      "$device_id": uuid2
+      "distinct_id": DEVICE_ID_PREFIX + uuid,
+      "$device_id": uuid
     }, "");
   }
   this.flags = new FeatureFlagManager({
@@ -39920,10 +39345,10 @@ MixpanelLib.prototype.identify = function(new_distinct_id, _set_callback, _add_c
 MixpanelLib.prototype.reset = function() {
   this["persistence"].clear();
   this._flags.identify_called = false;
-  var uuid2 = _.UUID();
+  var uuid = _.UUID();
   this.register_once({
-    "distinct_id": DEVICE_ID_PREFIX + uuid2,
-    "$device_id": uuid2
+    "distinct_id": DEVICE_ID_PREFIX + uuid,
+    "$device_id": uuid
   }, "");
   this.stop_session_recording();
   this._check_and_start_session_recording();
@@ -40258,13 +39683,13 @@ var mixpanel = init_as_module(loadNoop);
 export {
   script$p as A,
   script$3 as B,
-  script$6 as C,
-  customAlphabet as D,
+  z as C,
+  script$6 as D,
   ElForm as E,
-  script$2 as F,
-  script$t as G,
-  script$s as H,
-  z as I,
+  customAlphabet as F,
+  script$2 as G,
+  script$t as H,
+  script$s as I,
   script as J,
   DialogService as K,
   ConfirmationService as L,

@@ -1,5 +1,5 @@
-import { g as getScrollableParents, s as setAttributes$1, a as setAttribute$1, i as isExist$1, b as isClient$1, c as style, r as resolve$1, d as isNotEmpty$1, m as minifyCSS$1, e as config_default$1, f as dt$1, E as EventBus$1, h as isObject$2, j as getKeyValue$1, t as toFlatCase$1, k as isString$1, l as service_default$1, n as toCapitalCase, o as isFunction$1, u as uuid$1, p as isArray$1, q as isEmpty$1, v as resolveFieldData, w as removeAccents, x as equals, y as findSingle$1, z as isElement$1, A as mergeKeys$2 } from "./primeuix-C3IJgEkH.js";
-import { r as ref, b as readonly, g as getCurrentInstance, e as onMounted, n as nextTick, w as watch, m as mergeProps, u as useId, f as reactive, i as inject, o as openBlock, c as createElementBlock, a as createBaseVNode, h as computed, t as toValue$1, j as renderSlot, k as withModifiers } from "./vue-DklvDGl_.js";
+import { u as uuid, g as getScrollableParents, s as setAttributes, a as setAttribute, i as isExist, b as isClient, r as resolve, c as isNotEmpty, m as minifyCSS, d as config_default, e as dt, E as EventBus, f as isObject, h as getKeyValue, t as toFlatCase, j as isString, k as service_default, l as toCapitalCase, n as isFunction, o as isArray, p as isEmpty, q as resolveFieldData, v as removeAccents, w as equals, x as findSingle, y as mergeKeys, z as omit } from "./primeuix-BlnkOWpw.js";
+import { r as ref, b as readonly, g as getCurrentInstance, e as onMounted, n as nextTick, w as watch, m as mergeProps, f as reactive, i as inject, o as openBlock, c as createElementBlock, a as createBaseVNode, h as computed, t as toValue, j as renderSlot, k as withModifiers, l as createBlock, p as withCtx, q as resolveDynamicComponent } from "./vue-DLDgppwU.js";
 function _typeof$1$1(o) {
   "@babel/helpers - typeof";
   return _typeof$1$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
@@ -69,6 +69,10 @@ var ConnectedOverlayScrollHandler = /* @__PURE__ */ function() {
     }
   }]);
 }();
+function UniqueComponentId() {
+  var prefix = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "pv_id_";
+  return uuid(prefix);
+}
 function getVNodeProp(vnode, prop) {
   if (vnode) {
     var props = vnode.props;
@@ -80,7 +84,7 @@ function getVNodeProp(vnode, prop) {
   }
   return null;
 }
-var Base$1 = {
+var Base = {
   _loadedStyleNames: /* @__PURE__ */ new Set(),
   getLoadedStyleNames: function getLoadedStyleNames() {
     return this._loadedStyleNames;
@@ -98,302 +102,6 @@ var Base$1 = {
     this._loadedStyleNames.clear();
   }
 };
-function _typeof$b(o) {
-  "@babel/helpers - typeof";
-  return _typeof$b = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$b(o);
-}
-function ownKeys$b(e, r) {
-  var t = Object.keys(e);
-  if (Object.getOwnPropertySymbols) {
-    var o = Object.getOwnPropertySymbols(e);
-    r && (o = o.filter(function(r2) {
-      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
-    })), t.push.apply(t, o);
-  }
-  return t;
-}
-function _objectSpread$b(e) {
-  for (var r = 1; r < arguments.length; r++) {
-    var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$b(Object(t), true).forEach(function(r2) {
-      _defineProperty$b(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$b(Object(t)).forEach(function(r2) {
-      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
-    });
-  }
-  return e;
-}
-function _defineProperty$b(e, r, t) {
-  return (r = _toPropertyKey$b(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$b(t) {
-  var i = _toPrimitive$b(t, "string");
-  return "symbol" == _typeof$b(i) ? i : i + "";
-}
-function _toPrimitive$b(t, r) {
-  if ("object" != _typeof$b(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$b(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-function tryOnMounted$2(fn) {
-  var sync = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
-  if (getCurrentInstance() && getCurrentInstance().components) onMounted(fn);
-  else if (sync) fn();
-  else nextTick(fn);
-}
-var _id$1 = 0;
-function useStyle$1(css4) {
-  var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-  var isLoaded = ref(false);
-  var cssRef = ref(css4);
-  var styleRef = ref(null);
-  var defaultDocument = isClient$1() ? window.document : void 0;
-  var _options$document = options.document, document = _options$document === void 0 ? defaultDocument : _options$document, _options$immediate = options.immediate, immediate = _options$immediate === void 0 ? true : _options$immediate, _options$manual = options.manual, manual = _options$manual === void 0 ? false : _options$manual, _options$name = options.name, name = _options$name === void 0 ? "style_".concat(++_id$1) : _options$name, _options$id = options.id, id = _options$id === void 0 ? void 0 : _options$id, _options$media = options.media, media = _options$media === void 0 ? void 0 : _options$media, _options$nonce = options.nonce, nonce = _options$nonce === void 0 ? void 0 : _options$nonce, _options$first = options.first, first = _options$first === void 0 ? false : _options$first, _options$onMounted = options.onMounted, onStyleMounted = _options$onMounted === void 0 ? void 0 : _options$onMounted, _options$onUpdated = options.onUpdated, onStyleUpdated = _options$onUpdated === void 0 ? void 0 : _options$onUpdated, _options$onLoad = options.onLoad, onStyleLoaded = _options$onLoad === void 0 ? void 0 : _options$onLoad, _options$props = options.props, props = _options$props === void 0 ? {} : _options$props;
-  var stop = function stop2() {
-  };
-  var load3 = function load4(_css) {
-    var _props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    if (!document) return;
-    var _styleProps = _objectSpread$b(_objectSpread$b({}, props), _props);
-    var _name = _styleProps.name || name, _id2 = _styleProps.id || id, _nonce = _styleProps.nonce || nonce;
-    styleRef.value = document.querySelector('style[data-primevue-style-id="'.concat(_name, '"]')) || document.getElementById(_id2) || document.createElement("style");
-    if (!styleRef.value.isConnected) {
-      cssRef.value = _css || css4;
-      setAttributes$1(styleRef.value, {
-        type: "text/css",
-        id: _id2,
-        media,
-        nonce: _nonce
-      });
-      first ? document.head.prepend(styleRef.value) : document.head.appendChild(styleRef.value);
-      setAttribute$1(styleRef.value, "data-primevue-style-id", _name);
-      setAttributes$1(styleRef.value, _styleProps);
-      styleRef.value.onload = function(event) {
-        return onStyleLoaded === null || onStyleLoaded === void 0 ? void 0 : onStyleLoaded(event, {
-          name: _name
-        });
-      };
-      onStyleMounted === null || onStyleMounted === void 0 || onStyleMounted(_name);
-    }
-    if (isLoaded.value) return;
-    stop = watch(cssRef, function(value) {
-      styleRef.value.textContent = value;
-      onStyleUpdated === null || onStyleUpdated === void 0 || onStyleUpdated(_name);
-    }, {
-      immediate: true
-    });
-    isLoaded.value = true;
-  };
-  var unload = function unload2() {
-    if (!document || !isLoaded.value) return;
-    stop();
-    isExist$1(styleRef.value) && document.head.removeChild(styleRef.value);
-    isLoaded.value = false;
-    styleRef.value = null;
-  };
-  if (immediate && !manual) tryOnMounted$2(load3);
-  return {
-    id,
-    name,
-    el: styleRef,
-    css: cssRef,
-    unload,
-    load: load3,
-    isLoaded: readonly(isLoaded)
-  };
-}
-function _typeof$a(o) {
-  "@babel/helpers - typeof";
-  return _typeof$a = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$a(o);
-}
-function _slicedToArray$6(r, e) {
-  return _arrayWithHoles$6(r) || _iterableToArrayLimit$6(r, e) || _unsupportedIterableToArray$7(r, e) || _nonIterableRest$6();
-}
-function _nonIterableRest$6() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray$7(r, a) {
-  if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$7(r, a);
-    var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$7(r, a) : void 0;
-  }
-}
-function _arrayLikeToArray$7(r, a) {
-  (null == a || a > r.length) && (a = r.length);
-  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-  return n;
-}
-function _iterableToArrayLimit$6(r, l) {
-  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (null != t) {
-    var e, n, i, u, a = [], f = true, o = false;
-    try {
-      if (i = (t = t.call(r)).next, 0 === l) ;
-      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
-    } catch (r2) {
-      o = true, n = r2;
-    } finally {
-      try {
-        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-      } finally {
-        if (o) throw n;
-      }
-    }
-    return a;
-  }
-}
-function _arrayWithHoles$6(r) {
-  if (Array.isArray(r)) return r;
-}
-function ownKeys$a(e, r) {
-  var t = Object.keys(e);
-  if (Object.getOwnPropertySymbols) {
-    var o = Object.getOwnPropertySymbols(e);
-    r && (o = o.filter(function(r2) {
-      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
-    })), t.push.apply(t, o);
-  }
-  return t;
-}
-function _objectSpread$a(e) {
-  for (var r = 1; r < arguments.length; r++) {
-    var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$a(Object(t), true).forEach(function(r2) {
-      _defineProperty$a(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$a(Object(t)).forEach(function(r2) {
-      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
-    });
-  }
-  return e;
-}
-function _defineProperty$a(e, r, t) {
-  return (r = _toPropertyKey$a(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$a(t) {
-  var i = _toPrimitive$a(t, "string");
-  return "symbol" == _typeof$a(i) ? i : i + "";
-}
-function _toPrimitive$a(t, r) {
-  if ("object" != _typeof$a(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$a(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-var css$2 = function css(_ref) {
-  var dt2 = _ref.dt;
-  return "\n.p-hidden-accessible {\n    border: 0;\n    clip: rect(0 0 0 0);\n    height: 1px;\n    margin: -1px;\n    opacity: 0;\n    overflow: hidden;\n    padding: 0;\n    pointer-events: none;\n    position: absolute;\n    white-space: nowrap;\n    width: 1px;\n}\n\n.p-overflow-hidden {\n    overflow: hidden;\n    padding-right: ".concat(dt2("scrollbar.width"), ";\n}\n");
-};
-var classes$3 = {};
-var inlineStyles$1 = {};
-var BaseStyle$1 = {
-  name: "base",
-  css: css$2,
-  style,
-  classes: classes$3,
-  inlineStyles: inlineStyles$1,
-  load: function load(style2) {
-    var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    var transform = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : function(cs) {
-      return cs;
-    };
-    var computedStyle = transform(resolve$1(style2, {
-      dt: dt$1
-    }));
-    return isNotEmpty$1(computedStyle) ? useStyle$1(minifyCSS$1(computedStyle), _objectSpread$a({
-      name: this.name
-    }, options)) : {};
-  },
-  loadCSS: function loadCSS() {
-    var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    return this.load(this.css, options);
-  },
-  loadStyle: function loadStyle() {
-    var _this = this;
-    var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    var style2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
-    return this.load(this.style, options, function() {
-      var computedStyle = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      return config_default$1.transformCSS(options.name || _this.name, "".concat(computedStyle).concat(style2));
-    });
-  },
-  getCommonTheme: function getCommonTheme(params) {
-    return config_default$1.getCommon(this.name, params);
-  },
-  getComponentTheme: function getComponentTheme(params) {
-    return config_default$1.getComponent(this.name, params);
-  },
-  getDirectiveTheme: function getDirectiveTheme(params) {
-    return config_default$1.getDirective(this.name, params);
-  },
-  getPresetTheme: function getPresetTheme(preset, selector, params) {
-    return config_default$1.getCustomPreset(this.name, preset, selector, params);
-  },
-  getLayerOrderThemeCSS: function getLayerOrderThemeCSS() {
-    return config_default$1.getLayerOrderCSS(this.name);
-  },
-  getStyleSheet: function getStyleSheet() {
-    var extendedCSS = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    if (this.css) {
-      var _css = resolve$1(this.css, {
-        dt: dt$1
-      }) || "";
-      var _style = minifyCSS$1("".concat(_css).concat(extendedCSS));
-      var _props = Object.entries(props).reduce(function(acc, _ref2) {
-        var _ref3 = _slicedToArray$6(_ref2, 2), k = _ref3[0], v = _ref3[1];
-        return acc.push("".concat(k, '="').concat(v, '"')) && acc;
-      }, []).join(" ");
-      return isNotEmpty$1(_style) ? '<style type="text/css" data-primevue-style-id="'.concat(this.name, '" ').concat(_props, ">").concat(_style, "</style>") : "";
-    }
-    return "";
-  },
-  getCommonThemeStyleSheet: function getCommonThemeStyleSheet(params) {
-    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    return config_default$1.getCommonStyleSheet(this.name, params, props);
-  },
-  getThemeStyleSheet: function getThemeStyleSheet(params) {
-    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    var css4 = [config_default$1.getStyleSheet(this.name, params, props)];
-    if (this.style) {
-      var name = this.name === "base" ? "global-style" : "".concat(this.name, "-style");
-      var _css = resolve$1(this.style, {
-        dt: dt$1
-      });
-      var _style = minifyCSS$1(config_default$1.transformCSS(name, _css));
-      var _props = Object.entries(props).reduce(function(acc, _ref4) {
-        var _ref5 = _slicedToArray$6(_ref4, 2), k = _ref5[0], v = _ref5[1];
-        return acc.push("".concat(k, '="').concat(v, '"')) && acc;
-      }, []).join(" ");
-      isNotEmpty$1(_style) && css4.push('<style type="text/css" data-primevue-style-id="'.concat(name, '" ').concat(_props, ">").concat(_style, "</style>"));
-    }
-    return css4.join("");
-  },
-  extend: function extend(inStyle) {
-    return _objectSpread$a(_objectSpread$a({}, this), {}, {
-      css: void 0,
-      style: void 0
-    }, inStyle);
-  }
-};
-var PrimeVueService = EventBus$1();
 function _typeof$9(o) {
   "@babel/helpers - typeof";
   return _typeof$9 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
@@ -401,46 +109,6 @@ function _typeof$9(o) {
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
   }, _typeof$9(o);
-}
-function _slicedToArray$5(r, e) {
-  return _arrayWithHoles$5(r) || _iterableToArrayLimit$5(r, e) || _unsupportedIterableToArray$6(r, e) || _nonIterableRest$5();
-}
-function _nonIterableRest$5() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray$6(r, a) {
-  if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$6(r, a);
-    var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$6(r, a) : void 0;
-  }
-}
-function _arrayLikeToArray$6(r, a) {
-  (null == a || a > r.length) && (a = r.length);
-  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-  return n;
-}
-function _iterableToArrayLimit$5(r, l) {
-  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (null != t) {
-    var e, n, i, u, a = [], f = true, o = false;
-    try {
-      if (i = (t = t.call(r)).next, 0 === l) ;
-      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
-    } catch (r2) {
-      o = true, n = r2;
-    } finally {
-      try {
-        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-      } finally {
-        if (o) throw n;
-      }
-    }
-    return a;
-  }
-}
-function _arrayWithHoles$5(r) {
-  if (Array.isArray(r)) return r;
 }
 function ownKeys$9(e, r) {
   var t = Object.keys(e);
@@ -474,21 +142,360 @@ function _toPrimitive$9(t, r) {
   if ("object" != _typeof$9(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
+    var i = e.call(t, r || "default");
     if ("object" != _typeof$9(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+function tryOnMounted$1(fn) {
+  var sync = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
+  if (getCurrentInstance()) onMounted(fn);
+  else if (sync) fn();
+  else nextTick(fn);
+}
+var _id = 0;
+function useStyle(css3) {
+  var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  var isLoaded = ref(false);
+  var cssRef = ref(css3);
+  var styleRef = ref(null);
+  var defaultDocument = isClient() ? window.document : void 0;
+  var _options$document = options.document, document = _options$document === void 0 ? defaultDocument : _options$document, _options$immediate = options.immediate, immediate = _options$immediate === void 0 ? true : _options$immediate, _options$manual = options.manual, manual = _options$manual === void 0 ? false : _options$manual, _options$name = options.name, name = _options$name === void 0 ? "style_".concat(++_id) : _options$name, _options$id = options.id, id = _options$id === void 0 ? void 0 : _options$id, _options$media = options.media, media = _options$media === void 0 ? void 0 : _options$media, _options$nonce = options.nonce, nonce = _options$nonce === void 0 ? void 0 : _options$nonce, _options$first = options.first, first = _options$first === void 0 ? false : _options$first, _options$onMounted = options.onMounted, onStyleMounted = _options$onMounted === void 0 ? void 0 : _options$onMounted, _options$onUpdated = options.onUpdated, onStyleUpdated = _options$onUpdated === void 0 ? void 0 : _options$onUpdated, _options$onLoad = options.onLoad, onStyleLoaded = _options$onLoad === void 0 ? void 0 : _options$onLoad, _options$props = options.props, props = _options$props === void 0 ? {} : _options$props;
+  var stop = function stop2() {
+  };
+  var load2 = function load3(_css) {
+    var _props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    if (!document) return;
+    var _styleProps = _objectSpread$9(_objectSpread$9({}, props), _props);
+    var _name = _styleProps.name || name, _id2 = _styleProps.id || id, _nonce = _styleProps.nonce || nonce;
+    styleRef.value = document.querySelector('style[data-primevue-style-id="'.concat(_name, '"]')) || document.getElementById(_id2) || document.createElement("style");
+    if (!styleRef.value.isConnected) {
+      cssRef.value = _css || css3;
+      setAttributes(styleRef.value, {
+        type: "text/css",
+        id: _id2,
+        media,
+        nonce: _nonce
+      });
+      first ? document.head.prepend(styleRef.value) : document.head.appendChild(styleRef.value);
+      setAttribute(styleRef.value, "data-primevue-style-id", _name);
+      setAttributes(styleRef.value, _styleProps);
+      styleRef.value.onload = function(event) {
+        return onStyleLoaded === null || onStyleLoaded === void 0 ? void 0 : onStyleLoaded(event, {
+          name: _name
+        });
+      };
+      onStyleMounted === null || onStyleMounted === void 0 || onStyleMounted(_name);
+    }
+    if (isLoaded.value) return;
+    stop = watch(cssRef, function(value) {
+      styleRef.value.textContent = value;
+      onStyleUpdated === null || onStyleUpdated === void 0 || onStyleUpdated(_name);
+    }, {
+      immediate: true
+    });
+    isLoaded.value = true;
+  };
+  var unload = function unload2() {
+    if (!document || !isLoaded.value) return;
+    stop();
+    isExist(styleRef.value) && document.head.removeChild(styleRef.value);
+    isLoaded.value = false;
+  };
+  if (immediate && !manual) tryOnMounted$1(load2);
+  return {
+    id,
+    name,
+    el: styleRef,
+    css: cssRef,
+    unload,
+    load: load2,
+    isLoaded: readonly(isLoaded)
+  };
+}
+function _typeof$8(o) {
+  "@babel/helpers - typeof";
+  return _typeof$8 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+    return typeof o2;
+  } : function(o2) {
+    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+  }, _typeof$8(o);
+}
+function _slicedToArray$4(r, e) {
+  return _arrayWithHoles$4(r) || _iterableToArrayLimit$4(r, e) || _unsupportedIterableToArray$5(r, e) || _nonIterableRest$4();
+}
+function _nonIterableRest$4() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray$5(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray$5(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$5(r, a) : void 0;
+  }
+}
+function _arrayLikeToArray$5(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+function _iterableToArrayLimit$4(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e, n, i, u, a = [], f = true, o = false;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) ;
+      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
+    } catch (r2) {
+      o = true, n = r2;
+    } finally {
+      try {
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+function _arrayWithHoles$4(r) {
+  if (Array.isArray(r)) return r;
+}
+function ownKeys$8(e, r) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function(r2) {
+      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread$8(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys$8(Object(t), true).forEach(function(r2) {
+      _defineProperty$8(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$8(Object(t)).forEach(function(r2) {
+      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+    });
+  }
+  return e;
+}
+function _defineProperty$8(e, r, t) {
+  return (r = _toPropertyKey$8(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+}
+function _toPropertyKey$8(t) {
+  var i = _toPrimitive$8(t, "string");
+  return "symbol" == _typeof$8(i) ? i : i + "";
+}
+function _toPrimitive$8(t, r) {
+  if ("object" != _typeof$8(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$8(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+var theme = function theme2(_ref) {
+  var dt2 = _ref.dt;
+  return "\n*,\n::before,\n::after {\n    box-sizing: border-box;\n}\n\n/* Non vue overlay animations */\n.p-connected-overlay {\n    opacity: 0;\n    transform: scaleY(0.8);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1),\n        opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n}\n\n.p-connected-overlay-visible {\n    opacity: 1;\n    transform: scaleY(1);\n}\n\n.p-connected-overlay-hidden {\n    opacity: 0;\n    transform: scaleY(1);\n    transition: opacity 0.1s linear;\n}\n\n/* Vue based overlay animations */\n.p-connected-overlay-enter-from {\n    opacity: 0;\n    transform: scaleY(0.8);\n}\n\n.p-connected-overlay-leave-to {\n    opacity: 0;\n}\n\n.p-connected-overlay-enter-active {\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1),\n        opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n}\n\n.p-connected-overlay-leave-active {\n    transition: opacity 0.1s linear;\n}\n\n/* Toggleable Content */\n.p-toggleable-content-enter-from,\n.p-toggleable-content-leave-to {\n    max-height: 0;\n}\n\n.p-toggleable-content-enter-to,\n.p-toggleable-content-leave-from {\n    max-height: 1000px;\n}\n\n.p-toggleable-content-leave-active {\n    overflow: hidden;\n    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);\n}\n\n.p-toggleable-content-enter-active {\n    overflow: hidden;\n    transition: max-height 1s ease-in-out;\n}\n\n.p-disabled,\n.p-disabled * {\n    cursor: default;\n    pointer-events: none;\n    user-select: none;\n}\n\n.p-disabled,\n.p-component:disabled {\n    opacity: ".concat(dt2("disabled.opacity"), ";\n}\n\n.pi {\n    font-size: ").concat(dt2("icon.size"), ";\n}\n\n.p-icon {\n    width: ").concat(dt2("icon.size"), ";\n    height: ").concat(dt2("icon.size"), ";\n}\n\n.p-overlay-mask {\n    background: ").concat(dt2("mask.background"), ";\n    color: ").concat(dt2("mask.color"), ";\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n.p-overlay-mask-enter {\n    animation: p-overlay-mask-enter-animation ").concat(dt2("mask.transition.duration"), " forwards;\n}\n\n.p-overlay-mask-leave {\n    animation: p-overlay-mask-leave-animation ").concat(dt2("mask.transition.duration"), " forwards;\n}\n\n@keyframes p-overlay-mask-enter-animation {\n    from {\n        background: transparent;\n    }\n    to {\n        background: ").concat(dt2("mask.background"), ";\n    }\n}\n@keyframes p-overlay-mask-leave-animation {\n    from {\n        background: ").concat(dt2("mask.background"), ";\n    }\n    to {\n        background: transparent;\n    }\n}\n");
+};
+var css$1 = function css(_ref2) {
+  var dt2 = _ref2.dt;
+  return "\n.p-hidden-accessible {\n    border: 0;\n    clip: rect(0 0 0 0);\n    height: 1px;\n    margin: -1px;\n    overflow: hidden;\n    padding: 0;\n    position: absolute;\n    width: 1px;\n}\n\n.p-hidden-accessible input,\n.p-hidden-accessible select {\n    transform: scale(0);\n}\n\n.p-overflow-hidden {\n    overflow: hidden;\n    padding-right: ".concat(dt2("scrollbar.width"), ";\n}\n");
+};
+var classes$2 = {};
+var inlineStyles = {};
+var BaseStyle = {
+  name: "base",
+  css: css$1,
+  theme,
+  classes: classes$2,
+  inlineStyles,
+  load: function load(style) {
+    var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    var transform = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : function(cs) {
+      return cs;
+    };
+    var computedStyle = transform(resolve(style, {
+      dt
+    }));
+    return isNotEmpty(computedStyle) ? useStyle(minifyCSS(computedStyle), _objectSpread$8({
+      name: this.name
+    }, options)) : {};
+  },
+  loadCSS: function loadCSS() {
+    var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
+    return this.load(this.css, options);
+  },
+  loadTheme: function loadTheme() {
+    var _this = this;
+    var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
+    var style = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
+    return this.load(this.theme, options, function() {
+      var computedStyle = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
+      return config_default.transformCSS(options.name || _this.name, "".concat(computedStyle).concat(style));
+    });
+  },
+  getCommonTheme: function getCommonTheme(params) {
+    return config_default.getCommon(this.name, params);
+  },
+  getComponentTheme: function getComponentTheme(params) {
+    return config_default.getComponent(this.name, params);
+  },
+  getDirectiveTheme: function getDirectiveTheme(params) {
+    return config_default.getDirective(this.name, params);
+  },
+  getPresetTheme: function getPresetTheme(preset, selector, params) {
+    return config_default.getCustomPreset(this.name, preset, selector, params);
+  },
+  getLayerOrderThemeCSS: function getLayerOrderThemeCSS() {
+    return config_default.getLayerOrderCSS(this.name);
+  },
+  getStyleSheet: function getStyleSheet() {
+    var extendedCSS = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
+    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    if (this.css) {
+      var _css = resolve(this.css, {
+        dt
+      }) || "";
+      var _style = minifyCSS("".concat(_css).concat(extendedCSS));
+      var _props = Object.entries(props).reduce(function(acc, _ref3) {
+        var _ref4 = _slicedToArray$4(_ref3, 2), k = _ref4[0], v = _ref4[1];
+        return acc.push("".concat(k, '="').concat(v, '"')) && acc;
+      }, []).join(" ");
+      return isNotEmpty(_style) ? '<style type="text/css" data-primevue-style-id="'.concat(this.name, '" ').concat(_props, ">").concat(_style, "</style>") : "";
+    }
+    return "";
+  },
+  getCommonThemeStyleSheet: function getCommonThemeStyleSheet(params) {
+    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    return config_default.getCommonStyleSheet(this.name, params, props);
+  },
+  getThemeStyleSheet: function getThemeStyleSheet(params) {
+    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    var css3 = [config_default.getStyleSheet(this.name, params, props)];
+    if (this.theme) {
+      var name = this.name === "base" ? "global-style" : "".concat(this.name, "-style");
+      var _css = resolve(this.theme, {
+        dt
+      });
+      var _style = minifyCSS(config_default.transformCSS(name, _css));
+      var _props = Object.entries(props).reduce(function(acc, _ref5) {
+        var _ref6 = _slicedToArray$4(_ref5, 2), k = _ref6[0], v = _ref6[1];
+        return acc.push("".concat(k, '="').concat(v, '"')) && acc;
+      }, []).join(" ");
+      isNotEmpty(_style) && css3.push('<style type="text/css" data-primevue-style-id="'.concat(name, '" ').concat(_props, ">").concat(_style, "</style>"));
+    }
+    return css3.join("");
+  },
+  extend: function extend(style) {
+    return _objectSpread$8(_objectSpread$8({}, this), {}, {
+      css: void 0,
+      theme: void 0
+    }, style);
+  }
+};
+var PrimeVueService = EventBus();
+function _typeof$7(o) {
+  "@babel/helpers - typeof";
+  return _typeof$7 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+    return typeof o2;
+  } : function(o2) {
+    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+  }, _typeof$7(o);
+}
+function _slicedToArray$3(r, e) {
+  return _arrayWithHoles$3(r) || _iterableToArrayLimit$3(r, e) || _unsupportedIterableToArray$4(r, e) || _nonIterableRest$3();
+}
+function _nonIterableRest$3() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray$4(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray$4(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$4(r, a) : void 0;
+  }
+}
+function _arrayLikeToArray$4(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+function _iterableToArrayLimit$3(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e, n, i, u, a = [], f = true, o = false;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) ;
+      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
+    } catch (r2) {
+      o = true, n = r2;
+    } finally {
+      try {
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+function _arrayWithHoles$3(r) {
+  if (Array.isArray(r)) return r;
+}
+function ownKeys$7(e, r) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function(r2) {
+      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread$7(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys$7(Object(t), true).forEach(function(r2) {
+      _defineProperty$7(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$7(Object(t)).forEach(function(r2) {
+      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+    });
+  }
+  return e;
+}
+function _defineProperty$7(e, r, t) {
+  return (r = _toPropertyKey$7(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+}
+function _toPropertyKey$7(t) {
+  var i = _toPrimitive$7(t, "string");
+  return "symbol" == _typeof$7(i) ? i : i + "";
+}
+function _toPrimitive$7(t, r) {
+  if ("object" != _typeof$7(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$7(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
 }
 var BaseDirective = {
   _getMeta: function _getMeta() {
-    return [isObject$2(arguments.length <= 0 ? void 0 : arguments[0]) ? void 0 : arguments.length <= 0 ? void 0 : arguments[0], resolve$1(isObject$2(arguments.length <= 0 ? void 0 : arguments[0]) ? arguments.length <= 0 ? void 0 : arguments[0] : arguments.length <= 1 ? void 0 : arguments[1])];
+    return [isObject(arguments.length <= 0 ? void 0 : arguments[0]) ? void 0 : arguments.length <= 0 ? void 0 : arguments[0], resolve(isObject(arguments.length <= 0 ? void 0 : arguments[0]) ? arguments.length <= 0 ? void 0 : arguments[0] : arguments.length <= 1 ? void 0 : arguments[1])];
   },
   _getConfig: function _getConfig(binding, vnode) {
     var _ref, _binding$instance, _vnode$ctx;
     return (_ref = (binding === null || binding === void 0 || (_binding$instance = binding.instance) === null || _binding$instance === void 0 ? void 0 : _binding$instance.$primevue) || (vnode === null || vnode === void 0 || (_vnode$ctx = vnode.ctx) === null || _vnode$ctx === void 0 || (_vnode$ctx = _vnode$ctx.appContext) === null || _vnode$ctx === void 0 || (_vnode$ctx = _vnode$ctx.config) === null || _vnode$ctx === void 0 || (_vnode$ctx = _vnode$ctx.globalProperties) === null || _vnode$ctx === void 0 ? void 0 : _vnode$ctx.$primevue)) === null || _ref === void 0 ? void 0 : _ref.config;
   },
-  _getOptionValue: getKeyValue$1,
+  _getOptionValue: getKeyValue,
   _getPTValue: function _getPTValue() {
     var _instance$binding, _instance$$primevueCo;
     var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
@@ -498,23 +505,23 @@ var BaseDirective = {
     var searchInDefaultPT = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : true;
     var getValue = function getValue2() {
       var value = BaseDirective._getOptionValue.apply(BaseDirective, arguments);
-      return isString$1(value) || isArray$1(value) ? {
+      return isString(value) || isArray(value) ? {
         "class": value
       } : value;
     };
     var _ref2 = ((_instance$binding = instance.binding) === null || _instance$binding === void 0 || (_instance$binding = _instance$binding.value) === null || _instance$binding === void 0 ? void 0 : _instance$binding.ptOptions) || ((_instance$$primevueCo = instance.$primevueConfig) === null || _instance$$primevueCo === void 0 ? void 0 : _instance$$primevueCo.ptOptions) || {}, _ref2$mergeSections = _ref2.mergeSections, mergeSections = _ref2$mergeSections === void 0 ? true : _ref2$mergeSections, _ref2$mergeProps = _ref2.mergeProps, useMergeProps = _ref2$mergeProps === void 0 ? false : _ref2$mergeProps;
     var global = searchInDefaultPT ? BaseDirective._useDefaultPT(instance, instance.defaultPT(), getValue, key, params) : void 0;
-    var self = BaseDirective._usePT(instance, BaseDirective._getPT(obj, instance.$name), getValue, key, _objectSpread$9(_objectSpread$9({}, params), {}, {
+    var self = BaseDirective._usePT(instance, BaseDirective._getPT(obj, instance.$name), getValue, key, _objectSpread$7(_objectSpread$7({}, params), {}, {
       global: global || {}
     }));
     var datasets = BaseDirective._getPTDatasets(instance, key);
-    return mergeSections || !mergeSections && self ? useMergeProps ? BaseDirective._mergeProps(instance, useMergeProps, global, self, datasets) : _objectSpread$9(_objectSpread$9(_objectSpread$9({}, global), self), datasets) : _objectSpread$9(_objectSpread$9({}, self), datasets);
+    return mergeSections || !mergeSections && self ? useMergeProps ? BaseDirective._mergeProps(instance, useMergeProps, global, self, datasets) : _objectSpread$7(_objectSpread$7(_objectSpread$7({}, global), self), datasets) : _objectSpread$7(_objectSpread$7({}, self), datasets);
   },
   _getPTDatasets: function _getPTDatasets() {
     var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
     var datasetPrefix = "data-pc-";
-    return _objectSpread$9(_objectSpread$9({}, key === "root" && _defineProperty$9({}, "".concat(datasetPrefix, "name"), toFlatCase$1(instance.$name))), {}, _defineProperty$9({}, "".concat(datasetPrefix, "section"), toFlatCase$1(key)));
+    return _objectSpread$7(_objectSpread$7({}, key === "root" && _defineProperty$7({}, "".concat(datasetPrefix, "name"), toFlatCase(instance.$name))), {}, _defineProperty$7({}, "".concat(datasetPrefix, "section"), toFlatCase(key)));
   },
   _getPT: function _getPT(pt) {
     var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
@@ -522,10 +529,10 @@ var BaseDirective = {
     var getValue = function getValue2(value) {
       var _computedValue$_key;
       var computedValue = callback ? callback(value) : value;
-      var _key = toFlatCase$1(key);
+      var _key = toFlatCase(key);
       return (_computedValue$_key = computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key]) !== null && _computedValue$_key !== void 0 ? _computedValue$_key : computedValue;
     };
-    return pt && Object.hasOwn(pt, "_usept") ? {
+    return pt !== null && pt !== void 0 && pt.hasOwnProperty("_usept") ? {
       _usept: pt["_usept"],
       originalValue: getValue(pt.originalValue),
       value: getValue(pt.value)
@@ -540,53 +547,48 @@ var BaseDirective = {
     var fn = function fn2(value2) {
       return callback(value2, key, params);
     };
-    if (pt && Object.hasOwn(pt, "_usept")) {
+    if (pt !== null && pt !== void 0 && pt.hasOwnProperty("_usept")) {
       var _instance$$primevueCo2;
       var _ref4 = pt["_usept"] || ((_instance$$primevueCo2 = instance.$primevueConfig) === null || _instance$$primevueCo2 === void 0 ? void 0 : _instance$$primevueCo2.ptOptions) || {}, _ref4$mergeSections = _ref4.mergeSections, mergeSections = _ref4$mergeSections === void 0 ? true : _ref4$mergeSections, _ref4$mergeProps = _ref4.mergeProps, useMergeProps = _ref4$mergeProps === void 0 ? false : _ref4$mergeProps;
       var originalValue = fn(pt.originalValue);
       var value = fn(pt.value);
       if (originalValue === void 0 && value === void 0) return void 0;
-      else if (isString$1(value)) return value;
-      else if (isString$1(originalValue)) return originalValue;
-      return mergeSections || !mergeSections && value ? useMergeProps ? BaseDirective._mergeProps(instance, useMergeProps, originalValue, value) : _objectSpread$9(_objectSpread$9({}, originalValue), value) : value;
+      else if (isString(value)) return value;
+      else if (isString(originalValue)) return originalValue;
+      return mergeSections || !mergeSections && value ? useMergeProps ? BaseDirective._mergeProps(instance, useMergeProps, originalValue, value) : _objectSpread$7(_objectSpread$7({}, originalValue), value) : value;
     }
     return fn(pt);
   },
   _useDefaultPT: function _useDefaultPT() {
     var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    var defaultPT3 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    var defaultPT2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     var callback = arguments.length > 2 ? arguments[2] : void 0;
     var key = arguments.length > 3 ? arguments[3] : void 0;
     var params = arguments.length > 4 ? arguments[4] : void 0;
-    return BaseDirective._usePT(instance, defaultPT3, callback, key, params);
+    return BaseDirective._usePT(instance, defaultPT2, callback, key, params);
   },
-  _loadStyles: function _loadStyles() {
+  _loadStyles: function _loadStyles(el, binding, vnode) {
     var _config$csp;
-    var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    var binding = arguments.length > 1 ? arguments[1] : void 0;
-    var vnode = arguments.length > 2 ? arguments[2] : void 0;
     var config = BaseDirective._getConfig(binding, vnode);
     var useStyleOptions = {
       nonce: config === null || config === void 0 || (_config$csp = config.csp) === null || _config$csp === void 0 ? void 0 : _config$csp.nonce
     };
-    BaseDirective._loadCoreStyles(instance, useStyleOptions);
-    BaseDirective._loadThemeStyles(instance, useStyleOptions);
-    BaseDirective._loadScopedThemeStyles(instance, useStyleOptions);
-    BaseDirective._removeThemeListeners(instance);
-    instance.$loadStyles = function() {
-      return BaseDirective._loadThemeStyles(instance, useStyleOptions);
-    };
-    BaseDirective._themeChangeListener(instance.$loadStyles);
+    BaseDirective._loadCoreStyles(el.$instance, useStyleOptions);
+    BaseDirective._loadThemeStyles(el.$instance, useStyleOptions);
+    BaseDirective._loadScopedThemeStyles(el.$instance, useStyleOptions);
+    BaseDirective._themeChangeListener(function() {
+      return BaseDirective._loadThemeStyles(el.$instance, useStyleOptions);
+    });
   },
   _loadCoreStyles: function _loadCoreStyles() {
     var _instance$$style, _instance$$style2;
     var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     var useStyleOptions = arguments.length > 1 ? arguments[1] : void 0;
-    if (!Base$1.isStyleNameLoaded((_instance$$style = instance.$style) === null || _instance$$style === void 0 ? void 0 : _instance$$style.name) && (_instance$$style2 = instance.$style) !== null && _instance$$style2 !== void 0 && _instance$$style2.name) {
+    if (!Base.isStyleNameLoaded((_instance$$style = instance.$style) === null || _instance$$style === void 0 ? void 0 : _instance$$style.name) && (_instance$$style2 = instance.$style) !== null && _instance$$style2 !== void 0 && _instance$$style2.name) {
       var _instance$$style3;
-      BaseStyle$1.loadCSS(useStyleOptions);
+      BaseStyle.loadCSS(useStyleOptions);
       (_instance$$style3 = instance.$style) === null || _instance$$style3 === void 0 || _instance$$style3.loadCSS(useStyleOptions);
-      Base$1.setLoadedStyleName(instance.$style.name);
+      Base.setLoadedStyleName(instance.$style.name);
     }
   },
   _loadThemeStyles: function _loadThemeStyles() {
@@ -594,42 +596,42 @@ var BaseDirective = {
     var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     var useStyleOptions = arguments.length > 1 ? arguments[1] : void 0;
     if (instance !== null && instance !== void 0 && instance.isUnstyled() || (instance === null || instance === void 0 || (_instance$theme = instance.theme) === null || _instance$theme === void 0 ? void 0 : _instance$theme.call(instance)) === "none") return;
-    if (!config_default$1.isStyleNameLoaded("common")) {
+    if (!config_default.isStyleNameLoaded("common")) {
       var _instance$$style4, _instance$$style4$get;
-      var _ref5 = ((_instance$$style4 = instance.$style) === null || _instance$$style4 === void 0 || (_instance$$style4$get = _instance$$style4.getCommonTheme) === null || _instance$$style4$get === void 0 ? void 0 : _instance$$style4$get.call(_instance$$style4)) || {}, primitive = _ref5.primitive, semantic = _ref5.semantic, global = _ref5.global, style2 = _ref5.style;
-      BaseStyle$1.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$9({
+      var _ref5 = ((_instance$$style4 = instance.$style) === null || _instance$$style4 === void 0 || (_instance$$style4$get = _instance$$style4.getCommonTheme) === null || _instance$$style4$get === void 0 ? void 0 : _instance$$style4$get.call(_instance$$style4)) || {}, primitive = _ref5.primitive, semantic = _ref5.semantic, global = _ref5.global, style = _ref5.style;
+      BaseStyle.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$7({
         name: "primitive-variables"
       }, useStyleOptions));
-      BaseStyle$1.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$9({
+      BaseStyle.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$7({
         name: "semantic-variables"
       }, useStyleOptions));
-      BaseStyle$1.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$9({
+      BaseStyle.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$7({
         name: "global-variables"
       }, useStyleOptions));
-      BaseStyle$1.loadStyle(_objectSpread$9({
+      BaseStyle.loadTheme(_objectSpread$7({
         name: "global-style"
-      }, useStyleOptions), style2);
-      config_default$1.setLoadedStyleName("common");
+      }, useStyleOptions), style);
+      config_default.setLoadedStyleName("common");
     }
-    if (!config_default$1.isStyleNameLoaded((_instance$$style5 = instance.$style) === null || _instance$$style5 === void 0 ? void 0 : _instance$$style5.name) && (_instance$$style6 = instance.$style) !== null && _instance$$style6 !== void 0 && _instance$$style6.name) {
+    if (!config_default.isStyleNameLoaded((_instance$$style5 = instance.$style) === null || _instance$$style5 === void 0 ? void 0 : _instance$$style5.name) && (_instance$$style6 = instance.$style) !== null && _instance$$style6 !== void 0 && _instance$$style6.name) {
       var _instance$$style7, _instance$$style7$get, _instance$$style8, _instance$$style9;
-      var _ref6 = ((_instance$$style7 = instance.$style) === null || _instance$$style7 === void 0 || (_instance$$style7$get = _instance$$style7.getDirectiveTheme) === null || _instance$$style7$get === void 0 ? void 0 : _instance$$style7$get.call(_instance$$style7)) || {}, css4 = _ref6.css, _style = _ref6.style;
-      (_instance$$style8 = instance.$style) === null || _instance$$style8 === void 0 || _instance$$style8.load(css4, _objectSpread$9({
+      var _ref6 = ((_instance$$style7 = instance.$style) === null || _instance$$style7 === void 0 || (_instance$$style7$get = _instance$$style7.getDirectiveTheme) === null || _instance$$style7$get === void 0 ? void 0 : _instance$$style7$get.call(_instance$$style7)) || {}, css3 = _ref6.css, _style = _ref6.style;
+      (_instance$$style8 = instance.$style) === null || _instance$$style8 === void 0 || _instance$$style8.load(css3, _objectSpread$7({
         name: "".concat(instance.$style.name, "-variables")
       }, useStyleOptions));
-      (_instance$$style9 = instance.$style) === null || _instance$$style9 === void 0 || _instance$$style9.loadStyle(_objectSpread$9({
+      (_instance$$style9 = instance.$style) === null || _instance$$style9 === void 0 || _instance$$style9.loadTheme(_objectSpread$7({
         name: "".concat(instance.$style.name, "-style")
       }, useStyleOptions), _style);
-      config_default$1.setLoadedStyleName(instance.$style.name);
+      config_default.setLoadedStyleName(instance.$style.name);
     }
-    if (!config_default$1.isStyleNameLoaded("layer-order")) {
-      var _instance$$style0, _instance$$style0$get;
-      var layerOrder = (_instance$$style0 = instance.$style) === null || _instance$$style0 === void 0 || (_instance$$style0$get = _instance$$style0.getLayerOrderThemeCSS) === null || _instance$$style0$get === void 0 ? void 0 : _instance$$style0$get.call(_instance$$style0);
-      BaseStyle$1.load(layerOrder, _objectSpread$9({
+    if (!config_default.isStyleNameLoaded("layer-order")) {
+      var _instance$$style10, _instance$$style10$ge;
+      var layerOrder = (_instance$$style10 = instance.$style) === null || _instance$$style10 === void 0 || (_instance$$style10$ge = _instance$$style10.getLayerOrderThemeCSS) === null || _instance$$style10$ge === void 0 ? void 0 : _instance$$style10$ge.call(_instance$$style10);
+      BaseStyle.load(layerOrder, _objectSpread$7({
         name: "layer-order",
         first: true
       }, useStyleOptions));
-      config_default$1.setLoadedStyleName("layer-order");
+      config_default.setLoadedStyleName("layer-order");
     }
   },
   _loadScopedThemeStyles: function _loadScopedThemeStyles() {
@@ -637,9 +639,9 @@ var BaseDirective = {
     var useStyleOptions = arguments.length > 1 ? arguments[1] : void 0;
     var preset = instance.preset();
     if (preset && instance.$attrSelector) {
-      var _instance$$style1, _instance$$style1$get, _instance$$style10;
-      var _ref7 = ((_instance$$style1 = instance.$style) === null || _instance$$style1 === void 0 || (_instance$$style1$get = _instance$$style1.getPresetTheme) === null || _instance$$style1$get === void 0 ? void 0 : _instance$$style1$get.call(_instance$$style1, preset, "[".concat(instance.$attrSelector, "]"))) || {}, css4 = _ref7.css;
-      var scopedStyle = (_instance$$style10 = instance.$style) === null || _instance$$style10 === void 0 ? void 0 : _instance$$style10.load(css4, _objectSpread$9({
+      var _instance$$style11, _instance$$style11$ge, _instance$$style12;
+      var _ref7 = ((_instance$$style11 = instance.$style) === null || _instance$$style11 === void 0 || (_instance$$style11$ge = _instance$$style11.getPresetTheme) === null || _instance$$style11$ge === void 0 ? void 0 : _instance$$style11$ge.call(_instance$$style11, preset, "[".concat(instance.$attrSelector, "]"))) || {}, css3 = _ref7.css;
+      var scopedStyle = (_instance$$style12 = instance.$style) === null || _instance$$style12 === void 0 ? void 0 : _instance$$style12.load(css3, _objectSpread$7({
         name: "".concat(instance.$attrSelector, "-").concat(instance.$style.name)
       }, useStyleOptions));
       instance.scopedStyleEl = scopedStyle.el;
@@ -648,13 +650,8 @@ var BaseDirective = {
   _themeChangeListener: function _themeChangeListener() {
     var callback = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : function() {
     };
-    Base$1.clearLoadedStyleNames();
-    service_default$1.on("theme:change", callback);
-  },
-  _removeThemeListeners: function _removeThemeListeners() {
-    var instance = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    service_default$1.off("theme:change", instance.$loadStyles);
-    instance.$loadStyles = void 0;
+    Base.clearLoadedStyleNames();
+    service_default.on("theme:change", callback);
   },
   _hook: function _hook(directiveName, hookName, el, binding, vnode, prevVnode) {
     var _binding$value, _config$pt;
@@ -672,23 +669,22 @@ var BaseDirective = {
     selfHook === null || selfHook === void 0 || selfHook(instance, options);
     defaultHook === null || defaultHook === void 0 || defaultHook(instance, options);
   },
-  /* eslint-disable-next-line no-unused-vars */
   _mergeProps: function _mergeProps() {
     var fn = arguments.length > 1 ? arguments[1] : void 0;
     for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key2 = 2; _key2 < _len; _key2++) {
       args[_key2 - 2] = arguments[_key2];
     }
-    return isFunction$1(fn) ? fn.apply(void 0, args) : mergeProps.apply(void 0, args);
+    return isFunction(fn) ? fn.apply(void 0, args) : mergeProps.apply(void 0, args);
   },
   _extend: function _extend(name) {
     var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     var handleHook = function handleHook2(hook, el, binding, vnode, prevVnode) {
-      var _el$$pd, _el$$instance$hook, _el$$instance, _el$$pd2;
+      var _el$$pd, _el$$instance$hook, _el$$instance9, _el$$pd2;
       el._$instances = el._$instances || {};
       var config = BaseDirective._getConfig(binding, vnode);
       var $prevInstance = el._$instances[name] || {};
-      var $options = isEmpty$1($prevInstance) ? _objectSpread$9(_objectSpread$9({}, options), options === null || options === void 0 ? void 0 : options.methods) : {};
-      el._$instances[name] = _objectSpread$9(_objectSpread$9({}, $prevInstance), {}, {
+      var $options = isEmpty($prevInstance) ? _objectSpread$7(_objectSpread$7({}, options), options === null || options === void 0 ? void 0 : options.methods) : {};
+      el._$instances[name] = _objectSpread$7(_objectSpread$7({}, $prevInstance), {}, {
         /* new instance variables to pass in directive methods */
         $name: name,
         $host: el,
@@ -696,152 +692,131 @@ var BaseDirective = {
         $modifiers: binding === null || binding === void 0 ? void 0 : binding.modifiers,
         $value: binding === null || binding === void 0 ? void 0 : binding.value,
         $el: $prevInstance["$el"] || el || void 0,
-        $style: _objectSpread$9({
+        $style: _objectSpread$7({
           classes: void 0,
           inlineStyles: void 0,
-          load: function load3() {
+          load: function load2() {
           },
-          loadCSS: function loadCSS3() {
+          loadCSS: function loadCSS2() {
           },
-          loadStyle: function loadStyle2() {
+          loadTheme: function loadTheme2() {
           }
         }, options === null || options === void 0 ? void 0 : options.style),
         $primevueConfig: config,
         $attrSelector: (_el$$pd = el.$pd) === null || _el$$pd === void 0 || (_el$$pd = _el$$pd[name]) === null || _el$$pd === void 0 ? void 0 : _el$$pd.attrSelector,
         /* computed instance variables */
-        defaultPT: function defaultPT3() {
+        defaultPT: function defaultPT2() {
           return BaseDirective._getPT(config === null || config === void 0 ? void 0 : config.pt, void 0, function(value) {
             var _value$directives;
             return value === null || value === void 0 || (_value$directives = value.directives) === null || _value$directives === void 0 ? void 0 : _value$directives[name];
           });
         },
-        isUnstyled: function isUnstyled3() {
-          var _el$_$instances$name, _el$_$instances$name2;
-          return ((_el$_$instances$name = el._$instances[name]) === null || _el$_$instances$name === void 0 || (_el$_$instances$name = _el$_$instances$name.$binding) === null || _el$_$instances$name === void 0 || (_el$_$instances$name = _el$_$instances$name.value) === null || _el$_$instances$name === void 0 ? void 0 : _el$_$instances$name.unstyled) !== void 0 ? (_el$_$instances$name2 = el._$instances[name]) === null || _el$_$instances$name2 === void 0 || (_el$_$instances$name2 = _el$_$instances$name2.$binding) === null || _el$_$instances$name2 === void 0 || (_el$_$instances$name2 = _el$_$instances$name2.value) === null || _el$_$instances$name2 === void 0 ? void 0 : _el$_$instances$name2.unstyled : config === null || config === void 0 ? void 0 : config.unstyled;
+        isUnstyled: function isUnstyled2() {
+          var _el$$instance, _el$$instance2;
+          return ((_el$$instance = el.$instance) === null || _el$$instance === void 0 || (_el$$instance = _el$$instance.$binding) === null || _el$$instance === void 0 || (_el$$instance = _el$$instance.value) === null || _el$$instance === void 0 ? void 0 : _el$$instance.unstyled) !== void 0 ? (_el$$instance2 = el.$instance) === null || _el$$instance2 === void 0 || (_el$$instance2 = _el$$instance2.$binding) === null || _el$$instance2 === void 0 || (_el$$instance2 = _el$$instance2.value) === null || _el$$instance2 === void 0 ? void 0 : _el$$instance2.unstyled : config === null || config === void 0 ? void 0 : config.unstyled;
         },
         theme: function theme3() {
-          var _el$_$instances$name3;
-          return (_el$_$instances$name3 = el._$instances[name]) === null || _el$_$instances$name3 === void 0 || (_el$_$instances$name3 = _el$_$instances$name3.$primevueConfig) === null || _el$_$instances$name3 === void 0 ? void 0 : _el$_$instances$name3.theme;
+          var _el$$instance3;
+          return (_el$$instance3 = el.$instance) === null || _el$$instance3 === void 0 || (_el$$instance3 = _el$$instance3.$primevueConfig) === null || _el$$instance3 === void 0 ? void 0 : _el$$instance3.theme;
         },
         preset: function preset() {
-          var _el$_$instances$name4;
-          return (_el$_$instances$name4 = el._$instances[name]) === null || _el$_$instances$name4 === void 0 || (_el$_$instances$name4 = _el$_$instances$name4.$binding) === null || _el$_$instances$name4 === void 0 || (_el$_$instances$name4 = _el$_$instances$name4.value) === null || _el$_$instances$name4 === void 0 ? void 0 : _el$_$instances$name4.dt;
+          var _el$$instance4;
+          return (_el$$instance4 = el.$instance) === null || _el$$instance4 === void 0 || (_el$$instance4 = _el$$instance4.$binding) === null || _el$$instance4 === void 0 || (_el$$instance4 = _el$$instance4.value) === null || _el$$instance4 === void 0 ? void 0 : _el$$instance4.dt;
         },
         /* instance's methods */
-        ptm: function ptm3() {
-          var _el$_$instances$name5;
+        ptm: function ptm2() {
+          var _el$$instance5;
           var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
           var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-          return BaseDirective._getPTValue(el._$instances[name], (_el$_$instances$name5 = el._$instances[name]) === null || _el$_$instances$name5 === void 0 || (_el$_$instances$name5 = _el$_$instances$name5.$binding) === null || _el$_$instances$name5 === void 0 || (_el$_$instances$name5 = _el$_$instances$name5.value) === null || _el$_$instances$name5 === void 0 ? void 0 : _el$_$instances$name5.pt, key, _objectSpread$9({}, params));
+          return BaseDirective._getPTValue(el.$instance, (_el$$instance5 = el.$instance) === null || _el$$instance5 === void 0 || (_el$$instance5 = _el$$instance5.$binding) === null || _el$$instance5 === void 0 || (_el$$instance5 = _el$$instance5.value) === null || _el$$instance5 === void 0 ? void 0 : _el$$instance5.pt, key, _objectSpread$7({}, params));
         },
-        ptmo: function ptmo3() {
+        ptmo: function ptmo2() {
           var obj = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
           var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
           var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-          return BaseDirective._getPTValue(el._$instances[name], obj, key, params, false);
+          return BaseDirective._getPTValue(el.$instance, obj, key, params, false);
         },
-        cx: function cx3() {
-          var _el$_$instances$name6, _el$_$instances$name7;
+        cx: function cx2() {
+          var _el$$instance6, _el$$instance7;
           var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
           var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-          return !((_el$_$instances$name6 = el._$instances[name]) !== null && _el$_$instances$name6 !== void 0 && _el$_$instances$name6.isUnstyled()) ? BaseDirective._getOptionValue((_el$_$instances$name7 = el._$instances[name]) === null || _el$_$instances$name7 === void 0 || (_el$_$instances$name7 = _el$_$instances$name7.$style) === null || _el$_$instances$name7 === void 0 ? void 0 : _el$_$instances$name7.classes, key, _objectSpread$9({}, params)) : void 0;
+          return !((_el$$instance6 = el.$instance) !== null && _el$$instance6 !== void 0 && _el$$instance6.isUnstyled()) ? BaseDirective._getOptionValue((_el$$instance7 = el.$instance) === null || _el$$instance7 === void 0 || (_el$$instance7 = _el$$instance7.$style) === null || _el$$instance7 === void 0 ? void 0 : _el$$instance7.classes, key, _objectSpread$7({}, params)) : void 0;
         },
-        sx: function sx3() {
-          var _el$_$instances$name8;
+        sx: function sx2() {
+          var _el$$instance8;
           var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
           var when = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
           var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-          return when ? BaseDirective._getOptionValue((_el$_$instances$name8 = el._$instances[name]) === null || _el$_$instances$name8 === void 0 || (_el$_$instances$name8 = _el$_$instances$name8.$style) === null || _el$_$instances$name8 === void 0 ? void 0 : _el$_$instances$name8.inlineStyles, key, _objectSpread$9({}, params)) : void 0;
+          return when ? BaseDirective._getOptionValue((_el$$instance8 = el.$instance) === null || _el$$instance8 === void 0 || (_el$$instance8 = _el$$instance8.$style) === null || _el$$instance8 === void 0 ? void 0 : _el$$instance8.inlineStyles, key, _objectSpread$7({}, params)) : void 0;
         }
       }, $options);
       el.$instance = el._$instances[name];
-      (_el$$instance$hook = (_el$$instance = el.$instance)[hook]) === null || _el$$instance$hook === void 0 || _el$$instance$hook.call(_el$$instance, el, binding, vnode, prevVnode);
+      (_el$$instance$hook = (_el$$instance9 = el.$instance)[hook]) === null || _el$$instance$hook === void 0 || _el$$instance$hook.call(_el$$instance9, el, binding, vnode, prevVnode);
       el["$".concat(name)] = el.$instance;
       BaseDirective._hook(name, hook, el, binding, vnode, prevVnode);
       el.$pd || (el.$pd = {});
-      el.$pd[name] = _objectSpread$9(_objectSpread$9({}, (_el$$pd2 = el.$pd) === null || _el$$pd2 === void 0 ? void 0 : _el$$pd2[name]), {}, {
+      el.$pd[name] = _objectSpread$7(_objectSpread$7({}, (_el$$pd2 = el.$pd) === null || _el$$pd2 === void 0 ? void 0 : _el$$pd2[name]), {}, {
         name,
-        instance: el._$instances[name]
+        instance: el.$instance
       });
     };
-    var handleWatchers = function handleWatchers2(el) {
-      var _watchers$config2, _watchers$configRipp2, _instance$$primevueCo3;
-      var instance = el._$instances[name];
-      var watchers = instance === null || instance === void 0 ? void 0 : instance.watch;
-      var handleWatchConfig = function handleWatchConfig2(_ref8) {
-        var _watchers$config;
+    var handleWatch = function handleWatch2(el) {
+      var _el$$instance10, _watchers$config, _el$$instance11, _watchers$configRipp, _el$$instance12;
+      var watchers = (_el$$instance10 = el.$instance) === null || _el$$instance10 === void 0 ? void 0 : _el$$instance10.watch;
+      watchers === null || watchers === void 0 || (_watchers$config = watchers["config"]) === null || _watchers$config === void 0 || _watchers$config.call(el.$instance, (_el$$instance11 = el.$instance) === null || _el$$instance11 === void 0 ? void 0 : _el$$instance11.$primevueConfig);
+      PrimeVueService.on("config:change", function(_ref8) {
+        var _watchers$config2;
         var newValue = _ref8.newValue, oldValue = _ref8.oldValue;
-        return watchers === null || watchers === void 0 || (_watchers$config = watchers["config"]) === null || _watchers$config === void 0 ? void 0 : _watchers$config.call(instance, newValue, oldValue);
-      };
-      var handleWatchConfigRipple = function handleWatchConfigRipple2(_ref9) {
-        var _watchers$configRipp;
+        return watchers === null || watchers === void 0 || (_watchers$config2 = watchers["config"]) === null || _watchers$config2 === void 0 ? void 0 : _watchers$config2.call(el.$instance, newValue, oldValue);
+      });
+      watchers === null || watchers === void 0 || (_watchers$configRipp = watchers["config.ripple"]) === null || _watchers$configRipp === void 0 || _watchers$configRipp.call(el.$instance, (_el$$instance12 = el.$instance) === null || _el$$instance12 === void 0 || (_el$$instance12 = _el$$instance12.$primevueConfig) === null || _el$$instance12 === void 0 ? void 0 : _el$$instance12.ripple);
+      PrimeVueService.on("config:ripple:change", function(_ref9) {
+        var _watchers$configRipp2;
         var newValue = _ref9.newValue, oldValue = _ref9.oldValue;
-        return watchers === null || watchers === void 0 || (_watchers$configRipp = watchers["config.ripple"]) === null || _watchers$configRipp === void 0 ? void 0 : _watchers$configRipp.call(instance, newValue, oldValue);
-      };
-      instance.$watchersCallback = {
-        config: handleWatchConfig,
-        "config.ripple": handleWatchConfigRipple
-      };
-      watchers === null || watchers === void 0 || (_watchers$config2 = watchers["config"]) === null || _watchers$config2 === void 0 || _watchers$config2.call(instance, instance === null || instance === void 0 ? void 0 : instance.$primevueConfig);
-      PrimeVueService.on("config:change", handleWatchConfig);
-      watchers === null || watchers === void 0 || (_watchers$configRipp2 = watchers["config.ripple"]) === null || _watchers$configRipp2 === void 0 || _watchers$configRipp2.call(instance, instance === null || instance === void 0 || (_instance$$primevueCo3 = instance.$primevueConfig) === null || _instance$$primevueCo3 === void 0 ? void 0 : _instance$$primevueCo3.ripple);
-      PrimeVueService.on("config:ripple:change", handleWatchConfigRipple);
-    };
-    var stopWatchers2 = function stopWatchers3(el) {
-      var watchers = el._$instances[name].$watchersCallback;
-      if (watchers) {
-        PrimeVueService.off("config:change", watchers.config);
-        PrimeVueService.off("config:ripple:change", watchers["config.ripple"]);
-        el._$instances[name].$watchersCallback = void 0;
-      }
+        return watchers === null || watchers === void 0 || (_watchers$configRipp2 = watchers["config.ripple"]) === null || _watchers$configRipp2 === void 0 ? void 0 : _watchers$configRipp2.call(el.$instance, newValue, oldValue);
+      });
     };
     return {
-      created: function created3(el, binding, vnode, prevVnode) {
+      created: function created2(el, binding, vnode, prevVnode) {
         el.$pd || (el.$pd = {});
         el.$pd[name] = {
           name,
-          attrSelector: uuid$1("pd")
+          attrSelector: uuid("pd")
         };
         handleHook("created", el, binding, vnode, prevVnode);
       },
-      beforeMount: function beforeMount3(el, binding, vnode, prevVnode) {
-        var _el$$pd$name;
-        BaseDirective._loadStyles((_el$$pd$name = el.$pd[name]) === null || _el$$pd$name === void 0 ? void 0 : _el$$pd$name.instance, binding, vnode);
+      beforeMount: function beforeMount2(el, binding, vnode, prevVnode) {
+        BaseDirective._loadStyles(el, binding, vnode);
         handleHook("beforeMount", el, binding, vnode, prevVnode);
-        handleWatchers(el);
+        handleWatch(el);
       },
-      mounted: function mounted3(el, binding, vnode, prevVnode) {
-        var _el$$pd$name2;
-        BaseDirective._loadStyles((_el$$pd$name2 = el.$pd[name]) === null || _el$$pd$name2 === void 0 ? void 0 : _el$$pd$name2.instance, binding, vnode);
+      mounted: function mounted2(el, binding, vnode, prevVnode) {
+        BaseDirective._loadStyles(el, binding, vnode);
         handleHook("mounted", el, binding, vnode, prevVnode);
       },
-      beforeUpdate: function beforeUpdate3(el, binding, vnode, prevVnode) {
+      beforeUpdate: function beforeUpdate2(el, binding, vnode, prevVnode) {
         handleHook("beforeUpdate", el, binding, vnode, prevVnode);
       },
-      updated: function updated3(el, binding, vnode, prevVnode) {
-        var _el$$pd$name3;
-        BaseDirective._loadStyles((_el$$pd$name3 = el.$pd[name]) === null || _el$$pd$name3 === void 0 ? void 0 : _el$$pd$name3.instance, binding, vnode);
+      updated: function updated2(el, binding, vnode, prevVnode) {
+        BaseDirective._loadStyles(el, binding, vnode);
         handleHook("updated", el, binding, vnode, prevVnode);
       },
-      beforeUnmount: function beforeUnmount3(el, binding, vnode, prevVnode) {
-        var _el$$pd$name4;
-        stopWatchers2(el);
-        BaseDirective._removeThemeListeners((_el$$pd$name4 = el.$pd[name]) === null || _el$$pd$name4 === void 0 ? void 0 : _el$$pd$name4.instance);
+      beforeUnmount: function beforeUnmount2(el, binding, vnode, prevVnode) {
         handleHook("beforeUnmount", el, binding, vnode, prevVnode);
       },
-      unmounted: function unmounted3(el, binding, vnode, prevVnode) {
-        var _el$$pd$name5;
-        (_el$$pd$name5 = el.$pd[name]) === null || _el$$pd$name5 === void 0 || (_el$$pd$name5 = _el$$pd$name5.instance) === null || _el$$pd$name5 === void 0 || (_el$$pd$name5 = _el$$pd$name5.scopedStyleEl) === null || _el$$pd$name5 === void 0 || (_el$$pd$name5 = _el$$pd$name5.value) === null || _el$$pd$name5 === void 0 || _el$$pd$name5.remove();
+      unmounted: function unmounted2(el, binding, vnode, prevVnode) {
+        var _el$$instance13;
+        (_el$$instance13 = el.$instance) === null || _el$$instance13 === void 0 || (_el$$instance13 = _el$$instance13.scopedStyleEl) === null || _el$$instance13 === void 0 || (_el$$instance13 = _el$$instance13.value) === null || _el$$instance13 === void 0 || _el$$instance13.remove();
         handleHook("unmounted", el, binding, vnode, prevVnode);
       }
     };
   },
   extend: function extend2() {
-    var _BaseDirective$_getMe = BaseDirective._getMeta.apply(BaseDirective, arguments), _BaseDirective$_getMe2 = _slicedToArray$5(_BaseDirective$_getMe, 2), name = _BaseDirective$_getMe2[0], options = _BaseDirective$_getMe2[1];
-    return _objectSpread$9({
-      extend: function extend4() {
-        var _BaseDirective$_getMe3 = BaseDirective._getMeta.apply(BaseDirective, arguments), _BaseDirective$_getMe4 = _slicedToArray$5(_BaseDirective$_getMe3, 2), _name = _BaseDirective$_getMe4[0], _options = _BaseDirective$_getMe4[1];
-        return BaseDirective.extend(_name, _objectSpread$9(_objectSpread$9(_objectSpread$9({}, options), options === null || options === void 0 ? void 0 : options.methods), _options));
+    var _BaseDirective$_getMe = BaseDirective._getMeta.apply(BaseDirective, arguments), _BaseDirective$_getMe2 = _slicedToArray$3(_BaseDirective$_getMe, 2), name = _BaseDirective$_getMe2[0], options = _BaseDirective$_getMe2[1];
+    return _objectSpread$7({
+      extend: function extend3() {
+        var _BaseDirective$_getMe3 = BaseDirective._getMeta.apply(BaseDirective, arguments), _BaseDirective$_getMe4 = _slicedToArray$3(_BaseDirective$_getMe3, 2), _name = _BaseDirective$_getMe4[0], _options = _BaseDirective$_getMe4[1];
+        return BaseDirective.extend(_name, _objectSpread$7(_objectSpread$7(_objectSpread$7({}, options), options === null || options === void 0 ? void 0 : options.methods), _options));
       }
     }, BaseDirective._extend(name, options));
   }
@@ -867,7 +842,7 @@ var FilterMatchMode = {
 function _createForOfIteratorHelper(r, e) {
   var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
   if (!t) {
-    if (Array.isArray(r) || (t = _unsupportedIterableToArray$5(r)) || e) {
+    if (Array.isArray(r) || (t = _unsupportedIterableToArray$3(r)) || e) {
       t && (r = t);
       var _n = 0, F = function F2() {
       };
@@ -895,14 +870,14 @@ function _createForOfIteratorHelper(r, e) {
     }
   } };
 }
-function _unsupportedIterableToArray$5(r, a) {
+function _unsupportedIterableToArray$3(r, a) {
   if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$5(r, a);
+    if ("string" == typeof r) return _arrayLikeToArray$3(r, a);
     var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$5(r, a) : void 0;
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$3(r, a) : void 0;
   }
 }
-function _arrayLikeToArray$5(r, a) {
+function _arrayLikeToArray$3(r, a) {
   (null == a || a > r.length) && (a = r.length);
   for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
   return n;
@@ -926,8 +901,8 @@ var FilterService = {
           var _iterator2 = _createForOfIteratorHelper(fields), _step2;
           try {
             for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
-              var field = _step2.value;
-              var fieldValue = resolveFieldData(item, field);
+              var field2 = _step2.value;
+              var fieldValue = resolveFieldData(item, field2);
               if (this.filters[filterMatchMode](fieldValue, filterValue, filterLocale)) {
                 filteredItems.push(item);
                 break;
@@ -1114,47 +1089,42 @@ var FilterService = {
     this.filters[rule] = fn;
   }
 };
-function useAttrSelector() {
-  var prefix = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "pc";
-  var idx = useId();
-  return "".concat(prefix).concat(idx.replace("v-", "").replaceAll("-", "_"));
-}
-var BaseComponentStyle$1 = BaseStyle$1.extend({
+var BaseComponentStyle = BaseStyle.extend({
   name: "common"
 });
-function _typeof$8(o) {
+function _typeof$6(o) {
   "@babel/helpers - typeof";
-  return _typeof$8 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$6 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$8(o);
+  }, _typeof$6(o);
 }
-function _toArray$1(r) {
-  return _arrayWithHoles$4(r) || _iterableToArray$1(r) || _unsupportedIterableToArray$4(r) || _nonIterableRest$4();
+function _toArray(r) {
+  return _arrayWithHoles$2(r) || _iterableToArray(r) || _unsupportedIterableToArray$2(r) || _nonIterableRest$2();
 }
-function _iterableToArray$1(r) {
+function _iterableToArray(r) {
   if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
 }
-function _slicedToArray$4(r, e) {
-  return _arrayWithHoles$4(r) || _iterableToArrayLimit$4(r, e) || _unsupportedIterableToArray$4(r, e) || _nonIterableRest$4();
+function _slicedToArray$2(r, e) {
+  return _arrayWithHoles$2(r) || _iterableToArrayLimit$2(r, e) || _unsupportedIterableToArray$2(r, e) || _nonIterableRest$2();
 }
-function _nonIterableRest$4() {
+function _nonIterableRest$2() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _unsupportedIterableToArray$4(r, a) {
+function _unsupportedIterableToArray$2(r, a) {
   if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$4(r, a);
+    if ("string" == typeof r) return _arrayLikeToArray$2(r, a);
     var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$4(r, a) : void 0;
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$2(r, a) : void 0;
   }
 }
-function _arrayLikeToArray$4(r, a) {
+function _arrayLikeToArray$2(r, a) {
   (null == a || a > r.length) && (a = r.length);
   for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
   return n;
 }
-function _iterableToArrayLimit$4(r, l) {
+function _iterableToArrayLimit$2(r, l) {
   var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
   if (null != t) {
     var e, n, i, u, a = [], f = true, o = false;
@@ -1175,10 +1145,10 @@ function _iterableToArrayLimit$4(r, l) {
     return a;
   }
 }
-function _arrayWithHoles$4(r) {
+function _arrayWithHoles$2(r) {
   if (Array.isArray(r)) return r;
 }
-function ownKeys$8(e, r) {
+function ownKeys$6(e, r) {
   var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
     var o = Object.getOwnPropertySymbols(e);
@@ -1188,30 +1158,30 @@ function ownKeys$8(e, r) {
   }
   return t;
 }
-function _objectSpread$8(e) {
+function _objectSpread$6(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$8(Object(t), true).forEach(function(r2) {
-      _defineProperty$8(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$8(Object(t)).forEach(function(r2) {
+    r % 2 ? ownKeys$6(Object(t), true).forEach(function(r2) {
+      _defineProperty$6(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$6(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$8(e, r, t) {
-  return (r = _toPropertyKey$8(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$6(e, r, t) {
+  return (r = _toPropertyKey$6(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$8(t) {
-  var i = _toPrimitive$8(t, "string");
-  return "symbol" == _typeof$8(i) ? i : i + "";
+function _toPropertyKey$6(t) {
+  var i = _toPrimitive$6(t, "string");
+  return "symbol" == _typeof$6(i) ? i : i + "";
 }
-function _toPrimitive$8(t, r) {
-  if ("object" != _typeof$8(t) || !t) return t;
+function _toPrimitive$6(t, r) {
+  if ("object" != _typeof$6(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$8(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$6(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -1245,7 +1215,6 @@ var script$m = {
     isUnstyled: {
       immediate: true,
       handler: function handler(newValue) {
-        service_default$1.off("theme:change", this._loadCoreStyles);
         if (!newValue) {
           this._loadCoreStyles();
           this._themeChangeListener(this._loadCoreStyles);
@@ -1254,15 +1223,13 @@ var script$m = {
     },
     dt: {
       immediate: true,
-      handler: function handler2(newValue, oldValue) {
+      handler: function handler2(newValue) {
         var _this = this;
-        service_default$1.off("theme:change", this._themeScopedListener);
         if (newValue) {
           this._loadScopedThemeStyles(newValue);
-          this._themeScopedListener = function() {
+          this._themeChangeListener(function() {
             return _this._loadScopedThemeStyles(newValue);
-          };
-          this._themeChangeListener(this._themeScopedListener);
+          });
         } else {
           this._unloadScopedThemeStyles();
         }
@@ -1271,7 +1238,6 @@ var script$m = {
   },
   scopedStyleEl: void 0,
   rootEl: void 0,
-  uid: void 0,
   $attrSelector: void 0,
   beforeCreate: function beforeCreate() {
     var _this$pt, _this$pt2, _this$pt3, _ref, _ref$onBeforeCreate, _this$$primevueConfig, _this$$primevue, _this$$primevue2, _this$$primevue3, _ref2, _ref2$onBeforeCreate;
@@ -1283,17 +1249,16 @@ var script$m = {
     var originalValueInConfig = _useptInConfig ? (_this$$primevue = this.$primevue) === null || _this$$primevue === void 0 || (_this$$primevue = _this$$primevue.config) === null || _this$$primevue === void 0 || (_this$$primevue = _this$$primevue.pt) === null || _this$$primevue === void 0 ? void 0 : _this$$primevue.originalValue : void 0;
     var valueInConfig = _useptInConfig ? (_this$$primevue2 = this.$primevue) === null || _this$$primevue2 === void 0 || (_this$$primevue2 = _this$$primevue2.config) === null || _this$$primevue2 === void 0 || (_this$$primevue2 = _this$$primevue2.pt) === null || _this$$primevue2 === void 0 ? void 0 : _this$$primevue2.value : (_this$$primevue3 = this.$primevue) === null || _this$$primevue3 === void 0 || (_this$$primevue3 = _this$$primevue3.config) === null || _this$$primevue3 === void 0 ? void 0 : _this$$primevue3.pt;
     (_ref2 = valueInConfig || originalValueInConfig) === null || _ref2 === void 0 || (_ref2 = _ref2[this.$.type.name]) === null || _ref2 === void 0 || (_ref2 = _ref2.hooks) === null || _ref2 === void 0 || (_ref2$onBeforeCreate = _ref2["onBeforeCreate"]) === null || _ref2$onBeforeCreate === void 0 || _ref2$onBeforeCreate.call(_ref2);
-    this.$attrSelector = useAttrSelector();
-    this.uid = this.$attrs.id || this.$attrSelector.replace("pc", "pv_id_");
+    this.$attrSelector = uuid("pc");
   },
   created: function created() {
     this._hook("onCreated");
   },
   beforeMount: function beforeMount() {
-    var _this$$el;
-    this.rootEl = findSingle$1(isElement$1(this.$el) ? this.$el : (_this$$el = this.$el) === null || _this$$el === void 0 ? void 0 : _this$$el.parentElement, "[".concat(this.$attrSelector, "]"));
+    this.rootEl = findSingle(this.$el, '[data-pc-name="'.concat(toFlatCase(this.$.type.name), '"]'));
     if (this.rootEl) {
-      this.rootEl.$pc = _objectSpread$8({
+      this.$attrSelector && !this.rootEl.hasAttribute(this.$attrSelector) && this.rootEl.setAttribute(this.$attrSelector, "");
+      this.rootEl.$pc = _objectSpread$6({
         name: this.$.type.name,
         attrSelector: this.$attrSelector
       }, this.$params);
@@ -1314,7 +1279,6 @@ var script$m = {
     this._hook("onBeforeUnmount");
   },
   unmounted: function unmounted() {
-    this._removeThemeListeners();
     this._unloadScopedThemeStyles();
     this._hook("onUnmounted");
   },
@@ -1331,79 +1295,80 @@ var script$m = {
       for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key2 = 1; _key2 < _len; _key2++) {
         args[_key2 - 1] = arguments[_key2];
       }
-      return isFunction$1(fn) ? fn.apply(void 0, args) : mergeProps.apply(void 0, args);
-    },
-    _load: function _load() {
-      if (!Base$1.isStyleNameLoaded("base")) {
-        BaseStyle$1.loadCSS(this.$styleOptions);
-        this._loadGlobalStyles();
-        Base$1.setLoadedStyleName("base");
-      }
-      this._loadThemeStyles();
+      return isFunction(fn) ? fn.apply(void 0, args) : mergeProps.apply(void 0, args);
     },
     _loadStyles: function _loadStyles2() {
-      this._load();
-      this._themeChangeListener(this._load);
+      var _this2 = this;
+      var _load = function _load2() {
+        if (!Base.isStyleNameLoaded("base")) {
+          BaseStyle.loadCSS(_this2.$styleOptions);
+          _this2._loadGlobalStyles();
+          Base.setLoadedStyleName("base");
+        }
+        _this2._loadThemeStyles();
+      };
+      _load();
+      this._themeChangeListener(_load);
     },
     _loadCoreStyles: function _loadCoreStyles2() {
       var _this$$style, _this$$style2;
-      if (!Base$1.isStyleNameLoaded((_this$$style = this.$style) === null || _this$$style === void 0 ? void 0 : _this$$style.name) && (_this$$style2 = this.$style) !== null && _this$$style2 !== void 0 && _this$$style2.name) {
-        BaseComponentStyle$1.loadCSS(this.$styleOptions);
+      if (!Base.isStyleNameLoaded((_this$$style = this.$style) === null || _this$$style === void 0 ? void 0 : _this$$style.name) && (_this$$style2 = this.$style) !== null && _this$$style2 !== void 0 && _this$$style2.name) {
+        BaseComponentStyle.loadCSS(this.$styleOptions);
         this.$options.style && this.$style.loadCSS(this.$styleOptions);
-        Base$1.setLoadedStyleName(this.$style.name);
+        Base.setLoadedStyleName(this.$style.name);
       }
     },
     _loadGlobalStyles: function _loadGlobalStyles() {
       var globalCSS = this._useGlobalPT(this._getOptionValue, "global.css", this.$params);
-      isNotEmpty$1(globalCSS) && BaseStyle$1.load(globalCSS, _objectSpread$8({
+      isNotEmpty(globalCSS) && BaseStyle.load(globalCSS, _objectSpread$6({
         name: "global"
       }, this.$styleOptions));
     },
     _loadThemeStyles: function _loadThemeStyles2() {
       var _this$$style4, _this$$style5;
       if (this.isUnstyled || this.$theme === "none") return;
-      if (!config_default$1.isStyleNameLoaded("common")) {
+      if (!config_default.isStyleNameLoaded("common")) {
         var _this$$style3, _this$$style3$getComm;
-        var _ref3 = ((_this$$style3 = this.$style) === null || _this$$style3 === void 0 || (_this$$style3$getComm = _this$$style3.getCommonTheme) === null || _this$$style3$getComm === void 0 ? void 0 : _this$$style3$getComm.call(_this$$style3)) || {}, primitive = _ref3.primitive, semantic = _ref3.semantic, global = _ref3.global, style2 = _ref3.style;
-        BaseStyle$1.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$8({
+        var _ref3 = ((_this$$style3 = this.$style) === null || _this$$style3 === void 0 || (_this$$style3$getComm = _this$$style3.getCommonTheme) === null || _this$$style3$getComm === void 0 ? void 0 : _this$$style3$getComm.call(_this$$style3)) || {}, primitive = _ref3.primitive, semantic = _ref3.semantic, global = _ref3.global, style = _ref3.style;
+        BaseStyle.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$6({
           name: "primitive-variables"
         }, this.$styleOptions));
-        BaseStyle$1.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$8({
+        BaseStyle.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$6({
           name: "semantic-variables"
         }, this.$styleOptions));
-        BaseStyle$1.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$8({
+        BaseStyle.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$6({
           name: "global-variables"
         }, this.$styleOptions));
-        BaseStyle$1.loadStyle(_objectSpread$8({
+        BaseStyle.loadTheme(_objectSpread$6({
           name: "global-style"
-        }, this.$styleOptions), style2);
-        config_default$1.setLoadedStyleName("common");
+        }, this.$styleOptions), style);
+        config_default.setLoadedStyleName("common");
       }
-      if (!config_default$1.isStyleNameLoaded((_this$$style4 = this.$style) === null || _this$$style4 === void 0 ? void 0 : _this$$style4.name) && (_this$$style5 = this.$style) !== null && _this$$style5 !== void 0 && _this$$style5.name) {
+      if (!config_default.isStyleNameLoaded((_this$$style4 = this.$style) === null || _this$$style4 === void 0 ? void 0 : _this$$style4.name) && (_this$$style5 = this.$style) !== null && _this$$style5 !== void 0 && _this$$style5.name) {
         var _this$$style6, _this$$style6$getComp, _this$$style7, _this$$style8;
-        var _ref4 = ((_this$$style6 = this.$style) === null || _this$$style6 === void 0 || (_this$$style6$getComp = _this$$style6.getComponentTheme) === null || _this$$style6$getComp === void 0 ? void 0 : _this$$style6$getComp.call(_this$$style6)) || {}, css4 = _ref4.css, _style = _ref4.style;
-        (_this$$style7 = this.$style) === null || _this$$style7 === void 0 || _this$$style7.load(css4, _objectSpread$8({
+        var _ref4 = ((_this$$style6 = this.$style) === null || _this$$style6 === void 0 || (_this$$style6$getComp = _this$$style6.getComponentTheme) === null || _this$$style6$getComp === void 0 ? void 0 : _this$$style6$getComp.call(_this$$style6)) || {}, css3 = _ref4.css, _style = _ref4.style;
+        (_this$$style7 = this.$style) === null || _this$$style7 === void 0 || _this$$style7.load(css3, _objectSpread$6({
           name: "".concat(this.$style.name, "-variables")
         }, this.$styleOptions));
-        (_this$$style8 = this.$style) === null || _this$$style8 === void 0 || _this$$style8.loadStyle(_objectSpread$8({
+        (_this$$style8 = this.$style) === null || _this$$style8 === void 0 || _this$$style8.loadTheme(_objectSpread$6({
           name: "".concat(this.$style.name, "-style")
         }, this.$styleOptions), _style);
-        config_default$1.setLoadedStyleName(this.$style.name);
+        config_default.setLoadedStyleName(this.$style.name);
       }
-      if (!config_default$1.isStyleNameLoaded("layer-order")) {
+      if (!config_default.isStyleNameLoaded("layer-order")) {
         var _this$$style9, _this$$style9$getLaye;
         var layerOrder = (_this$$style9 = this.$style) === null || _this$$style9 === void 0 || (_this$$style9$getLaye = _this$$style9.getLayerOrderThemeCSS) === null || _this$$style9$getLaye === void 0 ? void 0 : _this$$style9$getLaye.call(_this$$style9);
-        BaseStyle$1.load(layerOrder, _objectSpread$8({
+        BaseStyle.load(layerOrder, _objectSpread$6({
           name: "layer-order",
           first: true
         }, this.$styleOptions));
-        config_default$1.setLoadedStyleName("layer-order");
+        config_default.setLoadedStyleName("layer-order");
       }
     },
     _loadScopedThemeStyles: function _loadScopedThemeStyles2(preset) {
-      var _this$$style0, _this$$style0$getPres, _this$$style1;
-      var _ref5 = ((_this$$style0 = this.$style) === null || _this$$style0 === void 0 || (_this$$style0$getPres = _this$$style0.getPresetTheme) === null || _this$$style0$getPres === void 0 ? void 0 : _this$$style0$getPres.call(_this$$style0, preset, "[".concat(this.$attrSelector, "]"))) || {}, css4 = _ref5.css;
-      var scopedStyle = (_this$$style1 = this.$style) === null || _this$$style1 === void 0 ? void 0 : _this$$style1.load(css4, _objectSpread$8({
+      var _this$$style10, _this$$style10$getPre, _this$$style11;
+      var _ref5 = ((_this$$style10 = this.$style) === null || _this$$style10 === void 0 || (_this$$style10$getPre = _this$$style10.getPresetTheme) === null || _this$$style10$getPre === void 0 ? void 0 : _this$$style10$getPre.call(_this$$style10, preset, "[".concat(this.$attrSelector, "]"))) || {}, css3 = _ref5.css;
+      var scopedStyle = (_this$$style11 = this.$style) === null || _this$$style11 === void 0 ? void 0 : _this$$style11.load(css3, _objectSpread$6({
         name: "".concat(this.$attrSelector, "-").concat(this.$style.name)
       }, this.$styleOptions));
       this.scopedStyleEl = scopedStyle.el;
@@ -1415,13 +1380,8 @@ var script$m = {
     _themeChangeListener: function _themeChangeListener2() {
       var callback = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : function() {
       };
-      Base$1.clearLoadedStyleNames();
-      service_default$1.on("theme:change", callback);
-    },
-    _removeThemeListeners: function _removeThemeListeners2() {
-      service_default$1.off("theme:change", this._loadCoreStyles);
-      service_default$1.off("theme:change", this._load);
-      service_default$1.off("theme:change", this._themeScopedListener);
+      Base.clearLoadedStyleNames();
+      service_default.on("theme:change", callback);
     },
     _getHostInstance: function _getHostInstance(instance) {
       return instance ? this.$options.hostName ? instance.$.type.name === this.$options.hostName ? instance : this._getHostInstance(instance.$parentInstance) : instance.$parentInstance : void 0;
@@ -1433,7 +1393,7 @@ var script$m = {
     _getOptionValue: function _getOptionValue(options) {
       var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
       var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      return getKeyValue$1(options, key, params);
+      return getKeyValue(options, key, params);
     },
     _getPTValue: function _getPTValue2() {
       var _this$$primevueConfig2;
@@ -1444,11 +1404,11 @@ var script$m = {
       var searchOut = /./g.test(key) && !!params[key.split(".")[0]];
       var _ref6 = this._getPropValue("ptOptions") || ((_this$$primevueConfig2 = this.$primevueConfig) === null || _this$$primevueConfig2 === void 0 ? void 0 : _this$$primevueConfig2.ptOptions) || {}, _ref6$mergeSections = _ref6.mergeSections, mergeSections = _ref6$mergeSections === void 0 ? true : _ref6$mergeSections, _ref6$mergeProps = _ref6.mergeProps, useMergeProps = _ref6$mergeProps === void 0 ? false : _ref6$mergeProps;
       var global = searchInDefaultPT ? searchOut ? this._useGlobalPT(this._getPTClassValue, key, params) : this._useDefaultPT(this._getPTClassValue, key, params) : void 0;
-      var self = searchOut ? void 0 : this._getPTSelf(obj, this._getPTClassValue, key, _objectSpread$8(_objectSpread$8({}, params), {}, {
+      var self = searchOut ? void 0 : this._getPTSelf(obj, this._getPTClassValue, key, _objectSpread$6(_objectSpread$6({}, params), {}, {
         global: global || {}
       }));
       var datasets = this._getPTDatasets(key);
-      return mergeSections || !mergeSections && self ? useMergeProps ? this._mergeProps(useMergeProps, global, self, datasets) : _objectSpread$8(_objectSpread$8(_objectSpread$8({}, global), self), datasets) : _objectSpread$8(_objectSpread$8({}, self), datasets);
+      return mergeSections || !mergeSections && self ? useMergeProps ? this._mergeProps(useMergeProps, global, self, datasets) : _objectSpread$6(_objectSpread$6(_objectSpread$6({}, global), self), datasets) : _objectSpread$6(_objectSpread$6({}, self), datasets);
     },
     _getPTSelf: function _getPTSelf() {
       var obj = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
@@ -1466,26 +1426,26 @@ var script$m = {
       var _this$pt4, _this$pt5;
       var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
       var datasetPrefix = "data-pc-";
-      var isExtended = key === "root" && isNotEmpty$1((_this$pt4 = this.pt) === null || _this$pt4 === void 0 ? void 0 : _this$pt4["data-pc-section"]);
-      return key !== "transition" && _objectSpread$8(_objectSpread$8({}, key === "root" && _objectSpread$8(_objectSpread$8(_defineProperty$8({}, "".concat(datasetPrefix, "name"), toFlatCase$1(isExtended ? (_this$pt5 = this.pt) === null || _this$pt5 === void 0 ? void 0 : _this$pt5["data-pc-section"] : this.$.type.name)), isExtended && _defineProperty$8({}, "".concat(datasetPrefix, "extend"), toFlatCase$1(this.$.type.name))), {}, _defineProperty$8({}, "".concat(this.$attrSelector), ""))), {}, _defineProperty$8({}, "".concat(datasetPrefix, "section"), toFlatCase$1(key)));
+      var isExtended = key === "root" && isNotEmpty((_this$pt4 = this.pt) === null || _this$pt4 === void 0 ? void 0 : _this$pt4["data-pc-section"]);
+      return key !== "transition" && _objectSpread$6(_objectSpread$6({}, key === "root" && _objectSpread$6(_objectSpread$6(_defineProperty$6({}, "".concat(datasetPrefix, "name"), toFlatCase(isExtended ? (_this$pt5 = this.pt) === null || _this$pt5 === void 0 ? void 0 : _this$pt5["data-pc-section"] : this.$.type.name)), isExtended && _defineProperty$6({}, "".concat(datasetPrefix, "extend"), toFlatCase(this.$.type.name))), isClient() && _defineProperty$6({}, "".concat(this.$attrSelector), ""))), {}, _defineProperty$6({}, "".concat(datasetPrefix, "section"), toFlatCase(key)));
     },
     _getPTClassValue: function _getPTClassValue() {
       var value = this._getOptionValue.apply(this, arguments);
-      return isString$1(value) || isArray$1(value) ? {
+      return isString(value) || isArray(value) ? {
         "class": value
       } : value;
     },
     _getPT: function _getPT2(pt) {
-      var _this2 = this;
+      var _this3 = this;
       var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
       var callback = arguments.length > 2 ? arguments[2] : void 0;
       var getValue = function getValue2(value) {
-        var _ref8;
+        var _ref9;
         var checkSameKey = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
         var computedValue = callback ? callback(value) : value;
-        var _key = toFlatCase$1(key);
-        var _cKey = toFlatCase$1(_this2.$name);
-        return (_ref8 = checkSameKey ? _key !== _cKey ? computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key] : void 0 : computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key]) !== null && _ref8 !== void 0 ? _ref8 : computedValue;
+        var _key = toFlatCase(key);
+        var _cKey = toFlatCase(_this3.$name);
+        return (_ref9 = checkSameKey ? _key !== _cKey ? computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key] : void 0 : computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key]) !== null && _ref9 !== void 0 ? _ref9 : computedValue;
       };
       return pt !== null && pt !== void 0 && pt.hasOwnProperty("_usept") ? {
         _usept: pt["_usept"],
@@ -1499,13 +1459,13 @@ var script$m = {
       };
       if (pt !== null && pt !== void 0 && pt.hasOwnProperty("_usept")) {
         var _this$$primevueConfig3;
-        var _ref9 = pt["_usept"] || ((_this$$primevueConfig3 = this.$primevueConfig) === null || _this$$primevueConfig3 === void 0 ? void 0 : _this$$primevueConfig3.ptOptions) || {}, _ref9$mergeSections = _ref9.mergeSections, mergeSections = _ref9$mergeSections === void 0 ? true : _ref9$mergeSections, _ref9$mergeProps = _ref9.mergeProps, useMergeProps = _ref9$mergeProps === void 0 ? false : _ref9$mergeProps;
+        var _ref10 = pt["_usept"] || ((_this$$primevueConfig3 = this.$primevueConfig) === null || _this$$primevueConfig3 === void 0 ? void 0 : _this$$primevueConfig3.ptOptions) || {}, _ref10$mergeSections = _ref10.mergeSections, mergeSections = _ref10$mergeSections === void 0 ? true : _ref10$mergeSections, _ref10$mergeProps = _ref10.mergeProps, useMergeProps = _ref10$mergeProps === void 0 ? false : _ref10$mergeProps;
         var originalValue = fn(pt.originalValue);
         var value = fn(pt.value);
         if (originalValue === void 0 && value === void 0) return void 0;
-        else if (isString$1(value)) return value;
-        else if (isString$1(originalValue)) return originalValue;
-        return mergeSections || !mergeSections && value ? useMergeProps ? this._mergeProps(useMergeProps, originalValue, value) : _objectSpread$8(_objectSpread$8({}, originalValue), value) : value;
+        else if (isString(value)) return value;
+        else if (isString(originalValue)) return originalValue;
+        return mergeSections || !mergeSections && value ? useMergeProps ? this._mergeProps(useMergeProps, originalValue, value) : _objectSpread$6(_objectSpread$6({}, originalValue), value) : value;
       }
       return fn(pt);
     },
@@ -1518,36 +1478,33 @@ var script$m = {
     ptm: function ptm() {
       var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
       var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      return this._getPTValue(this.pt, key, _objectSpread$8(_objectSpread$8({}, this.$params), params));
+      return this._getPTValue(this.pt, key, _objectSpread$6(_objectSpread$6({}, this.$params), params));
     },
     ptmi: function ptmi() {
-      var _attrs$id;
       var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
       var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      var attrs = mergeProps(this.$_attrsWithoutPT, this.ptm(key, params));
-      (attrs === null || attrs === void 0 ? void 0 : attrs.hasOwnProperty("id")) && ((_attrs$id = attrs.id) !== null && _attrs$id !== void 0 ? _attrs$id : attrs.id = this.$id);
-      return attrs;
+      return mergeProps(this.$_attrsWithoutPT, this.ptm(key, params));
     },
     ptmo: function ptmo() {
       var obj = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
       var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
       var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      return this._getPTValue(obj, key, _objectSpread$8({
+      return this._getPTValue(obj, key, _objectSpread$6({
         instance: this
       }, params), false);
     },
     cx: function cx() {
       var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
       var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      return !this.isUnstyled ? this._getOptionValue(this.$style.classes, key, _objectSpread$8(_objectSpread$8({}, this.$params), params)) : void 0;
+      return !this.isUnstyled ? this._getOptionValue(this.$style.classes, key, _objectSpread$6(_objectSpread$6({}, this.$params), params)) : void 0;
     },
     sx: function sx() {
       var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
       var when = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
       var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
       if (when) {
-        var self = this._getOptionValue(this.$style.inlineStyles, key, _objectSpread$8(_objectSpread$8({}, this.$params), params));
-        var base = this._getOptionValue(BaseComponentStyle$1.inlineStyles, key, _objectSpread$8(_objectSpread$8({}, this.$params), params));
+        var self = this._getOptionValue(this.$style.inlineStyles, key, _objectSpread$6(_objectSpread$6({}, this.$params), params));
+        var base = this._getOptionValue(BaseComponentStyle.inlineStyles, key, _objectSpread$6(_objectSpread$6({}, this.$params), params));
         return [base, self];
       }
       return void 0;
@@ -1555,31 +1512,28 @@ var script$m = {
   },
   computed: {
     globalPT: function globalPT() {
-      var _this$$primevueConfig4, _this3 = this;
+      var _this$$primevueConfig4, _this4 = this;
       return this._getPT((_this$$primevueConfig4 = this.$primevueConfig) === null || _this$$primevueConfig4 === void 0 ? void 0 : _this$$primevueConfig4.pt, void 0, function(value) {
-        return resolve$1(value, {
-          instance: _this3
+        return resolve(value, {
+          instance: _this4
         });
       });
     },
     defaultPT: function defaultPT() {
-      var _this$$primevueConfig5, _this4 = this;
+      var _this$$primevueConfig5, _this5 = this;
       return this._getPT((_this$$primevueConfig5 = this.$primevueConfig) === null || _this$$primevueConfig5 === void 0 ? void 0 : _this$$primevueConfig5.pt, void 0, function(value) {
-        return _this4._getOptionValue(value, _this4.$name, _objectSpread$8({}, _this4.$params)) || resolve$1(value, _objectSpread$8({}, _this4.$params));
+        return _this5._getOptionValue(value, _this5.$name, _objectSpread$6({}, _this5.$params)) || resolve(value, _objectSpread$6({}, _this5.$params));
       });
     },
     isUnstyled: function isUnstyled() {
       var _this$$primevueConfig6;
       return this.unstyled !== void 0 ? this.unstyled : (_this$$primevueConfig6 = this.$primevueConfig) === null || _this$$primevueConfig6 === void 0 ? void 0 : _this$$primevueConfig6.unstyled;
     },
-    $id: function $id() {
-      return this.$attrs.id || this.uid;
-    },
     $inProps: function $inProps() {
       var _this$$$vnode;
       var nodePropKeys = Object.keys(((_this$$$vnode = this.$.vnode) === null || _this$$$vnode === void 0 ? void 0 : _this$$$vnode.props) || {});
-      return Object.fromEntries(Object.entries(this.$props).filter(function(_ref0) {
-        var _ref1 = _slicedToArray$4(_ref0, 1), k = _ref1[0];
+      return Object.fromEntries(Object.entries(this.$props).filter(function(_ref11) {
+        var _ref12 = _slicedToArray$2(_ref11, 1), k = _ref12[0];
         return nodePropKeys === null || nodePropKeys === void 0 ? void 0 : nodePropKeys.includes(k);
       }));
     },
@@ -1588,14 +1542,14 @@ var script$m = {
       return (_this$$primevueConfig7 = this.$primevueConfig) === null || _this$$primevueConfig7 === void 0 ? void 0 : _this$$primevueConfig7.theme;
     },
     $style: function $style() {
-      return _objectSpread$8(_objectSpread$8({
+      return _objectSpread$6(_objectSpread$6({
         classes: void 0,
         inlineStyles: void 0,
-        load: function load3() {
+        load: function load2() {
         },
-        loadCSS: function loadCSS3() {
+        loadCSS: function loadCSS2() {
         },
-        loadStyle: function loadStyle2() {
+        loadTheme: function loadTheme2() {
         }
       }, (this._getHostInstance(this) || {}).$style), this.$options.style);
     },
@@ -1628,12 +1582,12 @@ var script$m = {
       };
     },
     $_attrsPT: function $_attrsPT() {
-      return Object.entries(this.$attrs || {}).filter(function(_ref10) {
-        var _ref11 = _slicedToArray$4(_ref10, 1), key = _ref11[0];
+      return Object.entries(this.$attrs || {}).filter(function(_ref13) {
+        var _ref14 = _slicedToArray$2(_ref13, 1), key = _ref14[0];
         return key === null || key === void 0 ? void 0 : key.startsWith("pt:");
-      }).reduce(function(result, _ref12) {
-        var _ref13 = _slicedToArray$4(_ref12, 2), key = _ref13[0], value = _ref13[1];
-        var _key$split = key.split(":"), _key$split2 = _toArray$1(_key$split), rest = _key$split2.slice(1);
+      }).reduce(function(result, _ref15) {
+        var _ref16 = _slicedToArray$2(_ref15, 2), key = _ref16[0], value = _ref16[1];
+        var _key$split = key.split(":"), _key$split2 = _toArray(_key$split), rest = _key$split2.slice(1);
         rest === null || rest === void 0 || rest.reduce(function(currentObj, nestedKey, index2, array) {
           !currentObj[nestedKey] && (currentObj[nestedKey] = index2 === array.length - 1 ? value : {});
           return currentObj[nestedKey];
@@ -1642,18 +1596,18 @@ var script$m = {
       }, {});
     },
     $_attrsWithoutPT: function $_attrsWithoutPT() {
-      return Object.entries(this.$attrs || {}).filter(function(_ref14) {
-        var _ref15 = _slicedToArray$4(_ref14, 1), key = _ref15[0];
+      return Object.entries(this.$attrs || {}).filter(function(_ref17) {
+        var _ref18 = _slicedToArray$2(_ref17, 1), key = _ref18[0];
         return !(key !== null && key !== void 0 && key.startsWith("pt:"));
-      }).reduce(function(acc, _ref16) {
-        var _ref17 = _slicedToArray$4(_ref16, 2), key = _ref17[0], value = _ref17[1];
+      }).reduce(function(acc, _ref19) {
+        var _ref20 = _slicedToArray$2(_ref19, 2), key = _ref20[0], value = _ref20[1];
         acc[key] = value;
         return acc;
       }, {});
     }
   }
 };
-BaseStyle$1.extend({
+BaseStyle.extend({
   name: "common"
 });
 var script$l = {
@@ -1699,7 +1653,7 @@ var script$l = {
   },
   data: function data() {
     return {
-      d_value: this.defaultValue !== void 0 ? this.defaultValue : this.modelValue
+      d_value: this.defaultValue || this.modelValue
     };
   },
   watch: {
@@ -1728,15 +1682,6 @@ var script$l = {
       handler: function handler5(newValue) {
         this.d_value !== newValue && (this.d_value = newValue);
       }
-    },
-    $formValue: {
-      immediate: false,
-      handler: function handler6(newValue) {
-        var _this$$pcForm3;
-        if ((_this$$pcForm3 = this.$pcForm) !== null && _this$$pcForm3 !== void 0 && _this$$pcForm3.getFieldState(this.$formName) && newValue !== this.d_value) {
-          this.d_value = newValue;
-        }
-      }
     }
   },
   formField: {},
@@ -1752,42 +1697,27 @@ var script$l = {
         originalEvent: event,
         value
       });
-    },
-    // @todo move to @primeuix/utils
-    findNonEmpty: function findNonEmpty() {
-      for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
-        values[_key] = arguments[_key];
-      }
-      return values.find(isNotEmpty$1);
     }
   },
   computed: {
     $filled: function $filled() {
-      return isNotEmpty$1(this.d_value);
+      return isNotEmpty(this.d_value);
     },
     $invalid: function $invalid() {
-      var _this$$pcFormField, _this$$pcForm4;
-      return !this.$formNovalidate && this.findNonEmpty(this.invalid, (_this$$pcFormField = this.$pcFormField) === null || _this$$pcFormField === void 0 || (_this$$pcFormField = _this$$pcFormField.$field) === null || _this$$pcFormField === void 0 ? void 0 : _this$$pcFormField.invalid, (_this$$pcForm4 = this.$pcForm) === null || _this$$pcForm4 === void 0 || (_this$$pcForm4 = _this$$pcForm4.getFieldState(this.$formName)) === null || _this$$pcForm4 === void 0 ? void 0 : _this$$pcForm4.invalid);
+      var _ref, _this$invalid, _this$$pcFormField, _this$$pcForm3;
+      return (_ref = (_this$invalid = this.invalid) !== null && _this$invalid !== void 0 ? _this$invalid : (_this$$pcFormField = this.$pcFormField) === null || _this$$pcFormField === void 0 || (_this$$pcFormField = _this$$pcFormField.$field) === null || _this$$pcFormField === void 0 ? void 0 : _this$$pcFormField.invalid) !== null && _ref !== void 0 ? _ref : (_this$$pcForm3 = this.$pcForm) === null || _this$$pcForm3 === void 0 || (_this$$pcForm3 = _this$$pcForm3.states) === null || _this$$pcForm3 === void 0 || (_this$$pcForm3 = _this$$pcForm3[this.$formName]) === null || _this$$pcForm3 === void 0 ? void 0 : _this$$pcForm3.invalid;
     },
     $formName: function $formName() {
       var _this$$formControl;
-      return !this.$formNovalidate ? this.name || ((_this$$formControl = this.$formControl) === null || _this$$formControl === void 0 ? void 0 : _this$$formControl.name) : void 0;
+      return this.name || ((_this$$formControl = this.$formControl) === null || _this$$formControl === void 0 ? void 0 : _this$$formControl.name);
     },
     $formControl: function $formControl() {
       var _this$$pcFormField2;
       return this.formControl || ((_this$$pcFormField2 = this.$pcFormField) === null || _this$$pcFormField2 === void 0 ? void 0 : _this$$pcFormField2.formControl);
     },
-    $formNovalidate: function $formNovalidate() {
-      var _this$$formControl2;
-      return (_this$$formControl2 = this.$formControl) === null || _this$$formControl2 === void 0 ? void 0 : _this$$formControl2.novalidate;
-    },
     $formDefaultValue: function $formDefaultValue() {
-      var _this$$pcFormField3, _this$$pcForm5;
-      return this.findNonEmpty(this.d_value, (_this$$pcFormField3 = this.$pcFormField) === null || _this$$pcFormField3 === void 0 ? void 0 : _this$$pcFormField3.initialValue, (_this$$pcForm5 = this.$pcForm) === null || _this$$pcForm5 === void 0 || (_this$$pcForm5 = _this$$pcForm5.initialValues) === null || _this$$pcForm5 === void 0 ? void 0 : _this$$pcForm5[this.$formName]);
-    },
-    $formValue: function $formValue() {
-      var _this$$pcFormField4, _this$$pcForm6;
-      return this.findNonEmpty((_this$$pcFormField4 = this.$pcFormField) === null || _this$$pcFormField4 === void 0 || (_this$$pcFormField4 = _this$$pcFormField4.$field) === null || _this$$pcFormField4 === void 0 ? void 0 : _this$$pcFormField4.value, (_this$$pcForm6 = this.$pcForm) === null || _this$$pcForm6 === void 0 || (_this$$pcForm6 = _this$$pcForm6.getFieldState(this.$formName)) === null || _this$$pcForm6 === void 0 ? void 0 : _this$$pcForm6.value);
+      var _ref2, _this$d_value, _this$$pcFormField3, _this$$pcForm4;
+      return (_ref2 = (_this$d_value = this.d_value) !== null && _this$d_value !== void 0 ? _this$d_value : (_this$$pcFormField3 = this.$pcFormField) === null || _this$$pcFormField3 === void 0 ? void 0 : _this$$pcFormField3.initialValue) !== null && _ref2 !== void 0 ? _ref2 : (_this$$pcForm4 = this.$pcForm) === null || _this$$pcForm4 === void 0 || (_this$$pcForm4 = _this$$pcForm4.initialValues) === null || _this$$pcForm4 === void 0 ? void 0 : _this$$pcForm4[this.$formName];
     },
     controlled: function controlled() {
       return this.$inProps.hasOwnProperty("modelValue") || !this.$inProps.hasOwnProperty("modelValue") && !this.$inProps.hasOwnProperty("defaultValue");
@@ -1838,15 +1768,15 @@ var script$k = {
     }
   }
 };
-function _typeof$7(o) {
+function _typeof$5(o) {
   "@babel/helpers - typeof";
-  return _typeof$7 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$5 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$7(o);
+  }, _typeof$5(o);
 }
-function ownKeys$7(e, r) {
+function ownKeys$5(e, r) {
   var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
     var o = Object.getOwnPropertySymbols(e);
@@ -1856,30 +1786,30 @@ function ownKeys$7(e, r) {
   }
   return t;
 }
-function _objectSpread$7(e) {
+function _objectSpread$5(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$7(Object(t), true).forEach(function(r2) {
-      _defineProperty$7(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$7(Object(t)).forEach(function(r2) {
+    r % 2 ? ownKeys$5(Object(t), true).forEach(function(r2) {
+      _defineProperty$5(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$5(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$7(e, r, t) {
-  return (r = _toPropertyKey$7(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$5(e, r, t) {
+  return (r = _toPropertyKey$5(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$7(t) {
-  var i = _toPrimitive$7(t, "string");
-  return "symbol" == _typeof$7(i) ? i : i + "";
+function _toPropertyKey$5(t) {
+  var i = _toPrimitive$5(t, "string");
+  return "symbol" == _typeof$5(i) ? i : i + "";
 }
-function _toPrimitive$7(t, r) {
-  if ("object" != _typeof$7(t) || !t) return t;
+function _toPrimitive$5(t, r) {
+  if ("object" != _typeof$5(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$7(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$5(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -2051,7 +1981,7 @@ function setup(app, options) {
 }
 var stopWatchers = [];
 function clearConfig() {
-  service_default$1.clear();
+  service_default.clear();
   stopWatchers.forEach(function(fn) {
     return fn === null || fn === void 0 ? void 0 : fn();
   });
@@ -2062,28 +1992,28 @@ function setupConfig(app, PrimeVue2) {
   var loadCommonTheme = function loadCommonTheme2() {
     var _PrimeVue$config;
     if (((_PrimeVue$config = PrimeVue2.config) === null || _PrimeVue$config === void 0 ? void 0 : _PrimeVue$config.theme) === "none") return;
-    if (!config_default$1.isStyleNameLoaded("common")) {
+    if (!config_default.isStyleNameLoaded("common")) {
       var _BaseStyle$getCommonT, _PrimeVue$config2;
-      var _ref = ((_BaseStyle$getCommonT = BaseStyle$1.getCommonTheme) === null || _BaseStyle$getCommonT === void 0 ? void 0 : _BaseStyle$getCommonT.call(BaseStyle$1)) || {}, primitive = _ref.primitive, semantic = _ref.semantic, global = _ref.global, style2 = _ref.style;
+      var _ref = ((_BaseStyle$getCommonT = BaseStyle.getCommonTheme) === null || _BaseStyle$getCommonT === void 0 ? void 0 : _BaseStyle$getCommonT.call(BaseStyle)) || {}, primitive = _ref.primitive, semantic = _ref.semantic, global = _ref.global, style = _ref.style;
       var styleOptions = {
         nonce: (_PrimeVue$config2 = PrimeVue2.config) === null || _PrimeVue$config2 === void 0 || (_PrimeVue$config2 = _PrimeVue$config2.csp) === null || _PrimeVue$config2 === void 0 ? void 0 : _PrimeVue$config2.nonce
       };
-      BaseStyle$1.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$7({
+      BaseStyle.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$5({
         name: "primitive-variables"
       }, styleOptions));
-      BaseStyle$1.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$7({
+      BaseStyle.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$5({
         name: "semantic-variables"
       }, styleOptions));
-      BaseStyle$1.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$7({
+      BaseStyle.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$5({
         name: "global-variables"
       }, styleOptions));
-      BaseStyle$1.loadStyle(_objectSpread$7({
+      BaseStyle.loadTheme(_objectSpread$5({
         name: "global-style"
-      }, styleOptions), style2);
-      config_default$1.setLoadedStyleName("common");
+      }, styleOptions), style);
+      config_default.setLoadedStyleName("common");
     }
   };
-  service_default$1.on("theme:change", function(newTheme) {
+  service_default.on("theme:change", function(newTheme) {
     if (!isThemeChanged.value) {
       app.config.globalProperties.$primevue.config.theme = newTheme;
       isThemeChanged.value = true;
@@ -2113,7 +2043,7 @@ function setupConfig(app, PrimeVue2) {
     return PrimeVue2.config.theme;
   }, function(newValue, oldValue) {
     if (!isThemeChanged.value) {
-      config_default$1.setTheme(newValue);
+      config_default.setTheme(newValue);
     }
     if (!PrimeVue2.config.unstyled) {
       loadCommonTheme();
@@ -2148,24 +2078,24 @@ function setupConfig(app, PrimeVue2) {
 }
 var PrimeVue = {
   install: function install(app, options) {
-    var configOptions = mergeKeys$2(defaultOptions, options);
+    var configOptions = mergeKeys(defaultOptions, options);
     setup(app, configOptions);
   }
 };
-var css$1 = "\n.p-icon {\n    display: inline-block;\n    vertical-align: baseline;\n}\n\n.p-icon-spin {\n    -webkit-animation: p-icon-spin 2s infinite linear;\n    animation: p-icon-spin 2s infinite linear;\n}\n\n@-webkit-keyframes p-icon-spin {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(359deg);\n        transform: rotate(359deg);\n    }\n}\n\n@keyframes p-icon-spin {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(359deg);\n        transform: rotate(359deg);\n    }\n}\n";
-var BaseIconStyle = BaseStyle$1.extend({
+var css2 = "\n.p-icon {\n    display: inline-block;\n    vertical-align: baseline;\n}\n\n.p-icon-spin {\n    -webkit-animation: p-icon-spin 2s infinite linear;\n    animation: p-icon-spin 2s infinite linear;\n}\n\n@-webkit-keyframes p-icon-spin {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(359deg);\n        transform: rotate(359deg);\n    }\n}\n\n@keyframes p-icon-spin {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(359deg);\n        transform: rotate(359deg);\n    }\n}\n";
+var BaseIconStyle = BaseStyle.extend({
   name: "baseicon",
-  css: css$1
+  css: css2
 });
-function _typeof$6(o) {
+function _typeof$4(o) {
   "@babel/helpers - typeof";
-  return _typeof$6 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$4 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$6(o);
+  }, _typeof$4(o);
 }
-function ownKeys$6(e, r) {
+function ownKeys$4(e, r) {
   var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
     var o = Object.getOwnPropertySymbols(e);
@@ -2175,30 +2105,30 @@ function ownKeys$6(e, r) {
   }
   return t;
 }
-function _objectSpread$6(e) {
+function _objectSpread$4(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$6(Object(t), true).forEach(function(r2) {
-      _defineProperty$6(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$6(Object(t)).forEach(function(r2) {
+    r % 2 ? ownKeys$4(Object(t), true).forEach(function(r2) {
+      _defineProperty$4(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$4(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$6(e, r, t) {
-  return (r = _toPropertyKey$6(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$4(e, r, t) {
+  return (r = _toPropertyKey$4(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$6(t) {
-  var i = _toPrimitive$6(t, "string");
-  return "symbol" == _typeof$6(i) ? i : i + "";
+function _toPropertyKey$4(t) {
+  var i = _toPrimitive$4(t, "string");
+  return "symbol" == _typeof$4(i) ? i : i + "";
 }
-function _toPrimitive$6(t, r) {
-  if ("object" != _typeof$6(t) || !t) return t;
+function _toPrimitive$4(t, r) {
+  if ("object" != _typeof$4(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
-    var i = e.call(t, r);
-    if ("object" != _typeof$6(i)) return i;
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$4(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -2225,8 +2155,8 @@ var script$j = {
   },
   methods: {
     pti: function pti() {
-      var isLabelEmpty = isEmpty$1(this.label);
-      return _objectSpread$6(_objectSpread$6({}, !this.isUnstyled && {
+      var isLabelEmpty = isEmpty(this.label);
+      return _objectSpread$4(_objectSpread$4({}, !this.isUnstyled && {
         "class": ["p-icon", {
           "p-icon-spin": this.spin
         }]
@@ -2242,7 +2172,7 @@ var script$i = {
   name: "TimesIcon",
   "extends": script$j
 };
-function render$h(_ctx, _cache, $props, $setup, $data, $options) {
+function render$i(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2254,12 +2184,12 @@ function render$h(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$i.render = render$h;
+script$i.render = render$i;
 var script$h = {
   name: "WindowMaximizeIcon",
   "extends": script$j
 };
-function render$g(_ctx, _cache, $props, $setup, $data, $options) {
+function render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2273,12 +2203,12 @@ function render$g(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$h.render = render$g;
+script$h.render = render$h;
 var script$g = {
   name: "WindowMinimizeIcon",
   "extends": script$j
 };
-function render$f(_ctx, _cache, $props, $setup, $data, $options) {
+function render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2292,12 +2222,12 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$g.render = render$f;
+script$g.render = render$g;
 var script$f = {
   name: "SpinnerIcon",
   "extends": script$j
 };
-function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2309,12 +2239,12 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$f.render = render$e;
+script$f.render = render$f;
 var script$e = {
   name: "AngleRightIcon",
   "extends": script$j
 };
-function render$d(_ctx, _cache, $props, $setup, $data, $options) {
+function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2326,12 +2256,12 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$e.render = render$d;
+script$e.render = render$e;
 var script$d = {
   name: "SearchIcon",
   "extends": script$j
 };
-function render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2345,12 +2275,12 @@ function render$c(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$d.render = render$c;
+script$d.render = render$d;
 var script$c = {
   name: "CheckIcon",
   "extends": script$j
 };
-function render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function render$c(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2362,12 +2292,12 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$c.render = render$b;
+script$c.render = render$c;
 var script$b = {
   name: "ChevronDownIcon",
   "extends": script$j
 };
-function render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2379,12 +2309,12 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$b.render = render$a;
+script$b.render = render$b;
 var script$a = {
   name: "ChevronRightIcon",
   "extends": script$j
 };
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2396,12 +2326,12 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$a.render = render$9;
+script$a.render = render$a;
 var script$9 = {
   name: "MinusIcon",
   "extends": script$j
 };
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("svg", mergeProps({
     width: "14",
     height: "14",
@@ -2413,218 +2343,34 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
     fill: "currentColor"
   }, null, -1)]), 16);
 }
-script$9.render = render$8;
-function isElement(element) {
-  return typeof HTMLElement === "object" ? element instanceof HTMLElement : element && typeof element === "object" && element !== null && element.nodeType === 1 && typeof element.nodeName === "string";
-}
-function setAttributes(element, attributes = {}) {
-  if (isElement(element)) {
-    const computedStyles = (rule, value) => {
-      var _a, _b;
-      const styles = ((_a = element == null ? void 0 : element.$attrs) == null ? void 0 : _a[rule]) ? [(_b = element == null ? void 0 : element.$attrs) == null ? void 0 : _b[rule]] : [];
-      return [value].flat().reduce((cv, v) => {
-        if (v !== null && v !== void 0) {
-          const type = typeof v;
-          if (type === "string" || type === "number") {
-            cv.push(v);
-          } else if (type === "object") {
-            const _cv = Array.isArray(v) ? computedStyles(rule, v) : Object.entries(v).map(([_k, _v]) => rule === "style" && (!!_v || _v === 0) ? `${_k.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}:${_v}` : !!_v ? _k : void 0);
-            cv = _cv.length ? cv.concat(_cv.filter((c) => !!c)) : cv;
-          }
-        }
-        return cv;
-      }, styles);
-    };
-    Object.entries(attributes).forEach(([key, value]) => {
-      if (value !== void 0 && value !== null) {
-        const matchedEvent = key.match(/^on(.+)/);
-        if (matchedEvent) {
-          element.addEventListener(matchedEvent[1].toLowerCase(), value);
-        } else if (key === "p-bind" || key === "pBind") {
-          setAttributes(element, value);
-        } else {
-          value = key === "class" ? [...new Set(computedStyles("class", value))].join(" ").trim() : key === "style" ? computedStyles("style", value).join(";").trim() : value;
-          (element.$attrs = element.$attrs || {}) && (element.$attrs[key] = value);
-          element.setAttribute(key, value);
-        }
-      }
-    });
-  }
-}
-function findSingle(element, selector) {
-  return isElement(element) ? element.matches(selector) ? element : element.querySelector(selector) : null;
-}
-function getParentNode(element) {
-  if (element) {
-    let parent = element.parentNode;
-    if (parent && parent instanceof ShadowRoot && parent.host) {
-      parent = parent.host;
-    }
-    return parent;
-  }
-  return null;
-}
-function isExist(element) {
-  return !!(element !== null && typeof element !== "undefined" && element.nodeName && getParentNode(element));
-}
-function isClient() {
-  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
-}
-function setAttribute(element, attribute = "", value) {
-  if (isElement(element) && value !== null && value !== void 0) {
-    element.setAttribute(attribute, value);
-  }
-}
-function EventBus() {
-  const allHandlers = /* @__PURE__ */ new Map();
-  return {
-    on(type, handler9) {
-      let handlers = allHandlers.get(type);
-      if (!handlers) handlers = [handler9];
-      else handlers.push(handler9);
-      allHandlers.set(type, handlers);
-      return this;
-    },
-    off(type, handler9) {
-      let handlers = allHandlers.get(type);
-      if (handlers) {
-        handlers.splice(handlers.indexOf(handler9) >>> 0, 1);
-      }
-      return this;
-    },
-    emit(type, evt) {
-      let handlers = allHandlers.get(type);
-      if (handlers) {
-        handlers.slice().map((handler9) => {
-          handler9(evt);
-        });
-      }
-    },
-    clear() {
-      allHandlers.clear();
-    }
-  };
-}
-var __defProp$2 = Object.defineProperty;
-var __getOwnPropSymbols$2 = Object.getOwnPropertySymbols;
-var __hasOwnProp$2 = Object.prototype.hasOwnProperty;
-var __propIsEnum$2 = Object.prototype.propertyIsEnumerable;
-var __defNormalProp$2 = (obj, key, value) => key in obj ? __defProp$2(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues$2 = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp$2.call(b, prop))
-      __defNormalProp$2(a, prop, b[prop]);
-  if (__getOwnPropSymbols$2)
-    for (var prop of __getOwnPropSymbols$2(b)) {
-      if (__propIsEnum$2.call(b, prop))
-        __defNormalProp$2(a, prop, b[prop]);
-    }
-  return a;
-};
-function isEmpty(value) {
-  return value === null || value === void 0 || value === "" || Array.isArray(value) && value.length === 0 || !(value instanceof Date) && typeof value === "object" && Object.keys(value).length === 0;
-}
-function isFunction(value) {
-  return !!(value && value.constructor && value.call && value.apply);
-}
-function isNotEmpty(value) {
-  return !isEmpty(value);
-}
-function isObject$1(value, empty = true) {
-  return value instanceof Object && value.constructor === Object && (empty || Object.keys(value).length !== 0);
-}
-function resolve(obj, ...params) {
-  return isFunction(obj) ? obj(...params) : obj;
-}
-function isString(value, empty = true) {
-  return typeof value === "string" && (empty || value !== "");
-}
-function toFlatCase(str) {
-  return isString(str) ? str.replace(/(-|_)/g, "").toLowerCase() : str;
-}
-function getKeyValue(obj, key = "", params = {}) {
-  const fKeys = toFlatCase(key).split(".");
-  const fKey = fKeys.shift();
-  return fKey ? isObject$1(obj) ? getKeyValue(resolve(obj[Object.keys(obj).find((k) => toFlatCase(k) === fKey) || ""], params), fKeys.join("."), params) : void 0 : resolve(obj, params);
-}
-function isArray(value, empty = true) {
-  return Array.isArray(value) && (empty || value.length !== 0);
-}
-function isNumber(value) {
-  return isNotEmpty(value) && !isNaN(value);
-}
-function matchRegex(str, regex) {
-  if (regex) {
-    const match = regex.test(str);
-    regex.lastIndex = 0;
-    return match;
-  }
-  return false;
-}
-function mergeKeys$1(...args) {
-  const _mergeKeys = (target = {}, source = {}) => {
-    const mergedObj = __spreadValues$2({}, target);
-    Object.keys(source).forEach((key) => {
-      if (isObject$1(source[key]) && key in target && isObject$1(target[key])) {
-        mergedObj[key] = _mergeKeys(target[key], source[key]);
-      } else {
-        mergedObj[key] = source[key];
-      }
-    });
-    return mergedObj;
-  };
-  return args.reduce((acc, obj, i) => i === 0 ? obj : _mergeKeys(acc, obj), {});
-}
-function minifyCSS(css4) {
-  return css4 ? css4.replace(/\/\*(?:(?!\*\/)[\s\S])*\*\/|[\r\n\t]+/g, "").replace(/ {2,}/g, " ").replace(/ ([{:}]) /g, "$1").replace(/([;,]) /g, "$1").replace(/ !/g, "!").replace(/: /g, ":") : css4;
-}
-function omit(obj, ...keys) {
-  if (!isObject$1(obj)) return obj;
-  const copy = __spreadValues$2({}, obj);
-  keys == null ? void 0 : keys.flat().forEach((key) => delete copy[key]);
-  return copy;
-}
-function toKebabCase(str) {
-  return isString(str) ? str.replace(/(_)/g, "-").replace(/[A-Z]/g, (c, i) => i === 0 ? c : "-" + c.toLowerCase()).toLowerCase() : str;
-}
-function toTokenKey(str) {
-  return isString(str) ? str.replace(/[A-Z]/g, (c, i) => i === 0 ? c : "." + c.toLowerCase()).toLowerCase() : str;
-}
-var lastIds = {};
-function uuid(prefix = "pui_id_") {
-  if (!lastIds.hasOwnProperty(prefix)) {
-    lastIds[prefix] = 0;
-  }
-  lastIds[prefix]++;
-  return `${prefix}${lastIds[prefix]}`;
-}
-function _typeof$5(o) {
+script$9.render = render$9;
+function _typeof$3(o) {
   "@babel/helpers - typeof";
-  return _typeof$5 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+  return _typeof$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
     return typeof o2;
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$5(o);
+  }, _typeof$3(o);
 }
-function _slicedToArray$3(r, e) {
-  return _arrayWithHoles$3(r) || _iterableToArrayLimit$3(r, e) || _unsupportedIterableToArray$3(r, e) || _nonIterableRest$3();
+function _slicedToArray$1(r, e) {
+  return _arrayWithHoles$1(r) || _iterableToArrayLimit$1(r, e) || _unsupportedIterableToArray$1(r, e) || _nonIterableRest$1();
 }
-function _nonIterableRest$3() {
+function _nonIterableRest$1() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _unsupportedIterableToArray$3(r, a) {
+function _unsupportedIterableToArray$1(r, a) {
   if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$3(r, a);
+    if ("string" == typeof r) return _arrayLikeToArray$1(r, a);
     var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$3(r, a) : void 0;
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$1(r, a) : void 0;
   }
 }
-function _arrayLikeToArray$3(r, a) {
+function _arrayLikeToArray$1(r, a) {
   (null == a || a > r.length) && (a = r.length);
   for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
   return n;
 }
-function _iterableToArrayLimit$3(r, l) {
+function _iterableToArrayLimit$1(r, l) {
   var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
   if (null != t) {
     var e, n, i, u, a = [], f = true, o = false;
@@ -2643,10 +2389,10 @@ function _iterableToArrayLimit$3(r, l) {
     return a;
   }
 }
-function _arrayWithHoles$3(r) {
+function _arrayWithHoles$1(r) {
   if (Array.isArray(r)) return r;
 }
-function ownKeys$5(e, r) {
+function ownKeys$3(e, r) {
   var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
     var o = Object.getOwnPropertySymbols(e);
@@ -2656,30 +2402,30 @@ function ownKeys$5(e, r) {
   }
   return t;
 }
-function _objectSpread$5(e) {
+function _objectSpread$3(e) {
   for (var r = 1; r < arguments.length; r++) {
     var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$5(Object(t), true).forEach(function(r2) {
-      _defineProperty$5(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$5(Object(t)).forEach(function(r2) {
+    r % 2 ? ownKeys$3(Object(t), true).forEach(function(r2) {
+      _defineProperty$3(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$3(Object(t)).forEach(function(r2) {
       Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
   return e;
 }
-function _defineProperty$5(e, r, t) {
-  return (r = _toPropertyKey$5(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
+function _defineProperty$3(e, r, t) {
+  return (r = _toPropertyKey$3(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
 }
-function _toPropertyKey$5(t) {
-  var i = _toPrimitive$5(t, "string");
-  return "symbol" == _typeof$5(i) ? i : i + "";
+function _toPropertyKey$3(t) {
+  var i = _toPrimitive$3(t, "string");
+  return "symbol" == _typeof$3(i) ? i : i + "";
 }
-function _toPrimitive$5(t, r) {
-  if ("object" != _typeof$5(t) || !t) return t;
+function _toPrimitive$3(t, r) {
+  if ("object" != _typeof$3(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
     var i = e.call(t, r || "default");
-    if ("object" != _typeof$5(i)) return i;
+    if ("object" != _typeof$3(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return ("string" === r ? String : Number)(t);
@@ -2740,7 +2486,7 @@ function _regeneratorRuntime() {
       var c2 = tryCatch(t2[r3], t2, o2);
       if ("throw" !== c2.type) {
         var u2 = c2.arg, h2 = u2.value;
-        return h2 && "object" == _typeof$5(h2) && n.call(h2, "__await") ? e2.resolve(h2.__await).then(function(t3) {
+        return h2 && "object" == _typeof$3(h2) && n.call(h2, "__await") ? e2.resolve(h2.__await).then(function(t3) {
           invoke("next", t3, i2, a2);
         }, function(t3) {
           invoke("throw", t3, i2, a2);
@@ -2826,7 +2572,7 @@ function _regeneratorRuntime() {
         return i2.next = i2;
       }
     }
-    throw new TypeError(_typeof$5(e2) + " is not iterable");
+    throw new TypeError(_typeof$3(e2) + " is not iterable");
   }
   return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: true }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: true }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function(t2) {
     var e2 = "function" == typeof t2 && t2.constructor;
@@ -2945,7 +2691,7 @@ function _asyncToGenerator(n) {
     });
   };
 }
-function tryOnMounted$1(fn) {
+function tryOnMounted(fn) {
   var sync = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
   if (getCurrentInstance()) onMounted(fn);
   else if (sync) fn();
@@ -2956,14 +2702,14 @@ var useForm = function useForm2() {
   var states = reactive({});
   var fields = reactive({});
   var valid = computed(function() {
-    return Object.values(states).every(function(field) {
-      return !field.invalid;
+    return Object.values(states).every(function(field2) {
+      return !field2.invalid;
     });
   });
-  var getInitialState = function getInitialState2(field, initialValue) {
+  var getInitialState = function getInitialState2(field2, initialValue) {
     var _options$initialValue;
     return {
-      value: initialValue !== null && initialValue !== void 0 ? initialValue : (_options$initialValue = options.initialValues) === null || _options$initialValue === void 0 ? void 0 : _options$initialValue[field],
+      value: initialValue !== null && initialValue !== void 0 ? initialValue : (_options$initialValue = options.initialValues) === null || _options$initialValue === void 0 ? void 0 : _options$initialValue[field2],
       touched: false,
       dirty: false,
       pristine: true,
@@ -2973,9 +2719,9 @@ var useForm = function useForm2() {
       errors: []
     };
   };
-  var isFieldValidate = function isFieldValidate2(field, validateOn2) {
-    var value = resolve(validateOn2, field);
-    return value === true || isArray(value) && value.includes(field);
+  var isFieldValidate = function isFieldValidate2(field2, validateOn2) {
+    var value = resolve(validateOn2, field2);
+    return value === true || isArray(value) && value.includes(field2);
   };
   var validateOn = /* @__PURE__ */ function() {
     var _ref = _asyncToGenerator(/* @__PURE__ */ _regeneratorRuntime().mark(function _callee(option, defaultValue2) {
@@ -3006,9 +2752,9 @@ var useForm = function useForm2() {
           case 11:
             results = _context.sent;
           case 12:
-            fieldArr = Object.keys(fields).filter(function(field) {
+            fieldArr = Object.keys(fields).filter(function(field2) {
               var _fields$field;
-              return (_fields$field = fields[field]) === null || _fields$field === void 0 || (_fields$field = _fields$field.options) === null || _fields$field === void 0 ? void 0 : _fields$field[option];
+              return (_fields$field = fields[field2]) === null || _fields$field === void 0 || (_fields$field = _fields$field.options) === null || _fields$field === void 0 ? void 0 : _fields$field[option];
             }) || [];
             _context.t1 = isNotEmpty(fieldArr);
             if (!_context.t1) {
@@ -3031,49 +2777,49 @@ var useForm = function useForm2() {
       return _ref.apply(this, arguments);
     };
   }();
-  var validateFieldOn = function validateFieldOn2(field, fieldOptions, option, defaultValue2) {
+  var validateFieldOn = function validateFieldOn2(field2, fieldOptions, option, defaultValue2) {
     var _fieldOptions$option, _options$option2;
-    ((_fieldOptions$option = fieldOptions === null || fieldOptions === void 0 ? void 0 : fieldOptions[option]) !== null && _fieldOptions$option !== void 0 ? _fieldOptions$option : isFieldValidate(field, (_options$option2 = options[option]) !== null && _options$option2 !== void 0 ? _options$option2 : defaultValue2)) && validate(field);
+    ((_fieldOptions$option = fieldOptions === null || fieldOptions === void 0 ? void 0 : fieldOptions[option]) !== null && _fieldOptions$option !== void 0 ? _fieldOptions$option : isFieldValidate(field2, (_options$option2 = options[option]) !== null && _options$option2 !== void 0 ? _options$option2 : defaultValue2)) && validate(field2);
   };
-  var defineField = function defineField2(field, fieldOptions) {
+  var defineField = function defineField2(field2, fieldOptions) {
     var _resolve;
-    states[field] || (states[field] = getInitialState(field, fieldOptions === null || fieldOptions === void 0 ? void 0 : fieldOptions.initialValue));
-    var props = mergeProps((_resolve = resolve(fieldOptions, states[field])) === null || _resolve === void 0 ? void 0 : _resolve.props, resolve(fieldOptions === null || fieldOptions === void 0 ? void 0 : fieldOptions.props, states[field]), {
-      name: field,
+    states[field2] || (states[field2] = getInitialState(field2, fieldOptions === null || fieldOptions === void 0 ? void 0 : fieldOptions.initialValue));
+    var props = mergeProps((_resolve = resolve(fieldOptions, states[field2])) === null || _resolve === void 0 ? void 0 : _resolve.props, resolve(fieldOptions === null || fieldOptions === void 0 ? void 0 : fieldOptions.props, states[field2]), {
+      name: field2,
       onBlur: function onBlur() {
-        states[field].touched = true;
-        validateFieldOn(field, fieldOptions, "validateOnBlur");
+        states[field2].touched = true;
+        validateFieldOn(field2, fieldOptions, "validateOnBlur");
       },
       onInput: function onInput(event) {
-        states[field].value = event.hasOwnProperty("value") ? event.value : event.target.value;
+        states[field2].value = event.hasOwnProperty("value") ? event.value : event.target.value;
       },
       onChange: function onChange(event) {
-        states[field].value = event.hasOwnProperty("value") ? event.value : event.target.type === "checkbox" || event.target.type === "radio" ? event.target.checked : event.target.value;
+        states[field2].value = event.hasOwnProperty("value") ? event.value : event.target.type === "checkbox" || event.target.type === "radio" ? event.target.checked : event.target.value;
       },
       onInvalid: function onInvalid(errors) {
         var _errors$;
-        states[field].invalid = true;
-        states[field].errors = errors;
-        states[field].error = (_errors$ = errors === null || errors === void 0 ? void 0 : errors[0]) !== null && _errors$ !== void 0 ? _errors$ : null;
+        states[field2].invalid = true;
+        states[field2].errors = errors;
+        states[field2].error = (_errors$ = errors === null || errors === void 0 ? void 0 : errors[0]) !== null && _errors$ !== void 0 ? _errors$ : null;
       }
     });
-    fields[field] = {
+    fields[field2] = {
       props,
-      states: states[field],
+      states: states[field2],
       options: fieldOptions
     };
     watch(function() {
-      return states[field].value;
+      return states[field2].value;
     }, function(newValue, oldValue) {
-      if (states[field].pristine) {
-        states[field].pristine = false;
+      if (states[field2].pristine) {
+        states[field2].pristine = false;
       }
       if (newValue !== oldValue) {
-        states[field].dirty = true;
+        states[field2].dirty = true;
       }
-      validateFieldOn(field, fieldOptions, "validateOnValueUpdate", true);
+      validateFieldOn(field2, fieldOptions, "validateOnValueUpdate", true);
     });
-    return [states[field], props];
+    return [states[field2], props];
   };
   var handleSubmit = function handleSubmit2(callback) {
     return /* @__PURE__ */ function() {
@@ -3086,10 +2832,10 @@ var useForm = function useForm2() {
               return validateOn("validateOnSubmit", true);
             case 2:
               results = _context2.sent;
-              return _context2.abrupt("return", callback(_objectSpread$5({
+              return _context2.abrupt("return", callback(_objectSpread$3({
                 originalEvent: event,
-                valid: toValue$1(valid),
-                states: toValue$1(states),
+                valid: toValue(valid),
+                states: toValue(states),
                 reset
               }, results)));
             case 4:
@@ -3104,14 +2850,14 @@ var useForm = function useForm2() {
     }();
   };
   var validate = /* @__PURE__ */ function() {
-    var _ref3 = _asyncToGenerator(/* @__PURE__ */ _regeneratorRuntime().mark(function _callee3(field) {
+    var _ref3 = _asyncToGenerator(/* @__PURE__ */ _regeneratorRuntime().mark(function _callee3(field2) {
       var _yield$options$resolv, _options$resolver, _result, _result$errors;
       var resolverOptions, result, flattenFields, _i, _Object$entries, _Object$entries$_i, fieldName, fieldInst, _fieldInst$options, _result$errors$fieldN, _errors$2, fieldResolver, _yield$fieldResolver, fieldValue, fieldResult, errors;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             resolverOptions = Object.entries(states).reduce(function(acc, _ref4) {
-              var _ref5 = _slicedToArray$3(_ref4, 2), key = _ref5[0], val = _ref5[1];
+              var _ref5 = _slicedToArray$1(_ref4, 2), key = _ref5[0], val = _ref5[1];
               acc.names.push(key);
               acc.values[key] = val.value;
               return acc;
@@ -3142,15 +2888,15 @@ var useForm = function useForm2() {
           case 12:
             result = _context3.t2;
             (_result$errors = (_result = result).errors) !== null && _result$errors !== void 0 ? _result$errors : _result.errors = {};
-            flattenFields = [field].flat();
+            flattenFields = [field2].flat();
             _i = 0, _Object$entries = Object.entries(fields);
           case 16:
             if (!(_i < _Object$entries.length)) {
               _context3.next = 44;
               break;
             }
-            _Object$entries$_i = _slicedToArray$3(_Object$entries[_i], 2), fieldName = _Object$entries$_i[0], fieldInst = _Object$entries$_i[1];
-            if (!(flattenFields.includes(fieldName) || !field)) {
+            _Object$entries$_i = _slicedToArray$1(_Object$entries[_i], 2), fieldName = _Object$entries$_i[0], fieldInst = _Object$entries$_i[1];
+            if (!(flattenFields.includes(fieldName) || !field2)) {
               _context3.next = 41;
               break;
             }
@@ -3186,8 +2932,8 @@ var useForm = function useForm2() {
             _context3.t5 = {};
           case 33:
             fieldResult = _context3.t5;
-            isArray(fieldResult.errors) && (fieldResult.errors = _defineProperty$5({}, fieldName, fieldResult.errors));
-            result = mergeKeys$1(result, fieldResult);
+            isArray(fieldResult.errors) && (fieldResult.errors = _defineProperty$3({}, fieldName, fieldResult.errors));
+            result = mergeKeys(result, fieldResult);
           case 36:
             errors = (_result$errors$fieldN = result.errors[fieldName]) !== null && _result$errors$fieldN !== void 0 ? _result$errors$fieldN : [];
             states[fieldName].invalid = errors.length > 0;
@@ -3211,15 +2957,15 @@ var useForm = function useForm2() {
     };
   }();
   var reset = function reset2() {
-    Object.keys(states).forEach(function(field) {
+    Object.keys(states).forEach(function(field2) {
       var _fields$field2;
-      return fields[field].states = states[field] = getInitialState(field, (_fields$field2 = fields[field]) === null || _fields$field2 === void 0 || (_fields$field2 = _fields$field2.options) === null || _fields$field2 === void 0 ? void 0 : _fields$field2.initialValue);
+      return fields[field2].states = states[field2] = getInitialState(field2, (_fields$field2 = fields[field2]) === null || _fields$field2 === void 0 || (_fields$field2 = _fields$field2.options) === null || _fields$field2 === void 0 ? void 0 : _fields$field2.initialValue);
     });
   };
   var validateOnMounted = function validateOnMounted2() {
     validateOn("validateOnMount");
   };
-  tryOnMounted$1(validateOnMounted);
+  tryOnMounted(validateOnMounted);
   return {
     defineField,
     handleSubmit,
@@ -3230,860 +2976,50 @@ var useForm = function useForm2() {
     fields
   };
 };
-var __defProp$1 = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols$1 = Object.getOwnPropertySymbols;
-var __hasOwnProp$1 = Object.prototype.hasOwnProperty;
-var __propIsEnum$1 = Object.prototype.propertyIsEnumerable;
-var __defNormalProp$1 = (obj, key, value) => key in obj ? __defProp$1(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues$1 = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp$1.call(b, prop))
-      __defNormalProp$1(a, prop, b[prop]);
-  if (__getOwnPropSymbols$1)
-    for (var prop of __getOwnPropSymbols$1(b)) {
-      if (__propIsEnum$1.call(b, prop))
-        __defNormalProp$1(a, prop, b[prop]);
-    }
-  return a;
+var classes$1 = {
+  root: "p-form p-component"
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __objRest = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp$1.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols$1)
-    for (var prop of __getOwnPropSymbols$1(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum$1.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
-var ThemeService = EventBus();
-var service_default = ThemeService;
-function merge(value1, value2) {
-  if (isArray(value1)) {
-    value1.push(...value2 || []);
-  } else if (isObject$1(value1)) {
-    Object.assign(value1, value2);
-  }
-}
-function toValue(value) {
-  return isObject$1(value) && value.hasOwnProperty("value") && value.hasOwnProperty("type") ? value.value : value;
-}
-function toNormalizePrefix(prefix) {
-  return prefix.replaceAll(/ /g, "").replace(/[^\w]/g, "-");
-}
-function toNormalizeVariable(prefix = "", variable = "") {
-  return toNormalizePrefix(`${isString(prefix, false) && isString(variable, false) ? `${prefix}-` : prefix}${variable}`);
-}
-function getVariableName(prefix = "", variable = "") {
-  return `--${toNormalizeVariable(prefix, variable)}`;
-}
-function hasOddBraces(str = "") {
-  const openBraces = (str.match(/{/g) || []).length;
-  const closeBraces = (str.match(/}/g) || []).length;
-  return (openBraces + closeBraces) % 2 !== 0;
-}
-function getVariableValue(value, variable = "", prefix = "", excludedKeyRegexes = [], fallback) {
-  if (isString(value)) {
-    const regex = /{([^}]*)}/g;
-    const val = value.trim();
-    if (hasOddBraces(val)) {
-      return void 0;
-    } else if (matchRegex(val, regex)) {
-      const _val = val.replaceAll(regex, (v) => {
-        const path = v.replace(/{|}/g, "");
-        const keys = path.split(".").filter((_v) => !excludedKeyRegexes.some((_r) => matchRegex(_v, _r)));
-        return `var(${getVariableName(prefix, toKebabCase(keys.join("-")))}${isNotEmpty(fallback) ? `, ${fallback}` : ""})`;
-      });
-      const calculationRegex = /(\d+\s+[\+\-\*\/]\s+\d+)/g;
-      const cleanedVarRegex = /var\([^)]+\)/g;
-      return matchRegex(_val.replace(cleanedVarRegex, "0"), calculationRegex) ? `calc(${_val})` : _val;
-    }
-    return val;
-  } else if (isNumber(value)) {
-    return value;
-  }
-  return void 0;
-}
-function setProperty(properties, key, value) {
-  if (isString(key, false)) {
-    properties.push(`${key}:${value};`);
-  }
-}
-function getRule(selector, properties) {
-  if (selector) {
-    return `${selector}{${properties}}`;
-  }
-  return "";
-}
-var dt = (...args) => {
-  return dtwt(config_default.getTheme(), ...args);
-};
-var dtwt = (theme3 = {}, tokenPath, fallback, type) => {
-  if (tokenPath) {
-    const { variable: VARIABLE, options: OPTIONS } = config_default.defaults || {};
-    const { prefix, transform } = (theme3 == null ? void 0 : theme3.options) || OPTIONS || {};
-    const regex = /{([^}]*)}/g;
-    const token = matchRegex(tokenPath, regex) ? tokenPath : `{${tokenPath}}`;
-    const isStrictTransform = type === "value" || isEmpty(type) && transform === "strict";
-    return isStrictTransform ? config_default.getTokenValue(tokenPath) : getVariableValue(token, void 0, prefix, [VARIABLE.excludedKeyRegex], fallback);
-  }
-  return "";
-};
-function toVariables_default(theme3, options = {}) {
-  const VARIABLE = config_default.defaults.variable;
-  const { prefix = VARIABLE.prefix, selector = VARIABLE.selector, excludedKeyRegex = VARIABLE.excludedKeyRegex } = options;
-  const _toVariables = (_theme, _prefix = "") => {
-    return Object.entries(_theme).reduce(
-      (acc, [key, value]) => {
-        const px = matchRegex(key, excludedKeyRegex) ? toNormalizeVariable(_prefix) : toNormalizeVariable(_prefix, toKebabCase(key));
-        const v = toValue(value);
-        if (isObject$1(v)) {
-          const { variables: variables2, tokens: tokens2 } = _toVariables(v, px);
-          merge(acc["tokens"], tokens2);
-          merge(acc["variables"], variables2);
-        } else {
-          acc["tokens"].push((prefix ? px.replace(`${prefix}-`, "") : px).replaceAll("-", "."));
-          setProperty(acc["variables"], getVariableName(px), getVariableValue(v, px, prefix, [excludedKeyRegex]));
-        }
-        return acc;
-      },
-      { variables: [], tokens: [] }
-    );
-  };
-  const { variables, tokens } = _toVariables(theme3, prefix);
-  return {
-    value: variables,
-    tokens,
-    declarations: variables.join(""),
-    css: getRule(selector, variables.join(""))
-  };
-}
-var themeUtils_default = {
-  regex: {
-    rules: {
-      class: {
-        pattern: /^\.([a-zA-Z][\w-]*)$/,
-        resolve(value) {
-          return { type: "class", selector: value, matched: this.pattern.test(value.trim()) };
-        }
-      },
-      attr: {
-        pattern: /^\[(.*)\]$/,
-        resolve(value) {
-          return { type: "attr", selector: `:root${value}`, matched: this.pattern.test(value.trim()) };
-        }
-      },
-      media: {
-        pattern: /^@media (.*)$/,
-        resolve(value) {
-          return { type: "media", selector: `${value}{:root{[CSS]}}`, matched: this.pattern.test(value.trim()) };
-        }
-      },
-      system: {
-        pattern: /^system$/,
-        resolve(value) {
-          return { type: "system", selector: "@media (prefers-color-scheme: dark){:root{[CSS]}}", matched: this.pattern.test(value.trim()) };
-        }
-      },
-      custom: {
-        resolve(value) {
-          return { type: "custom", selector: value, matched: true };
-        }
-      }
-    },
-    resolve(value) {
-      const rules = Object.keys(this.rules).filter((k) => k !== "custom").map((r) => this.rules[r]);
-      return [value].flat().map((v) => {
-        var _a;
-        return (_a = rules.map((r) => r.resolve(v)).find((rr) => rr.matched)) != null ? _a : this.rules.custom.resolve(v);
-      });
-    }
-  },
-  _toVariables(theme3, options) {
-    return toVariables_default(theme3, { prefix: options == null ? void 0 : options.prefix });
-  },
-  getCommon({ name = "", theme: theme3 = {}, params, set, defaults }) {
-    var _e, _f, _g, _h, _i, _j, _k;
-    const { preset, options } = theme3;
-    let primitive_css, primitive_tokens, semantic_css, semantic_tokens, global_css, global_tokens, style2;
-    if (isNotEmpty(preset) && options.transform !== "strict") {
-      const { primitive, semantic, extend: extend4 } = preset;
-      const _a = semantic || {}, { colorScheme } = _a, sRest = __objRest(_a, ["colorScheme"]);
-      const _b = extend4 || {}, { colorScheme: eColorScheme } = _b, eRest = __objRest(_b, ["colorScheme"]);
-      const _c = colorScheme || {}, { dark } = _c, csRest = __objRest(_c, ["dark"]);
-      const _d = eColorScheme || {}, { dark: eDark } = _d, ecsRest = __objRest(_d, ["dark"]);
-      const prim_var = isNotEmpty(primitive) ? this._toVariables({ primitive }, options) : {};
-      const sRest_var = isNotEmpty(sRest) ? this._toVariables({ semantic: sRest }, options) : {};
-      const csRest_var = isNotEmpty(csRest) ? this._toVariables({ light: csRest }, options) : {};
-      const csDark_var = isNotEmpty(dark) ? this._toVariables({ dark }, options) : {};
-      const eRest_var = isNotEmpty(eRest) ? this._toVariables({ semantic: eRest }, options) : {};
-      const ecsRest_var = isNotEmpty(ecsRest) ? this._toVariables({ light: ecsRest }, options) : {};
-      const ecsDark_var = isNotEmpty(eDark) ? this._toVariables({ dark: eDark }, options) : {};
-      const [prim_css, prim_tokens] = [(_e = prim_var.declarations) != null ? _e : "", prim_var.tokens];
-      const [sRest_css, sRest_tokens] = [(_f = sRest_var.declarations) != null ? _f : "", sRest_var.tokens || []];
-      const [csRest_css, csRest_tokens] = [(_g = csRest_var.declarations) != null ? _g : "", csRest_var.tokens || []];
-      const [csDark_css, csDark_tokens] = [(_h = csDark_var.declarations) != null ? _h : "", csDark_var.tokens || []];
-      const [eRest_css, eRest_tokens] = [(_i = eRest_var.declarations) != null ? _i : "", eRest_var.tokens || []];
-      const [ecsRest_css, ecsRest_tokens] = [(_j = ecsRest_var.declarations) != null ? _j : "", ecsRest_var.tokens || []];
-      const [ecsDark_css, ecsDark_tokens] = [(_k = ecsDark_var.declarations) != null ? _k : "", ecsDark_var.tokens || []];
-      primitive_css = this.transformCSS(name, prim_css, "light", "variable", options, set, defaults);
-      primitive_tokens = prim_tokens;
-      const semantic_light_css = this.transformCSS(name, `${sRest_css}${csRest_css}`, "light", "variable", options, set, defaults);
-      const semantic_dark_css = this.transformCSS(name, `${csDark_css}`, "dark", "variable", options, set, defaults);
-      semantic_css = `${semantic_light_css}${semantic_dark_css}`;
-      semantic_tokens = [.../* @__PURE__ */ new Set([...sRest_tokens, ...csRest_tokens, ...csDark_tokens])];
-      const global_light_css = this.transformCSS(name, `${eRest_css}${ecsRest_css}color-scheme:light`, "light", "variable", options, set, defaults);
-      const global_dark_css = this.transformCSS(name, `${ecsDark_css}color-scheme:dark`, "dark", "variable", options, set, defaults);
-      global_css = `${global_light_css}${global_dark_css}`;
-      global_tokens = [.../* @__PURE__ */ new Set([...eRest_tokens, ...ecsRest_tokens, ...ecsDark_tokens])];
-      style2 = resolve(preset.css, { dt });
-    }
-    return {
-      primitive: {
-        css: primitive_css,
-        tokens: primitive_tokens
-      },
-      semantic: {
-        css: semantic_css,
-        tokens: semantic_tokens
-      },
-      global: {
-        css: global_css,
-        tokens: global_tokens
-      },
-      style: style2
-    };
-  },
-  getPreset({ name = "", preset = {}, options, params, set, defaults, selector }) {
-    var _e, _f, _g;
-    let p_css, p_tokens, p_style;
-    if (isNotEmpty(preset) && options.transform !== "strict") {
-      const _name = name.replace("-directive", "");
-      const _a = preset, { colorScheme, extend: extend4, css: css22 } = _a, vRest = __objRest(_a, ["colorScheme", "extend", "css"]);
-      const _b = extend4 || {}, { colorScheme: eColorScheme } = _b, evRest = __objRest(_b, ["colorScheme"]);
-      const _c = colorScheme || {}, { dark } = _c, csRest = __objRest(_c, ["dark"]);
-      const _d = eColorScheme || {}, { dark: ecsDark } = _d, ecsRest = __objRest(_d, ["dark"]);
-      const vRest_var = isNotEmpty(vRest) ? this._toVariables({ [_name]: __spreadValues$1(__spreadValues$1({}, vRest), evRest) }, options) : {};
-      const csRest_var = isNotEmpty(csRest) ? this._toVariables({ [_name]: __spreadValues$1(__spreadValues$1({}, csRest), ecsRest) }, options) : {};
-      const csDark_var = isNotEmpty(dark) ? this._toVariables({ [_name]: __spreadValues$1(__spreadValues$1({}, dark), ecsDark) }, options) : {};
-      const [vRest_css, vRest_tokens] = [(_e = vRest_var.declarations) != null ? _e : "", vRest_var.tokens || []];
-      const [csRest_css, csRest_tokens] = [(_f = csRest_var.declarations) != null ? _f : "", csRest_var.tokens || []];
-      const [csDark_css, csDark_tokens] = [(_g = csDark_var.declarations) != null ? _g : "", csDark_var.tokens || []];
-      const light_variable_css = this.transformCSS(_name, `${vRest_css}${csRest_css}`, "light", "variable", options, set, defaults, selector);
-      const dark_variable_css = this.transformCSS(_name, csDark_css, "dark", "variable", options, set, defaults, selector);
-      p_css = `${light_variable_css}${dark_variable_css}`;
-      p_tokens = [.../* @__PURE__ */ new Set([...vRest_tokens, ...csRest_tokens, ...csDark_tokens])];
-      p_style = resolve(css22, { dt });
-    }
-    return {
-      css: p_css,
-      tokens: p_tokens,
-      style: p_style
-    };
-  },
-  getPresetC({ name = "", theme: theme3 = {}, params, set, defaults }) {
-    var _a;
-    const { preset, options } = theme3;
-    const cPreset = (_a = preset == null ? void 0 : preset.components) == null ? void 0 : _a[name];
-    return this.getPreset({ name, preset: cPreset, options, params, set, defaults });
-  },
-  getPresetD({ name = "", theme: theme3 = {}, params, set, defaults }) {
-    var _a;
-    const dName = name.replace("-directive", "");
-    const { preset, options } = theme3;
-    const dPreset = (_a = preset == null ? void 0 : preset.directives) == null ? void 0 : _a[dName];
-    return this.getPreset({ name: dName, preset: dPreset, options, params, set, defaults });
-  },
-  applyDarkColorScheme(options) {
-    return !(options.darkModeSelector === "none" || options.darkModeSelector === false);
-  },
-  getColorSchemeOption(options, defaults) {
-    var _a;
-    return this.applyDarkColorScheme(options) ? this.regex.resolve(options.darkModeSelector === true ? defaults.options.darkModeSelector : (_a = options.darkModeSelector) != null ? _a : defaults.options.darkModeSelector) : [];
-  },
-  getLayerOrder(name, options = {}, params, defaults) {
-    const { cssLayer } = options;
-    if (cssLayer) {
-      const order = resolve(cssLayer.order || "primeui", params);
-      return `@layer ${order}`;
-    }
-    return "";
-  },
-  getCommonStyleSheet({ name = "", theme: theme3 = {}, params, props = {}, set, defaults }) {
-    const common = this.getCommon({ name, theme: theme3, params, set, defaults });
-    const _props = Object.entries(props).reduce((acc, [k, v]) => acc.push(`${k}="${v}"`) && acc, []).join(" ");
-    return Object.entries(common || {}).reduce((acc, [key, value]) => {
-      if (value == null ? void 0 : value.css) {
-        const _css = minifyCSS(value == null ? void 0 : value.css);
-        const id = `${key}-variables`;
-        acc.push(`<style type="text/css" data-primevue-style-id="${id}" ${_props}>${_css}</style>`);
-      }
-      return acc;
-    }, []).join("");
-  },
-  getStyleSheet({ name = "", theme: theme3 = {}, params, props = {}, set, defaults }) {
-    var _a;
-    const options = { name, theme: theme3, params, set, defaults };
-    const preset_css = (_a = name.includes("-directive") ? this.getPresetD(options) : this.getPresetC(options)) == null ? void 0 : _a.css;
-    const _props = Object.entries(props).reduce((acc, [k, v]) => acc.push(`${k}="${v}"`) && acc, []).join(" ");
-    return preset_css ? `<style type="text/css" data-primevue-style-id="${name}-variables" ${_props}>${minifyCSS(preset_css)}</style>` : "";
-  },
-  createTokens(obj = {}, defaults, parentKey = "", parentPath = "", tokens = {}) {
-    Object.entries(obj).forEach(([key, value]) => {
-      const currentKey = matchRegex(key, defaults.variable.excludedKeyRegex) ? parentKey : parentKey ? `${parentKey}.${toTokenKey(key)}` : toTokenKey(key);
-      const currentPath = parentPath ? `${parentPath}.${key}` : key;
-      if (isObject$1(value)) {
-        this.createTokens(value, defaults, currentKey, currentPath, tokens);
-      } else {
-        tokens[currentKey] || (tokens[currentKey] = {
-          paths: [],
-          computed(colorScheme, tokenPathMap = {}) {
-            var _a, _b;
-            if (this.paths.length === 1) {
-              return (_a = this.paths[0]) == null ? void 0 : _a.computed(this.paths[0].scheme, tokenPathMap["binding"]);
-            } else if (colorScheme && colorScheme !== "none") {
-              return (_b = this.paths.find((p) => p.scheme === colorScheme)) == null ? void 0 : _b.computed(colorScheme, tokenPathMap["binding"]);
-            }
-            return this.paths.map((p) => p.computed(p.scheme, tokenPathMap[p.scheme]));
-          }
-        });
-        tokens[currentKey].paths.push({
-          path: currentPath,
-          value,
-          scheme: currentPath.includes("colorScheme.light") ? "light" : currentPath.includes("colorScheme.dark") ? "dark" : "none",
-          computed(colorScheme, tokenPathMap = {}) {
-            const regex = /{([^}]*)}/g;
-            let computedValue = value;
-            tokenPathMap["name"] = this.path;
-            tokenPathMap["binding"] || (tokenPathMap["binding"] = {});
-            if (matchRegex(value, regex)) {
-              const val = value.trim();
-              const _val = val.replaceAll(regex, (v) => {
-                var _a;
-                const path = v.replace(/{|}/g, "");
-                const computed2 = (_a = tokens[path]) == null ? void 0 : _a.computed(colorScheme, tokenPathMap);
-                return isArray(computed2) && computed2.length === 2 ? `light-dark(${computed2[0].value},${computed2[1].value})` : computed2 == null ? void 0 : computed2.value;
-              });
-              const calculationRegex = /(\d+\w*\s+[\+\-\*\/]\s+\d+\w*)/g;
-              const cleanedVarRegex = /var\([^)]+\)/g;
-              computedValue = matchRegex(_val.replace(cleanedVarRegex, "0"), calculationRegex) ? `calc(${_val})` : _val;
-            }
-            isEmpty(tokenPathMap["binding"]) && delete tokenPathMap["binding"];
-            return {
-              colorScheme,
-              path: this.path,
-              paths: tokenPathMap,
-              value: computedValue.includes("undefined") ? void 0 : computedValue
-            };
-          }
-        });
-      }
-    });
-    return tokens;
-  },
-  getTokenValue(tokens, path, defaults) {
-    var _a;
-    const normalizePath = (str) => {
-      const strArr = str.split(".");
-      return strArr.filter((s) => !matchRegex(s.toLowerCase(), defaults.variable.excludedKeyRegex)).join(".");
-    };
-    const token = normalizePath(path);
-    const colorScheme = path.includes("colorScheme.light") ? "light" : path.includes("colorScheme.dark") ? "dark" : void 0;
-    const computedValues = [(_a = tokens[token]) == null ? void 0 : _a.computed(colorScheme)].flat().filter((computed2) => computed2);
-    return computedValues.length === 1 ? computedValues[0].value : computedValues.reduce((acc = {}, computed2) => {
-      const _a2 = computed2, { colorScheme: cs } = _a2, rest = __objRest(_a2, ["colorScheme"]);
-      acc[cs] = rest;
-      return acc;
-    }, void 0);
-  },
-  getSelectorRule(selector1, selector2, type, css22) {
-    return type === "class" || type === "attr" ? getRule(isNotEmpty(selector2) ? `${selector1}${selector2},${selector1} ${selector2}` : selector1, css22) : getRule(selector1, isNotEmpty(selector2) ? getRule(selector2, css22) : css22);
-  },
-  transformCSS(name, css22, mode, type, options = {}, set, defaults, selector) {
-    if (isNotEmpty(css22)) {
-      const { cssLayer } = options;
-      if (type !== "style") {
-        const colorSchemeOption = this.getColorSchemeOption(options, defaults);
-        css22 = mode === "dark" ? colorSchemeOption.reduce((acc, { type: type2, selector: _selector }) => {
-          if (isNotEmpty(_selector)) {
-            acc += _selector.includes("[CSS]") ? _selector.replace("[CSS]", css22) : this.getSelectorRule(_selector, selector, type2, css22);
-          }
-          return acc;
-        }, "") : getRule(selector != null ? selector : ":root", css22);
-      }
-      if (cssLayer) {
-        const layerOptions = {
-          name: "primeui",
-          order: "primeui"
-        };
-        isObject$1(cssLayer) && (layerOptions.name = resolve(cssLayer.name, { name, type }));
-        if (isNotEmpty(layerOptions.name)) {
-          css22 = getRule(`@layer ${layerOptions.name}`, css22);
-          set == null ? void 0 : set.layerNames(layerOptions.name);
-        }
-      }
-      return css22;
-    }
-    return "";
-  }
-};
-var config_default = {
-  defaults: {
-    variable: {
-      prefix: "p",
-      selector: ":root",
-      excludedKeyRegex: /^(primitive|semantic|components|directives|variables|colorscheme|light|dark|common|root|states|extend|css)$/gi
-    },
-    options: {
-      prefix: "p",
-      darkModeSelector: "system",
-      cssLayer: false
-    }
-  },
-  _theme: void 0,
-  _layerNames: /* @__PURE__ */ new Set(),
-  _loadedStyleNames: /* @__PURE__ */ new Set(),
-  _loadingStyles: /* @__PURE__ */ new Set(),
-  _tokens: {},
-  update(newValues = {}) {
-    const { theme: theme3 } = newValues;
-    if (theme3) {
-      this._theme = __spreadProps(__spreadValues$1({}, theme3), {
-        options: __spreadValues$1(__spreadValues$1({}, this.defaults.options), theme3.options)
-      });
-      this._tokens = themeUtils_default.createTokens(this.preset, this.defaults);
-      this.clearLoadedStyleNames();
-    }
-  },
-  get theme() {
-    return this._theme;
-  },
-  get preset() {
-    var _a;
-    return ((_a = this.theme) == null ? void 0 : _a.preset) || {};
-  },
-  get options() {
-    var _a;
-    return ((_a = this.theme) == null ? void 0 : _a.options) || {};
-  },
-  get tokens() {
-    return this._tokens;
-  },
-  getTheme() {
-    return this.theme;
-  },
-  setTheme(newValue) {
-    this.update({ theme: newValue });
-    service_default.emit("theme:change", newValue);
-  },
-  getPreset() {
-    return this.preset;
-  },
-  setPreset(newValue) {
-    this._theme = __spreadProps(__spreadValues$1({}, this.theme), { preset: newValue });
-    this._tokens = themeUtils_default.createTokens(newValue, this.defaults);
-    this.clearLoadedStyleNames();
-    service_default.emit("preset:change", newValue);
-    service_default.emit("theme:change", this.theme);
-  },
-  getOptions() {
-    return this.options;
-  },
-  setOptions(newValue) {
-    this._theme = __spreadProps(__spreadValues$1({}, this.theme), { options: newValue });
-    this.clearLoadedStyleNames();
-    service_default.emit("options:change", newValue);
-    service_default.emit("theme:change", this.theme);
-  },
-  getLayerNames() {
-    return [...this._layerNames];
-  },
-  setLayerNames(layerName) {
-    this._layerNames.add(layerName);
-  },
-  getLoadedStyleNames() {
-    return this._loadedStyleNames;
-  },
-  isStyleNameLoaded(name) {
-    return this._loadedStyleNames.has(name);
-  },
-  setLoadedStyleName(name) {
-    this._loadedStyleNames.add(name);
-  },
-  deleteLoadedStyleName(name) {
-    this._loadedStyleNames.delete(name);
-  },
-  clearLoadedStyleNames() {
-    this._loadedStyleNames.clear();
-  },
-  getTokenValue(tokenPath) {
-    return themeUtils_default.getTokenValue(this.tokens, tokenPath, this.defaults);
-  },
-  getCommon(name = "", params) {
-    return themeUtils_default.getCommon({ name, theme: this.theme, params, defaults: this.defaults, set: { layerNames: this.setLayerNames.bind(this) } });
-  },
-  getComponent(name = "", params) {
-    const options = { name, theme: this.theme, params, defaults: this.defaults, set: { layerNames: this.setLayerNames.bind(this) } };
-    return themeUtils_default.getPresetC(options);
-  },
-  getDirective(name = "", params) {
-    const options = { name, theme: this.theme, params, defaults: this.defaults, set: { layerNames: this.setLayerNames.bind(this) } };
-    return themeUtils_default.getPresetD(options);
-  },
-  getCustomPreset(name = "", preset, selector, params) {
-    const options = { name, preset, options: this.options, selector, params, defaults: this.defaults, set: { layerNames: this.setLayerNames.bind(this) } };
-    return themeUtils_default.getPreset(options);
-  },
-  getLayerOrderCSS(name = "") {
-    return themeUtils_default.getLayerOrder(name, this.options, { names: this.getLayerNames() }, this.defaults);
-  },
-  transformCSS(name = "", css22, type = "style", mode) {
-    return themeUtils_default.transformCSS(name, css22, mode, type, this.options, { layerNames: this.setLayerNames.bind(this) }, this.defaults);
-  },
-  getCommonStyleSheet(name = "", params, props = {}) {
-    return themeUtils_default.getCommonStyleSheet({ name, theme: this.theme, params, props, defaults: this.defaults, set: { layerNames: this.setLayerNames.bind(this) } });
-  },
-  getStyleSheet(name, params, props = {}) {
-    return themeUtils_default.getStyleSheet({ name, theme: this.theme, params, props, defaults: this.defaults, set: { layerNames: this.setLayerNames.bind(this) } });
-  },
-  onStyleMounted(name) {
-    this._loadingStyles.add(name);
-  },
-  onStyleUpdated(name) {
-    this._loadingStyles.add(name);
-  },
-  onStyleLoaded(event, { name }) {
-    if (this._loadingStyles.size) {
-      this._loadingStyles.delete(name);
-      service_default.emit(`theme:${name}:load`, event);
-      !this._loadingStyles.size && service_default.emit("theme:load");
-    }
-  }
-};
-var Base = {
-  _loadedStyleNames: /* @__PURE__ */ new Set(),
-  getLoadedStyleNames: function getLoadedStyleNames2() {
-    return this._loadedStyleNames;
-  },
-  isStyleNameLoaded: function isStyleNameLoaded2(name) {
-    return this._loadedStyleNames.has(name);
-  },
-  setLoadedStyleName: function setLoadedStyleName2(name) {
-    this._loadedStyleNames.add(name);
-  },
-  deleteLoadedStyleName: function deleteLoadedStyleName2(name) {
-    this._loadedStyleNames["delete"](name);
-  },
-  clearLoadedStyleNames: function clearLoadedStyleNames2() {
-    this._loadedStyleNames.clear();
-  }
-};
-function _typeof$4(o) {
-  "@babel/helpers - typeof";
-  return _typeof$4 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$4(o);
-}
-function ownKeys$4(e, r) {
-  var t = Object.keys(e);
-  if (Object.getOwnPropertySymbols) {
-    var o = Object.getOwnPropertySymbols(e);
-    r && (o = o.filter(function(r2) {
-      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
-    })), t.push.apply(t, o);
-  }
-  return t;
-}
-function _objectSpread$4(e) {
-  for (var r = 1; r < arguments.length; r++) {
-    var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$4(Object(t), true).forEach(function(r2) {
-      _defineProperty$4(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$4(Object(t)).forEach(function(r2) {
-      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
-    });
-  }
-  return e;
-}
-function _defineProperty$4(e, r, t) {
-  return (r = _toPropertyKey$4(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$4(t) {
-  var i = _toPrimitive$4(t, "string");
-  return "symbol" == _typeof$4(i) ? i : i + "";
-}
-function _toPrimitive$4(t, r) {
-  if ("object" != _typeof$4(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r || "default");
-    if ("object" != _typeof$4(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-function tryOnMounted(fn) {
-  var sync = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
-  if (getCurrentInstance()) onMounted(fn);
-  else if (sync) fn();
-  else nextTick(fn);
-}
-var _id = 0;
-function useStyle(css4) {
-  var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-  var isLoaded = ref(false);
-  var cssRef = ref(css4);
-  var styleRef = ref(null);
-  var defaultDocument = isClient() ? window.document : void 0;
-  var _options$document = options.document, document = _options$document === void 0 ? defaultDocument : _options$document, _options$immediate = options.immediate, immediate = _options$immediate === void 0 ? true : _options$immediate, _options$manual = options.manual, manual = _options$manual === void 0 ? false : _options$manual, _options$name = options.name, name = _options$name === void 0 ? "style_".concat(++_id) : _options$name, _options$id = options.id, id = _options$id === void 0 ? void 0 : _options$id, _options$media = options.media, media = _options$media === void 0 ? void 0 : _options$media, _options$nonce = options.nonce, nonce = _options$nonce === void 0 ? void 0 : _options$nonce, _options$first = options.first, first = _options$first === void 0 ? false : _options$first, _options$onMounted = options.onMounted, onStyleMounted = _options$onMounted === void 0 ? void 0 : _options$onMounted, _options$onUpdated = options.onUpdated, onStyleUpdated = _options$onUpdated === void 0 ? void 0 : _options$onUpdated, _options$onLoad = options.onLoad, onStyleLoaded = _options$onLoad === void 0 ? void 0 : _options$onLoad, _options$props = options.props, props = _options$props === void 0 ? {} : _options$props;
-  var stop = function stop2() {
-  };
-  var load3 = function load4(_css) {
-    var _props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    if (!document) return;
-    var _styleProps = _objectSpread$4(_objectSpread$4({}, props), _props);
-    var _name = _styleProps.name || name, _id2 = _styleProps.id || id, _nonce = _styleProps.nonce || nonce;
-    styleRef.value = document.querySelector('style[data-primevue-style-id="'.concat(_name, '"]')) || document.getElementById(_id2) || document.createElement("style");
-    if (!styleRef.value.isConnected) {
-      cssRef.value = _css || css4;
-      setAttributes(styleRef.value, {
-        type: "text/css",
-        id: _id2,
-        media,
-        nonce: _nonce
-      });
-      first ? document.head.prepend(styleRef.value) : document.head.appendChild(styleRef.value);
-      setAttribute(styleRef.value, "data-primevue-style-id", _name);
-      setAttributes(styleRef.value, _styleProps);
-      styleRef.value.onload = function(event) {
-        return onStyleLoaded === null || onStyleLoaded === void 0 ? void 0 : onStyleLoaded(event, {
-          name: _name
-        });
-      };
-      onStyleMounted === null || onStyleMounted === void 0 || onStyleMounted(_name);
-    }
-    if (isLoaded.value) return;
-    stop = watch(cssRef, function(value) {
-      styleRef.value.textContent = value;
-      onStyleUpdated === null || onStyleUpdated === void 0 || onStyleUpdated(_name);
-    }, {
-      immediate: true
-    });
-    isLoaded.value = true;
-  };
-  var unload = function unload2() {
-    if (!document || !isLoaded.value) return;
-    stop();
-    isExist(styleRef.value) && document.head.removeChild(styleRef.value);
-    isLoaded.value = false;
-  };
-  if (immediate && !manual) tryOnMounted(load3);
-  return {
-    id,
-    name,
-    el: styleRef,
-    css: cssRef,
-    unload,
-    load: load3,
-    isLoaded: readonly(isLoaded)
-  };
-}
-function _typeof$3(o) {
-  "@babel/helpers - typeof";
-  return _typeof$3 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
-    return typeof o2;
-  } : function(o2) {
-    return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
-  }, _typeof$3(o);
-}
-function _slicedToArray$2(r, e) {
-  return _arrayWithHoles$2(r) || _iterableToArrayLimit$2(r, e) || _unsupportedIterableToArray$2(r, e) || _nonIterableRest$2();
-}
-function _nonIterableRest$2() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray$2(r, a) {
-  if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$2(r, a);
-    var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$2(r, a) : void 0;
-  }
-}
-function _arrayLikeToArray$2(r, a) {
-  (null == a || a > r.length) && (a = r.length);
-  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-  return n;
-}
-function _iterableToArrayLimit$2(r, l) {
-  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (null != t) {
-    var e, n, i, u, a = [], f = true, o = false;
-    try {
-      if (i = (t = t.call(r)).next, 0 === l) ;
-      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
-    } catch (r2) {
-      o = true, n = r2;
-    } finally {
-      try {
-        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-      } finally {
-        if (o) throw n;
-      }
-    }
-    return a;
-  }
-}
-function _arrayWithHoles$2(r) {
-  if (Array.isArray(r)) return r;
-}
-function ownKeys$3(e, r) {
-  var t = Object.keys(e);
-  if (Object.getOwnPropertySymbols) {
-    var o = Object.getOwnPropertySymbols(e);
-    r && (o = o.filter(function(r2) {
-      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
-    })), t.push.apply(t, o);
-  }
-  return t;
-}
-function _objectSpread$3(e) {
-  for (var r = 1; r < arguments.length; r++) {
-    var t = null != arguments[r] ? arguments[r] : {};
-    r % 2 ? ownKeys$3(Object(t), true).forEach(function(r2) {
-      _defineProperty$3(e, r2, t[r2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys$3(Object(t)).forEach(function(r2) {
-      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
-    });
-  }
-  return e;
-}
-function _defineProperty$3(e, r, t) {
-  return (r = _toPropertyKey$3(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: true, configurable: true, writable: true }) : e[r] = t, e;
-}
-function _toPropertyKey$3(t) {
-  var i = _toPrimitive$3(t, "string");
-  return "symbol" == _typeof$3(i) ? i : i + "";
-}
-function _toPrimitive$3(t, r) {
-  if ("object" != _typeof$3(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r || "default");
-    if ("object" != _typeof$3(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-var theme = function theme2(_ref) {
-  var dt2 = _ref.dt;
-  return "\n*,\n::before,\n::after {\n    box-sizing: border-box;\n}\n\n/* Non vue overlay animations */\n.p-connected-overlay {\n    opacity: 0;\n    transform: scaleY(0.8);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1),\n        opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n}\n\n.p-connected-overlay-visible {\n    opacity: 1;\n    transform: scaleY(1);\n}\n\n.p-connected-overlay-hidden {\n    opacity: 0;\n    transform: scaleY(1);\n    transition: opacity 0.1s linear;\n}\n\n/* Vue based overlay animations */\n.p-connected-overlay-enter-from {\n    opacity: 0;\n    transform: scaleY(0.8);\n}\n\n.p-connected-overlay-leave-to {\n    opacity: 0;\n}\n\n.p-connected-overlay-enter-active {\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1),\n        opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n}\n\n.p-connected-overlay-leave-active {\n    transition: opacity 0.1s linear;\n}\n\n/* Toggleable Content */\n.p-toggleable-content-enter-from,\n.p-toggleable-content-leave-to {\n    max-height: 0;\n}\n\n.p-toggleable-content-enter-to,\n.p-toggleable-content-leave-from {\n    max-height: 1000px;\n}\n\n.p-toggleable-content-leave-active {\n    overflow: hidden;\n    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);\n}\n\n.p-toggleable-content-enter-active {\n    overflow: hidden;\n    transition: max-height 1s ease-in-out;\n}\n\n.p-disabled,\n.p-disabled * {\n    cursor: default;\n    pointer-events: none;\n    user-select: none;\n}\n\n.p-disabled,\n.p-component:disabled {\n    opacity: ".concat(dt2("disabled.opacity"), ";\n}\n\n.pi {\n    font-size: ").concat(dt2("icon.size"), ";\n}\n\n.p-icon {\n    width: ").concat(dt2("icon.size"), ";\n    height: ").concat(dt2("icon.size"), ";\n}\n\n.p-overlay-mask {\n    background: ").concat(dt2("mask.background"), ";\n    color: ").concat(dt2("mask.color"), ";\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n.p-overlay-mask-enter {\n    animation: p-overlay-mask-enter-animation ").concat(dt2("mask.transition.duration"), " forwards;\n}\n\n.p-overlay-mask-leave {\n    animation: p-overlay-mask-leave-animation ").concat(dt2("mask.transition.duration"), " forwards;\n}\n\n@keyframes p-overlay-mask-enter-animation {\n    from {\n        background: transparent;\n    }\n    to {\n        background: ").concat(dt2("mask.background"), ";\n    }\n}\n@keyframes p-overlay-mask-leave-animation {\n    from {\n        background: ").concat(dt2("mask.background"), ";\n    }\n    to {\n        background: transparent;\n    }\n}\n");
-};
-var css2 = function css3(_ref2) {
-  var dt2 = _ref2.dt;
-  return "\n.p-hidden-accessible {\n    border: 0;\n    clip: rect(0 0 0 0);\n    height: 1px;\n    margin: -1px;\n    overflow: hidden;\n    padding: 0;\n    position: absolute;\n    width: 1px;\n}\n\n.p-hidden-accessible input,\n.p-hidden-accessible select {\n    transform: scale(0);\n}\n\n.p-overflow-hidden {\n    overflow: hidden;\n    padding-right: ".concat(dt2("scrollbar.width"), ";\n}\n");
-};
-var classes$2 = {};
-var inlineStyles = {};
-var BaseStyle = {
-  name: "base",
-  css: css2,
-  theme,
-  classes: classes$2,
-  inlineStyles,
-  load: function load2(style2) {
-    var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    var transform = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : function(cs) {
-      return cs;
-    };
-    var computedStyle = transform(resolve(style2, {
-      dt
-    }));
-    return isNotEmpty(computedStyle) ? useStyle(minifyCSS(computedStyle), _objectSpread$3({
-      name: this.name
-    }, options)) : {};
-  },
-  loadCSS: function loadCSS2() {
-    var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    return this.load(this.css, options);
-  },
-  loadTheme: function loadTheme() {
-    var _this = this;
-    var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    var style2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
-    return this.load(this.theme, options, function() {
-      var computedStyle = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      return config_default.transformCSS(options.name || _this.name, "".concat(computedStyle).concat(style2));
-    });
-  },
-  getCommonTheme: function getCommonTheme2(params) {
-    return config_default.getCommon(this.name, params);
-  },
-  getComponentTheme: function getComponentTheme2(params) {
-    return config_default.getComponent(this.name, params);
-  },
-  getDirectiveTheme: function getDirectiveTheme2(params) {
-    return config_default.getDirective(this.name, params);
-  },
-  getPresetTheme: function getPresetTheme2(preset, selector, params) {
-    return config_default.getCustomPreset(this.name, preset, selector, params);
-  },
-  getLayerOrderThemeCSS: function getLayerOrderThemeCSS2() {
-    return config_default.getLayerOrderCSS(this.name);
-  },
-  getStyleSheet: function getStyleSheet2() {
-    var extendedCSS = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    if (this.css) {
-      var _css = resolve(this.css, {
-        dt
-      }) || "";
-      var _style = minifyCSS("".concat(_css).concat(extendedCSS));
-      var _props = Object.entries(props).reduce(function(acc, _ref3) {
-        var _ref4 = _slicedToArray$2(_ref3, 2), k = _ref4[0], v = _ref4[1];
-        return acc.push("".concat(k, '="').concat(v, '"')) && acc;
-      }, []).join(" ");
-      return isNotEmpty(_style) ? '<style type="text/css" data-primevue-style-id="'.concat(this.name, '" ').concat(_props, ">").concat(_style, "</style>") : "";
-    }
-    return "";
-  },
-  getCommonThemeStyleSheet: function getCommonThemeStyleSheet2(params) {
-    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    return config_default.getCommonStyleSheet(this.name, params, props);
-  },
-  getThemeStyleSheet: function getThemeStyleSheet2(params) {
-    var props = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    var css4 = [config_default.getStyleSheet(this.name, params, props)];
-    if (this.theme) {
-      var name = this.name === "base" ? "global-style" : "".concat(this.name, "-style");
-      var _css = resolve(this.theme, {
-        dt
-      });
-      var _style = minifyCSS(config_default.transformCSS(name, _css));
-      var _props = Object.entries(props).reduce(function(acc, _ref5) {
-        var _ref6 = _slicedToArray$2(_ref5, 2), k = _ref6[0], v = _ref6[1];
-        return acc.push("".concat(k, '="').concat(v, '"')) && acc;
-      }, []).join(" ");
-      isNotEmpty(_style) && css4.push('<style type="text/css" data-primevue-style-id="'.concat(name, '" ').concat(_props, ">").concat(_style, "</style>"));
-    }
-    return css4.join("");
-  },
-  extend: function extend3(style2) {
-    return _objectSpread$3(_objectSpread$3({}, this), {}, {
-      css: void 0,
-      theme: void 0
-    }, style2);
-  }
-};
-var BaseComponentStyle = BaseStyle.extend({
-  name: "common"
+var FormStyle = BaseStyle.extend({
+  name: "form",
+  classes: classes$1
 });
+var script$1$2 = {
+  name: "BaseForm",
+  "extends": script$m,
+  style: FormStyle,
+  props: {
+    resolver: {
+      type: Function,
+      "default": null
+    },
+    initialValues: {
+      type: Object,
+      "default": null
+    },
+    validateOnValueUpdate: {
+      type: [Boolean, Array],
+      "default": true
+    },
+    validateOnBlur: {
+      type: [Boolean, Array],
+      "default": false
+    },
+    validateOnMount: {
+      type: [Boolean, Array],
+      "default": false
+    },
+    validateOnSubmit: {
+      type: [Boolean, Array],
+      "default": true
+    }
+  },
+  provide: function provide2() {
+    return {
+      $pcForm: this,
+      $parentInstance: this
+    };
+  }
+};
 function _typeof$2(o) {
   "@babel/helpers - typeof";
   return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
@@ -4091,54 +3027,6 @@ function _typeof$2(o) {
   } : function(o2) {
     return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
   }, _typeof$2(o);
-}
-function _toArray(r) {
-  return _arrayWithHoles$1(r) || _iterableToArray(r) || _unsupportedIterableToArray$1(r) || _nonIterableRest$1();
-}
-function _iterableToArray(r) {
-  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
-}
-function _slicedToArray$1(r, e) {
-  return _arrayWithHoles$1(r) || _iterableToArrayLimit$1(r, e) || _unsupportedIterableToArray$1(r, e) || _nonIterableRest$1();
-}
-function _nonIterableRest$1() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray$1(r, a) {
-  if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray$1(r, a);
-    var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray$1(r, a) : void 0;
-  }
-}
-function _arrayLikeToArray$1(r, a) {
-  (null == a || a > r.length) && (a = r.length);
-  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-  return n;
-}
-function _iterableToArrayLimit$1(r, l) {
-  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (null != t) {
-    var e, n, i, u, a = [], f = true, o = false;
-    try {
-      if (i = (t = t.call(r)).next, 0 === l) {
-        if (Object(t) !== t) return;
-        f = false;
-      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
-    } catch (r2) {
-      o = true, n = r2;
-    } finally {
-      try {
-        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-      } finally {
-        if (o) throw n;
-      }
-    }
-    return a;
-  }
-}
-function _arrayWithHoles$1(r) {
-  if (Array.isArray(r)) return r;
 }
 function ownKeys$2(e, r) {
   var t = Object.keys(e);
@@ -4178,467 +3066,132 @@ function _toPrimitive$2(t, r) {
   }
   return ("string" === r ? String : Number)(t);
 }
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
+}
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e, n, i, u, a = [], f = true, o = false;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) ;
+      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
+    } catch (r2) {
+      o = true, n = r2;
+    } finally {
+      try {
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
+}
 var script$8 = {
-  name: "BaseComponent",
+  name: "Form",
+  "extends": script$1$2,
+  inheritAttrs: false,
+  emits: ["submit"],
+  setup: function setup2(props, _ref) {
+    var emit = _ref.emit;
+    var $form = useForm(props);
+    var register2 = function register3(field2, options) {
+      var _$form$defineField = $form.defineField(field2, options), _$form$defineField2 = _slicedToArray(_$form$defineField, 2), fieldProps = _$form$defineField2[1];
+      return fieldProps;
+    };
+    var onSubmit = $form.handleSubmit(function(e) {
+      emit("submit", e);
+    });
+    return _objectSpread$2({
+      register: register2,
+      onSubmit
+    }, omit($form, ["handleSubmit"]));
+  }
+};
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("form", mergeProps({
+    onSubmit: _cache[0] || (_cache[0] = withModifiers(function() {
+      return $setup.onSubmit && $setup.onSubmit.apply($setup, arguments);
+    }, ["prevent"])),
+    "class": _ctx.cx("root")
+  }, _ctx.ptmi("root")), [renderSlot(_ctx.$slots, "default", mergeProps({
+    register: $setup.register,
+    valid: _ctx.valid,
+    reset: _ctx.reset
+  }, _ctx.states))], 16);
+}
+script$8.render = render$8;
+var classes = {
+  root: "p-formfield p-component"
+};
+var FormFieldStyle = BaseStyle.extend({
+  name: "formfield",
+  classes
+});
+var script$1$1 = {
+  name: "BaseFormField",
+  "extends": script$m,
+  style: FormFieldStyle,
   props: {
-    pt: {
-      type: Object,
+    name: {
+      type: String,
       "default": void 0
     },
-    ptOptions: {
-      type: Object,
+    resolver: {
+      type: Function,
       "default": void 0
     },
-    unstyled: {
+    initialValue: {
+      type: null,
+      "default": void 0
+    },
+    validateOnValueUpdate: {
       type: Boolean,
       "default": void 0
     },
-    dt: {
-      type: Object,
-      "default": void 0
-    }
-  },
-  inject: {
-    $parentInstance: {
-      "default": void 0
-    }
-  },
-  watch: {
-    isUnstyled: {
-      immediate: true,
-      handler: function handler7(newValue) {
-        if (!newValue) {
-          this._loadCoreStyles();
-          this._themeChangeListener(this._loadCoreStyles);
-        }
-      }
-    },
-    dt: {
-      immediate: true,
-      handler: function handler8(newValue) {
-        var _this = this;
-        if (newValue) {
-          this._loadScopedThemeStyles(newValue);
-          this._themeChangeListener(function() {
-            return _this._loadScopedThemeStyles(newValue);
-          });
-        } else {
-          this._unloadScopedThemeStyles();
-        }
-      }
-    }
-  },
-  scopedStyleEl: void 0,
-  rootEl: void 0,
-  $attrSelector: void 0,
-  beforeCreate: function beforeCreate2() {
-    var _this$pt, _this$pt2, _this$pt3, _ref, _ref$onBeforeCreate, _this$$primevueConfig, _this$$primevue, _this$$primevue2, _this$$primevue3, _ref2, _ref2$onBeforeCreate;
-    var _usept = (_this$pt = this.pt) === null || _this$pt === void 0 ? void 0 : _this$pt["_usept"];
-    var originalValue = _usept ? (_this$pt2 = this.pt) === null || _this$pt2 === void 0 || (_this$pt2 = _this$pt2.originalValue) === null || _this$pt2 === void 0 ? void 0 : _this$pt2[this.$.type.name] : void 0;
-    var value = _usept ? (_this$pt3 = this.pt) === null || _this$pt3 === void 0 || (_this$pt3 = _this$pt3.value) === null || _this$pt3 === void 0 ? void 0 : _this$pt3[this.$.type.name] : this.pt;
-    (_ref = value || originalValue) === null || _ref === void 0 || (_ref = _ref.hooks) === null || _ref === void 0 || (_ref$onBeforeCreate = _ref["onBeforeCreate"]) === null || _ref$onBeforeCreate === void 0 || _ref$onBeforeCreate.call(_ref);
-    var _useptInConfig = (_this$$primevueConfig = this.$primevueConfig) === null || _this$$primevueConfig === void 0 || (_this$$primevueConfig = _this$$primevueConfig.pt) === null || _this$$primevueConfig === void 0 ? void 0 : _this$$primevueConfig["_usept"];
-    var originalValueInConfig = _useptInConfig ? (_this$$primevue = this.$primevue) === null || _this$$primevue === void 0 || (_this$$primevue = _this$$primevue.config) === null || _this$$primevue === void 0 || (_this$$primevue = _this$$primevue.pt) === null || _this$$primevue === void 0 ? void 0 : _this$$primevue.originalValue : void 0;
-    var valueInConfig = _useptInConfig ? (_this$$primevue2 = this.$primevue) === null || _this$$primevue2 === void 0 || (_this$$primevue2 = _this$$primevue2.config) === null || _this$$primevue2 === void 0 || (_this$$primevue2 = _this$$primevue2.pt) === null || _this$$primevue2 === void 0 ? void 0 : _this$$primevue2.value : (_this$$primevue3 = this.$primevue) === null || _this$$primevue3 === void 0 || (_this$$primevue3 = _this$$primevue3.config) === null || _this$$primevue3 === void 0 ? void 0 : _this$$primevue3.pt;
-    (_ref2 = valueInConfig || originalValueInConfig) === null || _ref2 === void 0 || (_ref2 = _ref2[this.$.type.name]) === null || _ref2 === void 0 || (_ref2 = _ref2.hooks) === null || _ref2 === void 0 || (_ref2$onBeforeCreate = _ref2["onBeforeCreate"]) === null || _ref2$onBeforeCreate === void 0 || _ref2$onBeforeCreate.call(_ref2);
-    this.$attrSelector = uuid("pc");
-  },
-  created: function created2() {
-    this._hook("onCreated");
-  },
-  beforeMount: function beforeMount2() {
-    this.rootEl = findSingle(this.$el, '[data-pc-name="'.concat(toFlatCase(this.$.type.name), '"]'));
-    if (this.rootEl) {
-      this.$attrSelector && !this.rootEl.hasAttribute(this.$attrSelector) && this.rootEl.setAttribute(this.$attrSelector, "");
-      this.rootEl.$pc = _objectSpread$2({
-        name: this.$.type.name,
-        attrSelector: this.$attrSelector
-      }, this.$params);
-    }
-    this._loadStyles();
-    this._hook("onBeforeMount");
-  },
-  mounted: function mounted2() {
-    this._hook("onMounted");
-  },
-  beforeUpdate: function beforeUpdate2() {
-    this._hook("onBeforeUpdate");
-  },
-  updated: function updated2() {
-    this._hook("onUpdated");
-  },
-  beforeUnmount: function beforeUnmount2() {
-    this._hook("onBeforeUnmount");
-  },
-  unmounted: function unmounted2() {
-    this._unloadScopedThemeStyles();
-    this._hook("onUnmounted");
-  },
-  methods: {
-    _hook: function _hook3(hookName) {
-      if (!this.$options.hostName) {
-        var selfHook = this._usePT(this._getPT(this.pt, this.$.type.name), this._getOptionValue, "hooks.".concat(hookName));
-        var defaultHook = this._useDefaultPT(this._getOptionValue, "hooks.".concat(hookName));
-        selfHook === null || selfHook === void 0 || selfHook();
-        defaultHook === null || defaultHook === void 0 || defaultHook();
-      }
-    },
-    _mergeProps: function _mergeProps3(fn) {
-      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key2 = 1; _key2 < _len; _key2++) {
-        args[_key2 - 1] = arguments[_key2];
-      }
-      return isFunction(fn) ? fn.apply(void 0, args) : mergeProps.apply(void 0, args);
-    },
-    _loadStyles: function _loadStyles3() {
-      var _this2 = this;
-      var _load2 = function _load3() {
-        if (!Base.isStyleNameLoaded("base")) {
-          BaseStyle.loadCSS(_this2.$styleOptions);
-          _this2._loadGlobalStyles();
-          Base.setLoadedStyleName("base");
-        }
-        _this2._loadThemeStyles();
-      };
-      _load2();
-      this._themeChangeListener(_load2);
-    },
-    _loadCoreStyles: function _loadCoreStyles3() {
-      var _this$$style, _this$$style2;
-      if (!Base.isStyleNameLoaded((_this$$style = this.$style) === null || _this$$style === void 0 ? void 0 : _this$$style.name) && (_this$$style2 = this.$style) !== null && _this$$style2 !== void 0 && _this$$style2.name) {
-        BaseComponentStyle.loadCSS(this.$styleOptions);
-        this.$options.style && this.$style.loadCSS(this.$styleOptions);
-        Base.setLoadedStyleName(this.$style.name);
-      }
-    },
-    _loadGlobalStyles: function _loadGlobalStyles2() {
-      var globalCSS = this._useGlobalPT(this._getOptionValue, "global.css", this.$params);
-      isNotEmpty(globalCSS) && BaseStyle.load(globalCSS, _objectSpread$2({
-        name: "global"
-      }, this.$styleOptions));
-    },
-    _loadThemeStyles: function _loadThemeStyles3() {
-      var _this$$style4, _this$$style5;
-      if (this.isUnstyled || this.$theme === "none") return;
-      if (!config_default.isStyleNameLoaded("common")) {
-        var _this$$style3, _this$$style3$getComm;
-        var _ref3 = ((_this$$style3 = this.$style) === null || _this$$style3 === void 0 || (_this$$style3$getComm = _this$$style3.getCommonTheme) === null || _this$$style3$getComm === void 0 ? void 0 : _this$$style3$getComm.call(_this$$style3)) || {}, primitive = _ref3.primitive, semantic = _ref3.semantic, global = _ref3.global, style2 = _ref3.style;
-        BaseStyle.load(primitive === null || primitive === void 0 ? void 0 : primitive.css, _objectSpread$2({
-          name: "primitive-variables"
-        }, this.$styleOptions));
-        BaseStyle.load(semantic === null || semantic === void 0 ? void 0 : semantic.css, _objectSpread$2({
-          name: "semantic-variables"
-        }, this.$styleOptions));
-        BaseStyle.load(global === null || global === void 0 ? void 0 : global.css, _objectSpread$2({
-          name: "global-variables"
-        }, this.$styleOptions));
-        BaseStyle.loadTheme(_objectSpread$2({
-          name: "global-style"
-        }, this.$styleOptions), style2);
-        config_default.setLoadedStyleName("common");
-      }
-      if (!config_default.isStyleNameLoaded((_this$$style4 = this.$style) === null || _this$$style4 === void 0 ? void 0 : _this$$style4.name) && (_this$$style5 = this.$style) !== null && _this$$style5 !== void 0 && _this$$style5.name) {
-        var _this$$style6, _this$$style6$getComp, _this$$style7, _this$$style8;
-        var _ref4 = ((_this$$style6 = this.$style) === null || _this$$style6 === void 0 || (_this$$style6$getComp = _this$$style6.getComponentTheme) === null || _this$$style6$getComp === void 0 ? void 0 : _this$$style6$getComp.call(_this$$style6)) || {}, css4 = _ref4.css, _style = _ref4.style;
-        (_this$$style7 = this.$style) === null || _this$$style7 === void 0 || _this$$style7.load(css4, _objectSpread$2({
-          name: "".concat(this.$style.name, "-variables")
-        }, this.$styleOptions));
-        (_this$$style8 = this.$style) === null || _this$$style8 === void 0 || _this$$style8.loadTheme(_objectSpread$2({
-          name: "".concat(this.$style.name, "-style")
-        }, this.$styleOptions), _style);
-        config_default.setLoadedStyleName(this.$style.name);
-      }
-      if (!config_default.isStyleNameLoaded("layer-order")) {
-        var _this$$style9, _this$$style9$getLaye;
-        var layerOrder = (_this$$style9 = this.$style) === null || _this$$style9 === void 0 || (_this$$style9$getLaye = _this$$style9.getLayerOrderThemeCSS) === null || _this$$style9$getLaye === void 0 ? void 0 : _this$$style9$getLaye.call(_this$$style9);
-        BaseStyle.load(layerOrder, _objectSpread$2({
-          name: "layer-order",
-          first: true
-        }, this.$styleOptions));
-        config_default.setLoadedStyleName("layer-order");
-      }
-    },
-    _loadScopedThemeStyles: function _loadScopedThemeStyles3(preset) {
-      var _this$$style10, _this$$style10$getPre, _this$$style11;
-      var _ref5 = ((_this$$style10 = this.$style) === null || _this$$style10 === void 0 || (_this$$style10$getPre = _this$$style10.getPresetTheme) === null || _this$$style10$getPre === void 0 ? void 0 : _this$$style10$getPre.call(_this$$style10, preset, "[".concat(this.$attrSelector, "]"))) || {}, css4 = _ref5.css;
-      var scopedStyle = (_this$$style11 = this.$style) === null || _this$$style11 === void 0 ? void 0 : _this$$style11.load(css4, _objectSpread$2({
-        name: "".concat(this.$attrSelector, "-").concat(this.$style.name)
-      }, this.$styleOptions));
-      this.scopedStyleEl = scopedStyle.el;
-    },
-    _unloadScopedThemeStyles: function _unloadScopedThemeStyles2() {
-      var _this$scopedStyleEl;
-      (_this$scopedStyleEl = this.scopedStyleEl) === null || _this$scopedStyleEl === void 0 || (_this$scopedStyleEl = _this$scopedStyleEl.value) === null || _this$scopedStyleEl === void 0 || _this$scopedStyleEl.remove();
-    },
-    _themeChangeListener: function _themeChangeListener3() {
-      var callback = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : function() {
-      };
-      Base.clearLoadedStyleNames();
-      service_default.on("theme:change", callback);
-    },
-    _getHostInstance: function _getHostInstance2(instance) {
-      return instance ? this.$options.hostName ? instance.$.type.name === this.$options.hostName ? instance : this._getHostInstance(instance.$parentInstance) : instance.$parentInstance : void 0;
-    },
-    _getPropValue: function _getPropValue2(name) {
-      var _this$_getHostInstanc;
-      return this[name] || ((_this$_getHostInstanc = this._getHostInstance(this)) === null || _this$_getHostInstanc === void 0 ? void 0 : _this$_getHostInstanc[name]);
-    },
-    _getOptionValue: function _getOptionValue2(options) {
-      var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
-      var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      return getKeyValue(options, key, params);
-    },
-    _getPTValue: function _getPTValue3() {
-      var _this$$primevueConfig2;
-      var obj = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
-      var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      var searchInDefaultPT = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : true;
-      var searchOut = /./g.test(key) && !!params[key.split(".")[0]];
-      var _ref6 = this._getPropValue("ptOptions") || ((_this$$primevueConfig2 = this.$primevueConfig) === null || _this$$primevueConfig2 === void 0 ? void 0 : _this$$primevueConfig2.ptOptions) || {}, _ref6$mergeSections = _ref6.mergeSections, mergeSections = _ref6$mergeSections === void 0 ? true : _ref6$mergeSections, _ref6$mergeProps = _ref6.mergeProps, useMergeProps = _ref6$mergeProps === void 0 ? false : _ref6$mergeProps;
-      var global = searchInDefaultPT ? searchOut ? this._useGlobalPT(this._getPTClassValue, key, params) : this._useDefaultPT(this._getPTClassValue, key, params) : void 0;
-      var self = searchOut ? void 0 : this._getPTSelf(obj, this._getPTClassValue, key, _objectSpread$2(_objectSpread$2({}, params), {}, {
-        global: global || {}
-      }));
-      var datasets = this._getPTDatasets(key);
-      return mergeSections || !mergeSections && self ? useMergeProps ? this._mergeProps(useMergeProps, global, self, datasets) : _objectSpread$2(_objectSpread$2(_objectSpread$2({}, global), self), datasets) : _objectSpread$2(_objectSpread$2({}, self), datasets);
-    },
-    _getPTSelf: function _getPTSelf2() {
-      var obj = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key3 = 1; _key3 < _len2; _key3++) {
-        args[_key3 - 1] = arguments[_key3];
-      }
-      return mergeProps(
-        this._usePT.apply(this, [this._getPT(obj, this.$name)].concat(args)),
-        // Exp; <component :pt="{}"
-        this._usePT.apply(this, [this.$_attrsPT].concat(args))
-        // Exp; <component :pt:[passthrough_key]:[attribute]="{value}" or <component :pt:[passthrough_key]="() =>{value}"
-      );
-    },
-    _getPTDatasets: function _getPTDatasets3() {
-      var _this$pt4, _this$pt5;
-      var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      var datasetPrefix = "data-pc-";
-      var isExtended = key === "root" && isNotEmpty((_this$pt4 = this.pt) === null || _this$pt4 === void 0 ? void 0 : _this$pt4["data-pc-section"]);
-      return key !== "transition" && _objectSpread$2(_objectSpread$2({}, key === "root" && _objectSpread$2(_objectSpread$2(_defineProperty$2({}, "".concat(datasetPrefix, "name"), toFlatCase(isExtended ? (_this$pt5 = this.pt) === null || _this$pt5 === void 0 ? void 0 : _this$pt5["data-pc-section"] : this.$.type.name)), isExtended && _defineProperty$2({}, "".concat(datasetPrefix, "extend"), toFlatCase(this.$.type.name))), isClient() && _defineProperty$2({}, "".concat(this.$attrSelector), ""))), {}, _defineProperty$2({}, "".concat(datasetPrefix, "section"), toFlatCase(key)));
-    },
-    _getPTClassValue: function _getPTClassValue2() {
-      var value = this._getOptionValue.apply(this, arguments);
-      return isString(value) || isArray(value) ? {
-        "class": value
-      } : value;
-    },
-    _getPT: function _getPT3(pt) {
-      var _this3 = this;
-      var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
-      var callback = arguments.length > 2 ? arguments[2] : void 0;
-      var getValue = function getValue2(value) {
-        var _ref9;
-        var checkSameKey = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
-        var computedValue = callback ? callback(value) : value;
-        var _key = toFlatCase(key);
-        var _cKey = toFlatCase(_this3.$name);
-        return (_ref9 = checkSameKey ? _key !== _cKey ? computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key] : void 0 : computedValue === null || computedValue === void 0 ? void 0 : computedValue[_key]) !== null && _ref9 !== void 0 ? _ref9 : computedValue;
-      };
-      return pt !== null && pt !== void 0 && pt.hasOwnProperty("_usept") ? {
-        _usept: pt["_usept"],
-        originalValue: getValue(pt.originalValue),
-        value: getValue(pt.value)
-      } : getValue(pt, true);
-    },
-    _usePT: function _usePT3(pt, callback, key, params) {
-      var fn = function fn2(value2) {
-        return callback(value2, key, params);
-      };
-      if (pt !== null && pt !== void 0 && pt.hasOwnProperty("_usept")) {
-        var _this$$primevueConfig3;
-        var _ref10 = pt["_usept"] || ((_this$$primevueConfig3 = this.$primevueConfig) === null || _this$$primevueConfig3 === void 0 ? void 0 : _this$$primevueConfig3.ptOptions) || {}, _ref10$mergeSections = _ref10.mergeSections, mergeSections = _ref10$mergeSections === void 0 ? true : _ref10$mergeSections, _ref10$mergeProps = _ref10.mergeProps, useMergeProps = _ref10$mergeProps === void 0 ? false : _ref10$mergeProps;
-        var originalValue = fn(pt.originalValue);
-        var value = fn(pt.value);
-        if (originalValue === void 0 && value === void 0) return void 0;
-        else if (isString(value)) return value;
-        else if (isString(originalValue)) return originalValue;
-        return mergeSections || !mergeSections && value ? useMergeProps ? this._mergeProps(useMergeProps, originalValue, value) : _objectSpread$2(_objectSpread$2({}, originalValue), value) : value;
-      }
-      return fn(pt);
-    },
-    _useGlobalPT: function _useGlobalPT2(callback, key, params) {
-      return this._usePT(this.globalPT, callback, key, params);
-    },
-    _useDefaultPT: function _useDefaultPT3(callback, key, params) {
-      return this._usePT(this.defaultPT, callback, key, params);
-    },
-    ptm: function ptm2() {
-      var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      return this._getPTValue(this.pt, key, _objectSpread$2(_objectSpread$2({}, this.$params), params));
-    },
-    ptmi: function ptmi2() {
-      var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      return mergeProps(this.$_attrsWithoutPT, this.ptm(key, params));
-    },
-    ptmo: function ptmo2() {
-      var obj = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      var key = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "";
-      var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      return this._getPTValue(obj, key, _objectSpread$2({
-        instance: this
-      }, params), false);
-    },
-    cx: function cx2() {
-      var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      var params = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      return !this.isUnstyled ? this._getOptionValue(this.$style.classes, key, _objectSpread$2(_objectSpread$2({}, this.$params), params)) : void 0;
-    },
-    sx: function sx2() {
-      var key = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-      var when = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
-      var params = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      if (when) {
-        var self = this._getOptionValue(this.$style.inlineStyles, key, _objectSpread$2(_objectSpread$2({}, this.$params), params));
-        var base = this._getOptionValue(BaseComponentStyle.inlineStyles, key, _objectSpread$2(_objectSpread$2({}, this.$params), params));
-        return [base, self];
-      }
-      return void 0;
-    }
-  },
-  computed: {
-    globalPT: function globalPT2() {
-      var _this$$primevueConfig4, _this4 = this;
-      return this._getPT((_this$$primevueConfig4 = this.$primevueConfig) === null || _this$$primevueConfig4 === void 0 ? void 0 : _this$$primevueConfig4.pt, void 0, function(value) {
-        return resolve(value, {
-          instance: _this4
-        });
-      });
-    },
-    defaultPT: function defaultPT2() {
-      var _this$$primevueConfig5, _this5 = this;
-      return this._getPT((_this$$primevueConfig5 = this.$primevueConfig) === null || _this$$primevueConfig5 === void 0 ? void 0 : _this$$primevueConfig5.pt, void 0, function(value) {
-        return _this5._getOptionValue(value, _this5.$name, _objectSpread$2({}, _this5.$params)) || resolve(value, _objectSpread$2({}, _this5.$params));
-      });
-    },
-    isUnstyled: function isUnstyled2() {
-      var _this$$primevueConfig6;
-      return this.unstyled !== void 0 ? this.unstyled : (_this$$primevueConfig6 = this.$primevueConfig) === null || _this$$primevueConfig6 === void 0 ? void 0 : _this$$primevueConfig6.unstyled;
-    },
-    $inProps: function $inProps2() {
-      var _this$$$vnode;
-      var nodePropKeys = Object.keys(((_this$$$vnode = this.$.vnode) === null || _this$$$vnode === void 0 ? void 0 : _this$$$vnode.props) || {});
-      return Object.fromEntries(Object.entries(this.$props).filter(function(_ref11) {
-        var _ref12 = _slicedToArray$1(_ref11, 1), k = _ref12[0];
-        return nodePropKeys === null || nodePropKeys === void 0 ? void 0 : nodePropKeys.includes(k);
-      }));
-    },
-    $theme: function $theme2() {
-      var _this$$primevueConfig7;
-      return (_this$$primevueConfig7 = this.$primevueConfig) === null || _this$$primevueConfig7 === void 0 ? void 0 : _this$$primevueConfig7.theme;
-    },
-    $style: function $style2() {
-      return _objectSpread$2(_objectSpread$2({
-        classes: void 0,
-        inlineStyles: void 0,
-        load: function load3() {
-        },
-        loadCSS: function loadCSS3() {
-        },
-        loadTheme: function loadTheme2() {
-        }
-      }, (this._getHostInstance(this) || {}).$style), this.$options.style);
-    },
-    $styleOptions: function $styleOptions2() {
-      var _this$$primevueConfig8;
-      return {
-        nonce: (_this$$primevueConfig8 = this.$primevueConfig) === null || _this$$primevueConfig8 === void 0 || (_this$$primevueConfig8 = _this$$primevueConfig8.csp) === null || _this$$primevueConfig8 === void 0 ? void 0 : _this$$primevueConfig8.nonce
-      };
-    },
-    $primevueConfig: function $primevueConfig2() {
-      var _this$$primevue4;
-      return (_this$$primevue4 = this.$primevue) === null || _this$$primevue4 === void 0 ? void 0 : _this$$primevue4.config;
-    },
-    $name: function $name2() {
-      return this.$options.hostName || this.$.type.name;
-    },
-    $params: function $params2() {
-      var parentInstance = this._getHostInstance(this) || this.$parent;
-      return {
-        instance: this,
-        props: this.$props,
-        state: this.$data,
-        attrs: this.$attrs,
-        parent: {
-          instance: parentInstance,
-          props: parentInstance === null || parentInstance === void 0 ? void 0 : parentInstance.$props,
-          state: parentInstance === null || parentInstance === void 0 ? void 0 : parentInstance.$data,
-          attrs: parentInstance === null || parentInstance === void 0 ? void 0 : parentInstance.$attrs
-        }
-      };
-    },
-    $_attrsPT: function $_attrsPT2() {
-      return Object.entries(this.$attrs || {}).filter(function(_ref13) {
-        var _ref14 = _slicedToArray$1(_ref13, 1), key = _ref14[0];
-        return key === null || key === void 0 ? void 0 : key.startsWith("pt:");
-      }).reduce(function(result, _ref15) {
-        var _ref16 = _slicedToArray$1(_ref15, 2), key = _ref16[0], value = _ref16[1];
-        var _key$split = key.split(":"), _key$split2 = _toArray(_key$split), rest = _key$split2.slice(1);
-        rest === null || rest === void 0 || rest.reduce(function(currentObj, nestedKey, index2, array) {
-          !currentObj[nestedKey] && (currentObj[nestedKey] = index2 === array.length - 1 ? value : {});
-          return currentObj[nestedKey];
-        }, result);
-        return result;
-      }, {});
-    },
-    $_attrsWithoutPT: function $_attrsWithoutPT2() {
-      return Object.entries(this.$attrs || {}).filter(function(_ref17) {
-        var _ref18 = _slicedToArray$1(_ref17, 1), key = _ref18[0];
-        return !(key !== null && key !== void 0 && key.startsWith("pt:"));
-      }).reduce(function(acc, _ref19) {
-        var _ref20 = _slicedToArray$1(_ref19, 2), key = _ref20[0], value = _ref20[1];
-        acc[key] = value;
-        return acc;
-      }, {});
-    }
-  }
-};
-var classes$1 = {
-  root: "p-form p-component"
-};
-var FormStyle = BaseStyle.extend({
-  name: "form",
-  classes: classes$1
-});
-var script$1$1 = {
-  name: "BaseForm",
-  "extends": script$8,
-  style: FormStyle,
-  props: {
-    resolver: {
-      type: Function,
-      "default": null
-    },
-    initialValues: {
-      type: Object,
-      "default": null
-    },
-    validateOnValueUpdate: {
-      type: [Boolean, Array],
-      "default": true
-    },
     validateOnBlur: {
-      type: [Boolean, Array],
-      "default": false
+      type: Boolean,
+      "default": void 0
     },
     validateOnMount: {
-      type: [Boolean, Array],
-      "default": false
+      type: Boolean,
+      "default": void 0
     },
     validateOnSubmit: {
-      type: [Boolean, Array],
-      "default": true
+      type: Boolean,
+      "default": void 0
+    },
+    as: {
+      type: [String, Object],
+      "default": "DIV"
+    },
+    asChild: {
+      type: Boolean,
+      "default": false
     }
   },
-  provide: function provide2() {
+  provide: function provide3() {
     return {
-      $pcForm: this,
+      $pcFormField: this,
       $parentInstance: this
     };
   }
@@ -4689,87 +3242,63 @@ function _toPrimitive$1(t, r) {
   }
   return ("string" === r ? String : Number)(t);
 }
-function _slicedToArray(r, e) {
-  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(r, a) {
-  if (r) {
-    if ("string" == typeof r) return _arrayLikeToArray(r, a);
-    var t = {}.toString.call(r).slice(8, -1);
-    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
-  }
-}
-function _arrayLikeToArray(r, a) {
-  (null == a || a > r.length) && (a = r.length);
-  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-  return n;
-}
-function _iterableToArrayLimit(r, l) {
-  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (null != t) {
-    var e, n, i, u, a = [], f = true, o = false;
-    try {
-      if (i = (t = t.call(r)).next, 0 === l) ;
-      else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = true) ;
-    } catch (r2) {
-      o = true, n = r2;
-    } finally {
-      try {
-        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-      } finally {
-        if (o) throw n;
-      }
-    }
-    return a;
-  }
-}
-function _arrayWithHoles(r) {
-  if (Array.isArray(r)) return r;
-}
 var script$7 = {
-  name: "Form",
+  name: "FormField",
   "extends": script$1$1,
   inheritAttrs: false,
-  emits: ["submit"],
-  setup: function setup2(props, _ref) {
-    var emit = _ref.emit;
-    var $form = useForm(props);
-    var register2 = function register3(field, options) {
-      var _$form$defineField = $form.defineField(field, options), _$form$defineField2 = _slicedToArray(_$form$defineField, 2), fieldProps = _$form$defineField2[1];
-      return fieldProps;
-    };
-    var onSubmit = $form.handleSubmit(function(e) {
-      emit("submit", e);
-    });
-    return _objectSpread$1({
-      register: register2,
-      onSubmit
-    }, omit($form, ["handleSubmit"]));
+  inject: {
+    $pcForm: {
+      "default": void 0
+    }
+  },
+  watch: {
+    formControl: {
+      immediate: true,
+      handler: function handler6(newValue) {
+        var _this$$pcForm, _this$$pcForm$registe;
+        (_this$$pcForm = this.$pcForm) === null || _this$$pcForm === void 0 || (_this$$pcForm$registe = _this$$pcForm.register) === null || _this$$pcForm$registe === void 0 || _this$$pcForm$registe.call(_this$$pcForm, this.name, newValue);
+      }
+    }
+  },
+  computed: {
+    formControl: function formControl() {
+      return {
+        name: this.name,
+        resolver: this.resolver,
+        initialValue: this.initialValue,
+        validateOnValueUpdate: this.validateOnValueUpdate,
+        validateOnBlur: this.validateOnBlur,
+        validateOnMount: this.validateOnMount,
+        validateOnSubmit: this.validateOnSubmit
+      };
+    },
+    field: function field() {
+      var _this$$pcForm2;
+      return ((_this$$pcForm2 = this.$pcForm) === null || _this$$pcForm2 === void 0 || (_this$$pcForm2 = _this$$pcForm2.fields) === null || _this$$pcForm2 === void 0 ? void 0 : _this$$pcForm2[this.name]) || {};
+    },
+    fieldAttrs: function fieldAttrs() {
+      return _objectSpread$1(_objectSpread$1({}, this.field.props), this.field.states);
+    }
   }
 };
 function render$7(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("form", mergeProps({
-    onSubmit: _cache[0] || (_cache[0] = withModifiers(function() {
-      return $setup.onSubmit && $setup.onSubmit.apply($setup, arguments);
-    }, ["prevent"])),
+  return !_ctx.asChild ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.as), mergeProps({
+    key: 0,
     "class": _ctx.cx("root")
-  }, _ctx.ptmi("root")), [renderSlot(_ctx.$slots, "default", mergeProps({
-    register: $setup.register,
-    valid: _ctx.valid,
-    reset: _ctx.reset
-  }, _ctx.states))], 16);
+  }, _ctx.ptmi("root")), {
+    "default": withCtx(function() {
+      return [renderSlot(_ctx.$slots, "default", mergeProps({
+        props: $options.field.props
+      }, $options.fieldAttrs))];
+    }),
+    _: 3
+  }, 16, ["class"])) : renderSlot(_ctx.$slots, "default", mergeProps({
+    key: 1,
+    "class": _ctx.cx("root"),
+    props: $options.field.props
+  }, $options.fieldAttrs));
 }
 script$7.render = render$7;
-var classes = {
-  root: "p-formfield p-component"
-};
-BaseStyle.extend({
-  name: "formfield",
-  classes
-});
 var script$6 = {
   name: "BlankIcon",
   "extends": script$j
@@ -10261,47 +8790,12 @@ var index = _objectSpread(_objectSpread({}, index$1l), {}, {
     ripple: index$s
   }
 });
-var __defProp = Object.defineProperty;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-function isObject(value, empty = true) {
-  return value instanceof Object && value.constructor === Object && (empty || Object.keys(value).length !== 0);
-}
-function mergeKeys(...args) {
-  const _mergeKeys = (target = {}, source = {}) => {
-    const mergedObj = __spreadValues({}, target);
-    Object.keys(source).forEach((key) => {
-      if (isObject(source[key]) && key in target && isObject(target[key])) {
-        mergedObj[key] = _mergeKeys(target[key], source[key]);
-      } else {
-        mergedObj[key] = source[key];
-      }
-    });
-    return mergedObj;
-  };
-  return args.reduce((acc, obj, i) => i === 0 ? obj : _mergeKeys(acc, obj), {});
-}
-function definePreset(...presets) {
-  return mergeKeys(...presets);
-}
 export {
-  BaseStyle$1 as B,
+  BaseStyle as B,
   ConnectedOverlayScrollHandler as C,
   FilterService as F,
   PrimeVue as P,
+  UniqueComponentId as U,
   BaseDirective as a,
   script$f as b,
   script$g as c,
@@ -10325,7 +8819,7 @@ export {
   script$1 as u,
   script as v,
   usePrimeVue as w,
-  script$7 as x,
-  definePreset as y,
+  script$8 as x,
+  script$7 as y,
   index as z
 };
