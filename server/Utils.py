@@ -13,7 +13,7 @@ from PIL import Image
 from io import BytesIO
 import requests
 
-version = "0.2.3"
+version = "0.2.4"
 
 
 def to_base36_random() -> str:

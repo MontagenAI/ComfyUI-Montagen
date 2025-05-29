@@ -5,9 +5,9 @@
 
 ## Updates
 
-### [[0.2.3]](/CHANGELOG.md) - 2025-05-14
+### [[0.2.4]](/CHANGELOG.md) - 2025-05-29
 
-*Compatibility Hotfix: Fixed Custom Node Registration Issue Caused by ComfyUI Frontend v1.19 Update.*
+*Bugfix Update: Resolved multiple Editor and Explorer issues, with minor node improvements.*
 
 ![Montagen ScreenShot](assets/montagen0.2.1.png)
 

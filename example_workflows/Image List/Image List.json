@@ -5,58 +5,6 @@
     "last_link_id": 16,
     "nodes": [
         {
-            "id": 1,
-            "type": "CheckpointLoaderSimple",
-            "pos": [
-                1098.072509765625,
-                797.5763549804688
-            ],
-            "size": [
-                315,
-                122
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "name": "MODEL",
-                    "type": "MODEL",
-                    "slot_index": 0,
-                    "links": [
-                        12
-                    ]
-                },
-                {
-                    "name": "CLIP",
-                    "type": "CLIP",
-                    "slot_index": 1,
-                    "links": [
-                        3,
-                        4
-                    ]
-                },
-                {
-                    "name": "VAE",
-                    "type": "VAE",
-                    "slot_index": 2,
-                    "links": [
-                        7
-                    ]
-                }
-            ],
-            "properties": {
-                "cnr_id": "comfy-core",
-                "ver": "0.3.29",
-                "Node name for S&R": "CheckpointLoaderSimple"
-            },
-            "widgets_values": [
-                "flux1-dev-fp8.safetensors",
-                null
-            ]
-        },
-        {
             "id": 4,
             "type": "CLIPTextEncode",
             "pos": [
@@ -193,105 +141,110 @@
                     "items": [
                         {
                             "meta": {
-                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_0_20250425151536.png"
+                                "zIndex": 347,
+                                "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_0_20250529182148.png"
                             },
                             "default": {
                                 "type": "image",
                                 "children": [],
                                 "start": -1,
                                 "duration": -1,
-                                "object-fit": "contain",
+                                "object-fit": "cover",
                                 "x": "50vw",
                                 "y": "50vh",
-                                "width": "50vw",
                                 "loop": true,
                                 "audio": false,
                                 "mute": false
                             },
-                            "item_id": "12_5bYkljEfepxOT_1"
+                            "item_id": "12_grqWlLH3I6BNc_1",
+                            "item_index": 1
                         },
                         {
                             "meta": {
-                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_1_20250425151536.png"
+                                "zIndex": 347,
+                                "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_1_20250529182148.png"
                             },
                             "default": {
                                 "type": "image",
                                 "children": [],
                                 "start": -1,
                                 "duration": -1,
-                                "object-fit": "contain",
+                                "object-fit": "cover",
                                 "x": "50vw",
                                 "y": "50vh",
-                                "width": "50vw",
                                 "loop": true,
                                 "audio": false,
                                 "mute": false
                             },
-                            "item_id": "12_5bYkljEfepxOT_2"
+                            "item_id": "12_grqWlLH3I6BNc_2",
+                            "item_index": 2
                         },
                         {
                             "meta": {
-                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_2_20250425151536.png"
+                                "zIndex": 347,
+                                "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_2_20250529182148.png"
                             },
                             "default": {
                                 "type": "image",
                                 "children": [],
                                 "start": -1,
                                 "duration": -1,
-                                "object-fit": "contain",
+                                "object-fit": "cover",
                                 "x": "50vw",
                                 "y": "50vh",
-                                "width": "50vw",
                                 "loop": true,
                                 "audio": false,
                                 "mute": false
                             },
-                            "item_id": "12_5bYkljEfepxOT_3"
+                            "item_id": "12_grqWlLH3I6BNc_3",
+                            "item_index": 3
                         },
                         {
                             "meta": {
-                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_3_20250425151537.png"
+                                "zIndex": 347,
+                                "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_3_20250529182149.png"
                             },
                             "default": {
                                 "type": "image",
                                 "children": [],
                                 "start": -1,
                                 "duration": -1,
-                                "object-fit": "contain",
+                                "object-fit": "cover",
                                 "x": "50vw",
                                 "y": "50vh",
-                                "width": "50vw",
                                 "loop": true,
                                 "audio": false,
                                 "mute": false
                             },
-                            "item_id": "12_5bYkljEfepxOT_4"
+                            "item_id": "12_grqWlLH3I6BNc_4",
+                            "item_index": 4
                         },
                         {
                             "meta": {
-                                "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_4_20250425151537.png"
+                                "zIndex": 347,
+                                "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_4_20250529182149.png"
                             },
                             "default": {
                                 "type": "image",
                                 "children": [],
                                 "start": -1,
                                 "duration": -1,
-                                "object-fit": "contain",
+                                "object-fit": "cover",
                                 "x": "50vw",
                                 "y": "50vh",
-                                "width": "50vw",
                                 "loop": true,
                                 "audio": false,
                                 "mute": false
                             },
-                            "item_id": "12_5bYkljEfepxOT_5"
+                            "item_id": "12_grqWlLH3I6BNc_5",
+                            "item_index": 5
                         }
                     ],
                     "assets": [
                         {
-                            "file_name": "imageList_0_20250425151536.png",
-                            "file_path": "image\\imageList_0_20250425151536.png",
-                            "file_time": 1745565336.225324,
+                            "file_name": "imageList_0_20250529182148.png",
+                            "file_path": "image\\imageList_0_20250529182148.png",
+                            "file_time": 1748514108.0626593,
                             "file_size": 994505,
                             "file_type": "image",
                             "is_ref": false,
@@ -304,12 +257,12 @@
                             "codec_name": "png",
                             "duration": 0.0,
                             "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_0_20250425151536.png"
+                            "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_0_20250529182148.png"
                         },
                         {
-                            "file_name": "imageList_1_20250425151536.png",
-                            "file_path": "image\\imageList_1_20250425151536.png",
-                            "file_time": 1745565336.5933475,
+                            "file_name": "imageList_1_20250529182148.png",
+                            "file_path": "image\\imageList_1_20250529182148.png",
+                            "file_time": 1748514108.4602473,
                             "file_size": 1097195,
                             "file_type": "image",
                             "is_ref": false,
@@ -322,12 +275,12 @@
                             "codec_name": "png",
                             "duration": 0.0,
                             "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_1_20250425151536.png"
+                            "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_1_20250529182148.png"
                         },
                         {
-                            "file_name": "imageList_2_20250425151536.png",
-                            "file_path": "image\\imageList_2_20250425151536.png",
-                            "file_time": 1745565336.89681,
+                            "file_name": "imageList_2_20250529182148.png",
+                            "file_path": "image\\imageList_2_20250529182148.png",
+                            "file_time": 1748514108.8059628,
                             "file_size": 861545,
                             "file_type": "image",
                             "is_ref": false,
@@ -340,12 +293,12 @@
                             "codec_name": "png",
                             "duration": 0.0,
                             "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_2_20250425151536.png"
+                            "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_2_20250529182148.png"
                         },
                         {
-                            "file_name": "imageList_3_20250425151537.png",
-                            "file_path": "image\\imageList_3_20250425151537.png",
-                            "file_time": 1745565337.214578,
+                            "file_name": "imageList_3_20250529182149.png",
+                            "file_path": "image\\imageList_3_20250529182149.png",
+                            "file_time": 1748514109.1748219,
                             "file_size": 1089210,
                             "file_type": "image",
                             "is_ref": false,
@@ -358,12 +311,12 @@
                             "codec_name": "png",
                             "duration": 0.0,
                             "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_3_20250425151537.png"
+                            "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_3_20250529182149.png"
                         },
                         {
-                            "file_name": "imageList_4_20250425151537.png",
-                            "file_path": "image\\imageList_4_20250425151537.png",
-                            "file_time": 1745565337.5919645,
+                            "file_name": "imageList_4_20250529182149.png",
+                            "file_path": "image\\imageList_4_20250529182149.png",
+                            "file_time": 1748514109.5771275,
                             "file_size": 1064321,
                             "file_type": "image",
                             "is_ref": false,
@@ -376,144 +329,20 @@
                             "codec_name": "png",
                             "duration": 0.0,
                             "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_4_20250425151537.png"
-                        },
-                        {
-                            "file_name": "imageList_5_20250424161640.png",
-                            "file_path": "image\\imageList_5_20250424161640.png",
-                            "file_time": 1745482600.6886115,
-                            "file_size": 997224,
-                            "file_type": "image",
-                            "is_ref": false,
-                            "width": 1280,
-                            "height": 720,
-                            "frame_rate": 25.0,
-                            "pixel_format": "rgb24",
-                            "color_space": null,
-                            "bit_rate": null,
-                            "codec_name": "png",
-                            "duration": 0.0,
-                            "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_5_20250424161640.png"
-                        },
-                        {
-                            "file_name": "imageList_6_20250424161641.png",
-                            "file_path": "image\\imageList_6_20250424161641.png",
-                            "file_time": 1745482601.0286407,
-                            "file_size": 1100043,
-                            "file_type": "image",
-                            "is_ref": false,
-                            "width": 1280,
-                            "height": 720,
-                            "frame_rate": 25.0,
-                            "pixel_format": "rgb24",
-                            "color_space": null,
-                            "bit_rate": null,
-                            "codec_name": "png",
-                            "duration": 0.0,
-                            "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_6_20250424161641.png"
-                        },
-                        {
-                            "file_name": "imageList_7_20250424161641.png",
-                            "file_path": "image\\imageList_7_20250424161641.png",
-                            "file_time": 1745482601.3289304,
-                            "file_size": 869571,
-                            "file_type": "image",
-                            "is_ref": false,
-                            "width": 1280,
-                            "height": 720,
-                            "frame_rate": 25.0,
-                            "pixel_format": "rgb24",
-                            "color_space": null,
-                            "bit_rate": null,
-                            "codec_name": "png",
-                            "duration": 0.0,
-                            "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_7_20250424161641.png"
-                        },
-                        {
-                            "file_name": "imageList_8_20250424161641.png",
-                            "file_path": "image\\imageList_8_20250424161641.png",
-                            "file_time": 1745482601.6531718,
-                            "file_size": 1086094,
-                            "file_type": "image",
-                            "is_ref": false,
-                            "width": 1280,
-                            "height": 720,
-                            "frame_rate": 25.0,
-                            "pixel_format": "rgb24",
-                            "color_space": null,
-                            "bit_rate": null,
-                            "codec_name": "png",
-                            "duration": 0.0,
-                            "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_8_20250424161641.png"
-                        },
-                        {
-                            "file_name": "imageList_9_20250424161642.png",
-                            "file_path": "image\\imageList_9_20250424161642.png",
-                            "file_time": 1745482602.018288,
-                            "file_size": 1056294,
-                            "file_type": "image",
-                            "is_ref": false,
-                            "width": 1280,
-                            "height": 720,
-                            "frame_rate": 25.0,
-                            "pixel_format": "rgb24",
-                            "color_space": null,
-                            "bit_rate": null,
-                            "codec_name": "png",
-                            "duration": 0.0,
-                            "parent": "imageList",
-                            "src": "//Montagen/Proj/2ubphbiltvvvfcb/File/imageList_9_20250424161642.png"
+                            "src": "//Montagen/Proj/2ubwub9i2hekn7n/File/imageList_4_20250529182149.png"
                         }
                     ],
                     "meta": {
                         "width": "100vw",
                         "height": "100vh "
                     }
-                }
+                },
+                "createtime": 1748513710323,
+                "zIndex": 347
             },
             "widgets_values": [
                 "imageList",
                 ""
-            ]
-        },
-        {
-            "id": 6,
-            "type": "MontagenCreateTimeline",
-            "pos": [
-                1843.18896484375,
-                1322.7161865234375
-            ],
-            "size": [
-                315,
-                130
-            ],
-            "flags": {},
-            "order": 1,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "name": "timeline",
-                    "type": "TIMELINE",
-                    "links": [
-                        9
-                    ]
-                }
-            ],
-            "properties": {
-                "cnr_id": "ComfyUI-Montagen",
-                "ver": "ab6dd75599912f94fa46006f546a780c082420c0",
-                "Node name for S&R": "MontagenCreateTimeline"
-            },
-            "widgets_values": [
-                "Demo1",
-                1280,
-                720,
-                25
             ]
         },
         {
@@ -724,7 +553,7 @@
                 106
             ],
             "flags": {},
-            "order": 2,
+            "order": 0,
             "mode": 0,
             "inputs": [],
             "outputs": [
@@ -751,6 +580,44 @@
             "bgcolor": "#535"
         },
         {
+            "id": 6,
+            "type": "MontagenCreateTimeline",
+            "pos": [
+                1843.18896484375,
+                1322.7161865234375
+            ],
+            "size": [
+                315,
+                154
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "timeline",
+                    "type": "TIMELINE",
+                    "links": [
+                        9
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "ComfyUI-Montagen",
+                "ver": "ab6dd75599912f94fa46006f546a780c082420c0",
+                "Node name for S&R": "MontagenCreateTimeline",
+                "createtime": 1748513710324
+            },
+            "widgets_values": [
+                "Demo1",
+                1280,
+                720,
+                25,
+                "opentimeline"
+            ]
+        },
+        {
             "id": 12,
             "type": "MontagenSRTListParser",
             "pos": [
@@ -762,7 +629,7 @@
                 481.2407531738281
             ],
             "flags": {},
-            "order": 3,
+            "order": 2,
             "mode": 0,
             "inputs": [
                 {
@@ -800,7 +667,8 @@
                 "cnr_id": "ComfyUI-Montagen",
                 "ver": "a1abd37b9e4f1b7f8db3481231345d0281a2d636",
                 "Node name for S&R": "MontagenSRTListParser",
-                "montagen_node_type": "timerange"
+                "montagen_node_type": "timerange",
+                "createtime": 1748513710327
             },
             "widgets_values": [
                 "rebuild",
@@ -809,13 +677,13 @@
                     {
                         "index": 1,
                         "start": 0,
-                        "end": 3.6,
+                        "end": 3.2,
                         "content": "Hands kneading dough on floured marble counter, visible muscle tension in forearms, vintage blue striped apron, wooden bowl with 250g flour bag in background, morning light through checkered curtains.",
                         "isSelected": true
                     },
                     {
                         "index": 2,
-                        "start": 3.6,
+                        "start": 3.2,
                         "end": 7.2,
                         "content": "Close-up of fermented dough in proofing basket, doubled size with air bubbles under surface, linen cloth imprint on dough, flour-dusted banneton, warm steam rising.",
                         "isSelected": true
@@ -823,13 +691,13 @@
                     {
                         "index": 3,
                         "start": 7.2,
-                        "end": 10.8,
+                        "end": 10.7,
                         "content": "Cast iron Dutch oven in wood-fired oven, sourdough bread bursting ear with crackling crust, dramatic oven spring effect, glowing embers visible behind.",
                         "isSelected": true
                     },
                     {
                         "index": 4,
-                        "start": 10.8,
+                        "start": 10.7,
                         "end": 14.4,
                         "content": "Serrated knife slicing warm loaf, steam escaping from open crumb structure, irregular honeycomb texture with glossy sheen, crumbs scattering on cutting board.",
                         "isSelected": true
@@ -842,6 +710,58 @@
                         "isSelected": true
                     }
                 ]
+            ]
+        },
+        {
+            "id": 1,
+            "type": "CheckpointLoaderSimple",
+            "pos": [
+                1098.072509765625,
+                797.5763549804688
+            ],
+            "size": [
+                315,
+                122
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "slot_index": 0,
+                    "links": [
+                        12
+                    ]
+                },
+                {
+                    "name": "CLIP",
+                    "type": "CLIP",
+                    "slot_index": 1,
+                    "links": [
+                        3,
+                        4
+                    ]
+                },
+                {
+                    "name": "VAE",
+                    "type": "VAE",
+                    "slot_index": 2,
+                    "links": [
+                        7
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.29",
+                "Node name for S&R": "CheckpointLoaderSimple"
+            },
+            "widgets_values": [
+                "flux1-dev-fp8.safetensors",
+                null
             ]
         }
     ],
@@ -998,14 +918,14 @@
     "config": {},
     "extra": {
         "ds": {
-            "scale": 0.620921323059155,
+            "scale": 0.6209213230591556,
             "offset": [
-                -377.47062044986365,
-                -105.80034543452962
+                -257.5543085498641,
+                -637.0323929345302
             ]
         },
         "source": "MontagenTemplate",
-        "frontendVersion": "1.17.9"
+        "frontendVersion": "1.20.7"
     },
     "version": 0.4,
     "seed_widgets": {

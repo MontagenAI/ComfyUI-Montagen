@@ -1,5 +1,24 @@
 # ComfyUI-Montagen Changelog
 
+## [0.2.4] - 2025-05-29
+
+*Bugfix Update: Resolved multiple Editor and Explorer issues, with minor node improvements.*
+
+### Changed
+
+- [Node] SRT List Parser: (#55)
+  - Persist SRT List View Position, instead of resetting to top after node execution. 
+  - Increase input width to display full timestamp.
+- [Explorer] Update Template with Built-in Node.(#57)
+  - Replace EdgeTTS with Montagen version TTS Node.
+
+### Fixed
+
+- [Editor] Video Loaded onto Timeline with Its Origin Width and Height.(#26)
+- [Editor] Audio erroneously autoplays in the background without user interaction.(#48)
+- [Explorer] Cannot input project path when opening local projects.(#62)
+
+
 ## [0.2.3] - 2025-05-14
 
 *Compatibility Hotfix: Fixed Custom Node Registration Issue Caused by ComfyUI Frontend v1.19 Update.*
